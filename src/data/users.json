@@ -4,7 +4,7 @@
     {
       "id": "seed-superadmin",
       "name": "Superadmin Demo",
-      "email": "superadmin@micolegio.es",
+      "email": "superadmin@colegiovaldeserra.com",
       "password": "Admin1234",
       "role": "superadmin",
       "course": null,
@@ -13,7 +13,7 @@
     {
       "id": "seed-profesor",
       "name": "Profe Demo",
-      "email": "profesor@micolegio.es",
+      "email": "profesor@colegiovaldeserra.com",
       "password": "Profe1234",
       "role": "profesor",
       "course": null,
@@ -22,7 +22,7 @@
     {
       "id": "seed-alumno-1eso",
       "name": "Alumno Demo Primero",
-      "email": "alumno1@micolegio.es",
+      "email": "alumno1@colegiovaldeserra.com",
       "password": "Alumno1234",
       "role": "alumno",
       "course": "1ESO",
@@ -31,7 +31,7 @@
     {
       "id": "seed-alumno-2eso",
       "name": "Alumna Demo Segundo",
-      "email": "alumno2@micolegio.es",
+      "email": "alumno2@colegiovaldeserra.com",
       "password": "Alumno1234",
       "role": "alumno",
       "course": "2ESO",
@@ -40,7 +40,7 @@
     {
       "id": "seed-alumno-3eso",
       "name": "Alumno Demo Tercero",
-      "email": "alumno3@micolegio.es",
+      "email": "alumno3@colegiovaldeserra.com",
       "password": "Alumno1234",
       "role": "alumno",
       "course": "3ESO",

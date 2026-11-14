@@ -8,13 +8,13 @@
 // 👉 DOMINIO DEL CORREO CORPORATIVO DEL COLEGIO
 //
 //    Cambia SOLO el texto entre comillas por el dominio real de tu centro.
-//    Vale con o sin arroba: "micolegio.es" o "@micolegio.es".
+//    Vale con o sin arroba: "colegiovaldeserra.com" o "@colegiovaldeserra.com".
 //
 //    · Solo podrán registrarse e iniciar sesión los correos que terminen así.
 //    · Los usuarios de prueba de src/data/users.json adoptan este dominio
 //      automáticamente (no hace falta editarlos uno a uno).
 // ──────────────────────────────────────────────────────────────────────────
-export const SCHOOL_EMAIL_DOMAIN = "micolegio.es";
+export const SCHOOL_EMAIL_DOMAIN = "colegiovaldeserra.com";
 
 // ──────────────────────────────────────────────────────────────────────────
 // 👉 USUARIOS DE PRUEBA VISIBLES EN LA PANTALLA DE LOGIN

@@ -26,7 +26,7 @@ Todo está en **`src/config/site.ts`**:
 
 | Qué | Constante | Valor inicial |
 | --- | --- | --- |
-| Dominio del correo del colegio | `SCHOOL_EMAIL_DOMAIN` | `"micolegio.es"` |
+| Dominio del correo del colegio | `SCHOOL_EMAIL_DOMAIN` | `"colegiovaldeserra.com"` |
 | Mostrar usuarios de prueba en el login | `SHOW_DEMO_CREDENTIALS` | `true` |
 
 Los usuarios de prueba adoptan automáticamente el dominio que pongas.
@@ -37,11 +37,11 @@ Están en `src/data/users.json` y se ven en la pantalla de login (un clic rellen
 
 | Rol | Correo | Contraseña | Panel |
 | --- | --- | --- | --- |
-| Superadministrador | `superadmin@micolegio.es` | `Admin1234` | `/dashboard/admin` |
-| Profesor | `profesor@micolegio.es` | `Profe1234` | `/dashboard/profesor` |
-| Alumno 1º ESO | `alumno1@micolegio.es` | `Alumno1234` | `/dashboard/alumno` |
-| Alumno 2º ESO | `alumno2@micolegio.es` | `Alumno1234` | `/dashboard/alumno` |
-| Alumno 3º ESO | `alumno3@micolegio.es` | `Alumno1234` | `/dashboard/alumno` |
+| Superadministrador | `superadmin@colegiovaldeserra.com` | `Admin1234` | `/dashboard/admin` |
+| Profesor | `profesor@colegiovaldeserra.com` | `Profe1234` | `/dashboard/profesor` |
+| Alumno 1º ESO | `alumno1@colegiovaldeserra.com` | `Alumno1234` | `/dashboard/alumno` |
+| Alumno 2º ESO | `alumno2@colegiovaldeserra.com` | `Alumno1234` | `/dashboard/alumno` |
+| Alumno 3º ESO | `alumno3@colegiovaldeserra.com` | `Alumno1234` | `/dashboard/alumno` |
 
 ## Cómo funciona el acceso
 

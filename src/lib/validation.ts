@@ -4,7 +4,7 @@
 import { SCHOOL_EMAIL_DOMAIN } from "@/config/site";
 import { isCourse } from "@/lib/types";
 
-/** "@micolegio.es" — se calcula a partir de src/config/site.ts. */
+/** "@colegiovaldeserra.com" — se calcula a partir de src/config/site.ts. */
 export const SCHOOL_EMAIL_SUFFIX = `@${SCHOOL_EMAIL_DOMAIN.trim().replace(/^@/, "").toLowerCase()}`;
 
 export const MIN_PASSWORD_LENGTH = 8;
