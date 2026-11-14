@@ -1,0 +1,194 @@
+{
+  "_nota": "Generado a partir de TEMARIO.md. 9 unidades por curso.",
+  "unidades": [
+    {
+      "curso": "1ESO",
+      "numero": 1,
+      "titulo": "Hola, Hub: luces y sonidos",
+      "hardware": "Hub (Matriz de luces 5x5, altavoz y botón central)",
+      "modelo": "Rótulo luminoso de sobremesa: el Hub sobre un atril muestra un mensaje animado con melodía"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 2,
+      "titulo": "Mi primer motor: segundos, grados y rotaciones",
+      "hardware": "Hub + 1 Motor mediano",
+      "modelo": "Ventilador de sobremesa con tres velocidades programadas"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 3,
+      "titulo": "Posición exacta: el motor como servo",
+      "hardware": "Hub + 1 Motor mediano",
+      "modelo": "Barrera de aparcamiento: sube a 90°, espera y baja"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 4,
+      "titulo": "Bucles: repetir sin copiar",
+      "hardware": "Hub + Motor grande",
+      "modelo": "Noria que gira por tramos y se detiene en cada cabina"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 5,
+      "titulo": "Sensor de fuerza: la máquina espera mi orden",
+      "hardware": "Hub + Sensor de fuerza + 1 Motor mediano",
+      "modelo": "Puerta automática con timbre: el pulsador la abre y se cierra sola"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 6,
+      "titulo": "Base de conducción: avanzar y girar",
+      "hardware": "Hub + 2 Motores medianos",
+      "modelo": "Robot repartidor (base de conducción) que recorre un circuito cuadrado"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 7,
+      "titulo": "Sensor de distancia: frenar a tiempo",
+      "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "modelo": "Vehículo con frenada automática de emergencia ante un obstáculo"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 8,
+      "titulo": "Sensor de color: la primera decisión",
+      "hardware": "Hub + Sensor de color + Motor grande",
+      "modelo": "Puerta de garaje basculante que solo sube con la tarjeta del color correcto"
+    },
+    {
+      "curso": "1ESO",
+      "numero": 9,
+      "titulo": "Proyecto final: la feria automática",
+      "hardware": "Hub + Motor grande + 1 Motor mediano + Sensor de fuerza + Sensor de distancia",
+      "modelo": "Tiovivo con taquilla: el pulsador inicia el viaje, una barrera da acceso y se detiene si alguien se acerca"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 1,
+      "titulo": "Dos caminos: si… entonces… si no",
+      "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "modelo": "Vehículo autónomo que obedece semáforos (tarjetas verde y roja)"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 2,
+      "titulo": "Seguir una línea con luz reflejada",
+      "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "modelo": "Robot rastreador de almacén: sigue una línea negra en zigzag"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 3,
+      "titulo": "Variables: la máquina que cuenta",
+      "hardware": "Hub + Sensor de distancia + 1 Motor mediano",
+      "modelo": "Torno de entrada con contador de aforo en la matriz de luces"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 4,
+      "titulo": "Operadores: comparar y calcular",
+      "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "modelo": "Coche con sensor de aparcamiento: pita más rápido cuanto más cerca está del muro"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 5,
+      "titulo": "Sensor de fuerza: medir cuánto aprieto",
+      "hardware": "Hub + Sensor de fuerza + Motor grande",
+      "modelo": "Martillo de feria «prueba tu fuerza» con aguja indicadora motorizada"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 6,
+      "titulo": "Giroscopio: girar con precisión",
+      "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos",
+      "modelo": "Robot explorador que traza giros exactos de 90° sobre un plano"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 7,
+      "titulo": "Eventos y mensajes: varias pilas a la vez",
+      "hardware": "Hub (botones izquierdo y derecho) + Motor grande + 1 Motor mediano",
+      "modelo": "Grúa giratoria con brazo elevador manejada desde los botones del Hub"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 8,
+      "titulo": "Cronómetro y azar: juego de reflejos",
+      "hardware": "Hub + Sensor de fuerza + 1 Motor mediano",
+      "modelo": "Máquina de reflejos: una bandera se levanta al azar y mide el tiempo de reacción"
+    },
+    {
+      "curso": "2ESO",
+      "numero": 9,
+      "titulo": "Proyecto final: clasificadora de colores",
+      "hardware": "Hub + Sensor de color + Motor grande + 1 Motor mediano",
+      "modelo": "Clasificadora de piezas por color con rampa selectora y contador de cada color"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 1,
+      "titulo": "Mis bloques: crear mis propias órdenes",
+      "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos",
+      "modelo": "Robot dibujante que traza polígonos con un rotulador"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 2,
+      "titulo": "Seguidor de línea proporcional",
+      "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "modelo": "Vehículo de reparto autoguiado que sigue una línea curva sin zigzag"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 3,
+      "titulo": "Motores de precisión: la pinza",
+      "hardware": "Hub + 2 Motores medianos + Motor grande",
+      "modelo": "Robot recogedor con pinza frontal que traslada objetos"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 4,
+      "titulo": "Listas: memoria para la máquina",
+      "hardware": "Hub + Motor grande (dial) + 1 Motor mediano (cerrojo)",
+      "modelo": "Caja fuerte con dial giratorio y combinación guardada en una lista"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 5,
+      "titulo": "Control con realimentación",
+      "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "modelo": "Vehículo con control de crucero adaptativo: mantiene 15 cm con el de delante"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 6,
+      "titulo": "Máquinas de estados: procesos por fases",
+      "hardware": "Hub + Motor grande + 1 Motor mediano + Sensor de distancia + Sensor de color",
+      "modelo": "Túnel de lavado automático: puerta, rodillo y programa elegido con tarjeta de color"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 7,
+      "titulo": "Datos y gráficas: medir para decidir",
+      "hardware": "Hub (Sensor giroscópico) + Motor grande",
+      "modelo": "Mesa sísmica con sismógrafo para ensayar torres antisísmicas"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 8,
+      "titulo": "Navegación autónoma",
+      "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos + Sensor de distancia + Sensor de fuerza (parachoques)",
+      "modelo": "Robot explorador que resuelve un laberinto"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 9,
+      "titulo": "Proyecto final: almacén robotizado",
+      "hardware": "Hub + 2 Motores medianos + Motor grande + Sensor de color + Sensor de distancia + Sensor de fuerza",
+      "modelo": "Carretilla elevadora autónoma: sigue la línea, reconoce la estación por color, recoge el palé y registra las entregas"
+    }
+  ]
+}

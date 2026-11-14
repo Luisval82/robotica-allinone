@@ -1,0 +1,50 @@
+{
+  "_nota": "BASE DE DATOS SIMULADA. Usuarios de prueba que se cargan al arrancar. El dominio del correo se sustituye por el de src/config/site.ts. Las contraseñas están en claro SOLO porque son de prueba y se muestran en el login; las cuentas que se registran desde la web se guardan con la contraseña cifrada.",
+  "users": [
+    {
+      "id": "seed-superadmin",
+      "name": "Superadmin Demo",
+      "email": "superadmin@micolegio.es",
+      "password": "Admin1234",
+      "role": "superadmin",
+      "course": null,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-profesor",
+      "name": "Profe Demo",
+      "email": "profesor@micolegio.es",
+      "password": "Profe1234",
+      "role": "profesor",
+      "course": null,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-alumno-1eso",
+      "name": "Alumno Demo Primero",
+      "email": "alumno1@micolegio.es",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "1ESO",
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-alumno-2eso",
+      "name": "Alumna Demo Segundo",
+      "email": "alumno2@micolegio.es",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "2ESO",
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-alumno-3eso",
+      "name": "Alumno Demo Tercero",
+      "email": "alumno3@micolegio.es",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "3ESO",
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    }
+  ]
+}

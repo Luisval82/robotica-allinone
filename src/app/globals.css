@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/*
+ * ════════════════════════════════════════════════════════════════════════
+ *  TEMA ROBOTICA ALLINONE — inspirado en LEGO® Education SPIKE™
+ *
+ *  Con Tailwind CSS v4 el tema se define aquí (ya no hay tailwind.config).
+ *  Cada variable crea sus utilidades:  --color-spike-500  →  bg-spike-500,
+ *  text-spike-500, border-spike-500…   --radius-card  →  rounded-card, etc.
+ * ════════════════════════════════════════════════════════════════════════
+ */
+
+/* Tipografías (las carga next/font en src/app/layout.tsx) */
+@theme inline {
+  --font-sans: var(--font-nunito-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+}
+
+@theme {
+  /* Turquesa SPIKE — color principal de la plataforma */
+  --color-spike-50: #e8f9fb;
+  --color-spike-100: #c5f0f4;
+  --color-spike-200: #92e2ea;
+  --color-spike-300: #53cedb;
+  --color-spike-400: #1fb9c9;
+  --color-spike-500: #00a3b4;
+  --color-spike-600: #007f8c; /* botones: texto blanco con contraste AA */
+  --color-spike-700: #086873;
+  --color-spike-800: #0c545d;
+  --color-spike-900: #0d434b;
+
+  /* Amarillo Hub — acentos y rol de superadministrador */
+  --color-hub-50: #fffbe0;
+  --color-hub-100: #fff4b3;
+  --color-hub-300: #ffe24d;
+  --color-hub-400: #ffd400;
+  --color-hub-500: #f0c200;
+  --color-hub-700: #a37f00;
+
+  /* Tinta — grises con un punto azulado (textos, bordes y fondos) */
+  --color-ink-50: #f3f6f8;
+  --color-ink-100: #e7ecef;
+  --color-ink-200: #d3dbe0;
+  --color-ink-300: #b2bec6;
+  --color-ink-400: #8493a0;
+  --color-ink-500: #5f6f7c;
+  --color-ink-600: #465561;
+  --color-ink-700: #33414c;
+  --color-ink-800: #25313a;
+  --color-ink-900: #1a242c;
+
+  /* Categorías de bloques de palabras (un color por familia) */
+  --color-block-eventos: #f5b800;
+  --color-block-motores: #1672d9;
+  --color-block-movimiento: #d92d86;
+  --color-block-luz: #7c4ddb;
+  --color-block-sonido: #b23cc4;
+  --color-block-control: #ff9a1f;
+  --color-block-sensores: #2bb8e6;
+  --color-block-operadores: #1fb45c;
+  --color-block-variables: #f2703a;
+
+  /* Formas */
+  --radius-card: 1.75rem;
+
+  /* Sombras: tarjeta suave y «botón que se pulsa» */
+  --shadow-card: 0 1px 2px rgb(26 36 44 / 0.05), 0 10px 28px rgb(26 36 44 / 0.07);
+  --shadow-press-spike: 0 4px 0 0 #0c545d;
+  --shadow-press-hub: 0 4px 0 0 #a37f00;
+  --shadow-press-ink: 0 4px 0 0 #d3dbe0;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  /* Foco de teclado visible en toda la plataforma */
+  :focus-visible {
+    outline: 3px solid var(--color-spike-400);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-spike-200);
+    color: var(--color-ink-900);
+  }
+}
+
+@layer components {
+  /*
+   * Bloque de palabras: pieza redondeada con una pestaña inferior que
+   * «encaja» con el bloque siguiente. El color se pone con bg-block-*.
+   */
+  .word-block {
+    position: relative;
+    border-radius: 0.9rem;
+    padding: 0.7rem 1rem;
+    font-weight: 800;
+    line-height: 1.35;
+    box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.16);
+  }
+
+  .word-block::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 1.5rem;
+    top: 100%;
+    width: 1.6rem;
+    height: 0.4rem;
+    margin-top: -1px;
+    border-radius: 0 0 0.45rem 0.45rem;
+    background: inherit;
+    box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.16);
+  }
+
+  /* El último bloque de una pila no necesita pestaña */
+  .word-block:last-child::after {
+    display: none;
+  }
+}
+
+/* Parpadeo de los «ojos» del Hub en la ilustración de bienvenida */
+@keyframes hub-blink {
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 0.12;
+  }
+}
+
+.hub-eye {
+  animation: hub-blink 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
