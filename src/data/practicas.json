@@ -1,0 +1,165 @@
+{
+  "_nota": "PRÁCTICAS Y SOLUCIONES OFICIALES (solo las ve el profesorado). Dos prácticas por unidad. Las que hay son EJEMPLOS redactados a partir de TEMARIO.md: revísalos en la app SPIKE antes de darlos por buenos. Para añadir una, copia un elemento y cambia curso, unidad y práctica. «categoria» elige el color del bloque: eventos, luz, sonido, motores, movimiento, control, sensores, operadores o variables. «nivel» es la sangría (0 = pila principal, 1 = dentro de un bucle o condición…).",
+  "practicas": [
+    {
+      "curso": "1ESO",
+      "unidad": 1,
+      "practica": 1,
+      "titulo": "Saludo luminoso",
+      "enunciado": "Programa el Hub para que, al iniciar el programa, ponga en verde la luz del botón central, escriba tu nombre en la matriz de luces y la apague al terminar.",
+      "solucion": [
+        {
+          "categoria": "eventos",
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "categoria": "luz",
+          "texto": "Fijar luz del botón central (verde)",
+          "nivel": 0
+        },
+        {
+          "categoria": "luz",
+          "texto": "Escribir en la matriz de luces 5x5 (tu nombre)",
+          "nivel": 0
+        },
+        {
+          "categoria": "luz",
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "notas": "Vale cualquier color del botón. Lo importante es el orden: primero el botón, después el texto y al final apagar."
+    },
+    {
+      "curso": "1ESO",
+      "unidad": 1,
+      "practica": 2,
+      "titulo": "Rótulo con melodía",
+      "enunciado": "Convierte el Hub en un rótulo de sobremesa: muestra una imagen durante 2 segundos, toca una melodía de tres notas, espera 1 segundo y apaga la matriz.",
+      "solucion": [
+        {
+          "categoria": "eventos",
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "categoria": "luz",
+          "texto": "Encender la matriz de luces 5x5 (imagen) 2 segundos",
+          "nivel": 0
+        },
+        {
+          "categoria": "sonido",
+          "texto": "Tocar nota (60) 0.5 segundos",
+          "nivel": 0
+        },
+        {
+          "categoria": "sonido",
+          "texto": "Tocar nota (64) 0.5 segundos",
+          "nivel": 0
+        },
+        {
+          "categoria": "sonido",
+          "texto": "Tocar nota (67) 0.5 segundos",
+          "nivel": 0
+        },
+        {
+          "categoria": "control",
+          "texto": "Esperar 1 segundos",
+          "nivel": 0
+        },
+        {
+          "categoria": "luz",
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "notas": "Las tres notas pueden ser otras. Comprueba que el bloque Esperar está entre la melodía y el apagado."
+    },
+    {
+      "curso": "2ESO",
+      "unidad": 1,
+      "practica": 1,
+      "titulo": "Semáforo en verde",
+      "enunciado": "El vehículo avanza solo mientras el sensor de color ve la tarjeta verde. En cualquier otro caso se queda parado.",
+      "solucion": [
+        {
+          "categoria": "eventos",
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "categoria": "control",
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "categoria": "control",
+          "texto": "Si ¿Es de color (verde)? entonces",
+          "nivel": 1
+        },
+        {
+          "categoria": "movimiento",
+          "texto": "Empezar a mover",
+          "nivel": 2
+        },
+        {
+          "categoria": "control",
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "categoria": "movimiento",
+          "texto": "Parar movimiento",
+          "nivel": 2
+        }
+      ],
+      "notas": "Sin el Bucle infinito el programa comprueba el color una sola vez y termina."
+    },
+    {
+      "curso": "2ESO",
+      "unidad": 1,
+      "practica": 2,
+      "titulo": "Verde y rojo",
+      "enunciado": "El vehículo arranca con la tarjeta verde y se para con la roja. Si no ve ninguna de las dos, sigue haciendo lo que estaba haciendo.",
+      "solucion": [
+        {
+          "categoria": "eventos",
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "categoria": "control",
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "categoria": "control",
+          "texto": "Si ¿Es de color (verde)? entonces",
+          "nivel": 1
+        },
+        {
+          "categoria": "movimiento",
+          "texto": "Empezar a mover",
+          "nivel": 2
+        },
+        {
+          "categoria": "control",
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "categoria": "control",
+          "texto": "Si ¿Es de color (rojo)? entonces",
+          "nivel": 2
+        },
+        {
+          "categoria": "movimiento",
+          "texto": "Parar movimiento",
+          "nivel": 3
+        }
+      ],
+      "notas": "La segunda condición va dentro del «Si no» de la primera: así, sin tarjeta, el vehículo no cambia de estado."
+    }
+  ]
+}

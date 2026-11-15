@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LockIcon, LockOpenIcon } from "@/components/ui/icons";
 import { requireRole } from "@/lib/auth";
+import { getStudentAccess } from "@/lib/db";
 import { COURSE_LABEL } from "@/lib/types";
 import { getUnidadesDeCurso } from "@/lib/unidades";
 
@@ -32,6 +33,9 @@ export default async function AlumnoDashboardPage() {
   }
 
   const unidades = getUnidadesDeCurso(session.course);
+  // Lo que el profesor ha abierto para toda la clase o solo para este alumno.
+  const acceso = await getStudentAccess({ id: session.id, course: session.course });
+  const abiertas = acceso.filter((item) => item.abierta).length;
 
   return (
     <>
@@ -41,8 +45,10 @@ export default async function AlumnoDashboardPage() {
         </p>
         <h1 className="mt-2 font-display text-4xl font-semibold sm:text-5xl">Hola, {firstName}</h1>
         <p className="mt-3 max-w-xl text-lg font-semibold text-spike-100">
-          Tienes {unidades.length} unidades este curso. Empieza por la primera: tu profesor irá
-          abriendo las demás.
+          {abiertas === 1
+            ? `Tienes 1 unidad abierta de ${unidades.length}.`
+            : `Tienes ${abiertas} unidades abiertas de ${unidades.length}.`}{" "}
+          Tu profesor irá abriendo las demás.
         </p>
       </section>
 
@@ -50,9 +56,9 @@ export default async function AlumnoDashboardPage() {
 
       <ol className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {unidades.map((unidad) => {
-          // Por defecto solo la UD 1 está abierta. El desbloqueo por alumno o por
-          // clase llegará con el panel de profesor (siguiente fase).
-          const abierta = unidad.numero === 1;
+          const estado = acceso.find((item) => item.unidad === unidad.numero);
+          const abierta = estado?.abierta ?? false;
+          const pruebaAbierta = estado?.pruebaAbierta ?? false;
           const tone = UNIT_TONES[(unidad.numero - 1) % UNIT_TONES.length];
 
           return (
@@ -84,6 +90,20 @@ export default async function AlumnoDashboardPage() {
                   {unidad.titulo}
                 </h3>
                 <p className="text-sm font-semibold">{unidad.modelo}</p>
+                {abierta ? (
+                  <p
+                    className={`mt-auto inline-flex items-center gap-1.5 pt-3 text-xs font-extrabold uppercase tracking-wide ${
+                      pruebaAbierta ? "text-spike-700" : "text-ink-500"
+                    }`}
+                  >
+                    {pruebaAbierta ? (
+                      <LockOpenIcon className="size-3.5" />
+                    ) : (
+                      <LockIcon className="size-3.5" />
+                    )}
+                    PRUEBA UD-{unidad.numero} {pruebaAbierta ? "abierta" : "bloqueada"}
+                  </p>
+                ) : null}
               </div>
             </li>
           );

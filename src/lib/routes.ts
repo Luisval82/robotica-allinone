@@ -6,6 +6,9 @@ import type { Role } from "@/lib/types";
 export const LOGIN_PATH = "/login";
 export const REGISTER_PATH = "/registro";
 
+/** Renueva la cookie cuando el rol guardado en ella ya no coincide con la base de datos. */
+export const REFRESH_SESSION_PATH = "/sesion/actualizar";
+
 /** Panel al que se envía a cada rol justo después de iniciar sesión. */
 export const ROLE_HOME: Record<Role, string> = {
   superadmin: "/dashboard/admin",

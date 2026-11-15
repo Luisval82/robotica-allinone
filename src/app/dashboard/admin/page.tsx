@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RoleControl } from "@/components/admin/RoleControl";
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { requireRole } from "@/lib/auth";
 import { listUsers } from "@/lib/db";
@@ -15,13 +16,19 @@ const ROLE_PLURAL: Record<Role, string> = {
 export default async function AdminDashboardPage() {
   // Pestaña exclusiva del superadministrador.
   await requireRole(["superadmin"]);
-  const users = await listUsers();
+
+  // Orden: superadministrador, profesores y alumnos; dentro de cada rol, por nombre.
+  const users = (await listUsers()).sort(
+    (a, b) =>
+      ROLES.indexOf(a.role) - ROLES.indexOf(b.role) || a.name.localeCompare(b.name, "es"),
+  );
 
   return (
     <>
       <h1 className="font-display text-4xl font-semibold text-ink-900">Gestión de usuarios</h1>
-      <p className="mt-2 text-lg font-semibold text-ink-500">
-        Todas las cuentas de la plataforma. Quien se registra entra como alumno.
+      <p className="mt-2 max-w-3xl text-lg font-semibold text-ink-500">
+        Quien se registra entra como alumno. Aquí decides quién es Profesor: el cambio se aplica al
+        momento, aunque esa persona tenga la sesión abierta.
       </p>
 
       <dl className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -38,8 +45,8 @@ export default async function AdminDashboardPage() {
       </dl>
 
       <div className="mt-6 overflow-x-auto rounded-card bg-white shadow-card">
-        <table className="w-full min-w-[40rem] text-left">
-          <caption className="sr-only">Usuarios registrados</caption>
+        <table className="w-full min-w-[52rem] text-left">
+          <caption className="sr-only">Usuarios registrados y su rol</caption>
           <thead>
             <tr className="border-b-2 border-ink-100 text-xs font-extrabold uppercase tracking-wide text-ink-500">
               <th scope="col" className="px-6 py-4">
@@ -54,6 +61,9 @@ export default async function AdminDashboardPage() {
               <th scope="col" className="px-6 py-4">
                 Curso
               </th>
+              <th scope="col" className="px-6 py-4">
+                Rol de Profesor
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -66,18 +76,17 @@ export default async function AdminDashboardPage() {
                 <td className="px-6 py-4">
                   <RoleBadge role={user.role} />
                 </td>
-                <td className="px-6 py-4 font-semibold text-ink-700">
-                  {user.course ? COURSE_LABEL[user.course] : "—"}
+                <td className="whitespace-nowrap px-6 py-4 font-semibold text-ink-700">
+                  {user.role === "alumno" && user.course ? COURSE_LABEL[user.course] : "—"}
+                </td>
+                <td className="px-6 py-3">
+                  <RoleControl user={user} />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
-      <p className="mt-6 rounded-card border-2 border-dashed border-ink-300 p-6 font-semibold text-ink-600">
-        Aquí se añadirán los botones para dar o quitar el rol de Profesor a cada cuenta.
-      </p>
     </>
   );
 }

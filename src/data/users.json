@@ -1,5 +1,5 @@
 {
-  "_nota": "BASE DE DATOS SIMULADA. Usuarios de prueba que se cargan al arrancar. El dominio del correo se sustituye por el de src/config/site.ts. Las contraseñas están en claro SOLO porque son de prueba y se muestran en el login; las cuentas que se registran desde la web se guardan con la contraseña cifrada.",
+  "_nota": "BASE DE DATOS SIMULADA. Usuarios de prueba que se cargan al arrancar. El dominio del correo se sustituye por el de src/config/site.ts. Las contraseñas están en claro SOLO porque son de prueba; las cuentas que se registran desde la web se guardan con la contraseña cifrada. «enLogin» decide si el usuario aparece en el recuadro de usuarios de prueba del login.",
   "users": [
     {
       "id": "seed-superadmin",
@@ -8,6 +8,7 @@
       "password": "Admin1234",
       "role": "superadmin",
       "course": null,
+      "enLogin": true,
       "createdAt": "2026-11-14T09:00:00.000Z"
     },
     {
@@ -17,6 +18,7 @@
       "password": "Profe1234",
       "role": "profesor",
       "course": null,
+      "enLogin": true,
       "createdAt": "2026-11-14T09:00:00.000Z"
     },
     {
@@ -26,6 +28,7 @@
       "password": "Alumno1234",
       "role": "alumno",
       "course": "1ESO",
+      "enLogin": true,
       "createdAt": "2026-11-14T09:00:00.000Z"
     },
     {
@@ -35,6 +38,7 @@
       "password": "Alumno1234",
       "role": "alumno",
       "course": "2ESO",
+      "enLogin": true,
       "createdAt": "2026-11-14T09:00:00.000Z"
     },
     {
@@ -44,6 +48,67 @@
       "password": "Alumno1234",
       "role": "alumno",
       "course": "3ESO",
+      "enLogin": true,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-marta",
+      "name": "Marta Ejemplo",
+      "email": "marta.ejemplo@colegiovaldeserra.com",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "1ESO",
+      "enLogin": false,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-hugo",
+      "name": "Hugo Ejemplo",
+      "email": "hugo.ejemplo@colegiovaldeserra.com",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "1ESO",
+      "enLogin": false,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-nora",
+      "name": "Nora Ejemplo",
+      "email": "nora.ejemplo@colegiovaldeserra.com",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "2ESO",
+      "enLogin": false,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-ivan",
+      "name": "Iván Ejemplo",
+      "email": "ivan.ejemplo@colegiovaldeserra.com",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "2ESO",
+      "enLogin": false,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-sara",
+      "name": "Sara Ejemplo",
+      "email": "sara.ejemplo@colegiovaldeserra.com",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "3ESO",
+      "enLogin": false,
+      "createdAt": "2026-11-14T09:00:00.000Z"
+    },
+    {
+      "id": "seed-leo",
+      "name": "Leo Ejemplo",
+      "email": "leo.ejemplo@colegiovaldeserra.com",
+      "password": "Alumno1234",
+      "role": "alumno",
+      "course": "3ESO",
+      "enLogin": false,
       "createdAt": "2026-11-14T09:00:00.000Z"
     }
   ]
