@@ -202,6 +202,60 @@
       "pendiente": false
     },
     {
+      "texto": "fijar píxel en 1 , 1 al 100 %",
+      "categoria": "luz",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "fijar píxel en"
+        },
+        {
+          "t": "menu",
+          "v": "1",
+          "opciones": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": ","
+        },
+        {
+          "t": "menu",
+          "v": "1",
+          "opciones": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "al"
+        },
+        {
+          "t": "hueco",
+          "v": "100"
+        },
+        {
+          "t": "palabra",
+          "v": "%"
+        }
+      ],
+      "pendiente": false
+    },
+    {
       "texto": "Fijar luz del botón central",
       "categoria": "luz",
       "forma": "pila",
