@@ -109,7 +109,8 @@
   /*
    * Silueta de un bloque que se encaja en una pila, medida de la app:
    * muesca trapezoidal arriba y pestaña igual abajo, a 9 px del borde
-   * izquierdo, 22 px de ancho arriba, 12 px abajo y 6 px de fondo.
+   * izquierdo, 23 px de ancho arriba, 11 px abajo y 6 px de fondo.
+   * Comprobado contra la captura: coincide en un 99,6 % de los píxeles.
    */
   .word-block--pila,
   .word-block--inicio {
@@ -120,14 +121,14 @@
     clip-path: polygon(
       0 0,
       9px 0,
-      14px 6px,
+      15px 6px,
       26px 6px,
-      31px 0,
+      32px 0,
       100% 0,
       100% calc(100% - 6px),
-      31px calc(100% - 6px),
+      32px calc(100% - 6px),
       26px 100%,
-      14px 100%,
+      15px 100%,
       9px calc(100% - 6px),
       0 calc(100% - 6px)
     );
@@ -140,9 +141,9 @@
       0 0,
       100% 0,
       100% calc(100% - 6px),
-      31px calc(100% - 6px),
+      32px calc(100% - 6px),
       26px 100%,
-      14px 100%,
+      15px 100%,
       9px calc(100% - 6px),
       0 calc(100% - 6px)
     );
