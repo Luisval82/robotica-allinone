@@ -120,17 +120,20 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
   archivo de vídeo (`.mp4`, `.webm`…) — ver `src/lib/video.ts`. Sin `"url"`, el paso 1 muestra el
   aviso de que falta el vídeo.
   - **Importante sobre "oficial" en YouTube**: LEGO® Education no publica sus tutoriales en
-    YouTube (los aloja en su propio reproductor, en `education.lego.com`), así que no existe un
-    vídeo oficial de LEGO en YouTube para incrustar por unidad. Por eso 22 de las 27 unidades
-    llevan en su lugar `"video.enlaceOficial": { "titulo": "...", "url": "..." }`: un enlace
-    verificado a la lección o tutorial oficial de `education.lego.com` que trata ese mismo tema
-    (Hub, motores, bucles, sensores, listas, My Blocks…). Al no poder incrustarse en un iframe
-    (la web de LEGO lo bloquea), se muestra como una tarjeta con enlace — nunca como vídeo
-    embebido — justo debajo del reproductor o del aviso de «falta vídeo». Las 5 unidades sin
-    correspondencia oficial razonable (`1ESO-9`, `2ESO-4`, `2ESO-6`, `2ESO-7`, `2ESO-8`) se
-    dejaron sin ese enlace en vez de forzar uno que no encajara. Si localizas o prefieres un
-    vídeo de YouTube de un canal concreto para alguna unidad, añádelo tú en `"video.url"`: el
-    reproductor lo incrusta igual que cualquier otro enlace de YouTube.
+    YouTube; los aloja en su propio reproductor (23video), en `education.lego.com`. Ese
+    reproductor sí ofrece enlaces de **embed oficiales** (parámetro `source=embed`), así que en
+    las unidades sobre Hub, Motores y Sensores (`1ESO-1/2/3/5/7/8`, `2ESO-5/6`, `3ESO-3/5`) el
+    campo `"video.url"` ya lleva ese enlace de embed real de LEGO y el reproductor lo muestra
+    incrustado de verdad.
+  - Para el resto de temas (bucles, variables, línea, proyectos finales…) LEGO no tiene vídeo
+    propio, así que 22 de las 27 unidades llevan en su lugar
+    `"video.enlaceOficial": { "titulo": "...", "url": "..." }`: un enlace verificado a la lección
+    o tutorial oficial de `education.lego.com` sobre ese mismo tema. Se muestra como una tarjeta
+    con enlace (no como vídeo embebido) debajo del reproductor o del aviso de «falta vídeo». Las
+    5 unidades sin correspondencia oficial razonable (`1ESO-9`, `2ESO-4`, `2ESO-7`, `2ESO-8`, y
+    las que no tienen ni vídeo ni lección oficial) se dejaron sin ese enlace en vez de forzar uno
+    que no encajara. Si localizas o prefieres un vídeo de YouTube de un canal concreto para
+    alguna unidad, añádelo tú en `"video.url"`: el reproductor lo incrusta igual.
 - Todo el contenido es un borrador redactado a partir del temario: conviene repasarlo con la app
   SPIKE y el set delante antes de usarlo en clase, sobre todo las soluciones de 3º.
 - Los pasos de montaje describen el modelo por funciones, no pieza a pieza: revísalos con el set
