@@ -93,7 +93,7 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
 
 - Cada paso termina con «He terminado este paso», que abre el siguiente. Al terminar los cuatro
   se abre la PRUEBA (el profesor puede abrirla antes con su interruptor).
-- Cada unidad tiene un botón que abre <https://education.lego.com/> en una pestaña nueva.
+- Cada unidad tiene un botón que abre <https://spike.legoeducation.com/> en una pestaña nueva.
 - **Test**: al pulsar «Entregar» se corrige en el servidor, la nota aparece al momento y queda
   guardada para el profesor. Hay un solo intento. Las respuestas correctas no se envían al
   navegador hasta que el test está entregado.

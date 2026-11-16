@@ -29,4 +29,4 @@ export const SHOW_DEMO_CREDENTIALS = true;
 
 export const APP_NAME = "ROBOTICA ALLINONE";
 
-export const LEGO_EDUCATION_URL = "https://education.lego.com/";
+export const LEGO_EDUCATION_URL = "https://spike.legoeducation.com/";
