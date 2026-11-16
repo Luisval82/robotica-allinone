@@ -95,6 +95,28 @@ for (const item of [...data.bloques, ...data.auxiliares]) {
 
 export const BLOCK_CATEGORIES: { id: string; nombre: string }[] = data.categorias;
 
+/** Todos los bloques del catálogo, en el orden en que salen en la paleta. */
+export const ALL_BLOCKS: BlockInfo[] = [...catalog.values()];
+
+/**
+ * Color de cada categoría en hexadecimal. Lo necesita el taller de bloques
+ * (Blockly), que no entiende clases de CSS.
+ * MANTENER IGUAL que los --color-block-* de src/app/globals.css.
+ */
+export const CATEGORY_HEX: Record<string, { bloque: string; ficha: string }> = {
+  eventos: { bloque: "#f5c402", ficha: "#d8ad00" },
+  motores: { bloque: "#0090f5", ficha: "#0078cc" },
+  movimiento: { bloque: "#ff4ccd", ficha: "#ec42bc" },
+  luz: { bloque: "#9b6af6", ficha: "#8a56e9" },
+  sonido: { bloque: "#c061f1", ficha: "#aa4edb" },
+  control: { bloque: "#ffb515", ficha: "#e39f0a" },
+  sensores: { bloque: "#34ccf1", ficha: "#20b4d8" },
+  operadores: { bloque: "#00b94d", ficha: "#00a243" },
+  variables: { bloque: "#ff9835", ficha: "#e8852a" },
+  misbloques: { bloque: "#ff5d64", ficha: "#e84b52" },
+  extensiones: { bloque: "#0fbd8c", ficha: "#0aa67a" },
+};
+
 export function categoryName(id: string): string {
   return BLOCK_CATEGORIES.find((item) => item.id === id)?.nombre ?? id;
 }
