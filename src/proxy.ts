@@ -15,10 +15,17 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { LOGIN_PATH, ROLE_HOME, canAccess, isAuthPath, isDashboardPath } from "@/lib/routes";
 import { SESSION_COOKIE, verifySessionToken } from "@/lib/session";
+import { isUuid } from "@/lib/types";
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const session = await verifySessionToken(request.cookies.get(SESSION_COOKIE)?.value);
+  const rawSession = await verifySessionToken(request.cookies.get(SESSION_COOKIE)?.value);
+  // Una cookie de antes de migrar a Supabase (o corrupta) tiene un id que no
+  // es un UUID: aquí se trata como «sin sesión», igual que en getSession()
+  // (src/lib/auth.ts). Si no, este proxy la daba por válida y mandaba a la
+  // persona a su panel, pero la página sí la rechazaba y la devolvía a
+  // /login, que este proxy volvía a mandar a su panel: bucle de redirecciones.
+  const session = rawSession && isUuid(rawSession.id) ? rawSession : null;
 
   if (!session) {
     if (pathname === "/" || isDashboardPath(pathname)) {
