@@ -282,9 +282,13 @@
           "nivel": 1
         },
         {
-          "texto": "Mover durante",
-          "valor": "3 cm hacia atrás",
-          "nivel": 1
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↓",
+            "3",
+            "cm"
+          ]
         },
         {
           "texto": "Mi bloque",

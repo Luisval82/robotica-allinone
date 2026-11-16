@@ -23,6 +23,17 @@ export function BlockPartIcon({ nombre }: { nombre: string }) {
       </span>
     );
   }
+  if (nombre === "movimiento") {
+    return (
+      <span className="word-block__icono">
+        <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true">
+          <circle cx="7" cy="12" r="4.4" fill="none" stroke="currentColor" strokeWidth="2.4" />
+          <circle cx="17" cy="12" r="4.4" fill="none" stroke="currentColor" strokeWidth="2.4" />
+          <path d="M7 12h10" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+        </svg>
+      </span>
+    );
+  }
   return null;
 }
 

@@ -252,9 +252,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "10 cm",
-          "nivel": 1
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "10",
+            "cm"
+          ]
         },
         {
           "texto": "Mover con dirección durante",

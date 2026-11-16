@@ -55,8 +55,13 @@
       "explicacion": "Elige qué hacen las ruedas al detenerse: frenar, mantener la posición o quedar libres."
     },
     {
-      "texto": "Mover durante",
-      "explicacion": "Avanza o retrocede una distancia exacta hasta el objeto."
+      "texto": "mover ↑ durante 10 rotaciones",
+      "explicacion": "Avanza o retrocede una distancia exacta hasta el objeto.",
+      "valores": [
+        "↑",
+        "10",
+        "rotaciones"
+      ]
     }
   ],
   "construccion": {
@@ -234,9 +239,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "20 cm hacia delante",
-          "nivel": 0
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "20",
+            "cm"
+          ]
         },
         {
           "texto": "Ir a la posición relativa del motor a velocidad",
@@ -244,9 +253,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "30 cm hacia atrás",
-          "nivel": 0
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↓",
+            "30",
+            "cm"
+          ]
         },
         {
           "texto": "Ir a la posición relativa del motor a velocidad",

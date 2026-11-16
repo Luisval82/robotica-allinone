@@ -82,7 +82,7 @@
         "Fijar motores en movimiento",
         "Fijar velocidad de movimiento",
         "Fijar 1 rotación del motor a una distancia recorrida",
-        "Mover durante",
+        "mover ↑ durante 10 rotaciones",
         "Mover con dirección durante"
       ],
       "modelo": "Robot repartidor (base de conducción) que recorre un circuito cuadrado"
@@ -273,7 +273,7 @@
       "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos",
       "bloques": [
         "Mis bloques: Crear un bloque con entradas",
-        "Mover durante",
+        "mover ↑ durante 10 rotaciones",
         "Mover con dirección durante",
         "Repetir bucle",
         "Variable"
@@ -304,7 +304,7 @@
         "Fijar la posición relativa en…",
         "Fijar aceleración del motor",
         "Fijar motores de movimiento para que frenen al parar",
-        "Mover durante"
+        "mover ↑ durante 10 rotaciones"
       ],
       "modelo": "Robot recogedor con pinza frontal que traslada objetos"
     },

@@ -19,7 +19,7 @@
         "locucion": "En Mis bloques creas tus propias órdenes. Les das un nombre y, si quieres, entradas: huecos para números que decidirás cada vez que uses el bloque."
       },
       {
-        "plano": "Captura de la definición del bloque: «Definir lado», debajo «Mover durante» con la entrada longitud y un giro.",
+        "plano": "Captura de la definición del bloque: «Definir lado», debajo «mover durante» con la entrada longitud y un giro.",
         "locucion": "Debajo del bloque «Definir» encajas lo que hace tu orden. La entrada longitud se arrastra a los huecos donde haga falta."
       },
       {
@@ -42,8 +42,13 @@
       "explicacion": "Crea una orden nueva con nombre y huecos para datos. Se define una vez y se usa las veces que quieras."
     },
     {
-      "texto": "Mover durante",
-      "explicacion": "Avanza en línea recta una distancia exacta."
+      "texto": "mover ↑ durante 10 rotaciones",
+      "explicacion": "Avanza en línea recta una distancia exacta.",
+      "valores": [
+        "↑",
+        "10",
+        "rotaciones"
+      ]
     },
     {
       "texto": "Mover con dirección durante",
@@ -188,9 +193,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "longitud cm",
-          "nivel": 1
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "longitud",
+            "cm"
+          ]
         },
         {
           "texto": "Mover con dirección durante",
@@ -224,9 +233,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "longitud cm",
-          "nivel": 1
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "longitud",
+            "cm"
+          ]
         },
         {
           "texto": "Mover con dirección durante",

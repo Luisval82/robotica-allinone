@@ -138,9 +138,46 @@
       "pendiente": false
     },
     {
-      "texto": "Mover durante",
+      "texto": "mover ↑ durante 10 rotaciones",
       "categoria": "movimiento",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "mover"
+        },
+        {
+          "t": "menu",
+          "v": "↑",
+          "opciones": [
+            "↑",
+            "↓"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "durante"
+        },
+        {
+          "t": "hueco",
+          "v": "10"
+        },
+        {
+          "t": "menu",
+          "v": "rotaciones",
+          "opciones": [
+            "rotaciones",
+            "grados",
+            "segundos",
+            "cm",
+            "pulgadas"
+          ]
+        }
+      ],
       "pendiente": false
     },
     {

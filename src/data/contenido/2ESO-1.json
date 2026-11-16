@@ -144,15 +144,15 @@
       "explicacion": "El programa comprobó el color al empezar y terminó. Ya no vuelve a mirar el sensor."
     },
     {
-      "pregunta": "¿Qué diferencia hay entre «Empezar a mover» y «Mover durante»?",
+      "pregunta": "¿Qué diferencia hay entre «Empezar a mover» y «mover durante»?",
       "opciones": [
         "«Empezar a mover» no espera: el vehículo sigue hasta que algo lo pare",
         "Ninguna",
-        "«Mover durante» no usa los motores",
+        "«mover durante» no usa los motores",
         "«Empezar a mover» solo funciona hacia atrás"
       ],
       "correcta": 0,
-      "explicacion": "«Mover durante» recorre una cantidad exacta y termina; «Empezar a mover» arranca y deja seguir al programa."
+      "explicacion": "«mover durante» recorre una cantidad exacta y termina; «Empezar a mover» arranca y deja seguir al programa."
     },
     {
       "pregunta": "¿En qué puerto conectamos el sensor de color?",

@@ -20,8 +20,8 @@
         "locucion": "El sensor de distancia emite ultrasonidos y mide cuánto tardan en volver. Así sabe a cuántos centímetros está lo que tiene delante. Va en el puerto E."
       },
       {
-        "plano": "Captura de la app: «Mover durante 20 cm» junto a «Empezar a mover».",
-        "locucion": "«Mover durante» recorre una distancia fija. Ahora no sabemos cuánto hay que avanzar, así que usamos «Empezar a mover», que arranca y deja que el programa siga."
+        "plano": "Captura de la app: «mover durante 20 cm» junto a «Empezar a mover».",
+        "locucion": "«mover durante» recorre una distancia fija. Ahora no sabemos cuánto hay que avanzar, así que usamos «Empezar a mover», que arranca y deja que el programa siga."
       },
       {
         "plano": "Captura de la pila «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «Parar movimiento».",
@@ -105,12 +105,12 @@
       "explicacion": "Mide cuánto tarda en volver el ultrasonido y lo convierte en centímetros."
     },
     {
-      "pregunta": "¿Por qué usamos «Empezar a mover» en lugar de «Mover durante»?",
+      "pregunta": "¿Por qué usamos «Empezar a mover» en lugar de «mover durante»?",
       "opciones": [
         "Porque no sabemos de antemano cuánto hay que avanzar",
         "Porque es más rápido",
         "Porque gasta menos batería",
-        "Porque «Mover durante» no funciona con sensores"
+        "Porque «mover durante» no funciona con sensores"
       ],
       "correcta": 0,
       "explicacion": "El robot debe seguir avanzando hasta que el sensor diga basta, no una distancia fija."
@@ -241,9 +241,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "10 cm hacia atrás",
-          "nivel": 0
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↓",
+            "10",
+            "cm"
+          ]
         }
       ],
       "notas": "También es válido poner el pitido en una pila aparte que empiece con «Cuando está más próximo a»."

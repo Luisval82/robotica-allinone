@@ -24,7 +24,7 @@
       },
       {
         "plano": "El robot avanza 20 centímetros despacio y después rápido.",
-        "locucion": "«Mover durante» avanza recto una distancia exacta. «Fijar velocidad de movimiento» decide lo rápido que va."
+        "locucion": "«mover durante» avanza recto una distancia exacta. «Fijar velocidad de movimiento» decide lo rápido que va."
       },
       {
         "plano": "El robot traza una curva y luego gira sobre sí mismo.",
@@ -50,8 +50,13 @@
       "explicacion": "Le dice al Hub cuántos centímetros avanza el robot con una vuelta de rueda. Así puedes mover en centímetros."
     },
     {
-      "texto": "Mover durante",
-      "explicacion": "Avanza o retrocede en línea recta una cantidad exacta."
+      "texto": "mover ↑ durante 10 rotaciones",
+      "explicacion": "Avanza o retrocede en línea recta una cantidad exacta.",
+      "valores": [
+        "↑",
+        "10",
+        "rotaciones"
+      ]
     },
     {
       "texto": "Mover con dirección durante",
@@ -202,9 +207,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "30 cm",
-          "nivel": 0
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "30",
+            "cm"
+          ]
         },
         {
           "texto": "Mover con dirección durante",
@@ -212,9 +221,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "30 cm",
-          "nivel": 0
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "30",
+            "cm"
+          ]
         }
       ],
       "notas": "La cantidad que produce un giro de 180° se ajusta probando: depende de la separación entre ruedas."
@@ -248,9 +261,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "40 cm",
-          "nivel": 1
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "40",
+            "cm"
+          ]
         },
         {
           "texto": "Mover con dirección durante",

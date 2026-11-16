@@ -223,9 +223,13 @@
           "nivel": 0
         },
         {
-          "texto": "Mover durante",
-          "valor": "5 cm hacia delante",
-          "nivel": 1
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "5",
+            "cm"
+          ]
         },
         {
           "texto": "Ir a la posición relativa del motor a velocidad",
@@ -269,9 +273,13 @@
           "nivel": 1
         },
         {
-          "texto": "Mover durante",
-          "valor": "5 cm hacia atrás",
-          "nivel": 1
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↓",
+            "5",
+            "cm"
+          ]
         },
         {
           "texto": "Fijar variable a",
