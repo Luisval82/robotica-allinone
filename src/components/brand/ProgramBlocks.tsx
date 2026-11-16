@@ -52,7 +52,7 @@ export function BlockChip({
 /** Un programa: pila de bloques con sangría. Sirve para soluciones y para entregas. */
 export function ProgramBlocks({ rows, label }: { rows: ProgramRow[]; label: string }) {
   return (
-    <ol aria-label={label} className="program-stack flex flex-col items-start text-[0.95rem]">
+    <ol aria-label={label} className="program-stack flex max-w-full flex-col items-start overflow-x-auto text-[0.95rem]">
       {rows.map((row, index) => (
         <li
           key={index}

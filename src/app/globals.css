@@ -133,26 +133,67 @@
    */
   .word-block__fila {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     gap: 0.35rem;
+    white-space: nowrap;
   }
 
   /*
    * El icono va en blanco con el dibujo del color de su categoría, así que
    * cada bloque guarda su color en --block-color.
    */
-  .word-block.bg-block-eventos { --block-color: var(--color-block-eventos); }
-  .word-block.bg-block-motores { --block-color: var(--color-block-motores); }
-  .word-block.bg-block-movimiento { --block-color: var(--color-block-movimiento); }
-  .word-block.bg-block-luz { --block-color: var(--color-block-luz); }
-  .word-block.bg-block-sonido { --block-color: var(--color-block-sonido); }
-  .word-block.bg-block-control { --block-color: var(--color-block-control); }
-  .word-block.bg-block-sensores { --block-color: var(--color-block-sensores); }
-  .word-block.bg-block-operadores { --block-color: var(--color-block-operadores); }
-  .word-block.bg-block-variables { --block-color: var(--color-block-variables); }
-  .word-block.bg-block-misbloques { --block-color: var(--color-block-misbloques); }
-  .word-block.bg-block-extensiones { --block-color: var(--color-block-extensiones); }
+  /*
+   * --block-color: el color del bloque (lo usa el icono blanco).
+   * --block-chip: el color de las fichas de desplegable. No es un negro
+   * transparente: SPIKE usa un tono propio por categoría. Los marcados con
+   * «medido» salen de capturas de la app; el resto, oscurecidos un 12 %
+   * hasta tener su captura.
+   */
+  .word-block.bg-block-eventos {
+    --block-color: var(--color-block-eventos);
+    --block-chip: color-mix(in srgb, var(--color-block-eventos) 88%, black);
+  }
+  .word-block.bg-block-motores {
+    --block-color: var(--color-block-motores);
+    --block-chip: #0078cc; /* medido */
+  }
+  .word-block.bg-block-movimiento {
+    --block-color: var(--color-block-movimiento);
+    --block-chip: #ec42bc; /* medido */
+  }
+  .word-block.bg-block-luz {
+    --block-color: var(--color-block-luz);
+    --block-chip: #8a56e9; /* medido */
+  }
+  .word-block.bg-block-sonido {
+    --block-color: var(--color-block-sonido);
+    --block-chip: color-mix(in srgb, var(--color-block-sonido) 88%, black);
+  }
+  .word-block.bg-block-control {
+    --block-color: var(--color-block-control);
+    --block-chip: color-mix(in srgb, var(--color-block-control) 88%, black);
+  }
+  .word-block.bg-block-sensores {
+    --block-color: var(--color-block-sensores);
+    --block-chip: color-mix(in srgb, var(--color-block-sensores) 88%, black);
+  }
+  .word-block.bg-block-operadores {
+    --block-color: var(--color-block-operadores);
+    --block-chip: color-mix(in srgb, var(--color-block-operadores) 88%, black);
+  }
+  .word-block.bg-block-variables {
+    --block-color: var(--color-block-variables);
+    --block-chip: color-mix(in srgb, var(--color-block-variables) 88%, black);
+  }
+  .word-block.bg-block-misbloques {
+    --block-color: var(--color-block-misbloques);
+    --block-chip: color-mix(in srgb, var(--color-block-misbloques) 88%, black);
+  }
+  .word-block.bg-block-extensiones {
+    --block-color: var(--color-block-extensiones);
+    --block-chip: color-mix(in srgb, var(--color-block-extensiones) 88%, black);
+  }
 
   .word-block__icono {
     display: grid;
@@ -172,7 +213,7 @@
     gap: 0.3rem;
     padding: 0.1rem 0.55rem;
     border-radius: 999px;
-    background: rgb(0 0 0 / 0.18);
+    background: var(--block-chip, rgb(0 0 0 / 0.12));
     color: #fff;
     font-weight: 800;
     white-space: nowrap;

@@ -297,7 +297,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                   key={texto}
                   className="grid items-center gap-x-5 gap-y-2 rounded-2xl bg-ink-50 p-4 md:grid-cols-[minmax(0,22rem)_1fr]"
                 >
-                  <div>
+                  <div className="max-w-full overflow-x-auto">
                     <BlockChip texto={texto} className="text-[0.95rem]" />
                   </div>
                   <p className="text-sm font-semibold text-ink-700">
