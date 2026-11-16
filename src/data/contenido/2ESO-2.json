@@ -23,8 +23,8 @@
         "locucion": "El truco no es seguir la línea, sino su borde. Si veo negro, giro hacia el blanco; si veo blanco, giro hacia el negro. El robot avanza haciendo eses."
       },
       {
-        "plano": "Captura del bloque «Empezar a mover con dirección» con valores −30, 0 y 30.",
-        "locucion": "«Empezar a mover con dirección» avanza girando. El 0 es recto; los valores negativos giran a la izquierda y los positivos, a la derecha."
+        "plano": "Captura del bloque «empezar a mover con dirección» con valores −30, 0 y 30.",
+        "locucion": "«empezar a mover con dirección» avanza girando. El 0 es recto; los valores negativos giran a la izquierda y los positivos, a la derecha."
       },
       {
         "plano": "Un alumno coloca el robot sobre blanco, apunta el valor, lo coloca sobre negro y apunta el otro.",
@@ -50,8 +50,11 @@
       "explicacion": "Decide hacia qué lado girar según lo que ve el sensor."
     },
     {
-      "texto": "Empezar a mover con dirección",
-      "explicacion": "Avanza girando: 0 es recto, los valores negativos giran a la izquierda y los positivos, a la derecha."
+      "texto": "empezar a mover derecha: 30",
+      "explicacion": "Avanza girando: 0 es recto, los valores negativos giran a la izquierda y los positivos, a la derecha.",
+      "valores": [
+        "derecha: 30"
+      ]
     },
     {
       "texto": "Bucle infinito",
@@ -133,7 +136,7 @@
       "explicacion": "Con un solo sensor el robot va saltando entre el negro y el blanco: recorre el borde."
     },
     {
-      "pregunta": "¿Qué hace «Empezar a mover con dirección 0»?",
+      "pregunta": "¿Qué hace «empezar a mover derecha: 0»?",
       "opciones": [
         "Girar sobre sí mismo",
         "Parar",
@@ -196,18 +199,22 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "30 (derecha)",
-          "nivel": 2
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: 30"
+          ]
         },
         {
           "texto": "Si no",
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "−30 (izquierda)",
-          "nivel": 2
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "izquierda: 30"
+          ]
         }
       ],
       "notas": "El sentido de los giros depende del borde que se siga: es igual de válido con los dos valores intercambiados."
@@ -235,18 +242,22 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "giro hacia el blanco",
-          "nivel": 2
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "giro hacia el blanco"
+          ]
         },
         {
           "texto": "Si no",
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "giro hacia el negro",
-          "nivel": 2
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "giro hacia el negro"
+          ]
         }
       ],
       "notas": "Pide que anoten los dos valores medidos y el umbral. «Fijar velocidad de movimiento» es de 1º (unidad 6). Valora que el circuito se complete, no los números concretos."

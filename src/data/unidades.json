@@ -156,7 +156,7 @@
         "Luz reflejada",
         "¿Es la luz reflejada...?",
         "Si... entonces... Si no...",
-        "Empezar a mover con dirección",
+        "empezar a mover derecha: 30",
         "Bucle infinito"
       ],
       "modelo": "Robot rastreador de almacén: sigue una línea negra en zigzag"
@@ -213,7 +213,7 @@
       "bloques": [
         "Fijar el ángulo de guiñada del Hub a 0",
         "Ángulo de cabeceo, alabeo o guiñada del Hub",
-        "Empezar a mover con dirección",
+        "empezar a mover derecha: 30",
         "Repetir bucle hasta",
         "Parar movimiento"
       ],
@@ -289,7 +289,7 @@
         "Luz reflejada",
         "Fijar variable a",
         "Operadores aritméticos (+, −, ×, ÷)",
-        "Empezar a mover con dirección",
+        "empezar a mover derecha: 30",
         "Bucle infinito"
       ],
       "modelo": "Vehículo de reparto autoguiado que sigue una línea curva sin zigzag"

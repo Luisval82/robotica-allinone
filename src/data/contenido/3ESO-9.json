@@ -209,9 +209,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "(Luz reflejada − 50) × 0.5",
-          "nivel": 2
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "(Luz reflejada − 50) × 0.5"
+          ]
         },
         {
           "texto": "Parar movimiento",

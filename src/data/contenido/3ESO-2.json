@@ -50,8 +50,11 @@
       "explicacion": "La resta calcula el error; la multiplicación, la dirección."
     },
     {
-      "texto": "Empezar a mover con dirección",
-      "explicacion": "Recibe la dirección calculada y reparte la velocidad entre las dos ruedas."
+      "texto": "empezar a mover derecha: 30",
+      "explicacion": "Recibe la dirección calculada y reparte la velocidad entre las dos ruedas.",
+      "valores": [
+        "derecha: 30"
+      ]
     },
     {
       "texto": "Bucle infinito",
@@ -201,9 +204,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "direccion",
-          "nivel": 1
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "direccion"
+          ]
         }
       ],
       "notas": "El signo depende del borde que se siga: si el robot huye de la línea, basta con cambiar el signo de la ganancia."
@@ -236,9 +241,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "direccion",
-          "nivel": 1
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "direccion"
+          ]
         }
       ],
       "notas": "No hay un valor único correcto. Valora la explicación de las pruebas: qué ganancia se quedaba corta y cuál hacía oscilar al robot."

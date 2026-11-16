@@ -205,9 +205,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "100",
-          "nivel": 2
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: 100"
+          ]
         },
         {
           "texto": "Parar movimiento",

@@ -20,7 +20,7 @@
         "locucion": "Antes de girar ponemos el contador a cero. A partir de ahí, la guiñada nos dice cuántos grados llevamos girados."
       },
       {
-        "plano": "Captura de «Repetir hasta» con la condición «guiñada > 90» y «Empezar a mover con dirección 100» dentro.",
+        "plano": "Captura de «Repetir hasta» con la condición «guiñada > 90» y «empezar a mover derecha: 100» dentro.",
         "locucion": "«Repetir bucle hasta» repite lo que tiene dentro hasta que la condición se cumple. Giramos hasta que la guiñada pasa de 90 y entonces paramos."
       },
       {
@@ -43,8 +43,11 @@
       "explicacion": "Bloque de dato: cuántos grados se ha inclinado o girado el Hub. La guiñada es el giro a izquierda o derecha."
     },
     {
-      "texto": "Empezar a mover con dirección",
-      "explicacion": "Con dirección 100 el robot gira sobre sí mismo hasta que algo lo pare."
+      "texto": "empezar a mover derecha: 30",
+      "explicacion": "Con dirección 100 el robot gira sobre sí mismo hasta que algo lo pare.",
+      "valores": [
+        "derecha: 30"
+      ]
     },
     {
       "texto": "Repetir bucle hasta",
@@ -194,9 +197,11 @@
           "nivel": 0
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "100",
-          "nivel": 1
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100"
+          ]
         },
         {
           "texto": "Parar movimiento",
@@ -242,9 +247,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover con dirección",
-          "valor": "100",
-          "nivel": 2
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: 100"
+          ]
         },
         {
           "texto": "Parar movimiento",

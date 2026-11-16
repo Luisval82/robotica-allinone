@@ -242,6 +242,26 @@
       "pendiente": false
     },
     {
+      "texto": "empezar a mover derecha: 30",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "empezar a mover"
+        },
+        {
+          "t": "hueco",
+          "v": "derecha: 30"
+        }
+      ],
+      "pendiente": false
+    },
+    {
       "texto": "Parar movimiento",
       "categoria": "movimiento",
       "forma": "pila",
@@ -299,12 +319,6 @@
       "texto": "¿Es la luz reflejada...?",
       "categoria": "sensores",
       "forma": "pregunta",
-      "pendiente": false
-    },
-    {
-      "texto": "Empezar a mover con dirección",
-      "categoria": "movimiento",
-      "forma": "pila",
       "pendiente": false
     },
     {
