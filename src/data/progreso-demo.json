@@ -171,9 +171,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 2
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Si no",
@@ -211,9 +213,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 2
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Si no",

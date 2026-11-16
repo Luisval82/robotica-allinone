@@ -50,8 +50,11 @@
       "explicacion": "Pregunta al sensor de color si ve el color elegido. Responde verdadero o falso y se encaja en un hueco hexagonal."
     },
     {
-      "texto": "Empezar a mover...",
-      "explicacion": "Pone en marcha los dos motores de movimiento y pasa al bloque siguiente sin esperar."
+      "texto": "empezar a mover a ↑",
+      "explicacion": "Pone en marcha los dos motores de movimiento y pasa al bloque siguiente sin esperar.",
+      "valores": [
+        "↑"
+      ]
     },
     {
       "texto": "Parar movimiento",
@@ -196,9 +199,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 2
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Si no",
@@ -229,9 +234,11 @@
           "nivel": 1
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 2
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Si no",

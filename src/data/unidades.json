@@ -93,7 +93,7 @@
       "titulo": "Sensor de distancia: frenar a tiempo",
       "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
       "bloques": [
-        "Empezar a mover...",
+        "empezar a mover a ↑",
         "Parar movimiento",
         "Esperar hasta que",
         "¿Está más próximo a?",
@@ -142,7 +142,7 @@
         "Si... entonces... Si no...",
         "Bucle infinito",
         "¿Es de color...?",
-        "Empezar a mover...",
+        "empezar a mover a ↑",
         "Parar movimiento"
       ],
       "modelo": "Vehículo autónomo que obedece semáforos (tarjetas verde y roja)"

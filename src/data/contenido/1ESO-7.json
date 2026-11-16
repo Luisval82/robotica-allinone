@@ -39,8 +39,11 @@
   },
   "bloques": [
     {
-      "texto": "Empezar a mover...",
-      "explicacion": "Pone el robot en marcha y pasa al bloque siguiente sin esperar."
+      "texto": "empezar a mover a ↑",
+      "explicacion": "Pone el robot en marcha y pasa al bloque siguiente sin esperar.",
+      "valores": [
+        "↑"
+      ]
     },
     {
       "texto": "Parar movimiento",
@@ -192,9 +195,11 @@
           "nivel": 0
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 0
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Esperar hasta que",
@@ -222,9 +227,11 @@
           "nivel": 0
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 0
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Esperar hasta que",

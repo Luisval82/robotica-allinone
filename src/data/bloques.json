@@ -187,9 +187,27 @@
       "pendiente": false
     },
     {
-      "texto": "Empezar a mover...",
+      "texto": "empezar a mover a ↑",
       "categoria": "movimiento",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "empezar a mover a"
+        },
+        {
+          "t": "menu",
+          "v": "↑",
+          "opciones": [
+            "↑",
+            "↓"
+          ]
+        }
+      ],
       "pendiente": false
     },
     {

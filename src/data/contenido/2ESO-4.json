@@ -192,9 +192,11 @@
           "nivel": 0
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 0
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Bucle infinito",
@@ -236,9 +238,11 @@
           "nivel": 0
         },
         {
-          "texto": "Empezar a mover...",
-          "valor": "recto",
-          "nivel": 0
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
         },
         {
           "texto": "Bucle infinito",
