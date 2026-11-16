@@ -74,7 +74,7 @@ const CATEGORY_CLASS: Record<string, string> = {
 
 const SHAPE_CLASS: Record<BlockShape, string> = {
   inicio: "word-block--inicio",
-  pila: "",
+  pila: "word-block--pila",
   pregunta: "word-block--pregunta",
   dato: "word-block--dato",
 };
