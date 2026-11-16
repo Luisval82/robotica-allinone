@@ -63,8 +63,11 @@
       "valores": []
     },
     {
-      "texto": "Fijar luz del botón central",
-      "explicacion": "Cambia el color de la luz del botón central."
+      "texto": "poner luz del botón central en rojo",
+      "explicacion": "Cambia el color de la luz del botón central.",
+      "valores": [
+        "rojo"
+      ]
     },
     {
       "texto": "Tocar nota X segundos",
@@ -138,7 +141,7 @@
       "pregunta": "Quieres que un dibujo se vea exactamente 2 segundos y después desaparezca. ¿Qué bloque usas?",
       "opciones": [
         "escribir …",
-        "Fijar luz del botón central",
+        "poner luz del botón central",
         "encender … 2 segundos",
         "apagar píxeles"
       ],
@@ -170,7 +173,7 @@
     {
       "pregunta": "¿Qué bloque cambia el color del botón central?",
       "opciones": [
-        "Fijar luz del botón central",
+        "poner luz del botón central",
         "encender …",
         "escribir …",
         "Tocar nota"
@@ -200,9 +203,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "verde",
-          "nivel": 0
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "verde"
+          ]
         },
         {
           "texto": "escribir Hello",

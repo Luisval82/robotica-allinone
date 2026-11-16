@@ -51,9 +51,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "azul",
-          "nivel": 0
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "azul"
+          ]
         },
         {
           "texto": "escribir Hello",
@@ -144,9 +146,11 @@
           ]
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "verde",
-          "nivel": 0
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "verde"
+          ]
         },
         {
           "texto": "apagar píxeles",

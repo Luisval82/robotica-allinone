@@ -188,6 +188,15 @@
     opacity: 0.9;
   }
 
+  /* Bolita del selector de color (la luz del botón central) */
+  .word-block__color {
+    display: inline-block;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.55);
+  }
+
   /* Hueco blanco de un valor (segundos, grados, %…) */
   .word-block__hueco {
     display: inline-block;

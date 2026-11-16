@@ -245,9 +245,11 @@
           "nivel": 1
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "verde",
-          "nivel": 2
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "verde"
+          ]
         },
         {
           "texto": "A ir por la ruta más corta a la posición 0",
@@ -278,9 +280,11 @@
           "nivel": 1
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "rojo",
-          "nivel": 2
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "rojo"
+          ]
         },
         {
           "texto": "Tocar nota X segundos",

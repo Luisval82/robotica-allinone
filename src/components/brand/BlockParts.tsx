@@ -5,6 +5,34 @@
 
 import { isFillable, type BlockInfo } from "@/lib/bloques";
 
+/** Colores del selector de la luz del botón central, como se ven en la app. */
+const COLORES: Record<string, string> = {
+  rosa: "#ff2d9e",
+  morado: "#8b4dff",
+  azul: "#0a5bff",
+  celeste: "#17b5ff",
+  "verde azulado": "#00c6a7",
+  verde: "#00c42b",
+  amarillo: "#ffd500",
+  naranja: "#ff8a00",
+  rojo: "#ff1d1d",
+  blanco: "#ffffff",
+  apagado: "#2b2b52",
+};
+
+/** La bolita de color de un selector de color. */
+export function BlockPartColor({ valor }: { valor: string }) {
+  return (
+    <span className="word-block__menu">
+      <span
+        className="word-block__color"
+        style={{ background: COLORES[valor.toLowerCase()] ?? valor }}
+        title={valor}
+      />
+    </span>
+  );
+}
+
 /** Icono redondo de la izquierda del bloque. Su color es el de la categoría. */
 export function BlockPartIcon({ nombre }: { nombre: string }) {
   if (nombre === "motor") {
@@ -73,6 +101,7 @@ export function BlockParts({ info, valores }: { info: BlockInfo; valores?: strin
         const valor = (isFillable(parte) ? valores?.[hueco] : undefined) ?? parte.v;
 
         if (parte.t === "icono") return <BlockPartIcon key={index} nombre={parte.v} />;
+        if (parte.t === "color") return <BlockPartColor key={index} valor={valor} />;
         if (parte.t === "menu")
           return (
             <span key={index} className="word-block__menu">

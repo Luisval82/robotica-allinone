@@ -306,10 +306,37 @@
       "pendiente": false
     },
     {
-      "texto": "Fijar luz del botón central",
+      "texto": "poner luz del botón central en rojo",
       "categoria": "luz",
       "forma": "pila",
-      "pendiente": false
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "poner luz del botón central en"
+        },
+        {
+          "t": "color",
+          "v": "rojo",
+          "opciones": [
+            "rosa",
+            "morado",
+            "azul",
+            "celeste",
+            "verde azulado",
+            "verde",
+            "amarillo",
+            "naranja",
+            "rojo",
+            "blanco",
+            "apagado"
+          ]
+        }
+      ],
+      "pendiente": true
     },
     {
       "texto": "fijar A+B como motores en movimiento",

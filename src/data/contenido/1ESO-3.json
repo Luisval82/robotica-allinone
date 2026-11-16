@@ -238,9 +238,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "rojo",
-          "nivel": 0
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
         },
         {
           "texto": "Tocar nota X segundos",
@@ -257,9 +259,11 @@
           ]
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "verde",
-          "nivel": 0
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "verde"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -281,12 +285,14 @@
           ]
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "rojo",
-          "nivel": 0
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
         }
       ],
-      "notas": "Usa «Fijar luz del botón central», que es de la unidad 1. El color debe cambiar después de mover la barrera, no antes."
+      "notas": "Usa «poner luz del botón central», que es de la unidad 1. El color debe cambiar después de mover la barrera, no antes."
     }
   ]
 }

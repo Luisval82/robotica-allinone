@@ -238,18 +238,22 @@
           "nivel": 1
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "verde",
-          "nivel": 2
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "verde"
+          ]
         },
         {
           "texto": "Si no",
           "nivel": 1
         },
         {
-          "texto": "Fijar luz del botón central",
-          "valor": "rojo",
-          "nivel": 2
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "rojo"
+          ]
         }
       ],
       "notas": "No hay una ganancia única correcta. Valora la explicación de las pruebas y que la condición use el operador «y»."

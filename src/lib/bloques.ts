@@ -11,10 +11,11 @@ export type BlockShape = "inicio" | "pila" | "pregunta" | "dato";
  *   menu    → desplegable (puerto, unidad, sentido): ficha oscura con ▾
  *   palabra → texto fijo del bloque
  *   hueco   → valor que se escribe (segundos, grados, %): óvalo blanco
- * «menu» y «hueco» son los que se rellenan: en ese orden van los «valores»
- * de cada fila de programa (ver ProgramRow en src/lib/types.ts).
+ *   color   → selector de color: ficha con el círculo del color elegido
+ * «menu», «hueco» y «color» son los que se rellenan: en ese orden van los
+ * «valores» de cada fila de programa (ver ProgramRow en src/lib/types.ts).
  */
-export type BlockPartKind = "icono" | "menu" | "palabra" | "hueco";
+export type BlockPartKind = "icono" | "menu" | "palabra" | "hueco" | "color";
 
 export interface BlockPart {
   t: BlockPartKind;
@@ -31,12 +32,12 @@ export interface BlockInfo {
   partes?: BlockPart[];
 }
 
-/** ¿Es una pieza que se rellena (desplegable o hueco)? */
+/** ¿Es una pieza que se rellena (desplegable, hueco o color)? */
 export function isFillable(parte: BlockPart): boolean {
-  return parte.t === "menu" || parte.t === "hueco";
+  return parte.t === "menu" || parte.t === "hueco" || parte.t === "color";
 }
 
-const PART_KINDS: BlockPartKind[] = ["icono", "menu", "palabra", "hueco"];
+const PART_KINDS: BlockPartKind[] = ["icono", "menu", "palabra", "hueco", "color"];
 
 function toParts(value: unknown): BlockPart[] | undefined {
   if (!Array.isArray(value)) return undefined;
