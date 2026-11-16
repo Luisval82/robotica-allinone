@@ -55,7 +55,7 @@
         "A ir durante 1 rotaciones",
         "Esperar X segundos",
         "Tocar sonido hasta acabar",
-        "Encender la matriz de luces 5x5"
+        "encender dibujo"
       ],
       "modelo": "Noria que gira por tramos y se detiene en cada cabina"
     },
@@ -201,7 +201,7 @@
         "Fijar variable a",
         "Operadores aritméticos (+, −, ×, ÷)",
         "A ir por la ruta más corta a la posición 0",
-        "Encender la matriz de luces 5x5"
+        "encender dibujo"
       ],
       "modelo": "Martillo de feria «prueba tu fuerza» con aguja indicadora motorizada"
     },

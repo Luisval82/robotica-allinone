@@ -60,8 +60,11 @@
       ]
     },
     {
-      "texto": "Encender la matriz de luces 5x5",
-      "explicacion": "Muestra un dibujo según el resultado."
+      "texto": "encender dibujo",
+      "explicacion": "Muestra un dibujo según el resultado.",
+      "valores": [
+        "dibujo"
+      ]
     }
   ],
   "construccion": {
@@ -281,18 +284,22 @@
           "nivel": 1
         },
         {
-          "texto": "Encender la matriz de luces 5x5",
-          "valor": "cara contenta",
-          "nivel": 2
+          "texto": "encender dibujo",
+          "nivel": 2,
+          "valores": [
+            "cara contenta"
+          ]
         },
         {
           "texto": "Si no",
           "nivel": 1
         },
         {
-          "texto": "Encender la matriz de luces 5x5",
-          "valor": "cara triste",
-          "nivel": 2
+          "texto": "encender dibujo",
+          "nivel": 2,
+          "valores": [
+            "cara triste"
+          ]
         },
         {
           "texto": "Esperar X segundos",

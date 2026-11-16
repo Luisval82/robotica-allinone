@@ -135,7 +135,7 @@
       "opciones": [
         "Escribir en la matriz de luces 5x5",
         "Fijar luz del botón central",
-        "Encender la matriz de luces 5x5 2 segundos",
+        "encender … 2 segundos",
         "Apagar la matriz de luces 5x5"
       ],
       "correcta": 2,
@@ -167,7 +167,7 @@
       "pregunta": "¿Qué bloque cambia el color del botón central?",
       "opciones": [
         "Fijar luz del botón central",
-        "Encender la matriz de luces 5x5",
+        "encender …",
         "Escribir en la matriz de luces 5x5",
         "Tocar nota"
       ],

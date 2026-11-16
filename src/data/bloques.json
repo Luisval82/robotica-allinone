@@ -128,9 +128,23 @@
       "pendiente": false
     },
     {
-      "texto": "Encender la matriz de luces 5x5",
+      "texto": "encender dibujo",
       "categoria": "luz",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "encender"
+        },
+        {
+          "t": "menu",
+          "v": "dibujo"
+        }
+      ],
       "pendiente": false
     },
     {

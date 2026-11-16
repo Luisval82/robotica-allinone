@@ -60,8 +60,11 @@
       "explicacion": "Reproduce un sonido de la biblioteca y no pasa al bloque siguiente hasta que termina."
     },
     {
-      "texto": "Encender la matriz de luces 5x5",
-      "explicacion": "Enciende un dibujo en la matriz y lo deja encendido hasta que otro bloque lo cambie o lo apague."
+      "texto": "encender dibujo",
+      "explicacion": "Enciende un dibujo en la matriz y lo deja encendido hasta que otro bloque lo cambie o lo apague.",
+      "valores": [
+        "dibujo"
+      ]
     }
   ],
   "construccion": {
@@ -172,7 +175,7 @@
       "explicacion": "Seis tramos por vuelta, y 360 entre 6 son 60 grados."
     },
     {
-      "pregunta": "¿En qué se diferencia «Encender la matriz de luces 5x5» de «encender … durante … segundos»?",
+      "pregunta": "¿En qué se diferencia «encender …» de «encender … durante … segundos»?",
       "opciones": [
         "No hay diferencia",
         "La primera deja el dibujo encendido hasta que otro bloque lo cambie",
@@ -247,9 +250,11 @@
           ]
         },
         {
-          "texto": "Encender la matriz de luces 5x5",
-          "valor": "dibujo",
-          "nivel": 1
+          "texto": "encender dibujo",
+          "nivel": 1,
+          "valores": [
+            "dibujo"
+          ]
         },
         {
           "texto": "Tocar sonido hasta acabar",
