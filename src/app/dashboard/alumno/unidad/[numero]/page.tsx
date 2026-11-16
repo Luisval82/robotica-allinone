@@ -7,6 +7,7 @@ import { HubPorts } from "@/components/unidad/HubPorts";
 import { IpadWorkflowBanner } from "@/components/unidad/IpadWorkflowBanner";
 import { StepSection, type StepState } from "@/components/unidad/StepSection";
 import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
+import { VideoPlayer } from "@/components/unidad/VideoPlayer";
 import { ArrowLeftIcon, ExternalLinkIcon } from "@/components/ui/icons";
 import { LEGO_EDUCATION_URL } from "@/config/site";
 import { requireRole } from "@/lib/auth";
@@ -190,18 +191,26 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                   Duración: {contenido.video.duracion}
                 </p>
               </div>
+
+              <div className="mt-4">
+                <VideoPlayer url={contenido.video.url} titulo={contenido.video.titulo} />
+              </div>
               {contenido.video.url ? (
                 <a
                   href={contenido.video.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 font-extrabold text-spike-700 underline decoration-2 underline-offset-4"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-spike-700 underline decoration-2 underline-offset-4"
                 >
-                  Ver el vídeo
+                  Abrir en una pestaña nueva
                   <ExternalLinkIcon className="size-4" />
                 </a>
               ) : null}
-              <ol className="mt-5 grid gap-3">
+
+              <p className="mt-8 text-xs font-extrabold uppercase tracking-widest text-ink-500">
+                Guion de apoyo
+              </p>
+              <ol className="mt-3 grid gap-3">
                 {contenido.video.escenas.map((escena, index) => (
                   <li
                     key={index}

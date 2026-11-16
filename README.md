@@ -85,7 +85,7 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
 
 | Paso | Contenido | De dónde sale |
 | --- | --- | --- |
-| 1 · Guion de vídeo | Escenas con lo que se ve y lo que se dice | `src/data/contenido/` |
+| 1 · Guion de vídeo | Reproductor del vídeo (si tiene enlace) y, debajo, el guion con lo que se ve y lo que se dice | `src/data/contenido/` |
 | 2 · Esquema de puertos del Hub | Qué va en cada puerto, A–F | Se deduce del hardware de `TEMARIO.md` |
 | 3 · Bloques de palabras | Cada bloque con su forma, su color y qué hace | `TEMARIO.md` + `src/data/bloques.json` |
 | 4 · Modelo final | Piezas y pasos de montaje | `src/data/contenido/` |
@@ -114,6 +114,11 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
   preguntas de test y 54 prácticas con solución.
 - Para corregir un texto, una pregunta o una solución, edita el archivo de esa unidad. Si añades
   un archivo nuevo, regístralo en `src/data/contenido/index.ts`.
+- **Vídeo real (paso 1)**: añade el campo `"url"` dentro de `"video"` en el archivo de esa unidad
+  (por ejemplo `"url": "https://youtu.be/XXXXXXXXXXX"`) y aparece un reproductor de verdad encima
+  del guion, que se deja debajo como apoyo. Admite un enlace de YouTube, Vimeo, Google Drive o un
+  archivo de vídeo (`.mp4`, `.webm`…) — ver `src/lib/video.ts`. Sin `"url"`, el paso 1 muestra el
+  aviso de que falta el vídeo.
 - Todo el contenido es un borrador redactado a partir del temario: conviene repasarlo con la app
   SPIKE y el set delante antes de usarlo en clase, sobre todo las soluciones de 3º.
 - Los pasos de montaje describen el modelo por funciones, no pieza a pieza: revísalos con el set
