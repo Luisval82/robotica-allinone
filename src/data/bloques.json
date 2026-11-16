@@ -280,6 +280,32 @@
       "pendiente": false
     },
     {
+      "texto": "establecer orientación como erguida",
+      "categoria": "luz",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "establecer orientación como"
+        },
+        {
+          "t": "menu",
+          "v": "erguida",
+          "opciones": [
+            "erguida",
+            "izquierda",
+            "derecha",
+            "boca abajo"
+          ]
+        }
+      ],
+      "pendiente": false
+    },
+    {
       "texto": "Fijar luz del botón central",
       "categoria": "luz",
       "forma": "pila",
