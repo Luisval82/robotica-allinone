@@ -5,6 +5,7 @@ import { BlockChip, ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import { EntregaBox, type EntregaView } from "@/components/unidad/EntregaBox";
 import { HubPorts } from "@/components/unidad/HubPorts";
 import { IpadWorkflowBanner } from "@/components/unidad/IpadWorkflowBanner";
+import { PiezasDelPaso } from "@/components/unidad/PiezasMontaje";
 import { StepSection, type StepState } from "@/components/unidad/StepSection";
 import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
 import { VideoPlayer } from "@/components/unidad/VideoPlayer";
@@ -370,11 +371,12 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                     <span className="grid size-10 shrink-0 place-items-center rounded-full bg-block-movimiento font-display text-lg font-semibold text-ink-900">
                       {index + 1}
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <p className="font-display text-lg font-semibold text-ink-900">
                         {paso.titulo}
                       </p>
                       <p className="mt-1 font-semibold text-ink-700">{paso.texto}</p>
+                      <PiezasDelPaso texto={`${paso.titulo}. ${paso.texto}`} />
                     </div>
                   </li>
                 ))}
