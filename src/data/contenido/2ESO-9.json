@@ -73,8 +73,11 @@
       "explicacion": "Repite el ciclo de clasificar hasta que se han contado todas las piezas."
     },
     {
-      "texto": "Escribir en la matriz de luces 5x5",
-      "explicacion": "Muestra el recuento final."
+      "texto": "escribir Hello",
+      "explicacion": "Muestra el recuento final.",
+      "valores": [
+        "Hello"
+      ]
     }
   ],
   "construccion": {
@@ -331,14 +334,18 @@
           ]
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "rojas",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "rojas"
+          ]
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "otras",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "otras"
+          ]
         }
       ],
       "notas": "Si no hay pieza en la bandeja, la máquina la cuenta como «otras»: es una limitación aceptable en este nivel."

@@ -315,9 +315,11 @@
           ]
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "maximo",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "maximo"
+          ]
         }
       ],
       "notas": "El ángulo puede ser negativo: para comparar torres basta con el máximo positivo. Hay que vaciar la lista antes de cada ensayo. Valora sobre todo la conclusión escrita."

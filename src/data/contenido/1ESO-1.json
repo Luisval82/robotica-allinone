@@ -51,8 +51,11 @@
       ]
     },
     {
-      "texto": "Escribir en la matriz de luces 5x5",
-      "explicacion": "Hace pasar un texto, letra a letra, por la matriz. El programa espera a que termine antes de seguir."
+      "texto": "escribir Hello",
+      "explicacion": "Hace pasar un texto, letra a letra, por la matriz. El programa espera a que termine antes de seguir.",
+      "valores": [
+        "Hello"
+      ]
     },
     {
       "texto": "Apagar la matriz de luces 5x5",
@@ -133,7 +136,7 @@
     {
       "pregunta": "Quieres que un dibujo se vea exactamente 2 segundos y después desaparezca. ¿Qué bloque usas?",
       "opciones": [
-        "Escribir en la matriz de luces 5x5",
+        "escribir …",
         "Fijar luz del botón central",
         "encender … 2 segundos",
         "Apagar la matriz de luces 5x5"
@@ -168,7 +171,7 @@
       "opciones": [
         "Fijar luz del botón central",
         "encender …",
-        "Escribir en la matriz de luces 5x5",
+        "escribir …",
         "Tocar nota"
       ],
       "correcta": 0,
@@ -201,9 +204,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "tu nombre",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "tu nombre"
+          ]
         },
         {
           "texto": "Apagar la matriz de luces 5x5",

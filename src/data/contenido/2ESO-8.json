@@ -58,8 +58,11 @@
       "explicacion": "Pregunta si el jugador ha pulsado el sensor de fuerza."
     },
     {
-      "texto": "Escribir en la matriz de luces 5x5",
-      "explicacion": "Muestra el tiempo de reacción."
+      "texto": "escribir Hello",
+      "explicacion": "Muestra el tiempo de reacción.",
+      "valores": [
+        "Hello"
+      ]
     }
   ],
   "construccion": {
@@ -228,9 +231,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "tiempo",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "tiempo"
+          ]
         }
       ],
       "notas": "El cronómetro se reinicia después de subir la bandera, no antes. El tiempo debe guardarse en la variable antes de escribirlo."
@@ -286,9 +291,11 @@
           "nivel": 1
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "tiempo",
-          "nivel": 1
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "tiempo"
+          ]
         },
         {
           "texto": "Cuando el cronómetro",

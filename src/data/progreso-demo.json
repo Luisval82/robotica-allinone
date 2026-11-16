@@ -56,9 +56,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "MARTA",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "MARTA"
+          ]
         },
         {
           "texto": "Apagar la matriz de luces 5x5",
@@ -133,9 +135,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "HUGO",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "HUGO"
+          ]
         },
         {
           "texto": "Fijar luz del botón central",

@@ -86,9 +86,23 @@
       "pendiente": false
     },
     {
-      "texto": "Escribir en la matriz de luces 5x5",
+      "texto": "escribir Hello",
       "categoria": "luz",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "escribir"
+        },
+        {
+          "t": "hueco",
+          "v": "Hello"
+        }
+      ],
       "pendiente": false
     },
     {

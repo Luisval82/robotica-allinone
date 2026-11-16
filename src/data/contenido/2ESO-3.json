@@ -54,8 +54,11 @@
       "explicacion": "Bloque de inicio: arranca su pila cuando el sensor de distancia detecta algo más cerca de la distancia elegida."
     },
     {
-      "texto": "Escribir en la matriz de luces 5x5",
-      "explicacion": "Muestra el valor de la variable en la matriz."
+      "texto": "escribir Hello",
+      "explicacion": "Muestra el valor de la variable en la matriz.",
+      "valores": [
+        "Hello"
+      ]
     },
     {
       "texto": "A ir durante 1 rotaciones",
@@ -202,9 +205,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "aforo",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
         },
         {
           "texto": "Cuando está más próximo a",
@@ -217,9 +222,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "aforo",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
         }
       ],
       "notas": "Son dos pilas: una pone el contador a 0 y otra cuenta. Comprueba que usan «Cambiar por» y no «Fijar a» para sumar."
@@ -238,9 +245,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "aforo",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
         },
         {
           "texto": "Cuando está más próximo a",
@@ -263,9 +272,11 @@
           "nivel": 0
         },
         {
-          "texto": "Escribir en la matriz de luces 5x5",
-          "valor": "aforo",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
         }
       ],
       "notas": "El orden entre girar y sumar no importa. Un cuarto de vuelta son 90 grados porque el torno tiene cuatro aspas."

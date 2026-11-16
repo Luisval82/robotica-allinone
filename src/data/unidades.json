@@ -9,7 +9,7 @@
       "bloques": [
         "Cuando se inicia el programa",
         "encender dibujo durante 2 segundos",
-        "Escribir en la matriz de luces 5x5",
+        "escribir Hello",
         "Apagar la matriz de luces 5x5",
         "Fijar luz del botón central",
         "Tocar nota X segundos",
@@ -171,7 +171,7 @@
         "Fijar variable a",
         "Cambiar variable por",
         "Cuando está más próximo a",
-        "Escribir en la matriz de luces 5x5",
+        "escribir Hello",
         "A ir durante 1 rotaciones"
       ],
       "modelo": "Torno de entrada con contador de aforo en la matriz de luces"
@@ -246,7 +246,7 @@
         "Elegir un número aleatorio",
         "Esperar hasta que",
         "¿Está presionado?",
-        "Escribir en la matriz de luces 5x5"
+        "escribir Hello"
       ],
       "modelo": "Máquina de reflejos: una bandera se levanta al azar y mide el tiempo de reacción"
     },
@@ -262,7 +262,7 @@
         "A ir durante 1 rotaciones",
         "Cambiar variable por",
         "Repetir bucle hasta",
-        "Escribir en la matriz de luces 5x5"
+        "escribir Hello"
       ],
       "modelo": "Clasificadora de piezas por color con rampa selectora y contador de cada color"
     },
