@@ -54,6 +54,42 @@
       "pendiente": false
     },
     {
+      "texto": "Tocar nota X segundos",
+      "categoria": "sonido",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Esperar X segundos",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": true
+    },
+    {
+      "texto": "Repetir bucle",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Tocar sonido hasta acabar",
+      "categoria": "sonido",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Esperar hasta que",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "¿Está presionado?",
+      "categoria": "sensores",
+      "forma": "pregunta",
+      "pendiente": false
+    },
+    {
       "texto": "encender dibujo durante 2 segundos",
       "categoria": "luz",
       "forma": "pila",
@@ -81,6 +117,26 @@
         {
           "t": "palabra",
           "v": "segundos"
+        }
+      ],
+      "pendiente": false
+    },
+    {
+      "texto": "encender dibujo",
+      "categoria": "luz",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "encender"
+        },
+        {
+          "t": "menu",
+          "v": "dibujo"
         }
       ],
       "pendiente": false
@@ -122,37 +178,7 @@
       "pendiente": false
     },
     {
-      "texto": "Fijar luz del botón central",
-      "categoria": "luz",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Tocar nota X segundos",
-      "categoria": "sonido",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Esperar X segundos",
-      "categoria": "control",
-      "forma": "pila",
-      "pendiente": true
-    },
-    {
-      "texto": "Repetir bucle",
-      "categoria": "control",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Tocar sonido hasta acabar",
-      "categoria": "sonido",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "encender dibujo",
+      "texto": "fijar brillo de píxeles al 75 %",
       "categoria": "luz",
       "forma": "pila",
       "partes": [
@@ -162,25 +188,23 @@
         },
         {
           "t": "palabra",
-          "v": "encender"
+          "v": "fijar brillo de píxeles al"
         },
         {
-          "t": "menu",
-          "v": "dibujo"
+          "t": "hueco",
+          "v": "75"
+        },
+        {
+          "t": "palabra",
+          "v": "%"
         }
       ],
       "pendiente": false
     },
     {
-      "texto": "Esperar hasta que",
-      "categoria": "control",
+      "texto": "Fijar luz del botón central",
+      "categoria": "luz",
       "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "¿Está presionado?",
-      "categoria": "sensores",
-      "forma": "pregunta",
       "pendiente": false
     },
     {
