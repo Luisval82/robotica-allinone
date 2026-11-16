@@ -224,9 +224,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "30 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
         },
         {
           "texto": "empezar a mover a ↑",

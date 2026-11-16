@@ -188,9 +188,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "20 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "20"
+          ]
         },
         {
           "texto": "Repetir bucle hasta",
@@ -221,9 +223,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "20 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "20"
+          ]
         },
         {
           "texto": "Repetir bucle",

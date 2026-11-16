@@ -222,9 +222,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "velocidad elegida",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "velocidad elegida"
+          ]
         },
         {
           "texto": "Bucle infinito",

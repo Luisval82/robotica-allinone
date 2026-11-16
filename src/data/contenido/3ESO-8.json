@@ -243,9 +243,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "25 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "25"
+          ]
         },
         {
           "texto": "Mi bloque",
@@ -274,9 +276,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "25 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "25"
+          ]
         },
         {
           "texto": "Bucle infinito",

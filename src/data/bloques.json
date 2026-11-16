@@ -126,9 +126,27 @@
       "pendiente": false
     },
     {
-      "texto": "Fijar velocidad de movimiento",
+      "texto": "fijar velocidad de movimiento al 50 %",
       "categoria": "movimiento",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "fijar velocidad de movimiento al"
+        },
+        {
+          "t": "hueco",
+          "v": "50"
+        },
+        {
+          "t": "palabra",
+          "v": "%"
+        }
+      ],
       "pendiente": false
     },
     {

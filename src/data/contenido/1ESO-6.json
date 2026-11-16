@@ -24,7 +24,7 @@
       },
       {
         "plano": "El robot avanza 20 centímetros despacio y después rápido.",
-        "locucion": "«mover durante» avanza recto una distancia exacta. «Fijar velocidad de movimiento» decide lo rápido que va."
+        "locucion": "«mover durante» avanza recto una distancia exacta. «fijar velocidad de movimiento» decide lo rápido que va."
       },
       {
         "plano": "El robot traza una curva y luego gira sobre sí mismo.",
@@ -42,8 +42,11 @@
       "explicacion": "Indica qué dos motores mueven el robot: el izquierdo y el derecho. Se pone una vez, al principio."
     },
     {
-      "texto": "Fijar velocidad de movimiento",
-      "explicacion": "Guarda la velocidad del robot para los bloques de movimiento que vienen después."
+      "texto": "fijar velocidad de movimiento al 50 %",
+      "explicacion": "Guarda la velocidad del robot para los bloques de movimiento que vienen después.",
+      "valores": [
+        "50"
+      ]
     },
     {
       "texto": "Fijar 1 rotación del motor a una distancia recorrida",
@@ -167,7 +170,7 @@
     {
       "pregunta": "Le pides 20 cm y recorre 25. ¿Qué bloque corriges?",
       "opciones": [
-        "Fijar velocidad de movimiento",
+        "fijar velocidad de movimiento",
         "Fijar motores en movimiento",
         "Fijar 1 rotación del motor a una distancia recorrida",
         "mover derecha: 30 durante 10 rotaciones"
@@ -176,7 +179,7 @@
       "explicacion": "El valor guardado no coincide con lo que avanza realmente una vuelta de rueda."
     },
     {
-      "pregunta": "¿Qué hace «Fijar velocidad de movimiento»?",
+      "pregunta": "¿Qué hace «fijar velocidad de movimiento»?",
       "opciones": [
         "Mueve el robot 1 segundo",
         "Guarda la velocidad para los siguientes bloques de movimiento",
@@ -207,9 +210,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "30 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
@@ -260,9 +265,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "30 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
         },
         {
           "texto": "Repetir bucle",

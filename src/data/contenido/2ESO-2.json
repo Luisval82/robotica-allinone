@@ -228,9 +228,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad de movimiento",
-          "valor": "30 %",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
         },
         {
           "texto": "Bucle infinito",
@@ -260,7 +262,7 @@
           ]
         }
       ],
-      "notas": "Pide que anoten los dos valores medidos y el umbral. «Fijar velocidad de movimiento» es de 1º (unidad 6). Valora que el circuito se complete, no los números concretos."
+      "notas": "Pide que anoten los dos valores medidos y el umbral. «fijar velocidad de movimiento» es de 1º (unidad 6). Valora que el circuito se complete, no los números concretos."
     }
   ]
 }
