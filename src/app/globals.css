@@ -301,32 +301,6 @@
     font-weight: 800;
     text-align: center;
   }
-
-  /* Bloque de inicio («Cuando…»): empieza una pila, con la parte de arriba curva */
-  .word-block--inicio {
-    border-radius: 1.6rem 1.6rem 0.9rem 0.9rem;
-  }
-
-  /* Dato (redondeado): devuelve un valor y va dentro de los huecos de otros bloques */
-  .word-block--dato {
-    border-radius: 999px;
-    padding-inline: 1.25rem;
-  }
-
-  /* Pregunta (hexágono): responde verdadero o falso */
-  .word-block--pregunta {
-    border-radius: 0;
-    padding-inline: 1.6rem;
-    box-shadow: none;
-    clip-path: polygon(
-      0.9rem 0,
-      calc(100% - 0.9rem) 0,
-      100% 50%,
-      calc(100% - 0.9rem) 100%,
-      0.9rem 100%,
-      0 50%
-    );
-  }
 }
 
 /* Parpadeo de los «ojos» del Hub en la ilustración de bienvenida */
