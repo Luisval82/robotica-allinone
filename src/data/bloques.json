@@ -419,7 +419,12 @@
         },
         {
           "t": "menu",
-          "v": "por la ruta más corta"
+          "v": "por la ruta más corta",
+          "opciones": [
+            "por la ruta más corta",
+            "en sentido horario",
+            "en sentido antihorario"
+          ]
         },
         {
           "t": "palabra",
