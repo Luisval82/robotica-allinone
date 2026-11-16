@@ -94,7 +94,7 @@
       "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
       "bloques": [
         "empezar a mover a ↑",
-        "Parar movimiento",
+        "parar movimiento",
         "Esperar hasta que",
         "¿Está más próximo a?",
         "Cuando está más próximo a",
@@ -143,7 +143,7 @@
         "Bucle infinito",
         "¿Es de color...?",
         "empezar a mover a ↑",
-        "Parar movimiento"
+        "parar movimiento"
       ],
       "modelo": "Vehículo autónomo que obedece semáforos (tarjetas verde y roja)"
     },
@@ -215,7 +215,7 @@
         "Ángulo de cabeceo, alabeo o guiñada del Hub",
         "empezar a mover derecha: 30",
         "Repetir bucle hasta",
-        "Parar movimiento"
+        "parar movimiento"
       ],
       "modelo": "Robot explorador que traza giros exactos de 90° sobre un plano"
     },

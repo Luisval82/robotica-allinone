@@ -216,8 +216,9 @@
           ]
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 1
+          "texto": "parar movimiento",
+          "nivel": 1,
+          "valores": []
         },
         {
           "texto": "Definir mi bloque",

@@ -27,8 +27,8 @@
         "locucion": "Una decisión suelta se toma una sola vez y el programa acaba. Para que el vehículo mire el semáforo continuamente, metemos la decisión dentro de un «Bucle infinito»."
       },
       {
-        "plano": "Captura de los bloques rosas «Empezar a mover» y «Parar movimiento».",
-        "locucion": "«Empezar a mover» pone en marcha los dos motores a la vez y no espera. «Parar movimiento» los detiene."
+        "plano": "Captura de los bloques rosas «Empezar a mover» y «parar movimiento».",
+        "locucion": "«Empezar a mover» pone en marcha los dos motores a la vez y no espera. «parar movimiento» los detiene."
       },
       {
         "plano": "El vehículo circula; alguien le enseña la tarjeta roja y frena; con la verde arranca de nuevo.",
@@ -57,8 +57,9 @@
       ]
     },
     {
-      "texto": "Parar movimiento",
-      "explicacion": "Detiene los dos motores de movimiento."
+      "texto": "parar movimiento",
+      "explicacion": "Detiene los dos motores de movimiento.",
+      "valores": []
     }
   ],
   "construccion": {
@@ -210,8 +211,9 @@
           "nivel": 1
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 2
+          "texto": "parar movimiento",
+          "nivel": 2,
+          "valores": []
         }
       ],
       "notas": "Sin el «Bucle infinito» el programa comprueba el color una sola vez y termina."
@@ -250,8 +252,9 @@
           "nivel": 2
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 3
+          "texto": "parar movimiento",
+          "nivel": 3,
+          "valores": []
         },
         {
           "texto": "Si no",

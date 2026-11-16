@@ -182,8 +182,9 @@
           "nivel": 1
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 2
+          "texto": "parar movimiento",
+          "nivel": 2,
+          "valores": []
         }
       ],
       "explicacion": "",
@@ -229,8 +230,9 @@
           "nivel": 2
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 3
+          "texto": "parar movimiento",
+          "nivel": 3,
+          "valores": []
         }
       ],
       "explicacion": "",

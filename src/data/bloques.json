@@ -262,9 +262,19 @@
       "pendiente": false
     },
     {
-      "texto": "Parar movimiento",
+      "texto": "parar movimiento",
       "categoria": "movimiento",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "parar movimiento"
+        }
+      ],
       "pendiente": false
     },
     {

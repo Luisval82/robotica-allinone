@@ -24,8 +24,8 @@
         "locucion": "«mover durante» recorre una distancia fija. Ahora no sabemos cuánto hay que avanzar, así que usamos «Empezar a mover», que arranca y deja que el programa siga."
       },
       {
-        "plano": "Captura de la pila «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «Parar movimiento».",
-        "locucion": "Con el robot en marcha, «Esperar hasta que» vigila la pregunta «¿Está más próximo a 15 cm?». Cuando la respuesta es sí, el programa continúa y llega a «Parar movimiento»."
+        "plano": "Captura de la pila «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «parar movimiento».",
+        "locucion": "Con el robot en marcha, «Esperar hasta que» vigila la pregunta «¿Está más próximo a 15 cm?». Cuando la respuesta es sí, el programa continúa y llega a «parar movimiento»."
       },
       {
         "plano": "Captura del bloque amarillo «Cuando está más próximo a» con una pila que toca una nota.",
@@ -46,8 +46,9 @@
       ]
     },
     {
-      "texto": "Parar movimiento",
-      "explicacion": "Detiene los dos motores de movimiento."
+      "texto": "parar movimiento",
+      "explicacion": "Detiene los dos motores de movimiento.",
+      "valores": []
     },
     {
       "texto": "Esperar hasta que",
@@ -119,7 +120,7 @@
       "explicacion": "El robot debe seguir avanzando hasta que el sensor diga basta, no una distancia fija."
     },
     {
-      "pregunta": "Programa: «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «Parar movimiento». ¿Cuándo se detiene el robot?",
+      "pregunta": "Programa: «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «parar movimiento». ¿Cuándo se detiene el robot?",
       "opciones": [
         "A los 15 segundos",
         "Al recorrer 15 cm",
@@ -127,14 +128,14 @@
         "Cuando el obstáculo está a menos de 15 cm"
       ],
       "correcta": 3,
-      "explicacion": "La espera termina cuando la pregunta es verdadera; entonces se ejecuta «Parar movimiento»."
+      "explicacion": "La espera termina cuando la pregunta es verdadera; entonces se ejecuta «parar movimiento»."
     },
     {
       "pregunta": "El robot frena demasiado tarde y toca la caja. ¿Qué cambias?",
       "opciones": [
         "Bajo la distancia de la pregunta a 5 cm",
         "Aumento la distancia de la pregunta o bajo la velocidad",
-        "Quito el bloque «Parar movimiento»",
+        "Quito el bloque «parar movimiento»",
         "Subo el volumen del pitido"
       ],
       "correcta": 1,
@@ -207,8 +208,9 @@
           "nivel": 0
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 0
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "notas": "La distancia de frenado depende de la velocidad: vale cualquier valor con el que el robot no llegue a tocar el obstáculo."
@@ -239,8 +241,9 @@
           "nivel": 0
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 0
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
         },
         {
           "texto": "Tocar nota X segundos",

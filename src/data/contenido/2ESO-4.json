@@ -254,8 +254,9 @@
           "nivel": 1
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 2
+          "texto": "parar movimiento",
+          "nivel": 2,
+          "valores": []
         },
         {
           "texto": "Si no",

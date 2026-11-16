@@ -54,8 +54,9 @@
       "explicacion": "Repite lo que tiene dentro hasta que la condición de su hueco se cumple."
     },
     {
-      "texto": "Parar movimiento",
-      "explicacion": "Detiene el giro al llegar al ángulo."
+      "texto": "parar movimiento",
+      "explicacion": "Detiene el giro al llegar al ángulo.",
+      "valores": []
     }
   ],
   "construccion": {
@@ -143,7 +144,7 @@
       "pregunta": "¿Cómo corriges ese exceso?",
       "opciones": [
         "Girando más rápido",
-        "Quitando el bloque «Parar movimiento»",
+        "Quitando el bloque «parar movimiento»",
         "Poniendo la guiñada a 90 al empezar",
         "Girando más despacio o parando un poco antes"
       ],
@@ -204,8 +205,9 @@
           ]
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 0
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "notas": "El valor de parada (85–90) depende de la velocidad. Comprueba en tu Hub el signo de la guiñada: si al girar a la derecha sale negativa, la condición es «guiñada < −88»."
@@ -254,8 +256,9 @@
           ]
         },
         {
-          "texto": "Parar movimiento",
-          "nivel": 1
+          "texto": "parar movimiento",
+          "nivel": 1,
+          "valores": []
         }
       ],
       "notas": "La guiñada se pone a 0 dentro del bucle, antes de cada giro. Valora que el robot termine cerca del punto de partida."
