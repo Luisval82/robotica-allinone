@@ -265,9 +265,13 @@
           ]
         },
         {
-          "texto": "Mover con dirección durante",
-          "valor": "dirección 100 · 90°",
-          "nivel": 1
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
         }
       ],
       "explicacion": "No he usado Mis bloques, lo he hecho directamente.",

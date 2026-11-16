@@ -181,9 +181,40 @@
       "pendiente": false
     },
     {
-      "texto": "Mover con dirección durante",
+      "texto": "mover derecha: 30 durante 10 rotaciones",
       "categoria": "movimiento",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "mover"
+        },
+        {
+          "t": "hueco",
+          "v": "derecha: 30"
+        },
+        {
+          "t": "palabra",
+          "v": "durante"
+        },
+        {
+          "t": "hueco",
+          "v": "10"
+        },
+        {
+          "t": "menu",
+          "v": "rotaciones",
+          "opciones": [
+            "rotaciones",
+            "grados",
+            "segundos"
+          ]
+        }
+      ],
       "pendiente": false
     },
     {

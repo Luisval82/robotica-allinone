@@ -28,7 +28,7 @@
       },
       {
         "plano": "El robot traza una curva y luego gira sobre sí mismo.",
-        "locucion": "«Mover con dirección durante» avanza girando. Con dirección 100, una rueda avanza y la otra retrocede: el robot gira sobre sí mismo."
+        "locucion": "«mover con dirección durante» avanza girando. Con dirección 100, una rueda avanza y la otra retrocede: el robot gira sobre sí mismo."
       },
       {
         "plano": "El robot recorre un cuadrado marcado con cinta en el suelo.",
@@ -59,8 +59,13 @@
       ]
     },
     {
-      "texto": "Mover con dirección durante",
-      "explicacion": "Avanza girando una cantidad exacta. Dirección 0 es recto; 100 o −100, girar sobre sí mismo."
+      "texto": "mover derecha: 30 durante 10 rotaciones",
+      "explicacion": "Avanza girando una cantidad exacta. Dirección 0 es recto; 100 o −100, girar sobre sí mismo.",
+      "valores": [
+        "derecha: 30",
+        "10",
+        "rotaciones"
+      ]
     }
   ],
   "construccion": {
@@ -165,7 +170,7 @@
         "Fijar velocidad de movimiento",
         "Fijar motores en movimiento",
         "Fijar 1 rotación del motor a una distancia recorrida",
-        "Mover con dirección durante"
+        "mover derecha: 30 durante 10 rotaciones"
       ],
       "correcta": 2,
       "explicacion": "El valor guardado no coincide con lo que avanza realmente una vuelta de rueda."
@@ -216,9 +221,13 @@
           ]
         },
         {
-          "texto": "Mover con dirección durante",
-          "valor": "dirección 100 · giro de 180°",
-          "nivel": 0
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100",
+            "180",
+            "grados"
+          ]
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
@@ -270,9 +279,13 @@
           ]
         },
         {
-          "texto": "Mover con dirección durante",
-          "valor": "dirección 100 · giro de 90°",
-          "nivel": 1
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
         }
       ],
       "notas": "Valora el uso de «Repetir» y que el robot termine cerca de donde empezó. El giro de 90° no saldrá perfecto a la primera."

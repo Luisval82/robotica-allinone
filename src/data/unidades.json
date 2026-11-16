@@ -83,7 +83,7 @@
         "Fijar velocidad de movimiento",
         "Fijar 1 rotación del motor a una distancia recorrida",
         "mover ↑ durante 10 rotaciones",
-        "Mover con dirección durante"
+        "mover derecha: 30 durante 10 rotaciones"
       ],
       "modelo": "Robot repartidor (base de conducción) que recorre un circuito cuadrado"
     },
@@ -274,7 +274,7 @@
       "bloques": [
         "Mis bloques: Crear un bloque con entradas",
         "mover ↑ durante 10 rotaciones",
-        "Mover con dirección durante",
+        "mover derecha: 30 durante 10 rotaciones",
         "Repetir bucle",
         "Variable"
       ],

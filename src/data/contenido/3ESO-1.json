@@ -51,8 +51,13 @@
       ]
     },
     {
-      "texto": "Mover con dirección durante",
-      "explicacion": "Avanza girando una cantidad exacta. Con dirección 100 o −100 el robot gira sobre sí mismo."
+      "texto": "mover derecha: 30 durante 10 rotaciones",
+      "explicacion": "Avanza girando una cantidad exacta. Con dirección 100 o −100 el robot gira sobre sí mismo.",
+      "valores": [
+        "derecha: 30",
+        "10",
+        "rotaciones"
+      ]
     },
     {
       "texto": "Repetir bucle",
@@ -202,9 +207,13 @@
           ]
         },
         {
-          "texto": "Mover con dirección durante",
-          "valor": "dirección 100 · giro de 90°",
-          "nivel": 1
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
         },
         {
           "texto": "Cuando se inicia el programa",
@@ -242,9 +251,13 @@
           ]
         },
         {
-          "texto": "Mover con dirección durante",
-          "valor": "dirección 100 · giro grados",
-          "nivel": 1
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "giro",
+            "grados"
+          ]
         },
         {
           "texto": "Cuando se inicia el programa",
