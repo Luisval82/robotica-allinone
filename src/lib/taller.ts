@@ -34,13 +34,32 @@ interface DefinicionBlockly {
   type: string;
   message0: string;
   args0: CampoBlockly[];
-  colour: string;
+  colour?: string;
+  style?: string;
   tooltip: string;
   inputsInline: true;
   previousStatement?: null;
   nextStatement?: null;
   output?: string;
+  message1?: string;
+  args1?: { type: "input_statement"; name: string }[];
+  message2?: string;
+  args2?: { type: "input_statement"; name: string }[];
 }
+
+/**
+ * Bloques que llevan otros dentro (la boca de un bucle o de un «si»). Sin
+ * esto, en el taller no se podría meter nada dentro de un «Repetir».
+ */
+const CONTENEDORES = new Set([
+  "Repetir bucle",
+  "Bucle infinito",
+  "Si... entonces...",
+  "Esperar hasta que",
+]);
+
+/** El «Si… entonces… Si no…» tiene dos bocas. */
+const DOS_BOCAS = new Set(["Si... entonces... Si no..."]);
 
 function campo(parte: BlockPart, indice: number): CampoBlockly {
   const name = `H${indice}`;
@@ -75,9 +94,15 @@ export function definicionDe(info: BlockInfo): DefinicionBlockly {
       message0 += `%${args0.length} `;
     }
   } else {
-    // Bloques que todavía no están pieza a pieza: su nombre y un hueco libre.
-    message0 = `${info.texto} %1 `;
-    args0.push({ type: "field_input", name: "H0", text: " " });
+    // Bloques que todavía no están pieza a pieza: el nombre, y un hueco solo
+    // si el propio nombre lo pide (la «X» de «Esperar X segundos»).
+    if (info.texto.includes(" X ")) {
+      const [antes, despues] = info.texto.split(" X ");
+      message0 = `${antes} %1 ${despues} `;
+      args0.push({ type: "field_number", name: "H0", value: 1 });
+    } else {
+      message0 = `${info.texto} `;
+    }
   }
 
   const def: DefinicionBlockly = {
@@ -91,10 +116,24 @@ export function definicionDe(info: BlockInfo): DefinicionBlockly {
 
   if (info.forma === "dato") def.output = "Number";
   else if (info.forma === "pregunta") def.output = "Boolean";
-  else if (info.forma === "inicio") def.nextStatement = null;
-  else {
+  else if (info.forma === "inicio") {
+    // Un bloque de inicio es un sombrero: no se le encaja nada encima.
+    def.nextStatement = null;
+    def.style = `${info.categoria}_inicio`;
+    delete def.colour;
+  } else {
     def.previousStatement = null;
     def.nextStatement = null;
+  }
+
+  if (DOS_BOCAS.has(info.texto)) {
+    def.message1 = "%1";
+    def.args1 = [{ type: "input_statement", name: "CUERPO" }];
+    def.message2 = "Si no %1";
+    def.args2 = [{ type: "input_statement", name: "SI_NO" }];
+  } else if (CONTENEDORES.has(info.texto)) {
+    def.message1 = "%1";
+    def.args1 = [{ type: "input_statement", name: "CUERPO" }];
   }
   return def;
 }
@@ -107,14 +146,20 @@ export function definiciones(): DefinicionBlockly[] {
 /** Estilos de bloque por categoría, para el tema de Blockly. */
 export function estilosPorCategoria(): Record<
   string,
-  { colourPrimary: string; colourSecondary: string; colourTertiary: string }
+  { colourPrimary: string; colourSecondary: string; colourTertiary: string; hat?: string }
 > {
   const estilos: Record<
     string,
-    { colourPrimary: string; colourSecondary: string; colourTertiary: string }
+    { colourPrimary: string; colourSecondary: string; colourTertiary: string; hat?: string }
   > = {};
   for (const [id, { bloque, ficha }] of Object.entries(CATEGORY_HEX)) {
     estilos[id] = { colourPrimary: bloque, colourSecondary: ficha, colourTertiary: ficha };
+    estilos[`${id}_inicio`] = {
+      colourPrimary: bloque,
+      colourSecondary: ficha,
+      colourTertiary: ficha,
+      hat: "cap",
+    };
   }
   return estilos;
 }
