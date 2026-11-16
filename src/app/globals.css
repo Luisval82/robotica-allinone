@@ -249,12 +249,22 @@
     --block-chip: color-mix(in srgb, var(--color-block-extensiones) 88%, black);
   }
 
+  /* El icono se mide por el alto (el 64 % del cuerpo, como en la app) */
   .word-block__icono {
     display: grid;
     place-items: center;
-    width: 1.6rem;
-    height: 1.6rem;
+    height: 1.55rem;
     color: var(--block-color, var(--color-ink-900));
+    flex: none;
+  }
+
+  /* Raya que separa el icono de las palabras */
+  .word-block__raya {
+    width: 2px;
+    height: 1.45rem;
+    margin-inline: 0.3rem;
+    border-radius: 2px;
+    background: var(--block-chip, rgb(0 0 0 / 0.12));
     flex: none;
   }
 
