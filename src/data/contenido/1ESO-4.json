@@ -1,0 +1,249 @@
+{
+  "curso": "1ESO",
+  "unidad": 4,
+  "reto": "Programa una noria que gire por tramos y se detenga en cada cabina para que suban los pasajeros.",
+  "video": {
+    "titulo": "Repetir sin copiar",
+    "duracion": "4 min",
+    "escenas": [
+      {
+        "plano": "Una noria de cuatro cabinas avanza un tramo, se detiene y vuelve a avanzar.",
+        "locucion": "Una noria no gira sin parar: avanza un tramo, se detiene para que suba la gente y vuelve a avanzar. Hace lo mismo una y otra vez."
+      },
+      {
+        "plano": "Captura de la app: una pila muy larga con los mismos tres bloques copiados cuatro veces.",
+        "locucion": "Podríamos copiar los mismos bloques cuatro veces. Funciona, pero si hay que cambiar algo, toca cambiarlo en cuatro sitios."
+      },
+      {
+        "plano": "Captura de la app: el bloque naranja «Repetir 4» con los bloques dentro.",
+        "locucion": "El bloque naranja «Repetir» tiene forma de C: lo que metas dentro se ejecuta tantas veces como indique el número."
+      },
+      {
+        "plano": "El motor grande mueve la noria un cuarto de vuelta y se detiene.",
+        "locucion": "Con cuatro cabinas, cada tramo es un cuarto de vuelta: 90 grados. El motor grande tiene más fuerza que el mediano y mueve la noria sin esfuerzo."
+      },
+      {
+        "plano": "En cada parada el Hub enciende un dibujo y suena un aviso.",
+        "locucion": "En cada parada encendemos un dibujo y tocamos un sonido. «Tocar sonido hasta acabar» espera a que el sonido termine antes de seguir."
+      },
+      {
+        "plano": "La noria completa da varias vueltas parando en cada cabina.",
+        "locucion": "Tu reto: una noria que dé vueltas completas parando en cada cabina, sin copiar ni un solo bloque."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Repetir bucle",
+      "explicacion": "Ejecuta lo que tiene dentro el número de veces indicado y después sigue con el bloque de debajo."
+    },
+    {
+      "texto": "Accionar motor durante",
+      "explicacion": "Gira la noria un tramo exacto: 90 grados por cabina."
+    },
+    {
+      "texto": "Esperar X segundos",
+      "explicacion": "Mantiene la noria parada mientras suben los pasajeros."
+    },
+    {
+      "texto": "Tocar sonido hasta acabar",
+      "explicacion": "Reproduce un sonido de la biblioteca y no pasa al bloque siguiente hasta que termina."
+    },
+    {
+      "texto": "Encender la matriz de luces 5x5",
+      "explicacion": "Enciende un dibujo en la matriz y lo deja encendido hasta que otro bloque lo cambie o lo apague."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande con su cable, un eje largo, vigas para la rueda y los soportes, y cuatro piezas pequeñas que hagan de cabinas.",
+    "pasos": [
+      {
+        "titulo": "Los soportes",
+        "texto": "Levanta dos torres iguales sobre una base ancha, separadas lo justo para que la rueda gire entre ellas."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Fija el motor grande a una de las torres, con el eje en horizontal a la altura del centro de la rueda."
+      },
+      {
+        "titulo": "La rueda",
+        "texto": "Monta una cruz de cuatro brazos iguales sobre un eje largo que vaya del motor a la otra torre."
+      },
+      {
+        "titulo": "Las cabinas",
+        "texto": "Cuelga una pieza en el extremo de cada brazo de forma que pueda balancearse."
+      },
+      {
+        "titulo": "El Hub y el cable",
+        "texto": "Coloca el Hub en la base con la matriz a la vista y conecta el motor al puerto A."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Gira la rueda con la mano una vuelta completa: ninguna cabina debe tocar la base ni las torres."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué hace el bloque «Repetir 4»?",
+      "opciones": [
+        "Ejecuta 4 veces lo que tiene dentro",
+        "Espera 4 segundos",
+        "Gira el motor 4 vueltas",
+        "Ejecuta el programa cada 4 segundos"
+      ],
+      "correcta": 0,
+      "explicacion": "El número indica cuántas veces se ejecuta lo que hay dentro de la C."
+    },
+    {
+      "pregunta": "La noria tiene 4 cabinas. ¿Cuántos grados debe girar en cada tramo?",
+      "opciones": [
+        "45",
+        "180",
+        "90",
+        "360"
+      ],
+      "correcta": 2,
+      "explicacion": "Una vuelta son 360 grados; entre 4 cabinas, 90 cada tramo."
+    },
+    {
+      "pregunta": "Dentro de «Repetir 4» hay «Accionar motor durante 90 grados» y «Esperar 2 segundos». ¿Cuánto gira la noria en total?",
+      "opciones": [
+        "90 grados",
+        "360 grados",
+        "180 grados",
+        "270 grados"
+      ],
+      "correcta": 1,
+      "explicacion": "Cuatro tramos de 90 grados suman una vuelta completa."
+    },
+    {
+      "pregunta": "¿Qué ventaja tiene el bucle frente a copiar los bloques cuatro veces?",
+      "opciones": [
+        "El motor gira más rápido",
+        "Gasta menos batería",
+        "El sonido se oye mejor",
+        "Si hay que cambiar algo, se cambia en un solo sitio"
+      ],
+      "correcta": 3,
+      "explicacion": "El programa queda más corto y cualquier cambio se hace una única vez."
+    },
+    {
+      "pregunta": "¿Qué hace «Tocar sonido hasta acabar»?",
+      "opciones": [
+        "Toca el sonido y espera a que termine antes de seguir",
+        "Toca el sonido sin parar",
+        "Para todos los sonidos",
+        "Sube el volumen"
+      ],
+      "correcta": 0,
+      "explicacion": "El programa no pasa al bloque siguiente hasta que el sonido ha terminado."
+    },
+    {
+      "pregunta": "Un bloque colocado debajo del bucle, fuera de la C, ¿cuándo se ejecuta?",
+      "opciones": [
+        "En cada repetición",
+        "Nunca",
+        "Una sola vez, al terminar todas las repeticiones",
+        "Antes de la primera repetición"
+      ],
+      "correcta": 2,
+      "explicacion": "Lo que está fuera del bucle espera a que el bucle acabe."
+    },
+    {
+      "pregunta": "Si la noria tuviera 6 cabinas, ¿qué cambiarías?",
+      "opciones": [
+        "Repetir 6 y girar 90 grados",
+        "Repetir 4 y girar 60 grados",
+        "Repetir 3 y girar 120 grados",
+        "Repetir 6 y girar 60 grados"
+      ],
+      "correcta": 3,
+      "explicacion": "Seis tramos por vuelta, y 360 entre 6 son 60 grados."
+    },
+    {
+      "pregunta": "¿En qué se diferencia «Encender la matriz de luces 5x5» de «Encender la matriz de luces 5x5 X segundos»?",
+      "opciones": [
+        "No hay diferencia",
+        "La primera deja el dibujo encendido hasta que otro bloque lo cambie",
+        "La primera solo funciona dentro de un bucle",
+        "La segunda no deja elegir el dibujo"
+      ],
+      "correcta": 1,
+      "explicacion": "Sin tiempo, el dibujo se queda encendido y el programa sigue adelante."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Una vuelta por tramos",
+      "enunciado": "La noria da una vuelta completa en cuatro tramos de 90°, parando 2 segundos en cada cabina.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "4",
+          "nivel": 0
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "A · 90 grados",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "2",
+          "nivel": 1
+        }
+      ],
+      "notas": "Da por bueno 0,25 rotaciones en lugar de 90 grados. Lo que no vale es copiar los bloques cuatro veces."
+    },
+    {
+      "titulo": "Noria con avisos",
+      "enunciado": "La noria da tres vueltas completas. En cada parada se enciende un dibujo en la matriz, suena un aviso y espera 1 segundo. Al terminar, la matriz se apaga.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad al… %",
+          "valor": "A · 30",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "12",
+          "nivel": 0
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "A · 90 grados",
+          "nivel": 1
+        },
+        {
+          "texto": "Encender la matriz de luces 5x5",
+          "valor": "dibujo",
+          "nivel": 1
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "valor": "sonido elegido",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "1",
+          "nivel": 1
+        },
+        {
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "notas": "Tres vueltas de cuatro tramos son 12 repeticiones. Comprueba que «Apagar la matriz» queda fuera del bucle."
+    }
+  ]
+}

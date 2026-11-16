@@ -1,0 +1,348 @@
+{
+  "curso": "3ESO",
+  "unidad": 6,
+  "reto": "Construye un túnel de lavado: detecta el coche, abre la puerta, lava según el programa elegido con una tarjeta y avisa al terminar.",
+  "video": {
+    "titulo": "Procesos por fases",
+    "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "Un túnel de lavado de LEGO: llega un coche, se abre la puerta, gira el rodillo y suena un aviso.",
+        "locucion": "Un túnel de lavado trabaja por fases: esperar al coche, abrir la puerta, lavar y despedir. Cada fase empieza cuando termina la anterior."
+      },
+      {
+        "plano": "Diagrama con cuatro cajas unidas por flechas: esperando, abriendo, lavando, despidiendo.",
+        "locucion": "A cada fase la llamamos estado. La máquina está siempre en un estado, y solo en uno. Guardamos su nombre en una variable para saber en todo momento qué está haciendo."
+      },
+      {
+        "plano": "Captura de la app: un programa principal con tres «Enviar mensaje y esperar» seguidos, y tres pilas que los reciben.",
+        "locucion": "«Enviar mensaje y esperar» pone en marcha otra pila y se queda esperando hasta que termina. Así cada fase es una pila con su nombre, y el programa principal las llama en orden."
+      },
+      {
+        "plano": "Alguien acerca una tarjeta roja al sensor de color; cambia el valor de la variable «programa».",
+        "locucion": "Antes de entrar, el conductor elige programa con una tarjeta. El bloque «Cuando el color es» guarda la elección en una variable."
+      },
+      {
+        "plano": "Captura de la fase de lavado con un «Si… entonces… Si no» que mira la variable «programa».",
+        "locucion": "Dentro de la fase de lavado, un «Si… entonces… Si no» mira la variable y lava más o menos tiempo."
+      },
+      {
+        "plano": "El túnel atiende a dos coches seguidos con programas distintos.",
+        "locucion": "Tu reto: un túnel de lavado completo, con fases, programas y aviso final."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Enviar mensaje y esperar",
+      "explicacion": "Pone en marcha las pilas que reciben ese mensaje y espera a que terminen antes de seguir."
+    },
+    {
+      "texto": "Cuando se reciba el mensaje",
+      "explicacion": "Bloque de inicio de cada fase: abrir, lavar y despedir."
+    },
+    {
+      "texto": "Fijar variable a",
+      "explicacion": "Guarda el estado actual y el programa de lavado elegido."
+    },
+    {
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Elige la duración del lavado según el programa."
+    },
+    {
+      "texto": "Esperar hasta que",
+      "explicacion": "Mantiene la máquina en espera hasta que llega un coche."
+    },
+    {
+      "texto": "Cuando el color es",
+      "explicacion": "Bloque de inicio: guarda el programa elegido al mostrar una tarjeta de color."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande, un motor mediano, el sensor de distancia, el sensor de color, vigas para el pórtico y un coche de juguete.",
+    "pasos": [
+      {
+        "titulo": "El túnel",
+        "texto": "Monta un pórtico por el que quepa el coche con holgura."
+      },
+      {
+        "titulo": "La puerta",
+        "texto": "Fija el motor mediano en la entrada con una barrera en su eje. En la posición 0 debe quedar cerrada."
+      },
+      {
+        "titulo": "El rodillo",
+        "texto": "Coloca el motor grande sobre el pórtico, con un rodillo o unas tiras que giren por encima del coche."
+      },
+      {
+        "titulo": "El detector de coches",
+        "texto": "Fija el sensor de distancia en la entrada, mirando a través del paso."
+      },
+      {
+        "titulo": "El lector de tarjetas",
+        "texto": "Coloca el sensor de color junto a la entrada, a la altura a la que se acerca la tarjeta."
+      },
+      {
+        "titulo": "Los cables y la prueba",
+        "texto": "Motor grande al puerto A, motor mediano al B, sensor de color al D y sensor de distancia al E. Pasa el coche con la mano: nada debe rozarlo."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué es un estado en una máquina de estados?",
+      "opciones": [
+        "Un tipo de motor",
+        "Cada una de las fases en las que puede estar la máquina",
+        "El nivel de batería",
+        "Un mensaje de error"
+      ],
+      "correcta": 1,
+      "explicacion": "Esperando, abriendo, lavando y despidiendo son los estados del túnel."
+    },
+    {
+      "pregunta": "¿En cuántos estados puede estar la máquina a la vez?",
+      "opciones": [
+        "En todos",
+        "En dos",
+        "En ninguno",
+        "En uno solo"
+      ],
+      "correcta": 3,
+      "explicacion": "Esa es la idea central: en cada momento, un único estado."
+    },
+    {
+      "pregunta": "¿En qué se diferencia «Enviar mensaje y esperar» de «Enviar mensaje»?",
+      "opciones": [
+        "Espera a que terminen las pilas que reciben el mensaje antes de seguir",
+        "Envía el mensaje dos veces",
+        "Solo funciona con sensores",
+        "No hay diferencia"
+      ],
+      "correcta": 0,
+      "explicacion": "Con «Enviar mensaje» a secas, el programa sigue adelante sin esperar."
+    },
+    {
+      "pregunta": "¿Por qué usamos aquí la versión «y esperar»?",
+      "opciones": [
+        "Porque es más corta",
+        "Porque gasta menos batería",
+        "Para que una fase no empiece hasta que acabe la anterior",
+        "Porque la otra no existe"
+      ],
+      "correcta": 2,
+      "explicacion": "Sin esperar, las tres fases arrancarían casi a la vez."
+    },
+    {
+      "pregunta": "¿Para qué guardamos el estado en una variable?",
+      "opciones": [
+        "Para que el motor gire más rápido",
+        "No sirve para nada",
+        "Para borrar la lista",
+        "Para saber qué está haciendo la máquina y poder mostrarlo o decidir con ello"
+      ],
+      "correcta": 3,
+      "explicacion": "Es la memoria de la máquina: en qué fase se encuentra."
+    },
+    {
+      "pregunta": "El lavado dura 10 segundos si programa es «intenso» y 5 si no. Nadie ha mostrado tarjeta y programa vale «normal». ¿Cuánto dura?",
+      "opciones": [
+        "5 segundos",
+        "10 segundos",
+        "15 segundos",
+        "No lava"
+      ],
+      "correcta": 0,
+      "explicacion": "La condición es falsa, así que se ejecuta el «Si no»."
+    },
+    {
+      "pregunta": "¿Qué bloque inicia la pila que guarda el programa cuando se muestra una tarjeta roja?",
+      "opciones": [
+        "Esperar hasta que",
+        "Cuando el color es",
+        "Enviar mensaje y esperar",
+        "Si... entonces... Si no..."
+      ],
+      "correcta": 1,
+      "explicacion": "Es un bloque de inicio que reacciona al sensor de color."
+    },
+    {
+      "pregunta": "¿Qué ventaja tiene que cada fase sea una pila aparte?",
+      "opciones": [
+        "El programa ocupa menos memoria",
+        "Los motores tienen más fuerza",
+        "Se puede probar y cambiar cada fase por separado",
+        "No tiene ninguna"
+      ],
+      "correcta": 2,
+      "explicacion": "Si falla el lavado, se revisa solo la pila del lavado."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Tres fases en orden",
+      "enunciado": "El túnel espera a que llegue un coche (a menos de 10 cm). Entonces ejecuta tres fases, cada una en su pila: abrir la puerta, lavar 5 segundos y despedir (cerrar la puerta y sonar un aviso). Guarda el estado en una variable.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "estado · esperando",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está más próximo a 10 cm? E",
+          "nivel": 0
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "valor": "abrir",
+          "nivel": 0
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "valor": "lavar",
+          "nivel": 0
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "valor": "despedir",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "valor": "abrir",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "estado · abriendo",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 90 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "valor": "lavar",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "estado · lavando",
+          "nivel": 0
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "A · 5 segundos",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "valor": "despedir",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "estado · despidiendo",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 0 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "valor": "sonido de fin",
+          "nivel": 0
+        }
+      ],
+      "notas": "Son cuatro pilas. Si usan «Enviar mensaje» sin esperar, las fases se pisan: es el error que hay que detectar."
+    },
+    {
+      "titulo": "Programa elegido con tarjeta",
+      "enunciado": "Añade dos programas de lavado. Por defecto es «normal» (5 segundos). Si se muestra una tarjeta roja, pasa a «intenso» (10 segundos). Cambia solo la pila de lavado y añade la pila que lee la tarjeta.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "programa · normal",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "estado · esperando",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está más próximo a 10 cm? E",
+          "nivel": 0
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "valor": "abrir",
+          "nivel": 0
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "valor": "lavar",
+          "nivel": 0
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "valor": "despedir",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando el color es",
+          "valor": "rojo · D",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "programa · intenso",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "valor": "lavar",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "estado · lavando",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "programa = intenso",
+          "nivel": 0
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "A · 10 segundos",
+          "nivel": 1
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "A · 5 segundos",
+          "nivel": 1
+        }
+      ],
+      "notas": "Las pilas «abrir» y «despedir» son las de la práctica 1 y no cambian. Valora que la decisión esté dentro de la fase de lavado y no en el programa principal."
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "curso": "1ESO",
+  "unidad": 7,
+  "reto": "Programa un vehículo que frene solo antes de chocar con un obstáculo.",
+  "video": {
+    "titulo": "Frenar a tiempo",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Un vehículo avanza hacia una caja y se detiene a unos centímetros.",
+        "locucion": "Muchos coches frenan solos si el conductor no reacciona a tiempo. Hoy tu robot va a hacer lo mismo."
+      },
+      {
+        "plano": "Primer plano del sensor de distancia, con sus dos «ojos», conectado al puerto E.",
+        "locucion": "El sensor de distancia emite ultrasonidos y mide cuánto tardan en volver. Así sabe a cuántos centímetros está lo que tiene delante. Va en el puerto E."
+      },
+      {
+        "plano": "Captura de la app: «Mover durante 20 cm» junto a «Empezar a mover».",
+        "locucion": "«Mover durante» recorre una distancia fija. Ahora no sabemos cuánto hay que avanzar, así que usamos «Empezar a mover», que arranca y deja que el programa siga."
+      },
+      {
+        "plano": "Captura de la pila «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «Parar movimiento».",
+        "locucion": "Con el robot en marcha, «Esperar hasta que» vigila la pregunta «¿Está más próximo a 15 cm?». Cuando la respuesta es sí, el programa continúa y llega a «Parar movimiento»."
+      },
+      {
+        "plano": "Captura del bloque amarillo «Cuando está más próximo a» con una pila que toca una nota.",
+        "locucion": "Otra forma de reaccionar: el bloque amarillo «Cuando está más próximo a» inicia su propia pila en el momento en que algo se acerca. Sirve para añadir un pitido de aviso."
+      },
+      {
+        "plano": "El vehículo frena ante la caja, pita y retrocede.",
+        "locucion": "Tu reto: un vehículo que frena a tiempo, avisa y se aparta del obstáculo."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Empezar a mover...",
+      "explicacion": "Pone el robot en marcha y pasa al bloque siguiente sin esperar."
+    },
+    {
+      "texto": "Parar movimiento",
+      "explicacion": "Detiene los dos motores de movimiento."
+    },
+    {
+      "texto": "Esperar hasta que",
+      "explicacion": "Mantiene el programa esperando, con el robot en marcha, hasta que la pregunta se cumple."
+    },
+    {
+      "texto": "¿Está más próximo a?",
+      "explicacion": "Pregunta al sensor de distancia si hay algo más cerca de la distancia elegida. Responde verdadero o falso."
+    },
+    {
+      "texto": "Cuando está más próximo a",
+      "explicacion": "Bloque de inicio: arranca su propia pila cuando algo se acerca a menos de la distancia elegida."
+    },
+    {
+      "texto": "Tocar nota X segundos",
+      "explicacion": "Pitido de aviso al detectar el obstáculo."
+    }
+  ],
+  "construccion": {
+    "piezas": "La base de conducción de la unidad 6, el sensor de distancia, vigas para su soporte y una caja o un libro como obstáculo.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Parte del robot de la unidad anterior: dos motores medianos, dos ruedas y un apoyo trasero."
+      },
+      {
+        "titulo": "El soporte del sensor",
+        "texto": "Monta delante un soporte firme, a la altura del obstáculo que vas a usar."
+      },
+      {
+        "titulo": "El sensor de distancia",
+        "texto": "Fija el sensor mirando al frente. No debe quedar ninguna pieza del robot delante de él."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de distancia al puerto E."
+      },
+      {
+        "titulo": "El obstáculo",
+        "texto": "Coloca una caja o un libro de pie al final del recorrido, perpendicular al robot."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Acerca la mano al sensor: sus luces deben mirar hacia delante y el robot no debe tapar su campo de visión."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué mide el sensor de distancia?",
+      "opciones": [
+        "La velocidad del robot",
+        "El color del obstáculo",
+        "Los centímetros que hay hasta un objeto",
+        "La fuerza del choque"
+      ],
+      "correcta": 2,
+      "explicacion": "Mide cuánto tarda en volver el ultrasonido y lo convierte en centímetros."
+    },
+    {
+      "pregunta": "¿Por qué usamos «Empezar a mover» en lugar de «Mover durante»?",
+      "opciones": [
+        "Porque no sabemos de antemano cuánto hay que avanzar",
+        "Porque es más rápido",
+        "Porque gasta menos batería",
+        "Porque «Mover durante» no funciona con sensores"
+      ],
+      "correcta": 0,
+      "explicacion": "El robot debe seguir avanzando hasta que el sensor diga basta, no una distancia fija."
+    },
+    {
+      "pregunta": "Programa: «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «Parar movimiento». ¿Cuándo se detiene el robot?",
+      "opciones": [
+        "A los 15 segundos",
+        "Al recorrer 15 cm",
+        "Nunca",
+        "Cuando el obstáculo está a menos de 15 cm"
+      ],
+      "correcta": 3,
+      "explicacion": "La espera termina cuando la pregunta es verdadera; entonces se ejecuta «Parar movimiento»."
+    },
+    {
+      "pregunta": "El robot frena demasiado tarde y toca la caja. ¿Qué cambias?",
+      "opciones": [
+        "Bajo la distancia de la pregunta a 5 cm",
+        "Aumento la distancia de la pregunta o bajo la velocidad",
+        "Quito el bloque «Parar movimiento»",
+        "Subo el volumen del pitido"
+      ],
+      "correcta": 1,
+      "explicacion": "Con más margen o menos velocidad, al robot le da tiempo a detenerse."
+    },
+    {
+      "pregunta": "¿En qué puerto conectamos el sensor de distancia?",
+      "opciones": [
+        "En el E",
+        "En el A",
+        "En el D",
+        "En el F"
+      ],
+      "correcta": 0,
+      "explicacion": "Color en D, distancia en E y fuerza en F."
+    },
+    {
+      "pregunta": "¿Qué tipo de bloque es «Cuando está más próximo a»?",
+      "opciones": [
+        "Una pregunta",
+        "Un dato",
+        "Un bucle",
+        "Un bloque de inicio, que arranca su propia pila"
+      ],
+      "correcta": 3,
+      "explicacion": "Es amarillo y tiene forma de inicio: no se encaja debajo de otros bloques."
+    },
+    {
+      "pregunta": "¿Qué tipo de bloque es «¿Está más próximo a?»?",
+      "opciones": [
+        "Un bloque de inicio",
+        "Una orden para el motor",
+        "Una pregunta que responde verdadero o falso",
+        "Un sonido"
+      ],
+      "correcta": 2,
+      "explicacion": "Es hexagonal y se encaja en huecos de condición, como el de «Esperar hasta que»."
+    },
+    {
+      "pregunta": "El robot se para nada más arrancar aunque no hay ningún obstáculo. ¿Cuál es la causa más probable?",
+      "opciones": [
+        "La velocidad es muy baja",
+        "Una pieza del propio robot tapa el sensor",
+        "El sensor está en el puerto correcto",
+        "El obstáculo es demasiado grande"
+      ],
+      "correcta": 1,
+      "explicacion": "Si el sensor ve una pieza del robot justo delante, cree que hay un obstáculo."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Freno automático",
+      "enunciado": "El vehículo avanza recto y se detiene solo cuando está a menos de 15 cm de un obstáculo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está más próximo a 15 cm? E",
+          "nivel": 0
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 0
+        }
+      ],
+      "notas": "La distancia de frenado depende de la velocidad: vale cualquier valor con el que el robot no llegue a tocar el obstáculo."
+    },
+    {
+      "titulo": "Freno con aviso y retroceso",
+      "enunciado": "El vehículo avanza despacio. Al detectar un obstáculo a menos de 20 cm se detiene, pita medio segundo y retrocede 10 cm.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "30 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está más próximo a 20 cm? E",
+          "nivel": 0
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "72 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "10 cm hacia atrás",
+          "nivel": 0
+        }
+      ],
+      "notas": "También es válido poner el pitido en una pila aparte que empiece con «Cuando está más próximo a»."
+    }
+  ]
+}

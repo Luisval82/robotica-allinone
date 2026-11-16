@@ -1,0 +1,274 @@
+{
+  "curso": "2ESO",
+  "unidad": 4,
+  "reto": "Programa un sensor de aparcamiento: el coche pita más rápido cuanto más cerca está del muro.",
+  "video": {
+    "titulo": "Comparar y calcular",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Un coche se acerca despacio a un muro; los pitidos son cada vez más seguidos.",
+        "locucion": "El sensor de aparcamiento de un coche pita despacio cuando el muro está lejos y cada vez más rápido al acercarse. Para eso hay que hacer cuentas con lo que mide el sensor."
+      },
+      {
+        "plano": "Captura de la app: el bloque redondeado «Distancia» dentro de «Escribir en la matriz»; el Hub muestra un número que cambia.",
+        "locucion": "El bloque redondeado «Distancia» es un dato: los centímetros que hay hasta el objeto. Hasta ahora solo preguntábamos si algo estaba cerca; ahora tenemos el número."
+      },
+      {
+        "plano": "Captura de los operadores verdes de comparación con «Distancia < 30».",
+        "locucion": "Los operadores verdes comparan dos valores: mayor que, menor que o igual. El resultado es verdadero o falso, así que encajan en los huecos hexagonales."
+      },
+      {
+        "plano": "Captura de los operadores «y», «o» y «no» combinando dos comparaciones.",
+        "locucion": "Los operadores lógicos unen preguntas. Con «y» tienen que cumplirse las dos; con «o» basta una; «no» da la vuelta a la respuesta."
+      },
+      {
+        "plano": "Fórmula en pantalla: pausa = distancia ÷ 50, con dos ejemplos.",
+        "locucion": "Los operadores aritméticos calculan. Si la pausa entre pitidos es la distancia dividida entre 50, a 50 centímetros esperamos un segundo y a 10, solo dos décimas."
+      },
+      {
+        "plano": "El coche se acerca al muro pitando cada vez más rápido y se detiene a pocos centímetros.",
+        "locucion": "Tu reto: un coche que avisa con pitidos cada vez más rápidos y se detiene antes de tocar el muro."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Distancia",
+      "explicacion": "Bloque de dato: los centímetros que mide el sensor de distancia en ese momento."
+    },
+    {
+      "texto": "Operadores de comparación (>, <, =)",
+      "explicacion": "Comparan dos valores y responden verdadero o falso. Se encajan en huecos hexagonales."
+    },
+    {
+      "texto": "Operadores lógicos (y, o, no)",
+      "explicacion": "Combinan preguntas: «y» exige las dos, «o» se conforma con una y «no» invierte la respuesta."
+    },
+    {
+      "texto": "Operadores aritméticos (+, −, ×, ÷)",
+      "explicacion": "Hacen cuentas con números y datos. El resultado es un número que se coloca en un hueco redondeado."
+    },
+    {
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Elige entre pitar o quedarse en silencio según la distancia."
+    },
+    {
+      "texto": "Tocar nota X segundos",
+      "explicacion": "El pitido del sensor de aparcamiento."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia y una caja o un libro que haga de muro.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero."
+      },
+      {
+        "titulo": "El soporte",
+        "texto": "Añade delante un soporte firme a la altura del muro."
+      },
+      {
+        "titulo": "El sensor de distancia",
+        "texto": "Fija el sensor mirando hacia donde avanza el coche, sin piezas delante."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de distancia al puerto E."
+      },
+      {
+        "titulo": "El muro",
+        "texto": "Coloca una caja o un libro de pie, de frente al coche, a un metro."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Con un programa de dos bloques que escriba la distancia en la matriz, acerca la mano: el número debe bajar."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué devuelve el bloque «Distancia»?",
+      "opciones": [
+        "Verdadero o falso",
+        "Un número: los centímetros hasta el objeto",
+        "El color del objeto",
+        "Nada: mueve el coche"
+      ],
+      "correcta": 1,
+      "explicacion": "Es un bloque de dato redondeado, no una pregunta."
+    },
+    {
+      "pregunta": "¿Qué devuelve «Distancia < 20»?",
+      "opciones": [
+        "Un número menor que 20",
+        "La distancia menos 20",
+        "El número 20",
+        "Verdadero o falso"
+      ],
+      "correcta": 3,
+      "explicacion": "Una comparación siempre da verdadero o falso."
+    },
+    {
+      "pregunta": "La distancia es 30. ¿Qué vale «Distancia < 20 o Distancia > 25»?",
+      "opciones": [
+        "Verdadero",
+        "Falso",
+        "30",
+        "No se puede saber"
+      ],
+      "correcta": 0,
+      "explicacion": "Con «o» basta que se cumpla una: 30 es mayor que 25."
+    },
+    {
+      "pregunta": "La distancia es 30. ¿Qué vale «Distancia > 20 y Distancia < 25»?",
+      "opciones": [
+        "Verdadero",
+        "30",
+        "Falso",
+        "25"
+      ],
+      "correcta": 2,
+      "explicacion": "Con «y» deben cumplirse las dos, y 30 no es menor que 25."
+    },
+    {
+      "pregunta": "La pausa entre pitidos es «Distancia ÷ 50». A 25 cm del muro, ¿cuánto dura la pausa?",
+      "opciones": [
+        "2 segundos",
+        "25 segundos",
+        "0,5 segundos",
+        "50 segundos"
+      ],
+      "correcta": 2,
+      "explicacion": "25 entre 50 es 0,5."
+    },
+    {
+      "pregunta": "¿Qué hace el operador «no»?",
+      "opciones": [
+        "Detiene el programa",
+        "Invierte la respuesta: verdadero pasa a falso y al revés",
+        "Resta dos números",
+        "Borra una variable"
+      ],
+      "correcta": 1,
+      "explicacion": "Sirve para preguntar por lo contrario."
+    },
+    {
+      "pregunta": "Con la fórmula «Distancia ÷ 50», ¿qué pasa con los pitidos cuando el coche se acerca al muro?",
+      "opciones": [
+        "Se hacen más seguidos, porque la pausa disminuye",
+        "Se hacen más lentos",
+        "Dejan de sonar",
+        "No cambian"
+      ],
+      "correcta": 0,
+      "explicacion": "Menos distancia da una pausa más corta entre pitido y pitido."
+    },
+    {
+      "pregunta": "¿Dónde se encaja un operador de comparación?",
+      "opciones": [
+        "Debajo de «Cuando se inicia el programa»",
+        "En un hueco redondeado para números",
+        "No se puede encajar",
+        "En un hueco hexagonal de condición"
+      ],
+      "correcta": 3,
+      "explicacion": "Su forma hexagonal indica que es una pregunta de sí o no."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Aviso de proximidad",
+      "enunciado": "El coche avanza despacio hacia el muro. Mientras la distancia sea menor de 30 cm, pita; si no, se queda en silencio.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "15 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "Distancia < 30",
+          "nivel": 1
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "72 · 0.2",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "0.1",
+          "nivel": 2
+        }
+      ],
+      "notas": "El coche no se detiene en esta práctica: páralo a mano. La espera del «Si no» evita que el bucle vaya demasiado rápido."
+    },
+    {
+      "titulo": "Pitido proporcional y parada",
+      "enunciado": "El coche pita con una pausa entre pitidos igual a la distancia dividida entre 50, de modo que pita más rápido cuanto más cerca está. Cuando la distancia es menor de 8 cm, se detiene.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "15 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "Distancia < 8",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "72 · 0.1",
+          "nivel": 2
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "Distancia ÷ 50",
+          "nivel": 2
+        }
+      ],
+      "notas": "Con el coche ya parado el bucle sigue comprobando: es correcto. Valora que la pausa se calcule con el operador y no con valores fijos."
+    }
+  ]
+}

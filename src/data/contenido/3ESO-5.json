@@ -1,0 +1,253 @@
+{
+  "curso": "3ESO",
+  "unidad": 5,
+  "reto": "Programa un control de crucero adaptativo: tu vehículo mantiene 15 cm con el de delante, acelere o frene.",
+  "video": {
+    "titulo": "Control con realimentación",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Dos vehículos en fila; el de detrás acelera y frena para mantener la distancia con el primero.",
+        "locucion": "El control de crucero adaptativo de un coche mantiene la distancia con el de delante: si se aleja, acelera; si se acerca, frena; y si está demasiado cerca, retrocede."
+      },
+      {
+        "plano": "Diagrama circular: medir, comparar, actuar y vuelta a medir.",
+        "locucion": "Esto es un control con realimentación: medir, comparar con lo que queremos, actuar y volver a medir. Sin parar."
+      },
+      {
+        "plano": "Recta numérica con el objetivo en 15 cm y dos ejemplos de lectura.",
+        "locucion": "El error es la distancia medida menos la distancia deseada. A 25 centímetros el error es 10: estamos lejos. A 10 centímetros el error es −5: demasiado cerca."
+      },
+      {
+        "plano": "Captura de la app: «Empezar a mover a velocidad» con una variable dentro.",
+        "locucion": "La velocidad es el error multiplicado por una ganancia. Con error positivo avanza, con error negativo retrocede y con error cero se queda quieto. «Empezar a mover a velocidad» acepta ese número directamente."
+      },
+      {
+        "plano": "El vehículo con ganancia baja reacciona tarde; con ganancia alta va y viene sin parar.",
+        "locucion": "Como en el seguidor de línea: con poca ganancia el vehículo reacciona tarde; con demasiada, va y viene sin llegar a detenerse."
+      },
+      {
+        "plano": "El vehículo sigue a una caja que alguien mueve con la mano, siempre a la misma distancia.",
+        "locucion": "Tu reto: un vehículo que mantiene 15 centímetros con lo que tenga delante, se mueva como se mueva."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Distancia",
+      "explicacion": "Bloque de dato: los centímetros hasta el vehículo de delante."
+    },
+    {
+      "texto": "Fijar variable a",
+      "explicacion": "Guarda el error y la velocidad en cada vuelta del bucle."
+    },
+    {
+      "texto": "Operadores aritméticos (+, −, ×, ÷)",
+      "explicacion": "La resta calcula el error; la multiplicación, la velocidad."
+    },
+    {
+      "texto": "Empezar a mover a velocidad...",
+      "explicacion": "Pone el vehículo en marcha a la velocidad indicada. Con un valor negativo, retrocede."
+    },
+    {
+      "texto": "Bucle infinito",
+      "explicacion": "Repite medir, calcular y actuar sin parar."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia y una caja que haga de vehículo de delante.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero."
+      },
+      {
+        "titulo": "El sensor de distancia",
+        "texto": "Fija el sensor delante, mirando al frente, a la altura de la caja que vas a seguir."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de distancia al puerto E."
+      },
+      {
+        "titulo": "El vehículo guía",
+        "texto": "Prepara una caja lisa y lo bastante alta para que el sensor la vea bien."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Con un programa que escriba la distancia en la matriz, acerca y aleja la caja: el valor debe cambiar sin saltos."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué es la realimentación?",
+      "opciones": [
+        "Repetir un programa dos veces",
+        "Cargar la batería mientras el robot funciona",
+        "Medir el resultado y usarlo para corregir la acción",
+        "Usar dos sensores a la vez"
+      ],
+      "correcta": 2,
+      "explicacion": "El sistema se corrige continuamente con lo que mide."
+    },
+    {
+      "pregunta": "La distancia deseada es 15 cm y el sensor mide 25. ¿Cuánto vale el error?",
+      "opciones": [
+        "10",
+        "40",
+        "−10",
+        "15"
+      ],
+      "correcta": 0,
+      "explicacion": "Error es medida menos deseada: 25 menos 15."
+    },
+    {
+      "pregunta": "La distancia deseada es 15 cm y el sensor mide 10. ¿Cuánto vale el error?",
+      "opciones": [
+        "5",
+        "25",
+        "10",
+        "−5"
+      ],
+      "correcta": 3,
+      "explicacion": "10 menos 15 es −5: el vehículo está demasiado cerca."
+    },
+    {
+      "pregunta": "Con error −5 y ganancia 4, ¿qué hace el vehículo?",
+      "opciones": [
+        "Avanza al 20 %",
+        "Retrocede al 20 %",
+        "Se queda quieto",
+        "Avanza al 100 %"
+      ],
+      "correcta": 1,
+      "explicacion": "−5 por 4 es −20: velocidad negativa, marcha atrás."
+    },
+    {
+      "pregunta": "¿Qué hace el vehículo cuando el error es 0?",
+      "opciones": [
+        "Se queda quieto",
+        "Acelera",
+        "Retrocede",
+        "Gira"
+      ],
+      "correcta": 0,
+      "explicacion": "Cero por cualquier ganancia es velocidad cero."
+    },
+    {
+      "pregunta": "¿Qué ocurre con una ganancia demasiado alta?",
+      "opciones": [
+        "El vehículo reacciona tarde",
+        "El sensor deja de medir",
+        "El vehículo va y viene sin estabilizarse",
+        "No cambia nada"
+      ],
+      "correcta": 2,
+      "explicacion": "Corrige de más, se pasa y vuelve a corregir en sentido contrario."
+    },
+    {
+      "pregunta": "El vehículo de delante acelera y se aleja. ¿Qué pasa con el error y con la velocidad?",
+      "opciones": [
+        "Los dos disminuyen",
+        "El error aumenta y la velocidad disminuye",
+        "No cambian",
+        "Los dos aumentan"
+      ],
+      "correcta": 3,
+      "explicacion": "Más distancia es más error, y más error es más velocidad."
+    },
+    {
+      "pregunta": "Con error 40 y ganancia 4 la velocidad calculada es 160. ¿Qué ocurre?",
+      "opciones": [
+        "El vehículo va al 160 %",
+        "El motor no pasa del 100 %: va a su velocidad máxima",
+        "El programa se detiene",
+        "El vehículo retrocede"
+      ],
+      "correcta": 1,
+      "explicacion": "Los motores tienen un límite; por encima de él, el control deja de ser proporcional."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Mantener 15 cm",
+      "enunciado": "Programa el control de crucero: calcula el error respecto a 15 cm, multiplícalo por una ganancia de 4 y usa el resultado como velocidad, sin parar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "error · Distancia − 15",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "velocidad · error × 4",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover a velocidad...",
+          "valor": "velocidad %",
+          "nivel": 1
+        }
+      ],
+      "notas": "Si el vehículo huye de la caja en lugar de seguirla, los motores están intercambiados o hay que cambiar el signo de la ganancia."
+    },
+    {
+      "titulo": "Crucero ajustado con indicador",
+      "enunciado": "Prueba al menos tres ganancias y quédate con la mejor. Añade un indicador: el botón central en verde cuando el error está entre −2 y 2, y en rojo en caso contrario.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "error · Distancia − 15",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "velocidad · error × ganancia elegida",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover a velocidad...",
+          "valor": "velocidad %",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "error > −2 y error < 2",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "verde",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "rojo",
+          "nivel": 2
+        }
+      ],
+      "notas": "No hay una ganancia única correcta. Valora la explicación de las pruebas y que la condición use el operador «y»."
+    }
+  ]
+}

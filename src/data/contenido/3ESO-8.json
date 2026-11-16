@@ -1,0 +1,313 @@
+{
+  "curso": "3ESO",
+  "unidad": 8,
+  "reto": "Programa un robot explorador que encuentre solo la salida de un laberinto.",
+  "video": {
+    "titulo": "Navegación autónoma",
+    "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "Un robot avanza por un laberinto de paredes de cartón, gira en las esquinas y encuentra la salida.",
+        "locucion": "Un robot aspirador no tiene mapa: avanza, detecta paredes y decide por dónde seguir. Tu robot va a salir así de un laberinto."
+      },
+      {
+        "plano": "Primer plano del frontal del robot: el sensor de distancia arriba y el parachoques con el sensor de fuerza abajo.",
+        "locucion": "Lleva dos sensores para las paredes: el de distancia las ve antes de llegar, y el de fuerza, montado como parachoques, las nota si llega a tocarlas."
+      },
+      {
+        "plano": "Captura de la app: definición del bloque «girar» con la entrada «grados» y el giroscopio dentro.",
+        "locucion": "Los giros tienen que ser exactos, o el robot acabará torcido. Creamos un bloque propio «girar» con una entrada, los grados, que usa el giroscopio como en 2º."
+      },
+      {
+        "plano": "Captura de la definición de «avanzar hasta pared» con una condición unida por «o».",
+        "locucion": "Otro bloque propio, «avanzar hasta pared», mueve el robot recto hasta que el sensor de distancia ve una pared cerca o el parachoques la toca."
+      },
+      {
+        "plano": "Animación vista desde arriba: el robot llega a una pared, gira a la derecha, encuentra otra pared y da media vuelta.",
+        "locucion": "La estrategia: avanzar hasta una pared y girar a la derecha. Si después del giro sigue habiendo pared, dar media vuelta para probar por la izquierda."
+      },
+      {
+        "plano": "El robot completa el laberinto de principio a fin.",
+        "locucion": "Tu reto: un programa principal de muy pocos bloques que saque al robot del laberinto."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Mis bloques: Crear un bloque con entradas",
+      "explicacion": "Crea las órdenes «girar» y «avanzar hasta pared» para que el programa principal sea corto y claro."
+    },
+    {
+      "texto": "Fijar el ángulo de guiñada del Hub a 0",
+      "explicacion": "Pone a cero el contador de giro antes de cada giro."
+    },
+    {
+      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
+      "explicacion": "La guiñada dice cuántos grados ha girado el robot."
+    },
+    {
+      "texto": "¿Está más próximo a?",
+      "explicacion": "Pregunta si hay una pared cerca por delante."
+    },
+    {
+      "texto": "¿Está presionado?",
+      "explicacion": "Pregunta si el parachoques ha tocado una pared."
+    },
+    {
+      "texto": "Repetir bucle hasta",
+      "explicacion": "Avanza o gira hasta que se cumple la condición."
+    },
+    {
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Decide hacia dónde seguir cuando hay una pared delante."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia, el sensor de fuerza, una viga ancha para el parachoques y cajas o libros para las paredes.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta un chasis compacto, más estrecho que los pasillos, con el Hub en horizontal y centrado."
+      },
+      {
+        "titulo": "El sensor de distancia",
+        "texto": "Fíjalo delante, en alto, mirando al frente."
+      },
+      {
+        "titulo": "El parachoques",
+        "texto": "Monta el sensor de fuerza delante, abajo, con una viga ancha que lo pulse cuando el robot toque una pared."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al B, sensor de distancia al E y sensor de fuerza al F."
+      },
+      {
+        "titulo": "El laberinto",
+        "texto": "Construye pasillos con cajas o libros, de una anchura de al menos vez y media la del robot."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Empuja el robot contra una pared: el parachoques debe pulsar el sensor antes de que choque ninguna otra pieza."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Por qué creamos los bloques «girar» y «avanzar hasta pared»?",
+      "opciones": [
+        "Para que el programa principal sea corto y claro, y poder reutilizarlos",
+        "Porque la app no deja usar motores sin ellos",
+        "Para que el robot vaya más rápido",
+        "Para ahorrar batería"
+      ],
+      "correcta": 0,
+      "explicacion": "El programa principal se lee casi como una frase: avanzar, girar, avanzar."
+    },
+    {
+      "pregunta": "¿Qué entrada tiene el bloque «girar»?",
+      "opciones": [
+        "La velocidad",
+        "La distancia",
+        "El puerto",
+        "Los grados que debe girar"
+      ],
+      "correcta": 3,
+      "explicacion": "Con una sola definición sirve para girar 90, 180 o cualquier otro ángulo."
+    },
+    {
+      "pregunta": "¿Qué sensor usa «girar» para que el giro sea exacto?",
+      "opciones": [
+        "El sensor de color",
+        "El sensor de fuerza",
+        "El giroscopio del Hub",
+        "El sensor de distancia"
+      ],
+      "correcta": 2,
+      "explicacion": "La guiñada mide el giro real del robot."
+    },
+    {
+      "pregunta": "¿Por qué lleva el robot dos sensores para detectar paredes?",
+      "opciones": [
+        "Porque uno es para la izquierda y otro para la derecha",
+        "Porque el de distancia puede fallar y el parachoques hace de respaldo",
+        "Porque así gira mejor",
+        "No hace falta: sobra uno"
+      ],
+      "correcta": 1,
+      "explicacion": "Una pared en ángulo o muy cercana puede escaparse al sensor de distancia."
+    },
+    {
+      "pregunta": "¿Qué condición detiene a «avanzar hasta pared»?",
+      "opciones": [
+        "«¿Está más próximo a 8 cm?» y «¿Está presionado?»",
+        "Solo «¿Está presionado?»",
+        "«¿Está más próximo a 8 cm?» o «¿Está presionado?»",
+        "Que pasen 8 segundos"
+      ],
+      "correcta": 2,
+      "explicacion": "Basta con que uno de los dos sensores detecte la pared: por eso se unen con «o»."
+    },
+    {
+      "pregunta": "El robot gira a la derecha y sigue teniendo una pared delante. ¿Qué hace?",
+      "opciones": [
+        "Se detiene para siempre",
+        "Da media vuelta para probar por la izquierda",
+        "Vuelve a girar a la derecha",
+        "Retrocede hasta el inicio"
+      ],
+      "correcta": 1,
+      "explicacion": "Media vuelta desde la derecha lo deja mirando a la izquierda del pasillo."
+    },
+    {
+      "pregunta": "A lo largo del laberinto, el robot se va torciendo poco a poco. ¿Cuál es la causa más probable?",
+      "opciones": [
+        "Los giros no son exactos y los errores se acumulan",
+        "La batería está baja",
+        "El laberinto es demasiado grande",
+        "El parachoques pesa demasiado"
+      ],
+      "correcta": 0,
+      "explicacion": "Dos grados de error en cada giro son veinte tras diez giros."
+    },
+    {
+      "pregunta": "¿Qué hay que hacer justo antes de cada giro?",
+      "opciones": [
+        "Reiniciar el programa",
+        "Medir la distancia",
+        "Pulsar el parachoques",
+        "Poner la guiñada a 0"
+      ],
+      "correcta": 3,
+      "explicacion": "Cada giro se mide desde cero."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Bloques «girar» y «avanzar hasta pared»",
+      "enunciado": "Define los dos bloques propios. «girar (grados)» usa el giroscopio. «avanzar hasta pared» avanza recto hasta que hay una pared a menos de 8 cm o se pulsa el parachoques. Pruébalos: avanzar hasta pared, girar 90° y avanzar hasta la siguiente pared.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "valor": "girar (grados)",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "guiñada > grados − 3",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "100",
+          "nivel": 2
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 1
+        },
+        {
+          "texto": "Definir mi bloque",
+          "valor": "avanzar hasta pared",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "¿Está más próximo a 8 cm? o ¿Está presionado?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 2
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 1
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "25 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "avanzar hasta pared",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "girar (90)",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "avanzar hasta pared",
+          "nivel": 0
+        }
+      ],
+      "notas": "El margen de 3 grados compensa la inercia y depende de la velocidad. Comprueba el signo de la guiñada en tu Hub, como en 2º."
+    },
+    {
+      "titulo": "Salir del laberinto",
+      "enunciado": "Con los bloques de la práctica anterior, programa la estrategia completa: avanzar hasta una pared, retroceder un poco y girar a la derecha; si sigue habiendo pared, dar media vuelta. Repite sin parar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "25 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "avanzar hasta pared",
+          "nivel": 1
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "3 cm hacia atrás",
+          "nivel": 1
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "girar (90)",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Está más próximo a 15 cm?",
+          "nivel": 1
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "girar (90)",
+          "nivel": 2
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "girar (90)",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        }
+      ],
+      "notas": "Incluye las definiciones de la práctica 1. Dos giros más a la derecha dejan al robot mirando a la izquierda del pasillo por el que venía. Se hacen de 90 en 90 porque la guiñada cambia de signo al llegar a 180°. La estrategia resuelve laberintos sencillos, no cualquiera."
+    }
+  ]
+}

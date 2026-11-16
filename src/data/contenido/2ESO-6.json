@@ -1,0 +1,252 @@
+{
+  "curso": "2ESO",
+  "unidad": 6,
+  "reto": "Haz que tu robot gire exactamente 90° usando el giroscopio del Hub.",
+  "video": {
+    "titulo": "Girar con precisión",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Un robot gira «90 grados» sobre una mesa lisa y después sobre una alfombra, donde se queda corto.",
+        "locucion": "En 1º girabas 90 grados probando cuántas vueltas de rueda hacían falta. Pero si cambia el suelo o resbala una rueda, el giro ya no sale."
+      },
+      {
+        "plano": "Animación del Hub con sus tres ejes de giro: cabeceo, alabeo y guiñada.",
+        "locucion": "El Hub lleva dentro un giroscopio: un sensor que nota cuánto ha girado. Mide tres ángulos. El que nos interesa es la guiñada: girar a izquierda o derecha sobre el suelo."
+      },
+      {
+        "plano": "Captura de la app: «Fijar el ángulo de guiñada del Hub a 0».",
+        "locucion": "Antes de girar ponemos el contador a cero. A partir de ahí, la guiñada nos dice cuántos grados llevamos girados."
+      },
+      {
+        "plano": "Captura de «Repetir hasta» con la condición «guiñada > 90» y «Empezar a mover con dirección 100» dentro.",
+        "locucion": "«Repetir bucle hasta» repite lo que tiene dentro hasta que la condición se cumple. Giramos hasta que la guiñada pasa de 90 y entonces paramos."
+      },
+      {
+        "plano": "El robot gira rápido y se pasa del ángulo; después gira despacio y clava los 90.",
+        "locucion": "El robot no frena en seco: si gira rápido, se pasa unos grados. Gira despacio, o detente un poco antes de llegar."
+      },
+      {
+        "plano": "El robot traza un cuadrado sobre un plano con ángulos marcados.",
+        "locucion": "Tu reto: un robot explorador que trace un cuadrado con cuatro giros exactos."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Fijar el ángulo de guiñada del Hub a 0",
+      "explicacion": "Pone a cero el contador de giro. Se usa justo antes de empezar cada giro."
+    },
+    {
+      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
+      "explicacion": "Bloque de dato: cuántos grados se ha inclinado o girado el Hub. La guiñada es el giro a izquierda o derecha."
+    },
+    {
+      "texto": "Empezar a mover con dirección",
+      "explicacion": "Con dirección 100 el robot gira sobre sí mismo hasta que algo lo pare."
+    },
+    {
+      "texto": "Repetir bucle hasta",
+      "explicacion": "Repite lo que tiene dentro hasta que la condición de su hueco se cumple."
+    },
+    {
+      "texto": "Parar movimiento",
+      "explicacion": "Detiene el giro al llegar al ángulo."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero y un papel grande con una cruz dibujada para comprobar los ángulos.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero que deslice sin frenar."
+      },
+      {
+        "titulo": "El Hub",
+        "texto": "Fija el Hub en horizontal, centrado y bien sujeto. Si se mueve respecto al robot, el giroscopio medirá mal."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A y motor derecho al puerto B."
+      },
+      {
+        "titulo": "El plano",
+        "texto": "Dibuja en un papel grande dos líneas perpendiculares: te servirán para comprobar si el giro es de 90°."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Deja el robot quieto sobre la mesa al iniciar el programa: el giroscopio necesita un instante de reposo para medir bien."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué mide el giroscopio del Hub?",
+      "opciones": [
+        "La distancia recorrida",
+        "Cuánto se ha inclinado o girado el Hub",
+        "La velocidad de las ruedas",
+        "El peso del robot"
+      ],
+      "correcta": 1,
+      "explicacion": "Mide tres ángulos: cabeceo, alabeo y guiñada."
+    },
+    {
+      "pregunta": "¿Cuál de los tres ángulos mide el giro a izquierda o derecha sobre el suelo?",
+      "opciones": [
+        "El cabeceo",
+        "El alabeo",
+        "Ninguno",
+        "La guiñada"
+      ],
+      "correcta": 3,
+      "explicacion": "El cabeceo es inclinarse adelante o atrás; el alabeo, hacia los lados."
+    },
+    {
+      "pregunta": "¿Para qué ponemos la guiñada a 0 antes de girar?",
+      "opciones": [
+        "Para empezar a contar los grados desde cero",
+        "Para apagar el giroscopio",
+        "Para que el robot vaya recto",
+        "Para ahorrar batería"
+      ],
+      "correcta": 0,
+      "explicacion": "Así el valor de la guiñada coincide con los grados girados desde ese momento."
+    },
+    {
+      "pregunta": "¿Qué hace «Repetir bucle hasta»?",
+      "opciones": [
+        "Repite un número fijo de veces",
+        "Repite para siempre",
+        "Repite hasta que la condición se cumple",
+        "Ejecuta una sola vez"
+      ],
+      "correcta": 2,
+      "explicacion": "Cuando la condición pasa a ser verdadera, el programa sale del bucle."
+    },
+    {
+      "pregunta": "El robot gira hasta que la guiñada es mayor que 90, pero acaba en 97. ¿Por qué?",
+      "opciones": [
+        "El giroscopio está roto",
+        "Por la inercia: el robot no frena en seco",
+        "Porque el suelo está inclinado",
+        "Porque el programa tiene un error de sintaxis"
+      ],
+      "correcta": 1,
+      "explicacion": "Entre que se cumple la condición y los motores se detienen, el robot sigue girando un poco."
+    },
+    {
+      "pregunta": "¿Cómo corriges ese exceso?",
+      "opciones": [
+        "Girando más rápido",
+        "Quitando el bloque «Parar movimiento»",
+        "Poniendo la guiñada a 90 al empezar",
+        "Girando más despacio o parando un poco antes"
+      ],
+      "correcta": 3,
+      "explicacion": "A menos velocidad, menos inercia; o se compensa deteniéndose en 85–88."
+    },
+    {
+      "pregunta": "¿Qué ventaja tiene girar con giroscopio frente a girar contando vueltas de rueda?",
+      "opciones": [
+        "No depende del suelo ni de que una rueda resbale",
+        "Es más rápido",
+        "No necesita motores",
+        "Gasta menos batería"
+      ],
+      "correcta": 0,
+      "explicacion": "El giroscopio mide el giro real del robot, no el de las ruedas."
+    },
+    {
+      "pregunta": "Para trazar un cuadrado con cuatro giros, ¿qué haces antes de cada giro?",
+      "opciones": [
+        "Reiniciar el programa",
+        "Cambiar de puerto los motores",
+        "Poner otra vez la guiñada a 0",
+        "Apagar la matriz"
+      ],
+      "correcta": 2,
+      "explicacion": "Cada giro se mide desde cero; si no, habría que girar hasta 90, 180, 270…"
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Giro de 90° exacto",
+      "enunciado": "El robot gira sobre sí mismo hacia la derecha hasta completar 90°, medidos con el giroscopio, y se detiene.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "20 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "guiñada > 88",
+          "nivel": 0
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "100",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 0
+        }
+      ],
+      "notas": "El valor de parada (85–90) depende de la velocidad. Comprueba en tu Hub el signo de la guiñada: si al girar a la derecha sale negativa, la condición es «guiñada < −88»."
+    },
+    {
+      "titulo": "Cuadrado con giroscopio",
+      "enunciado": "El robot recorre un cuadrado de 30 cm de lado. Cada esquina es un giro de 90° medido con el giroscopio.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "20 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "4",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "30 cm",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "guiñada > 88",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "100",
+          "nivel": 2
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 1
+        }
+      ],
+      "notas": "La guiñada se pone a 0 dentro del bucle, antes de cada giro. Valora que el robot termine cerca del punto de partida."
+    }
+  ]
+}

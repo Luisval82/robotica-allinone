@@ -1,0 +1,291 @@
+{
+  "curso": "2ESO",
+  "unidad": 8,
+  "reto": "Construye una máquina de reflejos: una bandera se levanta por sorpresa y mide cuánto tardas en pulsar.",
+  "video": {
+    "titulo": "Juego de reflejos",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Dos jugadores frente a una máquina; una bandera sube de golpe, uno pulsa y aparece un número.",
+        "locucion": "¿Quién tiene mejores reflejos? Una bandera se levanta cuando menos te lo esperas y la máquina mide cuánto tardas en pulsar."
+      },
+      {
+        "plano": "Captura de la app: «Elegir un número aleatorio entre 2 y 6» dentro de un bloque «Esperar».",
+        "locucion": "Si la bandera subiera siempre a los tres segundos, harías trampa. «Elegir un número aleatorio» da cada vez un número distinto entre dos límites: lo usamos como tiempo de espera."
+      },
+      {
+        "plano": "Captura de «Reiniciar cronómetro» justo debajo del bloque que sube la bandera.",
+        "locucion": "El Hub tiene un cronómetro que cuenta segundos. Con «Reiniciar cronómetro» lo ponemos a cero en el instante en que sube la bandera."
+      },
+      {
+        "plano": "Captura de «Esperar hasta que ¿Está presionado?» y «Fijar tiempo a Cronómetro».",
+        "locucion": "Esperamos a que pulses y, en ese instante, guardamos en una variable lo que marca el cronómetro: ese es tu tiempo de reacción."
+      },
+      {
+        "plano": "Captura del bloque amarillo «Cuando el cronómetro» encabezando una pila.",
+        "locucion": "El bloque amarillo «Cuando el cronómetro» inicia una pila cuando el tiempo pasa de un valor. Sirve para reaccionar si alguien tarda demasiado."
+      },
+      {
+        "plano": "La máquina juega varias rondas y muestra el tiempo de cada una.",
+        "locucion": "Tu reto: una máquina de reflejos con varias rondas, que baja la bandera si el jugador se duerme."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Reiniciar cronómetro",
+      "explicacion": "Pone el cronómetro del Hub a cero."
+    },
+    {
+      "texto": "Cronómetro",
+      "explicacion": "Bloque de dato: los segundos transcurridos desde el último reinicio."
+    },
+    {
+      "texto": "Cuando el cronómetro",
+      "explicacion": "Bloque de inicio: arranca su pila cuando el cronómetro supera el valor elegido."
+    },
+    {
+      "texto": "Elegir un número aleatorio",
+      "explicacion": "Bloque de dato: un número al azar entre los dos límites que le indiques."
+    },
+    {
+      "texto": "Esperar hasta que",
+      "explicacion": "Espera a que el jugador pulse."
+    },
+    {
+      "texto": "¿Está presionado?",
+      "explicacion": "Pregunta si el jugador ha pulsado el sensor de fuerza."
+    },
+    {
+      "texto": "Escribir en la matriz de luces 5x5",
+      "explicacion": "Muestra el tiempo de reacción."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor mediano, el sensor de fuerza, una viga con una pieza de color que haga de bandera y vigas para la base.",
+    "pasos": [
+      {
+        "titulo": "La base",
+        "texto": "Monta una base estable con el Hub a la vista: en su matriz se leerá el resultado."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Fija el motor mediano a un lado, con el eje en horizontal."
+      },
+      {
+        "titulo": "La posición 0",
+        "texto": "Gira el motor con la mano hasta que sus marcas coincidan."
+      },
+      {
+        "titulo": "La bandera",
+        "texto": "Con el motor en 0, monta la bandera tumbada. En la posición 90 quedará levantada."
+      },
+      {
+        "titulo": "El pulsador",
+        "texto": "Fija el sensor de fuerza delante, bien sujeto y cómodo de pulsar."
+      },
+      {
+        "titulo": "Los cables y la prueba",
+        "texto": "Motor al puerto A y sensor de fuerza al puerto F. Levanta la bandera con la mano: no debe chocar con nada."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Para qué sirve el número aleatorio en este juego?",
+      "opciones": [
+        "Para que no se pueda adivinar cuándo sube la bandera",
+        "Para medir el tiempo de reacción",
+        "Para mover el motor más rápido",
+        "Para contar las rondas"
+      ],
+      "correcta": 0,
+      "explicacion": "Si la espera fuera siempre la misma, el jugador aprendería a anticiparse."
+    },
+    {
+      "pregunta": "«Elegir un número aleatorio entre 2 y 6»: ¿cuál de estos valores no puede salir?",
+      "opciones": [
+        "2",
+        "4",
+        "7",
+        "6"
+      ],
+      "correcta": 2,
+      "explicacion": "El resultado siempre está entre los dos límites, incluidos."
+    },
+    {
+      "pregunta": "¿En qué momento reiniciamos el cronómetro?",
+      "opciones": [
+        "Al iniciar el programa y nunca más",
+        "Cuando el jugador pulsa",
+        "Al escribir el resultado",
+        "Justo cuando sube la bandera"
+      ],
+      "correcta": 3,
+      "explicacion": "El tiempo de reacción se cuenta desde que aparece la señal."
+    },
+    {
+      "pregunta": "¿Qué marca el cronómetro en el instante en que el jugador pulsa?",
+      "opciones": [
+        "El número de rondas",
+        "El tiempo de reacción",
+        "La hora",
+        "El número aleatorio"
+      ],
+      "correcta": 1,
+      "explicacion": "Son los segundos transcurridos desde que subió la bandera."
+    },
+    {
+      "pregunta": "¿Por qué guardamos el cronómetro en una variable al pulsar?",
+      "opciones": [
+        "Porque el cronómetro sigue corriendo y así conservamos el valor de ese instante",
+        "Porque el cronómetro se borra al leerlo",
+        "Para que el motor vaya más despacio",
+        "Porque la matriz no puede mostrar números"
+      ],
+      "correcta": 0,
+      "explicacion": "Si lo leyéramos más tarde, incluiría el tiempo gastado en los bloques siguientes."
+    },
+    {
+      "pregunta": "¿Qué tipo de bloque es «Cronómetro»?",
+      "opciones": [
+        "Un bloque de inicio",
+        "Una pregunta",
+        "Una orden para el motor",
+        "Un dato: un número de segundos"
+      ],
+      "correcta": 3,
+      "explicacion": "Es redondeado y se coloca dentro de otros bloques."
+    },
+    {
+      "pregunta": "¿Qué hace una pila que empieza con «Cuando el cronómetro > 5»?",
+      "opciones": [
+        "Se ejecuta cada 5 segundos exactos",
+        "Reinicia el cronómetro",
+        "Arranca cuando han pasado más de 5 segundos desde el último reinicio",
+        "Detiene el programa a los 5 segundos"
+      ],
+      "correcta": 2,
+      "explicacion": "Es un bloque de inicio que vigila el valor del cronómetro."
+    },
+    {
+      "pregunta": "Un jugador mantiene el sensor pulsado desde antes de que suba la bandera. ¿Qué tiempo marcará?",
+      "opciones": [
+        "El tiempo real de reacción",
+        "Casi cero, porque al subir la bandera el sensor ya está pulsado",
+        "Ninguno: el programa se detiene",
+        "El número aleatorio"
+      ],
+      "correcta": 1,
+      "explicacion": "«Esperar hasta que» se cumple al instante. Es una trampa que conviene impedir."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Mide tus reflejos",
+      "enunciado": "La bandera empieza bajada. Tras una espera al azar de entre 2 y 6 segundos, se levanta. El programa mide cuánto tardas en pulsar y lo escribe en la matriz.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "número aleatorio entre 2 y 6",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "tiempo · Cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "tiempo",
+          "nivel": 0
+        }
+      ],
+      "notas": "El cronómetro se reinicia después de subir la bandera, no antes. El tiempo debe guardarse en la variable antes de escribirlo."
+    },
+    {
+      "titulo": "Cinco rondas con bandera que se rinde",
+      "enunciado": "El juego se repite cinco rondas. Además, en una pila aparte, si pasan más de 5 segundos desde que subió la bandera, esta se baja sola.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "5",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "número aleatorio entre 2 y 6",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 1
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "tiempo · Cronómetro",
+          "nivel": 1
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "tiempo",
+          "nivel": 1
+        },
+        {
+          "texto": "Cuando el cronómetro",
+          "valor": "> 5",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 0
+        }
+      ],
+      "notas": "La pila del cronómetro también puede dispararse entre rondas, con la bandera ya bajada: no tiene efecto. Compruébalo en la app antes de corregir."
+    }
+  ]
+}

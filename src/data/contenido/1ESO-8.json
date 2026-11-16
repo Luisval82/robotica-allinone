@@ -1,0 +1,268 @@
+{
+  "curso": "1ESO",
+  "unidad": 8,
+  "reto": "Construye una puerta de garaje que solo se abra con la tarjeta del color correcto.",
+  "video": {
+    "titulo": "La primera decisión",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Una puerta de garaje de LEGO: con una tarjeta azul no pasa nada; con una verde, se abre.",
+        "locucion": "Una puerta de garaje no se abre para cualquiera. Hoy tu máquina va a tomar su primera decisión: abrir o no abrir."
+      },
+      {
+        "plano": "Primer plano del sensor de color leyendo una tarjeta a dos centímetros.",
+        "locucion": "El sensor de color reconoce el color de lo que tiene delante, a uno o dos centímetros. Lo conectamos al puerto D."
+      },
+      {
+        "plano": "Captura de la app: «Si… entonces» con «¿Es de color verde?» en su hueco hexagonal.",
+        "locucion": "El bloque naranja «Si… entonces» tiene un hueco hexagonal para una pregunta. Lo que metas dentro solo se ejecuta si la respuesta es sí."
+      },
+      {
+        "plano": "El mismo programa sin bucle (no reacciona a la tarjeta) y dentro de un «Bucle infinito» (sí reacciona).",
+        "locucion": "Una decisión suelta se toma una sola vez, justo al empezar. Para que la puerta esté siempre atenta, metemos la decisión dentro de un «Bucle infinito»."
+      },
+      {
+        "plano": "Captura del bloque amarillo «Cuando el color es» encabezando una pila.",
+        "locucion": "Otra forma de hacerlo: el bloque amarillo «Cuando el color es» inicia su pila en el momento en que el sensor ve ese color."
+      },
+      {
+        "plano": "La puerta se abre con la tarjeta verde y avisa con luz roja ante la tarjeta equivocada.",
+        "locucion": "Tu reto: una puerta que abre con la tarjeta correcta y avisa cuando la tarjeta no vale."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Si... entonces...",
+      "explicacion": "Ejecuta lo que tiene dentro solo si la pregunta de su hueco es verdadera. Si es falsa, lo salta."
+    },
+    {
+      "texto": "¿Es de color...?",
+      "explicacion": "Pregunta al sensor de color si ve el color elegido. Responde verdadero o falso."
+    },
+    {
+      "texto": "Cuando el color es",
+      "explicacion": "Bloque de inicio: arranca su pila cuando el sensor ve el color elegido."
+    },
+    {
+      "texto": "Bucle infinito",
+      "explicacion": "Repite sin parar lo que tiene dentro. Así la decisión se revisa continuamente."
+    },
+    {
+      "texto": "Motor Ir a la posición",
+      "explicacion": "Sube la puerta a la posición de abierta y la baja a la de cerrada."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande, el sensor de color, vigas para el marco y la hoja, y tarjetas o piezas de varios colores.",
+    "pasos": [
+      {
+        "titulo": "El marco",
+        "texto": "Monta una base con dos postes y un travesaño: la entrada del garaje."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Fija el motor grande en lo alto de un poste, con el eje en horizontal a lo largo del travesaño."
+      },
+      {
+        "titulo": "La posición 0",
+        "texto": "Gira el motor con la mano hasta que sus marcas coincidan antes de montar la hoja."
+      },
+      {
+        "titulo": "La hoja",
+        "texto": "Con el motor en 0, monta la hoja colgando en vertical: esa es la puerta cerrada."
+      },
+      {
+        "titulo": "El lector de tarjetas",
+        "texto": "Fija el sensor de color en el otro poste, mirando hacia fuera, a la altura a la que vas a acercar la tarjeta."
+      },
+      {
+        "titulo": "Los cables y la prueba",
+        "texto": "Motor grande al puerto A y sensor de color al puerto D. Sube la hoja con la mano: debe quedar horizontal sin chocar."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "En «Si… entonces», ¿qué ocurre cuando la pregunta es falsa?",
+      "opciones": [
+        "Se detiene el programa",
+        "Se ejecuta lo de dentro igualmente",
+        "Se salta lo de dentro y el programa sigue",
+        "Se repite la pregunta para siempre"
+      ],
+      "correcta": 2,
+      "explicacion": "Sin «Si no», cuando la condición es falsa simplemente no se hace nada."
+    },
+    {
+      "pregunta": "¿Para qué metemos la decisión dentro de un «Bucle infinito»?",
+      "opciones": [
+        "Para comprobar el color continuamente",
+        "Para que el motor tenga más fuerza",
+        "Para que el programa termine antes",
+        "Para apagar el sensor"
+      ],
+      "correcta": 0,
+      "explicacion": "Sin bucle, la puerta solo miraría la tarjeta en el instante de arrancar."
+    },
+    {
+      "pregunta": "¿A qué distancia reconoce bien un color el sensor?",
+      "opciones": [
+        "A un metro",
+        "A medio metro",
+        "Tocando la tarjeta con fuerza",
+        "A uno o dos centímetros"
+      ],
+      "correcta": 3,
+      "explicacion": "Más lejos, la lectura deja de ser fiable."
+    },
+    {
+      "pregunta": "¿En qué puerto va el sensor de color?",
+      "opciones": [
+        "En el F",
+        "En el D",
+        "En el A",
+        "En el E"
+      ],
+      "correcta": 1,
+      "explicacion": "Color en D, distancia en E y fuerza en F."
+    },
+    {
+      "pregunta": "Dentro del bucle: «Si ¿Es de color verde? entonces» abrir, esperar y cerrar. Enseñas una tarjeta roja. ¿Qué pasa?",
+      "opciones": [
+        "La puerta se abre",
+        "La puerta se abre a medias",
+        "El programa se detiene",
+        "Nada: la puerta sigue cerrada"
+      ],
+      "correcta": 3,
+      "explicacion": "La condición es falsa, así que el bloque se salta lo que tiene dentro."
+    },
+    {
+      "pregunta": "¿Qué tipo de bloque es «Cuando el color es»?",
+      "opciones": [
+        "Un bloque de inicio",
+        "Una pregunta",
+        "Un dato",
+        "Un bucle"
+      ],
+      "correcta": 0,
+      "explicacion": "Arranca su propia pila cuando el sensor ve ese color."
+    },
+    {
+      "pregunta": "Quieres que la puerta también se abra con la tarjeta azul. ¿Qué añades?",
+      "opciones": [
+        "Un segundo sensor de color",
+        "Otro «Si… entonces» con «¿Es de color azul?» dentro del bucle",
+        "Un «Esperar 10 segundos»",
+        "Otro motor"
+      ],
+      "correcta": 1,
+      "explicacion": "Dos decisiones seguidas dentro del mismo bucle: una para cada color."
+    },
+    {
+      "pregunta": "¿En qué se diferencia «Bucle infinito» de «Repetir 4»?",
+      "opciones": [
+        "En nada",
+        "«Repetir 4» es más rápido",
+        "El bucle infinito no termina nunca; «Repetir 4» acaba tras cuatro vueltas",
+        "El bucle infinito solo admite un bloque"
+      ],
+      "correcta": 2,
+      "explicacion": "Debajo de un bucle infinito no se puede encajar nada: nunca se llegaría."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Solo con verde",
+      "enunciado": "La puerta se abre únicamente cuando el sensor ve la tarjeta verde: sube a 90°, espera 3 segundos y baja. Con cualquier otra tarjeta sigue cerrada.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "valor": "¿Es de color verde? D",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 2
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 2
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 2
+        }
+      ],
+      "notas": "También vale una pila que empiece con «Cuando el color es verde», sin bucle."
+    },
+    {
+      "titulo": "Verde abre, rojo avisa",
+      "enunciado": "Con la tarjeta verde, el botón central se pone verde y la puerta se abre y se cierra. Con la roja, la puerta no se mueve: el botón se pone rojo y suena un pitido grave de 1 segundo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "valor": "¿Es de color verde? D",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "verde",
+          "nivel": 2
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 2
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 2
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 2
+        },
+        {
+          "texto": "Si... entonces...",
+          "valor": "¿Es de color rojo? D",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "rojo",
+          "nivel": 2
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "48 · 1",
+          "nivel": 2
+        }
+      ],
+      "notas": "Son dos decisiones seguidas dentro del mismo bucle. El «Si… entonces… Si no» se estudia en 2º."
+    }
+  ]
+}

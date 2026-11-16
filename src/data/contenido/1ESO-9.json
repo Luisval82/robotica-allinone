@@ -1,0 +1,297 @@
+{
+  "curso": "1ESO",
+  "unidad": 9,
+  "reto": "Proyecto final: un tiovivo con taquilla que se pone en marcha al pulsar, abre la barrera y se detiene si alguien se acerca.",
+  "video": {
+    "titulo": "La feria automática",
+    "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "Un tiovivo de LEGO con barrera y pulsador funcionando solo.",
+        "locucion": "Último reto del curso: una atracción de feria que funciona sola. Vas a usar dos motores y dos sensores a la vez."
+      },
+      {
+        "plano": "Esquema con las cuatro partes señaladas: pulsador, barrera, tiovivo y sensor de distancia.",
+        "locucion": "El pulsador es la taquilla. El motor mediano mueve la barrera de acceso. El motor grande hace girar el tiovivo. Y el sensor de distancia vigila que nadie se acerque."
+      },
+      {
+        "plano": "Solo la barrera funcionando: se pulsa, sube, espera y baja.",
+        "locucion": "Un proyecto grande se construye por partes. Primero la barrera: esperar al pulsador, subir, esperar y bajar. Pruébala antes de seguir."
+      },
+      {
+        "plano": "Captura de la app: «Arrancar motor», un «Repetir» con un «Si… entonces» dentro y «Parar motor».",
+        "locucion": "Después, el viaje: arrancamos el tiovivo y, mientras gira, un bucle comprueba muchas veces por segundo si alguien se ha acercado. Si es así, lo paramos."
+      },
+      {
+        "plano": "El tiovivo se detiene y suena un aviso de fin de viaje.",
+        "locucion": "Al acabar el viaje paramos el motor y lo anunciamos con un sonido."
+      },
+      {
+        "plano": "La atracción completa atiende a varios pasajeros seguidos.",
+        "locucion": "Tu reto: unir las dos partes en un solo programa que funcione viaje tras viaje."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Esperar hasta que",
+      "explicacion": "Mantiene la atracción parada hasta que alguien pulsa la taquilla."
+    },
+    {
+      "texto": "Repetir bucle",
+      "explicacion": "Repite el viaje varias veces y, dentro de cada viaje, repite la vigilancia."
+    },
+    {
+      "texto": "Si... entonces...",
+      "explicacion": "Durante el viaje, decide si hay que parar el tiovivo."
+    },
+    {
+      "texto": "¿Está presionado?",
+      "explicacion": "Pregunta si se ha pulsado la taquilla."
+    },
+    {
+      "texto": "¿Está más próximo a?",
+      "explicacion": "Pregunta si alguien se ha acercado demasiado al tiovivo."
+    },
+    {
+      "texto": "Arrancar motor",
+      "explicacion": "Pone el tiovivo a girar mientras el programa sigue vigilando."
+    },
+    {
+      "texto": "Parar motor",
+      "explicacion": "Detiene el tiovivo al acabar el viaje o si alguien se acerca."
+    },
+    {
+      "texto": "Tocar sonido hasta acabar",
+      "explicacion": "Anuncia el final del viaje."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande, un motor mediano, el sensor de fuerza, el sensor de distancia, una plataforma redonda o en cruz y vigas para la barrera y la base.",
+    "pasos": [
+      {
+        "titulo": "El tiovivo",
+        "texto": "Fija el motor grande a la base con el eje hacia arriba y monta sobre él una plataforma que gire libre."
+      },
+      {
+        "titulo": "La barrera",
+        "texto": "Monta el motor mediano en un poste junto a la entrada. Con el motor en la posición 0, coloca el brazo en horizontal."
+      },
+      {
+        "titulo": "La taquilla",
+        "texto": "Fija el sensor de fuerza junto a la barrera, con el pulsador a mano."
+      },
+      {
+        "titulo": "La zona de seguridad",
+        "texto": "Coloca el sensor de distancia junto al tiovivo, mirando hacia la zona de paso. La plataforma no debe cruzarse por delante."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor grande al puerto A, motor mediano al puerto B, sensor de distancia al E y sensor de fuerza al F."
+      },
+      {
+        "titulo": "Comprueba por partes",
+        "texto": "Mueve con la mano el tiovivo y la barrera: nada debe rozar. Después prueba cada sensor por separado."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Por qué conviene programar y probar cada parte por separado?",
+      "opciones": [
+        "Porque así los errores son más fáciles de encontrar",
+        "Porque el Hub solo admite un motor",
+        "Porque gasta menos batería",
+        "Porque lo exige la app"
+      ],
+      "correcta": 0,
+      "explicacion": "Si todo se prueba a la vez, no se sabe qué parte falla."
+    },
+    {
+      "pregunta": "¿Qué bloque deja el tiovivo girando mientras el programa sigue comprobando el sensor?",
+      "opciones": [
+        "Accionar motor durante",
+        "Motor Ir a la posición",
+        "Arrancar motor",
+        "Esperar hasta que"
+      ],
+      "correcta": 2,
+      "explicacion": "«Arrancar motor» no espera: el motor gira y el programa continúa."
+    },
+    {
+      "pregunta": "¿Qué combinación deja la atracción esperando a que alguien pulse la taquilla?",
+      "opciones": [
+        "«Repetir» con «Arrancar motor»",
+        "«Si… entonces» con «Parar motor»",
+        "«Tocar sonido hasta acabar»",
+        "«Esperar hasta que» con «¿Está presionado?»"
+      ],
+      "correcta": 3,
+      "explicacion": "El programa no pasa de ese bloque hasta que el sensor de fuerza se pulsa."
+    },
+    {
+      "pregunta": "Durante el viaje se repite 100 veces: comprobar el sensor y «Esperar 0.1 segundos». ¿Cuánto dura el viaje como máximo?",
+      "opciones": [
+        "1 segundo",
+        "Unos 10 segundos",
+        "100 segundos",
+        "No termina nunca"
+      ],
+      "correcta": 1,
+      "explicacion": "100 repeticiones de una décima de segundo son 10 segundos."
+    },
+    {
+      "pregunta": "¿En qué puerto va el motor grande del tiovivo?",
+      "opciones": [
+        "En el A",
+        "En el E",
+        "En el F",
+        "En el D"
+      ],
+      "correcta": 0,
+      "explicacion": "Los motores ocupan los primeros puertos por orden: el grande en A y el mediano en B."
+    },
+    {
+      "pregunta": "El programa para el tiovivo si hay algo a menos de 10 cm. Alguien acerca la mano a 5 cm. ¿Qué ocurre?",
+      "opciones": [
+        "Nada",
+        "El tiovivo acelera",
+        "Se abre la barrera",
+        "El tiovivo se detiene"
+      ],
+      "correcta": 3,
+      "explicacion": "5 cm es menos que 10: la pregunta es verdadera y se ejecuta «Parar motor»."
+    },
+    {
+      "pregunta": "Quieres tres viajes seguidos. ¿Qué haces?",
+      "opciones": [
+        "Copio todo el programa tres veces",
+        "Meto todo el programa dentro de un «Repetir 3»",
+        "Pulso la taquilla tres veces seguidas",
+        "Triplico la velocidad"
+      ],
+      "correcta": 1,
+      "explicacion": "El bucle vuelve a dejar la atracción esperando la siguiente pulsación."
+    },
+    {
+      "pregunta": "El tiovivo no se detiene aunque te acerques. ¿Qué compruebas primero?",
+      "opciones": [
+        "El sonido de fin de viaje",
+        "La velocidad de la barrera",
+        "Que el sensor de distancia mira hacia la zona de paso y está en el puerto E",
+        "El color del botón central"
+      ],
+      "correcta": 2,
+      "explicacion": "Si el sensor apunta a otro lado o el bloque mira otro puerto, nunca detectará a nadie."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "La taquilla y la barrera",
+      "enunciado": "Al pulsar la taquilla, la barrera sube a 90°, espera 3 segundos y baja. El programa atiende a tres pasajeros seguidos.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "3",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 90 · camino más corto",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 0 · camino más corto",
+          "nivel": 1
+        }
+      ],
+      "notas": "La barrera es el motor mediano, en el puerto B. Si sube hacia el otro lado, vale 270."
+    },
+    {
+      "titulo": "Viaje con parada de seguridad",
+      "enunciado": "Al pulsar la taquilla se abre y se cierra la barrera y el tiovivo arranca. Gira unos 10 segundos, pero se detiene antes si alguien se acerca a menos de 10 cm. Al terminar suena un aviso.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 90 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 0 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad al… %",
+          "valor": "A · 30",
+          "nivel": 0
+        },
+        {
+          "texto": "Arrancar motor",
+          "valor": "A",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "100",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "valor": "¿Está más próximo a 10 cm? E",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar motor",
+          "valor": "A",
+          "nivel": 2
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "0.1",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar motor",
+          "valor": "A",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "valor": "sonido de fin de viaje",
+          "nivel": 0
+        }
+      ],
+      "notas": "Si alguien se acerca, el tiovivo se para y no vuelve a arrancar en ese viaje: es lo esperado. Cien repeticiones de 0,1 segundos son unos 10 segundos."
+    }
+  ]
+}

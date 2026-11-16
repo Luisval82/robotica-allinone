@@ -1,0 +1,260 @@
+{
+  "curso": "1ESO",
+  "unidad": 6,
+  "reto": "Monta un robot repartidor con dos motores y haz que recorra un circuito cuadrado.",
+  "video": {
+    "titulo": "Avanzar y girar",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Un robot de dos ruedas avanza en línea recta por una mesa.",
+        "locucion": "Con dos motores y dos ruedas tenemos una base de conducción: el robot que vas a usar el resto del curso."
+      },
+      {
+        "plano": "Captura de la app: «Fijar motores en movimiento» con A y B.",
+        "locucion": "Lo primero es decirle al Hub qué dos motores mueven el robot. Con «Fijar motores en movimiento» elegimos A para la rueda izquierda y B para la derecha."
+      },
+      {
+        "plano": "Se mide con una cinta métrica lo que avanza el robot con una vuelta de rueda.",
+        "locucion": "Para avanzar en centímetros, el Hub necesita saber cuánto recorre el robot con una vuelta de rueda. Lo medimos y lo guardamos con «Fijar 1 rotación del motor a una distancia recorrida»."
+      },
+      {
+        "plano": "El robot avanza 20 centímetros despacio y después rápido.",
+        "locucion": "«Mover durante» avanza recto una distancia exacta. «Fijar velocidad de movimiento» decide lo rápido que va."
+      },
+      {
+        "plano": "El robot traza una curva y luego gira sobre sí mismo.",
+        "locucion": "«Mover con dirección durante» avanza girando. Con dirección 100, una rueda avanza y la otra retrocede: el robot gira sobre sí mismo."
+      },
+      {
+        "plano": "El robot recorre un cuadrado marcado con cinta en el suelo.",
+        "locucion": "Tu reto: un circuito cuadrado. Cuatro lados y cuatro giros. Ya sabes cómo hacerlo sin copiar bloques."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Fijar motores en movimiento",
+      "explicacion": "Indica qué dos motores mueven el robot: el izquierdo y el derecho. Se pone una vez, al principio."
+    },
+    {
+      "texto": "Fijar velocidad de movimiento",
+      "explicacion": "Guarda la velocidad del robot para los bloques de movimiento que vienen después."
+    },
+    {
+      "texto": "Fijar 1 rotación del motor a una distancia recorrida",
+      "explicacion": "Le dice al Hub cuántos centímetros avanza el robot con una vuelta de rueda. Así puedes mover en centímetros."
+    },
+    {
+      "texto": "Mover durante",
+      "explicacion": "Avanza o retrocede en línea recta una cantidad exacta."
+    },
+    {
+      "texto": "Mover con dirección durante",
+      "explicacion": "Avanza girando una cantidad exacta. Dirección 0 es recto; 100 o −100, girar sobre sí mismo."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos, dos ruedas iguales, una pieza de apoyo trasero, vigas y pasadores.",
+    "pasos": [
+      {
+        "titulo": "El chasis",
+        "texto": "Monta un bastidor rectangular de vigas, algo más ancho que el Hub."
+      },
+      {
+        "titulo": "Los motores",
+        "texto": "Fija un motor mediano a cada lado, a la misma altura y con los ejes hacia fuera."
+      },
+      {
+        "titulo": "Las ruedas",
+        "texto": "Monta una rueda en cada motor. Tienen que ser iguales."
+      },
+      {
+        "titulo": "El apoyo trasero",
+        "texto": "Añade detrás un tercer punto de apoyo que deslice o ruede libre."
+      },
+      {
+        "titulo": "El Hub y los cables",
+        "texto": "Fija el Hub centrado sobre el chasis. Motor izquierdo al puerto A y motor derecho al puerto B."
+      },
+      {
+        "titulo": "Comprueba y mide",
+        "texto": "Empuja el robot: debe rodar recto. Mide con una cinta cuánto avanza con una vuelta de rueda y apúntalo."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Para qué sirve «Fijar motores en movimiento»?",
+      "opciones": [
+        "Para arrancar los motores",
+        "Para frenar el robot",
+        "Para indicar qué motores son el izquierdo y el derecho",
+        "Para medir la distancia"
+      ],
+      "correcta": 2,
+      "explicacion": "El Hub necesita saber qué par de motores mueve el robot antes de usar los bloques de movimiento."
+    },
+    {
+      "pregunta": "¿Qué necesita saber el Hub para moverse en centímetros?",
+      "opciones": [
+        "Cuántos centímetros avanza con una vuelta de rueda",
+        "El peso del robot",
+        "El color de las ruedas",
+        "La carga de la batería"
+      ],
+      "correcta": 0,
+      "explicacion": "Con ese dato convierte centímetros en giro de los motores."
+    },
+    {
+      "pregunta": "¿Qué hace el robot con dirección 0?",
+      "opciones": [
+        "Gira a la izquierda",
+        "Se para",
+        "Retrocede",
+        "Avanza recto"
+      ],
+      "correcta": 3,
+      "explicacion": "Dirección 0 reparte la misma velocidad a las dos ruedas."
+    },
+    {
+      "pregunta": "¿Qué hace el robot con dirección 100?",
+      "opciones": [
+        "Avanza recto muy rápido",
+        "Gira sobre sí mismo",
+        "Traza una curva amplia",
+        "Retrocede recto"
+      ],
+      "correcta": 1,
+      "explicacion": "Una rueda avanza y la otra retrocede a la misma velocidad."
+    },
+    {
+      "pregunta": "Para recorrer un cuadrado, ¿cuántas veces repites «avanzar y girar 90°»?",
+      "opciones": [
+        "2",
+        "3",
+        "8",
+        "4"
+      ],
+      "correcta": 3,
+      "explicacion": "Un cuadrado tiene cuatro lados y cuatro esquinas."
+    },
+    {
+      "pregunta": "Le pides avanzar y el robot va hacia atrás. ¿Cuál es la causa más probable?",
+      "opciones": [
+        "Los motores izquierdo y derecho están intercambiados",
+        "La velocidad es demasiado alta",
+        "Falta el apoyo trasero",
+        "La batería está baja"
+      ],
+      "correcta": 0,
+      "explicacion": "Si A y B están cambiados, el robot entiende al revés cuál es delante."
+    },
+    {
+      "pregunta": "Le pides 20 cm y recorre 25. ¿Qué bloque corriges?",
+      "opciones": [
+        "Fijar velocidad de movimiento",
+        "Fijar motores en movimiento",
+        "Fijar 1 rotación del motor a una distancia recorrida",
+        "Mover con dirección durante"
+      ],
+      "correcta": 2,
+      "explicacion": "El valor guardado no coincide con lo que avanza realmente una vuelta de rueda."
+    },
+    {
+      "pregunta": "¿Qué hace «Fijar velocidad de movimiento»?",
+      "opciones": [
+        "Mueve el robot 1 segundo",
+        "Guarda la velocidad para los siguientes bloques de movimiento",
+        "Detiene el robot",
+        "Gira el robot 90°"
+      ],
+      "correcta": 1,
+      "explicacion": "Como «Fijar velocidad» de los motores: guarda un valor, no mueve nada."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Ida y vuelta",
+      "enunciado": "El robot avanza 30 cm, gira media vuelta sobre sí mismo y vuelve al punto de partida.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar motores en movimiento",
+          "valor": "A + B",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar 1 rotación del motor a una distancia recorrida",
+          "valor": "distancia medida",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "30 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "30 cm",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover con dirección durante",
+          "valor": "dirección 100 · giro de 180°",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "30 cm",
+          "nivel": 0
+        }
+      ],
+      "notas": "La cantidad que produce un giro de 180° se ajusta probando: depende de la separación entre ruedas."
+    },
+    {
+      "titulo": "Circuito cuadrado",
+      "enunciado": "El robot recorre un cuadrado de 40 cm de lado y termina donde empezó. Usa un bucle.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar motores en movimiento",
+          "valor": "A + B",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar 1 rotación del motor a una distancia recorrida",
+          "valor": "distancia medida",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "30 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "4",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "40 cm",
+          "nivel": 1
+        },
+        {
+          "texto": "Mover con dirección durante",
+          "valor": "dirección 100 · giro de 90°",
+          "nivel": 1
+        }
+      ],
+      "notas": "Valora el uso de «Repetir» y que el robot termine cerca de donde empezó. El giro de 90° no saldrá perfecto a la primera."
+    }
+  ]
+}

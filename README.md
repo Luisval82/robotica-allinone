@@ -5,8 +5,8 @@ Nueve unidades por curso, solo con bloques de palabras (ver [TEMARIO.md](./TEMAR
 
 **Fase actual: parte del alumno** — cada unidad tiene su vista interior con cuatro pasos en
 orden (guion de vídeo, puertos del Hub, bloques de palabras y modelo final) y la PRUEBA UD-X con
-test autocorregido y dos entregas de programación por bloques. Están redactadas las unidades 1, 2
-y 3 de cada curso; las demás muestran lo que viene de `TEMARIO.md`.
+test autocorregido y dos entregas de programación por bloques. Están redactadas las 27 unidades
+(9 por curso) a partir de `TEMARIO.md`.
 
 Stack: Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · listo para Vercel.
 
@@ -110,9 +110,12 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
   `"pendiente": true`: su nombre está por comprobar en la app SPIKE.
 - `src/data/contenido/CURSO-N.json` contiene lo redactado de cada unidad: reto, guion de vídeo,
   explicación de cada bloque, pasos de montaje, test (con la respuesta correcta y su explicación) y
-  las dos prácticas con su solución oficial. Hay **9 archivos** (UD 1–3 de 1º, 2º y 3º ESO).
-- Para redactar otra unidad, copia uno de esos archivos, cámbiale el nombre, `curso` y `unidad`, y
-  añádelo en `src/data/contenido/index.ts`.
+  las dos prácticas con su solución oficial. Hay **27 archivos**, uno por unidad. En total: 216
+  preguntas de test y 54 prácticas con solución.
+- Para corregir un texto, una pregunta o una solución, edita el archivo de esa unidad. Si añades
+  un archivo nuevo, regístralo en `src/data/contenido/index.ts`.
+- Todo el contenido es un borrador redactado a partir del temario: conviene repasarlo con la app
+  SPIKE y el set delante antes de usarlo en clase, sobre todo las soluciones de 3º.
 - Los pasos de montaje describen el modelo por funciones, no pieza a pieza: revísalos con el set
   delante. Los colores de las categorías están en `src/app/globals.css` (`--color-block-*`).
 

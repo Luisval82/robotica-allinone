@@ -1,0 +1,330 @@
+{
+  "curso": "3ESO",
+  "unidad": 4,
+  "reto": "Construye una caja fuerte con dial: solo se abre si giras el dial a los números de la combinación, en orden.",
+  "video": {
+    "titulo": "Memoria para la máquina",
+    "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "Una caja fuerte de LEGO; una mano gira el dial a tres posiciones y el cerrojo se abre.",
+        "locucion": "Una caja fuerte guarda una combinación: varios números en un orden concreto. Una variable guarda un solo valor. Para guardar varios, necesitamos una lista."
+      },
+      {
+        "plano": "Captura de la app: se crea la lista «combinacion» y se le añaden 90, 180 y 270.",
+        "locucion": "Una lista es una fila de cajas numeradas. La creamos en Variables y añadimos valores con «Añadir elemento a lista». El primero ocupa la posición 1."
+      },
+      {
+        "plano": "Captura de los bloques redondeados «Elemento 2 de combinacion» y «Longitud de combinacion» con sus valores.",
+        "locucion": "«Elemento de lista» devuelve el valor guardado en una posición. «Longitud de lista» dice cuántos elementos hay."
+      },
+      {
+        "plano": "Una mano gira el motor grande y la matriz muestra el ángulo.",
+        "locucion": "El motor grande hace de dial: el programa no lo mueve, lo giras tú con la mano. El bloque «Posición del motor» lee en qué ángulo lo has dejado."
+      },
+      {
+        "plano": "Captura de un bucle con una variable «paso» que avanza por la lista.",
+        "locucion": "El programa recorre la lista: espera a que el dial esté en el primer número, después en el segundo… Una variable «paso» recuerda por cuál vamos. Cuando «paso» supera la longitud de la lista, la combinación está completa."
+      },
+      {
+        "plano": "La caja se abre tras marcar la combinación; con un número equivocado, el botón central se pone rojo.",
+        "locucion": "Tu reto: una caja fuerte que se abre con la combinación correcta y da pistas con la luz del botón."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Lista",
+      "explicacion": "Bloque de dato: una fila de valores guardados en orden, cada uno con su número de posición."
+    },
+    {
+      "texto": "Añadir elemento a lista",
+      "explicacion": "Añade un valor al final de la lista."
+    },
+    {
+      "texto": "Elemento de lista",
+      "explicacion": "Bloque de dato: el valor guardado en la posición que indiques. La primera es la 1."
+    },
+    {
+      "texto": "Longitud de lista",
+      "explicacion": "Bloque de dato: cuántos elementos tiene la lista."
+    },
+    {
+      "texto": "¿La lista contiene...?",
+      "explicacion": "Pregunta si un valor está guardado en la lista, en cualquier posición."
+    },
+    {
+      "texto": "Posición del motor",
+      "explicacion": "Lee el ángulo en el que has dejado el dial."
+    },
+    {
+      "texto": "Repetir bucle hasta",
+      "explicacion": "Recorre la combinación hasta completar todos sus números."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande para el dial, un motor mediano para el cerrojo, una rueda o un disco, y vigas y paneles para la caja y su puerta.",
+    "pasos": [
+      {
+        "titulo": "La caja",
+        "texto": "Monta una caja con una puerta que abra hacia fuera."
+      },
+      {
+        "titulo": "El cerrojo",
+        "texto": "Fija el motor mediano dentro, junto al borde de la puerta, con un pestillo en su eje: en la posición 0 traba la puerta y en la 90 la libera."
+      },
+      {
+        "titulo": "El dial",
+        "texto": "Fija el motor grande en el frontal, con el eje hacia fuera, y monta en él una rueda con una flecha."
+      },
+      {
+        "titulo": "La escala",
+        "texto": "Con el motor del dial en su posición 0, marca en el frontal dónde quedan el 0, el 90, el 180 y el 270."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor grande del dial al puerto A y motor mediano del cerrojo al puerto B."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Gira el dial con la mano: debe moverse suave. Cierra la puerta y comprueba que el pestillo la traba."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿En qué se diferencia una lista de una variable?",
+      "opciones": [
+        "La lista solo guarda texto",
+        "La lista guarda varios valores en orden; la variable, uno solo",
+        "La variable es más rápida",
+        "No hay diferencia"
+      ],
+      "correcta": 1,
+      "explicacion": "Cada valor de la lista tiene su número de posición."
+    },
+    {
+      "pregunta": "La lista combinacion contiene 90, 180 y 270. ¿Qué devuelve «Elemento 2 de combinacion»?",
+      "opciones": [
+        "90",
+        "2",
+        "270",
+        "180"
+      ],
+      "correcta": 3,
+      "explicacion": "Las posiciones empiezan en 1: el segundo elemento es 180."
+    },
+    {
+      "pregunta": "Con esa misma lista, ¿qué devuelve «Longitud de combinacion»?",
+      "opciones": [
+        "3",
+        "270",
+        "540",
+        "2"
+      ],
+      "correcta": 0,
+      "explicacion": "La lista tiene tres elementos."
+    },
+    {
+      "pregunta": "Ejecutas «Añadir 45 a combinacion». ¿Dónde queda el 45?",
+      "opciones": [
+        "En la posición 1",
+        "Sustituye al 90",
+        "Al final, en la posición 4",
+        "No se guarda"
+      ],
+      "correcta": 2,
+      "explicacion": "«Añadir» coloca siempre el valor nuevo al final."
+    },
+    {
+      "pregunta": "Con la lista 90, 180 y 270, ¿qué responde «¿combinacion contiene 270?»?",
+      "opciones": [
+        "Falso",
+        "Verdadero",
+        "3",
+        "270"
+      ],
+      "correcta": 1,
+      "explicacion": "El 270 está en la lista, da igual en qué posición."
+    },
+    {
+      "pregunta": "¿Cómo sabe el programa por qué número de la combinación va?",
+      "opciones": [
+        "Lo recuerda el motor",
+        "Con el sensor de color",
+        "No lo sabe",
+        "Con una variable que cuenta los pasos"
+      ],
+      "correcta": 3,
+      "explicacion": "La variable «paso» empieza en 1 y aumenta cada vez que se acierta un número."
+    },
+    {
+      "pregunta": "¿Por qué el programa no mueve el motor del dial?",
+      "opciones": [
+        "Porque aquí el motor es una entrada: lo gira la persona y el programa lee su posición",
+        "Porque está estropeado",
+        "Porque el motor grande no puede girar solo",
+        "Porque va en el puerto A"
+      ],
+      "correcta": 0,
+      "explicacion": "Los motores de SPIKE también sirven como sensores de giro."
+    },
+    {
+      "pregunta": "Quieres una combinación de cuatro números en lugar de tres. ¿Qué cambias?",
+      "opciones": [
+        "El bucle entero",
+        "El puerto del dial",
+        "Solo los elementos de la lista: el bucle usa su longitud",
+        "Hay que crear otra lista"
+      ],
+      "correcta": 2,
+      "explicacion": "Como el bucle termina cuando «paso» supera la longitud, se adapta solo."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Combinación de tres números",
+      "enunciado": "Guarda la combinación 90, 180, 270 en una lista. El programa espera a que el dial esté en cada número, en orden, pitando en cada acierto. Al completar la combinación, abre el cerrojo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "90 · combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "180 · combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "270 · combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "paso · 1",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "paso > Longitud de combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "Posición del motor A cerca de Elemento paso de combinacion",
+          "nivel": 1
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "72 · 0.2",
+          "nivel": 1
+        },
+        {
+          "texto": "Cambiar variable por",
+          "valor": "paso · 1",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 90 · camino más corto",
+          "nivel": 0
+        }
+      ],
+      "notas": "«Cerca de» significa un margen de unos 10 grados, hecho con dos comparaciones unidas por «y». En la app las listas conservan su contenido: hay que vaciarla al empezar o añadir los valores una sola vez, o la combinación crecerá en cada ejecución."
+    },
+    {
+      "titulo": "Cuatro números y pistas",
+      "enunciado": "Amplía la combinación a cuatro números. En una segunda pila, el botón central se pone verde cuando el dial está en un número que forma parte de la combinación y rojo cuando no.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "90 · combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "180 · combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "270 · combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "0 · combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "paso · 1",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "paso > Longitud de combinacion",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "Posición del motor A cerca de Elemento paso de combinacion",
+          "nivel": 1
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "72 · 0.2",
+          "nivel": 1
+        },
+        {
+          "texto": "Cambiar variable por",
+          "valor": "paso · 1",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "B · 90 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿combinacion contiene Posición del motor A?",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "verde",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "rojo",
+          "nivel": 2
+        }
+      ],
+      "notas": "El bucle principal no cambia al añadir un número: valora que use la longitud de la lista. La pista exige que el dial esté exactamente en el valor; da por bueno que redondeen la posición."
+    }
+  ]
+}

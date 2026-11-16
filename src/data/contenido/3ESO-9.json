@@ -1,0 +1,335 @@
+{
+  "curso": "3ESO",
+  "unidad": 9,
+  "reto": "Proyecto final: una carretilla elevadora autónoma que sigue una línea, reconoce cada estación por su color, recoge el palé y registra las entregas.",
+  "video": {
+    "titulo": "Almacén robotizado",
+    "duracion": "7 min",
+    "escenas": [
+      {
+        "plano": "Una maqueta de almacén: una carretilla de LEGO sigue una línea negra y se detiene en una marca roja.",
+        "locucion": "En los almacenes automatizados, las carretillas se mueven solas: siguen líneas en el suelo, reconocen las estaciones y llevan la cuenta de lo que entregan. Es tu proyecto final."
+      },
+      {
+        "plano": "Esquema del programa dividido en tres bloques propios: seguir hasta, recoger y dejar.",
+        "locucion": "Un proyecto así solo se puede hacer por partes. Cada parte será un bloque propio: seguir la línea hasta una estación, recoger y dejar."
+      },
+      {
+        "plano": "Primer plano del sensor de color sobre la línea y, después, sobre una marca de color.",
+        "locucion": "El sensor de color hace dos trabajos: con la luz reflejada sigue la línea, como en la unidad 2, y con «¿Es de color…?» detecta las marcas que señalan cada estación."
+      },
+      {
+        "plano": "La horquilla sube con un palé encima.",
+        "locucion": "La horquilla sube y baja con el motor grande y la posición relativa, como la pinza de la unidad 3: cero abajo y un valor fijo arriba."
+      },
+      {
+        "plano": "Captura de la app: «Enviar mensaje entregado» y una pila que añade un elemento a la lista y suma uno al contador.",
+        "locucion": "Al dejar un palé, el programa envía un mensaje. Otra pila lo recibe, añade la estación a la lista de entregas y aumenta el contador."
+      },
+      {
+        "plano": "La carretilla se detiene cuando una mano se cruza en su camino.",
+        "locucion": "El sensor de distancia detiene la carretilla si alguien se cruza, y el de fuerza confirma que el palé está cargado."
+      },
+      {
+        "plano": "La carretilla hace un reparto completo y el Hub muestra el total de entregas.",
+        "locucion": "Tu reto: un reparto completo, de la estación de carga a la de entrega, con el registro al día."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Mis bloques: Crear un bloque con entradas",
+      "explicacion": "Divide el proyecto en órdenes: «seguir hasta», «recoger» y «dejar»."
+    },
+    {
+      "texto": "Luz reflejada",
+      "explicacion": "Mantiene la carretilla sobre el borde de la línea."
+    },
+    {
+      "texto": "¿Es de color...?",
+      "explicacion": "Reconoce la marca de color de cada estación."
+    },
+    {
+      "texto": "Ir a la posición relativa del motor a velocidad",
+      "explicacion": "Sube y baja la horquilla a alturas exactas."
+    },
+    {
+      "texto": "Añadir elemento a lista",
+      "explicacion": "Registra cada entrega en la lista."
+    },
+    {
+      "texto": "Cuando se reciba el mensaje",
+      "explicacion": "Inicia la pila que registra la entrega."
+    },
+    {
+      "texto": "Variable",
+      "explicacion": "Cuenta los palés entregados."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un motor grande, los sensores de color, distancia y fuerza, vigas para el mástil y la horquilla, y un palé hecho con piezas planas.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta un chasis ancho y estable, con el Hub retrasado para que haga de contrapeso."
+      },
+      {
+        "titulo": "El mástil",
+        "texto": "Fija el motor grande delante, con un mecanismo que suba y baje la horquilla al girar."
+      },
+      {
+        "titulo": "La horquilla",
+        "texto": "Monta dos vigas paralelas que entren por debajo del palé."
+      },
+      {
+        "titulo": "El sensor de color",
+        "texto": "Colócalo delante, mirando al suelo, a un centímetro, sin que la horquilla lo tape."
+      },
+      {
+        "titulo": "Los sensores de seguridad",
+        "texto": "El de distancia, mirando al frente por encima de la horquilla. El de fuerza, al fondo de la horquilla: el palé lo pulsa al quedar cargado."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motores de las ruedas a los puertos A y B, motor grande al C, sensor de color al D, de distancia al E y de fuerza al F: los seis puertos."
+      },
+      {
+        "titulo": "El almacén",
+        "texto": "Prepara una línea negra sobre fondo blanco con dos marcas de color, una para la carga y otra para la entrega."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Por qué dividimos el proyecto en bloques propios?",
+      "opciones": [
+        "Porque la app limita el número de bloques",
+        "Porque así se puede probar cada parte por separado y el programa principal se entiende",
+        "Para que el robot pese menos",
+        "Para usar menos sensores"
+      ],
+      "correcta": 1,
+      "explicacion": "Un programa de una sola pila con todo mezclado sería imposible de depurar."
+    },
+    {
+      "pregunta": "¿Qué dos trabajos hace el sensor de color?",
+      "opciones": [
+        "Medir distancia y fuerza",
+        "Mover la horquilla y contar",
+        "Seguir la línea con la luz reflejada y reconocer las estaciones por su color",
+        "Enviar mensajes y recibirlos"
+      ],
+      "correcta": 2,
+      "explicacion": "El mismo sensor da un dato (luz reflejada) y responde a una pregunta (¿es de color…?)."
+    },
+    {
+      "pregunta": "¿Cuándo termina el bloque «seguir hasta (rojo)»?",
+      "opciones": [
+        "Cuando el sensor ve el color rojo",
+        "A los 10 segundos",
+        "Cuando se acaba la línea",
+        "Nunca"
+      ],
+      "correcta": 0,
+      "explicacion": "Sigue la línea dentro de un «Repetir hasta» cuya condición es ver ese color."
+    },
+    {
+      "pregunta": "¿Por qué usamos la posición relativa para la horquilla?",
+      "opciones": [
+        "Porque es más rápida",
+        "Porque el motor grande no tiene otra",
+        "Porque gasta menos batería",
+        "Porque ponemos el cero abajo al empezar y puede pasar de 360°"
+      ],
+      "correcta": 3,
+      "explicacion": "Subir la horquilla puede necesitar más de una vuelta de motor, y la referencia no depende del montaje."
+    },
+    {
+      "pregunta": "¿Qué ocurre al enviar el mensaje «entregado»?",
+      "opciones": [
+        "La carretilla se detiene",
+        "Se borra la lista",
+        "La pila que lo recibe añade la entrega a la lista y suma uno al contador",
+        "La horquilla sube"
+      ],
+      "correcta": 2,
+      "explicacion": "El registro va en su propia pila, separado del movimiento."
+    },
+    {
+      "pregunta": "Tras tres entregas, ¿cuál es la longitud de la lista de entregas?",
+      "opciones": [
+        "0",
+        "1",
+        "6",
+        "3"
+      ],
+      "correcta": 3,
+      "explicacion": "Cada entrega añade un elemento."
+    },
+    {
+      "pregunta": "¿Para qué sirve el sensor de fuerza al fondo de la horquilla?",
+      "opciones": [
+        "Para confirmar que el palé está cargado",
+        "Para medir el peso exacto",
+        "Para seguir la línea",
+        "Para frenar las ruedas"
+      ],
+      "correcta": 0,
+      "explicacion": "El palé lo pulsa cuando la horquilla ha entrado del todo."
+    },
+    {
+      "pregunta": "¿Cuántos puertos del Hub usa este proyecto?",
+      "opciones": [
+        "Tres",
+        "Los seis",
+        "Cuatro",
+        "Dos"
+      ],
+      "correcta": 1,
+      "explicacion": "Tres motores y tres sensores: todos los puertos ocupados."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Seguir la línea hasta la estación y recoger",
+      "enunciado": "Define el bloque «seguir hasta (color)», que sigue la línea de forma proporcional hasta ver ese color, y el bloque «recoger», que avanza un poco y sube la horquilla. Úsalos para llegar a la estación roja y cargar el palé.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "valor": "seguir hasta (color)",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "¿Es de color (color)?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "(Luz reflejada − 50) × 0.5",
+          "nivel": 2
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 1
+        },
+        {
+          "texto": "Definir mi bloque",
+          "valor": "recoger",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "5 cm hacia delante",
+          "nivel": 1
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "valor": "C · 200 · 30 %",
+          "nivel": 1
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "valor": "C · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "seguir hasta (rojo)",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "recoger",
+          "nivel": 0
+        }
+      ],
+      "notas": "El umbral (50), la ganancia (0,5) y la altura de la horquilla (200) dependen del montaje. Lo esencial es que el seguimiento esté dentro de un «Repetir hasta» que termine al ver el color."
+    },
+    {
+      "titulo": "Reparto completo con registro",
+      "enunciado": "Añade el bloque «dejar (estacion)», que baja la horquilla, retrocede y envía el mensaje «entregado». Otra pila recibe el mensaje, añade la estación a la lista de entregas y suma uno al total. Haz un reparto: cargar en la estación roja y entregar en la azul.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "valor": "dejar (estacion)",
+          "nivel": 0
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "valor": "C · 0 · 30 %",
+          "nivel": 1
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "5 cm hacia atrás",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "ultima · estacion",
+          "nivel": 1
+        },
+        {
+          "texto": "Enviar mensaje",
+          "valor": "entregado",
+          "nivel": 1
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "valor": "entregado",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "ultima · entregas",
+          "nivel": 0
+        },
+        {
+          "texto": "Cambiar variable por",
+          "valor": "total · 1",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "valor": "C · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "total · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "seguir hasta (rojo)",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "recoger",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "seguir hasta (azul)",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "dejar (azul)",
+          "nivel": 0
+        }
+      ],
+      "notas": "Las definiciones de «seguir hasta» y «recoger» son las de la práctica 1. Los sensores de seguridad (distancia y fuerza) son una ampliación: valóralos si están, pero no los exijas."
+    }
+  ]
+}

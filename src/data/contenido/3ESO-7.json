@@ -1,0 +1,302 @@
+{
+  "curso": "3ESO",
+  "unidad": 7,
+  "reto": "Construye una mesa sísmica, registra el movimiento con el Hub y decide con datos qué torre aguanta mejor.",
+  "video": {
+    "titulo": "Medir para decidir",
+    "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "Una mesa sísmica de LEGO agita una torre que se tambalea.",
+        "locucion": "Los ingenieros prueban sus edificios en mesas sísmicas: plataformas que tiemblan como en un terremoto. Y no se fían de la vista: miden."
+      },
+      {
+        "plano": "El Hub colocado en lo alto de la torre; animación de sus ángulos de cabeceo y alabeo.",
+        "locucion": "El Hub hace de sismógrafo. Su giroscopio mide cuánto se inclina: el cabeceo, hacia delante y hacia atrás, y el alabeo, hacia los lados."
+      },
+      {
+        "plano": "Captura de la app: se activa la extensión de gráfico de líneas y aparece una gráfica que se va dibujando.",
+        "locucion": "En la app activamos la extensión de gráfico de líneas. Sus bloques dibujan en la pantalla, punto a punto, el valor que les demos: aquí, el ángulo de inclinación."
+      },
+      {
+        "plano": "Captura de «Reiniciar cronómetro», «Arrancar motor» y un «Repetir hasta Cronómetro > 10».",
+        "locucion": "Reiniciamos el cronómetro, arrancamos el motor y repetimos la medida hasta que pasan diez segundos. Así todos los ensayos duran lo mismo."
+      },
+      {
+        "plano": "Captura de una lista llenándose de valores y de una variable «maximo».",
+        "locucion": "Además guardamos cada medida en una lista. Al terminar tenemos todos los datos para compararlos: ¿cuál fue la inclinación máxima?"
+      },
+      {
+        "plano": "Dos torres distintas ensayadas una tras otra; dos gráficas, una con picos altos y otra casi plana.",
+        "locucion": "Tu reto: ensaya dos torres con el mismo terremoto y decide, con datos, cuál es más segura."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Extensión Gráfico de líneas",
+      "explicacion": "Bloques que dibujan en la app una gráfica con los valores que mide el programa. Hay que activar la extensión."
+    },
+    {
+      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
+      "explicacion": "Bloque de dato: la inclinación del Hub. Es lo que mide el sismógrafo."
+    },
+    {
+      "texto": "Reiniciar cronómetro",
+      "explicacion": "Pone el tiempo a cero al empezar el ensayo."
+    },
+    {
+      "texto": "Cronómetro",
+      "explicacion": "Bloque de dato: los segundos de ensayo transcurridos."
+    },
+    {
+      "texto": "Añadir elemento a lista",
+      "explicacion": "Guarda cada medida para analizarla después."
+    },
+    {
+      "texto": "Arrancar motor",
+      "explicacion": "Pone en marcha la mesa sísmica."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande, vigas para la base y la plataforma, una manivela y una biela, y piezas para construir dos torres de la misma altura.",
+    "pasos": [
+      {
+        "titulo": "La base fija",
+        "texto": "Monta una base ancha y pesada que no se desplace durante el ensayo."
+      },
+      {
+        "titulo": "La plataforma móvil",
+        "texto": "Coloca encima una plataforma que pueda deslizar adelante y atrás, guiada por los lados."
+      },
+      {
+        "titulo": "La manivela y la biela",
+        "texto": "Fija el motor grande a la base, pon una manivela en su eje y únela a la plataforma con una biela: al girar el motor, la plataforma va y viene."
+      },
+      {
+        "titulo": "Las torres",
+        "texto": "Construye dos torres de la misma altura: una sencilla y otra reforzada con diagonales."
+      },
+      {
+        "titulo": "El sismógrafo",
+        "texto": "Sujeta el Hub en lo alto de la torre que vas a ensayar. Conecta el motor al puerto A con el cable suelto, para que no tire de la torre."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Gira la manivela con la mano: la plataforma debe moverse suave en todo su recorrido."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Por qué medimos en lugar de fiarnos de lo que vemos?",
+      "opciones": [
+        "Porque medir es más rápido",
+        "Porque el Hub lo exige",
+        "Porque con datos podemos comparar de forma objetiva",
+        "Porque las torres no se ven bien"
+      ],
+      "correcta": 2,
+      "explicacion": "Dos personas pueden ver cosas distintas; los números son los mismos para todos."
+    },
+    {
+      "pregunta": "¿Qué mide el Hub en este proyecto?",
+      "opciones": [
+        "Su inclinación",
+        "La distancia a la torre",
+        "El color de la torre",
+        "La fuerza del motor"
+      ],
+      "correcta": 0,
+      "explicacion": "El giroscopio da los ángulos de cabeceo y alabeo."
+    },
+    {
+      "pregunta": "¿Qué hace la extensión de gráfico de líneas?",
+      "opciones": [
+        "Mueve la mesa",
+        "Guarda los datos en el Hub",
+        "Calcula la media",
+        "Dibuja en la app los valores a lo largo del tiempo"
+      ],
+      "correcta": 3,
+      "explicacion": "Cada valor trazado añade un punto a la gráfica."
+    },
+    {
+      "pregunta": "¿Para qué usamos el cronómetro?",
+      "opciones": [
+        "Para medir la inclinación",
+        "Para que todos los ensayos duren lo mismo",
+        "Para mover el motor",
+        "Para dibujar la gráfica"
+      ],
+      "correcta": 1,
+      "explicacion": "Un ensayo de 5 segundos y otro de 20 no se pueden comparar."
+    },
+    {
+      "pregunta": "¿Para qué guardamos las medidas en una lista?",
+      "opciones": [
+        "Para analizarlas al terminar: el máximo, comparar ensayos…",
+        "Para que el motor gire más rápido",
+        "Porque la gráfica no funciona sin lista",
+        "Para ahorrar batería"
+      ],
+      "correcta": 0,
+      "explicacion": "La gráfica se ve; la lista permite calcular."
+    },
+    {
+      "pregunta": "La torre A alcanza una inclinación máxima de 12° y la torre B, de 5°. ¿Cuál aguanta mejor?",
+      "opciones": [
+        "La A",
+        "Las dos igual",
+        "No se puede saber",
+        "La B"
+      ],
+      "correcta": 3,
+      "explicacion": "Menos inclinación con el mismo terremoto indica una estructura más rígida."
+    },
+    {
+      "pregunta": "¿Qué hace falta para que la comparación entre las dos torres sea justa?",
+      "opciones": [
+        "Usar motores distintos",
+        "Cambiar la duración en cada ensayo",
+        "La misma velocidad del motor y la misma duración",
+        "Ensayar una sola vez"
+      ],
+      "correcta": 2,
+      "explicacion": "Solo debe cambiar lo que se quiere comparar: la torre."
+    },
+    {
+      "pregunta": "En la gráfica aparecen picos muy altos. ¿Qué significa?",
+      "opciones": [
+        "Que el cronómetro falla",
+        "Que la torre se inclina mucho en esos instantes",
+        "Que el motor se ha parado",
+        "Que la lista está vacía"
+      ],
+      "correcta": 1,
+      "explicacion": "El eje vertical representa el ángulo: cuanto más alto el pico, mayor la inclinación."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Ensayo de 10 segundos con gráfica",
+      "enunciado": "La mesa sísmica funciona 10 segundos al 50 % de velocidad. Durante ese tiempo, el programa dibuja en la gráfica el ángulo de cabeceo del Hub diez veces por segundo. Al terminar, el motor se para.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad al… %",
+          "valor": "A · 50",
+          "nivel": 0
+        },
+        {
+          "texto": "Arrancar motor",
+          "valor": "A",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "Cronómetro > 10",
+          "nivel": 0
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "valor": "trazar ángulo de cabeceo",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "0.1",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar motor",
+          "valor": "A",
+          "nivel": 0
+        }
+      ],
+      "notas": "Según cómo esté orientado el Hub en la torre, el ángulo que cambia puede ser el alabeo en lugar del cabeceo. Compruébalo antes del ensayo."
+    },
+    {
+      "titulo": "Registrar y comparar",
+      "enunciado": "Añade al ensayo el registro de datos: guarda cada medida en una lista y calcula la inclinación máxima. Al terminar, escríbela en la matriz. Ensaya las dos torres y entrega el programa con los dos máximos en la explicación.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "maximo · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad al… %",
+          "valor": "A · 50",
+          "nivel": 0
+        },
+        {
+          "texto": "Arrancar motor",
+          "valor": "A",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "Cronómetro > 10",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "angulo · ángulo de cabeceo",
+          "nivel": 1
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "valor": "angulo · medidas",
+          "nivel": 1
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "valor": "trazar angulo",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces...",
+          "valor": "angulo > maximo",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "maximo · angulo",
+          "nivel": 2
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "0.1",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar motor",
+          "valor": "A",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "maximo",
+          "nivel": 0
+        }
+      ],
+      "notas": "El ángulo puede ser negativo: para comparar torres basta con el máximo positivo. Hay que vaciar la lista antes de cada ensayo. Valora sobre todo la conclusión escrita."
+    }
+  ]
+}

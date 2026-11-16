@@ -1,0 +1,289 @@
+{
+  "curso": "2ESO",
+  "unidad": 5,
+  "reto": "Construye un «prueba tu fuerza» de feria: una aguja motorizada marca lo fuerte que aprietas.",
+  "video": {
+    "titulo": "Medir cuánto aprieto",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Una atracción de feria con martillo; después, la versión de LEGO con una aguja.",
+        "locucion": "En la feria, el martillo mide tu fuerza y una luz sube más o menos alto. Vamos a construir nuestra versión con una aguja."
+      },
+      {
+        "plano": "Primer plano del sensor de fuerza apretado suave y fuerte; la matriz muestra un número.",
+        "locucion": "En 1º usábamos el sensor de fuerza como un botón: pulsado o no pulsado. Pero también mide cuánto aprietas, de 0 a 100 %."
+      },
+      {
+        "plano": "Captura de la app: el bloque redondeado de presión dentro de «Fijar variable a».",
+        "locucion": "El bloque redondeado de presión es un dato que cambia mientras aprietas. Para trabajar con él, lo guardamos en una variable."
+      },
+      {
+        "plano": "Esquema de la aguja sobre una escala de medio círculo, con la fórmula posición = fuerza × 1,8.",
+        "locucion": "La aguja recorre medio círculo: de 0 a 180 grados. Como la fuerza va de 0 a 100, la multiplicamos por 1,8 y ya tenemos la posición de la aguja."
+      },
+      {
+        "plano": "La aguja sube hasta un punto y el Hub muestra una cara.",
+        "locucion": "El motor grande lleva la aguja a la posición calculada y, según el resultado, la matriz muestra un dibujo distinto."
+      },
+      {
+        "plano": "Varios jugadores prueban su fuerza por turnos.",
+        "locucion": "Tu reto: una máquina que mide la fuerza de cada jugador, mueve la aguja y da un premio a los más fuertes."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Presión (sensor de fuerza)",
+      "explicacion": "Bloque de dato: lo fuerte que se aprieta el sensor en ese momento."
+    },
+    {
+      "texto": "Fijar variable a",
+      "explicacion": "Guarda la fuerza medida y la posición calculada para la aguja."
+    },
+    {
+      "texto": "Operadores aritméticos (+, −, ×, ÷)",
+      "explicacion": "Convierten la fuerza, de 0 a 100, en grados de la aguja, de 0 a 180."
+    },
+    {
+      "texto": "Motor Ir a la posición",
+      "explicacion": "Lleva la aguja al ángulo calculado."
+    },
+    {
+      "texto": "Encender la matriz de luces 5x5",
+      "explicacion": "Muestra un dibujo según el resultado."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande, el sensor de fuerza, una viga larga para la aguja y vigas para la base y el panel.",
+    "pasos": [
+      {
+        "titulo": "La base y el panel",
+        "texto": "Monta una base pesada y, sobre ella, un panel vertical donde irá la escala."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Fija el motor grande detrás del panel, con el eje asomando hacia delante por el centro de la escala."
+      },
+      {
+        "titulo": "La posición 0",
+        "texto": "Gira el motor con la mano hasta que sus marcas coincidan antes de montar la aguja."
+      },
+      {
+        "titulo": "La aguja",
+        "texto": "Con el motor en 0, monta la aguja apuntando al principio de la escala."
+      },
+      {
+        "titulo": "El pulsador",
+        "texto": "Fija el sensor de fuerza en la base, delante, muy bien sujeto: se va a apretar con ganas."
+      },
+      {
+        "titulo": "Los cables y la prueba",
+        "texto": "Motor grande al puerto A y sensor de fuerza al puerto F. Mueve la aguja con la mano de un extremo a otro: no debe rozar."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿En qué se diferencian «¿Está presionado?» y el bloque de presión?",
+      "opciones": [
+        "En nada",
+        "El primero mide en newtons y el segundo en gramos",
+        "El primero responde sí o no; el segundo da un número",
+        "El segundo solo funciona con el motor grande"
+      ],
+      "correcta": 2,
+      "explicacion": "Uno es una pregunta hexagonal y el otro, un dato redondeado."
+    },
+    {
+      "pregunta": "La fuerza medida es 50 y la posición se calcula como fuerza × 1,8. ¿A qué posición va la aguja?",
+      "opciones": [
+        "90",
+        "50",
+        "180",
+        "51,8"
+      ],
+      "correcta": 0,
+      "explicacion": "50 por 1,8 son 90 grados: la mitad de la escala."
+    },
+    {
+      "pregunta": "Con esa misma fórmula, ¿qué posición corresponde a la fuerza máxima, 100?",
+      "opciones": [
+        "100",
+        "360",
+        "90",
+        "180"
+      ],
+      "correcta": 3,
+      "explicacion": "100 por 1,8 son 180 grados: el final de la escala."
+    },
+    {
+      "pregunta": "¿Por qué guardamos la fuerza en una variable?",
+      "opciones": [
+        "Porque el sensor no funciona sin variables",
+        "Porque la lectura cambia a cada instante y queremos usar el mismo valor en varios bloques",
+        "Para que el motor vaya más rápido",
+        "Para ahorrar batería"
+      ],
+      "correcta": 1,
+      "explicacion": "Si leyéramos el sensor en cada bloque, cada uno podría recibir un valor distinto."
+    },
+    {
+      "pregunta": "¿Qué operador convierte la fuerza en grados de la aguja?",
+      "opciones": [
+        "La multiplicación",
+        "La comparación «mayor que»",
+        "El operador «no»",
+        "El operador «y»"
+      ],
+      "correcta": 0,
+      "explicacion": "Multiplicar por 1,8 estira el intervalo 0–100 hasta 0–180."
+    },
+    {
+      "pregunta": "Quieres que la aguja recorra solo un cuarto de círculo, de 0 a 90 grados. ¿Por cuánto multiplicas la fuerza?",
+      "opciones": [
+        "Por 1,8",
+        "Por 90",
+        "Por 9",
+        "Por 0,9"
+      ],
+      "correcta": 3,
+      "explicacion": "100 por 0,9 son 90: el máximo de la nueva escala."
+    },
+    {
+      "pregunta": "¿En qué puerto va el sensor de fuerza?",
+      "opciones": [
+        "En el A",
+        "En el D",
+        "En el F",
+        "En el E"
+      ],
+      "correcta": 2,
+      "explicacion": "Color en D, distancia en E y fuerza en F."
+    },
+    {
+      "pregunta": "Al iniciar el programa, la aguja no apunta al principio de la escala. ¿Qué paso te has saltado?",
+      "opciones": [
+        "Fijar la velocidad del motor",
+        "Alinear las marcas del motor antes de montar la aguja",
+        "Conectar el sensor de fuerza",
+        "Crear la variable"
+      ],
+      "correcta": 1,
+      "explicacion": "La aguja debe montarse con el motor en su posición 0."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Aguja de fuerza",
+      "enunciado": "El programa espera a que aprietes el sensor, mide la fuerza, la convierte en grados (fuerza × 1,8) y lleva la aguja a esa posición. A los 3 segundos, la aguja vuelve a 0.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "fuerza · Presión F en %",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "posicion · fuerza × 1.8",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · posicion · sentido horario",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · sentido antihorario",
+          "nivel": 0
+        }
+      ],
+      "notas": "La espera de medio segundo da tiempo a apretar del todo antes de medir. Fijar el sentido de giro evita que la aguja dé la vuelta por el camino corto."
+    },
+    {
+      "titulo": "Premio según la fuerza",
+      "enunciado": "Amplía la máquina para cinco jugadores seguidos. Si la fuerza supera 70, la matriz muestra una cara contenta; si no, una cara triste.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "5",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "0.5",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "fuerza · Presión F en %",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · fuerza × 1.8 · sentido horario",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "fuerza > 70",
+          "nivel": 1
+        },
+        {
+          "texto": "Encender la matriz de luces 5x5",
+          "valor": "cara contenta",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Encender la matriz de luces 5x5",
+          "valor": "cara triste",
+          "nivel": 2
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · sentido antihorario",
+          "nivel": 1
+        }
+      ],
+      "notas": "El cálculo puede ir en una variable aparte o directamente dentro del bloque del motor. El umbral de 70 se puede adaptar al grupo."
+    }
+  ]
+}

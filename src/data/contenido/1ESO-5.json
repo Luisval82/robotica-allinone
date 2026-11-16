@@ -1,0 +1,255 @@
+{
+  "curso": "1ESO",
+  "unidad": 5,
+  "reto": "Construye una puerta automática con timbre: se abre al pulsar y se cierra sola.",
+  "video": {
+    "titulo": "La máquina espera mi orden",
+    "duracion": "4 min",
+    "escenas": [
+      {
+        "plano": "Una puerta cerrada; un dedo pulsa un botón, suena un timbre y la puerta se abre.",
+        "locucion": "Hasta ahora tus programas arrancaban y hacían su trabajo sin mirar a nadie. Hoy la máquina va a esperar tu orden."
+      },
+      {
+        "plano": "Primer plano del sensor de fuerza y de su conexión al puerto F.",
+        "locucion": "El sensor de fuerza es un pulsador: nota cuándo lo aprietas y también con cuánta fuerza. Lo conectamos al puerto F."
+      },
+      {
+        "plano": "Captura de la app: el bloque hexagonal «¿Está presionado?» encajado en «Esperar hasta que».",
+        "locucion": "El bloque hexagonal «¿Está presionado?» es una pregunta: responde sí o no. Lo encajamos en «Esperar hasta que», que detiene el programa hasta que la respuesta sea sí."
+      },
+      {
+        "plano": "Dos programas en paralelo: uno con «Esperar 3 segundos» y otro con «Esperar hasta que».",
+        "locucion": "«Esperar X segundos» espera un tiempo fijo. «Esperar hasta que» espera a que ocurra algo, tarde lo que tarde."
+      },
+      {
+        "plano": "La puerta suena, se abre a 90 grados, espera y se cierra.",
+        "locucion": "Al pulsar suena el timbre, el motor lleva la puerta a la posición de abierta, espera a que pases y vuelve a la posición 0."
+      },
+      {
+        "plano": "Varias personas llaman una detrás de otra y la puerta responde a todas.",
+        "locucion": "Tu reto: una puerta con timbre que atienda a varias visitas seguidas."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Esperar hasta que",
+      "explicacion": "Detiene el programa hasta que la pregunta de su hueco se cumple. Después sigue con el bloque siguiente."
+    },
+    {
+      "texto": "¿Está presionado?",
+      "explicacion": "Pregunta al sensor de fuerza si alguien lo está apretando. Responde verdadero o falso."
+    },
+    {
+      "texto": "Motor Ir a la posición",
+      "explicacion": "Lleva la puerta a un ángulo exacto: abierta o cerrada."
+    },
+    {
+      "texto": "Accionar motor durante",
+      "explicacion": "Gira el motor una cantidad exacta. Sirve para abrir la puerta un poco más o un poco menos."
+    },
+    {
+      "texto": "Tocar sonido hasta acabar",
+      "explicacion": "Hace de timbre: suena entero antes de que la puerta empiece a moverse."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor mediano, el sensor de fuerza, y vigas para el marco y la hoja de la puerta.",
+    "pasos": [
+      {
+        "titulo": "El marco",
+        "texto": "Monta una base con dos postes y un travesaño arriba: el hueco de la puerta."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Fija el motor mediano junto a uno de los postes, con el eje hacia arriba: hará de bisagra."
+      },
+      {
+        "titulo": "La posición 0",
+        "texto": "Antes de montar la hoja, gira el motor con la mano hasta que sus dos marcas coincidan."
+      },
+      {
+        "titulo": "La hoja",
+        "texto": "Con el motor en 0, monta la hoja sobre el eje de modo que cierre el hueco."
+      },
+      {
+        "titulo": "El timbre",
+        "texto": "Fija el sensor de fuerza en el otro poste, a mano, con el pulsador hacia fuera."
+      },
+      {
+        "titulo": "Los cables y la prueba",
+        "texto": "Motor al puerto A y sensor de fuerza al puerto F. Abre la puerta con la mano: no debe rozar el marco."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué hace «Esperar hasta que»?",
+      "opciones": [
+        "Espera siempre 1 segundo",
+        "Detiene el programa hasta que se cumple la condición",
+        "Repite el programa",
+        "Apaga el Hub"
+      ],
+      "correcta": 1,
+      "explicacion": "El programa se queda en ese bloque hasta que la pregunta de su hueco es verdadera."
+    },
+    {
+      "pregunta": "¿Qué responde el bloque «¿Está presionado?»?",
+      "opciones": [
+        "Un número del 0 al 10",
+        "El color del botón",
+        "La distancia en centímetros",
+        "Verdadero o falso"
+      ],
+      "correcta": 3,
+      "explicacion": "Es un bloque hexagonal: una pregunta de sí o no."
+    },
+    {
+      "pregunta": "¿En qué se diferencian «Esperar 3 segundos» y «Esperar hasta que»?",
+      "opciones": [
+        "Uno espera un tiempo fijo y el otro, a que ocurra algo",
+        "No hay diferencia",
+        "Uno es para motores y el otro para luces",
+        "«Esperar hasta que» siempre tarda más"
+      ],
+      "correcta": 0,
+      "explicacion": "El primero mira el reloj; el segundo, una condición."
+    },
+    {
+      "pregunta": "¿En qué puerto conectamos el sensor de fuerza?",
+      "opciones": [
+        "En el A",
+        "En el D",
+        "En el F",
+        "En el B"
+      ],
+      "correcta": 2,
+      "explicacion": "Los sensores tienen puerto fijo: color en D, distancia en E y fuerza en F."
+    },
+    {
+      "pregunta": "Programa: «Esperar hasta que ¿Está presionado?» y, debajo, «Ir a la posición 90». Lo inicias y nadie pulsa. ¿Qué hace la puerta?",
+      "opciones": [
+        "Se abre a los 3 segundos",
+        "Se abre y se cierra sin parar",
+        "Da un error",
+        "Nada: sigue cerrada, esperando"
+      ],
+      "correcta": 3,
+      "explicacion": "Mientras nadie pulse, el programa no pasa del bloque de espera."
+    },
+    {
+      "pregunta": "¿Cuál es el orden correcto para la puerta con timbre?",
+      "opciones": [
+        "Abrir, tocar el timbre, esperar a que pulsen, cerrar",
+        "Esperar a que pulsen, tocar el timbre, abrir, esperar, cerrar",
+        "Tocar el timbre, cerrar, esperar a que pulsen, abrir",
+        "Cerrar, abrir, tocar el timbre, esperar a que pulsen"
+      ],
+      "correcta": 1,
+      "explicacion": "Primero la orden, después el aviso y por último el movimiento."
+    },
+    {
+      "pregunta": "El programa atiende a una persona y termina. ¿Cómo haces que sirva para varias?",
+      "opciones": [
+        "Meto todos los bloques dentro de un «Repetir»",
+        "Pulso más fuerte",
+        "Subo la velocidad del motor",
+        "Quito el «Esperar hasta que»"
+      ],
+      "correcta": 0,
+      "explicacion": "El bucle vuelve a dejar la puerta esperando la siguiente pulsación."
+    },
+    {
+      "pregunta": "¿Por qué «¿Está presionado?» tiene forma hexagonal?",
+      "opciones": [
+        "Porque es de sensores",
+        "Porque es un bloque de inicio",
+        "Porque es una pregunta que responde verdadero o falso",
+        "Porque mueve un motor"
+      ],
+      "correcta": 2,
+      "explicacion": "Los bloques hexagonales encajan en los huecos de condición."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Abrir al pulsar",
+      "enunciado": "La puerta permanece cerrada hasta que alguien pulsa el sensor de fuerza. Entonces se abre a 90°, espera 3 segundos y se cierra.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 0
+        }
+      ],
+      "notas": "Si la puerta abre hacia el otro lado, vale 270 en lugar de 90."
+    },
+    {
+      "titulo": "Puerta con timbre para cinco visitas",
+      "enunciado": "Mejora la puerta: al pulsar suena un timbre antes de abrir, la puerta se mueve despacio y el programa atiende a cinco visitas seguidas.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad al… %",
+          "valor": "A · 30",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "5",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "valor": "¿Está presionado? F",
+          "nivel": 1
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "valor": "timbre",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 1
+        }
+      ],
+      "notas": "El timbre tiene que sonar antes de que la puerta se mueva. «Fijar velocidad» puede ir dentro o fuera del bucle."
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "curso": "2ESO",
+  "unidad": 9,
+  "reto": "Proyecto final: una máquina que separa piezas por colores y cuenta cuántas hay de cada uno.",
+  "video": {
+    "titulo": "Clasificadora de colores",
+    "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "Una máquina de LEGO deja caer piezas rojas a un cajón y el resto a otro.",
+        "locucion": "En una planta de reciclaje, las máquinas separan los envases por materiales. La tuya va a separar piezas por colores y, además, las va a contar."
+      },
+      {
+        "plano": "Esquema con las tres partes señaladas: lector, rampa y empujador.",
+        "locucion": "Tiene tres partes: el sensor de color lee la pieza, el motor grande orienta la rampa hacia un cajón o hacia el otro, y el motor mediano empuja la pieza para que caiga."
+      },
+      {
+        "plano": "Captura de la app: «Si ¿Es de color rojo? entonces… Si no…» con una posición de rampa en cada hueco.",
+        "locucion": "La decisión es un «Si… entonces… Si no»: si la pieza es roja, la rampa va a un lado; si no, al otro."
+      },
+      {
+        "plano": "Captura de dos variables, «rojas» y «otras», aumentando.",
+        "locucion": "Cada cajón tiene su contador: una variable que aumenta en uno con «Cambiar variable por» cada vez que cae una pieza."
+      },
+      {
+        "plano": "Captura de «Repetir hasta rojas + otras = 6» y, debajo, «Escribir en la matriz».",
+        "locucion": "La máquina repite el ciclo hasta que ha clasificado todas las piezas. Entonces se detiene y escribe cuántas hay en cada cajón."
+      },
+      {
+        "plano": "La clasificadora completa procesa seis piezas y muestra el recuento.",
+        "locucion": "Tu reto: unir lectura, decisión, movimiento y recuento en una sola máquina."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Decide a qué cajón va la pieza según su color."
+    },
+    {
+      "texto": "¿Es de color...?",
+      "explicacion": "Pregunta al sensor de color por el color de la pieza."
+    },
+    {
+      "texto": "Motor Ir a la posición",
+      "explicacion": "Orienta la rampa hacia un cajón o hacia el otro."
+    },
+    {
+      "texto": "Accionar motor durante",
+      "explicacion": "Da una vuelta al empujador para que la pieza caiga por la rampa."
+    },
+    {
+      "texto": "Cambiar variable por",
+      "explicacion": "Suma una pieza al contador de su cajón."
+    },
+    {
+      "texto": "Repetir bucle hasta",
+      "explicacion": "Repite el ciclo de clasificar hasta que se han contado todas las piezas."
+    },
+    {
+      "texto": "Escribir en la matriz de luces 5x5",
+      "explicacion": "Muestra el recuento final."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor grande, un motor mediano, el sensor de color, vigas para la bandeja y la rampa, dos recipientes y seis piezas de dos colores.",
+    "pasos": [
+      {
+        "titulo": "La bandeja de lectura",
+        "texto": "Monta una plataforma pequeña donde se deja cada pieza, con el sensor de color mirándola a uno o dos centímetros."
+      },
+      {
+        "titulo": "El empujador",
+        "texto": "Fija el motor mediano junto a la bandeja con una pala en su eje: en cada vuelta barre la bandeja."
+      },
+      {
+        "titulo": "La rampa selectora",
+        "texto": "Coloca el motor grande bajo la salida de la bandeja y monta una rampa en su eje. En la posición 0 debe quedar centrada."
+      },
+      {
+        "titulo": "Los cajones",
+        "texto": "Pon un recipiente a cada lado, donde termina la rampa en cada posición."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor grande al puerto A, motor mediano al puerto B y sensor de color al puerto D."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Haz con la mano el recorrido de una pieza: lectura, empujón y caída a cada cajón."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué hace el motor grande en la clasificadora?",
+      "opciones": [
+        "Empuja la pieza",
+        "Lee el color",
+        "Cuenta las piezas",
+        "Orienta la rampa hacia un cajón o hacia el otro"
+      ],
+      "correcta": 3,
+      "explicacion": "El motor mediano empuja; el grande decide el destino."
+    },
+    {
+      "pregunta": "¿Cuál es el orden correcto del ciclo?",
+      "opciones": [
+        "Empujar, leer el color, orientar la rampa",
+        "Leer el color, orientar la rampa, empujar la pieza",
+        "Orientar la rampa, empujar, leer el color",
+        "Contar, empujar, leer el color"
+      ],
+      "correcta": 1,
+      "explicacion": "Hay que saber el color antes de mover la rampa, y mover la rampa antes de soltar la pieza."
+    },
+    {
+      "pregunta": "La variable rojas vale 2 y pasa una pieza roja. Tras «Cambiar rojas por 1», ¿cuánto vale?",
+      "opciones": [
+        "3",
+        "1",
+        "2",
+        "21"
+      ],
+      "correcta": 0,
+      "explicacion": "«Cambiar por» suma al valor que ya había."
+    },
+    {
+      "pregunta": "¿Cuándo termina «Repetir hasta rojas + otras = 6»?",
+      "opciones": [
+        "A los 6 segundos",
+        "Cuando pasa la primera pieza roja",
+        "Cuando la suma de los dos contadores llega a 6",
+        "Nunca"
+      ],
+      "correcta": 2,
+      "explicacion": "El bucle sale cuando la condición pasa a ser verdadera."
+    },
+    {
+      "pregunta": "¿Por qué se orienta la rampa antes de empujar la pieza?",
+      "opciones": [
+        "Porque el motor grande es más lento",
+        "Porque si no, la pieza cae al cajón de la pieza anterior",
+        "Para gastar menos batería",
+        "No importa el orden"
+      ],
+      "correcta": 1,
+      "explicacion": "La pieza cae por donde esté la rampa en ese momento."
+    },
+    {
+      "pregunta": "El programa usa «Si ¿Es de color rojo?… Si no…» y pasa una pieza verde. ¿A dónde va?",
+      "opciones": [
+        "Al cajón de las rojas",
+        "Se queda en la bandeja",
+        "A ninguno: el programa se detiene",
+        "Al cajón del «Si no»"
+      ],
+      "correcta": 3,
+      "explicacion": "Todo lo que no es rojo sigue el camino del «Si no»."
+    },
+    {
+      "pregunta": "Quieres separar tres colores en lugar de dos. ¿Qué necesitas?",
+      "opciones": [
+        "Otra decisión dentro del «Si no», otra posición de la rampa y otro contador",
+        "Un segundo Hub",
+        "Quitar el «Si no»",
+        "Duplicar la velocidad"
+      ],
+      "correcta": 0,
+      "explicacion": "Cada color nuevo es una pregunta más, un destino más y una variable más."
+    },
+    {
+      "pregunta": "La máquina cuenta bien, pero todas las piezas caen al mismo cajón. ¿Qué revisas?",
+      "opciones": [
+        "El sensor de color",
+        "Los contadores",
+        "El bloque «Ir a la posición» de la rampa y el puerto del motor grande",
+        "El texto de la matriz"
+      ],
+      "correcta": 2,
+      "explicacion": "Si los contadores aciertan, la lectura funciona: lo que falla es el movimiento de la rampa."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Separar dos colores",
+      "enunciado": "La máquina clasifica seis piezas, una cada vez: las rojas caen a un cajón y las demás al otro. Deja 2 segundos para colocar cada pieza.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "6",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "2",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color rojo? D",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 45 · camino más corto",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 315 · camino más corto",
+          "nivel": 2
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "B · 1 rotación",
+          "nivel": 1
+        }
+      ],
+      "notas": "Las posiciones de la rampa (45 y 315) dependen del montaje. El empujador va después de la decisión, fuera del «Si… Si no»."
+    },
+    {
+      "titulo": "Clasificar y contar",
+      "enunciado": "Añade dos contadores, uno por cajón. La máquina trabaja hasta que ha clasificado seis piezas en total y, al terminar, escribe en la matriz cuántas hay en cada cajón.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "rojas · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "otras · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "valor": "rojas + otras = 6",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "2",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color rojo? D",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 45 · camino más corto",
+          "nivel": 2
+        },
+        {
+          "texto": "Cambiar variable por",
+          "valor": "rojas · 1",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 315 · camino más corto",
+          "nivel": 2
+        },
+        {
+          "texto": "Cambiar variable por",
+          "valor": "otras · 1",
+          "nivel": 2
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "B · 1 rotación",
+          "nivel": 1
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "rojas",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "otras",
+          "nivel": 0
+        }
+      ],
+      "notas": "Si no hay pieza en la bandeja, la máquina la cuenta como «otras»: es una limitación aceptable en este nivel."
+    }
+  ]
+}
