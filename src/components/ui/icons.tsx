@@ -159,3 +159,20 @@ export function CloseIcon(props: IconProps) {
     </Icon>
   );
 }
+
+export function TabletIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="5" y="2.5" width="14" height="19" rx="2.5" />
+      <path d="M12 18.3h.01" />
+    </Icon>
+  );
+}
+
+export function BluetoothIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m7 7 10 10-5 5V2l5 5L7 17" />
+    </Icon>
+  );
+}

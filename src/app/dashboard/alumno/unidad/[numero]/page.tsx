@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { BlockChip } from "@/components/brand/ProgramBlocks";
 import { EntregaBox, type EntregaView } from "@/components/unidad/EntregaBox";
 import { HubPorts } from "@/components/unidad/HubPorts";
+import { IpadWorkflowBanner } from "@/components/unidad/IpadWorkflowBanner";
 import { StepSection, type StepState } from "@/components/unidad/StepSection";
 import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
 import { ArrowLeftIcon, ExternalLinkIcon } from "@/components/ui/icons";
@@ -295,6 +296,8 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
           </ul>
         </StepSection>
 
+        <IpadWorkflowBanner />
+
         {/* 4 · Modelo final */}
         <StepSection
           id="paso-4"
@@ -366,7 +369,10 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
             Programa cada práctica en la app SPIKE, pruébala en tu robot y entrega aquí el programa
             bloque a bloque. Tu profesor le pondrá nota.
           </p>
-          <div className="mt-4 grid gap-5">
+          <div className="mt-4">
+            <IpadWorkflowBanner />
+          </div>
+          <div className="mt-5 grid gap-5">
             {practicas.length > 0 ? (
               practicas.map((practica, index) => (
                 <EntregaBox
