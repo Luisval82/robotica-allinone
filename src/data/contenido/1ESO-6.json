@@ -15,8 +15,8 @@
         "locucion": "Con dos motores y dos ruedas tenemos una base de conducción: el robot que vas a usar el resto del curso."
       },
       {
-        "plano": "Captura de la app: «Fijar motores en movimiento» con A y B.",
-        "locucion": "Lo primero es decirle al Hub qué dos motores mueven el robot. Con «Fijar motores en movimiento» elegimos A para la rueda izquierda y B para la derecha."
+        "plano": "Captura de la app: «fijar como motores en movimiento» con A y B.",
+        "locucion": "Lo primero es decirle al Hub qué dos motores mueven el robot. Con «fijar como motores en movimiento» elegimos A para la rueda izquierda y B para la derecha."
       },
       {
         "plano": "Se mide con una cinta métrica lo que avanza el robot con una vuelta de rueda.",
@@ -38,8 +38,11 @@
   },
   "bloques": [
     {
-      "texto": "Fijar motores en movimiento",
-      "explicacion": "Indica qué dos motores mueven el robot: el izquierdo y el derecho. Se pone una vez, al principio."
+      "texto": "fijar A+B como motores en movimiento",
+      "explicacion": "Indica qué dos motores mueven el robot: el izquierdo y el derecho. Se pone una vez, al principio.",
+      "valores": [
+        "A+B"
+      ]
     },
     {
       "texto": "fijar velocidad de movimiento al 50 %",
@@ -102,7 +105,7 @@
   },
   "test": [
     {
-      "pregunta": "¿Para qué sirve «Fijar motores en movimiento»?",
+      "pregunta": "¿Para qué sirve «fijar como motores en movimiento»?",
       "opciones": [
         "Para arrancar los motores",
         "Para frenar el robot",
@@ -171,7 +174,7 @@
       "pregunta": "Le pides 20 cm y recorre 25. ¿Qué bloque corriges?",
       "opciones": [
         "fijar velocidad de movimiento",
-        "Fijar motores en movimiento",
+        "fijar como motores en movimiento",
         "Fijar 1 rotación del motor a una distancia recorrida",
         "mover derecha: 30 durante 10 rotaciones"
       ],
@@ -200,9 +203,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar motores en movimiento",
-          "valor": "A + B",
-          "nivel": 0
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
         },
         {
           "texto": "Fijar 1 rotación del motor a una distancia recorrida",
@@ -255,9 +260,11 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar motores en movimiento",
-          "valor": "A + B",
-          "nivel": 0
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
         },
         {
           "texto": "Fijar 1 rotación del motor a una distancia recorrida",

@@ -79,7 +79,7 @@
       "titulo": "Base de conducción: avanzar y girar",
       "hardware": "Hub + 2 Motores medianos",
       "bloques": [
-        "Fijar motores en movimiento",
+        "fijar A+B como motores en movimiento",
         "fijar velocidad de movimiento al 50 %",
         "Fijar 1 rotación del motor a una distancia recorrida",
         "mover ↑ durante 10 rotaciones",

@@ -120,9 +120,59 @@
       "pendiente": false
     },
     {
-      "texto": "Fijar motores en movimiento",
+      "texto": "fijar A+B como motores en movimiento",
       "categoria": "movimiento",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "fijar"
+        },
+        {
+          "t": "menu",
+          "v": "A+B",
+          "opciones": [
+            "A+B",
+            "A+C",
+            "A+D",
+            "A+E",
+            "A+F",
+            "B+A",
+            "B+C",
+            "B+D",
+            "B+E",
+            "B+F",
+            "C+A",
+            "C+B",
+            "C+D",
+            "C+E",
+            "C+F",
+            "D+A",
+            "D+B",
+            "D+C",
+            "D+E",
+            "D+F",
+            "E+A",
+            "E+B",
+            "E+C",
+            "E+D",
+            "E+F",
+            "F+A",
+            "F+B",
+            "F+C",
+            "F+D",
+            "F+E"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "como motores en movimiento"
+        }
+      ],
       "pendiente": false
     },
     {
