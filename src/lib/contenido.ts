@@ -41,7 +41,13 @@ export interface UnitContent {
   curso: Course;
   unidad: number;
   reto: string;
-  video: { titulo: string; duracion: string; url?: string; escenas: VideoScene[] };
+  video: {
+    titulo: string;
+    duracion: string;
+    url?: string;
+    enlaceOficial?: { titulo: string; url: string };
+    escenas: VideoScene[];
+  };
   bloques: BlockExplanation[];
   construccion: { piezas: string; pasos: BuildStep[] };
   test: TestQuestion[];

@@ -5,6 +5,10 @@
   "video": {
     "titulo": "La máquina espera mi orden",
     "duracion": "4 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Start Sensing» (sensor de fuerza)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l1-start-sensing/"
+    },
     "escenas": [
       {
         "plano": "Una puerta cerrada; un dedo pulsa un botón, suena un timbre y la puerta se abre.",

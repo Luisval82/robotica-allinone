@@ -5,6 +5,10 @@
   "video": {
     "titulo": "La máquina que cuenta",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Counting Reps with Leo» (variables)",
+      "url": "https://education.lego.com/en-au/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l2-counting-reps-with-leo/"
+    },
     "escenas": [
       {
         "plano": "Un torno de entrada de LEGO; varias figuras pasan una a una y la matriz del Hub va sumando.",

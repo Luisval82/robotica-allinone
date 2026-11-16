@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Mis bloques",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «My Code, Our Program» (Mis bloques)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/my-code-our-program/"
+    },
     "escenas": [
       {
         "plano": "Un robot con rotulador dibuja un cuadrado sobre un papel grande.",

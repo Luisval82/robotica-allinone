@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Procesos por fases",
     "duracion": "6 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Setting Conditions for Yoga» (estados y condiciones)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l4-setting-conditions-for-yoga/"
+    },
     "escenas": [
       {
         "plano": "Un túnel de lavado de LEGO: llega un coche, se abre la puerta, gira el rodillo y suena un aviso.",

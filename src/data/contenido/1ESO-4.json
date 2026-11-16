@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Repetir sin copiar",
     "duracion": "4 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Warm Up Loop with Leo» (bucles)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l1-warm-up-loop-with-leo"
+    },
     "escenas": [
       {
         "plano": "Una noria de cuatro cabinas avanza un tramo, se detiene y vuelve a avanzar.",

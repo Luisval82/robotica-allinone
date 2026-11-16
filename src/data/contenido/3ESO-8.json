@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Navegación autónoma",
     "duracion": "6 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Make It Move» (navegación autónoma)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u9-data-and-math-functions/spike-python-u9l4-make-it-move/"
+    },
     "escenas": [
       {
         "plano": "Un robot avanza por un laberinto de paredes de cartón, gira en las esquinas y encuentra la salida.",

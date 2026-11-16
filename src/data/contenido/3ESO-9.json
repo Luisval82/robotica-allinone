@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Almacén robotizado",
     "duracion": "7 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Assembling an Advanced Driving Base» (proyecto final)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/assembling-an-advanced-driving-base/"
+    },
     "escenas": [
       {
         "plano": "Una maqueta de almacén: una carretilla de LEGO sigue una línea negra y se detiene en una marca roja.",

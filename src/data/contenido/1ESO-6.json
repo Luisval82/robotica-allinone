@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Avanzar y girar",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 1 — Driving Around»",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-1-driving-around/"
+    },
     "escenas": [
       {
         "plano": "Un robot de dos ruedas avanza en línea recta por una mesa.",

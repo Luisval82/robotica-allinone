@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Memoria para la máquina",
     "duracion": "6 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Listing Letters» (listas)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u10-lists/spike-u10l1-listing-letters/"
+    },
     "escenas": [
       {
         "plano": "Una caja fuerte de LEGO; una mano gira el dial a tres posiciones y el cerrojo se abre.",

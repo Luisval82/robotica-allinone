@@ -5,6 +5,10 @@
   "video": {
     "titulo": "El motor como servo",
     "duracion": "4 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «New Moves with Motors» (posición absoluta)",
+      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/new-moves-with-motors/"
+    },
     "escenas": [
       {
         "plano": "Primer plano del motor mediano: se ven las dos marcas que indican la posición 0.",

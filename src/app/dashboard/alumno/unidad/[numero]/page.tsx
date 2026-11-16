@@ -193,7 +193,11 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
               </div>
 
               <div className="mt-4">
-                <VideoPlayer url={contenido.video.url} titulo={contenido.video.titulo} />
+                <VideoPlayer
+                  url={contenido.video.url}
+                  titulo={contenido.video.titulo}
+                  enlaceOficial={contenido.video.enlaceOficial}
+                />
               </div>
               {contenido.video.url ? (
                 <a

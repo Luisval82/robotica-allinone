@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Seguidor proporcional",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 3 — Reacting to Lines» (seguidor proporcional)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
+    },
     "escenas": [
       {
         "plano": "Dos robots sobre la misma pista: uno avanza a golpes y el otro sigue la línea con suavidad.",

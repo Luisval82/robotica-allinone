@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Frenar a tiempo",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Cart Control» (sensor de distancia)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l3/"
+    },
     "escenas": [
       {
         "plano": "Un vehículo avanza hacia una caja y se detiene a unos centímetros.",

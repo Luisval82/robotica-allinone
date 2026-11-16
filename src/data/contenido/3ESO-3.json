@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Motores de precisión",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Hopper Run» (mecanismos con motores)",
+      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/hopper-run/"
+    },
     "escenas": [
       {
         "plano": "Un robot con pinza se acerca a un cubo, lo coge y lo lleva a otra zona.",

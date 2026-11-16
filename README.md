@@ -119,6 +119,18 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
   del guion, que se deja debajo como apoyo. Admite un enlace de YouTube, Vimeo, Google Drive o un
   archivo de vídeo (`.mp4`, `.webm`…) — ver `src/lib/video.ts`. Sin `"url"`, el paso 1 muestra el
   aviso de que falta el vídeo.
+  - **Importante sobre "oficial" en YouTube**: LEGO® Education no publica sus tutoriales en
+    YouTube (los aloja en su propio reproductor, en `education.lego.com`), así que no existe un
+    vídeo oficial de LEGO en YouTube para incrustar por unidad. Por eso 22 de las 27 unidades
+    llevan en su lugar `"video.enlaceOficial": { "titulo": "...", "url": "..." }`: un enlace
+    verificado a la lección o tutorial oficial de `education.lego.com` que trata ese mismo tema
+    (Hub, motores, bucles, sensores, listas, My Blocks…). Al no poder incrustarse en un iframe
+    (la web de LEGO lo bloquea), se muestra como una tarjeta con enlace — nunca como vídeo
+    embebido — justo debajo del reproductor o del aviso de «falta vídeo». Las 5 unidades sin
+    correspondencia oficial razonable (`1ESO-9`, `2ESO-4`, `2ESO-6`, `2ESO-7`, `2ESO-8`) se
+    dejaron sin ese enlace en vez de forzar uno que no encajara. Si localizas o prefieres un
+    vídeo de YouTube de un canal concreto para alguna unidad, añádelo tú en `"video.url"`: el
+    reproductor lo incrusta igual que cualquier otro enlace de YouTube.
 - Todo el contenido es un borrador redactado a partir del temario: conviene repasarlo con la app
   SPIKE y el set delante antes de usarlo en clase, sobre todo las soluciones de 3º.
 - Los pasos de montaje describen el modelo por funciones, no pieza a pieza: revísalos con el set

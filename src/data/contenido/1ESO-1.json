@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Hola, Hub",
     "duracion": "3 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Digital Sign» (luces y sonido en el Hub)",
+      "url": "https://education.lego.com/en-us/lessons/prime-python-communicating-ideas/digital-sign"
+    },
     "escenas": [
       {
         "plano": "Primer plano del Hub apagado sobre la mesa. Una mano pulsa el botón central y se enciende.",

@@ -5,6 +5,10 @@
   "video": {
     "titulo": "La primera decisión",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 3 — Reacting to Lines» (sensor de color)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
+    },
     "escenas": [
       {
         "plano": "Una puerta de garaje de LEGO: con una tarjeta azul no pasa nada; con una verde, se abre.",

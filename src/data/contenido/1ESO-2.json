@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Mi primer motor",
     "duracion": "4 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Making Moves with Motors»",
+      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/making-moves-with-motors/"
+    },
     "escenas": [
       {
         "plano": "Un motor mediano en la mano; se conecta su cable al puerto A del Hub.",

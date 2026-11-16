@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Medir para decidir",
     "duracion": "6 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Get Moving to Get Data» (datos y gráficas)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u9-data-and-math-functions/spike-python-u9l1-get-moving-to-get-data"
+    },
     "escenas": [
       {
         "plano": "Una mesa sísmica de LEGO agita una torre que se tambalea.",

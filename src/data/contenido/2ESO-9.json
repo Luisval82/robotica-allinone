@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Clasificadora de colores",
     "duracion": "6 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 2 — Playing with Objects» (clasificadora)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-2-playing-with-objects/"
+    },
     "escenas": [
       {
         "plano": "Una máquina de LEGO deja caer piezas rojas a un cajón y el resto a otro.",

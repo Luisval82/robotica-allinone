@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Seguir una línea",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 3 — Reacting to Lines» (seguir línea)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
+    },
     "escenas": [
       {
         "plano": "El sensor de color mira al suelo; el robot pasa de una zona blanca a una negra y la matriz muestra un número que baja.",

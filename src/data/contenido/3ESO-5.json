@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Control con realimentación",
     "duracion": "5 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Safe Delivery» (control con realimentación)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l4-safe-delivery/"
+    },
     "escenas": [
       {
         "plano": "Dos vehículos en fila; el de detrás acelera y frena para mantener la distancia con el primero.",

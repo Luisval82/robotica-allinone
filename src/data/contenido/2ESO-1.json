@@ -5,6 +5,10 @@
   "video": {
     "titulo": "Dos caminos",
     "duracion": "4 min",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Setting Conditions for Yoga» (si/entonces/si no)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l4-setting-conditions-for-yoga/"
+    },
     "escenas": [
       {
         "plano": "Un vehículo delante de dos tarjetas, una verde y otra roja.",
