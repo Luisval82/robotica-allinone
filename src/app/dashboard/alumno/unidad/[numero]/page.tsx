@@ -1,0 +1,390 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
+import { BlockChip } from "@/components/brand/ProgramBlocks";
+import { EntregaBox, type EntregaView } from "@/components/unidad/EntregaBox";
+import { HubPorts } from "@/components/unidad/HubPorts";
+import { StepSection, type StepState } from "@/components/unidad/StepSection";
+import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
+import { ArrowLeftIcon, ExternalLinkIcon } from "@/components/ui/icons";
+import { LEGO_EDUCATION_URL } from "@/config/site";
+import { requireRole } from "@/lib/auth";
+import { categoryColorClass, categoryName, getBlockInfo } from "@/lib/bloques";
+import {
+  getContenido,
+  getPracticasForStudent,
+  getTestForStudent,
+  getTestReview,
+} from "@/lib/contenido";
+import { getEntrega, getStudentAccess, getUnitProgress, testScore } from "@/lib/db";
+import { formatFecha } from "@/lib/format";
+import { getPaleta } from "@/lib/paleta";
+import { COURSE_LABEL, THEORY_STEPS, UNIT_NUMBERS } from "@/lib/types";
+import { getHubSetup, getUnidad } from "@/lib/unidades";
+import { unitTone } from "@/lib/unitTone";
+
+export const metadata: Metadata = { title: "Unidad" };
+
+const HOME = "/dashboard/alumno";
+
+// Los cuatro pasos de teoría, en orden, y el color de su cabecera.
+const STEPS = [
+  { titulo: "Guion de vídeo", corto: "Vídeo", tone: "bg-block-eventos text-ink-900" },
+  { titulo: "Esquema de puertos del Hub", corto: "Puertos", tone: "bg-block-sensores text-ink-900" },
+  { titulo: "Bloques de palabras", corto: "Bloques", tone: "bg-block-control text-ink-900" },
+  { titulo: "Modelo final de construcción", corto: "Modelo", tone: "bg-block-movimiento text-ink-900" },
+];
+const PRUEBA_TONE = "bg-block-operadores text-ink-900";
+
+function Pending({ children }: { children: string }) {
+  return (
+    <p className="rounded-2xl border-2 border-dashed border-ink-300 p-5 font-semibold text-ink-600">
+      {children}
+    </p>
+  );
+}
+
+export default async function UnidadPage({ params }: { params: Promise<{ numero: string }> }) {
+  const session = await requireRole(["alumno"]);
+  const numero = Number((await params).numero);
+  const curso = session.course;
+  if (!curso || !(UNIT_NUMBERS as readonly number[]).includes(numero)) notFound();
+
+  const unidad = getUnidad(curso, numero);
+  if (!unidad) notFound();
+
+  // Una unidad bloqueada no se puede abrir escribiendo su dirección a mano.
+  const acceso = (await getStudentAccess({ id: session.id, course: curso })).find(
+    (item) => item.unidad === numero,
+  );
+  if (!acceso?.abierta) redirect(HOME);
+
+  const progreso = await getUnitProgress(session.id, numero);
+  const contenido = getContenido(curso, numero);
+  const setup = getHubSetup(unidad);
+  const pasos = Math.min(progreso.pasosTeoria, THEORY_STEPS);
+
+  const estadoDe = (paso: number): StepState =>
+    paso <= pasos ? "hecho" : paso === pasos + 1 ? "actual" : "bloqueado";
+  const lockedText = "Termina el paso anterior para abrir este.";
+
+  const categorias = [...new Set(unidad.bloques.map((texto) => getBlockInfo(texto).categoria))];
+  const explicacionDe = (texto: string) =>
+    contenido?.bloques.find((item) => item.texto === texto)?.explicacion;
+
+  // ── PRUEBA UD-X: solo se prepara si el alumno la tiene abierta ──
+  const preguntas = acceso.pruebaAbierta ? getTestForStudent(curso, numero) : [];
+  const practicas = acceso.pruebaAbierta ? getPracticasForStudent(curso, numero) : [];
+  const paleta = getPaleta(curso, numero);
+
+  const resultado: TestResult | null =
+    progreso.testAciertos === null
+      ? null
+      : {
+          aciertos: progreso.testAciertos,
+          nota: testScore(progreso.testAciertos),
+          detalle: progreso.testRespuestas
+            ? getTestReview(curso, numero, progreso.testRespuestas)
+            : null,
+        };
+
+  const entregas = await Promise.all(
+    practicas.map(async (practica): Promise<EntregaView | null> => {
+      const entrega = await getEntrega(session.id, numero, practica.practica);
+      return entrega
+        ? {
+            bloques: entrega.bloques,
+            explicacion: entrega.explicacion,
+            entregadaEn: formatFecha(entrega.entregadaEn),
+            nota: entrega.nota,
+            comentario: entrega.comentario,
+            corregidaPor: entrega.corregidaPor,
+          }
+        : null;
+    }),
+  );
+
+  const pruebaEstado: StepState = acceso.pruebaAbierta ? "actual" : "bloqueado";
+
+  return (
+    <>
+      <Link
+        href={HOME}
+        className="inline-flex items-center gap-2 rounded-full border-2 border-ink-200 bg-white px-4 py-2 text-sm font-extrabold text-ink-800 transition-colors hover:border-ink-900"
+      >
+        <ArrowLeftIcon className="size-4" />
+        Mis unidades
+      </Link>
+
+      {/* Cabecera de la unidad */}
+      <header className={`mt-5 rounded-card p-7 sm:p-10 ${unitTone(numero)}`}>
+        <p className="text-sm font-extrabold uppercase tracking-widest">
+          {COURSE_LABEL[curso]} · Unidad {numero}
+        </p>
+        <h1 className="mt-2 font-display text-4xl font-semibold leading-tight sm:text-5xl">
+          {unidad.titulo}
+        </h1>
+        <p className="mt-3 max-w-2xl text-lg font-bold">{contenido?.reto ?? unidad.modelo}</p>
+        <a
+          href={LEGO_EDUCATION_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex h-12 items-center gap-2 rounded-2xl bg-ink-900 px-5 font-display text-base font-semibold tracking-wide text-white transition hover:bg-ink-700"
+        >
+          Abrir LEGO® Education
+          <ExternalLinkIcon className="size-4" />
+          <span className="sr-only">(se abre en una pestaña nueva)</span>
+        </a>
+      </header>
+
+      {/* Índice de pasos */}
+      <nav aria-label="Pasos de la unidad" className="mt-5">
+        <ol className="grid grid-cols-5 gap-2">
+          {[...STEPS.map((step) => step.corto), "Prueba"].map((label, index) => {
+            const isPrueba = index === STEPS.length;
+            const estado = isPrueba ? pruebaEstado : estadoDe(index + 1);
+            return (
+              <li key={label}>
+                <a
+                  href={isPrueba ? "#prueba" : `#paso-${index + 1}`}
+                  className={`block rounded-2xl border-2 px-2 py-2.5 text-center text-xs font-extrabold transition-colors sm:text-sm ${
+                    estado === "hecho"
+                      ? "border-spike-600 bg-spike-600 text-white"
+                      : estado === "actual"
+                        ? "border-ink-900 bg-white text-ink-900"
+                        : "border-ink-200 bg-ink-100 text-ink-500"
+                  }`}
+                >
+                  <span className="block font-display text-base sm:text-lg">
+                    {isPrueba ? "★" : index + 1}
+                  </span>
+                  {label}
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
+
+      <div className="mt-6 grid gap-6">
+        {/* 1 · Guion de vídeo */}
+        <StepSection
+          id="paso-1"
+          eyebrow={`Paso 1 de ${THEORY_STEPS}`}
+          titulo={STEPS[0].titulo}
+          estado={estadoDe(1)}
+          tone={STEPS[0].tone}
+          marca="1"
+          lockedText={lockedText}
+          unidad={numero}
+          paso={1}
+        >
+          {contenido ? (
+            <>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="font-display text-2xl font-semibold text-ink-900">
+                  «{contenido.video.titulo}»
+                </h3>
+                <p className="text-sm font-extrabold uppercase tracking-wide text-ink-500">
+                  Duración: {contenido.video.duracion}
+                </p>
+              </div>
+              {contenido.video.url ? (
+                <a
+                  href={contenido.video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 font-extrabold text-spike-700 underline decoration-2 underline-offset-4"
+                >
+                  Ver el vídeo
+                  <ExternalLinkIcon className="size-4" />
+                </a>
+              ) : null}
+              <ol className="mt-5 grid gap-3">
+                {contenido.video.escenas.map((escena, index) => (
+                  <li
+                    key={index}
+                    className="grid gap-x-5 gap-y-2 rounded-2xl bg-ink-50 p-5 sm:grid-cols-[auto_1fr_1.3fr]"
+                  >
+                    <span className="grid size-10 place-items-center rounded-full bg-block-eventos font-display text-lg font-semibold text-ink-900">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
+                        Se ve
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-ink-700">{escena.plano}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
+                        Se dice
+                      </p>
+                      <p className="mt-1 font-semibold text-ink-900">{escena.locucion}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </>
+          ) : (
+            <Pending>El guion de vídeo de esta unidad todavía está en preparación.</Pending>
+          )}
+        </StepSection>
+
+        {/* 2 · Esquema de puertos */}
+        <StepSection
+          id="paso-2"
+          eyebrow={`Paso 2 de ${THEORY_STEPS}`}
+          titulo={STEPS[1].titulo}
+          estado={estadoDe(2)}
+          tone={STEPS[1].tone}
+          marca="2"
+          lockedText={lockedText}
+          unidad={numero}
+          paso={2}
+        >
+          <p className="mb-6 font-semibold text-ink-700">
+            <span className="font-extrabold text-ink-900">Necesitas: </span>
+            {unidad.hardware}.
+          </p>
+          <HubPorts setup={setup} />
+        </StepSection>
+
+        {/* 3 · Bloques de palabras */}
+        <StepSection
+          id="paso-3"
+          eyebrow={`Paso 3 de ${THEORY_STEPS}`}
+          titulo={STEPS[2].titulo}
+          estado={estadoDe(3)}
+          tone={STEPS[2].tone}
+          marca="3"
+          lockedText={lockedText}
+          unidad={numero}
+          paso={3}
+        >
+          <p className="font-semibold text-ink-700">
+            Estos son los bloques nuevos de la unidad. En la app SPIKE cada categoría tiene su color.
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {categorias.map((categoria) => (
+              <li
+                key={categoria}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-ink-100 bg-white px-3 py-1 text-sm font-bold text-ink-800"
+              >
+                <span className={`size-3.5 rounded-full ${categoryColorClass(categoria)}`} />
+                {categoryName(categoria)}
+              </li>
+            ))}
+          </ul>
+          <ul className="mt-5 grid gap-3">
+            {unidad.bloques.map((texto) => {
+              const explicacion = explicacionDe(texto);
+              return (
+                <li
+                  key={texto}
+                  className="grid items-center gap-x-5 gap-y-2 rounded-2xl bg-ink-50 p-4 md:grid-cols-[minmax(0,22rem)_1fr]"
+                >
+                  <div>
+                    <BlockChip texto={texto} className="text-[0.95rem]" />
+                  </div>
+                  <p className="text-sm font-semibold text-ink-700">
+                    {explicacion ?? `Categoría ${categoryName(getBlockInfo(texto).categoria)}.`}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </StepSection>
+
+        {/* 4 · Modelo final */}
+        <StepSection
+          id="paso-4"
+          eyebrow={`Paso 4 de ${THEORY_STEPS}`}
+          titulo={STEPS[3].titulo}
+          estado={estadoDe(4)}
+          tone={STEPS[3].tone}
+          marca="4"
+          lockedText={lockedText}
+          unidad={numero}
+          paso={4}
+        >
+          <h3 className="font-display text-2xl font-semibold text-ink-900">{unidad.modelo}</h3>
+          {contenido ? (
+            <>
+              <p className="mt-3 font-semibold text-ink-700">
+                <span className="font-extrabold text-ink-900">Piezas: </span>
+                {contenido.construccion.piezas}
+              </p>
+              <ol className="mt-5 grid gap-3">
+                {contenido.construccion.pasos.map((paso, index) => (
+                  <li key={index} className="flex gap-4 rounded-2xl bg-ink-50 p-5">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-block-movimiento font-display text-lg font-semibold text-ink-900">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <p className="font-display text-lg font-semibold text-ink-900">
+                        {paso.titulo}
+                      </p>
+                      <p className="mt-1 font-semibold text-ink-700">{paso.texto}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </>
+          ) : (
+            <div className="mt-4">
+              <Pending>Los pasos de montaje de esta unidad todavía están en preparación.</Pending>
+            </div>
+          )}
+        </StepSection>
+
+        {/* PRUEBA UD-X */}
+        <StepSection
+          id="prueba"
+          eyebrow="Para terminar"
+          titulo={`PRUEBA UD-${numero}`}
+          estado={pruebaEstado}
+          tone={PRUEBA_TONE}
+          marca="★"
+          lockedText="Se abre cuando termines los cuatro pasos. Tu profesor también puede abrirla antes."
+          unidad={numero}
+        >
+          <h3 className="font-display text-2xl font-semibold text-ink-900">
+            Test de {preguntas.length || 8} preguntas
+          </h3>
+          <div className="mt-4">
+            {preguntas.length > 0 ? (
+              <UnitTest unidad={numero} preguntas={preguntas} resultado={resultado} />
+            ) : (
+              <Pending>El test de esta unidad todavía está en preparación.</Pending>
+            )}
+          </div>
+
+          <h3 className="mt-10 font-display text-2xl font-semibold text-ink-900">
+            Entregas de programación
+          </h3>
+          <p className="mt-1 font-semibold text-ink-600">
+            Programa cada práctica en la app SPIKE, pruébala en tu robot y entrega aquí el programa
+            bloque a bloque. Tu profesor le pondrá nota.
+          </p>
+          <div className="mt-4 grid gap-5">
+            {practicas.length > 0 ? (
+              practicas.map((practica, index) => (
+                <EntregaBox
+                  key={practica.practica}
+                  unidad={numero}
+                  practica={practica.practica}
+                  titulo={practica.titulo}
+                  enunciado={practica.enunciado}
+                  paleta={paleta}
+                  entrega={entregas[index]}
+                />
+              ))
+            ) : (
+              <Pending>Las prácticas de esta unidad todavía están en preparación.</Pending>
+            )}
+          </div>
+        </StepSection>
+      </div>
+    </>
+  );
+}

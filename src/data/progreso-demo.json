@@ -1,75 +1,118 @@
 {
-  "_nota": "DATOS DE PRUEBA del panel del profesor: progreso, notas de test y entregas inventadas para los alumnos de prueba. Sirven para ver el panel funcionando antes de que exista la parte del alumno. Bórralos (deja las dos listas vacías) cuando empiece el uso real.",
+  "_nota": "DATOS DE PRUEBA del panel del profesor: progreso, notas de test y entregas inventadas para los seis alumnos de relleno (los que no aparecen en el login). Los tres alumnos del login empiezan de cero para poder probar el recorrido completo. Vacía las dos listas cuando empiece el uso real.",
   "progreso": [
-    {
-      "alumnoId": "seed-alumno-1eso",
-      "unidad": 1,
-      "teoriaCompletada": true,
-      "testAciertos": 7
-    },
     {
       "alumnoId": "seed-marta",
       "unidad": 1,
-      "teoriaCompletada": true,
+      "pasosTeoria": 4,
       "testAciertos": 8
     },
     {
       "alumnoId": "seed-hugo",
       "unidad": 1,
-      "teoriaCompletada": false,
-      "testAciertos": null
-    },
-    {
-      "alumnoId": "seed-alumno-2eso",
-      "unidad": 1,
-      "teoriaCompletada": true,
+      "pasosTeoria": 4,
       "testAciertos": 5
     },
     {
       "alumnoId": "seed-nora",
       "unidad": 1,
-      "teoriaCompletada": true,
+      "pasosTeoria": 4,
       "testAciertos": 6
     },
     {
-      "alumnoId": "seed-alumno-3eso",
+      "alumnoId": "seed-ivan",
       "unidad": 1,
-      "teoriaCompletada": true,
-      "testAciertos": 8
+      "pasosTeoria": 4,
+      "testAciertos": 3
     },
     {
       "alumnoId": "seed-sara",
       "unidad": 1,
-      "teoriaCompletada": true,
-      "testAciertos": 3
+      "pasosTeoria": 4,
+      "testAciertos": 7
     },
     {
       "alumnoId": "seed-leo",
       "unidad": 1,
-      "teoriaCompletada": true,
+      "pasosTeoria": 2,
       "testAciertos": null
     }
   ],
   "entregas": [
     {
       "id": "demo-e01",
-      "alumnoId": "seed-alumno-1eso",
+      "alumnoId": "seed-marta",
       "unidad": 1,
       "practica": 1,
-      "entregadaEn": "2026-11-10T10:20:00.000Z",
-      "texto": "Cuando se inicia el programa\nFijar luz del botón central (verde)\nEscribir en la matriz de luces 5x5 (HOLA)\nApagar la matriz de luces 5x5",
-      "nota": 8,
+      "entregadaEn": "2026-11-10T10:31:00.000Z",
+      "bloques": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "azul",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "MARTA",
+          "nivel": 0
+        },
+        {
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "explicacion": "",
+      "nota": 9,
       "comentario": "Bien resuelto y en el orden correcto. Prueba ahora a cambiar el color del botón antes de apagar la matriz.",
       "corregidaEn": "2026-11-11T08:45:00.000Z",
       "corregidaPor": "Profe Demo"
     },
     {
       "id": "demo-e02",
-      "alumnoId": "seed-alumno-1eso",
+      "alumnoId": "seed-marta",
       "unidad": 1,
       "practica": 2,
-      "entregadaEn": "2026-11-12T10:05:00.000Z",
-      "texto": "Cuando se inicia el programa\nEncender la matriz de luces 5x5 2 segundos\nTocar nota 0.5 segundos\nTocar nota 0.5 segundos\nTocar nota 0.5 segundos\nApagar la matriz de luces 5x5\n\nNo he puesto el bloque de esperar porque no sabía dónde iba.",
+      "entregadaEn": "2026-11-12T10:12:00.000Z",
+      "bloques": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Encender la matriz de luces 5x5 X segundos",
+          "valor": "corazón · 2",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "60 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "62 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "64 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "1",
+          "nivel": 0
+        },
+        {
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "explicacion": "",
       "nota": null,
       "comentario": "",
       "corregidaEn": null,
@@ -77,11 +120,31 @@
     },
     {
       "id": "demo-e03",
-      "alumnoId": "seed-marta",
+      "alumnoId": "seed-hugo",
       "unidad": 1,
       "practica": 1,
-      "entregadaEn": "2026-11-10T10:31:00.000Z",
-      "texto": "Cuando se inicia el programa\nFijar luz del botón central (azul)\nEscribir en la matriz de luces 5x5 (MARTA)\nApagar la matriz de luces 5x5",
+      "entregadaEn": "2026-11-12T10:05:00.000Z",
+      "bloques": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "HUGO",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "verde",
+          "nivel": 0
+        },
+        {
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "explicacion": "He puesto el color del botón después del nombre porque no sabía dónde iba.",
       "nota": null,
       "comentario": "",
       "corregidaEn": null,
@@ -89,23 +152,84 @@
     },
     {
       "id": "demo-e04",
-      "alumnoId": "seed-marta",
+      "alumnoId": "seed-nora",
       "unidad": 1,
-      "practica": 2,
-      "entregadaEn": "2026-11-12T10:12:00.000Z",
-      "texto": "Cuando se inicia el programa\nEncender la matriz de luces 5x5 2 segundos\nTocar nota 0.5 segundos (tres notas distintas)\nEsperar 1 segundos\nApagar la matriz de luces 5x5",
-      "nota": null,
-      "comentario": "",
-      "corregidaEn": null,
-      "corregidaPor": null
+      "practica": 1,
+      "entregadaEn": "2026-11-10T12:35:00.000Z",
+      "bloques": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color verde?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 2
+        }
+      ],
+      "explicacion": "",
+      "nota": 7.5,
+      "comentario": "Funciona. Te falta explicar qué pasa cuando el sensor no ve ninguna tarjeta.",
+      "corregidaEn": "2026-11-11T09:10:00.000Z",
+      "corregidaPor": "Profe Demo"
     },
     {
       "id": "demo-e05",
-      "alumnoId": "seed-alumno-2eso",
+      "alumnoId": "seed-nora",
       "unidad": 1,
-      "practica": 1,
-      "entregadaEn": "2026-11-11T12:40:00.000Z",
-      "texto": "Cuando se inicia el programa\nBucle infinito\n  Si ¿Es de color (verde)? entonces\n    Empezar a mover\n  Si no\n    Parar movimiento",
+      "practica": 2,
+      "entregadaEn": "2026-11-13T12:20:00.000Z",
+      "bloques": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color verde?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color rojo?",
+          "nivel": 2
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 3
+        }
+      ],
+      "explicacion": "",
       "nota": null,
       "comentario": "",
       "corregidaEn": null,
@@ -113,59 +237,32 @@
     },
     {
       "id": "demo-e06",
-      "alumnoId": "seed-nora",
-      "unidad": 1,
-      "practica": 1,
-      "entregadaEn": "2026-11-10T12:35:00.000Z",
-      "texto": "Cuando se inicia el programa\nBucle infinito\n  Si ¿Es de color (verde)? entonces\n    Empezar a mover\n  Si no\n    Parar movimiento",
-      "nota": 7.5,
-      "comentario": "Funciona. Te falta explicar qué pasa cuando el sensor no ve ninguna tarjeta.",
-      "corregidaEn": "2026-11-11T09:10:00.000Z",
-      "corregidaPor": "Profe Demo"
-    },
-    {
-      "id": "demo-e07",
-      "alumnoId": "seed-nora",
-      "unidad": 1,
-      "practica": 2,
-      "entregadaEn": "2026-11-13T12:20:00.000Z",
-      "texto": "Cuando se inicia el programa\nBucle infinito\n  Si ¿Es de color (verde)? entonces\n    Empezar a mover\n  Si no\n    Si ¿Es de color (rojo)? entonces\n      Parar movimiento",
-      "nota": null,
-      "comentario": "",
-      "corregidaEn": null,
-      "corregidaPor": null
-    },
-    {
-      "id": "demo-e08",
-      "alumnoId": "seed-alumno-3eso",
-      "unidad": 1,
-      "practica": 1,
-      "entregadaEn": "2026-11-11T09:15:00.000Z",
-      "texto": "He creado un bloque en Mis bloques llamado «lado» con una entrada.\nDentro: Mover durante y Mover con dirección durante.\nPrograma principal: Cuando se inicia el programa, Repetir bucle 4 veces el bloque «lado».",
-      "nota": null,
-      "comentario": "",
-      "corregidaEn": null,
-      "corregidaPor": null
-    },
-    {
-      "id": "demo-e09",
-      "alumnoId": "seed-alumno-3eso",
-      "unidad": 1,
-      "practica": 2,
-      "entregadaEn": "2026-11-13T09:30:00.000Z",
-      "texto": "Uso una Variable «lados» y el bloque «lado» dentro de Repetir bucle.\nCon lados = 3 dibuja un triángulo y con lados = 6 un hexágono.",
-      "nota": null,
-      "comentario": "",
-      "corregidaEn": null,
-      "corregidaPor": null
-    },
-    {
-      "id": "demo-e10",
       "alumnoId": "seed-sara",
       "unidad": 1,
       "practica": 1,
       "entregadaEn": "2026-11-12T09:22:00.000Z",
-      "texto": "Cuando se inicia el programa\nRepetir bucle 4 veces\n  Mover durante\n  Mover con dirección durante\n\nNo he usado Mis bloques, lo he hecho directamente.",
+      "bloques": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "4",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "10 cm",
+          "nivel": 1
+        },
+        {
+          "texto": "Mover con dirección durante",
+          "valor": "dirección 100 · 90°",
+          "nivel": 1
+        }
+      ],
+      "explicacion": "No he usado Mis bloques, lo he hecho directamente.",
       "nota": null,
       "comentario": "",
       "corregidaEn": null,

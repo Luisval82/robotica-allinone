@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
-import { SolutionBlocks } from "@/components/profesor/SolutionBlocks";
+import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import { requireRole } from "@/lib/auth";
 import { firstParam, parseCourse } from "@/lib/format";
-import { countSoluciones, getPractica } from "@/lib/practicas";
+import { countSoluciones, getPractica } from "@/lib/contenido";
 import { COURSE_LABEL, UNIT_NUMBERS } from "@/lib/types";
 import { getUnidadesDeCurso } from "@/lib/unidades";
 
@@ -120,7 +120,7 @@ export default async function ProfesorSolucionesPage({
                   <h4 className="mb-3 mt-6 text-sm font-extrabold uppercase tracking-wide text-ink-500">
                     Solución
                   </h4>
-                  <SolutionBlocks blocks={practica.solucion} />
+                  <ProgramBlocks rows={practica.solucion} label="Programa de la solución" />
 
                   {practica.notas ? (
                     <p className="mt-6 rounded-2xl bg-hub-50 p-4 text-sm font-semibold text-ink-800">
@@ -138,9 +138,11 @@ export default async function ProfesorSolucionesPage({
                     Solución sin redactar
                   </h3>
                   <p className="mt-3 rounded-2xl border-2 border-dashed border-ink-300 p-4 text-sm font-semibold text-ink-600">
-                    Añade el enunciado y la solución de esta práctica en{" "}
-                    <code className="font-mono">src/data/practicas.json</code> con curso «{curso}»,
-                    unidad {numero} y práctica {n}.
+                    Esta unidad todavía no tiene contenido redactado. Créalo en{" "}
+                    <code className="font-mono">
+                      src/data/contenido/{curso}-{numero}.json
+                    </code>{" "}
+                    copiando el archivo de una unidad ya hecha.
                   </p>
                 </>
               )}

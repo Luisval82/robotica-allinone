@@ -1,0 +1,467 @@
+{
+  "_nota": "CATÁLOGO DE BLOQUES DE PALABRAS. Todos los nombres salen de TEMARIO.md. «categoria» decide el color (ver --color-block-* en src/app/globals.css) y «forma» el dibujo: inicio (empieza una pila), pila (orden que se encaja), pregunta (hexágono: responde sí o no) y dato (redondeado: devuelve un valor). «pendiente: true» = nombre marcado con * en el temario, por comprobar en la app SPIKE. «auxiliares» son piezas que acompañan a otro bloque (la rama «Si no», y la definición y el uso de un bloque propio).",
+  "categorias": [
+    {
+      "id": "eventos",
+      "nombre": "Eventos"
+    },
+    {
+      "id": "motores",
+      "nombre": "Motores"
+    },
+    {
+      "id": "movimiento",
+      "nombre": "Movimiento"
+    },
+    {
+      "id": "luz",
+      "nombre": "Luz"
+    },
+    {
+      "id": "sonido",
+      "nombre": "Sonido"
+    },
+    {
+      "id": "control",
+      "nombre": "Control"
+    },
+    {
+      "id": "sensores",
+      "nombre": "Sensores"
+    },
+    {
+      "id": "operadores",
+      "nombre": "Operadores"
+    },
+    {
+      "id": "variables",
+      "nombre": "Variables"
+    },
+    {
+      "id": "misbloques",
+      "nombre": "Mis bloques"
+    },
+    {
+      "id": "extensiones",
+      "nombre": "Extensiones"
+    }
+  ],
+  "bloques": [
+    {
+      "texto": "Cuando se inicia el programa",
+      "categoria": "eventos",
+      "forma": "inicio",
+      "pendiente": false
+    },
+    {
+      "texto": "Encender la matriz de luces 5x5 X segundos",
+      "categoria": "luz",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Escribir en la matriz de luces 5x5",
+      "categoria": "luz",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Apagar la matriz de luces 5x5",
+      "categoria": "luz",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar luz del botón central",
+      "categoria": "luz",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Tocar nota X segundos",
+      "categoria": "sonido",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Esperar X segundos",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": true
+    },
+    {
+      "texto": "Accionar motor durante",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar velocidad al… %",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Arrancar motor",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Parar motor",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Motor Ir a la posición",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Posición del motor",
+      "categoria": "motores",
+      "forma": "dato",
+      "pendiente": false
+    },
+    {
+      "texto": "Repetir bucle",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Tocar sonido hasta acabar",
+      "categoria": "sonido",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Encender la matriz de luces 5x5",
+      "categoria": "luz",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Esperar hasta que",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "¿Está presionado?",
+      "categoria": "sensores",
+      "forma": "pregunta",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar motores en movimiento",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar velocidad de movimiento",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar 1 rotación del motor a una distancia recorrida",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Mover durante",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Mover con dirección durante",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Empezar a mover...",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Parar movimiento",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "¿Está más próximo a?",
+      "categoria": "sensores",
+      "forma": "pregunta",
+      "pendiente": true
+    },
+    {
+      "texto": "Cuando está más próximo a",
+      "categoria": "eventos",
+      "forma": "inicio",
+      "pendiente": false
+    },
+    {
+      "texto": "Si... entonces...",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "¿Es de color...?",
+      "categoria": "sensores",
+      "forma": "pregunta",
+      "pendiente": false
+    },
+    {
+      "texto": "Cuando el color es",
+      "categoria": "eventos",
+      "forma": "inicio",
+      "pendiente": false
+    },
+    {
+      "texto": "Bucle infinito",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": true
+    },
+    {
+      "texto": "Si... entonces... Si no...",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Luz reflejada",
+      "categoria": "sensores",
+      "forma": "dato",
+      "pendiente": false
+    },
+    {
+      "texto": "¿Es la luz reflejada...?",
+      "categoria": "sensores",
+      "forma": "pregunta",
+      "pendiente": false
+    },
+    {
+      "texto": "Empezar a mover con dirección",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Variable",
+      "categoria": "variables",
+      "forma": "dato",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar variable a",
+      "categoria": "variables",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Cambiar variable por",
+      "categoria": "variables",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Distancia",
+      "categoria": "sensores",
+      "forma": "dato",
+      "pendiente": true
+    },
+    {
+      "texto": "Operadores de comparación (>, <, =)",
+      "categoria": "operadores",
+      "forma": "pregunta",
+      "pendiente": true
+    },
+    {
+      "texto": "Operadores lógicos (y, o, no)",
+      "categoria": "operadores",
+      "forma": "pregunta",
+      "pendiente": true
+    },
+    {
+      "texto": "Operadores aritméticos (+, −, ×, ÷)",
+      "categoria": "operadores",
+      "forma": "dato",
+      "pendiente": true
+    },
+    {
+      "texto": "Presión (sensor de fuerza)",
+      "categoria": "sensores",
+      "forma": "dato",
+      "pendiente": true
+    },
+    {
+      "texto": "Fijar el ángulo de guiñada del Hub a 0",
+      "categoria": "sensores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
+      "categoria": "sensores",
+      "forma": "dato",
+      "pendiente": false
+    },
+    {
+      "texto": "Repetir bucle hasta",
+      "categoria": "control",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Cuando se presiona el botón del Hub",
+      "categoria": "eventos",
+      "forma": "inicio",
+      "pendiente": true
+    },
+    {
+      "texto": "Enviar mensaje",
+      "categoria": "eventos",
+      "forma": "pila",
+      "pendiente": true
+    },
+    {
+      "texto": "Cuando se reciba el mensaje",
+      "categoria": "eventos",
+      "forma": "inicio",
+      "pendiente": false
+    },
+    {
+      "texto": "Reiniciar cronómetro",
+      "categoria": "sensores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Cronómetro",
+      "categoria": "sensores",
+      "forma": "dato",
+      "pendiente": true
+    },
+    {
+      "texto": "Cuando el cronómetro",
+      "categoria": "eventos",
+      "forma": "inicio",
+      "pendiente": false
+    },
+    {
+      "texto": "Elegir un número aleatorio",
+      "categoria": "operadores",
+      "forma": "dato",
+      "pendiente": false
+    },
+    {
+      "texto": "Mis bloques: Crear un bloque con entradas",
+      "categoria": "misbloques",
+      "forma": "pila",
+      "pendiente": true
+    },
+    {
+      "texto": "Ir a la posición relativa del motor a velocidad",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar la posición relativa en…",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar aceleración del motor",
+      "categoria": "motores",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Fijar motores de movimiento para que frenen al parar",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Lista",
+      "categoria": "variables",
+      "forma": "dato",
+      "pendiente": false
+    },
+    {
+      "texto": "Añadir elemento a lista",
+      "categoria": "variables",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Elemento de lista",
+      "categoria": "variables",
+      "forma": "dato",
+      "pendiente": true
+    },
+    {
+      "texto": "Longitud de lista",
+      "categoria": "variables",
+      "forma": "dato",
+      "pendiente": true
+    },
+    {
+      "texto": "¿La lista contiene...?",
+      "categoria": "variables",
+      "forma": "pregunta",
+      "pendiente": false
+    },
+    {
+      "texto": "Empezar a mover a velocidad...",
+      "categoria": "movimiento",
+      "forma": "pila",
+      "pendiente": false
+    },
+    {
+      "texto": "Enviar mensaje y esperar",
+      "categoria": "eventos",
+      "forma": "pila",
+      "pendiente": true
+    },
+    {
+      "texto": "Extensión Gráfico de líneas",
+      "categoria": "extensiones",
+      "forma": "pila",
+      "pendiente": true
+    }
+  ],
+  "auxiliares": [
+    {
+      "texto": "Si no",
+      "categoria": "control",
+      "forma": "pila",
+      "acompana": "Si... entonces... Si no..."
+    },
+    {
+      "texto": "Definir mi bloque",
+      "categoria": "misbloques",
+      "forma": "inicio",
+      "acompana": "Mis bloques: Crear un bloque con entradas"
+    },
+    {
+      "texto": "Mi bloque",
+      "categoria": "misbloques",
+      "forma": "pila",
+      "acompana": "Mis bloques: Crear un bloque con entradas"
+    }
+  ]
+}

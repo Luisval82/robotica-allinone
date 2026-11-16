@@ -3,10 +3,10 @@
 Plataforma de robótica con LEGO® Education SPIKE™ Prime para 1º, 2º y 3º de ESO.
 Nueve unidades por curso, solo con bloques de palabras (ver [TEMARIO.md](./TEMARIO.md)).
 
-**Fase actual: paneles del superadministrador y del profesor** — sobre la base (login y registro
-con correo del colegio, tres roles y rutas protegidas) ya funcionan la gestión de roles, los
-interruptores de unidades y pruebas, las notas de los tests, la corrección de entregas y el visor
-de soluciones. Falta la parte del alumno dentro de cada unidad (teoría, test y entregas).
+**Fase actual: parte del alumno** — cada unidad tiene su vista interior con cuatro pasos en
+orden (guion de vídeo, puertos del Hub, bloques de palabras y modelo final) y la PRUEBA UD-X con
+test autocorregido y dos entregas de programación por bloques. Están redactadas las unidades 1, 2
+y 3 de cada curso; las demás muestran lo que viene de `TEMARIO.md`.
 
 Stack: Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · listo para Vercel.
 
@@ -78,14 +78,49 @@ Reglas de los interruptores (`src/lib/db/aula.ts`):
 
 El progreso general cuenta cuatro hitos por unidad: teoría, test y las dos entregas (36 en total).
 
-### Datos de prueba y contenido pendiente
+## Panel del alumno y unidades (`/dashboard/alumno`)
 
-- `src/data/progreso-demo.json` trae progreso, notas y entregas **inventados** para los alumnos de
-  prueba, para ver el panel funcionando antes de que exista la parte del alumno. Vacía sus dos
-  listas cuando empiece el uso real.
-- `src/data/practicas.json` contiene las prácticas y sus soluciones. Solo hay **4 ejemplos** (UD 1
-  de 1º y de 2º ESO), redactados a partir de `TEMARIO.md`: revísalos en la app SPIKE. Las otras 50
-  aparecen como «Solución sin redactar» hasta que las añadas en ese archivo.
+El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
+(`/dashboard/alumno/unidad/N`). Dentro, los contenedores se abren en orden:
+
+| Paso | Contenido | De dónde sale |
+| --- | --- | --- |
+| 1 · Guion de vídeo | Escenas con lo que se ve y lo que se dice | `src/data/contenido/` |
+| 2 · Esquema de puertos del Hub | Qué va en cada puerto, A–F | Se deduce del hardware de `TEMARIO.md` |
+| 3 · Bloques de palabras | Cada bloque con su forma, su color y qué hace | `TEMARIO.md` + `src/data/bloques.json` |
+| 4 · Modelo final | Piezas y pasos de montaje | `src/data/contenido/` |
+| PRUEBA UD-X | Test de 8 preguntas y 2 entregas | `src/data/contenido/` |
+
+- Cada paso termina con «He terminado este paso», que abre el siguiente. Al terminar los cuatro
+  se abre la PRUEBA (el profesor puede abrirla antes con su interruptor).
+- Cada unidad tiene un botón que abre <https://education.lego.com/> en una pestaña nueva.
+- **Test**: al pulsar «Entregar» se corrige en el servidor, la nota aparece al momento y queda
+  guardada para el profesor. Hay un solo intento. Las respuestas correctas no se envían al
+  navegador hasta que el test está entregado.
+- **Entregas**: el alumno compone su programa eligiendo bloques de la unidad (y de las anteriores),
+  rellena sus huecos y lo entrega. Puede cambiarlo hasta que el profesor lo corrija; después ve la
+  nota y el comentario.
+- **Convenio de puertos** (`src/lib/unidades.ts`): motores en A, B y C por orden; sensor de color en
+  D, de distancia en E y de fuerza en F.
+
+### Contenido de las unidades
+
+- `src/data/unidades.json` y `src/data/bloques.json` cubren las **27 unidades**: título, hardware,
+  bloques (con categoría, forma y color) y modelo. Los bloques marcados con `*` en el temario llevan
+  `"pendiente": true`: su nombre está por comprobar en la app SPIKE.
+- `src/data/contenido/CURSO-N.json` contiene lo redactado de cada unidad: reto, guion de vídeo,
+  explicación de cada bloque, pasos de montaje, test (con la respuesta correcta y su explicación) y
+  las dos prácticas con su solución oficial. Hay **9 archivos** (UD 1–3 de 1º, 2º y 3º ESO).
+- Para redactar otra unidad, copia uno de esos archivos, cámbiale el nombre, `curso` y `unidad`, y
+  añádelo en `src/data/contenido/index.ts`.
+- Los pasos de montaje describen el modelo por funciones, no pieza a pieza: revísalos con el set
+  delante. Los colores de las categorías están en `src/app/globals.css` (`--color-block-*`).
+
+### Datos de prueba
+
+`src/data/progreso-demo.json` trae progreso, notas y entregas **inventados** para los seis alumnos
+de relleno, para que el panel del profesor no esté vacío. Los tres alumnos del login empiezan de
+cero y sirven para probar el recorrido completo. Vacía sus dos listas cuando empiece el uso real.
 
 ## Cómo funciona el acceso
 
@@ -104,8 +139,8 @@ El progreso general cuenta cuatro hitos por unidad: teoría, test y las dos entr
 
 ## Límites de esta fase (base de datos simulada)
 
-- **Todo lo que se cambia desde la web vive en memoria**: cuentas nuevas, roles, interruptores y
-  correcciones se pierden al reiniciar el servidor y, en Vercel, cuando la función se reinicia o
+- **Todo lo que se cambia desde la web vive en memoria**: cuentas nuevas, roles, interruptores,
+  pasos terminados, tests, entregas y correcciones se pierden al reiniciar el servidor y, en Vercel, cuando la función se reinicia o
   si atienden la petición dos instancias distintas. Sirve para probar, no para dar clase.
 - Toda la aplicación accede a los datos a través de `src/lib/db/`. Para pasar a una base de datos
   real (por ejemplo Supabase) solo hay que reescribir las funciones de esa carpeta.
@@ -127,29 +162,34 @@ src/
 ├─ data/
 │  ├─ users.json             Usuarios de prueba (base de datos simulada)
 │  ├─ progreso-demo.json     Progreso, notas y entregas de prueba
-│  ├─ practicas.json         Prácticas y soluciones oficiales (solo profesorado)
-│  └─ unidades.json          Las 27 unidades, generadas desde TEMARIO.md
+│  ├─ unidades.json          Las 27 unidades, generadas desde TEMARIO.md
+│  ├─ bloques.json           Catálogo de bloques: categoría, forma y color
+│  └─ contenido/             Guion, montaje, test y prácticas de cada unidad redactada
 ├─ lib/
 │  ├─ db/                    Capa de datos: store (memoria), users y aula
-│  ├─ practicas.ts           Lectura de las soluciones oficiales
+│  ├─ contenido.ts           Contenido de las unidades, tests y soluciones (solo servidor)
+│  ├─ bloques.ts             Categoría, forma y color de cada bloque
+│  ├─ paleta.ts              Bloques disponibles para las entregas de cada unidad
 │  ├─ format.ts              Formato de notas y fechas
 │  ├─ auth.ts                getSession, requireRole, abrir y cerrar sesión
 │  ├─ session.ts             Cookie de sesión firmada
 │  ├─ password.ts            Huella de contraseñas (scrypt)
 │  ├─ validation.ts          Validación de correo corporativo y formularios
 │  ├─ routes.ts              Panel de cada rol y permisos por zona
-│  ├─ unidades.ts            Unidades por curso
+│  ├─ unidades.ts            Unidades por curso y esquema de puertos del Hub
 │  └─ types.ts               Roles, cursos y tipos compartidos
 ├─ actions/
 │  ├─ auth.ts                Login, registro y salir
 │  ├─ admin.ts               Dar y quitar el rol de Profesor
+│  ├─ alumno.ts              Terminar pasos, entregar el test y entregar programas
 │  └─ profesor.ts            Interruptores y corrección de entregas
 ├─ components/
 │  ├─ brand/                 Hub (matriz 5x5), logotipo y bloques de palabras
 │  ├─ layout/                Cabecera
 │  ├─ auth/                  Formularios y usuarios de prueba
 │  ├─ admin/                 Control del rol de Profesor
-│  ├─ profesor/              Pestañas, tabla de interruptores, corrección y soluciones
+│  ├─ profesor/              Pestañas, tabla de interruptores y corrección
+│  ├─ unidad/                Pasos, esquema de puertos, test y caja de entrega
 │  └─ ui/                    Campo, botones, interruptor, barra de progreso e iconos
 └─ app/
    ├─ globals.css            🎨 Tema SPIKE: colores, radios y sombras (@theme)
@@ -160,7 +200,7 @@ src/
    └─ dashboard/
       ├─ admin               Gestión de usuarios
       ├─ profesor            Alumnado · unidades · notas · entregas · soluciones
-      └─ alumno              Unidades del curso con su estado real
+      └─ alumno              Unidades del curso y vista interior de cada una (unidad/N)
 ```
 
 ## Diseño

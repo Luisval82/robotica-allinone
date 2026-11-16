@@ -1,0 +1,259 @@
+{
+  "curso": "2ESO",
+  "unidad": 3,
+  "reto": "Construye un torno de entrada que cuente a las personas que pasan y muestre el aforo en la matriz de luces.",
+  "video": {
+    "titulo": "La máquina que cuenta",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Un torno de entrada de LEGO; varias figuras pasan una a una y la matriz del Hub va sumando.",
+        "locucion": "Un torno de entrada no solo deja pasar: cuenta cuánta gente ha entrado. Para contar, la máquina necesita memoria."
+      },
+      {
+        "plano": "Captura de la app: categoría Variables, botón para crear una variable y el nombre «aforo».",
+        "locucion": "Una variable es una caja con nombre donde el programa guarda un número. La creamos en la categoría Variables y le damos un nombre claro: aforo."
+      },
+      {
+        "plano": "Captura de los bloques «Fijar aforo a 0» y «Cambiar aforo por 1», con el valor de la variable a la vista.",
+        "locucion": "«Fijar variable a» pone un valor concreto: lo usamos al empezar, para dejar el contador a 0. «Cambiar variable por» suma ese número al valor que ya había; si es negativo, resta."
+      },
+      {
+        "plano": "Primer plano del sensor de distancia; una mano se acerca y se dispara una pila con el bloque amarillo.",
+        "locucion": "El sensor de distancia mide lo cerca que está un objeto. El bloque amarillo «Cuando está más próximo a» inicia su propia pila cada vez que algo se acerca."
+      },
+      {
+        "plano": "Captura de «Escribir en la matriz» con el bloque redondeado «aforo» dentro.",
+        "locucion": "Para ver el contador, metemos el bloque redondeado de la variable dentro de «Escribir en la matriz de luces»."
+      },
+      {
+        "plano": "El torno gira un cuarto de vuelta cada vez que se acerca una figura y la matriz muestra el total.",
+        "locucion": "Tu reto: un torno que gira para dejar pasar, suma una persona y muestra el aforo."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Variable",
+      "explicacion": "Bloque de dato con el valor guardado en la variable. Se coloca dentro de otros bloques."
+    },
+    {
+      "texto": "Fijar variable a",
+      "explicacion": "Guarda en la variable el valor exacto que le digas y borra el anterior."
+    },
+    {
+      "texto": "Cambiar variable por",
+      "explicacion": "Suma el número indicado al valor que ya tenía la variable. Con un número negativo, resta."
+    },
+    {
+      "texto": "Cuando está más próximo a",
+      "explicacion": "Bloque de inicio: arranca su pila cuando el sensor de distancia detecta algo más cerca de la distancia elegida."
+    },
+    {
+      "texto": "Escribir en la matriz de luces 5x5",
+      "explicacion": "Muestra el valor de la variable en la matriz."
+    },
+    {
+      "texto": "Accionar motor durante",
+      "explicacion": "Gira el torno un cuarto de vuelta para dejar pasar a una persona."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor mediano, el sensor de distancia, un eje, cuatro vigas para las aspas, y vigas y pasadores para la base.",
+    "pasos": [
+      {
+        "titulo": "La base y el pasillo",
+        "texto": "Monta una base ancha y marca en ella un pasillo de entrada con dos filas de vigas."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Fija el motor mediano junto al pasillo, con el eje hacia arriba."
+      },
+      {
+        "titulo": "Las aspas del torno",
+        "texto": "Mete un eje en el motor y monta en él cuatro vigas en cruz que barran el pasillo."
+      },
+      {
+        "titulo": "El sensor de distancia",
+        "texto": "Coloca el sensor a un lado de la entrada, mirando a través del pasillo, antes de las aspas."
+      },
+      {
+        "titulo": "El Hub y los cables",
+        "texto": "Sitúa el Hub con la matriz a la vista. Motor al puerto A y sensor de distancia al puerto E."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Gira las aspas con la mano: no deben tocar el sensor. Pasa una figura por la entrada: tiene que cruzar por delante del sensor."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué es una variable?",
+      "opciones": [
+        "Un tipo de motor",
+        "Una caja con nombre donde el programa guarda un valor",
+        "Un sensor del Hub",
+        "Un bloque que repite otros"
+      ],
+      "correcta": 1,
+      "explicacion": "Una variable guarda un dato para usarlo o cambiarlo más adelante."
+    },
+    {
+      "pregunta": "La variable aforo vale 4. Ejecutas «Cambiar aforo por 1». ¿Cuánto vale ahora?",
+      "opciones": [
+        "1",
+        "4",
+        "41",
+        "5"
+      ],
+      "correcta": 3,
+      "explicacion": "«Cambiar por» suma al valor que ya había: 4 más 1."
+    },
+    {
+      "pregunta": "La variable aforo vale 4. Ejecutas «Fijar aforo a 1». ¿Cuánto vale ahora?",
+      "opciones": [
+        "1",
+        "5",
+        "4",
+        "3"
+      ],
+      "correcta": 0,
+      "explicacion": "«Fijar a» sustituye el valor anterior por el nuevo."
+    },
+    {
+      "pregunta": "¿Para qué ponemos «Fijar aforo a 0» al iniciar el programa?",
+      "opciones": [
+        "Para apagar la matriz",
+        "Para mover el torno",
+        "Para empezar a contar desde cero cada vez",
+        "Para calibrar el sensor"
+      ],
+      "correcta": 2,
+      "explicacion": "Si no, el contador podría empezar con el valor de la vez anterior."
+    },
+    {
+      "pregunta": "¿Qué hace «Cambiar aforo por −1»?",
+      "opciones": [
+        "Pone el aforo a −1",
+        "Resta 1 al aforo",
+        "Borra la variable",
+        "No hace nada"
+      ],
+      "correcta": 1,
+      "explicacion": "Sumar un número negativo es restar: sirve para contar a quien sale."
+    },
+    {
+      "pregunta": "¿Qué tipo de bloque es «Cuando está más próximo a»?",
+      "opciones": [
+        "Un bloque de inicio: arranca su propia pila",
+        "Un dato",
+        "Una pregunta de sí o no",
+        "Un bucle"
+      ],
+      "correcta": 0,
+      "explicacion": "Es amarillo y tiene forma de inicio de pila, como «Cuando se inicia el programa»."
+    },
+    {
+      "pregunta": "Quieres ver el contador en la matriz. ¿Qué pones dentro de «Escribir en la matriz»?",
+      "opciones": [
+        "La palabra aforo escrita con el teclado",
+        "El bloque del sensor de distancia",
+        "Nada",
+        "El bloque redondeado de la variable aforo"
+      ],
+      "correcta": 3,
+      "explicacion": "Si escribes la palabra con el teclado, la matriz mostrará las letras a-f-o-r-o, no el número."
+    },
+    {
+      "pregunta": "El contador muestra siempre 1, pase quien pase. ¿Cuál es el error más probable?",
+      "opciones": [
+        "El motor está al revés",
+        "Falta el bloque de sonido",
+        "Has usado «Fijar aforo a 1» en lugar de «Cambiar aforo por 1»",
+        "El sensor está demasiado lejos"
+      ],
+      "correcta": 2,
+      "explicacion": "«Fijar a 1» pone un 1 cada vez; para acumular hay que usar «Cambiar por 1»."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Contador de entradas",
+      "enunciado": "Cada vez que alguien se acerca a menos de 10 cm del sensor, el programa suma 1 al aforo y muestra el total en la matriz. Al iniciar, el contador empieza en 0.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "aforo · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "aforo",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "valor": "E · 10 cm",
+          "nivel": 0
+        },
+        {
+          "texto": "Cambiar variable por",
+          "valor": "aforo · 1",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "aforo",
+          "nivel": 0
+        }
+      ],
+      "notas": "Son dos pilas: una pone el contador a 0 y otra cuenta. Comprueba que usan «Cambiar por» y no «Fijar a» para sumar."
+    },
+    {
+      "titulo": "Torno que gira y cuenta",
+      "enunciado": "Amplía el programa anterior: cuando alguien se acerca, el torno gira un cuarto de vuelta para dejarle pasar y después suma 1 y muestra el aforo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "aforo · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "aforo",
+          "nivel": 0
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "valor": "E · 10 cm",
+          "nivel": 0
+        },
+        {
+          "texto": "Accionar motor durante",
+          "valor": "A · 90 grados",
+          "nivel": 0
+        },
+        {
+          "texto": "Cambiar variable por",
+          "valor": "aforo · 1",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "aforo",
+          "nivel": 0
+        }
+      ],
+      "notas": "El orden entre girar y sumar no importa. Un cuarto de vuelta son 90 grados porque el torno tiene cuatro aspas."
+    }
+  ]
+}

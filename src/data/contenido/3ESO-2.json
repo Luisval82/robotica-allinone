@@ -1,0 +1,243 @@
+{
+  "curso": "3ESO",
+  "unidad": 2,
+  "reto": "Programa un vehículo de reparto que siga una línea curva con suavidad, sin zigzag.",
+  "video": {
+    "titulo": "Seguidor proporcional",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Dos robots sobre la misma pista: uno avanza a golpes y el otro sigue la línea con suavidad.",
+        "locucion": "En 2º tu robot seguía la línea a golpes: todo a un lado o todo al otro. Hoy va a girar poco cuando se desvía poco y mucho cuando se desvía mucho."
+      },
+      {
+        "plano": "Gráfico: una recta numérica con el umbral en el centro y el valor del sensor moviéndose a los lados.",
+        "locucion": "Calculamos el error: la luz reflejada menos el umbral. Con el sensor justo en el borde, el error es 0. Cuanto más se aleja, mayor es el error: positivo hacia el blanco y negativo hacia el negro."
+      },
+      {
+        "plano": "Fórmula en pantalla: dirección = error × ganancia.",
+        "locucion": "La dirección de giro es el error multiplicado por un número que llamamos ganancia. Es un control proporcional: la corrección es proporcional al error."
+      },
+      {
+        "plano": "Captura de la app: variables error y direccion, y los operadores verdes de resta y multiplicación.",
+        "locucion": "Guardamos cada cálculo en una variable con «Fijar variable a» y usamos los operadores verdes para restar y multiplicar."
+      },
+      {
+        "plano": "Tres pasadas del robot por la misma curva con ganancias distintas: se sale, oscila y la sigue bien.",
+        "locucion": "Con una ganancia baja el robot se sale en las curvas; con una alta, vuelve el zigzag. Empieza por 0,5 y ajusta."
+      },
+      {
+        "plano": "El vehículo recorre un circuito curvo llevando una carga.",
+        "locucion": "Tu reto: un vehículo de reparto que complete un circuito curvo sin perder la línea ni la carga."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Luz reflejada",
+      "explicacion": "Bloque de dato: la luz que rebota en la pista, de 0 a 100. Es la medida de la que parte todo el cálculo."
+    },
+    {
+      "texto": "Fijar variable a",
+      "explicacion": "Guarda el error y la dirección en cada vuelta del bucle."
+    },
+    {
+      "texto": "Operadores aritméticos (+, −, ×, ÷)",
+      "explicacion": "La resta calcula el error; la multiplicación, la dirección."
+    },
+    {
+      "texto": "Empezar a mover con dirección",
+      "explicacion": "Recibe la dirección calculada y reparte la velocidad entre las dos ruedas."
+    },
+    {
+      "texto": "Bucle infinito",
+      "explicacion": "Repite medir, calcular y corregir sin parar."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de color, piezas para una plataforma de carga y una pista con curvas.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta un chasis bajo y compacto con un motor mediano a cada lado y un apoyo trasero."
+      },
+      {
+        "titulo": "El sensor de color",
+        "texto": "Fija el sensor delante, centrado, mirando al suelo a un centímetro y algo adelantado respecto a las ruedas."
+      },
+      {
+        "titulo": "La plataforma de carga",
+        "texto": "Añade encima una bandeja con bordes donde quepa un objeto pequeño."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de color al puerto D."
+      },
+      {
+        "titulo": "La pista",
+        "texto": "Prepara un circuito de cinta negra sobre fondo blanco con curvas amplias y alguna más cerrada."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Mide la luz reflejada sobre blanco y sobre negro y calcula el umbral antes de programar."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué significa que el control sea proporcional?",
+      "opciones": [
+        "Que el robot siempre gira lo mismo",
+        "Que la corrección es mayor cuanto mayor es el error",
+        "Que los dos motores son iguales",
+        "Que la velocidad es constante"
+      ],
+      "correcta": 1,
+      "explicacion": "A poco error, poca corrección; a mucho error, mucha."
+    },
+    {
+      "pregunta": "El umbral es 50 y el sensor lee 50. ¿Cuánto vale el error?",
+      "opciones": [
+        "50",
+        "100",
+        "0",
+        "−50"
+      ],
+      "correcta": 2,
+      "explicacion": "Error es lectura menos umbral: 50 menos 50."
+    },
+    {
+      "pregunta": "Umbral 50, lectura 70 y ganancia 0,5. ¿Qué dirección resulta?",
+      "opciones": [
+        "10",
+        "20",
+        "35",
+        "60"
+      ],
+      "correcta": 0,
+      "explicacion": "El error es 70 menos 50, que son 20; por 0,5 da 10."
+    },
+    {
+      "pregunta": "¿Qué hace el robot cuando el error es 0?",
+      "opciones": [
+        "Se para",
+        "Gira a la derecha",
+        "Retrocede",
+        "Avanza recto"
+      ],
+      "correcta": 3,
+      "explicacion": "Error 0 por cualquier ganancia es dirección 0: recto."
+    },
+    {
+      "pregunta": "¿Qué ocurre si la ganancia es demasiado alta?",
+      "opciones": [
+        "El robot oscila de un lado a otro",
+        "El robot no se mueve",
+        "El sensor deja de medir",
+        "El robot va más despacio"
+      ],
+      "correcta": 0,
+      "explicacion": "Corrige de más, se pasa al otro lado y vuelve a corregir: reaparece el zigzag."
+    },
+    {
+      "pregunta": "¿Qué ocurre si la ganancia es demasiado baja?",
+      "opciones": [
+        "El robot oscila mucho",
+        "Se apaga el Hub",
+        "El robot corrige poco y se sale en las curvas",
+        "No cambia nada"
+      ],
+      "correcta": 2,
+      "explicacion": "La corrección no alcanza para seguir una curva cerrada."
+    },
+    {
+      "pregunta": "¿Por qué el cálculo va dentro de un bucle infinito?",
+      "opciones": [
+        "Para que el programa termine antes",
+        "Porque el error cambia continuamente y hay que recalcularlo",
+        "Porque las variables solo funcionan en bucles",
+        "Para ahorrar bloques"
+      ],
+      "correcta": 1,
+      "explicacion": "Cada instante el robot está en un punto distinto de la línea."
+    },
+    {
+      "pregunta": "¿Qué ventaja tiene frente al seguidor de 2º?",
+      "opciones": [
+        "Usa dos sensores",
+        "No necesita umbral",
+        "No necesita sensor",
+        "Se mueve con más suavidad y puede ir más rápido"
+      ],
+      "correcta": 3,
+      "explicacion": "Al corregir en proporción al error, desaparecen los giros bruscos."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Proporcional básico",
+      "enunciado": "Programa el seguidor proporcional con umbral 50 y ganancia 0,5: calcula el error, calcula la dirección y muévete con ella, sin parar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "error · Luz reflejada − 50",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "direccion · error × 0.5",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "direccion",
+          "nivel": 1
+        }
+      ],
+      "notas": "El signo depende del borde que se siga: si el robot huye de la línea, basta con cambiar el signo de la ganancia."
+    },
+    {
+      "titulo": "Ganancia ajustada",
+      "enunciado": "Mide el umbral de tu pista y prueba al menos tres ganancias distintas en el circuito con curvas. Entrega el programa con la ganancia que mejor funciona y explica qué pasó con las otras.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "velocidad elegida",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "error · Luz reflejada − umbral medido",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "direccion · error × ganancia elegida",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "direccion",
+          "nivel": 1
+        }
+      ],
+      "notas": "No hay un valor único correcto. Valora la explicación de las pruebas: qué ganancia se quedaba corta y cuál hacía oscilar al robot."
+    }
+  ]
+}

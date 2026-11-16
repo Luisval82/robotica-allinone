@@ -49,16 +49,22 @@
   --color-ink-800: #25313a;
   --color-ink-900: #1a242c;
 
-  /* Categorías de bloques de palabras (un color por familia) */
-  --color-block-eventos: #f5b800;
-  --color-block-motores: #1672d9;
-  --color-block-movimiento: #d92d86;
-  --color-block-luz: #7c4ddb;
-  --color-block-sonido: #b23cc4;
-  --color-block-control: #ff9a1f;
-  --color-block-sensores: #2bb8e6;
-  --color-block-operadores: #1fb45c;
-  --color-block-variables: #f2703a;
+  /*
+   * Categorías de bloques de palabras: un color por familia, ajustado a los
+   * de la app SPIKE. Si alguno no coincide con tu versión de la app, cámbialo
+   * aquí y se actualiza en toda la plataforma. El texto va en tinta oscura.
+   */
+  --color-block-eventos: #f5c402;
+  --color-block-motores: #0090f5;
+  --color-block-movimiento: #ff4ccd;
+  --color-block-luz: #9b6af6;
+  --color-block-sonido: #c061f1;
+  --color-block-control: #ffb515;
+  --color-block-sensores: #34ccf1;
+  --color-block-operadores: #00b94d;
+  --color-block-variables: #ff9835;
+  --color-block-misbloques: #ff5d64;
+  --color-block-extensiones: #0fbd8c;
 
   /* Formas */
   --radius-card: 1.75rem;
@@ -118,6 +124,44 @@
   /* El último bloque de una pila no necesita pestaña */
   .word-block:last-child::after {
     display: none;
+  }
+
+  /* Bloque de inicio («Cuando…»): empieza una pila, con la parte de arriba curva */
+  .word-block--inicio {
+    border-radius: 1.6rem 1.6rem 0.9rem 0.9rem;
+  }
+
+  /* Dato (redondeado): devuelve un valor y va dentro de los huecos de otros bloques */
+  .word-block--dato {
+    border-radius: 999px;
+    padding-inline: 1.25rem;
+  }
+
+  /* Pregunta (hexágono): responde verdadero o falso */
+  .word-block--pregunta {
+    border-radius: 0;
+    padding-inline: 1.6rem;
+    box-shadow: none;
+    clip-path: polygon(
+      0.9rem 0,
+      calc(100% - 0.9rem) 0,
+      100% 50%,
+      calc(100% - 0.9rem) 100%,
+      0.9rem 100%,
+      0 50%
+    );
+  }
+
+  /* Bloque suelto (fuera de una pila): sin pestaña */
+  .word-block--suelto::after,
+  .word-block--dato::after,
+  .word-block--pregunta::after {
+    display: none;
+  }
+
+  /* Dentro de un programa, un bloque de inicio que no es el primero abre otra pila */
+  .program-stack > .word-block--inicio:not(:first-child) {
+    margin-top: 1.25rem;
   }
 }
 

@@ -3,7 +3,7 @@ import { COURSE_LABEL, ROLE_LABEL, type Course, type Role } from "@/lib/types";
 // Un color por rol, el mismo en toda la plataforma.
 const ROLE_STYLE: Record<Role, string> = {
   superadmin: "bg-hub-400 text-ink-900",
-  profesor: "bg-block-luz text-white",
+  profesor: "bg-block-luz text-ink-900",
   alumno: "bg-spike-600 text-white",
 };
 

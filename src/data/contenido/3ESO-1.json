@@ -1,0 +1,255 @@
+{
+  "curso": "3ESO",
+  "unidad": 1,
+  "reto": "Crea tus propios bloques para que un robot dibujante trace polígonos con un rotulador.",
+  "video": {
+    "titulo": "Mis bloques",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Un robot con rotulador dibuja un cuadrado sobre un papel grande.",
+        "locucion": "Para dibujar un cuadrado repetimos cuatro veces lo mismo: avanzar y girar. ¿Y para un triángulo? ¿Y para un hexágono? Copiar y pegar bloques no es programar bien."
+      },
+      {
+        "plano": "Captura de la app: categoría Mis bloques, ventana para crear un bloque llamado «lado» con una entrada numérica «longitud».",
+        "locucion": "En Mis bloques creas tus propias órdenes. Les das un nombre y, si quieres, entradas: huecos para números que decidirás cada vez que uses el bloque."
+      },
+      {
+        "plano": "Captura de la definición del bloque: «Definir lado», debajo «Mover durante» con la entrada longitud y un giro.",
+        "locucion": "Debajo del bloque «Definir» encajas lo que hace tu orden. La entrada longitud se arrastra a los huecos donde haga falta."
+      },
+      {
+        "plano": "Captura del programa principal: «Repetir 4» con el bloque «lado 10» dentro; el robot dibuja.",
+        "locucion": "En el programa principal usas tu bloque como cualquier otro. Con «Repetir bucle», cuatro lados forman un cuadrado."
+      },
+      {
+        "plano": "Esquema con un triángulo, un cuadrado y un hexágono y sus ángulos de giro: 120, 90 y 60.",
+        "locucion": "En cada esquina el robot gira 360 dividido entre el número de lados: 120 grados en el triángulo, 90 en el cuadrado y 60 en el hexágono."
+      },
+      {
+        "plano": "El robot dibuja tres polígonos distintos cambiando solo un número.",
+        "locucion": "Tu reto: un robot dibujante que trace cualquier polígono regular cambiando un único valor."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Mis bloques: Crear un bloque con entradas",
+      "explicacion": "Crea una orden nueva con nombre y huecos para datos. Se define una vez y se usa las veces que quieras."
+    },
+    {
+      "texto": "Mover durante",
+      "explicacion": "Avanza en línea recta una distancia exacta."
+    },
+    {
+      "texto": "Mover con dirección durante",
+      "explicacion": "Avanza girando una cantidad exacta. Con dirección 100 o −100 el robot gira sobre sí mismo."
+    },
+    {
+      "texto": "Repetir bucle",
+      "explicacion": "Repite lo que tiene dentro el número de veces indicado."
+    },
+    {
+      "texto": "Variable",
+      "explicacion": "Guarda el número de lados para usarlo en el bucle y en el cálculo del giro."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, un rotulador, gomas elásticas y un papel grande.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta un chasis con un motor mediano a cada lado y un apoyo trasero que deslice sin frenar."
+      },
+      {
+        "titulo": "El portarrotulador",
+        "texto": "Construye un soporte vertical justo en el centro, entre las dos ruedas. Si la punta queda fuera de ese punto, las esquinas saldrán redondeadas."
+      },
+      {
+        "titulo": "El rotulador",
+        "texto": "Sujeta el rotulador al soporte con gomas, con la punta apoyada en el papel sin levantar las ruedas."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A y motor derecho al puerto B."
+      },
+      {
+        "titulo": "El papel",
+        "texto": "Fija un papel grande a la mesa con cinta para que no se mueva al girar el robot."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Gira el robot sobre sí mismo con la mano: el rotulador debe dibujar un punto, no un círculo."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Para qué sirve la categoría Mis bloques?",
+      "opciones": [
+        "Para crear órdenes propias que se pueden reutilizar",
+        "Para guardar el proyecto",
+        "Para conectar el Hub",
+        "Para cambiar el color de los bloques"
+      ],
+      "correcta": 0,
+      "explicacion": "Un bloque propio agrupa varios bloques bajo un nombre y se usa como una orden más."
+    },
+    {
+      "pregunta": "¿Qué es una entrada de un bloque propio?",
+      "opciones": [
+        "El puerto donde va el motor",
+        "El primer bloque de la pila",
+        "Un hueco para un dato que se decide cada vez que se usa el bloque",
+        "El nombre del bloque"
+      ],
+      "correcta": 2,
+      "explicacion": "Gracias a la entrada, el mismo bloque sirve para lados de 5, de 10 o de 20 centímetros."
+    },
+    {
+      "pregunta": "¿Cuántas veces hay que definir un bloque propio?",
+      "opciones": [
+        "Una por cada vez que se usa",
+        "Una sola vez",
+        "Cuatro veces",
+        "Depende del polígono"
+      ],
+      "correcta": 1,
+      "explicacion": "Se define una vez y se llama tantas veces como haga falta."
+    },
+    {
+      "pregunta": "¿Cuánto gira el robot en cada esquina de un triángulo equilátero?",
+      "opciones": [
+        "60 grados",
+        "90 grados",
+        "180 grados",
+        "120 grados"
+      ],
+      "correcta": 3,
+      "explicacion": "360 dividido entre 3 lados da 120 grados."
+    },
+    {
+      "pregunta": "Para dibujar un hexágono regular, ¿cuántas veces se repite el lado y cuánto se gira?",
+      "opciones": [
+        "6 veces, girando 60 grados",
+        "6 veces, girando 120 grados",
+        "3 veces, girando 60 grados",
+        "8 veces, girando 45 grados"
+      ],
+      "correcta": 0,
+      "explicacion": "Un hexágono tiene 6 lados y 360 entre 6 son 60 grados."
+    },
+    {
+      "pregunta": "¿Qué ventaja tiene usar el bloque «lado» frente a copiar los mismos bloques cuatro veces?",
+      "opciones": [
+        "El robot va más rápido",
+        "Gasta menos batería",
+        "Los bloques tienen otro color",
+        "Si hay que corregir algo, se cambia en un solo sitio"
+      ],
+      "correcta": 3,
+      "explicacion": "La definición está en un único lugar: cualquier ajuste afecta a todos los lados."
+    },
+    {
+      "pregunta": "¿Dónde debe quedar la punta del rotulador?",
+      "opciones": [
+        "Delante del robot",
+        "En el centro, entre las dos ruedas",
+        "Detrás del apoyo trasero",
+        "Junto a una de las ruedas"
+      ],
+      "correcta": 1,
+      "explicacion": "Al girar sobre sí mismo, ese punto no se desplaza: las esquinas salen limpias."
+    },
+    {
+      "pregunta": "El cuadrado no llega a cerrarse porque los giros se quedan cortos. ¿Qué ajustas?",
+      "opciones": [
+        "La longitud del lado",
+        "El número de repeticiones",
+        "El valor del giro dentro de la definición del bloque",
+        "El color del rotulador"
+      ],
+      "correcta": 2,
+      "explicacion": "El giro está en la definición de «lado»: se corrige una vez y vale para las cuatro esquinas."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Cuadrado con bloque propio",
+      "enunciado": "Crea un bloque «lado» con una entrada «longitud» que avance esa distancia y gire 90°. Úsalo para dibujar un cuadrado de 10 cm de lado.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "valor": "lado (longitud)",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "longitud cm",
+          "nivel": 1
+        },
+        {
+          "texto": "Mover con dirección durante",
+          "valor": "dirección 100 · giro de 90°",
+          "nivel": 1
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "4",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "lado (10)",
+          "nivel": 1
+        }
+      ],
+      "notas": "El giro de 90° hay que calibrarlo en cada robot: depende de la separación entre ruedas. Valora que el giro esté dentro de la definición y no repetido fuera."
+    },
+    {
+      "titulo": "Polígono de N lados",
+      "enunciado": "Añade al bloque una segunda entrada para el giro. Guarda el número de lados en una variable y haz que el robot dibuje el polígono regular que corresponda, calculando el giro como 360 entre el número de lados.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "valor": "lado (longitud, giro)",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "longitud cm",
+          "nivel": 1
+        },
+        {
+          "texto": "Mover con dirección durante",
+          "valor": "dirección 100 · giro grados",
+          "nivel": 1
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "valor": "lados · 6",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "valor": "lados",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "valor": "lado (10, 360 ÷ lados)",
+          "nivel": 1
+        }
+      ],
+      "notas": "Usa «Fijar variable a» y la división, que son de 2º. Si escriben el ángulo a mano (60) en lugar de calcularlo, funciona pero es menos general."
+    }
+  ]
+}

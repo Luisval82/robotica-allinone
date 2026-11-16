@@ -1,0 +1,251 @@
+{
+  "curso": "2ESO",
+  "unidad": 2,
+  "reto": "Construye un robot rastreador de almacén que siga una línea negra en zigzag.",
+  "video": {
+    "titulo": "Seguir una línea",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "El sensor de color mira al suelo; el robot pasa de una zona blanca a una negra y la matriz muestra un número que baja.",
+        "locucion": "El sensor de color también mide cuánta luz rebota en el suelo, de 0 a 100. El blanco refleja mucha luz; el negro, casi ninguna."
+      },
+      {
+        "plano": "Captura de la app: el bloque redondeado «Luz reflejada» y el hexagonal «¿Es la luz reflejada…?».",
+        "locucion": "«Luz reflejada» es un dato. «¿Es la luz reflejada menor que…?» es una pregunta hecha con ese dato. El número que separa el blanco del negro se llama umbral."
+      },
+      {
+        "plano": "Vista desde arriba: el robot avanza en zigzag sobre el borde de la línea.",
+        "locucion": "El truco no es seguir la línea, sino su borde. Si veo negro, giro hacia el blanco; si veo blanco, giro hacia el negro. El robot avanza haciendo eses."
+      },
+      {
+        "plano": "Captura del bloque «Empezar a mover con dirección» con valores −30, 0 y 30.",
+        "locucion": "«Empezar a mover con dirección» avanza girando. El 0 es recto; los valores negativos giran a la izquierda y los positivos, a la derecha."
+      },
+      {
+        "plano": "Un alumno coloca el robot sobre blanco, apunta el valor, lo coloca sobre negro y apunta el otro.",
+        "locucion": "Mide el valor de tu pista sobre blanco y sobre negro. El umbral es el punto medio entre los dos."
+      },
+      {
+        "plano": "El robot completa un circuito de cinta negra con curvas.",
+        "locucion": "Tu reto: un rastreador que complete el circuito del almacén sin salirse de la línea."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Luz reflejada",
+      "explicacion": "Bloque de dato: el porcentaje de luz, de 0 a 100, que rebota en la superficie que hay bajo el sensor."
+    },
+    {
+      "texto": "¿Es la luz reflejada...?",
+      "explicacion": "Pregunta que compara la luz reflejada con un número, el umbral. Responde verdadero o falso."
+    },
+    {
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Decide hacia qué lado girar según lo que ve el sensor."
+    },
+    {
+      "texto": "Empezar a mover con dirección",
+      "explicacion": "Avanza girando: 0 es recto, los valores negativos giran a la izquierda y los positivos, a la derecha."
+    },
+    {
+      "texto": "Bucle infinito",
+      "explicacion": "Repite la decisión continuamente para corregir el rumbo sin parar."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de color y una pista de cinta negra sobre fondo blanco.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero, como en la unidad anterior."
+      },
+      {
+        "titulo": "El soporte del sensor",
+        "texto": "Añade delante un soporte que baje hasta casi tocar el suelo, centrado entre las dos ruedas."
+      },
+      {
+        "titulo": "El sensor de color",
+        "texto": "Fija el sensor mirando hacia abajo, a un centímetro del suelo aproximadamente."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de color al puerto D."
+      },
+      {
+        "titulo": "La pista",
+        "texto": "Pega una línea de cinta negra de unos dos centímetros de ancho sobre una superficie blanca, con curvas suaves."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Pasa el robot con la mano del blanco al negro: el sensor no debe rozar el suelo ni quedar a más de dos centímetros."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué valor da «Luz reflejada» sobre una superficie negra?",
+      "opciones": [
+        "Uno bajo, cercano a 0",
+        "Exactamente 50",
+        "Uno alto, cercano a 100",
+        "Un valor negativo"
+      ],
+      "correcta": 0,
+      "explicacion": "El negro apenas refleja luz, así que el valor es bajo."
+    },
+    {
+      "pregunta": "¿Qué es el umbral?",
+      "opciones": [
+        "La velocidad máxima del robot",
+        "El ancho de la línea",
+        "El número que separa lo que consideramos blanco de lo que consideramos negro",
+        "El puerto del sensor"
+      ],
+      "correcta": 2,
+      "explicacion": "Por encima del umbral decimos que ve blanco; por debajo, negro."
+    },
+    {
+      "pregunta": "En tu pista el blanco da 90 y el negro da 10. ¿Qué umbral eliges?",
+      "opciones": [
+        "10",
+        "50",
+        "90",
+        "100"
+      ],
+      "correcta": 1,
+      "explicacion": "El punto medio entre 90 y 10 es 50."
+    },
+    {
+      "pregunta": "¿Qué sigue realmente el robot?",
+      "opciones": [
+        "El centro de la línea",
+        "El fondo blanco",
+        "La pared del aula",
+        "El borde de la línea"
+      ],
+      "correcta": 3,
+      "explicacion": "Con un solo sensor el robot va saltando entre el negro y el blanco: recorre el borde."
+    },
+    {
+      "pregunta": "¿Qué hace «Empezar a mover con dirección 0»?",
+      "opciones": [
+        "Girar sobre sí mismo",
+        "Parar",
+        "Avanzar recto",
+        "Retroceder"
+      ],
+      "correcta": 2,
+      "explicacion": "La dirección 0 reparte la misma velocidad a las dos ruedas."
+    },
+    {
+      "pregunta": "El robot ve negro y gira hacia el blanco. ¿Qué debe hacer cuando ve blanco?",
+      "opciones": [
+        "Girar hacia el negro",
+        "Seguir girando hacia el blanco",
+        "Pararse",
+        "Retroceder"
+      ],
+      "correcta": 0,
+      "explicacion": "Cada vez que cruza el borde cambia el sentido del giro: eso produce el zigzag."
+    },
+    {
+      "pregunta": "¿Hacia dónde debe mirar el sensor de color en este robot?",
+      "opciones": [
+        "Al frente",
+        "Hacia arriba",
+        "Hacia atrás",
+        "Hacia el suelo, a un centímetro aproximadamente"
+      ],
+      "correcta": 3,
+      "explicacion": "Para medir la luz que refleja la pista, el sensor tiene que estar cerca del suelo y mirándolo."
+    },
+    {
+      "pregunta": "El robot se sale de la línea en las curvas. ¿Qué pruebas primero?",
+      "opciones": [
+        "Subir la velocidad",
+        "Bajar la velocidad o aumentar el giro",
+        "Quitar el bucle infinito",
+        "Desconectar el sensor"
+      ],
+      "correcta": 1,
+      "explicacion": "Más despacio o con giros más cerrados, el robot tiene tiempo de volver al borde."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Zigzag sobre el borde",
+      "enunciado": "El robot sigue el borde de una línea negra recta de un metro, girando hacia un lado cuando ve negro y hacia el otro cuando ve blanco.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es la luz reflejada < 50 %?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "30 (derecha)",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "−30 (izquierda)",
+          "nivel": 2
+        }
+      ],
+      "notas": "El sentido de los giros depende del borde que se siga: es igual de válido con los dos valores intercambiados."
+    },
+    {
+      "titulo": "Circuito con umbral medido",
+      "enunciado": "Mide la luz reflejada sobre el blanco y sobre el negro de tu pista, calcula el umbral y ajusta la velocidad y el giro para completar el circuito con curvas sin salirte.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad de movimiento",
+          "valor": "30 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es la luz reflejada < umbral medido?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "giro hacia el blanco",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover con dirección",
+          "valor": "giro hacia el negro",
+          "nivel": 2
+        }
+      ],
+      "notas": "Pide que anoten los dos valores medidos y el umbral. «Fijar velocidad de movimiento» es de 1º (unidad 6). Valora que el circuito se complete, no los números concretos."
+    }
+  ]
+}

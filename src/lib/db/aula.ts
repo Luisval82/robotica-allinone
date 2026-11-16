@@ -5,11 +5,13 @@ import { getStore, type AccessRules } from "@/lib/db/store";
 import { toPublicUser } from "@/lib/db/users";
 import {
   TEST_QUESTIONS,
+  THEORY_STEPS,
   UNIT_NUMBERS,
   type AccessKind,
   type ClassUnitAccess,
   type Course,
   type Entrega,
+  type ProgramRow,
   type PublicUser,
   type StudentSummary,
   type StudentUnitAccess,
@@ -77,7 +79,8 @@ export async function getStudentAccess(student: {
     const abierta = unidadPropia ?? classValue(acceso, "unidad", student.course, unidad);
     const pruebaInterruptor = pruebaPropia ?? classValue(acceso, "prueba", student.course, unidad);
     const teoriaCompletada = progreso.some(
-      (item) => item.alumnoId === student.id && item.unidad === unidad && item.teoriaCompletada,
+      (item) =>
+        item.alumnoId === student.id && item.unidad === unidad && item.pasosTeoria >= THEORY_STEPS,
     );
 
     return {
@@ -143,6 +146,61 @@ export async function getProgress(studentId: string): Promise<UnitProgress[]> {
   return getStore().progreso.filter((item) => item.alumnoId === studentId);
 }
 
+/** Avance de un alumno en una unidad (a cero si todavía no la ha empezado). */
+export async function getUnitProgress(studentId: string, unidad: number): Promise<UnitProgress> {
+  return (
+    getStore().progreso.find((item) => item.alumnoId === studentId && item.unidad === unidad) ?? {
+      alumnoId: studentId,
+      unidad,
+      pasosTeoria: 0,
+      testAciertos: null,
+      testRespuestas: null,
+    }
+  );
+}
+
+function ensureProgress(studentId: string, unidad: number): UnitProgress {
+  const store = getStore();
+  let item = store.progreso.find((p) => p.alumnoId === studentId && p.unidad === unidad);
+  if (!item) {
+    item = { alumnoId: studentId, unidad, pasosTeoria: 0, testAciertos: null, testRespuestas: null };
+    store.progreso.push(item);
+  }
+  return item;
+}
+
+/**
+ * Marca como terminado un paso de teoría. Los pasos van en orden: solo se
+ * acepta el siguiente al último terminado. Devuelve false si no tocaba ese paso.
+ */
+export async function completeTheoryStep(
+  studentId: string,
+  unidad: number,
+  paso: number,
+): Promise<boolean> {
+  const item = ensureProgress(studentId, unidad);
+  if (paso !== item.pasosTeoria + 1 || paso > THEORY_STEPS) return false;
+  item.pasosTeoria = paso;
+  return true;
+}
+
+/**
+ * Guarda el resultado del test. Solo hay un intento: devuelve false si el
+ * alumno ya lo había entregado.
+ */
+export async function saveTestResult(
+  studentId: string,
+  unidad: number,
+  respuestas: number[],
+  aciertos: number,
+): Promise<boolean> {
+  const item = ensureProgress(studentId, unidad);
+  if (item.testAciertos !== null) return false;
+  item.testAciertos = aciertos;
+  item.testRespuestas = respuestas;
+  return true;
+}
+
 export async function getStudentSummary(student: {
   id: string;
   course: Course;
@@ -154,7 +212,9 @@ export async function getStudentSummary(student: {
 
   const tests = progreso.filter((item) => item.testAciertos !== null);
   const hitos =
-    progreso.filter((item) => item.teoriaCompletada).length + tests.length + entregas.length;
+    progreso.filter((item) => item.pasosTeoria >= THEORY_STEPS).length +
+    tests.length +
+    entregas.length;
   const sumaNotas = tests.reduce((total, item) => total + testScore(item.testAciertos ?? 0), 0);
 
   return {
@@ -240,6 +300,55 @@ export async function listEntregas(filter: {
       ? a.entrega.entregadaEn.localeCompare(b.entrega.entregadaEn)
       : (b.entrega.corregidaEn ?? "").localeCompare(a.entrega.corregidaEn ?? ""),
   );
+}
+
+export async function getEntrega(
+  studentId: string,
+  unidad: number,
+  practica: 1 | 2,
+): Promise<Entrega | undefined> {
+  return getStore().entregas.find(
+    (item) => item.alumnoId === studentId && item.unidad === unidad && item.practica === practica,
+  );
+}
+
+/**
+ * Guarda la entrega de un alumno. Mientras el profesor no la haya corregido,
+ * una entrega nueva sustituye a la anterior. Devuelve "corregida" si ya tiene
+ * nota y, por tanto, no se puede cambiar.
+ */
+export async function saveEntrega(
+  studentId: string,
+  input: { unidad: number; practica: 1 | 2; bloques: ProgramRow[]; explicacion: string },
+): Promise<"guardada" | "corregida"> {
+  const store = getStore();
+  const previa = store.entregas.find(
+    (item) =>
+      item.alumnoId === studentId && item.unidad === input.unidad && item.practica === input.practica,
+  );
+  if (previa?.nota != null) return "corregida";
+
+  const ahora = new Date().toISOString();
+  if (previa) {
+    previa.bloques = input.bloques;
+    previa.explicacion = input.explicacion;
+    previa.entregadaEn = ahora;
+  } else {
+    store.entregas.push({
+      id: crypto.randomUUID(),
+      alumnoId: studentId,
+      unidad: input.unidad,
+      practica: input.practica,
+      bloques: input.bloques,
+      explicacion: input.explicacion,
+      entregadaEn: ahora,
+      nota: null,
+      comentario: "",
+      corregidaEn: null,
+      corregidaPor: null,
+    });
+  }
+  return "guardada";
 }
 
 /** Guarda la nota y el comentario del profesor. Devuelve false si la entrega no existe. */

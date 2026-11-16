@@ -4,7 +4,7 @@
 //  · Al arrancar carga los usuarios de src/data/users.json y los datos de
 //    prueba del aula de src/data/progreso-demo.json.
 //  · Todo lo que cambia después (cuentas nuevas, roles, interruptores de
-//    unidades, correcciones) vive EN MEMORIA: se pierde al reiniciar el
+//    unidades, progreso, tests, entregas y correcciones) vive EN MEMORIA: se pierde al reiniciar el
 //    servidor y, en Vercel, cuando la función se reinicia.
 //  · El resto de la aplicación solo usa las funciones de src/lib/db/*.
 //    Para pasar a una base de datos real (p. ej. Supabase) basta con
@@ -20,6 +20,7 @@ import {
   isRole,
   type Course,
   type Entrega,
+  type ProgramRow,
   type Role,
   type UnitProgress,
   type User,
@@ -81,6 +82,10 @@ export function readSeedUsers(): SeedUser[] {
   });
 }
 
+function toRows(rows: ProgramRow[]): ProgramRow[] {
+  return rows.map((row) => ({ texto: row.texto, valor: row.valor, nivel: row.nivel }));
+}
+
 function buildStore(seedVersion: string): Store {
   return {
     seedVersion,
@@ -92,15 +97,17 @@ function buildStore(seedVersion: string): Store {
     progreso: demo.progreso.map((item) => ({
       alumnoId: item.alumnoId,
       unidad: item.unidad,
-      teoriaCompletada: item.teoriaCompletada,
+      pasosTeoria: item.pasosTeoria,
       testAciertos: item.testAciertos,
+      testRespuestas: null,
     })),
     entregas: demo.entregas.map((item) => ({
       id: item.id,
       alumnoId: item.alumnoId,
       unidad: item.unidad,
       practica: item.practica === 2 ? 2 : 1,
-      texto: item.texto,
+      bloques: toRows(item.bloques),
+      explicacion: item.explicacion,
       entregadaEn: item.entregadaEn,
       nota: item.nota,
       comentario: item.comentario,

@@ -1,0 +1,255 @@
+{
+  "curso": "3ESO",
+  "unidad": 3,
+  "reto": "Construye un robot recogedor con una pinza frontal capaz de coger un objeto y trasladarlo sin que se le caiga.",
+  "video": {
+    "titulo": "Motores de precisión",
+    "duracion": "5 min",
+    "escenas": [
+      {
+        "plano": "Un robot con pinza se acerca a un cubo, lo coge y lo lleva a otra zona.",
+        "locucion": "Coger un objeto sin tirarlo ni aplastarlo exige motores precisos: saber dónde está la pinza, moverla con suavidad y frenar en el sitio justo."
+      },
+      {
+        "plano": "Esquema con dos contadores: uno de 0 a 359 y otro que sigue subiendo, 360, 720…",
+        "locucion": "La posición absoluta, de 0 a 359, depende de cómo montaste el motor. La posición relativa es un contador que tú pones a cero cuando quieres y que sigue contando más allá de 360."
+      },
+      {
+        "plano": "Captura de la app: «Fijar la posición relativa en 0» con la pinza abierta, y después «Ir a la posición relativa 90».",
+        "locucion": "Con la pinza abierta ponemos la posición relativa a 0. Desde ahí, ir a la posición relativa 90 será siempre cerrar la pinza, se haya montado como se haya montado."
+      },
+      {
+        "plano": "La pinza se cierra de golpe y el objeto sale despedido; después se cierra con suavidad y lo sujeta.",
+        "locucion": "«Fijar aceleración» decide lo deprisa que el motor alcanza su velocidad. Con una aceleración baja arranca y frena suave, y el objeto no sale despedido."
+      },
+      {
+        "plano": "El robot avanza y se detiene: primero se pasa de largo, después frena en seco delante del objeto.",
+        "locucion": "Al parar, los motores de movimiento pueden frenar, mantener la posición o quedar libres. Con freno, el robot se detiene justo delante del objeto."
+      },
+      {
+        "plano": "Secuencia completa: avanzar, cerrar, retroceder y soltar.",
+        "locucion": "Tu reto: un robot que avanza hasta un objeto, lo coge con la pinza, lo traslada y lo suelta."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Ir a la posición relativa del motor a velocidad",
+      "explicacion": "Lleva el motor al valor del contador relativo que indiques, a la velocidad que elijas."
+    },
+    {
+      "texto": "Fijar la posición relativa en…",
+      "explicacion": "Pone el contador de posición relativa en el valor que digas, normalmente 0, sin mover el motor."
+    },
+    {
+      "texto": "Fijar aceleración del motor",
+      "explicacion": "Decide lo rápido que el motor alcanza su velocidad y lo rápido que frena."
+    },
+    {
+      "texto": "Fijar motores de movimiento para que frenen al parar",
+      "explicacion": "Elige qué hacen las ruedas al detenerse: frenar, mantener la posición o quedar libres."
+    },
+    {
+      "texto": "Mover durante",
+      "explicacion": "Avanza o retrocede una distancia exacta hasta el objeto."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, un motor grande, vigas para los dos brazos de la pinza y gomas para las puntas.",
+    "pasos": [
+      {
+        "titulo": "La base de conducción",
+        "texto": "Monta el chasis con un motor mediano a cada lado y el Hub algo retrasado, para que haga de contrapeso."
+      },
+      {
+        "titulo": "El motor de la pinza",
+        "texto": "Fija el motor grande en la parte delantera, centrado."
+      },
+      {
+        "titulo": "Los brazos",
+        "texto": "Monta un brazo fijo al chasis y otro unido al eje del motor grande, de modo que al girar se acerque al primero."
+      },
+      {
+        "titulo": "El agarre",
+        "texto": "Pon gomas en las puntas de los dos brazos para que el objeto no resbale."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y motor grande de la pinza al puerto C."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Abre y cierra la pinza con la mano: debe moverse libre, sin rozar el suelo ni las ruedas. Déjala abierta antes de iniciar el programa."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿En qué se diferencia la posición relativa de la absoluta?",
+      "opciones": [
+        "La relativa solo existe en el motor grande",
+        "La relativa es un contador que se puede poner a cero y pasa de 360",
+        "La absoluta se mide en centímetros",
+        "No hay diferencia"
+      ],
+      "correcta": 1,
+      "explicacion": "La absoluta va de 0 a 359 y depende del montaje; la relativa la decides tú."
+    },
+    {
+      "pregunta": "¿Qué hace «Fijar la posición relativa en 0»?",
+      "opciones": [
+        "Gira el motor hasta la marca 0",
+        "Apaga el motor",
+        "Pone la velocidad a 0",
+        "Pone el contador a 0 sin mover el motor"
+      ],
+      "correcta": 3,
+      "explicacion": "Solo cambia el contador: el motor se queda donde está."
+    },
+    {
+      "pregunta": "El motor da dos vueltas completas desde la posición relativa 0. ¿Qué valor marca?",
+      "opciones": [
+        "0",
+        "359",
+        "720",
+        "2"
+      ],
+      "correcta": 2,
+      "explicacion": "La posición relativa no vuelve a empezar en cada vuelta: dos vueltas son 720 grados."
+    },
+    {
+      "pregunta": "¿Qué consigues con una aceleración baja?",
+      "opciones": [
+        "Que el motor arranque y frene con suavidad",
+        "Que el motor tenga más fuerza",
+        "Que el motor gire al revés",
+        "Que el programa sea más corto"
+      ],
+      "correcta": 0,
+      "explicacion": "El motor tarda más en alcanzar su velocidad y el objeto no sale despedido."
+    },
+    {
+      "pregunta": "¿Por qué ponemos la posición relativa a 0 con la pinza abierta al empezar?",
+      "opciones": [
+        "Para ahorrar batería",
+        "Porque así se calibra el sensor de color",
+        "Para que el programa funcione igual se monte como se monte la pinza",
+        "Porque el motor grande no tiene posición absoluta"
+      ],
+      "correcta": 2,
+      "explicacion": "A partir de esa referencia, el mismo valor siempre significa la misma apertura."
+    },
+    {
+      "pregunta": "Quieres que el robot se detenga justo delante del objeto, sin pasarse. ¿Qué eliges al parar?",
+      "opciones": [
+        "Dejar los motores libres",
+        "Frenar",
+        "Subir la velocidad",
+        "Quitar una rueda"
+      ],
+      "correcta": 1,
+      "explicacion": "Con los motores libres el robot sigue rodando por inercia."
+    },
+    {
+      "pregunta": "La pinza aprieta tanto que el motor se fuerza. ¿Qué cambias?",
+      "opciones": [
+        "Subo la aceleración",
+        "Pongo los motores de movimiento libres",
+        "Alargo la distancia de avance",
+        "Reduzco el valor de cierre de la posición relativa"
+      ],
+      "correcta": 3,
+      "explicacion": "Si el motor no puede llegar al valor pedido porque el objeto lo impide, se queda empujando."
+    },
+    {
+      "pregunta": "¿Cuál es el orden correcto para trasladar un objeto?",
+      "opciones": [
+        "Avanzar, cerrar la pinza, trasladar y abrir la pinza",
+        "Cerrar la pinza, avanzar, abrir y trasladar",
+        "Abrir la pinza, trasladar, avanzar y cerrar",
+        "Trasladar, avanzar, cerrar y abrir"
+      ],
+      "correcta": 0,
+      "explicacion": "Primero hay que llegar al objeto con la pinza abierta; después se cierra, se mueve y se suelta."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Abrir y cerrar con suavidad",
+      "enunciado": "Con la pinza abierta al empezar, pon su posición relativa a 0. Ciérrala despacio hasta la posición 90, espera 2 segundos y vuelve a abrirla.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "valor": "C · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "valor": "C · lenta",
+          "nivel": 0
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "valor": "C · 90 · 30 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "2",
+          "nivel": 0
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "valor": "C · 0 · 30 %",
+          "nivel": 0
+        }
+      ],
+      "notas": "El valor de cierre (90) depende de la pinza y del objeto: da por bueno cualquier valor que sujete sin forzar el motor."
+    },
+    {
+      "titulo": "Recoger y trasladar",
+      "enunciado": "El robot avanza 20 cm hasta el objeto y frena, cierra la pinza, retrocede 30 cm con el objeto y lo suelta.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "valor": "frenar",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "valor": "C · 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "20 cm hacia delante",
+          "nivel": 0
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "valor": "C · 90 · 30 %",
+          "nivel": 0
+        },
+        {
+          "texto": "Mover durante",
+          "valor": "30 cm hacia atrás",
+          "nivel": 0
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "valor": "C · 0 · 30 %",
+          "nivel": 0
+        }
+      ],
+      "notas": "Las distancias pueden variar según la mesa. Lo esencial es el orden y que la pinza parta de una referencia conocida."
+    }
+  ]
+}

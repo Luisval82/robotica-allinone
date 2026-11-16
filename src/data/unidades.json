@@ -1,11 +1,20 @@
 {
-  "_nota": "Generado a partir de TEMARIO.md. 9 unidades por curso.",
+  "_nota": "Generado a partir de TEMARIO.md: 9 unidades por curso con su hardware, sus bloques de palabras y su modelo final.",
   "unidades": [
     {
       "curso": "1ESO",
       "numero": 1,
       "titulo": "Hola, Hub: luces y sonidos",
       "hardware": "Hub (Matriz de luces 5x5, altavoz y botón central)",
+      "bloques": [
+        "Cuando se inicia el programa",
+        "Encender la matriz de luces 5x5 X segundos",
+        "Escribir en la matriz de luces 5x5",
+        "Apagar la matriz de luces 5x5",
+        "Fijar luz del botón central",
+        "Tocar nota X segundos",
+        "Esperar X segundos"
+      ],
       "modelo": "Rótulo luminoso de sobremesa: el Hub sobre un atril muestra un mensaje animado con melodía"
     },
     {
@@ -13,6 +22,13 @@
       "numero": 2,
       "titulo": "Mi primer motor: segundos, grados y rotaciones",
       "hardware": "Hub + 1 Motor mediano",
+      "bloques": [
+        "Accionar motor durante",
+        "Fijar velocidad al… %",
+        "Arrancar motor",
+        "Parar motor",
+        "Esperar X segundos"
+      ],
       "modelo": "Ventilador de sobremesa con tres velocidades programadas"
     },
     {
@@ -20,6 +36,13 @@
       "numero": 3,
       "titulo": "Posición exacta: el motor como servo",
       "hardware": "Hub + 1 Motor mediano",
+      "bloques": [
+        "Motor Ir a la posición",
+        "Posición del motor",
+        "Fijar velocidad al… %",
+        "Tocar nota X segundos",
+        "Esperar X segundos"
+      ],
       "modelo": "Barrera de aparcamiento: sube a 90°, espera y baja"
     },
     {
@@ -27,6 +50,13 @@
       "numero": 4,
       "titulo": "Bucles: repetir sin copiar",
       "hardware": "Hub + Motor grande",
+      "bloques": [
+        "Repetir bucle",
+        "Accionar motor durante",
+        "Esperar X segundos",
+        "Tocar sonido hasta acabar",
+        "Encender la matriz de luces 5x5"
+      ],
       "modelo": "Noria que gira por tramos y se detiene en cada cabina"
     },
     {
@@ -34,6 +64,13 @@
       "numero": 5,
       "titulo": "Sensor de fuerza: la máquina espera mi orden",
       "hardware": "Hub + Sensor de fuerza + 1 Motor mediano",
+      "bloques": [
+        "Esperar hasta que",
+        "¿Está presionado?",
+        "Motor Ir a la posición",
+        "Accionar motor durante",
+        "Tocar sonido hasta acabar"
+      ],
       "modelo": "Puerta automática con timbre: el pulsador la abre y se cierra sola"
     },
     {
@@ -41,6 +78,13 @@
       "numero": 6,
       "titulo": "Base de conducción: avanzar y girar",
       "hardware": "Hub + 2 Motores medianos",
+      "bloques": [
+        "Fijar motores en movimiento",
+        "Fijar velocidad de movimiento",
+        "Fijar 1 rotación del motor a una distancia recorrida",
+        "Mover durante",
+        "Mover con dirección durante"
+      ],
       "modelo": "Robot repartidor (base de conducción) que recorre un circuito cuadrado"
     },
     {
@@ -48,6 +92,14 @@
       "numero": 7,
       "titulo": "Sensor de distancia: frenar a tiempo",
       "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "bloques": [
+        "Empezar a mover...",
+        "Parar movimiento",
+        "Esperar hasta que",
+        "¿Está más próximo a?",
+        "Cuando está más próximo a",
+        "Tocar nota X segundos"
+      ],
       "modelo": "Vehículo con frenada automática de emergencia ante un obstáculo"
     },
     {
@@ -55,6 +107,13 @@
       "numero": 8,
       "titulo": "Sensor de color: la primera decisión",
       "hardware": "Hub + Sensor de color + Motor grande",
+      "bloques": [
+        "Si... entonces...",
+        "¿Es de color...?",
+        "Cuando el color es",
+        "Bucle infinito",
+        "Motor Ir a la posición"
+      ],
       "modelo": "Puerta de garaje basculante que solo sube con la tarjeta del color correcto"
     },
     {
@@ -62,6 +121,16 @@
       "numero": 9,
       "titulo": "Proyecto final: la feria automática",
       "hardware": "Hub + Motor grande + 1 Motor mediano + Sensor de fuerza + Sensor de distancia",
+      "bloques": [
+        "Esperar hasta que",
+        "Repetir bucle",
+        "Si... entonces...",
+        "¿Está presionado?",
+        "¿Está más próximo a?",
+        "Arrancar motor",
+        "Parar motor",
+        "Tocar sonido hasta acabar"
+      ],
       "modelo": "Tiovivo con taquilla: el pulsador inicia el viaje, una barrera da acceso y se detiene si alguien se acerca"
     },
     {
@@ -69,6 +138,13 @@
       "numero": 1,
       "titulo": "Dos caminos: si… entonces… si no",
       "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "bloques": [
+        "Si... entonces... Si no...",
+        "Bucle infinito",
+        "¿Es de color...?",
+        "Empezar a mover...",
+        "Parar movimiento"
+      ],
       "modelo": "Vehículo autónomo que obedece semáforos (tarjetas verde y roja)"
     },
     {
@@ -76,6 +152,13 @@
       "numero": 2,
       "titulo": "Seguir una línea con luz reflejada",
       "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "bloques": [
+        "Luz reflejada",
+        "¿Es la luz reflejada...?",
+        "Si... entonces... Si no...",
+        "Empezar a mover con dirección",
+        "Bucle infinito"
+      ],
       "modelo": "Robot rastreador de almacén: sigue una línea negra en zigzag"
     },
     {
@@ -83,6 +166,14 @@
       "numero": 3,
       "titulo": "Variables: la máquina que cuenta",
       "hardware": "Hub + Sensor de distancia + 1 Motor mediano",
+      "bloques": [
+        "Variable",
+        "Fijar variable a",
+        "Cambiar variable por",
+        "Cuando está más próximo a",
+        "Escribir en la matriz de luces 5x5",
+        "Accionar motor durante"
+      ],
       "modelo": "Torno de entrada con contador de aforo en la matriz de luces"
     },
     {
@@ -90,6 +181,14 @@
       "numero": 4,
       "titulo": "Operadores: comparar y calcular",
       "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "bloques": [
+        "Distancia",
+        "Operadores de comparación (>, <, =)",
+        "Operadores lógicos (y, o, no)",
+        "Operadores aritméticos (+, −, ×, ÷)",
+        "Si... entonces... Si no...",
+        "Tocar nota X segundos"
+      ],
       "modelo": "Coche con sensor de aparcamiento: pita más rápido cuanto más cerca está del muro"
     },
     {
@@ -97,6 +196,13 @@
       "numero": 5,
       "titulo": "Sensor de fuerza: medir cuánto aprieto",
       "hardware": "Hub + Sensor de fuerza + Motor grande",
+      "bloques": [
+        "Presión (sensor de fuerza)",
+        "Fijar variable a",
+        "Operadores aritméticos (+, −, ×, ÷)",
+        "Motor Ir a la posición",
+        "Encender la matriz de luces 5x5"
+      ],
       "modelo": "Martillo de feria «prueba tu fuerza» con aguja indicadora motorizada"
     },
     {
@@ -104,6 +210,13 @@
       "numero": 6,
       "titulo": "Giroscopio: girar con precisión",
       "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos",
+      "bloques": [
+        "Fijar el ángulo de guiñada del Hub a 0",
+        "Ángulo de cabeceo, alabeo o guiñada del Hub",
+        "Empezar a mover con dirección",
+        "Repetir bucle hasta",
+        "Parar movimiento"
+      ],
       "modelo": "Robot explorador que traza giros exactos de 90° sobre un plano"
     },
     {
@@ -111,6 +224,14 @@
       "numero": 7,
       "titulo": "Eventos y mensajes: varias pilas a la vez",
       "hardware": "Hub (botones izquierdo y derecho) + Motor grande + 1 Motor mediano",
+      "bloques": [
+        "Cuando se presiona el botón del Hub",
+        "Enviar mensaje",
+        "Cuando se reciba el mensaje",
+        "Arrancar motor",
+        "Parar motor",
+        "Motor Ir a la posición"
+      ],
       "modelo": "Grúa giratoria con brazo elevador manejada desde los botones del Hub"
     },
     {
@@ -118,6 +239,15 @@
       "numero": 8,
       "titulo": "Cronómetro y azar: juego de reflejos",
       "hardware": "Hub + Sensor de fuerza + 1 Motor mediano",
+      "bloques": [
+        "Reiniciar cronómetro",
+        "Cronómetro",
+        "Cuando el cronómetro",
+        "Elegir un número aleatorio",
+        "Esperar hasta que",
+        "¿Está presionado?",
+        "Escribir en la matriz de luces 5x5"
+      ],
       "modelo": "Máquina de reflejos: una bandera se levanta al azar y mide el tiempo de reacción"
     },
     {
@@ -125,6 +255,15 @@
       "numero": 9,
       "titulo": "Proyecto final: clasificadora de colores",
       "hardware": "Hub + Sensor de color + Motor grande + 1 Motor mediano",
+      "bloques": [
+        "Si... entonces... Si no...",
+        "¿Es de color...?",
+        "Motor Ir a la posición",
+        "Accionar motor durante",
+        "Cambiar variable por",
+        "Repetir bucle hasta",
+        "Escribir en la matriz de luces 5x5"
+      ],
       "modelo": "Clasificadora de piezas por color con rampa selectora y contador de cada color"
     },
     {
@@ -132,6 +271,13 @@
       "numero": 1,
       "titulo": "Mis bloques: crear mis propias órdenes",
       "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos",
+      "bloques": [
+        "Mis bloques: Crear un bloque con entradas",
+        "Mover durante",
+        "Mover con dirección durante",
+        "Repetir bucle",
+        "Variable"
+      ],
       "modelo": "Robot dibujante que traza polígonos con un rotulador"
     },
     {
@@ -139,6 +285,13 @@
       "numero": 2,
       "titulo": "Seguidor de línea proporcional",
       "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "bloques": [
+        "Luz reflejada",
+        "Fijar variable a",
+        "Operadores aritméticos (+, −, ×, ÷)",
+        "Empezar a mover con dirección",
+        "Bucle infinito"
+      ],
       "modelo": "Vehículo de reparto autoguiado que sigue una línea curva sin zigzag"
     },
     {
@@ -146,6 +299,13 @@
       "numero": 3,
       "titulo": "Motores de precisión: la pinza",
       "hardware": "Hub + 2 Motores medianos + Motor grande",
+      "bloques": [
+        "Ir a la posición relativa del motor a velocidad",
+        "Fijar la posición relativa en…",
+        "Fijar aceleración del motor",
+        "Fijar motores de movimiento para que frenen al parar",
+        "Mover durante"
+      ],
       "modelo": "Robot recogedor con pinza frontal que traslada objetos"
     },
     {
@@ -153,6 +313,15 @@
       "numero": 4,
       "titulo": "Listas: memoria para la máquina",
       "hardware": "Hub + Motor grande (dial) + 1 Motor mediano (cerrojo)",
+      "bloques": [
+        "Lista",
+        "Añadir elemento a lista",
+        "Elemento de lista",
+        "Longitud de lista",
+        "¿La lista contiene...?",
+        "Posición del motor",
+        "Repetir bucle hasta"
+      ],
       "modelo": "Caja fuerte con dial giratorio y combinación guardada en una lista"
     },
     {
@@ -160,6 +329,13 @@
       "numero": 5,
       "titulo": "Control con realimentación",
       "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "bloques": [
+        "Distancia",
+        "Fijar variable a",
+        "Operadores aritméticos (+, −, ×, ÷)",
+        "Empezar a mover a velocidad...",
+        "Bucle infinito"
+      ],
       "modelo": "Vehículo con control de crucero adaptativo: mantiene 15 cm con el de delante"
     },
     {
@@ -167,6 +343,14 @@
       "numero": 6,
       "titulo": "Máquinas de estados: procesos por fases",
       "hardware": "Hub + Motor grande + 1 Motor mediano + Sensor de distancia + Sensor de color",
+      "bloques": [
+        "Enviar mensaje y esperar",
+        "Cuando se reciba el mensaje",
+        "Fijar variable a",
+        "Si... entonces... Si no...",
+        "Esperar hasta que",
+        "Cuando el color es"
+      ],
       "modelo": "Túnel de lavado automático: puerta, rodillo y programa elegido con tarjeta de color"
     },
     {
@@ -174,6 +358,14 @@
       "numero": 7,
       "titulo": "Datos y gráficas: medir para decidir",
       "hardware": "Hub (Sensor giroscópico) + Motor grande",
+      "bloques": [
+        "Extensión Gráfico de líneas",
+        "Ángulo de cabeceo, alabeo o guiñada del Hub",
+        "Reiniciar cronómetro",
+        "Cronómetro",
+        "Añadir elemento a lista",
+        "Arrancar motor"
+      ],
       "modelo": "Mesa sísmica con sismógrafo para ensayar torres antisísmicas"
     },
     {
@@ -181,6 +373,15 @@
       "numero": 8,
       "titulo": "Navegación autónoma",
       "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos + Sensor de distancia + Sensor de fuerza (parachoques)",
+      "bloques": [
+        "Mis bloques: Crear un bloque con entradas",
+        "Fijar el ángulo de guiñada del Hub a 0",
+        "Ángulo de cabeceo, alabeo o guiñada del Hub",
+        "¿Está más próximo a?",
+        "¿Está presionado?",
+        "Repetir bucle hasta",
+        "Si... entonces... Si no..."
+      ],
       "modelo": "Robot explorador que resuelve un laberinto"
     },
     {
@@ -188,6 +389,15 @@
       "numero": 9,
       "titulo": "Proyecto final: almacén robotizado",
       "hardware": "Hub + 2 Motores medianos + Motor grande + Sensor de color + Sensor de distancia + Sensor de fuerza",
+      "bloques": [
+        "Mis bloques: Crear un bloque con entradas",
+        "Luz reflejada",
+        "¿Es de color...?",
+        "Ir a la posición relativa del motor a velocidad",
+        "Añadir elemento a lista",
+        "Cuando se reciba el mensaje",
+        "Variable"
+      ],
       "modelo": "Carretilla elevadora autónoma: sigue la línea, reconoce la estación por color, recoge el palé y registra las entregas"
     }
   ]

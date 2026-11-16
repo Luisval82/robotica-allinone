@@ -1,0 +1,247 @@
+{
+  "curso": "1ESO",
+  "unidad": 1,
+  "reto": "Convierte el Hub en un rótulo luminoso de sobremesa que salude con un mensaje y una melodía.",
+  "video": {
+    "titulo": "Hola, Hub",
+    "duracion": "3 min",
+    "escenas": [
+      {
+        "plano": "Primer plano del Hub apagado sobre la mesa. Una mano pulsa el botón central y se enciende.",
+        "locucion": "Este es el Hub, el cerebro de todos tus robots. Tiene una pantalla de 25 luces, un altavoz y un botón central que también se ilumina."
+      },
+      {
+        "plano": "Pantalla de la app SPIKE: se crea un proyecto nuevo de bloques de palabras y se conecta el Hub.",
+        "locucion": "Abre la app SPIKE, crea un proyecto de bloques de palabras y conecta el Hub por Bluetooth o con el cable USB."
+      },
+      {
+        "plano": "Captura de la app: el bloque amarillo «Cuando se inicia el programa» con un bloque morado encajado debajo.",
+        "locucion": "Todo programa empieza con el bloque amarillo «Cuando se inicia el programa». Debajo encajamos los bloques que queremos que se ejecuten, de arriba abajo y de uno en uno."
+      },
+      {
+        "plano": "El Hub muestra una cara sonriente y después escribe HOLA letra a letra.",
+        "locucion": "Los bloques morados controlan las luces: encienden un dibujo durante unos segundos, escriben un texto o apagan la matriz."
+      },
+      {
+        "plano": "El Hub toca tres notas mientras el botón central cambia de color.",
+        "locucion": "Los bloques de sonido tocan notas. Cada nota tiene un número y una duración. Con «Esperar» hacemos una pausa entre una acción y la siguiente."
+      },
+      {
+        "plano": "El Hub colocado en su atril, mostrando un mensaje mientras suena una melodía.",
+        "locucion": "Tu reto: montar un atril para el Hub y programar un rótulo que salude con un mensaje animado y una melodía."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Cuando se inicia el programa",
+      "explicacion": "Es el primer bloque de la pila. Lo que encajes debajo se ejecuta al pulsar ▶ en la app o el botón central del Hub."
+    },
+    {
+      "texto": "Encender la matriz de luces 5x5 X segundos",
+      "explicacion": "Muestra el dibujo que elijas durante los segundos indicados y después lo apaga."
+    },
+    {
+      "texto": "Escribir en la matriz de luces 5x5",
+      "explicacion": "Hace pasar un texto, letra a letra, por la matriz. El programa espera a que termine antes de seguir."
+    },
+    {
+      "texto": "Apagar la matriz de luces 5x5",
+      "explicacion": "Apaga todas las luces de la matriz."
+    },
+    {
+      "texto": "Fijar luz del botón central",
+      "explicacion": "Cambia el color de la luz del botón central."
+    },
+    {
+      "texto": "Tocar nota X segundos",
+      "explicacion": "Toca una nota por el altavoz. El número indica la nota (60 es un do) y los segundos, cuánto dura."
+    },
+    {
+      "texto": "Esperar X segundos",
+      "explicacion": "Detiene el programa el tiempo indicado antes de pasar al bloque siguiente."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, vigas largas y cortas, y pasadores. No hace falta ningún motor ni sensor.",
+    "pasos": [
+      {
+        "titulo": "La base",
+        "texto": "Une dos vigas largas en paralelo con dos vigas cortas cruzadas hasta formar un rectángulo que no cojee."
+      },
+      {
+        "titulo": "El respaldo inclinado",
+        "texto": "Fija dos vigas en ángulo en la parte trasera de la base. Serán el respaldo donde se apoya el Hub."
+      },
+      {
+        "titulo": "El tope delantero",
+        "texto": "Coloca una viga corta atravesada en la parte delantera para que el Hub no resbale."
+      },
+      {
+        "titulo": "Coloca el Hub",
+        "texto": "Apoya el Hub en el atril con la matriz de luces mirando hacia ti y sujétalo con pasadores por sus orificios laterales."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Empuja el Hub con un dedo: no debe moverse ni volcar. El puerto de carga tiene que quedar accesible."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Con qué bloque empieza el programa del rótulo?",
+      "opciones": [
+        "Esperar 1 segundos",
+        "Cuando se inicia el programa",
+        "Apagar la matriz de luces 5x5",
+        "Tocar nota"
+      ],
+      "correcta": 1,
+      "explicacion": "El bloque amarillo «Cuando se inicia el programa» es el que arranca la pila."
+    },
+    {
+      "pregunta": "¿Cuántas luces tiene la matriz del Hub?",
+      "opciones": [
+        "9",
+        "16",
+        "36",
+        "25"
+      ],
+      "correcta": 3,
+      "explicacion": "Son 5 filas por 5 columnas: 25 luces."
+    },
+    {
+      "pregunta": "¿En qué orden se ejecutan los bloques de una pila?",
+      "opciones": [
+        "De arriba abajo, uno detrás de otro",
+        "De abajo arriba",
+        "Todos a la vez",
+        "Al azar"
+      ],
+      "correcta": 0,
+      "explicacion": "El Hub ejecuta la pila de arriba abajo y no pasa al siguiente bloque hasta terminar el anterior."
+    },
+    {
+      "pregunta": "Quieres que un dibujo se vea exactamente 2 segundos y después desaparezca. ¿Qué bloque usas?",
+      "opciones": [
+        "Escribir en la matriz de luces 5x5",
+        "Fijar luz del botón central",
+        "Encender la matriz de luces 5x5 2 segundos",
+        "Apagar la matriz de luces 5x5"
+      ],
+      "correcta": 2,
+      "explicacion": "«Encender la matriz de luces 5x5 X segundos» enciende el dibujo el tiempo indicado y lo apaga solo."
+    },
+    {
+      "pregunta": "¿Qué hace el bloque «Esperar 1 segundos»?",
+      "opciones": [
+        "Apaga el Hub durante 1 segundo",
+        "Detiene el programa 1 segundo antes de seguir",
+        "Repite el programa cada segundo",
+        "Toca un sonido de 1 segundo"
+      ],
+      "correcta": 1,
+      "explicacion": "«Esperar» es una pausa: el programa se queda quieto ese tiempo y luego continúa."
+    },
+    {
+      "pregunta": "En «Tocar nota 60 durante 0.5 segundos», ¿qué indica el 0.5?",
+      "opciones": [
+        "El volumen",
+        "El número de repeticiones",
+        "La nota que suena",
+        "Cuánto dura la nota"
+      ],
+      "correcta": 3,
+      "explicacion": "El primer número (60) es la nota; el segundo (0.5) es su duración en segundos."
+    },
+    {
+      "pregunta": "¿Qué bloque cambia el color del botón central?",
+      "opciones": [
+        "Fijar luz del botón central",
+        "Encender la matriz de luces 5x5",
+        "Escribir en la matriz de luces 5x5",
+        "Tocar nota"
+      ],
+      "correcta": 0,
+      "explicacion": "La luz del botón central se controla con su propio bloque, distinto de los de la matriz."
+    },
+    {
+      "pregunta": "Pones «Apagar la matriz» y, debajo, «Escribir HOLA». ¿Qué verás al iniciar el programa?",
+      "opciones": [
+        "Nada: la matriz queda apagada",
+        "HOLA escrito al revés",
+        "La palabra HOLA pasando por la matriz",
+        "Un mensaje de error"
+      ],
+      "correcta": 2,
+      "explicacion": "Primero se ejecuta «Apagar» (ya estaba apagada) y después «Escribir»: la palabra se ve con normalidad."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Saludo luminoso",
+      "enunciado": "Programa el Hub para que, al iniciar el programa, ponga en verde la luz del botón central, escriba tu nombre en la matriz de luces y la apague al terminar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "verde",
+          "nivel": 0
+        },
+        {
+          "texto": "Escribir en la matriz de luces 5x5",
+          "valor": "tu nombre",
+          "nivel": 0
+        },
+        {
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "notas": "Vale cualquier color del botón. Lo importante es el orden: primero el botón, después el texto y al final apagar."
+    },
+    {
+      "titulo": "Rótulo con melodía",
+      "enunciado": "Convierte el Hub en un rótulo de sobremesa: muestra un dibujo durante 2 segundos, toca una melodía de tres notas, espera 1 segundo y apaga la matriz.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Encender la matriz de luces 5x5 X segundos",
+          "valor": "dibujo · 2",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "60 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "64 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "67 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "1",
+          "nivel": 0
+        },
+        {
+          "texto": "Apagar la matriz de luces 5x5",
+          "nivel": 0
+        }
+      ],
+      "notas": "Las tres notas pueden ser otras. Comprueba que el bloque «Esperar» está entre la melodía y el apagado."
+    }
+  ]
+}

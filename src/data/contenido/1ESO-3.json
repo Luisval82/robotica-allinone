@@ -1,0 +1,256 @@
+{
+  "curso": "1ESO",
+  "unidad": 3,
+  "reto": "Construye una barrera de aparcamiento que suba a 90°, espere y vuelva a bajar.",
+  "video": {
+    "titulo": "El motor como servo",
+    "duracion": "4 min",
+    "escenas": [
+      {
+        "plano": "Primer plano del motor mediano: se ven las dos marcas que indican la posición 0.",
+        "locucion": "El motor de SPIKE sabe en qué posición está: lleva dentro un sensor que mide su ángulo, de 0 a 359 grados. Cuando las dos marcas del motor coinciden, está en la posición 0."
+      },
+      {
+        "plano": "Captura de la app: bloque «Motor Ir a la posición» con el valor 90 y el desplegable del sentido.",
+        "locucion": "El bloque «Ir a la posición» lleva el motor a un ángulo exacto y lo deja ahí. Puedes elegir el camino: el más corto, en sentido horario o antihorario."
+      },
+      {
+        "plano": "Dos motores en paralelo: uno repite «Accionar durante 90 grados» y el otro «Ir a la posición 90».",
+        "locucion": "No es lo mismo girar 90 grados que ir a la posición 90. Girar suma 90 a donde estés; ir a la posición te lleva siempre al mismo sitio."
+      },
+      {
+        "plano": "Captura del bloque redondeado «Posición del motor» dentro de «Escribir en la matriz»; el Hub muestra un número.",
+        "locucion": "El bloque redondeado «Posición del motor» no mueve nada: es un dato. Te dice el ángulo actual y se coloca dentro de otros bloques."
+      },
+      {
+        "plano": "La barrera pita, sube, espera a que pase un coche de juguete y baja.",
+        "locucion": "Tu reto: una barrera de aparcamiento que avisa con un pitido, sube a 90 grados, espera a que pase el coche y vuelve a bajar a 0."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Motor Ir a la posición",
+      "explicacion": "Lleva el motor a un ángulo exacto, de 0 a 359, por el camino que elijas, y lo detiene ahí."
+    },
+    {
+      "texto": "Posición del motor",
+      "explicacion": "Bloque de dato: devuelve el ángulo actual del motor. Se coloca dentro de otros bloques."
+    },
+    {
+      "texto": "Fijar velocidad al… %",
+      "explicacion": "Guarda la velocidad a la que se moverá el motor. Una barrera lenta es más segura."
+    },
+    {
+      "texto": "Tocar nota X segundos",
+      "explicacion": "Sirve de pitido de aviso antes de mover la barrera."
+    },
+    {
+      "texto": "Esperar X segundos",
+      "explicacion": "Mantiene la barrera arriba el tiempo que tarda en pasar el coche."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor mediano con su cable, una viga larga para el brazo, vigas y pasadores para la base y el poste.",
+    "pasos": [
+      {
+        "titulo": "La base y el poste",
+        "texto": "Monta una base rectangular y levanta sobre ella un poste de dos vigas verticales."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Fija el motor mediano en lo alto del poste, con el eje mirando al frente."
+      },
+      {
+        "titulo": "La posición 0",
+        "texto": "Antes de montar el brazo, gira el motor con la mano hasta que sus dos marcas coincidan: esa es la posición 0."
+      },
+      {
+        "titulo": "El brazo",
+        "texto": "Con el motor en 0, monta la viga larga en horizontal sobre el eje. Así la posición 0 será la barrera bajada."
+      },
+      {
+        "titulo": "El cable",
+        "texto": "Conecta el motor al puerto A y sujeta el cable al poste."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Sube el brazo con la mano hasta dejarlo vertical: no debe chocar con el poste ni con el Hub."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué mide el sensor que lleva dentro el motor?",
+      "opciones": [
+        "La temperatura",
+        "Su ángulo de giro",
+        "La distancia a un objeto",
+        "La fuerza con la que se aprieta"
+      ],
+      "correcta": 1,
+      "explicacion": "El motor mide su propia posición en grados; por eso puede ir a un ángulo exacto."
+    },
+    {
+      "pregunta": "El motor está en la posición 0 y ejecutas dos veces seguidas «Ir a la posición 90». ¿Dónde acaba?",
+      "opciones": [
+        "En 180",
+        "En 0",
+        "En 90",
+        "En 45"
+      ],
+      "correcta": 2,
+      "explicacion": "La primera vez va a 90; la segunda ya está en 90 y no se mueve."
+    },
+    {
+      "pregunta": "El motor está en la posición 0 y ejecutas dos veces «Accionar motor durante 90 grados». ¿Dónde acaba?",
+      "opciones": [
+        "En 180",
+        "En 90",
+        "En 0",
+        "En 360"
+      ],
+      "correcta": 0,
+      "explicacion": "Cada bloque suma 90 grados a la posición que tenía: 90 más 90 son 180."
+    },
+    {
+      "pregunta": "¿Qué tipo de bloque es «Posición del motor»?",
+      "opciones": [
+        "Una orden que mueve el motor",
+        "Un evento que inicia el programa",
+        "Un bucle",
+        "Un dato que se coloca dentro de otros bloques"
+      ],
+      "correcta": 3,
+      "explicacion": "Es un bloque redondeado: no hace nada por sí solo, devuelve un número."
+    },
+    {
+      "pregunta": "¿Para qué alineamos las marcas del motor antes de montar el brazo?",
+      "opciones": [
+        "Para que el motor gire más rápido",
+        "Para que la posición 0 coincida con la barrera bajada",
+        "Para gastar menos batería",
+        "No sirve para nada"
+      ],
+      "correcta": 1,
+      "explicacion": "Si el brazo se monta con el motor en otra posición, «Ir a la posición 0» no dejará la barrera horizontal."
+    },
+    {
+      "pregunta": "¿Cuál es el orden correcto para la barrera?",
+      "opciones": [
+        "Ir a la posición 0, Esperar, Tocar nota, Ir a la posición 90",
+        "Esperar, Ir a la posición 90, Ir a la posición 0, Tocar nota",
+        "Tocar nota, Ir a la posición 90, Esperar, Ir a la posición 0",
+        "Ir a la posición 90, Ir a la posición 0, Esperar, Tocar nota"
+      ],
+      "correcta": 2,
+      "explicacion": "Primero avisa, después sube, espera a que pase el coche y por último baja."
+    },
+    {
+      "pregunta": "La barrera sube demasiado bruscamente. ¿Qué cambias?",
+      "opciones": [
+        "Pongo un valor más bajo en «Fijar velocidad»",
+        "Alargo el «Esperar»",
+        "Alargo el pitido",
+        "Uso la posición 180"
+      ],
+      "correcta": 0,
+      "explicacion": "La brusquedad depende de la velocidad del motor, no de las pausas."
+    },
+    {
+      "pregunta": "¿Entre qué valores va la posición del motor?",
+      "opciones": [
+        "De 0 a 100",
+        "De 1 a 10",
+        "De −90 a 90",
+        "De 0 a 359"
+      ],
+      "correcta": 3,
+      "explicacion": "Es un ángulo dentro de una vuelta: de 0 a 359 grados."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Sube y baja",
+      "enunciado": "Al iniciar el programa, la barrera sube despacio a 90°, espera 3 segundos y vuelve a bajar a 0°.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar velocidad al… %",
+          "valor": "A · 30",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 0
+        }
+      ],
+      "notas": "Si la barrera baja en lugar de subir, el brazo está montado hacia el otro lado: vale usar 270 en lugar de 90."
+    },
+    {
+      "titulo": "Barrera con avisos",
+      "enunciado": "Mejora la barrera: suena un pitido de medio segundo antes de subir y otro antes de bajar. El botón central está en rojo con la barrera bajada y en verde mientras está arriba.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "rojo",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "72 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 90 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "verde",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "valor": "72 · 0.5",
+          "nivel": 0
+        },
+        {
+          "texto": "Motor Ir a la posición",
+          "valor": "A · 0 · camino más corto",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar luz del botón central",
+          "valor": "rojo",
+          "nivel": 0
+        }
+      ],
+      "notas": "Usa «Fijar luz del botón central», que es de la unidad 1. El color debe cambiar después de mover la barrera, no antes."
+    }
+  ]
+}

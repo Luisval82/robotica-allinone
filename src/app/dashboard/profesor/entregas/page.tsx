@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { COURSE_TONE } from "@/components/profesor/courseTone";
 import { GradeForm } from "@/components/profesor/GradeForm";
 import { requireRole } from "@/lib/auth";
 import { listEntregas, type EntregaEstado } from "@/lib/db";
 import { firstParam, formatFecha, formatNota } from "@/lib/format";
-import { getPractica } from "@/lib/practicas";
+import { getPractica } from "@/lib/contenido";
 import { COURSE_LABEL, isCourse } from "@/lib/types";
 import { getUnidadesDeCurso } from "@/lib/unidades";
 
@@ -128,9 +129,18 @@ export default async function ProfesorEntregasPage({
                         Entregado el {formatFecha(entrega.entregadaEn)}
                       </p>
                     </div>
-                    <pre className="overflow-x-auto whitespace-pre-wrap rounded-2xl bg-ink-50 p-4 font-mono text-sm leading-relaxed text-ink-900">
-                      {entrega.texto}
-                    </pre>
+                    <div className="overflow-x-auto rounded-2xl bg-ink-50 p-4">
+                      <ProgramBlocks
+                        rows={entrega.bloques}
+                        label={`Programa entregado por ${alumno.name}`}
+                      />
+                    </div>
+                    {entrega.explicacion ? (
+                      <p className="mt-3 rounded-2xl border-2 border-ink-100 p-4 text-sm font-semibold text-ink-700">
+                        <span className="font-extrabold text-ink-900">El alumno explica: </span>
+                        {entrega.explicacion}
+                      </p>
+                    ) : null}
                     <Link
                       href={`/dashboard/profesor/soluciones?curso=${cursoAlumno}&ud=${entrega.unidad}#practica-${entrega.practica}`}
                       className="mt-3 inline-block text-sm font-extrabold text-spike-700 underline decoration-2 underline-offset-4 hover:text-spike-900"

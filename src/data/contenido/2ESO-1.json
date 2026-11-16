@@ -1,0 +1,253 @@
+{
+  "curso": "2ESO",
+  "unidad": 1,
+  "reto": "Programa un vehículo que obedece a un semáforo: circula con la tarjeta verde y se detiene con la roja.",
+  "video": {
+    "titulo": "Dos caminos",
+    "duracion": "4 min",
+    "escenas": [
+      {
+        "plano": "Un vehículo delante de dos tarjetas, una verde y otra roja.",
+        "locucion": "Hasta ahora tus programas hacían siempre lo mismo. Hoy la máquina va a decidir: si ve verde, avanza; si no, se para."
+      },
+      {
+        "plano": "Primer plano del sensor de color apuntando a una tarjeta a dos centímetros.",
+        "locucion": "El sensor de color reconoce el color que tiene delante, a un par de centímetros. El bloque hexagonal «¿Es de color…?» es una pregunta que solo se puede responder con sí o con no."
+      },
+      {
+        "plano": "Captura de la app: «Si… entonces… Si no» con la pregunta encajada en su hueco hexagonal.",
+        "locucion": "El bloque naranja «Si… entonces… Si no» tiene dos huecos. Si la respuesta es sí, se ejecuta el primero; si es no, el segundo. Nunca los dos."
+      },
+      {
+        "plano": "El mismo bloque dentro de un «Bucle infinito»; al lado, el vehículo reaccionando a las tarjetas.",
+        "locucion": "Una decisión suelta se toma una sola vez y el programa acaba. Para que el vehículo mire el semáforo continuamente, metemos la decisión dentro de un «Bucle infinito»."
+      },
+      {
+        "plano": "Captura de los bloques rosas «Empezar a mover» y «Parar movimiento».",
+        "locucion": "«Empezar a mover» pone en marcha los dos motores a la vez y no espera. «Parar movimiento» los detiene."
+      },
+      {
+        "plano": "El vehículo circula; alguien le enseña la tarjeta roja y frena; con la verde arranca de nuevo.",
+        "locucion": "Tu reto: un vehículo que circula con la tarjeta verde y se detiene con la roja."
+      }
+    ]
+  },
+  "bloques": [
+    {
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Toma una decisión: si la condición es verdadera ejecuta el primer hueco; si es falsa, el segundo."
+    },
+    {
+      "texto": "Bucle infinito",
+      "explicacion": "Repite sin parar todo lo que tiene dentro. Así la decisión se revisa continuamente."
+    },
+    {
+      "texto": "¿Es de color...?",
+      "explicacion": "Pregunta al sensor de color si ve el color elegido. Responde verdadero o falso y se encaja en un hueco hexagonal."
+    },
+    {
+      "texto": "Empezar a mover...",
+      "explicacion": "Pone en marcha los dos motores de movimiento y pasa al bloque siguiente sin esperar."
+    },
+    {
+      "texto": "Parar movimiento",
+      "explicacion": "Detiene los dos motores de movimiento."
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos motores medianos, dos ruedas, un apoyo trasero, el sensor de color y dos tarjetas (verde y roja).",
+    "pasos": [
+      {
+        "titulo": "El chasis",
+        "texto": "Monta un bastidor rectangular de vigas y fija el Hub encima, centrado."
+      },
+      {
+        "titulo": "Los motores",
+        "texto": "Coloca un motor mediano a cada lado del chasis, con los ejes hacia fuera, y monta una rueda en cada uno."
+      },
+      {
+        "titulo": "El apoyo",
+        "texto": "Añade detrás un tercer punto de apoyo que deslice o ruede libre, para que el vehículo no arrastre."
+      },
+      {
+        "titulo": "El sensor de color",
+        "texto": "Fija el sensor de color en la parte delantera, mirando al frente, a la altura a la que vas a enseñar las tarjetas."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de color al puerto D."
+      },
+      {
+        "titulo": "Comprueba",
+        "texto": "Empuja el vehículo con la mano: debe rodar recto. Acerca una tarjeta al sensor: tiene que quedar a unos dos centímetros."
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué tipo de respuesta da el bloque «¿Es de color…?»?",
+      "opciones": [
+        "Un número del 0 al 100",
+        "Verdadero o falso",
+        "El nombre del color",
+        "Ninguna: mueve el vehículo"
+      ],
+      "correcta": 1,
+      "explicacion": "Los bloques hexagonales son preguntas: solo responden verdadero o falso."
+    },
+    {
+      "pregunta": "En «Si… entonces… Si no», ¿qué se ejecuta cuando la condición es falsa?",
+      "opciones": [
+        "El hueco de «entonces»",
+        "Los dos huecos",
+        "Ninguno de los dos",
+        "El hueco de «Si no»"
+      ],
+      "correcta": 3,
+      "explicacion": "Verdadero ejecuta el primer hueco; falso, el segundo."
+    },
+    {
+      "pregunta": "¿Pueden ejecutarse los dos huecos en la misma pasada?",
+      "opciones": [
+        "No, nunca: o uno o el otro",
+        "Sí, siempre",
+        "Solo si el color es rojo",
+        "Depende de la velocidad"
+      ],
+      "correcta": 0,
+      "explicacion": "La condición solo puede ser verdadera o falsa en cada pasada, así que se ejecuta un único hueco."
+    },
+    {
+      "pregunta": "¿Para qué metemos la decisión dentro de un «Bucle infinito»?",
+      "opciones": [
+        "Para que el vehículo vaya más rápido",
+        "Para gastar menos batería",
+        "Para comprobar el color una y otra vez",
+        "Para detener el programa"
+      ],
+      "correcta": 2,
+      "explicacion": "Sin el bucle, el color se comprobaría una sola vez al empezar."
+    },
+    {
+      "pregunta": "Tu programa no tiene bucle. Al iniciarlo el sensor ve verde y el vehículo arranca. Después le enseñas la tarjeta roja. ¿Qué pasa?",
+      "opciones": [
+        "Se para",
+        "Gira a la derecha",
+        "Se apaga el Hub",
+        "No se para: la decisión ya se tomó una vez"
+      ],
+      "correcta": 3,
+      "explicacion": "El programa comprobó el color al empezar y terminó. Ya no vuelve a mirar el sensor."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre «Empezar a mover» y «Mover durante»?",
+      "opciones": [
+        "«Empezar a mover» no espera: el vehículo sigue hasta que algo lo pare",
+        "Ninguna",
+        "«Mover durante» no usa los motores",
+        "«Empezar a mover» solo funciona hacia atrás"
+      ],
+      "correcta": 0,
+      "explicacion": "«Mover durante» recorre una cantidad exacta y termina; «Empezar a mover» arranca y deja seguir al programa."
+    },
+    {
+      "pregunta": "¿En qué puerto conectamos el sensor de color?",
+      "opciones": [
+        "En el A",
+        "En el D",
+        "En el B",
+        "En el E"
+      ],
+      "correcta": 1,
+      "explicacion": "Los motores van en A y B; el sensor de color, en el D."
+    },
+    {
+      "pregunta": "El vehículo no reacciona a ninguna tarjeta. ¿Qué compruebas primero?",
+      "opciones": [
+        "La velocidad de los motores",
+        "El dibujo de la matriz",
+        "Que la tarjeta está cerca y frente al sensor, y que el puerto es el correcto",
+        "El volumen del altavoz"
+      ],
+      "correcta": 2,
+      "explicacion": "El sensor de color solo reconoce bien un color a un par de centímetros, y el bloque debe apuntar al puerto donde está conectado."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "Semáforo en verde",
+      "enunciado": "El vehículo avanza solo mientras el sensor de color ve la tarjeta verde. En cualquier otro caso se queda parado.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color verde?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 2
+        }
+      ],
+      "notas": "Sin el «Bucle infinito» el programa comprueba el color una sola vez y termina."
+    },
+    {
+      "titulo": "Verde y rojo",
+      "enunciado": "El vehículo arranca con la tarjeta verde y se para con la roja. Si no ve ninguna de las dos, sigue haciendo lo que estaba haciendo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color verde?",
+          "nivel": 1
+        },
+        {
+          "texto": "Empezar a mover...",
+          "valor": "recto",
+          "nivel": 2
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "valor": "¿Es de color rojo?",
+          "nivel": 2
+        },
+        {
+          "texto": "Parar movimiento",
+          "nivel": 3
+        },
+        {
+          "texto": "Si no",
+          "nivel": 2
+        }
+      ],
+      "notas": "La segunda decisión va dentro del «Si no» de la primera, con su propio «Si no» vacío: así, sin tarjeta, el vehículo no cambia de estado."
+    }
+  ]
+}

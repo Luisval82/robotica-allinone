@@ -68,6 +68,8 @@ export interface Unidad {
   numero: number;
   titulo: string;
   hardware: string;
+  /** Nombres de los bloques de palabras de la unidad, tal como figuran en el temario. */
+  bloques: string[];
   modelo: string;
 }
 
@@ -104,13 +106,29 @@ export interface StudentUnitAccess {
   pruebaIndividual: boolean;
 }
 
+/** Pasos de teoría de cada unidad: vídeo, puertos, bloques y modelo. */
+export const THEORY_STEPS = 4;
+
 /** Avance de un alumno en una unidad. */
 export interface UnitProgress {
   alumnoId: string;
   unidad: number;
-  teoriaCompletada: boolean;
+  /** Cuántos pasos de teoría ha terminado (0–4). Con 4, la teoría está completa. */
+  pasosTeoria: number;
   /** Aciertos del test (0–8). null = todavía no lo ha entregado. */
   testAciertos: number | null;
+  /** Opción elegida en cada pregunta (para enseñarle la corrección). */
+  testRespuestas: number[] | null;
+}
+
+/** Una fila de un programa de bloques de palabras (solución o entrega). */
+export interface ProgramRow {
+  /** Nombre del bloque, tal como figura en src/data/bloques.json. */
+  texto: string;
+  /** Lo que va en los huecos del bloque: puerto, segundos, color… */
+  valor?: string;
+  /** Sangría: 0 = pila principal, 1 = dentro de un bucle o condición… */
+  nivel: number;
 }
 
 /** Entrega de programación de un alumno (2 por unidad), que corrige el profesor. */
@@ -119,8 +137,10 @@ export interface Entrega {
   alumnoId: string;
   unidad: number;
   practica: 1 | 2;
-  /** Lo que entrega el alumno: su programa de bloques de palabras, descrito. */
-  texto: string;
+  /** El programa que entrega el alumno, bloque a bloque. */
+  bloques: ProgramRow[];
+  /** Comentario opcional del alumno sobre su programa. */
+  explicacion: string;
   entregadaEn: string;
   /** Nota del profesor (0–10). null = pendiente de corregir. */
   nota: number | null;
@@ -140,14 +160,6 @@ export interface StudentSummary {
   entregasPorCorregir: number;
 }
 
-/** Un bloque de palabras dentro de una solución oficial. */
-export interface SolutionBlock {
-  categoria: string;
-  texto: string;
-  /** Sangría: 0 = pila principal, 1 = dentro de un bucle o condición… */
-  nivel: number;
-}
-
 /** Práctica de programación de una unidad, con su solución oficial (solo profesorado). */
 export interface Practica {
   curso: Course;
@@ -155,12 +167,18 @@ export interface Practica {
   practica: 1 | 2;
   titulo: string;
   enunciado: string;
-  solucion: SolutionBlock[];
+  solucion: ProgramRow[];
   notas?: string;
 }
 
 /** Respuesta del formulario de corrección de una entrega. */
 export interface GradeFormState {
+  ok?: boolean;
+  error?: string;
+}
+
+/** Respuesta de los formularios del alumno (test y entregas). */
+export interface StudentFormState {
   ok?: boolean;
   error?: string;
 }

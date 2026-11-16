@@ -5,10 +5,10 @@ import type { ReactNode } from "react";
 
 const TONES = {
   eventos: "bg-block-eventos text-ink-900",
-  motores: "bg-block-motores text-white",
-  movimiento: "bg-block-movimiento text-white",
-  luz: "bg-block-luz text-white",
-  sonido: "bg-block-sonido text-white",
+  motores: "bg-block-motores text-ink-900",
+  movimiento: "bg-block-movimiento text-ink-900",
+  luz: "bg-block-luz text-ink-900",
+  sonido: "bg-block-sonido text-ink-900",
   control: "bg-block-control text-ink-900",
   sensores: "bg-block-sensores text-ink-900",
   operadores: "bg-block-operadores text-ink-900",
