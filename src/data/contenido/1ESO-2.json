@@ -72,6 +72,44 @@
       "explicacion": "Mantiene el programa en pausa. Si el motor estaba arrancado, sigue girando mientras tanto."
     }
   ],
+  "programa": {
+    "titulo": "Un motor que arranca y para",
+    "explicacion": "«fijar velocidad» no mueve nada: guarda el valor para los bloques de motor que vengan después. Entre arrancar y parar, un «Esperar» decide cuánto tiempo gira.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "A fijar velocidad al 75 %",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "40"
+        ]
+      },
+      {
+        "texto": "A arrancar motor",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "↻"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 0,
+        "valor": "3"
+      },
+      {
+        "texto": "A parar motor",
+        "nivel": 0,
+        "valores": [
+          "A"
+        ]
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, un motor mediano con su cable, un eje, vigas largas y cortas, y pasadores.",
     "pasos": [

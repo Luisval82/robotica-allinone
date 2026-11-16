@@ -18,6 +18,13 @@ export interface BlockExplanation {
   explicacion: string;
 }
 
+/** Programa de ejemplo de la unidad: una pila montada, con su explicación. */
+export interface ProgramaEjemplo {
+  titulo: string;
+  explicacion: string;
+  bloques: ProgramRow[];
+}
+
 export interface BuildStep {
   titulo: string;
   texto: string;
@@ -49,6 +56,7 @@ export interface UnitContent {
     escenas: VideoScene[];
   };
   bloques: BlockExplanation[];
+  programa?: ProgramaEjemplo;
   construccion: { piezas: string; pasos: BuildStep[] };
   test: TestQuestion[];
   practicas: RawPractica[];
@@ -124,4 +132,21 @@ export function getPractica(curso: Course, unidad: number, practica: 1 | 2): Pra
 /** Cuántas de las 2 soluciones de una unidad están ya redactadas. */
 export function countSoluciones(curso: Course, unidad: number): number {
   return Math.min(getContenido(curso, unidad)?.practicas.length ?? 0, 2);
+}
+
+/**
+ * El trozo del programa de la unidad donde aparece un bloque: él y lo que
+ * tiene justo antes y justo después. Sirve de mini ejemplo al lado de cada
+ * bloque suelto, para verlo encajado en vez de solo.
+ */
+export function ejemploDeBloque(
+  programa: ProgramaEjemplo | undefined,
+  texto: string,
+): ProgramRow[] {
+  const filas = programa?.bloques ?? [];
+  const i = filas.findIndex((fila) => fila.texto === texto);
+  if (i < 0) return [];
+  const trozo = filas.slice(Math.max(0, i - 1), i + 2);
+  // Un bloque solo no es un ejemplo de cómo se encaja.
+  return trozo.length > 1 ? trozo : [];
 }

@@ -78,6 +78,65 @@
       ]
     }
   ],
+  "programa": {
+    "titulo": "Media vuelta al cuadrado",
+    "explicacion": "Los tres primeros bloques se ponen una sola vez, al principio: dicen qué motores llevan el robot, a qué velocidad y cuánto avanza en una vuelta de rueda. A partir de ahí ya puedes pedirle centímetros.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+        "nivel": 0,
+        "valores": [
+          "17.5",
+          "cm"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "30"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "↑",
+          "30",
+          "cm"
+        ]
+      },
+      {
+        "texto": "mover derecha: 30 durante 10 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "derecha: 100",
+          "90",
+          "grados"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "↑",
+          "30",
+          "cm"
+        ]
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, dos motores medianos, dos ruedas iguales, una pieza de apoyo trasero, vigas y pasadores.",
     "pasos": [

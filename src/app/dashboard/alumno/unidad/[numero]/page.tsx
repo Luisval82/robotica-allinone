@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { BlockChip } from "@/components/brand/ProgramBlocks";
+import { BlockChip, ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import { EntregaBox, type EntregaView } from "@/components/unidad/EntregaBox";
 import { HubPorts } from "@/components/unidad/HubPorts";
 import { IpadWorkflowBanner } from "@/components/unidad/IpadWorkflowBanner";
@@ -13,6 +13,7 @@ import { LEGO_EDUCATION_URL } from "@/config/site";
 import { requireRole } from "@/lib/auth";
 import { categoryColorClass, categoryName, getBlockInfo } from "@/lib/bloques";
 import {
+  ejemploDeBloque,
   getContenido,
   getPracticasForStudent,
   getTestForStudent,
@@ -292,21 +293,54 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
           <ul className="mt-5 grid gap-3">
             {unidad.bloques.map((texto) => {
               const explicacion = explicacionDe(texto);
+              const ejemplo = ejemploDeBloque(contenido?.programa, texto);
               return (
                 <li
                   key={texto}
-                  className="grid items-center gap-x-5 gap-y-2 rounded-2xl bg-ink-50 p-4 md:grid-cols-[minmax(0,22rem)_1fr]"
+                  className="grid items-start gap-x-5 gap-y-3 rounded-2xl bg-ink-50 p-4 md:grid-cols-[minmax(0,22rem)_1fr]"
                 >
                   <div className="max-w-full overflow-x-auto">
                     <BlockChip texto={texto} className="text-[0.95rem]" />
                   </div>
-                  <p className="text-sm font-semibold text-ink-700">
-                    {explicacion ?? `Categoría ${categoryName(getBlockInfo(texto).categoria)}.`}
-                  </p>
+                  <div className="grid gap-3">
+                    <p className="text-sm font-semibold text-ink-700">
+                      {explicacion ?? `Categoría ${categoryName(getBlockInfo(texto).categoria)}.`}
+                    </p>
+                    {ejemplo.length > 0 ? (
+                      <div className="rounded-xl bg-white p-3">
+                        <p className="mb-2 text-xs font-extrabold uppercase tracking-widest text-ink-500">
+                          Así se encaja
+                        </p>
+                        <ProgramBlocks rows={ejemplo} label={`Ejemplo con ${texto}`} />
+                      </div>
+                    ) : null}
+                  </div>
                 </li>
               );
             })}
           </ul>
+
+          {contenido?.programa ? (
+            <div className="mt-6 rounded-2xl border-2 border-spike-200 bg-spike-50 p-5">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-spike-700">
+                Programa de ejemplo
+              </p>
+              <h4 className="mt-1 font-display text-xl font-semibold text-ink-900">
+                {contenido.programa.titulo}
+              </h4>
+              <p className="mt-2 font-semibold text-ink-700">{contenido.programa.explicacion}</p>
+              <div className="mt-4">
+                <ProgramBlocks
+                  rows={contenido.programa.bloques}
+                  label={`Programa de ejemplo: ${contenido.programa.titulo}`}
+                />
+              </div>
+              <p className="mt-4 text-sm font-semibold text-ink-600">
+                No es la solución de las prácticas: cópialo en la app SPIKE, pruébalo y cámbiale
+                los valores para ver qué pasa.
+              </p>
+            </div>
+          ) : null}
         </StepSection>
 
         <IpadWorkflowBanner />

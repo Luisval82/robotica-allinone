@@ -73,6 +73,46 @@
       "explicacion": "Anuncia el final del viaje."
     }
   ],
+  "programa": {
+    "titulo": "El tiovivo, de principio a fin",
+    "explicacion": "Un proyecto encadena lo de todas las unidades: esperar a que pulsen, arrancar, vigilar el sensor mientras gira y parar cuando alguien se acerca.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 0,
+        "valor": "¿Está presionado? F"
+      },
+      {
+        "texto": "Tocar sonido hasta acabar",
+        "nivel": 0,
+        "valor": "timbre"
+      },
+      {
+        "texto": "A arrancar motor",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "↻"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 0,
+        "valor": "¿Está más próximo a 15 cm? E"
+      },
+      {
+        "texto": "A parar motor",
+        "nivel": 0,
+        "valores": [
+          "A"
+        ]
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, un motor grande, un motor mediano, el sensor de fuerza, el sensor de distancia, una plataforma redonda o en cruz y vigas para la barrera y la base.",
     "pasos": [

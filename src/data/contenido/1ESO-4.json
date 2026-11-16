@@ -67,6 +67,48 @@
       ]
     }
   ],
+  "programa": {
+    "titulo": "La noria gira por tramos",
+    "explicacion": "Lo que va dentro del «Repetir» se hace cuatro veces seguidas. Un tramo son 90 grados, así que cuatro tramos dan la vuelta completa.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Repetir bucle",
+        "nivel": 0,
+        "valor": "4"
+      },
+      {
+        "texto": "A ir durante 1 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "A",
+          "↻",
+          "90",
+          "grados"
+        ]
+      },
+      {
+        "texto": "Tocar sonido hasta acabar",
+        "nivel": 1,
+        "valor": "timbre"
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 1,
+        "valor": "2"
+      },
+      {
+        "texto": "encender dibujo",
+        "nivel": 0,
+        "valores": [
+          "corazón"
+        ]
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, un motor grande con su cable, un eje largo, vigas para la rueda y los soportes, y cuatro piezas pequeñas que hagan de cabinas.",
     "pasos": [

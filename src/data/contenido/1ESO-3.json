@@ -67,6 +67,52 @@
       "explicacion": "Mantiene la barrera arriba el tiempo que tarda en pasar el coche."
     }
   ],
+  "programa": {
+    "titulo": "La barrera sube y baja",
+    "explicacion": "Ir «a la posición» lleva el motor a un ángulo exacto, da igual dónde estuviera. Con una velocidad baja la barrera no da tirones.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "A fijar velocidad al 75 %",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "20"
+        ]
+      },
+      {
+        "texto": "A ir por la ruta más corta a la posición 0",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "por la ruta más corta",
+          "90"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 0,
+        "valor": "3"
+      },
+      {
+        "texto": "Tocar nota X segundos",
+        "nivel": 0,
+        "valor": "60 · 0.5"
+      },
+      {
+        "texto": "A ir por la ruta más corta a la posición 0",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "por la ruta más corta",
+          "0"
+        ]
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, un motor mediano con su cable, una viga larga para el brazo, vigas y pasadores para la base y el poste.",
     "pasos": [

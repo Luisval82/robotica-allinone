@@ -64,6 +64,48 @@
       ]
     }
   ],
+  "programa": {
+    "titulo": "Solo con la tarjeta verde",
+    "explicacion": "El «Si… entonces…» mira el color una vez y decide. Metido dentro de un bucle infinito, el garaje se queda comprobando tarjetas todo el rato.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces...",
+        "nivel": 1,
+        "valor": "¿Es de color verde? D"
+      },
+      {
+        "texto": "A ir por la ruta más corta a la posición 0",
+        "nivel": 2,
+        "valores": [
+          "A",
+          "por la ruta más corta",
+          "90"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 2,
+        "valor": "3"
+      },
+      {
+        "texto": "A ir por la ruta más corta a la posición 0",
+        "nivel": 2,
+        "valores": [
+          "A",
+          "por la ruta más corta",
+          "0"
+        ]
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, un motor grande, el sensor de color, vigas para el marco y la hoja, y tarjetas o piezas de varios colores.",
     "pasos": [

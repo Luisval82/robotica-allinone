@@ -70,6 +70,49 @@
       "explicacion": "Hace de timbre: suena entero antes de que la puerta empiece a moverse."
     }
   ],
+  "programa": {
+    "titulo": "La puerta se abre al pulsar",
+    "explicacion": "«Esperar hasta que» detiene el programa hasta que la respuesta del sensor es «sí». Hasta que alguien no pulsa, no pasa nada.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 0,
+        "valor": "¿Está presionado? F"
+      },
+      {
+        "texto": "Tocar sonido hasta acabar",
+        "nivel": 0,
+        "valor": "timbre"
+      },
+      {
+        "texto": "A ir por la ruta más corta a la posición 0",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "por la ruta más corta",
+          "90"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 0,
+        "valor": "3"
+      },
+      {
+        "texto": "A ir por la ruta más corta a la posición 0",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "por la ruta más corta",
+          "0"
+        ]
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, un motor mediano, el sensor de fuerza, y vigas para el marco y la hoja de la puerta.",
     "pasos": [

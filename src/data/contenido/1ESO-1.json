@@ -78,6 +78,47 @@
       "explicacion": "Detiene el programa el tiempo indicado antes de pasar al bloque siguiente."
     }
   ],
+  "programa": {
+    "titulo": "El Hub saluda",
+    "explicacion": "Los bloques se encajan de arriba abajo y se ejecutan en ese orden. Fíjate en que el último bloque apaga la matriz: si no, el dibujo se quedaría encendido para siempre.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "poner luz del botón central en rojo",
+        "nivel": 0,
+        "valores": [
+          "verde"
+        ]
+      },
+      {
+        "texto": "encender dibujo durante 2 segundos",
+        "nivel": 0,
+        "valores": [
+          "corazón",
+          "2"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "HOLA"
+        ]
+      },
+      {
+        "texto": "Tocar nota X segundos",
+        "nivel": 0,
+        "valor": "60 · 0.5"
+      },
+      {
+        "texto": "apagar píxeles",
+        "nivel": 0
+      }
+    ]
+  },
   "construccion": {
     "piezas": "El Hub, vigas largas y cortas, y pasadores. No hace falta ningún motor ni sensor.",
     "pasos": [

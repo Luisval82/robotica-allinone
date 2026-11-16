@@ -67,6 +67,44 @@
       "explicacion": "Pitido de aviso al detectar el obstáculo."
     }
   ],
+  "programa": {
+    "titulo": "Frena antes de chocar",
+    "explicacion": "«empezar a mover» arranca el robot y el programa sigue adelante, así que puede quedarse vigilando el sensor mientras rueda. En cuanto el obstáculo está cerca, para.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "25"
+        ]
+      },
+      {
+        "texto": "empezar a mover a ↑",
+        "nivel": 0,
+        "valores": [
+          "↑"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 0,
+        "valor": "¿Está más próximo a 15 cm? E"
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 0
+      },
+      {
+        "texto": "Tocar nota X segundos",
+        "nivel": 0,
+        "valor": "48 · 1"
+      }
+    ]
+  },
   "construccion": {
     "piezas": "La base de conducción de la unidad 6, el sensor de distancia, vigas para su soporte y una caja o un libro como obstáculo.",
     "pasos": [
