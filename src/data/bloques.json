@@ -256,6 +256,30 @@
       "pendiente": false
     },
     {
+      "texto": "girar ↻",
+      "categoria": "luz",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "girar"
+        },
+        {
+          "t": "menu",
+          "v": "↻",
+          "opciones": [
+            "↺",
+            "↻"
+          ]
+        }
+      ],
+      "pendiente": false
+    },
+    {
       "texto": "Fijar luz del botón central",
       "categoria": "luz",
       "forma": "pila",
