@@ -20,7 +20,7 @@
       },
       {
         "plano": "Se mide con una cinta métrica lo que avanza el robot con una vuelta de rueda.",
-        "locucion": "Para avanzar en centímetros, el Hub necesita saber cuánto recorre el robot con una vuelta de rueda. Lo medimos y lo guardamos con «Fijar 1 rotación del motor a una distancia recorrida»."
+        "locucion": "Para avanzar en centímetros, el Hub necesita saber cuánto recorre el robot con una vuelta de rueda. Lo medimos y lo guardamos con «fijar 1 rotación del motor en … cm recorridos»."
       },
       {
         "plano": "El robot avanza 20 centímetros despacio y después rápido.",
@@ -52,8 +52,12 @@
       ]
     },
     {
-      "texto": "Fijar 1 rotación del motor a una distancia recorrida",
-      "explicacion": "Le dice al Hub cuántos centímetros avanza el robot con una vuelta de rueda. Así puedes mover en centímetros."
+      "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+      "explicacion": "Le dice al Hub cuántos centímetros avanza el robot con una vuelta de rueda. Así puedes mover en centímetros.",
+      "valores": [
+        "17.5",
+        "cm"
+      ]
     },
     {
       "texto": "mover ↑ durante 10 rotaciones",
@@ -175,7 +179,7 @@
       "opciones": [
         "fijar velocidad de movimiento",
         "fijar como motores en movimiento",
-        "Fijar 1 rotación del motor a una distancia recorrida",
+        "fijar 1 rotación del motor en … cm recorridos",
         "mover derecha: 30 durante 10 rotaciones"
       ],
       "correcta": 2,
@@ -210,9 +214,12 @@
           ]
         },
         {
-          "texto": "Fijar 1 rotación del motor a una distancia recorrida",
-          "valor": "distancia medida",
-          "nivel": 0
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "distancia medida",
+            "cm"
+          ]
         },
         {
           "texto": "fijar velocidad de movimiento al 50 %",
@@ -267,9 +274,12 @@
           ]
         },
         {
-          "texto": "Fijar 1 rotación del motor a una distancia recorrida",
-          "valor": "distancia medida",
-          "nivel": 0
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "distancia medida",
+            "cm"
+          ]
         },
         {
           "texto": "fijar velocidad de movimiento al 50 %",

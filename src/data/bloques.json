@@ -200,9 +200,35 @@
       "pendiente": false
     },
     {
-      "texto": "Fijar 1 rotación del motor a una distancia recorrida",
+      "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
       "categoria": "movimiento",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "movimiento"
+        },
+        {
+          "t": "palabra",
+          "v": "fijar 1 rotación del motor en"
+        },
+        {
+          "t": "hueco",
+          "v": "17.5"
+        },
+        {
+          "t": "menu",
+          "v": "cm",
+          "opciones": [
+            "cm",
+            "pulgadas"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "recorridos"
+        }
+      ],
       "pendiente": false
     },
     {

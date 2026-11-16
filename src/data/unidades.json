@@ -81,7 +81,7 @@
       "bloques": [
         "fijar A+B como motores en movimiento",
         "fijar velocidad de movimiento al 50 %",
-        "Fijar 1 rotación del motor a una distancia recorrida",
+        "fijar 1 rotación del motor en 17.5 cm recorridos",
         "mover ↑ durante 10 rotaciones",
         "mover derecha: 30 durante 10 rotaciones"
       ],
