@@ -83,9 +83,12 @@
           "nivel": 0
         },
         {
-          "texto": "Encender la matriz de luces 5x5 X segundos",
-          "valor": "corazón · 2",
-          "nivel": 0
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
         },
         {
           "texto": "Tocar nota X segundos",

@@ -54,9 +54,35 @@
       "pendiente": false
     },
     {
-      "texto": "Encender la matriz de luces 5x5 X segundos",
+      "texto": "encender dibujo durante 2 segundos",
       "categoria": "luz",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "encender"
+        },
+        {
+          "t": "menu",
+          "v": "dibujo"
+        },
+        {
+          "t": "palabra",
+          "v": "durante"
+        },
+        {
+          "t": "hueco",
+          "v": "2"
+        },
+        {
+          "t": "palabra",
+          "v": "segundos"
+        }
+      ],
       "pendiente": false
     },
     {

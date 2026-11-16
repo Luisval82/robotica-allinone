@@ -316,9 +316,12 @@
           "nivel": 0
         },
         {
-          "texto": "Encender la matriz de luces 5x5 X segundos",
-          "valor": "flecha · 3",
-          "nivel": 0
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "flecha",
+            "3"
+          ]
         }
       ],
       "notas": "Son cuatro pilas. Lo importante es que un único mensaje ponga en marcha dos pilas a la vez."

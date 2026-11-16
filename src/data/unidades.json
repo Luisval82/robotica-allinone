@@ -8,7 +8,7 @@
       "hardware": "Hub (Matriz de luces 5x5, altavoz y botón central)",
       "bloques": [
         "Cuando se inicia el programa",
-        "Encender la matriz de luces 5x5 X segundos",
+        "encender dibujo durante 2 segundos",
         "Escribir en la matriz de luces 5x5",
         "Apagar la matriz de luces 5x5",
         "Fijar luz del botón central",

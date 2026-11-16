@@ -43,8 +43,12 @@
       "explicacion": "Es el primer bloque de la pila. Lo que encajes debajo se ejecuta al pulsar ▶ en la app o el botón central del Hub."
     },
     {
-      "texto": "Encender la matriz de luces 5x5 X segundos",
-      "explicacion": "Muestra el dibujo que elijas durante los segundos indicados y después lo apaga."
+      "texto": "encender dibujo durante 2 segundos",
+      "explicacion": "Muestra el dibujo que elijas durante los segundos indicados y después lo apaga.",
+      "valores": [
+        "dibujo",
+        "2"
+      ]
     },
     {
       "texto": "Escribir en la matriz de luces 5x5",
@@ -135,7 +139,7 @@
         "Apagar la matriz de luces 5x5"
       ],
       "correcta": 2,
-      "explicacion": "«Encender la matriz de luces 5x5 X segundos» enciende el dibujo el tiempo indicado y lo apaga solo."
+      "explicacion": "«encender … durante … segundos» enciende el dibujo el tiempo indicado y lo apaga solo."
     },
     {
       "pregunta": "¿Qué hace el bloque «Esperar 1 segundos»?",
@@ -217,9 +221,12 @@
           "nivel": 0
         },
         {
-          "texto": "Encender la matriz de luces 5x5 X segundos",
-          "valor": "dibujo · 2",
-          "nivel": 0
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "dibujo",
+            "2"
+          ]
         },
         {
           "texto": "Tocar nota X segundos",

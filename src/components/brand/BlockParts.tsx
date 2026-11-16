@@ -23,6 +23,27 @@ export function BlockPartIcon({ nombre }: { nombre: string }) {
       </span>
     );
   }
+  if (nombre === "luz") {
+    return (
+      <span className="word-block__icono">
+        <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true">
+          {[0, 1, 2, 3, 4].map((fila) =>
+            [0, 1, 2, 3, 4].map((columna) => (
+              <rect
+                key={`${fila}-${columna}`}
+                x={2.6 + columna * 4.2}
+                y={2.6 + fila * 4.2}
+                width="2.6"
+                height="2.6"
+                rx="0.6"
+                fill="currentColor"
+              />
+            )),
+          )}
+        </svg>
+      </span>
+    );
+  }
   if (nombre === "movimiento") {
     return (
       <span className="word-block__icono">

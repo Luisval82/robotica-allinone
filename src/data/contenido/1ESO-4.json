@@ -172,7 +172,7 @@
       "explicacion": "Seis tramos por vuelta, y 360 entre 6 son 60 grados."
     },
     {
-      "pregunta": "¿En qué se diferencia «Encender la matriz de luces 5x5» de «Encender la matriz de luces 5x5 X segundos»?",
+      "pregunta": "¿En qué se diferencia «Encender la matriz de luces 5x5» de «encender … durante … segundos»?",
       "opciones": [
         "No hay diferencia",
         "La primera deja el dibujo encendido hasta que otro bloque lo cambie",
