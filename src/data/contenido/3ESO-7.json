@@ -23,7 +23,7 @@
         "locucion": "En la app activamos la extensión de gráfico de líneas. Sus bloques dibujan en la pantalla, punto a punto, el valor que les demos: aquí, el ángulo de inclinación."
       },
       {
-        "plano": "Captura de «Reiniciar cronómetro», «Arrancar motor» y un «Repetir hasta Cronómetro > 10».",
+        "plano": "Captura de «Reiniciar cronómetro», «arrancar motor» y un «Repetir hasta Cronómetro > 10».",
         "locucion": "Reiniciamos el cronómetro, arrancamos el motor y repetimos la medida hasta que pasan diez segundos. Así todos los ensayos duran lo mismo."
       },
       {
@@ -58,8 +58,12 @@
       "explicacion": "Guarda cada medida para analizarla después."
     },
     {
-      "texto": "Arrancar motor",
-      "explicacion": "Pone en marcha la mesa sísmica."
+      "texto": "A arrancar motor",
+      "explicacion": "Pone en marcha la mesa sísmica.",
+      "valores": [
+        "A",
+        "↻"
+      ]
     }
   ],
   "construccion": {
@@ -195,14 +199,20 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 50",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "50"
+          ]
         },
         {
-          "texto": "Arrancar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
         },
         {
           "texto": "Repetir bucle hasta",
@@ -220,9 +230,11 @@
           "nivel": 1
         },
         {
-          "texto": "Parar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
         }
       ],
       "notas": "Según cómo esté orientado el Hub en la torre, el ángulo que cambia puede ser el alabeo en lugar del cabeceo. Compruébalo antes del ensayo."
@@ -245,14 +257,20 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 50",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "50"
+          ]
         },
         {
-          "texto": "Arrancar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
         },
         {
           "texto": "Repetir bucle hasta",
@@ -290,9 +308,11 @@
           "nivel": 1
         },
         {
-          "texto": "Parar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
         },
         {
           "texto": "Escribir en la matriz de luces 5x5",

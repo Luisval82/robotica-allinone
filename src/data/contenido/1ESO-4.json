@@ -42,8 +42,14 @@
       "explicacion": "Ejecuta lo que tiene dentro el número de veces indicado y después sigue con el bloque de debajo."
     },
     {
-      "texto": "Accionar motor durante",
-      "explicacion": "Gira la noria un tramo exacto: 90 grados por cabina."
+      "texto": "A ir durante 1 rotaciones",
+      "explicacion": "Gira la noria un tramo exacto: 90 grados por cabina.",
+      "valores": [
+        "A",
+        "↻",
+        "1",
+        "rotaciones"
+      ]
     },
     {
       "texto": "Esperar X segundos",
@@ -111,7 +117,7 @@
       "explicacion": "Una vuelta son 360 grados; entre 4 cabinas, 90 cada tramo."
     },
     {
-      "pregunta": "Dentro de «Repetir 4» hay «Accionar motor durante 90 grados» y «Esperar 2 segundos». ¿Cuánto gira la noria en total?",
+      "pregunta": "Dentro de «Repetir 4» hay «ir durante 90 grados» y «Esperar 2 segundos». ¿Cuánto gira la noria en total?",
       "opciones": [
         "90 grados",
         "360 grados",
@@ -192,9 +198,14 @@
           "nivel": 0
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 90 grados",
-          "nivel": 1
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -213,9 +224,12 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 30",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "30"
+          ]
         },
         {
           "texto": "Repetir bucle",
@@ -223,9 +237,14 @@
           "nivel": 0
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 90 grados",
-          "nivel": 1
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
         },
         {
           "texto": "Encender la matriz de luces 5x5",

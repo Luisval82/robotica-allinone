@@ -24,7 +24,7 @@
       },
       {
         "plano": "Una mano gira el motor grande y la matriz muestra el ángulo.",
-        "locucion": "El motor grande hace de dial: el programa no lo mueve, lo giras tú con la mano. El bloque «Posición del motor» lee en qué ángulo lo has dejado."
+        "locucion": "El motor grande hace de dial: el programa no lo mueve, lo giras tú con la mano. El bloque «A posición» lee en qué ángulo lo has dejado."
       },
       {
         "plano": "Captura de un bucle con una variable «paso» que avanza por la lista.",
@@ -58,8 +58,11 @@
       "explicacion": "Pregunta si un valor está guardado en la lista, en cualquier posición."
     },
     {
-      "texto": "Posición del motor",
-      "explicacion": "Lee el ángulo en el que has dejado el dial."
+      "texto": "A posición",
+      "explicacion": "Lee el ángulo en el que has dejado el dial.",
+      "valores": [
+        "A"
+      ]
     },
     {
       "texto": "Repetir bucle hasta",
@@ -221,7 +224,7 @@
         },
         {
           "texto": "Esperar hasta que",
-          "valor": "Posición del motor A cerca de Elemento paso de combinacion",
+          "valor": "A posición cerca de Elemento paso de combinacion",
           "nivel": 1
         },
         {
@@ -235,9 +238,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 90 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
         }
       ],
       "notas": "«Cerca de» significa un margen de unos 10 grados, hecho con dos comparaciones unidas por «y». En la app las listas conservan su contenido: hay que vaciarla al empezar o añadir los valores una sola vez, o la combinación crecerá en cada ejecución."
@@ -282,7 +289,7 @@
         },
         {
           "texto": "Esperar hasta que",
-          "valor": "Posición del motor A cerca de Elemento paso de combinacion",
+          "valor": "A posición cerca de Elemento paso de combinacion",
           "nivel": 1
         },
         {
@@ -296,9 +303,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 90 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Cuando se inicia el programa",
@@ -310,7 +321,7 @@
         },
         {
           "texto": "Si... entonces... Si no...",
-          "valor": "¿combinacion contiene Posición del motor A?",
+          "valor": "¿combinacion contiene A posición?",
           "nivel": 1
         },
         {

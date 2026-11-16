@@ -226,9 +226,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 90 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Cuando se reciba el mensaje",
@@ -241,9 +245,14 @@
           "nivel": 0
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 5 segundos",
-          "nivel": 0
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "5",
+            "segundos"
+          ]
         },
         {
           "texto": "Cuando se reciba el mensaje",
@@ -256,9 +265,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
         },
         {
           "texto": "Tocar sonido hasta acabar",
@@ -332,18 +345,28 @@
           "nivel": 0
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 10 segundos",
-          "nivel": 1
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "10",
+            "segundos"
+          ]
         },
         {
           "texto": "Si no",
           "nivel": 0
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 5 segundos",
-          "nivel": 1
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "5",
+            "segundos"
+          ]
         }
       ],
       "notas": "Las pilas «abrir» y «despedir» son las de la práctica 1 y no cambian. Valora que la decisión esté dentro de la fase de lavado y no en el programa principal."

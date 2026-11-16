@@ -2,18 +2,40 @@
 // un bloque suelto (BlockChip) o un programa entero con su sangría (ProgramBlocks).
 
 import type { CSSProperties } from "react";
+import { BlockParts } from "@/components/brand/BlockParts";
 import { blockClass, getBlockInfo } from "@/lib/bloques";
 import type { ProgramRow } from "@/lib/types";
 
-/** Un bloque con su forma y su color. `valor` se pinta en un hueco blanco. */
+/**
+ * Lo de dentro de un bloque. Si está dibujado pieza a pieza (como en la app
+ * SPIKE), se pinta así; si no, el nombre y su valor en un hueco blanco.
+ */
+function BlockBody({ texto, valor, valores }: ProgramRow) {
+  const info = getBlockInfo(texto);
+  if (info.partes) return <BlockParts info={info} valores={valores} />;
+  return (
+    <>
+      {texto}
+      {valor ? (
+        <span className="ml-2 inline-block rounded-full bg-white px-2.5 font-bold text-ink-900">
+          {valor}
+        </span>
+      ) : null}
+    </>
+  );
+}
+
+/** Un bloque suelto con su forma y su color. */
 export function BlockChip({
   texto,
   valor,
+  valores,
   className = "",
   style,
 }: {
   texto: string;
   valor?: string;
+  valores?: string[];
   className?: string;
   style?: CSSProperties;
 }) {
@@ -22,12 +44,7 @@ export function BlockChip({
       className={`${blockClass(getBlockInfo(texto))} word-block--suelto inline-block ${className}`}
       style={style}
     >
-      {texto}
-      {valor ? (
-        <span className="ml-2 inline-block rounded-full bg-white px-2.5 font-bold text-ink-900">
-          {valor}
-        </span>
-      ) : null}
+      <BlockBody texto={texto} valor={valor} valores={valores} nivel={0} />
     </span>
   );
 }
@@ -42,12 +59,7 @@ export function ProgramBlocks({ rows, label }: { rows: ProgramRow[]; label: stri
           className={`${blockClass(getBlockInfo(row.texto))} max-w-full`}
           style={{ marginLeft: `${row.nivel * 1.75}rem` }}
         >
-          {row.texto}
-          {row.valor ? (
-            <span className="ml-2 inline-block rounded-full bg-white px-2.5 font-bold text-ink-900">
-              {row.valor}
-            </span>
-          ) : null}
+          <BlockBody {...row} />
         </li>
       ))}
     </ol>

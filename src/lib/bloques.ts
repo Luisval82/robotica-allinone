@@ -5,10 +5,55 @@ import data from "@/data/bloques.json";
 
 export type BlockShape = "inicio" | "pila" | "pregunta" | "dato";
 
+/**
+ * Las piezas de dentro de un bloque, en el orden en que se leen:
+ *   icono   → el dibujo redondo de la izquierda (motor, rueda, sensor…)
+ *   menu    → desplegable (puerto, unidad, sentido): ficha oscura con ▾
+ *   palabra → texto fijo del bloque
+ *   hueco   → valor que se escribe (segundos, grados, %): óvalo blanco
+ * «menu» y «hueco» son los que se rellenan: en ese orden van los «valores»
+ * de cada fila de programa (ver ProgramRow en src/lib/types.ts).
+ */
+export type BlockPartKind = "icono" | "menu" | "palabra" | "hueco";
+
+export interface BlockPart {
+  t: BlockPartKind;
+  v: string;
+  /** Lo que ofrece el desplegable al abrirlo, tal cual en la app SPIKE. */
+  opciones?: string[];
+}
+
 export interface BlockInfo {
   texto: string;
   categoria: string;
   forma: BlockShape;
+  /** Si el bloque está dibujado pieza a pieza (como en la app SPIKE). */
+  partes?: BlockPart[];
+}
+
+/** ¿Es una pieza que se rellena (desplegable o hueco)? */
+export function isFillable(parte: BlockPart): boolean {
+  return parte.t === "menu" || parte.t === "hueco";
+}
+
+const PART_KINDS: BlockPartKind[] = ["icono", "menu", "palabra", "hueco"];
+
+function toParts(value: unknown): BlockPart[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const partes = value.flatMap((item) => {
+    const { t, v, opciones } = item as { t?: string; v?: string; opciones?: unknown };
+    if (!PART_KINDS.includes(t as BlockPartKind) || typeof v !== "string") return [];
+    const lista = Array.isArray(opciones)
+      ? opciones.filter((o): o is string => typeof o === "string")
+      : undefined;
+    return [{ t: t as BlockPartKind, v, ...(lista?.length ? { opciones: lista } : {}) }];
+  });
+  return partes.length > 0 ? partes : undefined;
+}
+
+/** Valores con los que sale el bloque de la paleta (puerto, unidad, número…). */
+export function defaultValues(info: BlockInfo): string[] {
+  return (info.partes ?? []).filter(isFillable).map((parte) => parte.v);
 }
 
 /** Color de cada categoría (ver --color-block-* en src/app/globals.css). */
@@ -43,6 +88,7 @@ for (const item of [...data.bloques, ...data.auxiliares]) {
     texto: item.texto,
     categoria: item.categoria,
     forma: toShape(item.forma),
+    partes: toParts((item as { partes?: unknown }).partes),
   });
 }
 
@@ -61,11 +107,11 @@ export function isKnownBlock(texto: string): boolean {
   return catalog.has(texto);
 }
 
-/** Clases CSS de un bloque: forma + color de su categoría. El texto va siempre en tinta oscura. */
+/** Clases CSS de un bloque: forma + color de su categoría. El texto va en blanco, como en SPIKE. */
 export function blockClass(info: { categoria: string; forma: BlockShape }): string {
   return `word-block ${SHAPE_CLASS[info.forma]} ${
     CATEGORY_CLASS[info.categoria] ?? CATEGORY_CLASS.control
-  } text-ink-900`;
+  } text-white`;
 }
 
 export function categoryColorClass(categoria: string): string {

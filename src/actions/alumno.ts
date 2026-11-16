@@ -22,6 +22,8 @@ import {
 const MAX_ROWS = 40;
 const MAX_LEVEL = 5;
 const MAX_VALUE_LENGTH = 60;
+/** Huecos y desplegables que puede tener un bloque (ver «partes» en bloques.json). */
+const MAX_BLOCK_SLOTS = 8;
 const MAX_EXPLANATION_LENGTH = 500;
 
 function field(formData: FormData, name: string): string {
@@ -115,11 +117,30 @@ function parseProgram(raw: string, allowed: Set<string>): ProgramRow[] | null {
   const rows: ProgramRow[] = [];
   for (const item of data) {
     if (typeof item !== "object" || item === null) return null;
-    const { texto, valor, nivel } = item as { texto?: unknown; valor?: unknown; nivel?: unknown };
+    const { texto, valor, valores, nivel } = item as {
+      texto?: unknown;
+      valor?: unknown;
+      valores?: unknown;
+      nivel?: unknown;
+    };
     if (typeof texto !== "string" || !allowed.has(texto)) return null;
     if (typeof nivel !== "number" || !Number.isInteger(nivel) || nivel < 0 || nivel > MAX_LEVEL) {
       return null;
     }
+
+    // Bloques dibujados pieza a pieza: un valor por cada hueco o desplegable.
+    if (Array.isArray(valores)) {
+      if (valores.length > MAX_BLOCK_SLOTS) return null;
+      rows.push({
+        texto,
+        nivel,
+        valores: valores.map((v) =>
+          typeof v === "string" ? v.trim().slice(0, MAX_VALUE_LENGTH) : "",
+        ),
+      });
+      continue;
+    }
+
     const value = typeof valor === "string" ? valor.trim().slice(0, MAX_VALUE_LENGTH) : "";
     rows.push(value === "" ? { texto, nivel } : { texto, valor: value, nivel });
   }

@@ -55,8 +55,13 @@
       "explicacion": "Repite sin parar lo que tiene dentro. Así la decisión se revisa continuamente."
     },
     {
-      "texto": "Motor Ir a la posición",
-      "explicacion": "Sube la puerta a la posición de abierta y la baja a la de cerrada."
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "explicacion": "Sube la puerta a la posición de abierta y la baja a la de cerrada.",
+      "valores": [
+        "A",
+        "por la ruta más corta",
+        "0"
+      ]
     }
   ],
   "construccion": {
@@ -197,9 +202,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 90 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -207,9 +216,13 @@
           "nivel": 2
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
         }
       ],
       "notas": "También vale una pila que empiece con «Cuando el color es verde», sin bucle."
@@ -237,9 +250,13 @@
           "nivel": 2
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 90 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -247,9 +264,13 @@
           "nivel": 2
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
         },
         {
           "texto": "Si... entonces...",

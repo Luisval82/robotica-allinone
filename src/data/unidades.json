@@ -23,10 +23,10 @@
       "titulo": "Mi primer motor: segundos, grados y rotaciones",
       "hardware": "Hub + 1 Motor mediano",
       "bloques": [
-        "Accionar motor durante",
-        "Fijar velocidad al… %",
-        "Arrancar motor",
-        "Parar motor",
+        "A ir durante 1 rotaciones",
+        "A fijar velocidad al 75 %",
+        "A arrancar motor",
+        "A parar motor",
         "Esperar X segundos"
       ],
       "modelo": "Ventilador de sobremesa con tres velocidades programadas"
@@ -37,9 +37,9 @@
       "titulo": "Posición exacta: el motor como servo",
       "hardware": "Hub + 1 Motor mediano",
       "bloques": [
-        "Motor Ir a la posición",
-        "Posición del motor",
-        "Fijar velocidad al… %",
+        "A ir por la ruta más corta a la posición 0",
+        "A posición",
+        "A fijar velocidad al 75 %",
         "Tocar nota X segundos",
         "Esperar X segundos"
       ],
@@ -52,7 +52,7 @@
       "hardware": "Hub + Motor grande",
       "bloques": [
         "Repetir bucle",
-        "Accionar motor durante",
+        "A ir durante 1 rotaciones",
         "Esperar X segundos",
         "Tocar sonido hasta acabar",
         "Encender la matriz de luces 5x5"
@@ -67,8 +67,8 @@
       "bloques": [
         "Esperar hasta que",
         "¿Está presionado?",
-        "Motor Ir a la posición",
-        "Accionar motor durante",
+        "A ir por la ruta más corta a la posición 0",
+        "A ir durante 1 rotaciones",
         "Tocar sonido hasta acabar"
       ],
       "modelo": "Puerta automática con timbre: el pulsador la abre y se cierra sola"
@@ -112,7 +112,7 @@
         "¿Es de color...?",
         "Cuando el color es",
         "Bucle infinito",
-        "Motor Ir a la posición"
+        "A ir por la ruta más corta a la posición 0"
       ],
       "modelo": "Puerta de garaje basculante que solo sube con la tarjeta del color correcto"
     },
@@ -127,8 +127,8 @@
         "Si... entonces...",
         "¿Está presionado?",
         "¿Está más próximo a?",
-        "Arrancar motor",
-        "Parar motor",
+        "A arrancar motor",
+        "A parar motor",
         "Tocar sonido hasta acabar"
       ],
       "modelo": "Tiovivo con taquilla: el pulsador inicia el viaje, una barrera da acceso y se detiene si alguien se acerca"
@@ -172,7 +172,7 @@
         "Cambiar variable por",
         "Cuando está más próximo a",
         "Escribir en la matriz de luces 5x5",
-        "Accionar motor durante"
+        "A ir durante 1 rotaciones"
       ],
       "modelo": "Torno de entrada con contador de aforo en la matriz de luces"
     },
@@ -200,7 +200,7 @@
         "Presión (sensor de fuerza)",
         "Fijar variable a",
         "Operadores aritméticos (+, −, ×, ÷)",
-        "Motor Ir a la posición",
+        "A ir por la ruta más corta a la posición 0",
         "Encender la matriz de luces 5x5"
       ],
       "modelo": "Martillo de feria «prueba tu fuerza» con aguja indicadora motorizada"
@@ -228,9 +228,9 @@
         "Cuando se presiona el botón del Hub",
         "Enviar mensaje",
         "Cuando se reciba el mensaje",
-        "Arrancar motor",
-        "Parar motor",
-        "Motor Ir a la posición"
+        "A arrancar motor",
+        "A parar motor",
+        "A ir por la ruta más corta a la posición 0"
       ],
       "modelo": "Grúa giratoria con brazo elevador manejada desde los botones del Hub"
     },
@@ -258,8 +258,8 @@
       "bloques": [
         "Si... entonces... Si no...",
         "¿Es de color...?",
-        "Motor Ir a la posición",
-        "Accionar motor durante",
+        "A ir por la ruta más corta a la posición 0",
+        "A ir durante 1 rotaciones",
         "Cambiar variable por",
         "Repetir bucle hasta",
         "Escribir en la matriz de luces 5x5"
@@ -319,7 +319,7 @@
         "Elemento de lista",
         "Longitud de lista",
         "¿La lista contiene...?",
-        "Posición del motor",
+        "A posición",
         "Repetir bucle hasta"
       ],
       "modelo": "Caja fuerte con dial giratorio y combinación guardada en una lista"
@@ -364,7 +364,7 @@
         "Reiniciar cronómetro",
         "Cronómetro",
         "Añadir elemento a lista",
-        "Arrancar motor"
+        "A arrancar motor"
       ],
       "modelo": "Mesa sísmica con sismógrafo para ensayar torres antisísmicas"
     },

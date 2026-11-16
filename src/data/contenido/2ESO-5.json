@@ -51,8 +51,13 @@
       "explicacion": "Convierten la fuerza, de 0 a 100, en grados de la aguja, de 0 a 180."
     },
     {
-      "texto": "Motor Ir a la posición",
-      "explicacion": "Lleva la aguja al ángulo calculado."
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "explicacion": "Lleva la aguja al ángulo calculado.",
+      "valores": [
+        "A",
+        "por la ruta más corta",
+        "0"
+      ]
     },
     {
       "texto": "Encender la matriz de luces 5x5",
@@ -208,9 +213,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · posicion · sentido horario",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "en sentido horario",
+            "posicion"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -218,9 +227,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · sentido antihorario",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "en sentido antihorario",
+            "0"
+          ]
         }
       ],
       "notas": "La espera de medio segundo da tiempo a apretar del todo antes de medir. Fijar el sentido de giro evita que la aguja dé la vuelta por el camino corto."
@@ -254,9 +267,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · fuerza × 1.8 · sentido horario",
-          "nivel": 1
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "en sentido horario",
+            "fuerza × 1.8"
+          ]
         },
         {
           "texto": "Si... entonces... Si no...",
@@ -283,9 +300,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · sentido antihorario",
-          "nivel": 1
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "en sentido antihorario",
+            "0"
+          ]
         }
       ],
       "notas": "El cálculo puede ir en una variable aparte o directamente dentro del bloque del motor. El umbral de 70 se puede adaptar al grupo."

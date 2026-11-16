@@ -16,16 +16,16 @@
         "locucion": "El motor mediano se conecta a cualquiera de los seis puertos del Hub. En esta plataforma el primer motor va siempre en el puerto A."
       },
       {
-        "plano": "Captura de la app: el bloque azul «Accionar motor durante» con el desplegable de rotaciones, grados y segundos.",
-        "locucion": "Los bloques azules mueven motores. «Accionar motor durante» lo gira una cantidad exacta, en rotaciones, en grados o en segundos. Una rotación son 360 grados."
+        "plano": "Captura de la app: el bloque azul «ir durante» con el desplegable de rotaciones, grados y segundos.",
+        "locucion": "Los bloques azules mueven motores. «ir durante» lo gira una cantidad exacta, en rotaciones, en grados o en segundos. Una rotación son 360 grados."
       },
       {
         "plano": "El motor gira primero despacio y luego rápido, con una marca de cinta para ver el giro.",
-        "locucion": "Con «Fijar velocidad» eliges lo rápido que gira, de 0 a 100 %. Este bloque no mueve nada: solo guarda la velocidad para los bloques de motor que vienen después."
+        "locucion": "Con «fijar velocidad al … %» eliges lo rápido que gira, de 0 a 100 %. Este bloque no mueve nada: solo guarda la velocidad para los bloques de motor que vienen después."
       },
       {
-        "plano": "Captura de la pila «Arrancar motor», «Esperar 3 segundos», «Parar motor» y el motor girando.",
-        "locucion": "«Arrancar motor» lo pone a girar sin límite y el programa sigue adelante. El motor no se detiene hasta llegar a «Parar motor». Entre los dos, un «Esperar» decide cuánto tiempo gira."
+        "plano": "Captura de la pila «arrancar motor», «Esperar 3 segundos», «parar motor» y el motor girando.",
+        "locucion": "«arrancar motor» lo pone a girar sin límite y el programa sigue adelante. El motor no se detiene hasta llegar a «parar motor». Entre los dos, un «Esperar» decide cuánto tiempo gira."
       },
       {
         "plano": "El ventilador terminado gira a tres velocidades, una detrás de otra.",
@@ -35,20 +35,37 @@
   },
   "bloques": [
     {
-      "texto": "Accionar motor durante",
-      "explicacion": "Gira el motor una cantidad exacta —rotaciones, grados o segundos— y se detiene solo. El programa espera a que termine."
+      "texto": "A ir durante 1 rotaciones",
+      "explicacion": "Gira el motor una cantidad exacta —rotaciones, grados o segundos— y se detiene solo. El programa espera a que termine.",
+      "valores": [
+        "A",
+        "↻",
+        "1",
+        "rotaciones"
+      ]
     },
     {
-      "texto": "Fijar velocidad al… %",
-      "explicacion": "Guarda la velocidad del motor, de 0 a 100 %, para los bloques de motor que vienen después. No lo mueve."
+      "texto": "A fijar velocidad al 75 %",
+      "explicacion": "Guarda la velocidad del motor, de 0 a 100 %, para los bloques de motor que vienen después. No lo mueve.",
+      "valores": [
+        "A",
+        "75"
+      ]
     },
     {
-      "texto": "Arrancar motor",
-      "explicacion": "Pone el motor a girar y pasa enseguida al bloque siguiente. El motor sigue girando hasta que algo lo pare."
+      "texto": "A arrancar motor",
+      "explicacion": "Pone el motor a girar y pasa enseguida al bloque siguiente. El motor sigue girando hasta que algo lo pare.",
+      "valores": [
+        "A",
+        "↻"
+      ]
     },
     {
-      "texto": "Parar motor",
-      "explicacion": "Detiene el motor."
+      "texto": "A parar motor",
+      "explicacion": "Detiene el motor.",
+      "valores": [
+        "A"
+      ]
     },
     {
       "texto": "Esperar X segundos",
@@ -97,7 +114,7 @@
       "explicacion": "Una vuelta entera son 360 grados; media vuelta, 180."
     },
     {
-      "pregunta": "El programa ejecuta «Accionar motor A durante 2 rotaciones». ¿Qué ocurre al terminar las dos vueltas?",
+      "pregunta": "El programa ejecuta «A ir durante 2 rotaciones». ¿Qué ocurre al terminar las dos vueltas?",
       "opciones": [
         "El motor se detiene solo y el programa continúa",
         "El motor sigue girando",
@@ -105,10 +122,10 @@
         "El motor gira al revés"
       ],
       "correcta": 0,
-      "explicacion": "«Accionar motor durante» tiene un final: cumple la cantidad pedida, se para y deja paso al siguiente bloque."
+      "explicacion": "«ir durante» tiene un final: cumple la cantidad pedida, se para y deja paso al siguiente bloque."
     },
     {
-      "pregunta": "¿Qué hace «Fijar velocidad al 50 %»?",
+      "pregunta": "¿Qué hace «fijar velocidad al 50 %»?",
       "opciones": [
         "Gira el motor media vuelta",
         "Para el motor",
@@ -116,10 +133,10 @@
         "Guarda la velocidad para los siguientes bloques de motor, sin moverlo"
       ],
       "correcta": 3,
-      "explicacion": "«Fijar velocidad» solo guarda un valor. El motor no se mueve hasta que llega un bloque que lo accione o lo arranque."
+      "explicacion": "«fijar velocidad al … %» solo guarda un valor. El motor no se mueve hasta que llega un bloque que lo accione o lo arranque."
     },
     {
-      "pregunta": "Programa: «Arrancar motor A», «Esperar 3 segundos», «Parar motor A». ¿Cuánto tiempo gira el motor?",
+      "pregunta": "Programa: «A arrancar motor», «Esperar 3 segundos», «A parar motor». ¿Cuánto tiempo gira el motor?",
       "opciones": [
         "No llega a girar",
         "3 segundos",
@@ -130,7 +147,7 @@
       "explicacion": "Arranca, el programa espera 3 segundos con el motor en marcha y después lo para."
     },
     {
-      "pregunta": "¿En qué se diferencian «Arrancar motor» y «Accionar motor durante»?",
+      "pregunta": "¿En qué se diferencian «arrancar motor» y «ir durante»?",
       "opciones": [
         "«Arrancar» gira sin límite hasta que se para; «Accionar durante» gira una cantidad exacta",
         "No hay ninguna diferencia",
@@ -143,10 +160,10 @@
     {
       "pregunta": "Quieres que el motor gire exactamente media vuelta. ¿Qué pones?",
       "opciones": [
-        "Fijar velocidad al 50 %",
+        "fijar velocidad al 50 %",
         "Esperar 0.5 segundos",
-        "Accionar motor durante 180 grados",
-        "Accionar motor durante 50 segundos"
+        "ir durante 180 grados",
+        "ir durante 50 segundos"
       ],
       "correcta": 2,
       "explicacion": "Media vuelta son 180 grados. La velocidad no cambia cuánto gira, solo lo deprisa que lo hace."
@@ -166,12 +183,12 @@
       "pregunta": "Para pasar de velocidad baja a media y a alta, ¿qué bloque cambias cada vez?",
       "opciones": [
         "Esperar X segundos",
-        "Fijar velocidad al… %",
-        "Parar motor",
+        "fijar velocidad al … %",
+        "parar motor",
         "Apagar la matriz de luces 5x5"
       ],
       "correcta": 1,
-      "explicacion": "Cada velocidad del ventilador es un valor distinto de «Fijar velocidad»."
+      "explicacion": "Cada velocidad del ventilador es un valor distinto de «fijar velocidad al … %»."
     }
   ],
   "practicas": [
@@ -184,17 +201,25 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 30",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "30"
+          ]
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 5 segundos",
-          "nivel": 0
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "5",
+            "segundos"
+          ]
         }
       ],
-      "notas": "También es correcto «Arrancar motor», «Esperar 5 segundos» y «Parar motor». Comprueba que la velocidad se fija antes de mover el motor."
+      "notas": "También es correcto «arrancar motor», «Esperar 5 segundos» y «parar motor». Comprueba que la velocidad se fija antes de mover el motor."
     },
     {
       "titulo": "Tres velocidades",
@@ -205,29 +230,20 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 30",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "30"
+          ]
         },
         {
-          "texto": "Arrancar motor",
-          "valor": "A",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 60",
-          "nivel": 0
-        },
-        {
-          "texto": "Arrancar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -235,14 +251,20 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 100",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "60"
+          ]
         },
         {
-          "texto": "Arrancar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -250,12 +272,35 @@
           "nivel": 0
         },
         {
-          "texto": "Parar motor",
-          "valor": "A",
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "100"
+          ]
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "valor": "3",
           "nivel": 0
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
         }
       ],
-      "notas": "La velocidad nueva se aplica al volver a arrancar el motor: por eso se repite «Arrancar motor» tras cada cambio. Compruébalo en la app antes de corregir."
+      "notas": "La velocidad nueva se aplica al volver a arrancar el motor: por eso se repite «arrancar motor» tras cada cambio. Compruébalo en la app antes de corregir."
     }
   ]
 }

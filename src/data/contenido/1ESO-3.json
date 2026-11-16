@@ -16,7 +16,7 @@
         "locucion": "El motor de SPIKE sabe en qué posición está: lleva dentro un sensor que mide su ángulo, de 0 a 359 grados. Cuando las dos marcas del motor coinciden, está en la posición 0."
       },
       {
-        "plano": "Captura de la app: bloque «Motor Ir a la posición» con el valor 90 y el desplegable del sentido.",
+        "plano": "Captura de la app: bloque «ir a la posición» con el valor 90 y el desplegable del sentido.",
         "locucion": "El bloque «Ir a la posición» lleva el motor a un ángulo exacto y lo deja ahí. Puedes elegir el camino: el más corto, en sentido horario o antihorario."
       },
       {
@@ -24,8 +24,8 @@
         "locucion": "No es lo mismo girar 90 grados que ir a la posición 90. Girar suma 90 a donde estés; ir a la posición te lleva siempre al mismo sitio."
       },
       {
-        "plano": "Captura del bloque redondeado «Posición del motor» dentro de «Escribir en la matriz»; el Hub muestra un número.",
-        "locucion": "El bloque redondeado «Posición del motor» no mueve nada: es un dato. Te dice el ángulo actual y se coloca dentro de otros bloques."
+        "plano": "Captura del bloque redondeado «A posición» dentro de «Escribir en la matriz»; el Hub muestra un número.",
+        "locucion": "El bloque redondeado «A posición» no mueve nada: es un dato. Te dice el ángulo actual y se coloca dentro de otros bloques."
       },
       {
         "plano": "La barrera pita, sube, espera a que pase un coche de juguete y baja.",
@@ -35,16 +35,28 @@
   },
   "bloques": [
     {
-      "texto": "Motor Ir a la posición",
-      "explicacion": "Lleva el motor a un ángulo exacto, de 0 a 359, por el camino que elijas, y lo detiene ahí."
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "explicacion": "Lleva el motor a un ángulo exacto, de 0 a 359, por el camino que elijas, y lo detiene ahí.",
+      "valores": [
+        "A",
+        "por la ruta más corta",
+        "0"
+      ]
     },
     {
-      "texto": "Posición del motor",
-      "explicacion": "Bloque de dato: devuelve el ángulo actual del motor. Se coloca dentro de otros bloques."
+      "texto": "A posición",
+      "explicacion": "Bloque de dato: devuelve el ángulo actual del motor. Se coloca dentro de otros bloques.",
+      "valores": [
+        "A"
+      ]
     },
     {
-      "texto": "Fijar velocidad al… %",
-      "explicacion": "Guarda la velocidad a la que se moverá el motor. Una barrera lenta es más segura."
+      "texto": "A fijar velocidad al 75 %",
+      "explicacion": "Guarda la velocidad a la que se moverá el motor. Una barrera lenta es más segura.",
+      "valores": [
+        "A",
+        "75"
+      ]
     },
     {
       "texto": "Tocar nota X segundos",
@@ -108,7 +120,7 @@
       "explicacion": "La primera vez va a 90; la segunda ya está en 90 y no se mueve."
     },
     {
-      "pregunta": "El motor está en la posición 0 y ejecutas dos veces «Accionar motor durante 90 grados». ¿Dónde acaba?",
+      "pregunta": "El motor está en la posición 0 y ejecutas dos veces «ir durante 90 grados». ¿Dónde acaba?",
       "opciones": [
         "En 180",
         "En 90",
@@ -119,7 +131,7 @@
       "explicacion": "Cada bloque suma 90 grados a la posición que tenía: 90 más 90 son 180."
     },
     {
-      "pregunta": "¿Qué tipo de bloque es «Posición del motor»?",
+      "pregunta": "¿Qué tipo de bloque es «A posición»?",
       "opciones": [
         "Una orden que mueve el motor",
         "Un evento que inicia el programa",
@@ -154,7 +166,7 @@
     {
       "pregunta": "La barrera sube demasiado bruscamente. ¿Qué cambias?",
       "opciones": [
-        "Pongo un valor más bajo en «Fijar velocidad»",
+        "Pongo un valor más bajo en «fijar velocidad al … %»",
         "Alargo el «Esperar»",
         "Alargo el pitido",
         "Uso la posición 180"
@@ -184,14 +196,21 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 30",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "30"
+          ]
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 90 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -199,9 +218,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
         }
       ],
       "notas": "Si la barrera baja en lugar de subir, el brazo está montado hacia el otro lado: vale usar 270 en lugar de 90."
@@ -225,9 +248,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 90 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Fijar luz del botón central",
@@ -245,9 +272,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
         },
         {
           "texto": "Fijar luz del botón central",

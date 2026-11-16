@@ -126,6 +126,80 @@
     display: none;
   }
 
+  /*
+   * Piezas de dentro de un bloque, tal como se ven en la app SPIKE:
+   * el icono redondo de la izquierda, las fichas de desplegable (con su ▾)
+   * y los huecos blancos donde va cada valor.
+   */
+  .word-block__fila {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  /*
+   * El icono va en blanco con el dibujo del color de su categoría, así que
+   * cada bloque guarda su color en --block-color.
+   */
+  .word-block.bg-block-eventos { --block-color: var(--color-block-eventos); }
+  .word-block.bg-block-motores { --block-color: var(--color-block-motores); }
+  .word-block.bg-block-movimiento { --block-color: var(--color-block-movimiento); }
+  .word-block.bg-block-luz { --block-color: var(--color-block-luz); }
+  .word-block.bg-block-sonido { --block-color: var(--color-block-sonido); }
+  .word-block.bg-block-control { --block-color: var(--color-block-control); }
+  .word-block.bg-block-sensores { --block-color: var(--color-block-sensores); }
+  .word-block.bg-block-operadores { --block-color: var(--color-block-operadores); }
+  .word-block.bg-block-variables { --block-color: var(--color-block-variables); }
+  .word-block.bg-block-misbloques { --block-color: var(--color-block-misbloques); }
+  .word-block.bg-block-extensiones { --block-color: var(--color-block-extensiones); }
+
+  .word-block__icono {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--block-color, var(--color-ink-900));
+    flex: none;
+  }
+
+  /* Desplegable: ficha más oscura que el bloque, con la flechita */
+  .word-block__menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.18);
+    color: #fff;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .word-block__menu::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 0.26rem solid transparent;
+    border-right: 0.26rem solid transparent;
+    border-top: 0.3rem solid currentColor;
+    opacity: 0.9;
+  }
+
+  /* Hueco blanco de un valor (segundos, grados, %…) */
+  .word-block__hueco {
+    display: inline-block;
+    min-width: 1.6rem;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-ink-900);
+    font-weight: 800;
+    text-align: center;
+  }
+
   /* Bloque de inicio («Cuando…»): empieza una pila, con la parte de arriba curva */
   .word-block--inicio {
     border-radius: 1.6rem 1.6rem 0.9rem 0.9rem;

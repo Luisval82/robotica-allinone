@@ -19,7 +19,7 @@
         "locucion": "Un proyecto grande se construye por partes. Primero la barrera: esperar al pulsador, subir, esperar y bajar. Pruébala antes de seguir."
       },
       {
-        "plano": "Captura de la app: «Arrancar motor», un «Repetir» con un «Si… entonces» dentro y «Parar motor».",
+        "plano": "Captura de la app: «arrancar motor», un «Repetir» con un «Si… entonces» dentro y «parar motor».",
         "locucion": "Después, el viaje: arrancamos el tiovivo y, mientras gira, un bucle comprueba muchas veces por segundo si alguien se ha acercado. Si es así, lo paramos."
       },
       {
@@ -54,12 +54,19 @@
       "explicacion": "Pregunta si alguien se ha acercado demasiado al tiovivo."
     },
     {
-      "texto": "Arrancar motor",
-      "explicacion": "Pone el tiovivo a girar mientras el programa sigue vigilando."
+      "texto": "A arrancar motor",
+      "explicacion": "Pone el tiovivo a girar mientras el programa sigue vigilando.",
+      "valores": [
+        "A",
+        "↻"
+      ]
     },
     {
-      "texto": "Parar motor",
-      "explicacion": "Detiene el tiovivo al acabar el viaje o si alguien se acerca."
+      "texto": "A parar motor",
+      "explicacion": "Detiene el tiovivo al acabar el viaje o si alguien se acerca.",
+      "valores": [
+        "A"
+      ]
     },
     {
       "texto": "Tocar sonido hasta acabar",
@@ -110,19 +117,19 @@
     {
       "pregunta": "¿Qué bloque deja el tiovivo girando mientras el programa sigue comprobando el sensor?",
       "opciones": [
-        "Accionar motor durante",
-        "Motor Ir a la posición",
-        "Arrancar motor",
+        "ir durante",
+        "ir a la posición",
+        "arrancar motor",
         "Esperar hasta que"
       ],
       "correcta": 2,
-      "explicacion": "«Arrancar motor» no espera: el motor gira y el programa continúa."
+      "explicacion": "«arrancar motor» no espera: el motor gira y el programa continúa."
     },
     {
       "pregunta": "¿Qué combinación deja la atracción esperando a que alguien pulse la taquilla?",
       "opciones": [
-        "«Repetir» con «Arrancar motor»",
-        "«Si… entonces» con «Parar motor»",
+        "«Repetir» con «arrancar motor»",
+        "«Si… entonces» con «parar motor»",
         "«Tocar sonido hasta acabar»",
         "«Esperar hasta que» con «¿Está presionado?»"
       ],
@@ -160,7 +167,7 @@
         "El tiovivo se detiene"
       ],
       "correcta": 3,
-      "explicacion": "5 cm es menos que 10: la pregunta es verdadera y se ejecuta «Parar motor»."
+      "explicacion": "5 cm es menos que 10: la pregunta es verdadera y se ejecuta «parar motor»."
     },
     {
       "pregunta": "Quieres tres viajes seguidos. ¿Qué haces?",
@@ -205,9 +212,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 90 · camino más corto",
-          "nivel": 1
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -215,9 +226,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 0 · camino más corto",
-          "nivel": 1
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
         }
       ],
       "notas": "La barrera es el motor mediano, en el puerto B. Si sube hacia el otro lado, vale 270."
@@ -236,9 +251,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 90 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -246,19 +265,29 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 30",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "30"
+          ]
         },
         {
-          "texto": "Arrancar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
         },
         {
           "texto": "Repetir bucle",
@@ -271,9 +300,11 @@
           "nivel": 1
         },
         {
-          "texto": "Parar motor",
-          "valor": "A",
-          "nivel": 2
+          "texto": "A parar motor",
+          "nivel": 2,
+          "valores": [
+            "A"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -281,9 +312,11 @@
           "nivel": 1
         },
         {
-          "texto": "Parar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
         },
         {
           "texto": "Tocar sonido hasta acabar",

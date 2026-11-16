@@ -58,8 +58,14 @@
       "explicacion": "Muestra el valor de la variable en la matriz."
     },
     {
-      "texto": "Accionar motor durante",
-      "explicacion": "Gira el torno un cuarto de vuelta para dejar pasar a una persona."
+      "texto": "A ir durante 1 rotaciones",
+      "explicacion": "Gira el torno un cuarto de vuelta para dejar pasar a una persona.",
+      "valores": [
+        "A",
+        "↻",
+        "1",
+        "rotaciones"
+      ]
     }
   ],
   "construccion": {
@@ -242,9 +248,14 @@
           "nivel": 0
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 90 grados",
-          "nivel": 0
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
         },
         {
           "texto": "Cambiar variable por",

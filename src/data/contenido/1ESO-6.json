@@ -174,7 +174,7 @@
         "Gira el robot 90°"
       ],
       "correcta": 1,
-      "explicacion": "Como «Fijar velocidad» de los motores: guarda un valor, no mueve nada."
+      "explicacion": "Como «fijar velocidad al … %» de los motores: guarda un valor, no mueve nada."
     }
   ],
   "practicas": [

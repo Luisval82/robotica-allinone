@@ -46,16 +46,28 @@
       "explicacion": "Bloque de inicio: arranca su pila cada vez que otra pila envía ese mensaje."
     },
     {
-      "texto": "Arrancar motor",
-      "explicacion": "Pone a girar la grúa."
+      "texto": "A arrancar motor",
+      "explicacion": "Pone a girar la grúa.",
+      "valores": [
+        "A",
+        "↻"
+      ]
     },
     {
-      "texto": "Parar motor",
-      "explicacion": "Detiene el giro de la grúa."
+      "texto": "A parar motor",
+      "explicacion": "Detiene el giro de la grúa.",
+      "valores": [
+        "A"
+      ]
     },
     {
-      "texto": "Motor Ir a la posición",
-      "explicacion": "Sube o baja el brazo a un ángulo exacto."
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "explicacion": "Sube o baja el brazo a un ángulo exacto.",
+      "valores": [
+        "A",
+        "por la ruta más corta",
+        "0"
+      ]
     }
   ],
   "construccion": {
@@ -147,8 +159,8 @@
       "pregunta": "El botón izquierdo arranca el giro de la grúa. ¿Cómo la detienes con el derecho?",
       "opciones": [
         "No se puede",
-        "Poniendo «Parar motor» debajo de «Arrancar motor»",
-        "Con una pila que empiece en «Cuando se presiona el botón derecho» y contenga «Parar motor»",
+        "Poniendo «parar motor» debajo de «arrancar motor»",
+        "Con una pila que empiece en «Cuando se presiona el botón derecho» y contenga «parar motor»",
         "Pulsando dos veces el izquierdo"
       ],
       "correcta": 2,
@@ -188,9 +200,14 @@
           "nivel": 0
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "A · 90 grados",
-          "nivel": 0
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
         },
         {
           "texto": "Cuando se presiona el botón del Hub",
@@ -198,9 +215,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 60 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "60"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -208,9 +229,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
         }
       ],
       "notas": "Son dos pilas independientes. No hace falta «Cuando se inicia el programa»."
@@ -225,14 +250,20 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar velocidad al… %",
-          "valor": "A · 20",
-          "nivel": 0
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "20"
+          ]
         },
         {
-          "texto": "Arrancar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
         },
         {
           "texto": "Cuando se presiona el botón del Hub",
@@ -240,9 +271,11 @@
           "nivel": 0
         },
         {
-          "texto": "Parar motor",
-          "valor": "A",
-          "nivel": 0
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
         },
         {
           "texto": "Enviar mensaje",
@@ -255,9 +288,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 60 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "60"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -265,9 +302,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "B · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
         },
         {
           "texto": "Cuando se reciba el mensaje",

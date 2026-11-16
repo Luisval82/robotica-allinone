@@ -46,12 +46,23 @@
       "explicacion": "Pregunta al sensor de color por el color de la pieza."
     },
     {
-      "texto": "Motor Ir a la posición",
-      "explicacion": "Orienta la rampa hacia un cajón o hacia el otro."
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "explicacion": "Orienta la rampa hacia un cajón o hacia el otro.",
+      "valores": [
+        "A",
+        "por la ruta más corta",
+        "0"
+      ]
     },
     {
-      "texto": "Accionar motor durante",
-      "explicacion": "Da una vuelta al empujador para que la pieza caiga por la rampa."
+      "texto": "A ir durante 1 rotaciones",
+      "explicacion": "Da una vuelta al empujador para que la pieza caiga por la rampa.",
+      "valores": [
+        "A",
+        "↻",
+        "1",
+        "rotaciones"
+      ]
     },
     {
       "texto": "Cambiar variable por",
@@ -210,23 +221,36 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 45 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "45"
+          ]
         },
         {
           "texto": "Si no",
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 315 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "315"
+          ]
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "B · 1 rotación",
-          "nivel": 1
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
         }
       ],
       "notas": "Las posiciones de la rampa (45 y 315) dependen del montaje. El empujador va después de la decisión, fuera del «Si… Si no»."
@@ -265,9 +289,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 45 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "45"
+          ]
         },
         {
           "texto": "Cambiar variable por",
@@ -279,9 +307,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 315 · camino más corto",
-          "nivel": 2
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "315"
+          ]
         },
         {
           "texto": "Cambiar variable por",
@@ -289,9 +321,14 @@
           "nivel": 2
         },
         {
-          "texto": "Accionar motor durante",
-          "valor": "B · 1 rotación",
-          "nivel": 1
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
         },
         {
           "texto": "Escribir en la matriz de luces 5x5",

@@ -90,42 +90,6 @@
       "pendiente": true
     },
     {
-      "texto": "Accionar motor durante",
-      "categoria": "motores",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Fijar velocidad al… %",
-      "categoria": "motores",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Arrancar motor",
-      "categoria": "motores",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Parar motor",
-      "categoria": "motores",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Motor Ir a la posición",
-      "categoria": "motores",
-      "forma": "pila",
-      "pendiente": false
-    },
-    {
-      "texto": "Posición del motor",
-      "categoria": "motores",
-      "forma": "dato",
-      "pendiente": false
-    },
-    {
       "texto": "Repetir bucle",
       "categoria": "control",
       "forma": "pila",
@@ -370,6 +334,269 @@
       "categoria": "misbloques",
       "forma": "pila",
       "pendiente": true
+    },
+    {
+      "texto": "A ir durante 1 rotaciones",
+      "categoria": "motores",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "motor"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "VARIOS",
+            "TODOS"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "ir"
+        },
+        {
+          "t": "menu",
+          "v": "↻",
+          "opciones": [
+            "↺",
+            "↻"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "durante"
+        },
+        {
+          "t": "hueco",
+          "v": "1"
+        },
+        {
+          "t": "menu",
+          "v": "rotaciones",
+          "opciones": [
+            "rotaciones",
+            "grados",
+            "segundos"
+          ]
+        }
+      ],
+      "pendiente": false
+    },
+    {
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "categoria": "motores",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "motor"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "VARIOS",
+            "TODOS"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "ir"
+        },
+        {
+          "t": "menu",
+          "v": "por la ruta más corta"
+        },
+        {
+          "t": "palabra",
+          "v": "a la posición"
+        },
+        {
+          "t": "hueco",
+          "v": "0"
+        }
+      ],
+      "pendiente": false
+    },
+    {
+      "texto": "A arrancar motor",
+      "categoria": "motores",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "motor"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "VARIOS",
+            "TODOS"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "arrancar motor"
+        },
+        {
+          "t": "menu",
+          "v": "↻",
+          "opciones": [
+            "↺",
+            "↻"
+          ]
+        }
+      ],
+      "pendiente": false
+    },
+    {
+      "texto": "A parar motor",
+      "categoria": "motores",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "motor"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "VARIOS",
+            "TODOS"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "parar motor"
+        }
+      ],
+      "pendiente": false
+    },
+    {
+      "texto": "A fijar velocidad al 75 %",
+      "categoria": "motores",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "motor"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "VARIOS",
+            "TODOS"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "fijar velocidad al"
+        },
+        {
+          "t": "hueco",
+          "v": "75"
+        },
+        {
+          "t": "palabra",
+          "v": "%"
+        }
+      ],
+      "pendiente": false
+    },
+    {
+      "texto": "A posición",
+      "categoria": "motores",
+      "forma": "dato",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "motor"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "VARIOS",
+            "TODOS"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "posición"
+        }
+      ],
+      "pendiente": false
+    },
+    {
+      "texto": "A velocidad",
+      "categoria": "motores",
+      "forma": "dato",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "motor"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "VARIOS",
+            "TODOS"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "velocidad"
+        }
+      ],
+      "pendiente": false
     },
     {
       "texto": "Ir a la posición relativa del motor a velocidad",

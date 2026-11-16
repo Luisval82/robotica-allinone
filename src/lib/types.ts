@@ -139,6 +139,12 @@ export interface ProgramRow {
   texto: string;
   /** Lo que va en los huecos del bloque: puerto, segundos, color… */
   valor?: string;
+  /**
+   * Valores de los huecos y desplegables del bloque, en el orden en que
+   * aparecen en él (ver «partes» en src/data/bloques.json). Si falta alguno,
+   * se dibuja el valor que trae el bloque por defecto en la app SPIKE.
+   */
+  valores?: string[];
   /** Sangría: 0 = pila principal, 1 = dentro de un bucle o condición… */
   nivel: number;
 }

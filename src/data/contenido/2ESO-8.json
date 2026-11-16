@@ -191,9 +191,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -201,9 +205,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 90 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Reiniciar cronómetro",
@@ -241,9 +249,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · camino más corto",
-          "nivel": 1
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
         },
         {
           "texto": "Esperar X segundos",
@@ -251,9 +263,13 @@
           "nivel": 1
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 90 · camino más corto",
-          "nivel": 1
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
         },
         {
           "texto": "Reiniciar cronómetro",
@@ -280,9 +296,13 @@
           "nivel": 0
         },
         {
-          "texto": "Motor Ir a la posición",
-          "valor": "A · 0 · camino más corto",
-          "nivel": 0
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
         }
       ],
       "notas": "La pila del cronómetro también puede dispararse entre rondas, con la bandera ya bajada: no tiene efecto. Compruébalo en la app antes de corregir."

@@ -2,6 +2,7 @@
 
 import { useActionState, useRef, useState, type ReactNode } from "react";
 import { submitEntregaAction } from "@/actions/alumno";
+import { BlockPartIcon } from "@/components/brand/BlockParts";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import {
   ArrowDownIcon,
@@ -10,7 +11,7 @@ import {
   ArrowUpIcon,
   CloseIcon,
 } from "@/components/ui/icons";
-import { blockClass, getBlockInfo, type BlockInfo } from "@/lib/bloques";
+import { blockClass, defaultValues, getBlockInfo, type BlockInfo } from "@/lib/bloques";
 import { formatNota } from "@/lib/format";
 import type { ProgramRow, StudentFormState } from "@/lib/types";
 
@@ -32,7 +33,68 @@ interface Row {
   key: number;
   texto: string;
   valor: string;
+  /** Un valor por cada desplegable y hueco del bloque, en su orden. */
+  valores: string[];
   nivel: number;
+}
+
+/** Los huecos y desplegables de un bloque, para que el alumno los rellene. */
+function RowParts({
+  info,
+  valores,
+  onChange,
+  etiqueta,
+}: {
+  info: BlockInfo;
+  valores: string[];
+  onChange: (indice: number, valor: string) => void;
+  etiqueta: string;
+}) {
+  let hueco = -1;
+  return (
+    <span className="word-block__fila">
+      {(info.partes ?? []).map((parte, index) => {
+        if (parte.t === "icono") return <BlockPartIcon key={index} nombre={parte.v} />;
+        if (parte.t === "palabra") return <span key={index}>{parte.v}</span>;
+
+        hueco += 1;
+        const posicion = hueco;
+        const valor = valores[posicion] ?? parte.v;
+        const aria = `${etiqueta}: ${parte.t === "menu" ? "opción" : "valor"} ${posicion + 1}`;
+
+        if (parte.t === "menu" && parte.opciones) {
+          return (
+            <select
+              key={index}
+              value={valor}
+              aria-label={aria}
+              onChange={(event) => onChange(posicion, event.target.value)}
+              className="word-block__menu appearance-none pr-1 text-inherit"
+            >
+              {parte.opciones.map((opcion) => (
+                <option key={opcion} value={opcion} className="text-ink-900">
+                  {opcion}
+                </option>
+              ))}
+            </select>
+          );
+        }
+
+        return (
+          <input
+            key={index}
+            type="text"
+            value={valor}
+            aria-label={aria}
+            maxLength={24}
+            size={Math.max(2, valor.length)}
+            onChange={(event) => onChange(posicion, event.target.value)}
+            className={parte.t === "menu" ? "word-block__menu" : "word-block__hueco"}
+          />
+        );
+      })}
+    </span>
+  );
 }
 
 function RowButton({
@@ -101,6 +163,7 @@ export function EntregaBox({
       key: index,
       texto: row.texto,
       valor: row.valor ?? "",
+      valores: row.valores ?? defaultValues(getBlockInfo(row.texto)),
       nivel: row.nivel,
     })),
   );
@@ -150,7 +213,8 @@ export function EntregaBox({
     setRows((current) => {
       if (current.length >= MAX_ROWS) return current;
       const last = current[current.length - 1];
-      return [...current, { key, texto, valor: "", nivel: last ? last.nivel : 0 }];
+      const valores = defaultValues(getBlockInfo(texto));
+      return [...current, { key, texto, valor: "", valores, nivel: last ? last.nivel : 0 }];
     });
   }
 
@@ -173,7 +237,11 @@ export function EntregaBox({
   }
 
   const programa = JSON.stringify(
-    rows.map(({ texto, valor, nivel }) => ({ texto, valor: valor.trim(), nivel })),
+    rows.map(({ texto, valor, valores, nivel }) =>
+      getBlockInfo(texto).partes
+        ? { texto, valores, nivel }
+        : { texto, valor: valor.trim(), nivel },
+    ),
   );
 
   return (
@@ -206,17 +274,32 @@ export function EntregaBox({
                     <span
                       className={`${blockClass(info)} word-block--suelto flex items-center gap-2 text-sm`}
                     >
-                      {row.texto}
-                      <input
-                        type="text"
-                        value={row.valor}
-                        onChange={(event) => patch(index, { valor: event.target.value })}
-                        maxLength={60}
-                        size={Math.max(6, row.valor.length + 1)}
-                        placeholder="valor"
-                        aria-label={`Valor del bloque ${index + 1}: ${row.texto}`}
-                        className="rounded-full bg-white px-3 py-0.5 font-bold text-ink-900 placeholder:font-normal placeholder:text-ink-400"
-                      />
+                      {info.partes ? (
+                        <RowParts
+                          info={info}
+                          valores={row.valores}
+                          etiqueta={`Bloque ${index + 1}: ${row.texto}`}
+                          onChange={(posicion, valor) =>
+                            patch(index, {
+                              valores: row.valores.map((v, i) => (i === posicion ? valor : v)),
+                            })
+                          }
+                        />
+                      ) : (
+                        <>
+                          {row.texto}
+                          <input
+                            type="text"
+                            value={row.valor}
+                            onChange={(event) => patch(index, { valor: event.target.value })}
+                            maxLength={60}
+                            size={Math.max(6, row.valor.length + 1)}
+                            placeholder="valor"
+                            aria-label={`Valor del bloque ${index + 1}: ${row.texto}`}
+                            className="rounded-full bg-white px-3 py-0.5 font-bold text-ink-900 placeholder:font-normal placeholder:text-ink-400"
+                          />
+                        </>
+                      )}
                     </span>
                     <span className="flex items-center">
                       <RowButton
