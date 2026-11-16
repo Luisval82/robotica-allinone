@@ -12,11 +12,21 @@ import {
   verifySessionToken,
   type SessionPayload,
 } from "@/lib/session";
-import type { Role, SessionUser } from "@/lib/types";
+import { isUuid, type Role, type SessionUser } from "@/lib/types";
 
+/**
+ * Lee la sesión de la cookie. Si el id no es un UUID (cookie de antes de
+ * migrar a Supabase, o corrupta), se trata como «sin sesión»: así ninguna
+ * consulta llega a Supabase con un id que no puede interpretar, que antes
+ * tumbaba la página con un error 500. (No se borra aquí la cookie: esta
+ * función se usa también desde páginas, donde Next no permite tocar
+ * cookies; se sobrescribe sola en el próximo inicio de sesión. endSession()
+ * sí la borra si se llama desde una Server Action o Route Handler.)
+ */
 export async function getSession(): Promise<SessionPayload | null> {
   const cookieStore = await cookies();
-  return verifySessionToken(cookieStore.get(SESSION_COOKIE)?.value);
+  const session = await verifySessionToken(cookieStore.get(SESSION_COOKIE)?.value);
+  return session && isUuid(session.id) ? session : null;
 }
 
 /**

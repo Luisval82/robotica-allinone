@@ -26,6 +26,18 @@ export function isCourse(value: unknown): value is Course {
   return typeof value === "string" && (COURSES as readonly string[]).includes(value);
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * Comprueba que un id tiene forma de UUID (el tipo de la columna «id» en
+ * Supabase). Úsalo antes de consultar por id: una cookie de sesión de antes
+ * de migrar a Supabase, o cualquier id corrupto, no es un UUID y Postgres
+ * rechaza la consulta con un error en vez de devolver «no encontrado».
+ */
+export function isUuid(value: unknown): value is string {
+  return typeof value === "string" && UUID_RE.test(value);
+}
+
 /** Usuario tal y como se guarda en la base de datos (nunca se envía al navegador). */
 export interface User {
   id: string;
