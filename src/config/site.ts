@@ -11,8 +11,10 @@
 //    Vale con o sin arroba: "colegiovaldeserra.com" o "@colegiovaldeserra.com".
 //
 //    · Solo podrán registrarse e iniciar sesión los correos que terminen así.
-//    · Los usuarios de prueba de src/data/users.json adoptan este dominio
-//      automáticamente (no hace falta editarlos uno a uno).
+//    · Los usuarios de prueba viven ahora en la base de datos de Supabase
+//      (ver supabase/schema.sql) y en la lista DEMO_CREDENTIALS de
+//      src/lib/db/users.ts; si cambias este dominio, actualiza también sus
+//      correos en esos dos sitios.
 // ──────────────────────────────────────────────────────────────────────────
 export const SCHOOL_EMAIL_DOMAIN = "colegiovaldeserra.com";
 
@@ -21,7 +23,7 @@ export const SCHOOL_EMAIL_DOMAIN = "colegiovaldeserra.com";
 //
 //    true  → se muestra el recuadro con correos y contraseñas de prueba.
 //    false → se oculta. Ponlo en false antes de abrir la plataforma al
-//            alumnado (y borra o cambia los usuarios de src/data/users.json).
+//            alumnado (y borra esas cuentas de la tabla users en Supabase).
 // ──────────────────────────────────────────────────────────────────────────
 export const SHOW_DEMO_CREDENTIALS = true;
 

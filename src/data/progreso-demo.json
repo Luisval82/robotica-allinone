@@ -1,5 +1,5 @@
 {
-  "_nota": "DATOS DE PRUEBA del panel del profesor: progreso, notas de test y entregas inventadas para los seis alumnos de relleno (los que no aparecen en el login). Los tres alumnos del login empiezan de cero para poder probar el recorrido completo. Vacía las dos listas cuando empiece el uso real.",
+  "_nota": "YA NO LO LEE LA APLICACIÓN. Se queda como referencia histórica: este mismo progreso, notas y entregas de los seis alumnos de relleno se insertan ahora desde supabase/schema.sql. Para borrarlos cuando empiece el uso real, borra esas filas en las tablas progreso y entregas de Supabase (o sus alumnos en la tabla users, que las arrastra por el ON DELETE CASCADE).",
   "progreso": [
     {
       "alumnoId": "seed-marta",

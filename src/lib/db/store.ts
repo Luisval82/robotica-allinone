@@ -1,129 +1,96 @@
 // ════════════════════════════════════════════════════════════════════════
-//  BASE DE DATOS SIMULADA — almacén en memoria
+//  BASE DE DATOS REAL — Supabase (PostgreSQL)
 //
-//  · Al arrancar carga los usuarios de src/data/users.json y los datos de
-//    prueba del aula de src/data/progreso-demo.json.
-//  · Todo lo que cambia después (cuentas nuevas, roles, interruptores de
-//    unidades, progreso, tests, entregas y correcciones) vive EN MEMORIA: se pierde al reiniciar el
-//    servidor y, en Vercel, cuando la función se reinicia.
-//  · El resto de la aplicación solo usa las funciones de src/lib/db/*.
-//    Para pasar a una base de datos real (p. ej. Supabase) basta con
-//    reescribir esas funciones.
+//  Este archivo ya no guarda nada en memoria. Expone el cliente de Supabase
+//  y los ayudantes que usan src/lib/db/users.ts y src/lib/db/aula.ts para
+//  traducir entre las filas de la base de datos (snake_case, ver
+//  supabase/schema.sql) y los tipos de la aplicación (camelCase, ver
+//  src/lib/types.ts).
 // ════════════════════════════════════════════════════════════════════════
 
 import "server-only";
-import demo from "@/data/progreso-demo.json";
-import seed from "@/data/users.json";
-import { hashPassword } from "@/lib/password";
-import {
-  isCourse,
-  isRole,
-  type Course,
-  type Entrega,
-  type ProgramRow,
-  type Role,
-  type UnitProgress,
-  type User,
-} from "@/lib/types";
-import { SCHOOL_EMAIL_SUFFIX, normalizeEmail } from "@/lib/validation";
+import { supabase } from "@/lib/supabase";
+import type { Course, Entrega, ProgramRow, Role, UnitProgress, User } from "@/lib/types";
 
-export interface SeedUser {
+export { supabase };
+
+/** Lanza un error legible si Supabase devuelve un fallo al consultar o escribir. */
+export function assertNoError(error: { message: string } | null, context: string): void {
+  if (error) throw new Error(`Supabase (${context}): ${error.message}`);
+}
+
+// ── users ──────────────────────────────────────────────────────────────
+
+export interface UserRow {
   id: string;
   name: string;
   email: string;
-  password: string;
+  password_hash: string;
   role: Role;
   course: Course | null;
-  enLogin: boolean;
-  createdAt: string;
+  created_at: string;
 }
 
-/**
- * Interruptores del profesor. Solo se guarda lo que se ha tocado; lo demás
- * sigue la regla por defecto (UD 1 abierta, resto bloqueadas, pruebas cerradas).
- * Claves: "1ESO:3" (curso:unidad) y "idAlumno:3" (alumno:unidad).
- */
-export interface AccessRules {
-  claseUnidad: Record<string, boolean>;
-  clasePrueba: Record<string, boolean>;
-  alumnoUnidad: Record<string, boolean>;
-  alumnoPrueba: Record<string, boolean>;
-}
-
-export interface Store {
-  /** Huella de los JSON de origen: si los editas, la base se recarga. */
-  seedVersion: string;
-  users: User[];
-  acceso: AccessRules;
-  progreso: UnitProgress[];
-  entregas: Entrega[];
-}
-
-/** Los usuarios de prueba adoptan el dominio configurado en src/config/site.ts. */
-function withSchoolDomain(email: string): string {
-  return `${normalizeEmail(email).split("@")[0]}${SCHOOL_EMAIL_SUFFIX}`;
-}
-
-export function readSeedUsers(): SeedUser[] {
-  return seed.users.map((raw) => {
-    if (!isRole(raw.role)) {
-      throw new Error(`users.json: el rol "${raw.role}" de ${raw.email} no es válido.`);
-    }
-    return {
-      id: raw.id,
-      name: raw.name,
-      email: withSchoolDomain(raw.email),
-      password: raw.password,
-      role: raw.role,
-      course: isCourse(raw.course) ? raw.course : null,
-      enLogin: raw.enLogin === true,
-      createdAt: raw.createdAt,
-    };
-  });
-}
-
-function toRows(rows: ProgramRow[]): ProgramRow[] {
-  return rows.map((row) => ({ texto: row.texto, valor: row.valor, nivel: row.nivel }));
-}
-
-function buildStore(seedVersion: string): Store {
+export function userFromRow(row: UserRow): User {
   return {
-    seedVersion,
-    users: readSeedUsers().map(({ password, enLogin: _enLogin, ...user }) => ({
-      ...user,
-      passwordHash: hashPassword(password),
-    })),
-    acceso: { claseUnidad: {}, clasePrueba: {}, alumnoUnidad: {}, alumnoPrueba: {} },
-    progreso: demo.progreso.map((item) => ({
-      alumnoId: item.alumnoId,
-      unidad: item.unidad,
-      pasosTeoria: item.pasosTeoria,
-      testAciertos: item.testAciertos,
-      testRespuestas: null,
-    })),
-    entregas: demo.entregas.map((item) => ({
-      id: item.id,
-      alumnoId: item.alumnoId,
-      unidad: item.unidad,
-      practica: item.practica === 2 ? 2 : 1,
-      bloques: toRows(item.bloques),
-      explicacion: item.explicacion,
-      entregadaEn: item.entregadaEn,
-      nota: item.nota,
-      comentario: item.comentario,
-      corregidaEn: item.corregidaEn,
-      corregidaPor: item.corregidaPor,
-    })),
+    id: row.id,
+    name: row.name,
+    email: row.email,
+    passwordHash: row.password_hash,
+    role: row.role,
+    course: row.course,
+    createdAt: row.created_at,
   };
 }
 
-// Se guarda en globalThis para que sobreviva a las recargas en caliente de `next dev`.
-const globalStore = globalThis as typeof globalThis & { __roboticaDb?: Store };
+// ── progreso ───────────────────────────────────────────────────────────
 
-export function getStore(): Store {
-  const seedVersion = JSON.stringify(seed) + JSON.stringify(demo) + SCHOOL_EMAIL_SUFFIX;
-  if (!globalStore.__roboticaDb || globalStore.__roboticaDb.seedVersion !== seedVersion) {
-    globalStore.__roboticaDb = buildStore(seedVersion);
-  }
-  return globalStore.__roboticaDb;
+export interface ProgresoRow {
+  alumno_id: string;
+  unidad: number;
+  pasos_teoria: number;
+  test_aciertos: number | null;
+  test_respuestas: number[] | null;
+}
+
+export function progresoFromRow(row: ProgresoRow): UnitProgress {
+  return {
+    alumnoId: row.alumno_id,
+    unidad: row.unidad,
+    pasosTeoria: row.pasos_teoria,
+    testAciertos: row.test_aciertos,
+    testRespuestas: row.test_respuestas,
+  };
+}
+
+// ── entregas ───────────────────────────────────────────────────────────
+
+export interface EntregaRow {
+  id: string;
+  alumno_id: string;
+  unidad: number;
+  practica: 1 | 2;
+  bloques: ProgramRow[];
+  explicacion: string;
+  entregada_en: string;
+  nota: number | null;
+  comentario: string;
+  corregida_en: string | null;
+  corregida_por: string | null;
+}
+
+export function entregaFromRow(row: EntregaRow): Entrega {
+  return {
+    id: row.id,
+    alumnoId: row.alumno_id,
+    unidad: row.unidad,
+    practica: row.practica,
+    bloques: row.bloques,
+    explicacion: row.explicacion,
+    entregadaEn: row.entregada_en,
+    nota: row.nota,
+    comentario: row.comentario,
+    corregidaEn: row.corregida_en,
+    corregidaPor: row.corregida_por,
+  };
 }

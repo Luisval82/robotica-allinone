@@ -1,5 +1,5 @@
 {
-  "_nota": "BASE DE DATOS SIMULADA. Usuarios de prueba que se cargan al arrancar. El dominio del correo se sustituye por el de src/config/site.ts. Las contraseñas están en claro SOLO porque son de prueba; las cuentas que se registran desde la web se guardan con la contraseña cifrada. «enLogin» decide si el usuario aparece en el recuadro de usuarios de prueba del login.",
+  "_nota": "YA NO LO LEE LA APLICACIÓN. Se queda como referencia histórica de qué usuarios de prueba se cargaban en la antigua base de datos en memoria. Esos mismos usuarios (mismo id, nombre y contraseña) ahora se insertan desde supabase/schema.sql, con la contraseña ya cifrada, y se muestran en el login desde la lista DEMO_CREDENTIALS de src/lib/db/users.ts.",
   "users": [
     {
       "id": "seed-superadmin",

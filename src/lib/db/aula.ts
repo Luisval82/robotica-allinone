@@ -1,7 +1,18 @@
-// Aula: alumnado, interruptores de unidades y pruebas, progreso, notas y entregas.
+// Aula: alumnado, interruptores de unidades y pruebas, progreso, notas y
+// entregas. Todo contra Supabase (tablas class_access, student_access,
+// progreso y entregas — ver supabase/schema.sql).
 
 import "server-only";
-import { getStore, type AccessRules } from "@/lib/db/store";
+import {
+  assertNoError,
+  entregaFromRow,
+  progresoFromRow,
+  supabase,
+  userFromRow,
+  type EntregaRow,
+  type ProgresoRow,
+  type UserRow,
+} from "@/lib/db/store";
 import { toPublicUser } from "@/lib/db/users";
 import {
   TEST_QUESTIONS,
@@ -28,18 +39,6 @@ function defaultOpen(kind: AccessKind, unidad: number): boolean {
   return kind === "unidad" ? unidad === 1 : false;
 }
 
-function classMap(acceso: AccessRules, kind: AccessKind): Record<string, boolean> {
-  return kind === "unidad" ? acceso.claseUnidad : acceso.clasePrueba;
-}
-
-function studentMap(acceso: AccessRules, kind: AccessKind): Record<string, boolean> {
-  return kind === "unidad" ? acceso.alumnoUnidad : acceso.alumnoPrueba;
-}
-
-function classValue(acceso: AccessRules, kind: AccessKind, course: Course, unidad: number): boolean {
-  return classMap(acceso, kind)[`${course}:${unidad}`] ?? defaultOpen(kind, unidad);
-}
-
 /** Nota del test sobre 10 a partir de los aciertos (8 preguntas). */
 export function testScore(aciertos: number): number {
   return Math.round((aciertos / TEST_QUESTIONS) * 1000) / 100;
@@ -48,20 +47,30 @@ export function testScore(aciertos: number): number {
 // ── Alumnado ─────────────────────────────────────────────────────────────
 
 export async function listStudents(course?: Course): Promise<PublicUser[]> {
-  return getStore()
-    .users.filter((user) => user.role === "alumno" && (course ? user.course === course : true))
-    .map(toPublicUser)
-    .sort((a, b) => a.name.localeCompare(b.name, "es"));
+  let query = supabase.from("users").select("*").eq("role", "alumno");
+  if (course) query = query.eq("course", course);
+  const { data, error } = await query;
+  assertNoError(error, "listStudents");
+  const rows = (data ?? []) as UserRow[];
+  return rows.map((row) => toPublicUser(userFromRow(row))).sort((a, b) => a.name.localeCompare(b.name, "es"));
 }
 
 // ── Interruptores: unidades y PRUEBA UD-X ────────────────────────────────
 
 export async function getClassAccess(course: Course): Promise<ClassUnitAccess[]> {
-  const { acceso } = getStore();
+  const { data, error } = await supabase
+    .from("class_access")
+    .select("unidad, kind, abierta")
+    .eq("course", course);
+  assertNoError(error, "getClassAccess");
+
+  const map = new Map<string, boolean>();
+  for (const row of data ?? []) map.set(`${row.kind}:${row.unidad}`, row.abierta);
+
   return UNIT_NUMBERS.map((unidad) => ({
     unidad,
-    abierta: classValue(acceso, "unidad", course, unidad),
-    pruebaInterruptor: classValue(acceso, "prueba", course, unidad),
+    abierta: map.get(`unidad:${unidad}`) ?? defaultOpen("unidad", unidad),
+    pruebaInterruptor: map.get(`prueba:${unidad}`) ?? defaultOpen("prueba", unidad),
   }));
 }
 
@@ -69,18 +78,33 @@ export async function getStudentAccess(student: {
   id: string;
   course: Course;
 }): Promise<StudentUnitAccess[]> {
-  const { acceso, progreso } = getStore();
+  const [classResult, studentResult, progresoResult] = await Promise.all([
+    supabase.from("class_access").select("unidad, kind, abierta").eq("course", student.course),
+    supabase.from("student_access").select("unidad, kind, abierta").eq("student_id", student.id),
+    supabase.from("progreso").select("unidad, pasos_teoria").eq("alumno_id", student.id),
+  ]);
+  assertNoError(classResult.error, "getStudentAccess:class_access");
+  assertNoError(studentResult.error, "getStudentAccess:student_access");
+  assertNoError(progresoResult.error, "getStudentAccess:progreso");
+
+  const classMap = new Map<string, boolean>();
+  for (const row of classResult.data ?? []) classMap.set(`${row.kind}:${row.unidad}`, row.abierta);
+  const studentMap = new Map<string, boolean>();
+  for (const row of studentResult.data ?? []) studentMap.set(`${row.kind}:${row.unidad}`, row.abierta);
+  const progresoRows = (progresoResult.data ?? []) as Pick<ProgresoRow, "unidad" | "pasos_teoria">[];
+
+  function classValue(kind: AccessKind, unidad: number): boolean {
+    return classMap.get(`${kind}:${unidad}`) ?? defaultOpen(kind, unidad);
+  }
 
   return UNIT_NUMBERS.map((unidad) => {
-    const key = `${student.id}:${unidad}`;
-    const unidadPropia = acceso.alumnoUnidad[key];
-    const pruebaPropia = acceso.alumnoPrueba[key];
+    const unidadPropia = studentMap.get(`unidad:${unidad}`);
+    const pruebaPropia = studentMap.get(`prueba:${unidad}`);
 
-    const abierta = unidadPropia ?? classValue(acceso, "unidad", student.course, unidad);
-    const pruebaInterruptor = pruebaPropia ?? classValue(acceso, "prueba", student.course, unidad);
-    const teoriaCompletada = progreso.some(
-      (item) =>
-        item.alumnoId === student.id && item.unidad === unidad && item.pasosTeoria >= THEORY_STEPS,
+    const abierta = unidadPropia ?? classValue("unidad", unidad);
+    const pruebaInterruptor = pruebaPropia ?? classValue("prueba", unidad);
+    const teoriaCompletada = progresoRows.some(
+      (item) => item.unidad === unidad && item.pasos_teoria >= THEORY_STEPS,
     );
 
     return {
@@ -106,13 +130,29 @@ export async function setClassAccess(
   kind: AccessKind,
   abierta: boolean,
 ): Promise<void> {
-  const { acceso, users } = getStore();
-  classMap(acceso, kind)[`${course}:${unidad}`] = abierta;
+  const { error: upsertError } = await supabase
+    .from("class_access")
+    .upsert({ course, unidad, kind, abierta }, { onConflict: "course,unidad,kind" });
+  assertNoError(upsertError, "setClassAccess:upsert");
 
-  const overrides = studentMap(acceso, kind);
-  for (const user of users) {
-    if (user.course === course) delete overrides[`${user.id}:${unidad}`];
-  }
+  const { data: students, error: studentsError } = await supabase
+    .from("users")
+    .select("id")
+    .eq("role", "alumno")
+    .eq("course", course);
+  assertNoError(studentsError, "setClassAccess:students");
+
+  const studentRows = (students ?? []) as { id: string }[];
+  const ids = studentRows.map((row) => row.id);
+  if (ids.length === 0) return;
+
+  const { error: deleteError } = await supabase
+    .from("student_access")
+    .delete()
+    .eq("unidad", unidad)
+    .eq("kind", kind)
+    .in("student_id", ids);
+  assertNoError(deleteError, "setClassAccess:delete");
 }
 
 /**
@@ -126,16 +166,42 @@ export async function setStudentAccess(
   kind: AccessKind,
   abierta: boolean,
 ): Promise<boolean> {
-  const { acceso, users } = getStore();
-  const student = users.find((user) => user.id === studentId && user.role === "alumno");
-  if (!student || !student.course) return false;
+  const { data: student, error: studentError } = await supabase
+    .from("users")
+    .select("id, course")
+    .eq("id", studentId)
+    .eq("role", "alumno")
+    .maybeSingle();
+  assertNoError(studentError, "setStudentAccess:lookup");
+  const alumno = student as { id: string; course: Course | null } | null;
+  if (!alumno || !alumno.course) return false;
 
-  const overrides = studentMap(acceso, kind);
-  const key = `${student.id}:${unidad}`;
-  if (abierta === classValue(acceso, kind, student.course, unidad)) {
-    delete overrides[key];
+  const { data: classRow, error: classError } = await supabase
+    .from("class_access")
+    .select("abierta")
+    .eq("course", alumno.course)
+    .eq("unidad", unidad)
+    .eq("kind", kind)
+    .maybeSingle();
+  assertNoError(classError, "setStudentAccess:class_access");
+  const valorClase = (classRow as { abierta: boolean } | null)?.abierta ?? defaultOpen(kind, unidad);
+
+  if (abierta === valorClase) {
+    const { error } = await supabase
+      .from("student_access")
+      .delete()
+      .eq("student_id", studentId)
+      .eq("unidad", unidad)
+      .eq("kind", kind);
+    assertNoError(error, "setStudentAccess:delete");
   } else {
-    overrides[key] = abierta;
+    const { error } = await supabase
+      .from("student_access")
+      .upsert(
+        { student_id: studentId, unidad, kind, abierta },
+        { onConflict: "student_id,unidad,kind" },
+      );
+    assertNoError(error, "setStudentAccess:upsert");
   }
   return true;
 }
@@ -143,30 +209,24 @@ export async function setStudentAccess(
 // ── Progreso y notas de los tests ────────────────────────────────────────
 
 export async function getProgress(studentId: string): Promise<UnitProgress[]> {
-  return getStore().progreso.filter((item) => item.alumnoId === studentId);
+  const { data, error } = await supabase.from("progreso").select("*").eq("alumno_id", studentId);
+  assertNoError(error, "getProgress");
+  const rows = (data ?? []) as ProgresoRow[];
+  return rows.map((row) => progresoFromRow(row));
 }
 
 /** Avance de un alumno en una unidad (a cero si todavía no la ha empezado). */
 export async function getUnitProgress(studentId: string, unidad: number): Promise<UnitProgress> {
-  return (
-    getStore().progreso.find((item) => item.alumnoId === studentId && item.unidad === unidad) ?? {
-      alumnoId: studentId,
-      unidad,
-      pasosTeoria: 0,
-      testAciertos: null,
-      testRespuestas: null,
-    }
-  );
-}
-
-function ensureProgress(studentId: string, unidad: number): UnitProgress {
-  const store = getStore();
-  let item = store.progreso.find((p) => p.alumnoId === studentId && p.unidad === unidad);
-  if (!item) {
-    item = { alumnoId: studentId, unidad, pasosTeoria: 0, testAciertos: null, testRespuestas: null };
-    store.progreso.push(item);
-  }
-  return item;
+  const { data, error } = await supabase
+    .from("progreso")
+    .select("*")
+    .eq("alumno_id", studentId)
+    .eq("unidad", unidad)
+    .maybeSingle();
+  assertNoError(error, "getUnitProgress");
+  return data
+    ? progresoFromRow(data as ProgresoRow)
+    : { alumnoId: studentId, unidad, pasosTeoria: 0, testAciertos: null, testRespuestas: null };
 }
 
 /**
@@ -178,9 +238,20 @@ export async function completeTheoryStep(
   unidad: number,
   paso: number,
 ): Promise<boolean> {
-  const item = ensureProgress(studentId, unidad);
-  if (paso !== item.pasosTeoria + 1 || paso > THEORY_STEPS) return false;
-  item.pasosTeoria = paso;
+  const actual = await getUnitProgress(studentId, unidad);
+  if (paso !== actual.pasosTeoria + 1 || paso > THEORY_STEPS) return false;
+
+  const { error } = await supabase.from("progreso").upsert(
+    {
+      alumno_id: studentId,
+      unidad,
+      pasos_teoria: paso,
+      test_aciertos: actual.testAciertos,
+      test_respuestas: actual.testRespuestas,
+    },
+    { onConflict: "alumno_id,unidad" },
+  );
+  assertNoError(error, "completeTheoryStep");
   return true;
 }
 
@@ -194,10 +265,20 @@ export async function saveTestResult(
   respuestas: number[],
   aciertos: number,
 ): Promise<boolean> {
-  const item = ensureProgress(studentId, unidad);
-  if (item.testAciertos !== null) return false;
-  item.testAciertos = aciertos;
-  item.testRespuestas = respuestas;
+  const actual = await getUnitProgress(studentId, unidad);
+  if (actual.testAciertos !== null) return false;
+
+  const { error } = await supabase.from("progreso").upsert(
+    {
+      alumno_id: studentId,
+      unidad,
+      pasos_teoria: actual.pasosTeoria,
+      test_aciertos: aciertos,
+      test_respuestas: respuestas,
+    },
+    { onConflict: "alumno_id,unidad" },
+  );
+  assertNoError(error, "saveTestResult");
   return true;
 }
 
@@ -205,16 +286,21 @@ export async function getStudentSummary(student: {
   id: string;
   course: Course;
 }): Promise<StudentSummary> {
-  const store = getStore();
-  const progreso = store.progreso.filter((item) => item.alumnoId === student.id);
-  const entregas = store.entregas.filter((item) => item.alumnoId === student.id);
-  const acceso = await getStudentAccess(student);
+  async function getEntregaNotas(): Promise<{ nota: number | null }[]> {
+    const { data, error } = await supabase.from("entregas").select("nota").eq("alumno_id", student.id);
+    assertNoError(error, "getStudentSummary:entregas");
+    return (data ?? []) as { nota: number | null }[];
+  }
+
+  const [progreso, acceso, entregas] = await Promise.all([
+    getProgress(student.id),
+    getStudentAccess(student),
+    getEntregaNotas(),
+  ]);
 
   const tests = progreso.filter((item) => item.testAciertos !== null);
   const hitos =
-    progreso.filter((item) => item.pasosTeoria >= THEORY_STEPS).length +
-    tests.length +
-    entregas.length;
+    progreso.filter((item) => item.pasosTeoria >= THEORY_STEPS).length + tests.length + entregas.length;
   const sumaNotas = tests.reduce((total, item) => total + testScore(item.testAciertos ?? 0), 0);
 
   return {
@@ -250,13 +336,24 @@ export interface StudentTestScores {
 
 /** Notas automáticas de los tests de un curso: una fila por alumno. */
 export async function getTestScores(course: Course): Promise<StudentTestScores[]> {
-  const { progreso } = getStore();
   const students = await listStudents(course);
+  const ids = students.map((alumno) => alumno.id);
+
+  type ScoreRow = { alumno_id: string; unidad: number; test_aciertos: number | null };
+  let rows: ScoreRow[] = [];
+  if (ids.length > 0) {
+    const { data, error } = await supabase
+      .from("progreso")
+      .select("alumno_id, unidad, test_aciertos")
+      .in("alumno_id", ids);
+    assertNoError(error, "getTestScores");
+    rows = (data ?? []) as ScoreRow[];
+  }
 
   return students.map((alumno) => {
     const notas = UNIT_NUMBERS.map((unidad) => {
-      const item = progreso.find((p) => p.alumnoId === alumno.id && p.unidad === unidad);
-      return item && item.testAciertos !== null ? testScore(item.testAciertos) : null;
+      const item = rows.find((p) => p.alumno_id === alumno.id && p.unidad === unidad);
+      return item && item.test_aciertos !== null ? testScore(item.test_aciertos) : null;
     });
     const hechas = notas.filter((nota): nota is number => nota !== null);
     const media =
@@ -284,15 +381,20 @@ export async function listEntregas(filter: {
   estado: EntregaEstado;
   course?: Course;
 }): Promise<EntregaConAlumno[]> {
-  const store = getStore();
   const students = await listStudents(filter.course);
   const byId = new Map(students.map((alumno) => [alumno.id, alumno]));
+  const ids = students.map((alumno) => alumno.id);
+  if (ids.length === 0) return [];
+
+  let query = supabase.from("entregas").select("*").in("alumno_id", ids);
+  query = filter.estado === "corregidas" ? query.not("nota", "is", null) : query.is("nota", null);
+  const { data, error } = await query;
+  assertNoError(error, "listEntregas");
 
   const result: EntregaConAlumno[] = [];
-  for (const entrega of store.entregas) {
-    const alumno = byId.get(entrega.alumnoId);
-    const corregida = entrega.nota !== null;
-    if (alumno && corregida === (filter.estado === "corregidas")) result.push({ entrega, alumno });
+  for (const row of (data ?? []) as EntregaRow[]) {
+    const alumno = byId.get(row.alumno_id);
+    if (alumno) result.push({ entrega: entregaFromRow(row), alumno });
   }
 
   return result.sort((a, b) =>
@@ -307,9 +409,15 @@ export async function getEntrega(
   unidad: number,
   practica: 1 | 2,
 ): Promise<Entrega | undefined> {
-  return getStore().entregas.find(
-    (item) => item.alumnoId === studentId && item.unidad === unidad && item.practica === practica,
-  );
+  const { data, error } = await supabase
+    .from("entregas")
+    .select("*")
+    .eq("alumno_id", studentId)
+    .eq("unidad", unidad)
+    .eq("practica", practica)
+    .maybeSingle();
+  assertNoError(error, "getEntrega");
+  return data ? entregaFromRow(data as EntregaRow) : undefined;
 }
 
 /**
@@ -321,33 +429,26 @@ export async function saveEntrega(
   studentId: string,
   input: { unidad: number; practica: 1 | 2; bloques: ProgramRow[]; explicacion: string },
 ): Promise<"guardada" | "corregida"> {
-  const store = getStore();
-  const previa = store.entregas.find(
-    (item) =>
-      item.alumnoId === studentId && item.unidad === input.unidad && item.practica === input.practica,
-  );
+  const previa = await getEntrega(studentId, input.unidad, input.practica);
   if (previa?.nota != null) return "corregida";
 
-  const ahora = new Date().toISOString();
-  if (previa) {
-    previa.bloques = input.bloques;
-    previa.explicacion = input.explicacion;
-    previa.entregadaEn = ahora;
-  } else {
-    store.entregas.push({
-      id: crypto.randomUUID(),
-      alumnoId: studentId,
+  const { error } = await supabase.from("entregas").upsert(
+    {
+      id: previa?.id ?? crypto.randomUUID(),
+      alumno_id: studentId,
       unidad: input.unidad,
       practica: input.practica,
       bloques: input.bloques,
       explicacion: input.explicacion,
-      entregadaEn: ahora,
+      entregada_en: new Date().toISOString(),
       nota: null,
       comentario: "",
-      corregidaEn: null,
-      corregidaPor: null,
-    });
-  }
+      corregida_en: null,
+      corregida_por: null,
+    },
+    { onConflict: "alumno_id,unidad,practica" },
+  );
+  assertNoError(error, "saveEntrega");
   return "guardada";
 }
 
@@ -356,12 +457,17 @@ export async function gradeEntrega(
   entregaId: string,
   correccion: { nota: number; comentario: string; profesor: string },
 ): Promise<boolean> {
-  const entrega = getStore().entregas.find((item) => item.id === entregaId);
-  if (!entrega) return false;
-
-  entrega.nota = correccion.nota;
-  entrega.comentario = correccion.comentario;
-  entrega.corregidaEn = new Date().toISOString();
-  entrega.corregidaPor = correccion.profesor;
-  return true;
+  const { data, error } = await supabase
+    .from("entregas")
+    .update({
+      nota: correccion.nota,
+      comentario: correccion.comentario,
+      corregida_en: new Date().toISOString(),
+      corregida_por: correccion.profesor,
+    })
+    .eq("id", entregaId)
+    .select("id")
+    .maybeSingle();
+  assertNoError(error, "gradeEntrega");
+  return data !== null;
 }
