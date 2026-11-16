@@ -339,6 +339,38 @@
       "pendiente": true
     },
     {
+      "texto": "A encender ojos",
+      "categoria": "luz",
+      "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "distancia"
+        },
+        {
+          "t": "menu",
+          "v": "A",
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ]
+        },
+        {
+          "t": "palabra",
+          "v": "encender"
+        },
+        {
+          "t": "menu",
+          "v": "ojos"
+        }
+      ],
+      "pendiente": true
+    },
+    {
       "texto": "fijar A+B como motores en movimiento",
       "categoria": "movimiento",
       "forma": "pila",

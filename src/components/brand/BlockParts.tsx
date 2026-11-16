@@ -72,6 +72,26 @@ export function BlockPartIcon({ nombre }: { nombre: string }) {
       </span>
     );
   }
+  if (nombre === "distancia") {
+    return (
+      <span className="word-block__icono">
+        <svg viewBox="0 0 24 24" className="size-4" aria-hidden="true">
+          <rect
+            x="2"
+            y="5.5"
+            width="20"
+            height="13"
+            rx="3.2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+          />
+          <circle cx="8.4" cy="12" r="2.4" fill="currentColor" />
+          <circle cx="15.6" cy="12" r="2.4" fill="currentColor" />
+        </svg>
+      </span>
+    );
+  }
   if (nombre === "movimiento") {
     return (
       <span className="word-block__icono">
