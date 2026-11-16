@@ -58,8 +58,9 @@
       ]
     },
     {
-      "texto": "Apagar la matriz de luces 5x5",
-      "explicacion": "Apaga todas las luces de la matriz."
+      "texto": "apagar píxeles",
+      "explicacion": "Apaga todas las luces de la matriz.",
+      "valores": []
     },
     {
       "texto": "Fijar luz del botón central",
@@ -105,7 +106,7 @@
       "opciones": [
         "Esperar 1 segundos",
         "Cuando se inicia el programa",
-        "Apagar la matriz de luces 5x5",
+        "apagar píxeles",
         "Tocar nota"
       ],
       "correcta": 1,
@@ -139,7 +140,7 @@
         "escribir …",
         "Fijar luz del botón central",
         "encender … 2 segundos",
-        "Apagar la matriz de luces 5x5"
+        "apagar píxeles"
       ],
       "correcta": 2,
       "explicacion": "«encender … durante … segundos» enciende el dibujo el tiempo indicado y lo apaga solo."
@@ -211,8 +212,9 @@
           ]
         },
         {
-          "texto": "Apagar la matriz de luces 5x5",
-          "nivel": 0
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "notas": "Vale cualquier color del botón. Lo importante es el orden: primero el botón, después el texto y al final apagar."
@@ -254,8 +256,9 @@
           "nivel": 0
         },
         {
-          "texto": "Apagar la matriz de luces 5x5",
-          "nivel": 0
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "notas": "Las tres notas pueden ser otras. Comprueba que el bloque «Esperar» está entre la melodía y el apagado."

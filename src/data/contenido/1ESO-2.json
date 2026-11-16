@@ -185,7 +185,7 @@
         "Esperar X segundos",
         "fijar velocidad al … %",
         "parar motor",
-        "Apagar la matriz de luces 5x5"
+        "apagar píxeles"
       ],
       "correcta": 1,
       "explicacion": "Cada velocidad del ventilador es un valor distinto de «fijar velocidad al … %»."

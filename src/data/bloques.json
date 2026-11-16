@@ -106,9 +106,19 @@
       "pendiente": false
     },
     {
-      "texto": "Apagar la matriz de luces 5x5",
+      "texto": "apagar píxeles",
       "categoria": "luz",
       "forma": "pila",
+      "partes": [
+        {
+          "t": "icono",
+          "v": "luz"
+        },
+        {
+          "t": "palabra",
+          "v": "apagar píxeles"
+        }
+      ],
       "pendiente": false
     },
     {

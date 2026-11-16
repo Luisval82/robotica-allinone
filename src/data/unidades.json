@@ -10,7 +10,7 @@
         "Cuando se inicia el programa",
         "encender dibujo durante 2 segundos",
         "escribir Hello",
-        "Apagar la matriz de luces 5x5",
+        "apagar píxeles",
         "Fijar luz del botón central",
         "Tocar nota X segundos",
         "Esperar X segundos"

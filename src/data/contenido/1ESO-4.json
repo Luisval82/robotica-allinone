@@ -267,8 +267,9 @@
           "nivel": 1
         },
         {
-          "texto": "Apagar la matriz de luces 5x5",
-          "nivel": 0
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "notas": "Tres vueltas de cuatro tramos son 12 repeticiones. Comprueba que «Apagar la matriz» queda fuera del bucle."

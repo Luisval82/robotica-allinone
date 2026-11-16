@@ -1,7 +1,7 @@
 Solo bloques de palabras, sin Python. Material: un set base SPIKE Prime (45678) por grupo. Los nombres con * están pendientes de comprobar en la app (ver hoja «Bloques»).					
 					
 Curso	Nº	Título	Hardware SPIKE utilizado	Bloques de palabras clave	Modelo final de construcción
-1º ESO	1	Hola, Hub: luces y sonidos	Hub (Matriz de luces 5x5, altavoz y botón central)	Cuando se inicia el programa · encender … durante … segundos · escribir … · Apagar la matriz de luces 5x5 · Fijar luz del botón central · Tocar nota X segundos · Esperar X segundos*	Rótulo luminoso de sobremesa: el Hub sobre un atril muestra un mensaje animado con melodía
+1º ESO	1	Hola, Hub: luces y sonidos	Hub (Matriz de luces 5x5, altavoz y botón central)	Cuando se inicia el programa · encender … durante … segundos · escribir … · apagar píxeles · Fijar luz del botón central · Tocar nota X segundos · Esperar X segundos*	Rótulo luminoso de sobremesa: el Hub sobre un atril muestra un mensaje animado con melodía
 1º ESO	2	Mi primer motor: segundos, grados y rotaciones	Hub + 1 Motor mediano	ir durante · fijar velocidad al … % · arrancar motor · parar motor · Esperar X segundos*	Ventilador de sobremesa con tres velocidades programadas
 1º ESO	3	Posición exacta: el motor como servo	Hub + 1 Motor mediano	ir a la posición · A posición · fijar velocidad al … % · Tocar nota X segundos · Esperar X segundos*	Barrera de aparcamiento: sube a 90°, espera y baja
 1º ESO	4	Bucles: repetir sin copiar	Hub + Motor grande	Repetir bucle · ir durante · Esperar X segundos* · Tocar sonido hasta acabar · encender …	Noria que gira por tramos y se detiene en cada cabina

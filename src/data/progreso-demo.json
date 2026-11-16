@@ -63,8 +63,9 @@
           ]
         },
         {
-          "texto": "Apagar la matriz de luces 5x5",
-          "nivel": 0
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "explicacion": "",
@@ -113,8 +114,9 @@
           "nivel": 0
         },
         {
-          "texto": "Apagar la matriz de luces 5x5",
-          "nivel": 0
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "explicacion": "",
@@ -147,8 +149,9 @@
           "nivel": 0
         },
         {
-          "texto": "Apagar la matriz de luces 5x5",
-          "nivel": 0
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
         }
       ],
       "explicacion": "He puesto el color del botón después del nombre porque no sabía dónde iba.",
