@@ -150,14 +150,33 @@ function Dibujo({ pieza }: { pieza: Pieza }) {
   }
 }
 
-/** Una pieza con su nombre debajo. */
-export function PiezaSpike({ pieza, nota }: { pieza: Pieza; nota?: string }) {
+/** Una pieza con su nombre debajo. «grande» es para el carrusel del montaje. */
+export function PiezaSpike({
+  pieza,
+  nota,
+  tamano = "normal",
+}: {
+  pieza: Pieza;
+  nota?: string;
+  tamano?: "normal" | "grande";
+}) {
+  const grande = tamano === "grande";
   return (
-    <figure className="grid w-24 shrink-0 justify-items-center gap-1">
-      <div className="grid size-16 place-items-center rounded-2xl bg-white p-1">
+    <figure
+      className={`grid shrink-0 justify-items-center gap-1.5 ${grande ? "w-32" : "w-24"}`}
+    >
+      <div
+        className={`grid place-items-center rounded-2xl bg-white ${
+          grande ? "size-24 p-2 shadow-card" : "size-16 p-1"
+        }`}
+      >
         <Dibujo pieza={pieza} />
       </div>
-      <figcaption className="text-center text-xs font-bold leading-tight text-ink-700">
+      <figcaption
+        className={`text-center font-bold leading-tight text-ink-700 ${
+          grande ? "text-sm" : "text-xs"
+        }`}
+      >
         {NOMBRE[pieza]}
         {nota ? <span className="block font-extrabold text-ink-900">{nota}</span> : null}
       </figcaption>
@@ -206,13 +225,24 @@ export function piezasDelTexto(texto: string): { pieza: Pieza; nota?: string }[]
 }
 
 /** Esquema de las piezas de un paso. No pinta nada si el paso no nombra ninguna. */
-export function PiezasDelPaso({ texto }: { texto: string }) {
+export function PiezasDelPaso({
+  texto,
+  tamano = "normal",
+}: {
+  texto: string;
+  tamano?: "normal" | "grande";
+}) {
   const piezas = piezasDelTexto(texto);
   if (piezas.length === 0) return null;
+  const grande = tamano === "grande";
   return (
-    <div className="mt-3 flex flex-wrap items-start gap-3 rounded-2xl bg-ink-100 p-3">
+    <div
+      className={`flex flex-wrap items-start rounded-2xl bg-ink-100 ${
+        grande ? "justify-center gap-5 p-5" : "mt-3 gap-3 p-3"
+      }`}
+    >
       {piezas.map(({ pieza, nota }) => (
-        <PiezaSpike key={pieza} pieza={pieza} nota={nota} />
+        <PiezaSpike key={pieza} pieza={pieza} nota={nota} tamano={tamano} />
       ))}
     </div>
   );

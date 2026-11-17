@@ -5,7 +5,7 @@ import { BlockChip, ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import { EntregaBox, type EntregaView } from "@/components/unidad/EntregaBox";
 import { HubPorts } from "@/components/unidad/HubPorts";
 import { IpadWorkflowBanner } from "@/components/unidad/IpadWorkflowBanner";
-import { PiezasDelPaso } from "@/components/unidad/PiezasMontaje";
+import { CarruselMontaje } from "@/components/unidad/CarruselMontaje";
 import { StepSection, type StepState } from "@/components/unidad/StepSection";
 import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
 import { VideoPlayer } from "@/components/unidad/VideoPlayer";
@@ -358,30 +358,12 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
           unidad={numero}
           paso={4}
         >
-          <h3 className="font-display text-2xl font-semibold text-ink-900">{unidad.modelo}</h3>
           {contenido ? (
-            <>
-              <p className="mt-3 font-semibold text-ink-700">
-                <span className="font-extrabold text-ink-900">Piezas: </span>
-                {contenido.construccion.piezas}
-              </p>
-              <ol className="mt-5 grid gap-3">
-                {contenido.construccion.pasos.map((paso, index) => (
-                  <li key={index} className="flex gap-4 rounded-2xl bg-ink-50 p-5">
-                    <span className="grid size-10 shrink-0 place-items-center rounded-full bg-block-movimiento font-display text-lg font-semibold text-ink-900">
-                      {index + 1}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="font-display text-lg font-semibold text-ink-900">
-                        {paso.titulo}
-                      </p>
-                      <p className="mt-1 font-semibold text-ink-700">{paso.texto}</p>
-                      <PiezasDelPaso texto={`${paso.titulo}. ${paso.texto}`} />
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </>
+            <CarruselMontaje
+              modelo={unidad.modelo}
+              piezas={contenido.construccion.piezas}
+              pasos={contenido.construccion.pasos}
+            />
           ) : (
             <div className="mt-4">
               <Pending>Los pasos de montaje de esta unidad todavía están en preparación.</Pending>
