@@ -2,8 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { submitTestAction } from "@/actions/alumno";
-import { CheckIcon, CloseIcon } from "@/components/ui/icons";
-import { formatNota } from "@/lib/format";
+import { CabeceraNota, RevisionTest } from "@/components/unidad/RevisionTest";
 import type { StudentFormState } from "@/lib/types";
 
 const EMPTY_STATE: StudentFormState = {};
@@ -22,74 +21,15 @@ export interface TestResult {
 }
 
 function ResultView({ preguntas, resultado }: { preguntas: Question[]; resultado: TestResult }) {
-  const aprobado = resultado.nota >= 5;
-
   return (
-    <div>
-      <div
-        className={`flex flex-wrap items-center gap-x-6 gap-y-2 rounded-2xl p-5 ${
-          aprobado ? "bg-spike-50" : "bg-red-50"
-        }`}
-      >
-        <p
-          className={`font-display text-6xl font-semibold leading-none ${
-            aprobado ? "text-spike-700" : "text-red-700"
-          }`}
-        >
-          {formatNota(resultado.nota)}
-        </p>
-        <div>
-          <p className="font-display text-xl font-semibold text-ink-900">
-            {resultado.aciertos} de {preguntas.length} aciertos
-          </p>
-          <p className="font-semibold text-ink-600">
-            Test entregado. Tu profesor ya puede ver esta nota.
-          </p>
-        </div>
-      </div>
-
-      {resultado.detalle ? (
-        <ol className="mt-6 grid gap-4">
-          {preguntas.map((pregunta, index) => {
-            const revision = resultado.detalle?.[index];
-            if (!revision) return null;
-            const acierto = revision.elegida === revision.correcta;
-            return (
-              <li key={index} className="rounded-2xl border-2 border-ink-100 p-5">
-                <p className="flex items-start gap-3 font-display text-lg font-semibold text-ink-900">
-                  <span
-                    className={`mt-0.5 grid size-7 shrink-0 place-items-center rounded-full text-white ${
-                      acierto ? "bg-spike-600" : "bg-red-600"
-                    }`}
-                  >
-                    {acierto ? <CheckIcon className="size-4" /> : <CloseIcon className="size-4" />}
-                  </span>
-                  <span>
-                    <span className="sr-only">{acierto ? "Acierto. " : "Fallo. "}</span>
-                    {index + 1}. {pregunta.pregunta}
-                  </span>
-                </p>
-                <dl className="mt-3 grid gap-1 pl-10 text-sm font-semibold">
-                  {acierto ? null : (
-                    <div className="text-red-700">
-                      <dt className="inline font-extrabold">Tu respuesta: </dt>
-                      <dd className="inline">{pregunta.opciones[revision.elegida] ?? "—"}</dd>
-                    </div>
-                  )}
-                  <div className="text-spike-800">
-                    <dt className="inline font-extrabold">Respuesta correcta: </dt>
-                    <dd className="inline">{pregunta.opciones[revision.correcta]}</dd>
-                  </div>
-                  <div className="text-ink-600">
-                    <dt className="sr-only">Explicación</dt>
-                    <dd>{revision.explicacion}</dd>
-                  </div>
-                </dl>
-              </li>
-            );
-          })}
-        </ol>
-      ) : null}
+    <div className="grid gap-6">
+      <CabeceraNota
+        nota={resultado.nota}
+        aciertos={resultado.aciertos}
+        total={preguntas.length}
+        pie="Test entregado. Tu profesor ya puede ver esta nota."
+      />
+      <RevisionTest preguntas={preguntas} detalle={resultado.detalle} />
     </div>
   );
 }

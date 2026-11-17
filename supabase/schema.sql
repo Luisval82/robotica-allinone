@@ -63,7 +63,13 @@ create table if not exists public.progreso (
   pasos_teoria    integer not null default 0 check (pasos_teoria between 0 and 4),
   test_aciertos   integer check (test_aciertos between 0 and 8),
   test_respuestas jsonb,
-  primary key (alumno_id, unidad)
+  primary key (alumno_id, unidad),
+  -- Una nota sin sus respuestas no se puede desglosar pregunta a pregunta:
+  -- si hay aciertos, tiene que haber una respuesta por pregunta.
+  constraint progreso_test_respuestas_completas check (
+    test_aciertos is null
+    or (jsonb_typeof(test_respuestas) = 'array' and jsonb_array_length(test_respuestas) = 8)
+  )
 );
 
 -- ── 5) Entregas de programación por bloques (2 por unidad) ────────────
@@ -128,13 +134,16 @@ insert into public.users (id, name, email, password_hash, role, course, created_
   ('62616f77-9ff9-464e-af15-30cb190c14f4', 'Leo Ejemplo',            'leo.ejemplo@colegiovaldeserra.com',   '87059efc566834e6450e4b8e13ddd4a9:4a2bd9d6d7ca267a328f0cb48fbdb95312fdd77f4a7d29b3fcd85cddf0a448ba03efe9b97794a920ccab4b9ed0848f5dc5e8966b6dbfde0c5ce7166c8319e177', 'alumno',     '3ESO', '2026-11-14T09:00:00.000Z')
 on conflict (id) do nothing;
 
-insert into public.progreso (alumno_id, unidad, pasos_teoria, test_aciertos) values
-  ('6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 4, 8),
-  ('42a2e782-b592-47a1-af10-2949d3956360', 1, 4, 5),
-  ('25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 4, 6),
-  ('b9db7151-436e-4528-bfe9-0aea79cc6645', 1, 4, 3),
-  ('539ab4ad-0f60-4c53-b6d2-33c036abce29', 1, 4, 7),
-  ('62616f77-9ff9-464e-af15-30cb190c14f4', 1, 2, null)
+-- Las respuestas cuadran con los aciertos de cada uno: así el desglose
+-- pregunta a pregunta del panel del profesor tiene algo que enseñar desde
+-- el primer despliegue.
+insert into public.progreso (alumno_id, unidad, pasos_teoria, test_aciertos, test_respuestas) values
+  ('6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 4, 8,    '[1,3,0,2,1,3,0,2]'::jsonb),
+  ('42a2e782-b592-47a1-af10-2949d3956360', 1, 4, 5,    '[1,3,0,2,1,1,1,1]'::jsonb),
+  ('25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 4, 6,    '[1,3,0,2,3,0,3,0]'::jsonb),
+  ('b9db7151-436e-4528-bfe9-0aea79cc6645', 1, 4, 3,    '[1,3,0,0,2,1,2,3]'::jsonb),
+  ('539ab4ad-0f60-4c53-b6d2-33c036abce29', 1, 4, 7,    '[0,2,1,3,0,3,1,0]'::jsonb),
+  ('62616f77-9ff9-464e-af15-30cb190c14f4', 1, 2, null, null)
 on conflict (alumno_id, unidad) do nothing;
 
 insert into public.entregas

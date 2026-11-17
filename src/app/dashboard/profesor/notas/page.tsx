@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { requireRole } from "@/lib/auth";
 import { getTestScores } from "@/lib/db";
@@ -65,15 +66,25 @@ export default async function ProfesorNotasPage({
                   <th scope="row" className="px-6 py-3 font-bold text-ink-900">
                     {alumno.name}
                   </th>
-                  {notas.map((nota, index) => (
-                    <td key={UNIT_NUMBERS[index]} className="px-2 py-3 text-center">
-                      <span
-                        className={`inline-block min-w-12 rounded-xl px-2 py-1.5 text-sm font-extrabold tabular-nums ${notaClass(nota)}`}
-                      >
-                        {formatNota(nota)}
-                      </span>
-                    </td>
-                  ))}
+                  {notas.map((nota, index) => {
+                    const unidad = UNIT_NUMBERS[index];
+                    const chip = `inline-block min-w-12 rounded-xl px-2 py-1.5 text-sm font-extrabold tabular-nums ${notaClass(nota)}`;
+                    return (
+                      <td key={unidad} className="px-2 py-3 text-center">
+                        {nota === null ? (
+                          <span className={chip}>{formatNota(nota)}</span>
+                        ) : (
+                          <Link
+                            href={`/dashboard/profesor/notas/${alumno.id}/${unidad}`}
+                            className={`${chip} transition hover:ring-2 hover:ring-spike-400 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-spike-400`}
+                            title={`Ver la corrección de ${alumno.name} en la UD ${unidad}`}
+                          >
+                            {formatNota(nota)}
+                          </Link>
+                        )}
+                      </td>
+                    );
+                  })}
                   <td className="px-6 py-3 text-center font-display text-xl font-semibold tabular-nums text-ink-900">
                     {formatNota(media)}
                   </td>
@@ -85,7 +96,8 @@ export default async function ProfesorNotasPage({
       )}
 
       <p className="mt-4 text-sm font-semibold text-ink-500">
-        «—» significa que el alumno todavía no ha entregado ese test.
+        «—» significa que el alumno todavía no ha entregado ese test. Pulsa en una nota para ver
+        su corrección pregunta a pregunta.
       </p>
     </>
   );

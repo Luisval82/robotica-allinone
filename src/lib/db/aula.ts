@@ -268,6 +268,14 @@ export async function saveTestResult(
   const actual = await getUnitProgress(studentId, unidad);
   if (actual.testAciertos !== null) return false;
 
+  // Una nota sin sus respuestas no se puede desglosar después: si no vienen
+  // todas, no se guarda nada y el alumno puede volver a entregar.
+  if (respuestas.length !== TEST_QUESTIONS || respuestas.some((r) => r < 0)) {
+    throw new Error(
+      `saveTestResult: se esperaban ${TEST_QUESTIONS} respuestas y llegaron ${respuestas.length}.`,
+    );
+  }
+
   const { error } = await supabase.from("progreso").upsert(
     {
       alumno_id: studentId,

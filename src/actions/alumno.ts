@@ -77,17 +77,16 @@ export async function submitTestAction(
   const preguntas = getTestForStudent(context.curso, context.unidad);
   if (preguntas.length === 0) return { error: "El test de esta unidad todavía no está disponible." };
 
-  const respuestas: number[] = [];
-  let sinResponder = 0;
-  preguntas.forEach((pregunta, index) => {
+  // Una respuesta por pregunta y en su sitio: si alguna se quedara fuera del
+  // array, las siguientes se guardarían corridas y la corrección saldría mal.
+  const respuestas: number[] = preguntas.map((pregunta, index) => {
     const texto = field(formData, `p${index}`);
     const elegida = texto === "" ? -1 : Number(texto);
-    if (Number.isInteger(elegida) && elegida >= 0 && elegida < pregunta.opciones.length) {
-      respuestas.push(elegida);
-    } else {
-      sinResponder += 1;
-    }
+    const valida =
+      Number.isInteger(elegida) && elegida >= 0 && elegida < pregunta.opciones.length;
+    return valida ? elegida : -1;
   });
+  const sinResponder = respuestas.filter((elegida) => elegida === -1).length;
   if (sinResponder > 0) {
     return {
       error:
