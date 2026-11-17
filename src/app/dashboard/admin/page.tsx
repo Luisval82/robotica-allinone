@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { RoleControl } from "@/components/admin/RoleControl";
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { requireRole } from "@/lib/auth";
@@ -27,9 +29,16 @@ export default async function AdminDashboardPage() {
     <>
       <h1 className="font-display text-4xl font-semibold text-ink-900">Gestión de usuarios</h1>
       <p className="mt-2 max-w-3xl text-lg font-semibold text-ink-500">
-        Quien se registra entra como alumno. Aquí decides quién es Profesor: el cambio se aplica al
-        momento, aunque esa persona tenga la sesión abierta.
+        Quien entra con la cuenta del colegio empieza como alumno. Aquí decides quién es Profesor:
+        el cambio se aplica al momento, aunque esa persona tenga la sesión abierta.
       </p>
+      <Link
+        href="/dashboard/profesor/alumnos"
+        className="mt-4 inline-flex h-11 items-center gap-2 rounded-2xl bg-ink-900 px-5 font-display font-semibold text-white transition hover:bg-ink-700"
+      >
+        Fichas del alumnado
+        <ArrowRightIcon className="size-4" />
+      </Link>
 
       <dl className="mt-8 grid gap-4 sm:grid-cols-3">
         {ROLES.map((role) => (

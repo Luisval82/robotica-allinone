@@ -4,8 +4,14 @@
 
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/auth";
-import { gradeEntrega, setClassAccess, setStudentAccess } from "@/lib/db";
-import { UNIT_NUMBERS, isCourse, type AccessKind, type GradeFormState } from "@/lib/types";
+import { actualizarAlumno, gradeEntrega, setClassAccess, setStudentAccess } from "@/lib/db";
+import {
+  UNIT_NUMBERS,
+  isCourse,
+  isUuid,
+  type AccessKind,
+  type GradeFormState,
+} from "@/lib/types";
 
 const TEACHER_ROLES = ["profesor", "superadmin"] as const;
 const MAX_COMMENT_LENGTH = 1000;
@@ -76,4 +82,24 @@ export async function gradeEntregaAction(
 
   revalidatePath("/dashboard", "layout");
   return { ok: true };
+}
+
+/**
+ * Corrige los datos de un alumno: el nombre (por si puso uno falso) o el
+ * curso. Lo pueden hacer el profesor y el superadministrador.
+ */
+export async function actualizarAlumnoAction(formData: FormData): Promise<void> {
+  await requireRole(["profesor", "superadmin"]);
+
+  const userId = field(formData, "userId");
+  if (!isUuid(userId)) return;
+
+  const name = field(formData, "name").trim().replace(/\s+/g, " ").slice(0, 80);
+  const course = field(formData, "course");
+
+  await actualizarAlumno(userId, {
+    ...(name.length >= 3 ? { name } : {}),
+    ...(isCourse(course) ? { course } : {}),
+  });
+  revalidatePath("/dashboard", "layout");
 }

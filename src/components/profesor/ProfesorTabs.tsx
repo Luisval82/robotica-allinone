@@ -7,6 +7,7 @@ const BASE = "/dashboard/profesor";
 
 const TABS = [
   { href: BASE, label: "Alumnado" },
+  { href: `${BASE}/alumnos`, label: "Fichas" },
   { href: `${BASE}/unidades`, label: "Unidades y pruebas" },
   { href: `${BASE}/notas`, label: "Notas de los tests" },
   { href: `${BASE}/entregas`, label: "Entregas" },
