@@ -18,6 +18,17 @@ export interface BlockExplanation {
   explicacion: string;
 }
 
+/**
+ * Práctica intermedia: un reto corto para afianzar los bloques de la unidad.
+ * Va antes del modelo final y no la corrige el profesor.
+ */
+export interface PracticaIntermedia {
+  practica: number;
+  titulo: string;
+  enunciado: string;
+  pista: string;
+}
+
 /** Programa de ejemplo de la unidad: una pila montada, con su explicación. */
 export interface ProgramaEjemplo {
   titulo: string;
@@ -57,6 +68,7 @@ export interface UnitContent {
   };
   bloques: BlockExplanation[];
   programa?: ProgramaEjemplo;
+  intermedias?: PracticaIntermedia[];
   construccion: { piezas: string; pasos: BuildStep[] };
   test: TestQuestion[];
   practicas: RawPractica[];
@@ -149,4 +161,12 @@ export function ejemploDeBloque(
   const trozo = filas.slice(Math.max(0, i - 1), i + 2);
   // Un bloque solo no es un ejemplo de cómo se encaja.
   return trozo.length > 1 ? trozo : [];
+}
+
+/** Las 4 prácticas intermedias de una unidad, o vacío si aún no tiene. */
+export function getPracticasIntermediasDeUnidad(
+  curso: Course,
+  unidad: number,
+): PracticaIntermedia[] {
+  return getContenido(curso, unidad)?.intermedias ?? [];
 }

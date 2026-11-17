@@ -148,15 +148,29 @@ export function EntregaBox({
   enunciado,
   paleta,
   entrega,
+  etiqueta,
+  accion = submitEntregaAction,
+  textoBoton = "Entregar",
+  textoGuardado = "Puedes cambiarla hasta que tu profesor la corrija.",
+  extra,
 }: {
   unidad: number;
-  practica: 1 | 2;
+  practica: number;
   titulo: string;
   enunciado: string;
   paleta: { propios: BlockInfo[]; anteriores: BlockInfo[]; huecos: BlockInfo[] };
   entrega: EntregaView | null;
+  /** Lo que va encima del título: «Entrega 1 de 2», «Práctica 1 de 4»… */
+  etiqueta?: string;
+  /** Qué acción guarda el programa. Por defecto, la entrega de la PRUEBA. */
+  accion?: typeof submitEntregaAction;
+  textoBoton?: string;
+  /** Lo que se dice bajo el botón una vez guardada. */
+  textoGuardado?: string;
+  /** Se pinta bajo el enunciado: el aviso de probarlo en el Hub, por ejemplo. */
+  extra?: ReactNode;
 }) {
-  const [state, formAction, pending] = useActionState(submitEntregaAction, EMPTY_STATE);
+  const [state, formAction, pending] = useActionState(accion, EMPTY_STATE);
   const nextKey = useRef(entrega?.bloques.length ?? 0);
   const [rows, setRows] = useState<Row[]>(() =>
     (entrega?.bloques ?? []).map((row, index) => ({
@@ -174,10 +188,11 @@ export function EntregaBox({
   const head = (
     <>
       <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-        Entrega {practica} de 2
+        {etiqueta ?? `Entrega ${practica} de 2`}
       </p>
       <h4 className="mt-1 font-display text-2xl font-semibold text-ink-900">{titulo}</h4>
       <p className="mt-2 font-semibold text-ink-700">{enunciado}</p>
+      {extra}
     </>
   );
 
@@ -409,7 +424,7 @@ export function EntregaBox({
             disabled={pending || rows.length === 0}
             className="inline-flex h-12 items-center justify-center rounded-2xl bg-spike-600 px-6 font-display text-base font-semibold tracking-wide text-white shadow-press-spike transition hover:bg-spike-700 active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {pending ? "Entregando…" : entrega ? "Actualizar entrega" : "Entregar programa"}
+            {pending ? "Guardando…" : entrega ? `Actualizar ${textoBoton.toLowerCase()}` : `${textoBoton} programa`}
           </button>
           {state.error ? (
             <p role="alert" className="text-sm font-bold text-red-700">
@@ -417,7 +432,7 @@ export function EntregaBox({
             </p>
           ) : entrega ? (
             <p role="status" className="text-sm font-bold text-spike-700">
-              Entregada el {entrega.entregadaEn}. Puedes cambiarla hasta que tu profesor la corrija.
+              Guardada el {entrega.entregadaEn}. {textoGuardado}
             </p>
           ) : (
             <p className="text-sm font-semibold text-ink-500">Todavía no has entregado nada.</p>

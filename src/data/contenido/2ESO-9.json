@@ -80,6 +80,32 @@
       ]
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Clasifica un color",
+      "enunciado": "Si la pieza es roja, el motor la empuja a un lado; si no, al otro.",
+      "pista": "Un ángulo distinto del motor para cada lado."
+    },
+    {
+      "practica": 2,
+      "titulo": "Lleva la cuenta",
+      "enunciado": "Crea una variable por color y súmale uno cada vez que clasifiques una pieza.",
+      "pista": "Pon las dos variables a 0 al empezar."
+    },
+    {
+      "practica": 3,
+      "titulo": "Enseña el recuento",
+      "enunciado": "Al terminar, escribe en la matriz cuántas piezas hay de cada color, una detrás de otra.",
+      "pista": "Dos bloques de «escribir», uno por variable."
+    },
+    {
+      "practica": 4,
+      "titulo": "Diez piezas",
+      "enunciado": "Usa «Repetir hasta» para clasificar hasta llegar a diez piezas en total.",
+      "pista": "La condición puede comparar la suma de las dos variables con 10."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande, un motor mediano, el sensor de color, vigas para la bandeja y la rampa, dos recipientes y seis piezas de dos colores.",
     "pasos": [

@@ -59,6 +59,32 @@
       "explicacion": "Repite medir, calcular y actuar sin parar."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Distancia al de delante",
+      "enunciado": "Escribe en la matriz la distancia al coche de delante mientras lo acercas y lo alejas.",
+      "pista": "Apunta a qué distancia quieres que se mantenga."
+    },
+    {
+      "practica": 2,
+      "titulo": "El error de distancia",
+      "enunciado": "Guarda en una variable la diferencia entre la distancia medida y los 15 cm deseados.",
+      "pista": "Error positivo: está lejos. Negativo: demasiado cerca."
+    },
+    {
+      "practica": 3,
+      "titulo": "Velocidad calculada",
+      "enunciado": "Convierte ese error en una velocidad multiplicándolo por un número.",
+      "pista": "Si está lejos acelera; si está cerca, la velocidad sale negativa y retrocede."
+    },
+    {
+      "practica": 4,
+      "titulo": "Control de crucero",
+      "enunciado": "Mete el cálculo en un bucle infinito y comprueba que mantiene la distancia al moverse el de delante.",
+      "pista": "Ajusta el multiplicador hasta que no dé tirones."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia y una caja que haga de vehículo de delante.",
     "pasos": [

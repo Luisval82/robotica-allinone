@@ -67,6 +67,32 @@
       ]
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Mide la presión",
+      "enunciado": "Escribe en la matriz el valor de presión del sensor de fuerza mientras aprietas.",
+      "pista": "Prueba a apretar flojo y fuerte para ver el rango."
+    },
+    {
+      "practica": 2,
+      "titulo": "Guarda la fuerza",
+      "enunciado": "Crea la variable «fuerza» y guarda en ella la presión en el momento de soltar.",
+      "pista": "Fija la variable justo después de que deje de estar presionado."
+    },
+    {
+      "practica": 3,
+      "titulo": "Convierte a grados",
+      "enunciado": "Multiplica la fuerza por un número para convertirla en el ángulo de la aguja.",
+      "pista": "Si la presión llega a 100 y la aguja gira 180, el factor es 1,8."
+    },
+    {
+      "practica": 4,
+      "titulo": "Prueba tu fuerza",
+      "enunciado": "La aguja va al ángulo calculado, espera 3 segundos y vuelve a 0 para el siguiente.",
+      "pista": "Este es el modelo final en pequeño."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande, el sensor de fuerza, una viga larga para la aguja y vigas para la base y el panel.",
     "pasos": [

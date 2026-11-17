@@ -65,6 +65,32 @@
       ]
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Pon el cronómetro a cero",
+      "enunciado": "Reinicia el cronómetro y escribe su valor en la matriz.",
+      "pista": "Verás cómo el número va subiendo solo."
+    },
+    {
+      "practica": 2,
+      "titulo": "Mide tu reacción",
+      "enunciado": "Reinicia el cronómetro, espera a que pulses el botón y escribe el tiempo que tardaste.",
+      "pista": "El valor que escribes es tu tiempo de reacción."
+    },
+    {
+      "practica": 3,
+      "titulo": "Espera sorpresa",
+      "enunciado": "Antes de levantar la bandera, espera un número aleatorio de segundos entre 2 y 5.",
+      "pista": "El bloque de número aleatorio va dentro del hueco de «Esperar»."
+    },
+    {
+      "practica": 4,
+      "titulo": "Máquina de reflejos",
+      "enunciado": "Junta todo: espera sorpresa, levanta la bandera, mide el tiempo y enséñalo.",
+      "pista": "Pruébalo con un compañero y comparad los tiempos."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor mediano, el sensor de fuerza, una viga con una pieza de color que haga de bandera y vigas para la base.",
     "pasos": [

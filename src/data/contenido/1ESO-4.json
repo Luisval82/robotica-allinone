@@ -109,6 +109,32 @@
       }
     ]
   },
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Cuatro tramos",
+      "enunciado": "Usa un «Repetir» 4 veces para que el motor gire 90 grados en cada vuelta.",
+      "pista": "Lo que va dentro del bucle se hace tantas veces como digas."
+    },
+    {
+      "practica": 2,
+      "titulo": "Parada en cada cabina",
+      "enunciado": "Dentro del mismo bucle, añade una espera de 2 segundos después de cada tramo.",
+      "pista": "El orden dentro del bucle también cuenta."
+    },
+    {
+      "practica": 3,
+      "titulo": "Noria con sonido",
+      "enunciado": "Añade un sonido al principio de cada tramo, antes de que el motor gire.",
+      "pista": "Mete el bloque de sonido dentro del bucle, encima del de motor."
+    },
+    {
+      "practica": 4,
+      "titulo": "Ocho cabinas",
+      "enunciado": "Haz la misma noria pero con 8 paradas: piensa cuántos grados le tocan a cada tramo.",
+      "pista": "Una vuelta entera son 360 grados: repártelos entre las paradas."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande con su cable, un eje largo, vigas para la rueda y los soportes, y cuatro piezas pequeñas que hagan de cabinas.",
     "pasos": [

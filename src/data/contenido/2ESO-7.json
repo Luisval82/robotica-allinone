@@ -70,6 +70,32 @@
       ]
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Botón izquierdo",
+      "enunciado": "Cuando se presione el botón izquierdo del Hub, enciende un dibujo.",
+      "pista": "Este bloque es un sombrero: empieza su propia pila."
+    },
+    {
+      "practica": 2,
+      "titulo": "Dos botones",
+      "enunciado": "Un botón arranca el motor y el otro lo para.",
+      "pista": "Dos pilas distintas, cada una con su sombrero."
+    },
+    {
+      "practica": 3,
+      "titulo": "Avisa por mensaje",
+      "enunciado": "Al pulsar un botón, envía un mensaje; otra pila lo recibe y mueve el motor.",
+      "pista": "Los mensajes sirven para que una parte del programa avise a otra."
+    },
+    {
+      "practica": 4,
+      "titulo": "Grúa con dos mandos",
+      "enunciado": "Un botón gira la grúa y el otro sube y baja el brazo, cada uno con su mensaje.",
+      "pista": "Da nombres claros a los mensajes: «girar» y «subir»."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande, un motor mediano, vigas largas para el brazo, una pieza que haga de gancho y vigas para una base pesada.",
     "pasos": [

@@ -59,6 +59,32 @@
       "valores": []
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Pon el ángulo a cero",
+      "enunciado": "Fija el ángulo de guiñada a 0 y escribe el valor del giroscopio en la matriz.",
+      "pista": "Mueve el Hub con la mano y mira cómo cambia el número."
+    },
+    {
+      "practica": 2,
+      "titulo": "Gira y mira",
+      "enunciado": "El robot empieza a girar sobre sí mismo y tú observas cómo sube el ángulo.",
+      "pista": "Con «empezar a mover con dirección» a tope gira sobre sí mismo."
+    },
+    {
+      "practica": 3,
+      "titulo": "Para a los 90°",
+      "enunciado": "Usa «Repetir hasta» para que el giro se pare cuando el ángulo llegue a 90.",
+      "pista": "La condición es «ángulo mayor que 89»."
+    },
+    {
+      "practica": 4,
+      "titulo": "Cuatro giros exactos",
+      "enunciado": "Repite cuatro veces el giro de 90 grados poniendo el ángulo a cero antes de cada uno.",
+      "pista": "Si no reinicias el ángulo, el segundo giro se queda corto."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero y un papel grande con una cruz dibujada para comprobar los ángulos.",
     "pasos": [

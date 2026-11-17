@@ -66,6 +66,32 @@
       ]
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Dibuja el movimiento",
+      "enunciado": "Usa la extensión de gráfico de líneas para ir dibujando el ángulo del Hub.",
+      "pista": "Mueve el Hub con la mano y mira la línea del gráfico."
+    },
+    {
+      "practica": 2,
+      "titulo": "Pon la mesa a vibrar",
+      "enunciado": "Arranca el motor de la mesa sísmica y detenlo a los 5 segundos.",
+      "pista": "Reinicia el cronómetro antes de empezar."
+    },
+    {
+      "practica": 3,
+      "titulo": "Registra la sacudida",
+      "enunciado": "Mientras la mesa vibra, ve añadiendo a una lista el ángulo del Hub.",
+      "pista": "Cada elemento de la lista es una medida en el tiempo."
+    },
+    {
+      "practica": 4,
+      "titulo": "Compara dos torres",
+      "enunciado": "Repite la prueba con dos torres distintas y compara los gráficos para decidir cuál aguanta mejor.",
+      "pista": "Misma duración y misma velocidad de motor: si no, la comparación no vale."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande, vigas para la base y la plataforma, una manivela y una biela, y piezas para construir dos torres de la misma altura.",
     "pasos": [

@@ -479,3 +479,71 @@ export async function gradeEntrega(
   assertNoError(error, "gradeEntrega");
   return data !== null;
 }
+
+// ── Prácticas intermedias ────────────────────────────────────────────────
+// Los 4 retos cortos de cada unidad. No llevan nota: el alumno los monta, los
+// guarda y los prueba en el Hub con la app del iPad.
+
+export interface PracticaIntermediaEntrega {
+  practica: number;
+  bloques: ProgramRow[];
+  explicacion: string;
+  entregadaEn: string;
+}
+
+/** Lo que el alumno lleva guardado de las prácticas intermedias de una unidad. */
+export async function getPracticasIntermedias(
+  studentId: string,
+  unidad: number,
+): Promise<PracticaIntermediaEntrega[]> {
+  const { data, error } = await supabase
+    .from("practicas_intermedias")
+    .select("practica, bloques, explicacion, entregada_en")
+    .eq("alumno_id", studentId)
+    .eq("unidad", unidad)
+    .order("practica");
+  assertNoError(error, "getPracticasIntermedias");
+
+  return (data ?? []).map((fila) => ({
+    practica: fila.practica as number,
+    bloques: (fila.bloques ?? []) as ProgramRow[],
+    explicacion: (fila.explicacion ?? "") as string,
+    entregadaEn: fila.entregada_en as string,
+  }));
+}
+
+/** Cuántas prácticas intermedias lleva guardadas el alumno en cada unidad. */
+export async function getPracticasIntermediasCount(
+  studentId: string,
+): Promise<Map<number, number>> {
+  const { data, error } = await supabase
+    .from("practicas_intermedias")
+    .select("unidad")
+    .eq("alumno_id", studentId);
+  assertNoError(error, "getPracticasIntermediasCount");
+
+  const porUnidad = new Map<number, number>();
+  for (const fila of (data ?? []) as { unidad: number }[]) {
+    porUnidad.set(fila.unidad, (porUnidad.get(fila.unidad) ?? 0) + 1);
+  }
+  return porUnidad;
+}
+
+/** Guarda (o rehace) una práctica intermedia. Se puede repetir las veces que haga falta. */
+export async function savePracticaIntermedia(
+  studentId: string,
+  input: { unidad: number; practica: number; bloques: ProgramRow[]; explicacion: string },
+): Promise<void> {
+  const { error } = await supabase.from("practicas_intermedias").upsert(
+    {
+      alumno_id: studentId,
+      unidad: input.unidad,
+      practica: input.practica,
+      bloques: input.bloques,
+      explicacion: input.explicacion,
+      entregada_en: new Date().toISOString(),
+    },
+    { onConflict: "alumno_id,unidad,practica" },
+  );
+  assertNoError(error, "savePracticaIntermedia");
+}

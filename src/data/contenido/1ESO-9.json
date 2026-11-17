@@ -113,6 +113,32 @@
       }
     ]
   },
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Arranque con botón",
+      "enunciado": "El tiovivo no arranca hasta que alguien pulsa el sensor de fuerza.",
+      "pista": "Lo mismo que en la unidad 5, pero ahora para arrancar un motor."
+    },
+    {
+      "practica": 2,
+      "titulo": "Gira y para",
+      "enunciado": "Al pulsar, el motor arranca, gira 5 segundos y se detiene.",
+      "pista": "Arrancar, esperar, parar."
+    },
+    {
+      "practica": 3,
+      "titulo": "Parada de seguridad",
+      "enunciado": "El tiovivo se detiene si alguien se acerca a menos de 15 cm, aunque no hayan pasado los 5 segundos.",
+      "pista": "Cambia el «Esperar X segundos» por un «Esperar hasta que» con el sensor."
+    },
+    {
+      "practica": 4,
+      "titulo": "Tiovivo completo",
+      "enunciado": "Junta todo: espera la pulsación, suena el aviso, el tiovivo gira y se para cuando alguien se acerca.",
+      "pista": "Es el modelo final en pequeño: pruébalo antes de montarlo entero."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande, un motor mediano, el sensor de fuerza, el sensor de distancia, una plataforma redonda o en cruz y vigas para la barrera y la base.",
     "pasos": [

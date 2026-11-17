@@ -137,6 +137,32 @@
       }
     ]
   },
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Un metro recto",
+      "enunciado": "Prepara los motores de movimiento y haz que el robot avance 100 cm.",
+      "pista": "Los tres bloques de preparación van una sola vez, al principio."
+    },
+    {
+      "practica": 2,
+      "titulo": "Adelante y atrás",
+      "enunciado": "El robot avanza 30 cm y vuelve hacia atrás otros 30 cm.",
+      "pista": "Para ir hacia atrás, cambia la flecha del desplegable."
+    },
+    {
+      "practica": 3,
+      "titulo": "Un giro de 90°",
+      "enunciado": "Haz que el robot avance 20 cm y después gire 90 grados a la derecha.",
+      "pista": "El giro se hace con «mover derecha» y grados, no con centímetros."
+    },
+    {
+      "practica": 4,
+      "titulo": "El cuadrado",
+      "enunciado": "Recorre un cuadrado de 30 cm de lado usando un «Repetir» para no escribir cuatro veces lo mismo.",
+      "pista": "Un lado y un giro, repetido cuatro veces."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos, dos ruedas iguales, una pieza de apoyo trasero, vigas y pasadores.",
     "pasos": [

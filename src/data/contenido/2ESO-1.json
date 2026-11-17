@@ -62,6 +62,32 @@
       "valores": []
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Verde o no verde",
+      "enunciado": "Con un «Si… entonces… Si no…», escribe «PASA» cuando veas verde y «ALTO» cuando no.",
+      "pista": "La rama «Si no» se hace cuando la respuesta es «no»."
+    },
+    {
+      "practica": 2,
+      "titulo": "Circula y para",
+      "enunciado": "Si la tarjeta es verde, el vehículo empieza a moverse; si no, se para.",
+      "pista": "Un bloque de movimiento en cada rama."
+    },
+    {
+      "practica": 3,
+      "titulo": "Semáforo continuo",
+      "enunciado": "Mete la decisión en un bucle infinito para que reaccione en cuanto cambie la tarjeta.",
+      "pista": "Sin bucle, decide una vez y se acaba el programa."
+    },
+    {
+      "practica": 4,
+      "titulo": "Tres colores",
+      "enunciado": "Añade un tercer caso: con la tarjeta roja, además de parar, el Hub enciende un dibujo de aviso.",
+      "pista": "Puedes anidar otro «Si» dentro de la rama «Si no»."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos, dos ruedas, un apoyo trasero, el sensor de color y dos tarjetas (verde y roja).",
     "pasos": [

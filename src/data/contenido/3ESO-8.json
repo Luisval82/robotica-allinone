@@ -66,6 +66,32 @@
       "explicacion": "Decide hacia dónde seguir cuando hay una pared delante."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Avanza un tramo",
+      "enunciado": "Crea un bloque «avanzar» que recorra un tramo del laberinto y páralo al llegar a la pared.",
+      "pista": "Usa la pregunta del sensor de distancia para saber cuándo parar."
+    },
+    {
+      "practica": 2,
+      "titulo": "Gira exacto",
+      "enunciado": "Crea un bloque «girar» con una entrada en grados que use el giroscopio.",
+      "pista": "Pon el ángulo a cero antes de cada giro."
+    },
+    {
+      "practica": 3,
+      "titulo": "¿Hay pared?",
+      "enunciado": "Decide con un «Si… entonces… Si no…» si hay pared delante y, según eso, avanza o gira.",
+      "pista": "Así se recorre un laberinto: avanzar mientras se pueda, girar si no."
+    },
+    {
+      "practica": 4,
+      "titulo": "Sal del laberinto",
+      "enunciado": "Mete la decisión en un «Repetir hasta» que termine cuando pulses el botón del Hub.",
+      "pista": "Pulsar el botón es tu forma de decir «ya he salido»."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia, el sensor de fuerza, una viga ancha para el parachoques y cajas o libros para las paredes.",
     "pasos": [

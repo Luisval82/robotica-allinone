@@ -105,6 +105,32 @@
       }
     ]
   },
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Mira la distancia",
+      "enunciado": "Haz que el Hub escriba en la matriz la distancia que mide el sensor.",
+      "pista": "El bloque redondo de distancia se mete dentro del hueco de «escribir»."
+    },
+    {
+      "practica": 2,
+      "titulo": "Arranca sin parar",
+      "enunciado": "Usa «empezar a mover» y comprueba que el programa sigue mientras el robot rueda.",
+      "pista": "«empezar a mover» no espera: por eso puedes vigilar el sensor a la vez."
+    },
+    {
+      "practica": 3,
+      "titulo": "Frena a 15 cm",
+      "enunciado": "El robot arranca y se detiene cuando el obstáculo está a menos de 15 cm.",
+      "pista": "«Esperar hasta que» con la pregunta del sensor de distancia."
+    },
+    {
+      "practica": 4,
+      "titulo": "Frena y avisa",
+      "enunciado": "Igual que la anterior, pero al frenar suena una nota grave y se enciende un dibujo.",
+      "pista": "Después de parar el movimiento, añade el aviso."
+    }
+  ],
   "construccion": {
     "piezas": "La base de conducción de la unidad 6, el sensor de distancia, vigas para su soporte y una caja o un libro como obstáculo.",
     "pasos": [

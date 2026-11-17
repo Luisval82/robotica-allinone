@@ -69,6 +69,32 @@
       "explicacion": "Recorre la combinación hasta completar todos sus números."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Crea la combinación",
+      "enunciado": "Crea una lista y añádele tres números: esa es la combinación.",
+      "pista": "Añade los elementos al empezar el programa."
+    },
+    {
+      "practica": 2,
+      "titulo": "Lee el dial",
+      "enunciado": "Escribe en la matriz la posición del motor del dial mientras lo giras con la mano.",
+      "pista": "Esa posición es el número que marca el dial."
+    },
+    {
+      "practica": 3,
+      "titulo": "Compara el primero",
+      "enunciado": "Comprueba si el número marcado coincide con el primer elemento de la lista.",
+      "pista": "«Elemento 1 de la lista» te da el primer número."
+    },
+    {
+      "practica": 4,
+      "titulo": "Caja fuerte",
+      "enunciado": "Con un «Repetir hasta», ve comprobando los tres números en orden y abre solo si están todos.",
+      "pista": "Lleva la cuenta de por cuál vas con una variable."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande para el dial, un motor mediano para el cerrojo, una rueda o un disco, y vigas y paneles para la caja y su puerta.",
     "pasos": [

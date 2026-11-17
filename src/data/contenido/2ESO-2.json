@@ -61,6 +61,32 @@
       "explicacion": "Repite la decisión continuamente para corregir el rumbo sin parar."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Mide la luz",
+      "enunciado": "Escribe en la matriz el valor de luz reflejada que está leyendo el sensor.",
+      "pista": "Pásalo por el suelo blanco y por la línea negra y apunta los dos valores."
+    },
+    {
+      "practica": 2,
+      "titulo": "Blanco o negro",
+      "enunciado": "Decide con un «Si… entonces… Si no…» si lo que ve el sensor es claro u oscuro, y escríbelo.",
+      "pista": "El punto de corte suele estar a medio camino entre los dos valores que apuntaste."
+    },
+    {
+      "practica": 3,
+      "titulo": "Gira a un lado",
+      "enunciado": "Cuando el sensor vea negro, el robot empieza a moverse girando a la derecha; cuando vea blanco, a la izquierda.",
+      "pista": "Son dos «empezar a mover con dirección», uno en cada rama."
+    },
+    {
+      "practica": 4,
+      "titulo": "Sigue la línea",
+      "enunciado": "Mete todo en un bucle infinito: ese zigzag continuo es el seguimiento de línea.",
+      "pista": "Con la velocidad alta zigzaguea más; pruébalo despacio primero."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de color y una pista de cinta negra sobre fondo blanco.",
     "pasos": [

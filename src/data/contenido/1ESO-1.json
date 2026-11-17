@@ -119,6 +119,32 @@
       }
     ]
   },
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Enciende un dibujo",
+      "enunciado": "Haz que la matriz del Hub muestre un corazón durante 3 segundos y después se apague.",
+      "pista": "Acuérdate de «apagar píxeles» al final: si no, el dibujo se queda puesto."
+    },
+    {
+      "practica": 2,
+      "titulo": "Tu nombre en la matriz",
+      "enunciado": "Escribe tu nombre en la matriz y, justo después, muestra un dibujo cualquiera durante 2 segundos.",
+      "pista": "«escribir» hace pasar las letras una a una y el programa espera a que termine."
+    },
+    {
+      "practica": 3,
+      "titulo": "Semáforo del botón",
+      "enunciado": "Pon la luz del botón central en verde, espera 2 segundos, cámbiala a rojo y espera otros 2.",
+      "pista": "Son dos bloques de luz con un «Esperar» entre medias."
+    },
+    {
+      "practica": 4,
+      "titulo": "Rótulo de bienvenida",
+      "enunciado": "Monta un saludo completo: una nota, tu mensaje escrito, un dibujo 2 segundos y la matriz apagada al final.",
+      "pista": "Ordena los bloques como quieres que ocurran: de arriba abajo."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, vigas largas y cortas, y pasadores. No hace falta ningún motor ni sensor.",
     "pasos": [

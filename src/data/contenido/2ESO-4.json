@@ -58,6 +58,32 @@
       "explicacion": "El pitido del sensor de aparcamiento."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "¿Está cerca?",
+      "enunciado": "Escribe «CERCA» si la distancia es menor que 20, y si no, «LEJOS».",
+      "pista": "El operador «menor que» va dentro del hueco del «Si»."
+    },
+    {
+      "practica": 2,
+      "titulo": "Pitido simple",
+      "enunciado": "Si está a menos de 20 cm, suena una nota corta.",
+      "pista": "Una nota de medio segundo basta para el aviso."
+    },
+    {
+      "practica": 3,
+      "titulo": "Dos avisos",
+      "enunciado": "Pita rápido si está a menos de 10 cm y despacio si está entre 10 y 30.",
+      "pista": "Para «entre 10 y 30» necesitas el operador «y» con dos comparaciones."
+    },
+    {
+      "practica": 4,
+      "titulo": "Cuanto más cerca, más rápido",
+      "enunciado": "Calcula la espera entre pitidos a partir de la distancia, con una operación aritmética.",
+      "pista": "Por ejemplo, esperar la distancia dividida entre 100: a menos distancia, menos espera."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia y una caja o un libro que haga de muro.",
     "pasos": [

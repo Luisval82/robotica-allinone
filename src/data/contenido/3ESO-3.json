@@ -64,6 +64,32 @@
       ]
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Abre la pinza",
+      "enunciado": "Mueve el motor de la pinza a una posición relativa para abrirla del todo.",
+      "pista": "La posición relativa cuenta desde donde estaba, no desde un cero fijo."
+    },
+    {
+      "practica": 2,
+      "titulo": "Abrir y cerrar",
+      "enunciado": "Abre la pinza, espera 2 segundos y ciérrala con cuidado.",
+      "pista": "Baja la velocidad para que no aplaste el objeto."
+    },
+    {
+      "practica": 3,
+      "titulo": "Sin dar tirones",
+      "enunciado": "Fija la aceleración del motor antes de mover la pinza y compara cómo se mueve.",
+      "pista": "Con aceleración baja arranca y frena suave."
+    },
+    {
+      "practica": 4,
+      "titulo": "Coge y traslada",
+      "enunciado": "Cierra la pinza, avanza 30 cm, abre la pinza y vuelve al punto de partida.",
+      "pista": "Fija los motores de movimiento para que frenen al parar: así no se pasa de largo."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, un motor grande, vigas para los dos brazos de la pinza y gomas para las puntas.",
     "pasos": [

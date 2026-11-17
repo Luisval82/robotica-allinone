@@ -6,6 +6,7 @@ import { EntregaBox, type EntregaView } from "@/components/unidad/EntregaBox";
 import { HubPorts } from "@/components/unidad/HubPorts";
 import { IpadWorkflowBanner } from "@/components/unidad/IpadWorkflowBanner";
 import { CarruselMontaje } from "@/components/unidad/CarruselMontaje";
+import { PracticasIntermedias } from "@/components/unidad/PracticasIntermedias";
 import { StepSection, type StepState } from "@/components/unidad/StepSection";
 import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
 import { VideoPlayer } from "@/components/unidad/VideoPlayer";
@@ -16,11 +17,18 @@ import { categoryColorClass, categoryName, getBlockInfo } from "@/lib/bloques";
 import {
   ejemploDeBloque,
   getContenido,
+  getPracticasIntermediasDeUnidad,
   getPracticasForStudent,
   getTestForStudent,
   getTestReview,
 } from "@/lib/contenido";
-import { getEntrega, getStudentAccess, getUnitProgress, testScore } from "@/lib/db";
+import {
+  getEntrega,
+  getPracticasIntermedias,
+  getStudentAccess,
+  getUnitProgress,
+  testScore,
+} from "@/lib/db";
 import { formatFecha } from "@/lib/format";
 import { getPaleta } from "@/lib/paleta";
 import { COURSE_LABEL, THEORY_STEPS, UNIT_NUMBERS } from "@/lib/types";
@@ -39,6 +47,17 @@ const STEPS = [
   { titulo: "Modelo final de construcción", corto: "Modelo", tone: "bg-block-movimiento text-ink-900" },
 ];
 const PRUEBA_TONE = "bg-block-operadores text-ink-900";
+const PRACTICAS_TONE = "bg-block-luz text-ink-900";
+
+/** El índice de arriba: los 4 pasos, las prácticas entre el 3 y el 4, y la PRUEBA. */
+const INDICE: { label: string; ancla: string; marca: string; paso: number | null }[] = [
+  { label: STEPS[0].corto, ancla: "#paso-1", marca: "1", paso: 1 },
+  { label: STEPS[1].corto, ancla: "#paso-2", marca: "2", paso: 2 },
+  { label: STEPS[2].corto, ancla: "#paso-3", marca: "3", paso: 3 },
+  { label: "Prácticas", ancla: "#practicas", marca: "⚙", paso: null },
+  { label: STEPS[3].corto, ancla: "#paso-4", marca: "4", paso: 4 },
+  { label: "Prueba", ancla: "#prueba", marca: "★", paso: null },
+];
 
 function Pending({ children }: { children: string }) {
   return (
@@ -80,6 +99,15 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
   const preguntas = acceso.pruebaAbierta ? getTestForStudent(curso, numero) : [];
   const practicas = acceso.pruebaAbierta ? getPracticasForStudent(curso, numero) : [];
   const paleta = getPaleta(curso, numero);
+  const intermedias = getPracticasIntermediasDeUnidad(curso, numero);
+  const practicasGuardadas = await getPracticasIntermedias(session.id, numero);
+  // Se abren al terminar el paso 3, que es donde se explican los bloques.
+  const practicasEstado: StepState =
+    pasos >= THEORY_STEPS
+      ? "hecho"
+      : pasos >= 3
+        ? "actual"
+        : "bloqueado";
 
   const resultado: TestResult | null =
     progreso.testAciertos === null
@@ -143,14 +171,18 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
 
       {/* Índice de pasos */}
       <nav aria-label="Pasos de la unidad" className="mt-5">
-        <ol className="grid grid-cols-5 gap-2">
-          {[...STEPS.map((step) => step.corto), "Prueba"].map((label, index) => {
-            const isPrueba = index === STEPS.length;
-            const estado = isPrueba ? pruebaEstado : estadoDe(index + 1);
+        <ol className="grid grid-cols-3 gap-2 sm:grid-cols-6">
+          {INDICE.map(({ label, ancla, marca, paso }) => {
+            const estado =
+              paso !== null
+                ? estadoDe(paso)
+                : ancla === "#prueba"
+                  ? pruebaEstado
+                  : practicasEstado;
             return (
               <li key={label}>
                 <a
-                  href={isPrueba ? "#prueba" : `#paso-${index + 1}`}
+                  href={ancla}
                   className={`block rounded-2xl border-2 px-2 py-2.5 text-center text-xs font-extrabold transition-colors sm:text-sm ${
                     estado === "hecho"
                       ? "border-spike-600 bg-spike-600 text-white"
@@ -159,9 +191,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                         : "border-ink-200 bg-ink-100 text-ink-500"
                   }`}
                 >
-                  <span className="block font-display text-base sm:text-lg">
-                    {isPrueba ? "★" : index + 1}
-                  </span>
+                  <span className="block font-display text-base sm:text-lg">{marca}</span>
                   {label}
                 </a>
               </li>
@@ -347,6 +377,29 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
         <IpadWorkflowBanner />
 
         {/* 4 · Modelo final */}
+        {/* PRÁCTICAS INTERMEDIAS · antes del modelo final y de la PRUEBA */}
+        <StepSection
+          id="practicas"
+          eyebrow="Para practicar"
+          titulo="Prácticas de programación"
+          estado={practicasEstado}
+          tone={PRACTICAS_TONE}
+          marca="⚙"
+          lockedText="Se abren cuando termines el paso 3, donde se explican los bloques."
+          unidad={numero}
+        >
+          {intermedias.length > 0 ? (
+            <PracticasIntermedias
+              unidad={numero}
+              practicas={intermedias}
+              guardadas={practicasGuardadas}
+              paleta={paleta}
+            />
+          ) : (
+            <Pending>Las prácticas de esta unidad todavía están en preparación.</Pending>
+          )}
+        </StepSection>
+
         <StepSection
           id="paso-4"
           eyebrow={`Paso 4 de ${THEORY_STEPS}`}

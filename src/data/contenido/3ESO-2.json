@@ -61,6 +61,32 @@
       "explicacion": "Repite medir, calcular y corregir sin parar."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "El punto medio",
+      "enunciado": "Mide la luz sobre el blanco y sobre el negro y guarda en una variable el valor de en medio.",
+      "pista": "El punto medio es la suma de los dos dividida entre dos."
+    },
+    {
+      "practica": 2,
+      "titulo": "Calcula el error",
+      "enunciado": "Guarda en otra variable la diferencia entre lo que lee el sensor y ese punto medio.",
+      "pista": "Si el error es 0, el robot está justo en el borde de la línea."
+    },
+    {
+      "practica": 3,
+      "titulo": "Dirección proporcional",
+      "enunciado": "Usa el error multiplicado por un número como dirección de «empezar a mover».",
+      "pista": "Cuanto mayor sea el error, más cerrado será el giro."
+    },
+    {
+      "practica": 4,
+      "titulo": "Seguimiento suave",
+      "enunciado": "Mete el cálculo en un bucle infinito y ajusta el multiplicador hasta que no zigzaguee.",
+      "pista": "Multiplicador alto: nervioso. Bajo: se sale en las curvas."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de color, piezas para una plataforma de carga y una pista con curvas.",
     "pasos": [

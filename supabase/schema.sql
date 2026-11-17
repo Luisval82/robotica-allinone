@@ -11,6 +11,7 @@
 --   3) student_access    → interruptores individuales por ALUMNO.
 --   4) progreso           → pasos de teoría hechos y nota del test (8 preguntas).
 --   5) entregas            → las 2 entregas de programación por bloques de cada unidad.
+--   6) practicas_intermedias → los 4 retos cortos de cada unidad, sin nota.
 --  Al final: Row Level Security activado sin políticas (nadie puede leer ni
 --  escribir con la Publishable key; la aplicación usa la Secret key, que
 --  salta RLS igual que antes hacía la service_role key) y unos usuarios de
@@ -92,6 +93,24 @@ create table if not exists public.entregas (
 create index if not exists entregas_alumno_idx on public.entregas (alumno_id);
 create index if not exists entregas_pendientes_idx on public.entregas (nota) where nota is null;
 
+-- ── 6) Prácticas intermedias ──────────────────────────────────────────
+-- Retos cortos de cada unidad, para afianzar lo aprendido antes del modelo
+-- final. No las corrige el profesor —para eso están las 2 entregas de la
+-- PRUEBA—, así que no llevan nota: guardan lo que montó el alumno y cuándo.
+
+create table if not exists public.practicas_intermedias (
+  alumno_id    uuid not null references public.users (id) on delete cascade,
+  unidad       integer not null check (unidad between 1 and 9),
+  practica     integer not null check (practica between 1 and 4),
+  bloques      jsonb not null default '[]'::jsonb,
+  explicacion  text not null default '',
+  entregada_en timestamptz not null default now(),
+  primary key (alumno_id, unidad, practica)
+);
+
+create index if not exists practicas_intermedias_alumno_idx
+  on public.practicas_intermedias (alumno_id, unidad);
+
 -- ── Seguridad: RLS activado, sin políticas ────────────────────────────
 --
 -- Con RLS activado y ninguna política, nadie puede leer ni escribir estas
@@ -105,6 +124,7 @@ alter table public.class_access   enable row level security;
 alter table public.student_access enable row level security;
 alter table public.progreso       enable row level security;
 alter table public.entregas       enable row level security;
+alter table public.practicas_intermedias enable row level security;
 
 -- ── Datos de demostración ──────────────────────────────────────────────
 --

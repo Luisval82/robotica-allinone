@@ -70,6 +70,32 @@
       "explicacion": "Cuenta los palés entregados."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Los bloques del almacén",
+      "enunciado": "Crea los bloques «seguir línea» y «girar» que vas a reutilizar en todo el proyecto.",
+      "pista": "Si los haces bien, el programa final cabe en una pantalla."
+    },
+    {
+      "practica": 2,
+      "titulo": "Reconoce la estación",
+      "enunciado": "Cuando el sensor vea un color, escribe en la matriz a qué estación corresponde.",
+      "pista": "Un color por estación: apunta la correspondencia antes de programar."
+    },
+    {
+      "practica": 3,
+      "titulo": "Coge la carga",
+      "enunciado": "Con la posición relativa del motor, baja la horquilla, levántala y comprueba que no se cae.",
+      "pista": "Levanta despacio: con la carga alta el robot se vuelca con facilidad."
+    },
+    {
+      "practica": 4,
+      "titulo": "Ruta de reparto",
+      "enunciado": "Guarda en una lista el orden de las estaciones y recórrelas una a una con tus bloques.",
+      "pista": "Este es el proyecto final en pequeño: pruébalo antes de montarlo entero."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un motor grande, los sensores de color, distancia y fuerza, vigas para el mástil y la horquilla, y un palé hecho con piezas planas.",
     "pasos": [

@@ -8,8 +8,19 @@
 
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/auth";
-import { getPracticasForStudent, getTestForStudent, gradeTest } from "@/lib/contenido";
-import { completeTheoryStep, getStudentAccess, saveEntrega, saveTestResult } from "@/lib/db";
+import {
+  getPracticasForStudent,
+  getPracticasIntermediasDeUnidad,
+  getTestForStudent,
+  gradeTest,
+} from "@/lib/contenido";
+import {
+  completeTheoryStep,
+  getStudentAccess,
+  saveEntrega,
+  savePracticaIntermedia,
+  saveTestResult,
+} from "@/lib/db";
 import { getAllowedBlocks } from "@/lib/paleta";
 import {
   UNIT_NUMBERS,
@@ -179,6 +190,42 @@ export async function submitEntregaAction(
   if (result === "corregida") {
     return { error: "Tu profesor ya ha corregido esta entrega y no se puede cambiar." };
   }
+
+  revalidatePath("/dashboard", "layout");
+  return { ok: true };
+}
+
+/**
+ * Práctica intermedia: guarda el programa de bloques de uno de los 4 retos
+ * de la unidad. A diferencia de las 2 entregas de la PRUEBA, no necesita que
+ * la prueba esté abierta y se puede rehacer las veces que haga falta.
+ */
+export async function submitPracticaIntermediaAction(
+  _previous: StudentFormState,
+  formData: FormData,
+): Promise<StudentFormState> {
+  const context = await loadUnitContext(formData);
+  if (!context) return { error: "Esta unidad no está abierta. Vuelve a tus unidades." };
+
+  const numero = Number(field(formData, "practica"));
+  const practica = getPracticasIntermediasDeUnidad(context.curso, context.unidad).find(
+    (item) => item.practica === numero,
+  );
+  if (!practica) return { error: "Esta práctica todavía no está disponible." };
+
+  const bloques = parseProgram(
+    field(formData, "programa"),
+    getAllowedBlocks(context.curso, context.unidad),
+  );
+  if (!bloques) return { error: "Añade al menos un bloque a tu programa antes de guardar." };
+
+  const explicacion = field(formData, "explicacion").trim().slice(0, MAX_EXPLANATION_LENGTH);
+  await savePracticaIntermedia(context.alumnoId, {
+    unidad: context.unidad,
+    practica: practica.practica,
+    bloques,
+    explicacion,
+  });
 
   revalidatePath("/dashboard", "layout");
   return { ok: true };

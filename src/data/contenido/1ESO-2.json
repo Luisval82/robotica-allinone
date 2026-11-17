@@ -110,6 +110,32 @@
       }
     ]
   },
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Un giro corto",
+      "enunciado": "Haz que el motor del puerto A gire 2 rotaciones y pare.",
+      "pista": "«ir durante» ya para solo al terminar; no hace falta «parar motor»."
+    },
+    {
+      "practica": 2,
+      "titulo": "Despacio y deprisa",
+      "enunciado": "El motor gira 3 segundos al 20 % y después 3 segundos al 100 %.",
+      "pista": "«fijar velocidad» no mueve nada: hay que ponerlo antes de cada giro."
+    },
+    {
+      "practica": 3,
+      "titulo": "Arranca y para",
+      "enunciado": "Usa «arrancar motor», espera 4 segundos y para el motor.",
+      "pista": "Esta pareja sirve cuando no sabes de antemano cuánto tiene que girar."
+    },
+    {
+      "practica": 4,
+      "titulo": "Ventilador de dos marchas",
+      "enunciado": "El ventilador arranca al 30 %, a los 3 segundos sube al 70 % sin pararse, y a los 3 segundos se detiene.",
+      "pista": "Cambia la velocidad mientras el motor está en marcha: no hace falta pararlo."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor mediano con su cable, un eje, vigas largas y cortas, y pasadores.",
     "pasos": [

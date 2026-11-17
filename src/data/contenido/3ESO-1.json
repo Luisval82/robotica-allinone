@@ -68,6 +68,32 @@
       "explicacion": "Guarda el número de lados para usarlo en el bucle y en el cálculo del giro."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Tu primer bloque",
+      "enunciado": "Crea un bloque llamado «lado» que haga avanzar 20 cm y girar 90 grados.",
+      "pista": "Al crearlo aparece en «Mis bloques», abajo del todo de la paleta."
+    },
+    {
+      "practica": 2,
+      "titulo": "El cuadrado con tu bloque",
+      "enunciado": "Usa un «Repetir» cuatro veces con tu bloque «lado» dentro.",
+      "pista": "Fíjate en lo corto que queda el programa."
+    },
+    {
+      "practica": 3,
+      "titulo": "Un bloque con entrada",
+      "enunciado": "Cambia tu bloque para que reciba la longitud del lado como número.",
+      "pista": "La entrada se usa dentro del bloque igual que una variable."
+    },
+    {
+      "practica": 4,
+      "titulo": "Polígonos a la carta",
+      "enunciado": "Haz un triángulo y un pentágono cambiando solo el número de repeticiones y los grados del giro.",
+      "pista": "Los grados de cada giro son 360 entre el número de lados."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, un rotulador, gomas elásticas y un papel grande.",
     "pasos": [

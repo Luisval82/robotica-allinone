@@ -113,6 +113,32 @@
       }
     ]
   },
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Sube la barrera",
+      "enunciado": "Lleva el motor A a la posición 90 y déjalo ahí.",
+      "pista": "«ir a la posición» va a un ángulo exacto, da igual dónde estuviera."
+    },
+    {
+      "practica": 2,
+      "titulo": "Sube y baja",
+      "enunciado": "La barrera sube a 90, espera 3 segundos y vuelve a la posición 0.",
+      "pista": "Son dos bloques de posición con un «Esperar» en medio."
+    },
+    {
+      "practica": 3,
+      "titulo": "Sin tirones",
+      "enunciado": "Repite la subida y la bajada, pero fijando antes la velocidad al 20 %.",
+      "pista": "A menos velocidad, el movimiento es más suave y no da tirones."
+    },
+    {
+      "practica": 4,
+      "titulo": "Barrera con aviso",
+      "enunciado": "Antes de subir, el Hub da una nota de aviso; después sube, espera y baja.",
+      "pista": "Primero el sonido, luego el movimiento."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor mediano con su cable, una viga larga para el brazo, vigas y pasadores para la base y el poste.",
     "pasos": [

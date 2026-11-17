@@ -62,6 +62,32 @@
       "explicacion": "Bloque de inicio: guarda el programa elegido al mostrar una tarjeta de color."
     }
   ],
+  "intermedias": [
+    {
+      "practica": 1,
+      "titulo": "Avisa y espera",
+      "enunciado": "Envía un mensaje y espera a que termine antes de seguir con el programa.",
+      "pista": "«Enviar mensaje y esperar» no sigue hasta que la otra pila acaba."
+    },
+    {
+      "practica": 2,
+      "titulo": "Detecta el coche",
+      "enunciado": "Cuando el sensor vea el coche, envía el mensaje «abrir puerta».",
+      "pista": "La otra pila se encarga de mover el motor."
+    },
+    {
+      "practica": 3,
+      "titulo": "Elige el programa",
+      "enunciado": "Guarda en una variable el programa de lavado elegido y escríbelo en la matriz.",
+      "pista": "Puedes elegirlo con el color de una tarjeta."
+    },
+    {
+      "practica": 4,
+      "titulo": "Túnel de lavado",
+      "enunciado": "Encadena las fases con mensajes: detectar, abrir, lavar según el programa y cerrar.",
+      "pista": "Cada fase, su propia pila: así se lee mucho mejor."
+    }
+  ],
   "construccion": {
     "piezas": "El Hub, un motor grande, un motor mediano, el sensor de distancia, el sensor de color, vigas para el pórtico y un coche de juguete.",
     "pasos": [
