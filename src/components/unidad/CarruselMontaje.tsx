@@ -80,7 +80,7 @@ export function CarruselMontaje({
         >
           Paso {actual + 1} de {total}
         </p>
-        <div className="h-2 min-w-0 grow rounded-full bg-ink-100">
+        <div className="h-2 w-full min-w-0 grow rounded-full bg-ink-100">
           <div
             className="h-full rounded-full bg-block-movimiento transition-[width] duration-300"
             style={{ width: `${((actual + 1) / total) * 100}%` }}
