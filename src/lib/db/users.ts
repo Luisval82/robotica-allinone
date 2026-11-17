@@ -114,3 +114,89 @@ export async function setProfesorRole(
   assertNoError(error, "setProfesorRole");
   return data ? toPublicUser(userFromRow(data as UserRow)) : null;
 }
+
+/**
+ * Encuentra —o crea— al usuario que acaba de entrar con Google.
+ *
+ * Se reconoce por el identificador de Google, que no cambia aunque el colegio
+ * le cambie el correo. Si ya existía con ese correo (por ejemplo, un profesor
+ * dado de alta con contraseña), se le enlaza la cuenta de Google en vez de
+ * duplicarlo. Quien entra por primera vez nace como alumno y sin perfil: lo
+ * completa en la pantalla de bienvenida.
+ */
+export async function findOrCreateGoogleUser(cuenta: {
+  sub: string;
+  email: string;
+  nombre: string;
+}): Promise<User> {
+  const email = normalizeEmail(cuenta.email);
+
+  const { data: porSub, error: errorSub } = await supabase
+    .from("users")
+    .select("*")
+    .eq("google_sub", cuenta.sub)
+    .maybeSingle();
+  assertNoError(errorSub, "findOrCreateGoogleUser (por google_sub)");
+  if (porSub) {
+    // El colegio puede haberle cambiado el correo: se deja al día.
+    const fila = porSub as UserRow;
+    if (fila.email !== email) {
+      const { error } = await supabase.from("users").update({ email }).eq("id", fila.id);
+      assertNoError(error, "findOrCreateGoogleUser (correo nuevo)");
+      fila.email = email;
+    }
+    return userFromRow(fila);
+  }
+
+  const existente = await findUserByEmail(email);
+  if (existente) {
+    const { error } = await supabase
+      .from("users")
+      .update({ google_sub: cuenta.sub })
+      .eq("id", existente.id);
+    assertNoError(error, "findOrCreateGoogleUser (enlazar)");
+    return { ...existente, googleSub: cuenta.sub };
+  }
+
+  const { data, error } = await supabase
+    .from("users")
+    .insert({
+      name: cuenta.nombre || email.split("@")[0],
+      email,
+      password_hash: null,
+      google_sub: cuenta.sub,
+      perfil_completo: false,
+      role: "alumno",
+      course: null,
+    })
+    .select("*")
+    .single();
+  assertNoError(error, "findOrCreateGoogleUser (alta)");
+  return userFromRow(data as UserRow);
+}
+
+/** Guarda el nombre y el curso que el alumno elige en su primera entrada. */
+export async function completarPerfil(
+  userId: string,
+  datos: { name: string; course: Course },
+): Promise<void> {
+  const { error } = await supabase
+    .from("users")
+    .update({ name: datos.name, course: datos.course, perfil_completo: true })
+    .eq("id", userId);
+  assertNoError(error, "completarPerfil");
+}
+
+/** Cambios que hacen el profesor y el superadmin sobre un alumno. */
+export async function actualizarAlumno(
+  userId: string,
+  datos: { name?: string; course?: Course },
+): Promise<void> {
+  const cambios: Record<string, string> = {};
+  if (datos.name !== undefined) cambios.name = datos.name;
+  if (datos.course !== undefined) cambios.course = datos.course;
+  if (Object.keys(cambios).length === 0) return;
+
+  const { error } = await supabase.from("users").update(cambios).eq("id", userId).eq("role", "alumno");
+  assertNoError(error, "actualizarAlumno");
+}

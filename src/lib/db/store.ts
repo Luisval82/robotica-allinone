@@ -25,7 +25,9 @@ export interface UserRow {
   id: string;
   name: string;
   email: string;
-  password_hash: string;
+  password_hash: string | null;
+  google_sub: string | null;
+  perfil_completo: boolean;
   role: Role;
   course: Course | null;
   created_at: string;
@@ -37,6 +39,8 @@ export function userFromRow(row: UserRow): User {
     name: row.name,
     email: row.email,
     passwordHash: row.password_hash,
+    googleSub: row.google_sub ?? null,
+    perfilCompleto: row.perfil_completo ?? true,
     role: row.role,
     course: row.course,
     createdAt: row.created_at,

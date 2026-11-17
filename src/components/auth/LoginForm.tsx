@@ -10,9 +10,20 @@ import { Field } from "@/components/ui/Field";
 import { SubmitButton } from "@/components/ui/SubmitButton";
 import { ArrowRightIcon, MailIcon } from "@/components/ui/icons";
 import type { DemoCredential } from "@/lib/types";
+import { BotonGoogle } from "@/components/auth/BotonGoogle";
 import { EMPTY_AUTH_STATE, SCHOOL_EMAIL_SUFFIX, validateEmail } from "@/lib/validation";
 
-export function LoginForm({ demoUsers }: { demoUsers: DemoCredential[] }) {
+export function LoginForm({
+  demoUsers,
+  googleActivo,
+  aviso,
+}: {
+  demoUsers: DemoCredential[];
+  /** Si están puestas las credenciales de Google, se enseña su botón. */
+  googleActivo: boolean;
+  /** Lo que haya ido mal al volver de Google, para contarlo arriba del todo. */
+  aviso?: string;
+}) {
   const [state, formAction, pending] = useActionState(loginAction, EMPTY_AUTH_STATE);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,12 +44,36 @@ export function LoginForm({ demoUsers }: { demoUsers: DemoCredential[] }) {
       <div className="rounded-card bg-white p-6 shadow-card sm:p-9">
         <AuthTabs active="login" />
 
+        {aviso ? (
+          <p
+            role="alert"
+            className="mb-6 rounded-2xl border-2 border-red-200 bg-red-50 p-4 font-bold text-red-700"
+          >
+            {aviso}
+          </p>
+        ) : null}
+
         <h1 className="font-display text-3xl font-semibold text-ink-900">Inicia sesión</h1>
         <p className="mt-1.5 font-semibold text-ink-500">
           Entra con tu correo del colegio y sigue donde lo dejaste.
         </p>
 
-        <form action={formAction} noValidate className="mt-7 grid gap-5">
+        {googleActivo ? (
+          <>
+            <div className="mt-7">
+              <BotonGoogle />
+            </div>
+            <div className="my-7 flex items-center gap-4">
+              <span className="h-0.5 flex-1 rounded-full bg-ink-100" />
+              <span className="text-xs font-extrabold uppercase tracking-widest text-ink-400">
+                o con contraseña
+              </span>
+              <span className="h-0.5 flex-1 rounded-full bg-ink-100" />
+            </div>
+          </>
+        ) : null}
+
+        <form action={formAction} noValidate className={`grid gap-5 ${googleActivo ? "" : "mt-7"}`}>
           <FormError message={state.error} />
 
           <Field

@@ -6,6 +6,9 @@ import type { Role } from "@/lib/types";
 export const LOGIN_PATH = "/login";
 export const REGISTER_PATH = "/registro";
 
+/** Primera entrada: el alumno dice su nombre y elige curso. */
+export const BIENVENIDA_PATH = "/bienvenida";
+
 /** Renueva la cookie cuando el rol guardado en ella ya no coincide con la base de datos. */
 export const REFRESH_SESSION_PATH = "/sesion/actualizar";
 

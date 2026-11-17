@@ -43,7 +43,12 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  passwordHash: string;
+  /** Vacío si entró con Google: esa cuenta no tiene contraseña aquí. */
+  passwordHash: string | null;
+  /** Identificador que da Google. Estable aunque le cambien el correo. */
+  googleSub: string | null;
+  /** Falso hasta que dice su nombre y elige curso en la primera entrada. */
+  perfilCompleto: boolean;
   role: Role;
   /**
    * Curso del alumno. Quien se registra y luego recibe el rol de Profesor

@@ -27,11 +27,19 @@ create table if not exists public.users (
   id            uuid primary key default gen_random_uuid(),
   name          text not null,
   email         text not null unique,
-  password_hash text not null,
+  -- Vacío para quien entra con Google: esa cuenta no tiene contraseña aquí.
+  password_hash text,
+  -- Identificador que da Google. Estable aunque el colegio cambie el correo.
+  google_sub    text,
+  -- Falso hasta que dice su nombre y elige curso en la primera entrada.
+  perfil_completo boolean not null default true,
   role          text not null check (role in ('superadmin', 'profesor', 'alumno')),
   course        text check (course in ('1ESO', '2ESO', '3ESO')),
   created_at    timestamptz not null default now()
 );
+
+create unique index if not exists users_google_sub_key
+  on public.users (google_sub) where google_sub is not null;
 
 create index if not exists users_role_idx on public.users (role);
 create index if not exists users_course_idx on public.users (course);
