@@ -338,3 +338,184 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Pantalla de bienvenida ───────────────────────────────────────────── */
+/* El Hub se enciende píxel a píxel y el nombre se monta letra a letra. */
+
+@layer components {
+  .splash {
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    touch-action: manipulation;
+  }
+
+  /* La salida: se desvanece y sube un poco, dejando ver el login. */
+  .splash--fuera {
+    opacity: 0;
+    transform: translateY(-2.5rem);
+    pointer-events: none;
+  }
+
+  /* Ya vista en esta pestaña: ni se pinta (lo marca el <html> antes de nada) */
+  html[data-splash="visto"] .splash {
+    display: none;
+  }
+
+  .splash__brillo {
+    position: absolute;
+    width: 36rem;
+    height: 36rem;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0;
+    animation: splash-brillo 2.4s ease-out forwards;
+  }
+
+  .splash__brillo--spike {
+    top: -8rem;
+    left: -8rem;
+    background: var(--color-spike-500);
+  }
+
+  .splash__brillo--hub {
+    bottom: -10rem;
+    right: -8rem;
+    background: var(--color-hub-400);
+    animation-delay: 0.3s;
+  }
+
+  .splash__escena {
+    transition: transform 200ms ease-out;
+    transform-style: preserve-3d;
+  }
+
+  /* El Hub entra girando un poco y asentándose */
+  .splash__hub {
+    animation: splash-hub 900ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
+    filter: drop-shadow(0 18px 40px rgb(0 0 0 / 0.45));
+  }
+
+  .splash__marco {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: splash-marco 700ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
+  }
+
+  .splash__pantalla {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: splash-marco 700ms 150ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
+  }
+
+  /* Cada píxel de la matriz se enciende con su propio retraso */
+  .splash__pixel {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: splash-pixel 420ms ease-out both;
+  }
+
+  /* Cada letra cae y encaja, como un bloque */
+  .splash__letra {
+    display: inline-block;
+    animation: splash-letra 520ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
+  }
+
+  .splash__lema {
+    animation: splash-lema 600ms ease-out both;
+  }
+
+  .splash__chispa {
+    position: absolute;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin: -0.375rem 0 0 -0.375rem;
+    border-radius: 999px;
+    background: var(--color-hub-400);
+    pointer-events: none;
+    animation: splash-chispa 700ms ease-out forwards;
+  }
+}
+
+@keyframes splash-brillo {
+  to {
+    opacity: 0.35;
+  }
+}
+
+@keyframes splash-hub {
+  from {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.8) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes splash-marco {
+  from {
+    transform: scale(0.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes splash-pixel {
+  from {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splash-letra {
+  from {
+    opacity: 0;
+    transform: translateY(-1.4rem) rotate(-10deg) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes splash-lema {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splash-chispa {
+  from {
+    opacity: 0.9;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+/* Si el sistema pide menos movimiento, no hay animación que valga */
+@media (prefers-reduced-motion: reduce) {
+  .splash,
+  .splash * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

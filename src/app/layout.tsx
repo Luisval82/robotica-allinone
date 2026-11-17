@@ -33,7 +33,20 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="es" className={`${displayFont.variable} ${bodyFont.variable}`}>
-      <body className="min-h-dvh bg-ink-50 font-sans text-ink-900 antialiased">{children}</body>
+      <body className="min-h-dvh bg-ink-50 font-sans text-ink-900 antialiased">
+        {/*
+          Si la pantalla de bienvenida ya se vio en esta pestaña, se marca el
+          <html> aquí, antes de que se pinte nada del resto: así no asoma ni
+          un fotograma al volver al login.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('splash-visto'))document.documentElement.dataset.splash='visto'}catch(e){}",
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
