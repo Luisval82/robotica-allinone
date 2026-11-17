@@ -201,7 +201,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
       </nav>
 
       <div className="mt-6 grid gap-6">
-        {/* 1 · Guion de vídeo */}
+        {/* 1 · Vídeo de la unidad */}
         <StepSection
           id="paso-1"
           eyebrow={`Paso 1 de ${THEORY_STEPS}`}
@@ -242,37 +242,9 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                   <ExternalLinkIcon className="size-4" />
                 </a>
               ) : null}
-
-              <p className="mt-8 text-xs font-extrabold uppercase tracking-widest text-ink-500">
-                Guion de apoyo
-              </p>
-              <ol className="mt-3 grid gap-3">
-                {contenido.video.escenas.map((escena, index) => (
-                  <li
-                    key={index}
-                    className="grid gap-x-5 gap-y-2 rounded-2xl bg-ink-50 p-5 sm:grid-cols-[auto_1fr_1.3fr]"
-                  >
-                    <span className="grid size-10 place-items-center rounded-full bg-block-eventos font-display text-lg font-semibold text-ink-900">
-                      {index + 1}
-                    </span>
-                    <div>
-                      <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-                        Se ve
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-ink-700">{escena.plano}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-                        Se dice
-                      </p>
-                      <p className="mt-1 font-semibold text-ink-900">{escena.locucion}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
             </>
           ) : (
-            <Pending>El guion de vídeo de esta unidad todavía está en preparación.</Pending>
+            <Pending>El vídeo de esta unidad todavía está en preparación.</Pending>
           )}
         </StepSection>
 
