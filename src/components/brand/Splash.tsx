@@ -4,8 +4,9 @@
 // plataforma se monta letra a letra, como bloques que encajan. Dura algo más
 // de tres segundos y se va sola con un fundido hacia el login.
 //
-// Solo aparece al entrar en la web (en /login y /registro). Una vez vista, no
-// vuelve a salir en esa pestaña: lo recuerda en sessionStorage y el atributo
+// Aparece al entrar en la web (en /login y /registro). No sale cuando vuelves
+// al login desde dentro de la propia plataforma —cerrar sesión, pulsar el
+// logo—, que es donde cansaría: eso se mira por el referrer, y el atributo
 // data-splash del <html> la oculta antes de que se pinte nada.
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -14,7 +15,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const DURACION = 3200;
 /** Lo que tarda el fundido de salida. */
 const FUNDIDO = 500;
-const RECORDATORIO = "splash-visto";
 
 const TITULO = "ROBOTICA";
 const TITULO_2 = "ALLINONE";
@@ -39,25 +39,21 @@ export function Splash() {
   const terminar = useCallback(() => {
     if (salida.current) return;
     setFuera(true);
-    try {
-      sessionStorage.setItem(RECORDATORIO, "1");
-      document.documentElement.dataset.splash = "visto";
-    } catch {
-      // Sin sessionStorage (modo privado antiguo): la bienvenida saldrá otra vez.
-    }
     salida.current = setTimeout(() => setOculta(true), FUNDIDO);
   }, []);
 
-  // Se va sola, o antes si ya se había visto en esta pestaña.
+  // Se va sola. Y no llega a salir si vienes de dentro de la propia web.
   useEffect(() => {
-    let vista = false;
+    let dentro = false;
     try {
-      vista = sessionStorage.getItem(RECORDATORIO) !== null;
+      dentro =
+        document.referrer !== "" &&
+        new URL(document.referrer).origin === window.location.origin;
     } catch {
-      vista = false;
+      dentro = false;
     }
     const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (vista || sinMovimiento) {
+    if (dentro || sinMovimiento) {
       setOculta(true);
       return;
     }
