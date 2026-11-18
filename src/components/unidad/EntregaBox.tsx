@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/icons";
 import { blockClass, defaultValues, getBlockInfo, type BlockInfo } from "@/lib/bloques";
 import { formatNota } from "@/lib/format";
+import { CheckIcon, LockIcon } from "@/components/ui/icons";
 import type { ProgramRow, StudentFormState } from "@/lib/types";
 
 const EMPTY_STATE: StudentFormState = {};
@@ -28,6 +29,12 @@ export interface EntregaView {
   nota: number | null;
   comentario: string;
   corregidaPor: string | null;
+}
+
+/** La solución de ejemplo que se enseña al comprobar una práctica. */
+export interface SolucionView {
+  bloques: ProgramRow[];
+  notas: string;
 }
 
 interface Row {
@@ -139,8 +146,16 @@ function PaletteButton({ info, onAdd }: { info: BlockInfo; onAdd: (texto: string
 
 /**
  * Caja de entrega de una práctica de programación. El alumno compone su
- * programa eligiendo bloques de palabras, rellena sus huecos y lo entrega.
- * Puede cambiarlo hasta que el profesor lo corrija.
+ * programa eligiendo bloques de palabras y rellenando sus huecos.
+ *
+ * Hay dos maneras de cerrarla, y las dos son definitivas:
+ *  · En una práctica intermedia, con «Guardar y comprobar»: se queda cerrada
+ *    y aparece al lado la solución de ejemplo para comparar.
+ *  · En las dos entregas de la PRUEBA, al entregar: se queda cerrada y la
+ *    solución NO se enseña, porque esa la corrige el profesor con nota.
+ *
+ * Las dos piden confirmación antes de cerrar: un clic de más no puede dejar
+ * a un alumno sin poder cambiar su programa.
  */
 export function EntregaBox({
   unidad,
@@ -154,6 +169,10 @@ export function EntregaBox({
   textoBoton = "Entregar",
   textoGuardado = "Puedes cambiarla hasta que tu profesor la corrija.",
   extra,
+  bloqueada = false,
+  solucion,
+  permiteComprobar = false,
+  textoCerrada = "Entregada",
 }: {
   unidad: number;
   practica: number;
@@ -170,6 +189,14 @@ export function EntregaBox({
   textoGuardado?: string;
   /** Se pinta bajo el enunciado: el aviso de probarlo en el Hub, por ejemplo. */
   extra?: ReactNode;
+  /** Cerrada: ni se puede cambiar ni se puede volver a enviar. */
+  bloqueada?: boolean;
+  /** Si viene, se enseña al lado del programa del alumno cuando está cerrada. */
+  solucion?: SolucionView;
+  /** Añade el botón «Guardar y comprobar» junto al de guardar borrador. */
+  permiteComprobar?: boolean;
+  /** Cómo se llama el estado cerrado: «Comprobada», «Entregada»… */
+  textoCerrada?: string;
 }) {
   const [state, formAction, pending] = useActionState(accion, EMPTY_STATE);
   const nextKey = useRef(entrega?.bloques.length ?? 0);
@@ -183,6 +210,7 @@ export function EntregaBox({
     })),
   );
   const [explicacion, setExplicacion] = useState(entrega?.explicacion ?? "");
+  const [confirmando, setConfirmando] = useState(false);
   const id = `entrega-${unidad}-${practica}`;
   const corregida = entrega !== null && entrega.nota !== null;
 
@@ -218,6 +246,59 @@ export function EntregaBox({
               {entrega.comentario || "Sin comentario."}
             </p>
           </div>
+        </div>
+      </article>
+    );
+  }
+
+  // ── Cerrada: el programa que dejó el alumno y, si la hay, la solución ──
+  if (entrega && bloqueada) {
+    return (
+      <article className="rounded-2xl border-2 border-spike-200 p-5 sm:p-6">
+        {head}
+
+        <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-spike-600 px-4 py-1.5 text-sm font-extrabold text-white">
+          <CheckIcon className="size-4" />
+          {textoCerrada} el {entrega.entregadaEn}
+        </p>
+
+        <div
+          className={`mt-4 grid gap-5 ${solucion ? "lg:grid-cols-2" : ""}`}
+        >
+          <div className="min-w-0">
+            <h5 className="mb-2 flex items-center gap-1.5 text-sm font-extrabold uppercase tracking-wide text-ink-500">
+              <LockIcon className="size-4" />
+              Tu programa
+            </h5>
+            <div className="overflow-x-auto rounded-2xl bg-ink-50 p-4">
+              <ProgramBlocks rows={entrega.bloques} label={`Tu programa: ${titulo}`} />
+            </div>
+            {entrega.explicacion ? (
+              <p className="mt-2 text-sm font-semibold text-ink-600">
+                Lo explicaste así: {entrega.explicacion}
+              </p>
+            ) : null}
+          </div>
+
+          {solucion ? (
+            <div className="min-w-0">
+              <h5 className="mb-2 text-sm font-extrabold uppercase tracking-wide text-spike-700">
+                Solución de ejemplo
+              </h5>
+              <div className="overflow-x-auto rounded-2xl bg-spike-50 p-4">
+                <ProgramBlocks rows={solucion.bloques} label={`Solución de ejemplo: ${titulo}`} />
+              </div>
+              <p className="mt-2 text-sm font-bold text-spike-800">{solucion.notas}</p>
+              <p className="mt-1.5 text-sm font-semibold text-ink-500">
+                Es UN ejemplo que funciona, no la única respuesta: si el tuyo hace lo mismo con
+                otros bloques, también está bien. Compara el orden y los valores.
+              </p>
+            </div>
+          ) : (
+            <p className="text-sm font-semibold text-ink-500">
+              Tu profesor la corregirá y verás aquí la nota y su comentario.
+            </p>
+          )}
         </div>
       </article>
     );
@@ -420,14 +501,60 @@ export function EntregaBox({
           />
         </div>
 
+        {/* Cerrar es definitivo, así que se pregunta antes. */}
+        {confirmando ? (
+          <div className="rounded-2xl border-2 border-hub-300 bg-hub-50 p-5">
+            <p className="font-display text-lg font-semibold text-ink-900">
+              {permiteComprobar
+                ? "¿Comprobar ya esta práctica?"
+                : "¿Entregar ya esta práctica?"}
+            </p>
+            <p className="mt-1 font-semibold text-ink-700">
+              {permiteComprobar
+                ? "Se guarda tal y como está y no podrás volver a cambiarla. Después verás la solución de ejemplo para compararla con la tuya."
+                : "Se entrega tal y como está y no podrás volver a cambiarla. La corregirá tu profesor."}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <button
+                type="submit"
+                name="comprobar"
+                value="1"
+                disabled={pending}
+                className="inline-flex h-12 items-center justify-center rounded-2xl bg-spike-600 px-6 font-display text-base font-semibold tracking-wide text-white shadow-press-spike transition hover:bg-spike-700 active:translate-y-1 active:shadow-none disabled:cursor-wait disabled:opacity-60"
+              >
+                {pending ? "Guardando…" : permiteComprobar ? "Sí, comprobar" : "Sí, entregar"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirmando(false)}
+                className="inline-flex h-10 items-center rounded-xl px-4 text-sm font-extrabold text-ink-700 transition hover:bg-white"
+              >
+                No, sigo montándola
+              </button>
+            </div>
+          </div>
+        ) : null}
+
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <button
-            type="submit"
-            disabled={pending || rows.length === 0}
+            type="button"
+            onClick={() => setConfirmando(true)}
+            disabled={pending || rows.length === 0 || confirmando}
             className="inline-flex h-12 items-center justify-center rounded-2xl bg-spike-600 px-6 font-display text-base font-semibold tracking-wide text-white shadow-press-spike transition hover:bg-spike-700 active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {pending ? "Guardando…" : entrega ? `Actualizar ${textoBoton.toLowerCase()}` : `${textoBoton} programa`}
+            {permiteComprobar ? "Guardar y comprobar" : `${textoBoton} programa`}
           </button>
+
+          {permiteComprobar ? (
+            <button
+              type="submit"
+              disabled={pending || rows.length === 0}
+              className="inline-flex h-12 items-center justify-center rounded-2xl border-2 border-ink-200 bg-white px-5 font-display text-base font-semibold text-ink-800 transition hover:border-ink-900 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {pending ? "Guardando…" : "Guardar borrador"}
+            </button>
+          ) : null}
+
           {state.error ? (
             <p role="alert" className="text-sm font-bold text-red-700">
               {state.error}

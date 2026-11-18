@@ -71,25 +71,203 @@
       "practica": 1,
       "titulo": "Avanza un tramo",
       "enunciado": "Crea un bloque «avanzar» que recorra un tramo del laberinto y páralo al llegar a la pared.",
-      "pista": "Usa la pregunta del sensor de distancia para saber cuándo parar."
+      "pista": "Usa la pregunta del sensor de distancia para saber cuándo parar.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "avanzar"
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 1,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valor": "¿Está más próximo a 10 cm? E"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valor": "0.05"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1,
+          "valores": []
+        }
+      ],
+      "notas": "El bloque avanza sin saber cuánto: para cuando el sensor dice que hay pared. El bucle solo vigila."
     },
     {
       "practica": 2,
       "titulo": "Gira exacto",
       "enunciado": "Crea un bloque «girar» con una entrada en grados que use el giroscopio.",
-      "pista": "Pon el ángulo a cero antes de cada giro."
+      "pista": "Pon el ángulo a cero antes de cada giro.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "girar (grados)"
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valor": "Ángulo de guiñada > grados"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valor": "0.05"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1,
+          "valores": []
+        }
+      ],
+      "notas": "El ángulo a cero antes de girar, y la entrada «grados» en la condición: así el mismo bloque gira 90 o 180."
     },
     {
       "practica": 3,
       "titulo": "¿Hay pared?",
       "enunciado": "Decide con un «Si… entonces… Si no…» si hay pared delante y, según eso, avanza o gira.",
-      "pista": "Así se recorre un laberinto: avanzar mientras se pueda, girar si no."
+      "pista": "Así se recorre un laberinto: avanzar mientras se pueda, girar si no.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "¿Está más próximo a 10 cm? E"
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 1,
+          "valor": "girar (90)"
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 1,
+          "valor": "avanzar"
+        }
+      ],
+      "notas": "Así se recorre un laberinto: avanzar mientras se pueda y girar cuando no. Dos órdenes y una decisión."
     },
     {
       "practica": 4,
       "titulo": "Sal del laberinto",
       "enunciado": "Mete la decisión en un «Repetir hasta» que termine cuando pulses el botón del Hub.",
-      "pista": "Pulsar el botón es tu forma de decir «ya he salido»."
+      "pista": "Pulsar el botón es tu forma de decir «ya he salido».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "¿Está más próximo a 10 cm? E"
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 2,
+          "valor": "girar (90)"
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 2,
+          "valor": "avanzar"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
+        }
+      ],
+      "notas": "Pulsar el sensor de fuerza es tu manera de decirle al robot «ya he salido». Fíjate en lo corto que queda el programa."
     }
   ],
   "construccion": {

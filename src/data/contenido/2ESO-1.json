@@ -67,25 +67,225 @@
       "practica": 1,
       "titulo": "Verde o no verde",
       "enunciado": "Con un «Si… entonces… Si no…», escribe «PASA» cuando veas verde y «ALTO» cuando no.",
-      "pista": "La rama «Si no» se hace cuando la respuesta es «no»."
+      "pista": "La rama «Si no» se hace cuando la respuesta es «no».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "PASA"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "ALTO"
+          ]
+        }
+      ],
+      "notas": "Con «Si… entonces… Si no…» basta un bloque: la rama de abajo se hace justo cuando la respuesta es «no»."
     },
     {
       "practica": 2,
       "titulo": "Circula y para",
       "enunciado": "Si la tarjeta es verde, el vehículo empieza a moverse; si no, se para.",
-      "pista": "Un bloque de movimiento en cada rama."
+      "pista": "Un bloque de movimiento en cada rama.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 1,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1,
+          "valores": []
+        }
+      ],
+      "notas": "Un bloque de movimiento en cada rama. «empezar a mover» no espera, así que la decisión se toma al momento."
     },
     {
       "practica": 3,
       "titulo": "Semáforo continuo",
       "enunciado": "Mete la decisión en un bucle infinito para que reaccione en cuanto cambie la tarjeta.",
-      "pista": "Sin bucle, decide una vez y se acaba el programa."
+      "pista": "Sin bucle, decide una vez y se acaba el programa.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2,
+          "valores": []
+        }
+      ],
+      "notas": "Con el bucle, el vehículo reacciona en cuanto cambias la tarjeta. Sin él decidiría una vez y se acabaría el programa."
     },
     {
       "practica": 4,
       "titulo": "Tres colores",
       "enunciado": "Añade un tercer caso: con la tarjeta roja, además de parar, el Hub enciende un dibujo de aviso.",
-      "pista": "Puedes anidar otro «Si» dentro de la rama «Si no»."
+      "pista": "Puedes anidar otro «Si» dentro de la rama «Si no».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2,
+          "valores": []
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 2,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 3,
+          "valores": [
+            "corazón"
+          ]
+        }
+      ],
+      "notas": "El tercer caso es un «Si» metido dentro de la rama «Si no»: si no es verde, se pregunta si es rojo."
     }
   ],
   "construccion": {

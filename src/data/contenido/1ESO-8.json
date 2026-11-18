@@ -111,25 +111,141 @@
       "practica": 1,
       "titulo": "¿De qué color es?",
       "enunciado": "Escribe en la matriz un mensaje distinto según veas la tarjeta verde o no.",
-      "pista": "«Si… entonces…» mira la pregunta una sola vez y decide."
+      "pista": "«Si… entonces…» mira la pregunta una sola vez y decide.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 0,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "PASA"
+          ]
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 0,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "ALTO"
+          ]
+        }
+      ],
+      "notas": "Con «Si… entonces…» hacen falta dos bloques, uno por caso. Son dos preguntas distintas al sensor."
     },
     {
       "practica": 2,
       "titulo": "Abre con el verde",
       "enunciado": "Si el sensor ve verde, la barrera sube a 90 grados.",
-      "pista": "La pregunta del color va en el hueco del «Si»."
+      "pista": "La pregunta del color va en el hueco del «Si».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 0,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        }
+      ],
+      "notas": "La pregunta va en el hueco hexagonal del «Si» y el movimiento, dentro, con la sangría."
     },
     {
       "practica": 3,
       "titulo": "Siempre vigilando",
       "enunciado": "Mete la comprobación dentro de un bucle infinito para que el garaje no deje de mirar.",
-      "pista": "Sin el bucle, el programa comprueba una vez y se acaba."
+      "pista": "Sin el bucle, el programa comprueba una vez y se acaba.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        }
+      ],
+      "notas": "Sin el bucle, el programa mira el color una sola vez, en el instante de arrancar, y se acaba."
     },
     {
       "practica": 4,
       "titulo": "Abrir y cerrar",
       "enunciado": "Con la tarjeta correcta: sube la barrera, espera 3 segundos y vuelve a bajarla, todo dentro del bucle.",
-      "pista": "Tres bloques dentro del «Si», y el «Si» dentro del bucle."
+      "pista": "Tres bloques dentro del «Si», y el «Si» dentro del bucle.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valor": "¿Es de color verde? D"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valor": "3"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "Tres bloques dentro del «Si», y el «Si» dentro del bucle: fíjate en los dos niveles de sangría."
     }
   ],
   "construccion": {

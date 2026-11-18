@@ -85,25 +85,276 @@
       "practica": 1,
       "titulo": "Clasifica un color",
       "enunciado": "Si la pieza es roja, el motor la empuja a un lado; si no, al otro.",
-      "pista": "Un ángulo distinto del motor para cada lado."
+      "pista": "Un ángulo distinto del motor para cada lado.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "45"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "135"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
+        }
+      ],
+      "notas": "Un ángulo distinto de la rampa para cada cajón, y el empujador después, cuando la rampa ya está puesta."
     },
     {
       "practica": 2,
       "titulo": "Lleva la cuenta",
       "enunciado": "Crea una variable por color y súmale uno cada vez que clasifiques una pieza.",
-      "pista": "Pon las dos variables a 0 al empezar."
+      "pista": "Pon las dos variables a 0 al empezar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "rojas · 0"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "otras · 0"
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "45"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valor": "rojas · 1"
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 1,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "135"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valor": "otras · 1"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
+        }
+      ],
+      "notas": "Las dos variables se ponen a 0 al empezar y cada una sube en su rama del «Si»."
     },
     {
       "practica": 3,
       "titulo": "Enseña el recuento",
       "enunciado": "Al terminar, escribe en la matriz cuántas piezas hay de cada color, una detrás de otra.",
-      "pista": "Dos bloques de «escribir», uno por variable."
+      "pista": "Dos bloques de «escribir», uno por variable.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "rojas · 0"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "otras · 0"
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valor": "rojas · 1"
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valor": "otras · 1"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "rojas"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "otras"
+          ]
+        }
+      ],
+      "notas": "Dos «escribir», uno por variable: pasan uno detrás de otro por la matriz."
     },
     {
       "practica": 4,
       "titulo": "Diez piezas",
       "enunciado": "Usa «Repetir hasta» para clasificar hasta llegar a diez piezas en total.",
-      "pista": "La condición puede comparar la suma de las dos variables con 10."
+      "pista": "La condición puede comparar la suma de las dos variables con 10.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "rojas · 0"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "otras · 0"
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valor": "rojas + otras = 10"
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "45"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 2,
+          "valor": "rojas · 1"
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 2,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "135"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 2,
+          "valor": "otras · 1"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "rojas"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "otras"
+          ]
+        }
+      ],
+      "notas": "La condición compara la SUMA de las dos variables con 10: da igual de qué color sean las piezas."
     }
   ],
   "construccion": {

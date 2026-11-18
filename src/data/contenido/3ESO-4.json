@@ -74,25 +74,165 @@
       "practica": 1,
       "titulo": "Crea la combinación",
       "enunciado": "Crea una lista y añádele tres números: esa es la combinación.",
-      "pista": "Añade los elementos al empezar el programa."
+      "pista": "Añade los elementos al empezar el programa.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "combinación · 90"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "combinación · 180"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "combinación · 45"
+        }
+      ],
+      "notas": "Los elementos se añaden al empezar el programa y en orden: el primero que añades es el número 1."
     },
     {
       "practica": 2,
       "titulo": "Lee el dial",
       "enunciado": "Escribe en la matriz la posición del motor del dial mientras lo giras con la mano.",
-      "pista": "Esa posición es el número que marca el dial."
+      "pista": "Esa posición es el número que marca el dial.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "posición de A"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.2"
+        }
+      ],
+      "notas": "La posición del motor del dial es el número que marcas al girarlo con la mano."
     },
     {
       "practica": 3,
       "titulo": "Compara el primero",
       "enunciado": "Comprueba si el número marcado coincide con el primer elemento de la lista.",
-      "pista": "«Elemento 1 de la lista» te da el primer número."
+      "pista": "«Elemento 1 de la lista» te da el primer número.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "combinación · 90"
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 0,
+          "valor": "posición de A = Elemento 1 de combinación"
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 1,
+          "valores": [
+            "corazón",
+            "1"
+          ]
+        }
+      ],
+      "notas": "«Elemento 1 de combinación» es el primer número que guardaste: el que hay que acertar primero."
     },
     {
       "practica": 4,
       "titulo": "Caja fuerte",
       "enunciado": "Con un «Repetir hasta», ve comprobando los tres números en orden y abre solo si están todos.",
-      "pista": "Lleva la cuenta de por cuál vas con una variable."
+      "pista": "Lleva la cuenta de por cuál vas con una variable.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "combinación · 90"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "combinación · 180"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "combinación · 45"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "paso · 1"
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valor": "paso > Longitud de combinación"
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "posición de A = Elemento paso de combinación"
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 2,
+          "valor": "paso · 1"
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valor": "paso · 1"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
+        }
+      ],
+      "notas": "La variable «paso» dice por qué número vas. Si fallas, vuelve a 1 y hay que empezar la combinación otra vez."
     }
   ],
   "construccion": {

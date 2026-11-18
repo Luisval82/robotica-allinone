@@ -67,25 +67,235 @@
       "practica": 1,
       "titulo": "Avisa y espera",
       "enunciado": "Envía un mensaje y espera a que termine antes de seguir con el programa.",
-      "pista": "«Enviar mensaje y esperar» no sigue hasta que la otra pila acaba."
+      "pista": "«Enviar mensaje y esperar» no sigue hasta que la otra pila acaba.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "nivel": 0,
+          "valor": "abrir puerta"
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "1"
+          ]
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "abrir puerta"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
+        }
+      ],
+      "notas": "«Enviar mensaje y esperar» no sigue hasta que la otra pila termina: por eso el dibujo aparece con la puerta ya abierta."
     },
     {
       "practica": 2,
       "titulo": "Detecta el coche",
       "enunciado": "Cuando el sensor vea el coche, envía el mensaje «abrir puerta».",
-      "pista": "La otra pila se encarga de mover el motor."
+      "pista": "La otra pila se encarga de mover el motor.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está más próximo a 10 cm? E"
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "nivel": 0,
+          "valor": "abrir puerta"
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "abrir puerta"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "La pila de arriba vigila y avisa; la de abajo solo sabe mover el motor. Cada una hace una cosa."
     },
     {
       "practica": 3,
       "titulo": "Elige el programa",
       "enunciado": "Guarda en una variable el programa de lavado elegido y escríbelo en la matriz.",
-      "pista": "Puedes elegirlo con el color de una tarjeta."
+      "pista": "Puedes elegirlo con el color de una tarjeta.",
+      "solucion": [
+        {
+          "texto": "Cuando el color es",
+          "nivel": 0,
+          "valor": "azul · D"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "programa · 1"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "programa"
+          ]
+        },
+        {
+          "texto": "Cuando el color es",
+          "nivel": 0,
+          "valor": "rojo · D"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "programa · 2"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "programa"
+          ]
+        }
+      ],
+      "notas": "El color de la tarjeta elige el programa y la variable lo recuerda durante todo el lavado."
     },
     {
       "practica": 4,
       "titulo": "Túnel de lavado",
       "enunciado": "Encadena las fases con mensajes: detectar, abrir, lavar según el programa y cerrar.",
-      "pista": "Cada fase, su propia pila: así se lee mucho mejor."
+      "pista": "Cada fase, su propia pila: así se lee mucho mejor.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "programa · 1"
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está más próximo a 10 cm? E"
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "nivel": 0,
+          "valor": "abrir"
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "nivel": 0,
+          "valor": "lavar"
+        },
+        {
+          "texto": "Enviar mensaje y esperar",
+          "nivel": 0,
+          "valor": "cerrar"
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "abrir"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "lavar"
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "programa = 1"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "5",
+            "segundos"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "10",
+            "segundos"
+          ]
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "cerrar"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "Cada fase, su propia pila. El programa principal solo encadena mensajes: se lee como una lista de pasos."
     }
   ],
   "construccion": {

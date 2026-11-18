@@ -75,25 +75,173 @@
       "practica": 1,
       "titulo": "Botón izquierdo",
       "enunciado": "Cuando se presione el botón izquierdo del Hub, enciende un dibujo.",
-      "pista": "Este bloque es un sombrero: empieza su propia pila."
+      "pista": "Este bloque es un sombrero: empieza su propia pila.",
+      "solucion": [
+        {
+          "texto": "Cuando se presiona el botón del Hub",
+          "nivel": 0,
+          "valor": "izquierdo"
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
+        }
+      ],
+      "notas": "Este bloque es un sombrero: empieza su propia pila y no se encaja debajo de nada."
     },
     {
       "practica": 2,
       "titulo": "Dos botones",
       "enunciado": "Un botón arranca el motor y el otro lo para.",
-      "pista": "Dos pilas distintas, cada una con su sombrero."
+      "pista": "Dos pilas distintas, cada una con su sombrero.",
+      "solucion": [
+        {
+          "texto": "Cuando se presiona el botón del Hub",
+          "nivel": 0,
+          "valor": "izquierdo"
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Cuando se presiona el botón del Hub",
+          "nivel": 0,
+          "valor": "derecho"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "Dos pilas separadas, cada una con su sombrero. No hay un «programa principal»: conviven las dos."
     },
     {
       "practica": 3,
       "titulo": "Avisa por mensaje",
       "enunciado": "Al pulsar un botón, envía un mensaje; otra pila lo recibe y mueve el motor.",
-      "pista": "Los mensajes sirven para que una parte del programa avise a otra."
+      "pista": "Los mensajes sirven para que una parte del programa avise a otra.",
+      "solucion": [
+        {
+          "texto": "Cuando se presiona el botón del Hub",
+          "nivel": 0,
+          "valor": "izquierdo"
+        },
+        {
+          "texto": "Enviar mensaje",
+          "nivel": 0,
+          "valor": "girar"
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "girar"
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "2"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "El mensaje es el aviso: una pila lo lanza y otra, en cuanto lo recibe, hace su trabajo."
     },
     {
       "practica": 4,
       "titulo": "Grúa con dos mandos",
       "enunciado": "Un botón gira la grúa y el otro sube y baja el brazo, cada uno con su mensaje.",
-      "pista": "Da nombres claros a los mensajes: «girar» y «subir»."
+      "pista": "Da nombres claros a los mensajes: «girar» y «subir».",
+      "solucion": [
+        {
+          "texto": "Cuando se presiona el botón del Hub",
+          "nivel": 0,
+          "valor": "izquierdo"
+        },
+        {
+          "texto": "Enviar mensaje",
+          "nivel": 0,
+          "valor": "girar"
+        },
+        {
+          "texto": "Cuando se presiona el botón del Hub",
+          "nivel": 0,
+          "valor": "derecho"
+        },
+        {
+          "texto": "Enviar mensaje",
+          "nivel": 0,
+          "valor": "subir"
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "girar"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "subir"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "60"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "2"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "B",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "Nombres claros en los mensajes: con «girar» y «subir» se entiende el programa de un vistazo."
     }
   ],
   "construccion": {

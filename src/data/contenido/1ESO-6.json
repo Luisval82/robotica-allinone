@@ -142,25 +142,209 @@
       "practica": 1,
       "titulo": "Un metro recto",
       "enunciado": "Prepara los motores de movimiento y haz que el robot avance 100 cm.",
-      "pista": "Los tres bloques de preparación van una sola vez, al principio."
+      "pista": "Los tres bloques de preparación van una sola vez, al principio.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "100",
+            "cm"
+          ]
+        }
+      ],
+      "notas": "Los tres bloques de preparación van una sola vez, al principio. Sin el de los centímetros, «100 cm» no significaría nada."
     },
     {
       "practica": 2,
       "titulo": "Adelante y atrás",
       "enunciado": "El robot avanza 30 cm y vuelve hacia atrás otros 30 cm.",
-      "pista": "Para ir hacia atrás, cambia la flecha del desplegable."
+      "pista": "Para ir hacia atrás, cambia la flecha del desplegable.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "30",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↓",
+            "30",
+            "cm"
+          ]
+        }
+      ],
+      "notas": "Para volver no hace falta otro bloque: basta con cambiar la flecha del desplegable a ↓."
     },
     {
       "practica": 3,
       "titulo": "Un giro de 90°",
       "enunciado": "Haz que el robot avance 20 cm y después gire 90 grados a la derecha.",
-      "pista": "El giro se hace con «mover derecha» y grados, no con centímetros."
+      "pista": "El giro se hace con «mover derecha» y grados, no con centímetros.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "20",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
+        }
+      ],
+      "notas": "El giro va en grados y con dirección 100: con 100 el robot gira sobre sí mismo, como un compás."
     },
     {
       "practica": 4,
       "titulo": "El cuadrado",
       "enunciado": "Recorre un cuadrado de 30 cm de lado usando un «Repetir» para no escribir cuatro veces lo mismo.",
-      "pista": "Un lado y un giro, repetido cuatro veces."
+      "pista": "Un lado y un giro, repetido cuatro veces.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "30",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
+        }
+      ],
+      "notas": "Un lado y un giro, repetidos 4 veces. Si el cuadrado no cierra, ajusta los grados: depende de las ruedas."
     }
   ],
   "construccion": {

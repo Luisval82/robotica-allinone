@@ -75,25 +75,226 @@
       "practica": 1,
       "titulo": "Los bloques del almacén",
       "enunciado": "Crea los bloques «seguir línea» y «girar» que vas a reutilizar en todo el proyecto.",
-      "pista": "Si los haces bien, el programa final cabe en una pantalla."
+      "pista": "Si los haces bien, el programa final cabe en una pantalla.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "seguir línea"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valor": "error · Luz reflejada − 50"
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: error × 1.5"
+          ]
+        },
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "girar (grados)"
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valor": "Ángulo de guiñada > grados"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valor": "0.05"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1,
+          "valores": []
+        }
+      ],
+      "notas": "Con estos dos bloques hechos, el programa final cabe en una pantalla. Es la misma idea del laberinto."
     },
     {
       "practica": 2,
       "titulo": "Reconoce la estación",
       "enunciado": "Cuando el sensor vea un color, escribe en la matriz a qué estación corresponde.",
-      "pista": "Un color por estación: apunta la correspondencia antes de programar."
+      "pista": "Un color por estación: apunta la correspondencia antes de programar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "ESTACION A"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 2,
+          "valor": "¿Es de color azul? D"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 3,
+          "valores": [
+            "ESTACION B"
+          ]
+        }
+      ],
+      "notas": "Apunta la correspondencia antes de programar: un color para cada estación y el mismo criterio para todos."
     },
     {
       "practica": 3,
       "titulo": "Coge la carga",
       "enunciado": "Con la posición relativa del motor, baja la horquilla, levántala y comprueba que no se cae.",
-      "pista": "Levanta despacio: con la carga alta el robot se vuelca con facilidad."
+      "pista": "Levanta despacio: con la carga alta el robot se vuelca con facilidad.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valor": "C · 0"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · -120 · 20 %"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "1"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 0 · 15 %"
+        }
+      ],
+      "notas": "Levanta despacio: con la carga alta el robot se vuelca con mucha facilidad."
     },
     {
       "practica": 4,
       "titulo": "Ruta de reparto",
       "enunciado": "Guarda en una lista el orden de las estaciones y recórrelas una a una con tus bloques.",
-      "pista": "Este es el proyecto final en pequeño: pruébalo antes de montarlo entero."
+      "pista": "Este es el proyecto final en pequeño: pruébalo antes de montarlo entero.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "ruta · rojo"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "ruta · azul"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "entregados · 0"
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valor": "entregados = Longitud de ruta"
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 1,
+          "valor": "seguir línea"
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valor": "¿Es de color rojo? D"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2,
+          "valores": []
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 2,
+          "valor": "entregados · 1"
+        },
+        {
+          "texto": "Enviar mensaje",
+          "nivel": 2,
+          "valor": "entregado"
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valor": "entregado"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valor": "registro · entregados"
+        }
+      ],
+      "notas": "La lista guarda la ruta y el bucle la recorre. Este es el proyecto final en pequeño: pruébalo antes de montarlo entero."
     }
   ],
   "construccion": {

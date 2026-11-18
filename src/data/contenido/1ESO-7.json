@@ -110,25 +110,200 @@
       "practica": 1,
       "titulo": "Mira la distancia",
       "enunciado": "Haz que el Hub escriba en la matriz la distancia que mide el sensor.",
-      "pista": "El bloque redondo de distancia se mete dentro del hueco de «escribir»."
+      "pista": "El bloque redondo de distancia se mete dentro del hueco de «escribir».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "10"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Distancia"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.5"
+        }
+      ],
+      "notas": "El bloque redondo del sensor se mete dentro del hueco de «escribir»: lo que se ve es el número que mide en ese momento."
     },
     {
       "practica": 2,
       "titulo": "Arranca sin parar",
       "enunciado": "Usa «empezar a mover» y comprueba que el programa sigue mientras el robot rueda.",
-      "pista": "«empezar a mover» no espera: por eso puedes vigilar el sensor a la vez."
+      "pista": "«empezar a mover» no espera: por eso puedes vigilar el sensor a la vez.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
+        }
+      ],
+      "notas": "«empezar a mover» no espera a nada: el programa sigue y es el «Esperar» el que decide cuánto rueda."
     },
     {
       "practica": 3,
       "titulo": "Frena a 15 cm",
       "enunciado": "El robot arranca y se detiene cuando el obstáculo está a menos de 15 cm.",
-      "pista": "«Esperar hasta que» con la pregunta del sensor de distancia."
+      "pista": "«Esperar hasta que» con la pregunta del sensor de distancia.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está más próximo a 15 cm? E"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
+        }
+      ],
+      "notas": "Esta es la diferencia con «mover durante»: aquí el robot no sabe cuánto va a rodar, para cuando el sensor lo dice."
     },
     {
       "practica": 4,
       "titulo": "Frena y avisa",
       "enunciado": "Igual que la anterior, pero al frenar suena una nota grave y se enciende un dibujo.",
-      "pista": "Después de parar el movimiento, añade el aviso."
+      "pista": "Después de parar el movimiento, añade el aviso.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está más próximo a 15 cm? E"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valor": "48 · 1"
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
+        }
+      ],
+      "notas": "El aviso va después de parar: primero se frena y luego se avisa, no al revés."
     }
   ],
   "construccion": {

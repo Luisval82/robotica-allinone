@@ -124,25 +124,135 @@
       "practica": 1,
       "titulo": "Enciende un dibujo",
       "enunciado": "Haz que la matriz del Hub muestre un corazón durante 3 segundos y después se apague.",
-      "pista": "Acuérdate de «apagar píxeles» al final: si no, el dibujo se queda puesto."
+      "pista": "Acuérdate de «apagar píxeles» al final: si no, el dibujo se queda puesto.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "3"
+          ]
+        },
+        {
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
+        }
+      ],
+      "notas": "Con «durante» el dibujo se apaga solo al acabar. El «apagar píxeles» del final deja la matriz limpia del todo."
     },
     {
       "practica": 2,
       "titulo": "Tu nombre en la matriz",
       "enunciado": "Escribe tu nombre en la matriz y, justo después, muestra un dibujo cualquiera durante 2 segundos.",
-      "pista": "«escribir» hace pasar las letras una a una y el programa espera a que termine."
+      "pista": "«escribir» hace pasar las letras una a una y el programa espera a que termine.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "tu nombre"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
+        },
+        {
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
+        }
+      ],
+      "notas": "El orden es lo que cuenta: «escribir» no deja pasar al bloque siguiente hasta que termina de escribir tu nombre."
     },
     {
       "practica": 3,
       "titulo": "Semáforo del botón",
       "enunciado": "Pon la luz del botón central en verde, espera 2 segundos, cámbiala a rojo y espera otros 2.",
-      "pista": "Son dos bloques de luz con un «Esperar» entre medias."
+      "pista": "Son dos bloques de luz con un «Esperar» entre medias.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "verde"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "2"
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "2"
+        }
+      ],
+      "notas": "Sin los «Esperar» en medio, los dos colores se pondrían tan rápido que solo verías el último."
     },
     {
       "practica": 4,
       "titulo": "Rótulo de bienvenida",
       "enunciado": "Monta un saludo completo: una nota, tu mensaje escrito, un dibujo 2 segundos y la matriz apagada al final.",
-      "pista": "Ordena los bloques como quieres que ocurran: de arriba abajo."
+      "pista": "Ordena los bloques como quieres que ocurran: de arriba abajo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valor": "60 · 0.5"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "¡HOLA!"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
+        },
+        {
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
+        }
+      ],
+      "notas": "Un ejemplo entre muchos: vale cualquier nota, cualquier mensaje y cualquier dibujo. Lo importante es que la matriz acabe apagada."
     }
   ],
   "construccion": {

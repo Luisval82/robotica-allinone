@@ -70,25 +70,139 @@
       "practica": 1,
       "titulo": "Pon el cronómetro a cero",
       "enunciado": "Reinicia el cronómetro y escribe su valor en la matriz.",
-      "pista": "Verás cómo el número va subiendo solo."
+      "pista": "Verás cómo el número va subiendo solo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Cronómetro"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.2"
+        }
+      ],
+      "notas": "El cronómetro corre solo: no hay que hacer nada para que suba, solo leerlo."
     },
     {
       "practica": 2,
       "titulo": "Mide tu reacción",
       "enunciado": "Reinicia el cronómetro, espera a que pulses el botón y escribe el tiempo que tardaste.",
-      "pista": "El valor que escribes es tu tiempo de reacción."
+      "pista": "El valor que escribes es tu tiempo de reacción.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Cronómetro"
+          ]
+        }
+      ],
+      "notas": "Entre el reinicio y la pulsación pasa tu tiempo de reacción: eso es justo lo que lee el cronómetro."
     },
     {
       "practica": 3,
       "titulo": "Espera sorpresa",
       "enunciado": "Antes de levantar la bandera, espera un número aleatorio de segundos entre 2 y 5.",
-      "pista": "El bloque de número aleatorio va dentro del hueco de «Esperar»."
+      "pista": "El bloque de número aleatorio va dentro del hueco de «Esperar».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "Elegir un número aleatorio entre 2 y 5"
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 0,
+          "valores": [
+            "corazón"
+          ]
+        }
+      ],
+      "notas": "El bloque del número al azar va dentro del hueco de «Esperar»: así nunca sabes cuándo va a salir."
     },
     {
       "practica": 4,
       "titulo": "Máquina de reflejos",
       "enunciado": "Junta todo: espera sorpresa, levanta la bandera, mide el tiempo y enséñalo.",
-      "pista": "Pruébalo con un compañero y comparad los tiempos."
+      "pista": "Pruébalo con un compañero y comparad los tiempos.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "Elegir un número aleatorio entre 2 y 5"
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 0,
+          "valores": [
+            "corazón"
+          ]
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "apagar píxeles",
+          "nivel": 0,
+          "valores": []
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Cronómetro"
+          ]
+        }
+      ],
+      "notas": "El reinicio del cronómetro va justo después de levantar la bandera: si lo pones antes, estarías midiendo también la espera."
     }
   ],
   "construccion": {

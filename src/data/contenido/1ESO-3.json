@@ -118,25 +118,152 @@
       "practica": 1,
       "titulo": "Sube la barrera",
       "enunciado": "Lleva el motor A a la posición 90 y déjalo ahí.",
-      "pista": "«ir a la posición» va a un ángulo exacto, da igual dónde estuviera."
+      "pista": "«ir a la posición» va a un ángulo exacto, da igual dónde estuviera.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        }
+      ],
+      "notas": "«ir a la posición» va a un ángulo exacto, da igual dónde estuviera la barrera al empezar."
     },
     {
       "practica": 2,
       "titulo": "Sube y baja",
       "enunciado": "La barrera sube a 90, espera 3 segundos y vuelve a la posición 0.",
-      "pista": "Son dos bloques de posición con un «Esperar» en medio."
+      "pista": "Son dos bloques de posición con un «Esperar» en medio.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "Bajar es volver a la posición 0: el mismo bloque con otro número."
     },
     {
       "practica": 3,
       "titulo": "Sin tirones",
       "enunciado": "Repite la subida y la bajada, pero fijando antes la velocidad al 20 %.",
-      "pista": "A menos velocidad, el movimiento es más suave y no da tirones."
+      "pista": "A menos velocidad, el movimiento es más suave y no da tirones.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "20"
+          ]
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "La velocidad se fija una sola vez al principio: vale para los dos movimientos que vienen después."
     },
     {
       "practica": 4,
       "titulo": "Barrera con aviso",
       "enunciado": "Antes de subir, el Hub da una nota de aviso; después sube, espera y baja.",
-      "pista": "Primero el sonido, luego el movimiento."
+      "pista": "Primero el sonido, luego el movimiento.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "20"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valor": "60 · 0.5"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "Primero el aviso y luego el movimiento: así al coche le da tiempo a verlo."
     }
   ],
   "construccion": {

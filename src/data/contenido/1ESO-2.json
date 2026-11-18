@@ -115,25 +115,160 @@
       "practica": 1,
       "titulo": "Un giro corto",
       "enunciado": "Haz que el motor del puerto A gire 2 rotaciones y pare.",
-      "pista": "«ir durante» ya para solo al terminar; no hace falta «parar motor»."
+      "pista": "«ir durante» ya para solo al terminar; no hace falta «parar motor».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "2",
+            "rotaciones"
+          ]
+        }
+      ],
+      "notas": "«ir durante» para solo al terminar las 2 rotaciones: no hace falta añadir «parar motor»."
     },
     {
       "practica": 2,
       "titulo": "Despacio y deprisa",
       "enunciado": "El motor gira 3 segundos al 20 % y después 3 segundos al 100 %.",
-      "pista": "«fijar velocidad» no mueve nada: hay que ponerlo antes de cada giro."
+      "pista": "«fijar velocidad» no mueve nada: hay que ponerlo antes de cada giro.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "20"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "3",
+            "segundos"
+          ]
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "100"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "3",
+            "segundos"
+          ]
+        }
+      ],
+      "notas": "«fijar velocidad» no mueve nada por sí solo: hay que ponerlo ANTES de cada giro para que ese giro lo use."
     },
     {
       "practica": 3,
       "titulo": "Arranca y para",
       "enunciado": "Usa «arrancar motor», espera 4 segundos y para el motor.",
-      "pista": "Esta pareja sirve cuando no sabes de antemano cuánto tiene que girar."
+      "pista": "Esta pareja sirve cuando no sabes de antemano cuánto tiene que girar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "«arrancar motor» no espera: el programa sigue y es el «Esperar» el que decide cuánto gira antes de pararlo."
     },
     {
       "practica": 4,
       "titulo": "Ventilador de dos marchas",
       "enunciado": "El ventilador arranca al 30 %, a los 3 segundos sube al 70 % sin pararse, y a los 3 segundos se detiene.",
-      "pista": "Cambia la velocidad mientras el motor está en marcha: no hace falta pararlo."
+      "pista": "Cambia la velocidad mientras el motor está en marcha: no hace falta pararlo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "30"
+          ]
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "70"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "Fíjate en que la velocidad cambia con el motor en marcha: no hay que pararlo para subirla."
     }
   ],
   "construccion": {

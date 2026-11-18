@@ -27,6 +27,10 @@ export interface PracticaIntermedia {
   titulo: string;
   enunciado: string;
   pista: string;
+  /** Programa resuelto de ejemplo. Se le enseña al alumno al comprobar. */
+  solucion: ProgramRow[];
+  /** Una línea con lo que de verdad importa de este reto. */
+  notas: string;
 }
 
 /** Programa de ejemplo de la unidad: una pila montada, con su explicación. */

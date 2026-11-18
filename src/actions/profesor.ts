@@ -11,6 +11,7 @@ import {
   getCursosVisibles,
   gradeEntrega,
   puedeVerCurso,
+  reabrirPracticaIntermedia,
   setClassAccess,
   setStudentAccess,
 } from "@/lib/db";
@@ -135,5 +136,26 @@ export async function actualizarAlumnoAction(formData: FormData): Promise<void> 
     ...(name.length >= 3 ? { name } : {}),
     ...(isCourse(course) ? { course } : {}),
   });
+  revalidatePath("/dashboard", "layout");
+}
+
+/**
+ * Reabre una práctica intermedia que el alumno comprobó por error: se queda
+ * el programa que había guardado y vuelve a poder cambiarlo. Solo para
+ * alumnos de los cursos que imparte quien lo pide.
+ */
+export async function reabrirPracticaAction(formData: FormData): Promise<void> {
+  const session = await requireRole(TEACHER_ROLES);
+
+  const alumnoId = field(formData, "alumnoId");
+  const unidad = Number(field(formData, "unidad"));
+  const practica = Number(field(formData, "practica"));
+  if (!isUuid(alumnoId) || !Number.isInteger(unidad) || !Number.isInteger(practica)) return;
+
+  const visibles = await getCursosVisibles(session);
+  const alumno = await findUserById(alumnoId);
+  if (!alumno || alumno.role !== "alumno" || !puedeVerCurso(visibles, alumno.course)) return;
+
+  await reabrirPracticaIntermedia(alumnoId, unidad, practica);
   revalidatePath("/dashboard", "layout");
 }

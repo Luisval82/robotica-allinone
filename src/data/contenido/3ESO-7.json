@@ -71,25 +71,200 @@
       "practica": 1,
       "titulo": "Dibuja el movimiento",
       "enunciado": "Usa la extensión de gráfico de líneas para ir dibujando el ángulo del Hub.",
-      "pista": "Mueve el Hub con la mano y mira la línea del gráfico."
+      "pista": "Mueve el Hub con la mano y mira la línea del gráfico.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valor": "trazar Ángulo de guiñada"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.1"
+        }
+      ],
+      "notas": "Hay que activar la extensión antes: está abajo a la izquierda, en el botón de las extensiones."
     },
     {
       "practica": 2,
       "titulo": "Pon la mesa a vibrar",
       "enunciado": "Arranca el motor de la mesa sísmica y detenlo a los 5 segundos.",
-      "pista": "Reinicia el cronómetro antes de empezar."
+      "pista": "Reinicia el cronómetro antes de empezar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "60"
+          ]
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "5"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "Reinicia el cronómetro antes de arrancar: es lo que después te dirá cuánto ha durado el ensayo."
     },
     {
       "practica": 3,
       "titulo": "Registra la sacudida",
       "enunciado": "Mientras la mesa vibra, ve añadiendo a una lista el ángulo del Hub.",
-      "pista": "Cada elemento de la lista es una medida en el tiempo."
+      "pista": "Cada elemento de la lista es una medida en el tiempo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "60"
+          ]
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valor": "Cronómetro > 5"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valor": "sacudidas · Ángulo de guiñada"
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valor": "trazar Ángulo de guiñada"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.1"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "Cada elemento de la lista es una medida: con una espera de 0,1 segundos guardas unas diez por segundo."
     },
     {
       "practica": 4,
       "titulo": "Compara dos torres",
       "enunciado": "Repite la prueba con dos torres distintas y compara los gráficos para decidir cuál aguanta mejor.",
-      "pista": "Misma duración y misma velocidad de motor: si no, la comparación no vale."
+      "pista": "Misma duración y misma velocidad de motor: si no, la comparación no vale.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "60"
+          ]
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valor": "Cronómetro > 5"
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valor": "torre 1 · Ángulo de guiñada"
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valor": "trazar Ángulo de guiñada"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.1"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Longitud de torre 1"
+          ]
+        }
+      ],
+      "notas": "Misma duración y misma velocidad en las dos pruebas: si cambias eso, la comparación no vale de nada."
     }
   ],
   "construccion": {

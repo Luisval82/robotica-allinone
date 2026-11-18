@@ -476,20 +476,24 @@ export async function getEntrega(
 }
 
 /**
- * Guarda la entrega de un alumno. Mientras el profesor no la haya corregido,
- * una entrega nueva sustituye a la anterior. Devuelve "corregida" si ya tiene
- * nota y, por tanto, no se puede cambiar.
+ * Guarda la entrega de un alumno de la PRUEBA.
+ *
+ * Es definitiva: la PRUEBA se entrega una sola vez. Si ya hay una entrega,
+ * esta función no escribe nada y devuelve "entregada". Se comprueba aquí, en
+ * el servidor, porque el formulario se puede reenviar a mano.
  */
 export async function saveEntrega(
   studentId: string,
   input: { unidad: number; practica: 1 | 2; bloques: ProgramRow[]; explicacion: string },
-): Promise<"guardada" | "corregida"> {
+): Promise<"guardada" | "entregada" | "corregida"> {
   const previa = await getEntrega(studentId, input.unidad, input.practica);
   if (previa?.nota != null) return "corregida";
+  if (previa) return "entregada";
 
   const { error } = await supabase.from("entregas").upsert(
     {
-      id: previa?.id ?? crypto.randomUUID(),
+      // Aquí no hay entrega previa: si la hubiera, ya habríamos salido arriba.
+      id: crypto.randomUUID(),
       anio: await getAnioActivo(),
       alumno_id: studentId,
       unidad: input.unidad,
@@ -561,6 +565,8 @@ export interface PracticaIntermediaEntrega {
   bloques: ProgramRow[];
   explicacion: string;
   entregadaEn: string;
+  /** Con fecha, el alumno la dio por terminada y ya no se puede cambiar. */
+  comprobadaEn: string | null;
 }
 
 /** Lo que el alumno lleva guardado de las prácticas intermedias de una unidad. */
@@ -570,7 +576,7 @@ export async function getPracticasIntermedias(
 ): Promise<PracticaIntermediaEntrega[]> {
   const { data, error } = await supabase
     .from("practicas_intermedias")
-    .select("practica, bloques, explicacion, entregada_en")
+    .select("practica, bloques, explicacion, entregada_en, comprobada_en")
     .eq("anio", await getAnioActivo())
     .eq("alumno_id", studentId)
     .eq("unidad", unidad)
@@ -582,6 +588,7 @@ export async function getPracticasIntermedias(
     bloques: (fila.bloques ?? []) as ProgramRow[],
     explicacion: (fila.explicacion ?? "") as string,
     entregadaEn: fila.entregada_en as string,
+    comprobadaEn: (fila.comprobada_en ?? null) as string | null,
   }));
 }
 
@@ -603,22 +610,71 @@ export async function getPracticasIntermediasCount(
   return porUnidad;
 }
 
-/** Guarda (o rehace) una práctica intermedia. Se puede repetir las veces que haga falta. */
+/**
+ * Guarda una práctica intermedia.
+ *
+ * Con `comprobar`, el alumno da la práctica por terminada: se queda con fecha
+ * en `comprobada_en` y a partir de ahí NO se puede volver a tocar. El cierre
+ * se comprueba aquí, en el servidor: si ya estaba comprobada, esta función no
+ * escribe nada y devuelve "cerrada". Deshabilitar los campos en pantalla no
+ * basta, porque el formulario se puede reenviar a mano.
+ */
 export async function savePracticaIntermedia(
   studentId: string,
-  input: { unidad: number; practica: number; bloques: ProgramRow[]; explicacion: string },
-): Promise<void> {
+  input: {
+    unidad: number;
+    practica: number;
+    bloques: ProgramRow[];
+    explicacion: string;
+    comprobar: boolean;
+  },
+): Promise<"guardada" | "comprobada" | "cerrada"> {
+  const anio = await getAnioActivo();
+
+  const { data: previa, error: errorPrevia } = await supabase
+    .from("practicas_intermedias")
+    .select("comprobada_en")
+    .eq("anio", anio)
+    .eq("alumno_id", studentId)
+    .eq("unidad", input.unidad)
+    .eq("practica", input.practica)
+    .maybeSingle();
+  assertNoError(errorPrevia, "savePracticaIntermedia:previa");
+  if ((previa as { comprobada_en: string | null } | null)?.comprobada_en) return "cerrada";
+
+  const ahora = new Date().toISOString();
   const { error } = await supabase.from("practicas_intermedias").upsert(
     {
-      anio: await getAnioActivo(),
+      anio,
       alumno_id: studentId,
       unidad: input.unidad,
       practica: input.practica,
       bloques: input.bloques,
       explicacion: input.explicacion,
-      entregada_en: new Date().toISOString(),
+      entregada_en: ahora,
+      comprobada_en: input.comprobar ? ahora : null,
     },
     { onConflict: "anio,alumno_id,unidad,practica" },
   );
   assertNoError(error, "savePracticaIntermedia");
+  return input.comprobar ? "comprobada" : "guardada";
+}
+
+/**
+ * El profesor reabre una práctica que el alumno comprobó por error. Se queda
+ * el programa que había guardado; solo vuelve a poder cambiarlo.
+ */
+export async function reabrirPracticaIntermedia(
+  alumnoId: string,
+  unidad: number,
+  practica: number,
+): Promise<void> {
+  const { error } = await supabase
+    .from("practicas_intermedias")
+    .update({ comprobada_en: null })
+    .eq("anio", await getAnioActivo())
+    .eq("alumno_id", alumnoId)
+    .eq("unidad", unidad)
+    .eq("practica", practica);
+  assertNoError(error, "reabrirPracticaIntermedia");
 }

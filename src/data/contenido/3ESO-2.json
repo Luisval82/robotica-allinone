@@ -66,25 +66,188 @@
       "practica": 1,
       "titulo": "El punto medio",
       "enunciado": "Mide la luz sobre el blanco y sobre el negro y guarda en una variable el valor de en medio.",
-      "pista": "El punto medio es la suma de los dos dividida entre dos."
+      "pista": "El punto medio es la suma de los dos dividida entre dos.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "blanco · 85"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "negro · 15"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "medio · (blanco + negro) ÷ 2"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "medio"
+          ]
+        }
+      ],
+      "notas": "Mide tú el blanco y el negro y pon tus números: el punto medio es la suma de los dos dividida entre dos."
     },
     {
       "practica": 2,
       "titulo": "Calcula el error",
       "enunciado": "Guarda en otra variable la diferencia entre lo que lee el sensor y ese punto medio.",
-      "pista": "Si el error es 0, el robot está justo en el borde de la línea."
+      "pista": "Si el error es 0, el robot está justo en el borde de la línea.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "medio · 50"
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valor": "error · Luz reflejada − medio"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "error"
+          ]
+        }
+      ],
+      "notas": "Si el error sale 0, el sensor está justo en el borde de la línea: ahí es donde tiene que ir el robot."
     },
     {
       "practica": 3,
       "titulo": "Dirección proporcional",
       "enunciado": "Usa el error multiplicado por un número como dirección de «empezar a mover».",
-      "pista": "Cuanto mayor sea el error, más cerrado será el giro."
+      "pista": "Cuanto mayor sea el error, más cerrado será el giro.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "medio · 50"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "error · Luz reflejada − medio"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "giro · error × 1.5"
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 0,
+          "valores": [
+            "derecha: giro"
+          ]
+        }
+      ],
+      "notas": "El multiplicador convierte el error en giro: cuanto más lejos del borde, más cerrada la corrección."
     },
     {
       "practica": 4,
       "titulo": "Seguimiento suave",
       "enunciado": "Mete el cálculo en un bucle infinito y ajusta el multiplicador hasta que no zigzaguee.",
-      "pista": "Multiplicador alto: nervioso. Bajo: se sale en las curvas."
+      "pista": "Multiplicador alto: nervioso. Bajo: se sale en las curvas.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "medio · 50"
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valor": "error · Luz reflejada − medio"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valor": "giro · error × 1.5"
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: giro"
+          ]
+        }
+      ],
+      "notas": "Multiplicador alto: nervioso y zigzagueante. Bajo: suave, pero se sale en las curvas cerradas. Busca el tuyo."
     }
   ],
   "construccion": {

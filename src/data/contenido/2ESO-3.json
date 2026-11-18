@@ -76,25 +76,148 @@
       "practica": 1,
       "titulo": "Crea el contador",
       "enunciado": "Crea una variable «aforo» y ponla a 0 al empezar el programa.",
-      "pista": "Fijar la variable al principio evita arrastrar el valor de la vez anterior."
+      "pista": "Fijar la variable al principio evita arrastrar el valor de la vez anterior.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "aforo · 0"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
+        }
+      ],
+      "notas": "Fijar la variable a 0 al empezar evita arrastrar el aforo de la vez anterior."
     },
     {
       "practica": 2,
       "titulo": "Suma uno",
       "enunciado": "Cada vez que alguien pasa por delante del sensor, la variable sube de uno en uno.",
-      "pista": "«Cambiar variable por 1» suma; con −1 restaría."
+      "pista": "«Cambiar variable por 1» suma; con −1 restaría.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "aforo · 0"
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valor": "E · 10 cm"
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 0,
+          "valor": "aforo · 1"
+        }
+      ],
+      "notas": "«Cambiar variable por 1» suma al valor que ya había. Con −1 restaría, que es lo que harías en la salida."
     },
     {
       "practica": 3,
       "titulo": "Enséñalo",
       "enunciado": "Después de cada paso, escribe el valor del aforo en la matriz.",
-      "pista": "La variable se mete dentro del hueco de «escribir»."
+      "pista": "La variable se mete dentro del hueco de «escribir».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "aforo · 0"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valor": "E · 10 cm"
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 0,
+          "valor": "aforo · 1"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
+        }
+      ],
+      "notas": "La variable se mete dentro del hueco de «escribir»: no escribe la palabra «aforo», escribe su valor."
     },
     {
       "practica": 4,
       "titulo": "Torno completo",
       "enunciado": "Junta las tres partes y haz que además el motor dé un cuarto de vuelta por cada persona.",
-      "pista": "90 grados por persona es un cuarto de vuelta del torno."
+      "pista": "90 grados por persona es un cuarto de vuelta del torno.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "aforo · 0"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valor": "E · 10 cm"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 0,
+          "valor": "aforo · 1"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "aforo"
+          ]
+        }
+      ],
+      "notas": "90 grados es un cuarto de vuelta del torno: justo el hueco para que pase una persona."
     }
   ],
   "construccion": {

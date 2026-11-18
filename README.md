@@ -114,6 +114,11 @@ servidor con la Secret key.
 | Entregas | Programa entregado, enlace a la solución oficial, nota (0–10) y comentario. |
 | Soluciones | Enunciado y solución oficial, en bloques de palabras, de las 2 prácticas de cada unidad. |
 
+Pulsando cualquier casilla de la tabla de **Notas** se abre el seguimiento de ese alumno en esa
+unidad: el test pregunta a pregunta y sus **4 prácticas de programación** con su estado (sin
+empezar, borrador o comprobada), el programa con el que cerró cada una y un botón para **reabrir**
+la que haya comprobado por error.
+
 Reglas de los interruptores (`src/lib/db/aula.ts`):
 
 - Por defecto solo está abierta la **UD 1** y todas las PRUEBAS están cerradas.
@@ -144,9 +149,18 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
 - **Test**: al pulsar «Entregar» se corrige en el servidor, la nota aparece al momento y queda
   guardada para el profesor. Hay un solo intento. Las respuestas correctas no se envían al
   navegador hasta que el test está entregado.
-- **Entregas**: el alumno compone su programa eligiendo bloques de la unidad (y de las anteriores),
-  rellena sus huecos y lo entrega. Puede cambiarlo hasta que el profesor lo corrija; después ve la
-  nota y el comentario.
+- **Prácticas de programación (las 4 intermedias)**: el alumno compone su programa eligiendo
+  bloques de la unidad (y de las anteriores) y rellenando sus huecos. Puede **guardar borrador**
+  tantas veces como quiera y, cuando lo tiene, pulsa **«Guardar y comprobar»**:
+  - Se le pregunta antes, porque cerrar es definitivo.
+  - La práctica queda **cerrada** —campos y envío deshabilitados— y pasa a «Comprobada».
+  - Aparece **al lado la solución de ejemplo**, con una línea sobre lo que importa de ese reto y el
+    recordatorio de que es *un* ejemplo válido, no la única respuesta.
+  - El cierre se comprueba **en el servidor**: deshabilitar los campos no basta, porque el
+    formulario se puede reenviar a mano.
+- **Entregas de la PRUEBA (las 2 con nota)**: igual, pero se entregan **una sola vez** —también con
+  confirmación— y ahí **no** se enseña la solución: esas las corrige el profesor, y su solución
+  oficial sigue siendo material solo para él.
 - **Convenio de puertos** (`src/lib/unidades.ts`): motores en A, B y C por orden; sensor de color en
   D, de distancia en E y de fuerza en F.
 
@@ -157,8 +171,13 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
   `"pendiente": true`: su nombre está por comprobar en la app SPIKE.
 - `src/data/contenido/CURSO-N.json` contiene lo redactado de cada unidad: reto, guion de vídeo,
   explicación de cada bloque, pasos de montaje, test (con la respuesta correcta y su explicación) y
-  las dos prácticas con su solución oficial. Hay **27 archivos**, uno por unidad. En total: 216
-  preguntas de test y 54 prácticas con solución.
+  las dos prácticas de la PRUEBA con su solución oficial, y las **4 prácticas intermedias** con su
+  enunciado, su pista, su solución de ejemplo (`solucion`) y su nota (`notas`). Hay **27 archivos**,
+  uno por unidad. En total: 216 preguntas de test, 54 prácticas de PRUEBA y **108 prácticas
+  intermedias**, todas con solución.
+- Las 108 soluciones de ejemplo se escribieron con `scripts/soluciones-intermedias.py`, que valida
+  que cada bloque usado esté en la paleta de su unidad y que los valores cuadren con los huecos y
+  desplegables de ese bloque. Para cambiar una, edita el archivo de la unidad o el script.
 - Para corregir un texto, una pregunta o una solución, edita el archivo de esa unidad. Si añades
   un archivo nuevo, regístralo en `src/data/contenido/index.ts`.
 - **Vídeo real (paso 1)**: añade el campo `"url"` dentro de `"video"` en el archivo de esa unidad

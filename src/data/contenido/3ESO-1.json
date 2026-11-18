@@ -73,25 +73,242 @@
       "practica": 1,
       "titulo": "Tu primer bloque",
       "enunciado": "Crea un bloque llamado «lado» que haga avanzar 20 cm y girar 90 grados.",
-      "pista": "Al crearlo aparece en «Mis bloques», abajo del todo de la paleta."
+      "pista": "Al crearlo aparece en «Mis bloques», abajo del todo de la paleta.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "lado"
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "20",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
+        }
+      ],
+      "notas": "Un bloque propio se define aparte, en su propia pila, y aparece abajo del todo de la paleta, en «Mis bloques»."
     },
     {
       "practica": 2,
       "titulo": "El cuadrado con tu bloque",
       "enunciado": "Usa un «Repetir» cuatro veces con tu bloque «lado» dentro.",
-      "pista": "Fíjate en lo corto que queda el programa."
+      "pista": "Fíjate en lo corto que queda el programa.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "lado"
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "20",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 1,
+          "valor": "lado"
+        }
+      ],
+      "notas": "Fíjate en lo corto que queda el programa principal: cuatro veces una orden que tú has inventado."
     },
     {
       "practica": 3,
       "titulo": "Un bloque con entrada",
       "enunciado": "Cambia tu bloque para que reciba la longitud del lado como número.",
-      "pista": "La entrada se usa dentro del bloque igual que una variable."
+      "pista": "La entrada se usa dentro del bloque igual que una variable.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "lado (longitud)"
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "longitud",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 1,
+          "valor": "lado (25)"
+        }
+      ],
+      "notas": "La entrada se usa dentro del bloque igual que una variable: donde iba el 20 ahora va «longitud»."
     },
     {
       "practica": 4,
       "titulo": "Polígonos a la carta",
       "enunciado": "Haz un triángulo y un pentágono cambiando solo el número de repeticiones y los grados del giro.",
-      "pista": "Los grados de cada giro son 360 entre el número de lados."
+      "pista": "Los grados de cada giro son 360 entre el número de lados.",
+      "solucion": [
+        {
+          "texto": "Definir mi bloque",
+          "nivel": 0,
+          "valor": "lado (longitud, giro)"
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "longitud",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "giro",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "lados · 5"
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "lados"
+        },
+        {
+          "texto": "Mi bloque",
+          "nivel": 1,
+          "valor": "lado (20, 360 ÷ lados)"
+        }
+      ],
+      "notas": "360 entre el número de lados da el giro de cada esquina: 120 grados en el triángulo y 72 en el pentágono."
     }
   ],
   "construccion": {

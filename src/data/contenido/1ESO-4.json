@@ -114,25 +114,138 @@
       "practica": 1,
       "titulo": "Cuatro tramos",
       "enunciado": "Usa un «Repetir» 4 veces para que el motor gire 90 grados en cada vuelta.",
-      "pista": "Lo que va dentro del bucle se hace tantas veces como digas."
+      "pista": "Lo que va dentro del bucle se hace tantas veces como digas.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
+        }
+      ],
+      "notas": "Lo que va dentro del «Repetir» —con la sangría— se hace 4 veces. 4 × 90 grados es la vuelta completa."
     },
     {
       "practica": 2,
       "titulo": "Parada en cada cabina",
       "enunciado": "Dentro del mismo bucle, añade una espera de 2 segundos después de cada tramo.",
-      "pista": "El orden dentro del bucle también cuenta."
+      "pista": "El orden dentro del bucle también cuenta.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "2"
+        }
+      ],
+      "notas": "La espera va dentro del bucle, debajo del giro: así hay parada en cada cabina y no una sola al final."
     },
     {
       "practica": 3,
       "titulo": "Noria con sonido",
       "enunciado": "Añade un sonido al principio de cada tramo, antes de que el motor gire.",
-      "pista": "Mete el bloque de sonido dentro del bucle, encima del de motor."
+      "pista": "Mete el bloque de sonido dentro del bucle, encima del de motor.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "nivel": 1,
+          "valor": "timbre"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "2"
+        }
+      ],
+      "notas": "El sonido va dentro del bucle y encima del giro: suena al empezar cada tramo."
     },
     {
       "practica": 4,
       "titulo": "Ocho cabinas",
       "enunciado": "Haz la misma noria pero con 8 paradas: piensa cuántos grados le tocan a cada tramo.",
-      "pista": "Una vuelta entera son 360 grados: repártelos entre las paradas."
+      "pista": "Una vuelta entera son 360 grados: repártelos entre las paradas.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "8"
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "nivel": 1,
+          "valor": "timbre"
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "↻",
+            "45",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "2"
+        }
+      ],
+      "notas": "360 grados entre 8 paradas son 45 grados por tramo. Si pones 90, la noria daría dos vueltas."
     }
   ],
   "construccion": {

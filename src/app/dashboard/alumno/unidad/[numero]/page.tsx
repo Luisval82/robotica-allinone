@@ -429,6 +429,9 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
             <IpadWorkflowBanner />
           </div>
           <div className="mt-5 grid gap-5">
+            {/* La PRUEBA se entrega una sola vez: al entregar queda cerrada.
+                Aquí NO se enseña la solución, porque estas dos las corrige el
+                profesor con nota. */}
             {practicas.length > 0 ? (
               practicas.map((practica, index) => (
                 <EntregaBox
@@ -439,6 +442,8 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                   enunciado={practica.enunciado}
                   paleta={paleta}
                   entrega={entregas[index]}
+                  bloqueada={entregas[index] !== null}
+                  textoCerrada="Entregada"
                 />
               ))
             ) : (

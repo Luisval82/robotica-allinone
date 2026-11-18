@@ -63,25 +63,151 @@
       "practica": 1,
       "titulo": "¿Está cerca?",
       "enunciado": "Escribe «CERCA» si la distancia es menor que 20, y si no, «LEJOS».",
-      "pista": "El operador «menor que» va dentro del hueco del «Si»."
+      "pista": "El operador «menor que» va dentro del hueco del «Si».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "Distancia < 20"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "CERCA"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "LEJOS"
+          ]
+        }
+      ],
+      "notas": "El operador «menor que» es el que va en el hueco hexagonal, con el bloque redondo de la distancia dentro."
     },
     {
       "practica": 2,
       "titulo": "Pitido simple",
       "enunciado": "Si está a menos de 20 cm, suena una nota corta.",
-      "pista": "Una nota de medio segundo basta para el aviso."
+      "pista": "Una nota de medio segundo basta para el aviso.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valor": "Distancia < 20"
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 2,
+          "valor": "72 · 0.5"
+        }
+      ],
+      "notas": "Media décima de segundo basta para el aviso: si la nota dura más, los pitidos se juntan."
     },
     {
       "practica": 3,
       "titulo": "Dos avisos",
       "enunciado": "Pita rápido si está a menos de 10 cm y despacio si está entre 10 y 30.",
-      "pista": "Para «entre 10 y 30» necesitas el operador «y» con dos comparaciones."
+      "pista": "Para «entre 10 y 30» necesitas el operador «y» con dos comparaciones.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "Distancia < 10"
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 2,
+          "valor": "72 · 0.1"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valor": "0.1"
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 2,
+          "valor": "Distancia > 10 y Distancia < 30"
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 3,
+          "valor": "72 · 0.1"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 3,
+          "valor": "0.6"
+        }
+      ],
+      "notas": "«Entre 10 y 30» son dos comparaciones unidas con el operador «y»: las dos tienen que cumplirse."
     },
     {
       "practica": 4,
       "titulo": "Cuanto más cerca, más rápido",
       "enunciado": "Calcula la espera entre pitidos a partir de la distancia, con una operación aritmética.",
-      "pista": "Por ejemplo, esperar la distancia dividida entre 100: a menos distancia, menos espera."
+      "pista": "Por ejemplo, esperar la distancia dividida entre 100: a menos distancia, menos espera.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valor": "Distancia < 50"
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 2,
+          "valor": "72 · 0.1"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valor": "Distancia ÷ 50"
+        }
+      ],
+      "notas": "Al dividir la distancia, la espera se encoge sola al acercarte: eso es lo que hace el sensor de un coche."
     }
   ],
   "construccion": {

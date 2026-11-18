@@ -30,7 +30,8 @@ export default async function ProfesorNotasPage({
       <h1 className="font-display text-4xl font-semibold text-ink-900">Notas de los tests</h1>
       <p className="mt-2 max-w-3xl text-lg font-semibold text-ink-500">
         Cada PRUEBA tiene un test de {TEST_QUESTIONS} preguntas que se corrige solo cuando el alumno
-        pulsa «Entregar». La nota es sobre 10.
+        pulsa «Entregar». La nota es sobre 10. Pulsa cualquier casilla para ver esa unidad de ese
+        alumno: el test pregunta a pregunta y sus cuatro prácticas de programación.
       </p>
 
       <AvisoAlcance alcance={visibles.alcance} cursos={visibles.cursos} />
@@ -79,17 +80,20 @@ export default async function ProfesorNotasPage({
                     const chip = `inline-block min-w-12 rounded-xl px-2 py-1.5 text-sm font-extrabold tabular-nums ${notaClass(nota)}`;
                     return (
                       <td key={unidad} className="px-2 py-3 text-center">
-                        {nota === null ? (
-                          <span className={chip}>{formatNota(nota)}</span>
-                        ) : (
-                          <Link
-                            href={`/dashboard/profesor/notas/${alumno.id}/${unidad}`}
-                            className={`${chip} transition hover:ring-2 hover:ring-spike-400 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-spike-400`}
-                            title={`Ver la corrección de ${alumno.name} en la UD ${unidad}`}
-                          >
-                            {formatNota(nota)}
-                          </Link>
-                        )}
+                        {/* Toda celda lleva al seguimiento de ese alumno en
+                            esa unidad, con o sin nota: ahí están también sus
+                            cuatro prácticas de programación. */}
+                        <Link
+                          href={`/dashboard/profesor/notas/${alumno.id}/${unidad}`}
+                          className={`${chip} transition hover:ring-2 hover:ring-spike-400 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-spike-400`}
+                          title={
+                            nota === null
+                              ? `Ver las prácticas de ${alumno.name} en la UD ${unidad}`
+                              : `Ver el test y las prácticas de ${alumno.name} en la UD ${unidad}`
+                          }
+                        >
+                          {formatNota(nota)}
+                        </Link>
                       </td>
                     );
                   })}

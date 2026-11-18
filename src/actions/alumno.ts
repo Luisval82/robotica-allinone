@@ -190,6 +190,9 @@ export async function submitEntregaAction(
   if (result === "corregida") {
     return { error: "Tu profesor ya ha corregido esta entrega y no se puede cambiar." };
   }
+  if (result === "entregada") {
+    return { error: "Esta práctica ya la entregaste y no se puede cambiar." };
+  }
 
   revalidatePath("/dashboard", "layout");
   return { ok: true };
@@ -197,8 +200,11 @@ export async function submitEntregaAction(
 
 /**
  * Práctica intermedia: guarda el programa de bloques de uno de los 4 retos
- * de la unidad. A diferencia de las 2 entregas de la PRUEBA, no necesita que
- * la prueba esté abierta y se puede rehacer las veces que haga falta.
+ * de la unidad. No necesita que la PRUEBA esté abierta.
+ *
+ * Con el campo «comprobar», el alumno la da por terminada: se guarda, se
+ * cierra y se le enseña la solución oficial para que compare. Sin él es un
+ * borrador y puede seguir cambiándola.
  */
 export async function submitPracticaIntermediaAction(
   _previous: StudentFormState,
@@ -220,12 +226,16 @@ export async function submitPracticaIntermediaAction(
   if (!bloques) return { error: "Añade al menos un bloque a tu programa antes de guardar." };
 
   const explicacion = field(formData, "explicacion").trim().slice(0, MAX_EXPLANATION_LENGTH);
-  await savePracticaIntermedia(context.alumnoId, {
+  const result = await savePracticaIntermedia(context.alumnoId, {
     unidad: context.unidad,
     practica: practica.practica,
     bloques,
     explicacion,
+    comprobar: field(formData, "comprobar") === "1",
   });
+  if (result === "cerrada") {
+    return { error: "Ya comprobaste esta práctica y no se puede cambiar." };
+  }
 
   revalidatePath("/dashboard", "layout");
   return { ok: true };

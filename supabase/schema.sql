@@ -145,8 +145,14 @@ create table if not exists public.practicas_intermedias (
   bloques      jsonb not null default '[]'::jsonb,
   explicacion  text not null default '',
   entregada_en timestamptz not null default now(),
+  -- «Guardar y comprobar»: con fecha, el alumno la dio por terminada, ya no
+  -- se puede cambiar y se le enseña la solución oficial. Sin fecha, borrador.
+  comprobada_en timestamptz,
   primary key (anio, alumno_id, unidad, practica)
 );
+
+create index if not exists practicas_intermedias_comprobadas_idx
+  on public.practicas_intermedias (anio, unidad) where comprobada_en is not null;
 
 create index if not exists practicas_intermedias_alumno_idx
   on public.practicas_intermedias (alumno_id, unidad);

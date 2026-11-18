@@ -118,25 +118,146 @@
       "practica": 1,
       "titulo": "Espera al botón",
       "enunciado": "El programa no hace nada hasta que alguien pulsa el sensor de fuerza; entonces suena una nota.",
-      "pista": "«Esperar hasta que» detiene el programa hasta que la respuesta es «sí»."
+      "pista": "«Esperar hasta que» detiene el programa hasta que la respuesta es «sí».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valor": "60 · 0.5"
+        }
+      ],
+      "notas": "«Esperar hasta que» deja el programa quieto, sin gastar nada, hasta que la respuesta del sensor es «sí»."
     },
     {
       "practica": 2,
       "titulo": "Puerta que se abre",
       "enunciado": "Al pulsar, la puerta se abre llevando el motor a la posición 90.",
-      "pista": "Primero la espera, después el movimiento."
+      "pista": "Primero la espera, después el movimiento.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        }
+      ],
+      "notas": "Primero la espera y después el movimiento: si los cambias de orden, la puerta se abre sola al arrancar."
     },
     {
       "practica": 3,
       "titulo": "Y se cierra sola",
       "enunciado": "Después de abrirse, la puerta espera 3 segundos y se cierra.",
-      "pista": "Cerrar es volver a la posición 0."
+      "pista": "Cerrar es volver a la posición 0.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "Cerrar es volver a la posición 0, igual que la barrera de la unidad 3."
     },
     {
       "practica": 4,
       "titulo": "Puerta con timbre",
       "enunciado": "Monta la puerta completa: espera la pulsación, suena el timbre, se abre, espera y se cierra.",
-      "pista": "Comprueba el orden antes de probarlo en el Hub."
+      "pista": "Comprueba el orden antes de probarlo en el Hub.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "30"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "nivel": 0,
+          "valor": "timbre"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "3"
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "El timbre suena entero antes de que la puerta se mueva, porque «Tocar sonido hasta acabar» no deja pasar al siguiente bloque."
     }
   ],
   "construccion": {

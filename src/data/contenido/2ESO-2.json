@@ -66,25 +66,190 @@
       "practica": 1,
       "titulo": "Mide la luz",
       "enunciado": "Escribe en la matriz el valor de luz reflejada que está leyendo el sensor.",
-      "pista": "Pásalo por el suelo blanco y por la línea negra y apunta los dos valores."
+      "pista": "Pásalo por el suelo blanco y por la línea negra y apunta los dos valores.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Luz reflejada"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.5"
+        }
+      ],
+      "notas": "Apunta los dos números: el del suelo blanco y el de la línea negra. De ahí sale el umbral de las prácticas siguientes."
     },
     {
       "practica": 2,
       "titulo": "Blanco o negro",
       "enunciado": "Decide con un «Si… entonces… Si no…» si lo que ve el sensor es claro u oscuro, y escríbelo.",
-      "pista": "El punto de corte suele estar a medio camino entre los dos valores que apuntaste."
+      "pista": "El punto de corte suele estar a medio camino entre los dos valores que apuntaste.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "¿Es la luz reflejada < 50? D"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "OSCURO"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "CLARO"
+          ]
+        }
+      ],
+      "notas": "El 50 es el punto de corte: cámbialo por el valor que esté a medio camino entre tu blanco y tu negro."
     },
     {
       "practica": 3,
       "titulo": "Gira a un lado",
       "enunciado": "Cuando el sensor vea negro, el robot empieza a moverse girando a la derecha; cuando vea blanco, a la izquierda.",
-      "pista": "Son dos «empezar a mover con dirección», uno en cada rama."
+      "pista": "Son dos «empezar a mover con dirección», uno en cada rama.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valor": "¿Es la luz reflejada < 50? D"
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 50"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: -50"
+          ]
+        }
+      ],
+      "notas": "Son dos «empezar a mover» con dirección, uno en cada rama: positivo gira a la derecha y negativo, a la izquierda."
     },
     {
       "practica": 4,
       "titulo": "Sigue la línea",
       "enunciado": "Mete todo en un bucle infinito: ese zigzag continuo es el seguimiento de línea.",
-      "pista": "Con la velocidad alta zigzaguea más; pruébalo despacio primero."
+      "pista": "Con la velocidad alta zigzaguea más; pruébalo despacio primero.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "25"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valor": "¿Es la luz reflejada < 50? D"
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: 50"
+          ]
+        },
+        {
+          "texto": "Si no",
+          "nivel": 1
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: -50"
+          ]
+        }
+      ],
+      "notas": "Ese zigzag continuo ES el seguimiento de línea. Si zigzaguea demasiado, baja la velocidad y la dirección."
     }
   ],
   "construccion": {

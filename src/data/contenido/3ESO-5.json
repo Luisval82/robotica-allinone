@@ -64,25 +64,163 @@
       "practica": 1,
       "titulo": "Distancia al de delante",
       "enunciado": "Escribe en la matriz la distancia al coche de delante mientras lo acercas y lo alejas.",
-      "pista": "Apunta a qué distancia quieres que se mantenga."
+      "pista": "Apunta a qué distancia quieres que se mantenga.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Distancia"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.2"
+        }
+      ],
+      "notas": "Acerca y aleja el coche de delante con la mano y decide a qué distancia quieres que se mantenga el tuyo."
     },
     {
       "practica": 2,
       "titulo": "El error de distancia",
       "enunciado": "Guarda en una variable la diferencia entre la distancia medida y los 15 cm deseados.",
-      "pista": "Error positivo: está lejos. Negativo: demasiado cerca."
+      "pista": "Error positivo: está lejos. Negativo: demasiado cerca.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valor": "error · Distancia − 15"
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "error"
+          ]
+        }
+      ],
+      "notas": "Error positivo: está lejos, hay que acelerar. Negativo: demasiado cerca, hay que frenar o retroceder."
     },
     {
       "practica": 3,
       "titulo": "Velocidad calculada",
       "enunciado": "Convierte ese error en una velocidad multiplicándolo por un número.",
-      "pista": "Si está lejos acelera; si está cerca, la velocidad sale negativa y retrocede."
+      "pista": "Si está lejos acelera; si está cerca, la velocidad sale negativa y retrocede.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "error · Distancia − 15"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valor": "velocidad · error × 3"
+        },
+        {
+          "texto": "Empezar a mover a velocidad...",
+          "nivel": 0,
+          "valor": "velocidad"
+        }
+      ],
+      "notas": "Al multiplicar el error, la velocidad sale negativa cuando está demasiado cerca: el robot retrocede solo."
     },
     {
       "practica": 4,
       "titulo": "Control de crucero",
       "enunciado": "Mete el cálculo en un bucle infinito y comprueba que mantiene la distancia al moverse el de delante.",
-      "pista": "Ajusta el multiplicador hasta que no dé tirones."
+      "pista": "Ajusta el multiplicador hasta que no dé tirones.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valor": "error · Distancia − 15"
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valor": "velocidad · error × 3"
+        },
+        {
+          "texto": "Empezar a mover a velocidad...",
+          "nivel": 1,
+          "valor": "velocidad"
+        }
+      ],
+      "notas": "Si da tirones, baja el multiplicador. Esto es un control proporcional, lo mismo que el seguidor de línea."
     }
   ],
   "construccion": {

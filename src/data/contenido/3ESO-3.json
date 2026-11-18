@@ -69,25 +69,168 @@
       "practica": 1,
       "titulo": "Abre la pinza",
       "enunciado": "Mueve el motor de la pinza a una posición relativa para abrirla del todo.",
-      "pista": "La posición relativa cuenta desde donde estaba, no desde un cero fijo."
+      "pista": "La posición relativa cuenta desde donde estaba, no desde un cero fijo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valor": "C · 0"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 90 · 30 %"
+        }
+      ],
+      "notas": "La posición relativa cuenta desde donde esté el motor, no desde un cero fijo: por eso se pone a 0 antes."
     },
     {
       "practica": 2,
       "titulo": "Abrir y cerrar",
       "enunciado": "Abre la pinza, espera 2 segundos y ciérrala con cuidado.",
-      "pista": "Baja la velocidad para que no aplaste el objeto."
+      "pista": "Baja la velocidad para que no aplaste el objeto.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valor": "C · 0"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 90 · 30 %"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "2"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 0 · 15 %"
+        }
+      ],
+      "notas": "Al cerrar baja la velocidad: con un 15 % la pinza aprieta sin aplastar el objeto."
     },
     {
       "practica": 3,
       "titulo": "Sin dar tirones",
       "enunciado": "Fija la aceleración del motor antes de mover la pinza y compara cómo se mueve.",
-      "pista": "Con aceleración baja arranca y frena suave."
+      "pista": "Con aceleración baja arranca y frena suave.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valor": "C · 20"
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valor": "C · 0"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 90 · 30 %"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "2"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 0 · 15 %"
+        }
+      ],
+      "notas": "Con aceleración baja, el motor arranca y frena poco a poco. Compara el movimiento con y sin este bloque."
     },
     {
       "practica": 4,
       "titulo": "Coge y traslada",
       "enunciado": "Cierra la pinza, avanza 30 cm, abre la pinza y vuelve al punto de partida.",
-      "pista": "Fija los motores de movimiento para que frenen al parar: así no se pasa de largo."
+      "pista": "Fija los motores de movimiento para que frenen al parar: así no se pasa de largo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "nivel": 0,
+          "valor": "frenar"
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valor": "C · 0"
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 0 · 15 %"
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "30",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valor": "C · 90 · 30 %"
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↓",
+            "30",
+            "cm"
+          ]
+        }
+      ],
+      "notas": "«Frenar al parar» es lo que evita que el robot se pase de largo y suelte la carga donde no toca."
     }
   ],
   "construccion": {

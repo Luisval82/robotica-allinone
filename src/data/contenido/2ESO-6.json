@@ -64,25 +64,222 @@
       "practica": 1,
       "titulo": "Pon el ángulo a cero",
       "enunciado": "Fija el ángulo de guiñada a 0 y escribe el valor del giroscopio en la matriz.",
-      "pista": "Mueve el Hub con la mano y mira cómo cambia el número."
+      "pista": "Mueve el Hub con la mano y mira cómo cambia el número.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Ángulo de guiñada"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.2"
+        }
+      ],
+      "notas": "Mueve el Hub con la mano: el número es el giro acumulado desde que lo pusiste a cero."
     },
     {
       "practica": 2,
       "titulo": "Gira y mira",
       "enunciado": "El robot empieza a girar sobre sí mismo y tú observas cómo sube el ángulo.",
-      "pista": "Con «empezar a mover con dirección» a tope gira sobre sí mismo."
+      "pista": "Con «empezar a mover con dirección» a tope gira sobre sí mismo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "2"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
+        }
+      ],
+      "notas": "Con dirección 100 el robot gira sobre sí mismo: una rueda hacia delante y la otra hacia atrás."
     },
     {
       "practica": 3,
       "titulo": "Para a los 90°",
       "enunciado": "Usa «Repetir hasta» para que el giro se pare cuando el ángulo llegue a 90.",
-      "pista": "La condición es «ángulo mayor que 89»."
+      "pista": "La condición es «ángulo mayor que 89».",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valor": "Ángulo de guiñada > 89"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "0.05"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0,
+          "valores": []
+        }
+      ],
+      "notas": "El bucle no hace nada por dentro: solo da vueltas mirando el ángulo. También valdría «Esperar hasta que»."
     },
     {
       "practica": 4,
       "titulo": "Cuatro giros exactos",
       "enunciado": "Repite cuatro veces el giro de 90 grados poniendo el ángulo a cero antes de cada uno.",
-      "pista": "Si no reinicias el ángulo, el segundo giro se queda corto."
+      "pista": "Si no reinicias el ángulo, el segundo giro se queda corto.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valor": "4"
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valor": "Ángulo de guiñada > 89"
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valor": "0.05"
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1,
+          "valores": []
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valor": "1"
+        }
+      ],
+      "notas": "Si no pones el ángulo a cero antes de cada giro, el segundo se queda corto: ya partiría de 90."
     }
   ],
   "construccion": {

@@ -118,25 +118,151 @@
       "practica": 1,
       "titulo": "Arranque con botón",
       "enunciado": "El tiovivo no arranca hasta que alguien pulsa el sensor de fuerza.",
-      "pista": "Lo mismo que en la unidad 5, pero ahora para arrancar un motor."
+      "pista": "Lo mismo que en la unidad 5, pero ahora para arrancar un motor.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        }
+      ],
+      "notas": "Lo mismo que la puerta de la unidad 5, pero lo que espera no es una puerta: es el tiovivo."
     },
     {
       "practica": 2,
       "titulo": "Gira y para",
       "enunciado": "Al pulsar, el motor arranca, gira 5 segundos y se detiene.",
-      "pista": "Arrancar, esperar, parar."
+      "pista": "Arrancar, esperar, parar.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valor": "5"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "Arrancar, esperar, parar: el «Esperar» es el que marca cuánto dura el viaje."
     },
     {
       "practica": 3,
       "titulo": "Parada de seguridad",
       "enunciado": "El tiovivo se detiene si alguien se acerca a menos de 15 cm, aunque no hayan pasado los 5 segundos.",
-      "pista": "Cambia el «Esperar X segundos» por un «Esperar hasta que» con el sensor."
+      "pista": "Cambia el «Esperar X segundos» por un «Esperar hasta que» con el sensor.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está más próximo a 15 cm? E"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        }
+      ],
+      "notas": "Al cambiar «Esperar 5 segundos» por «Esperar hasta que», el viaje ya no dura un tiempo fijo: dura hasta que alguien se acerca."
     },
     {
       "practica": 4,
       "titulo": "Tiovivo completo",
       "enunciado": "Junta todo: espera la pulsación, suena el aviso, el tiovivo gira y se para cuando alguien se acerca.",
-      "pista": "Es el modelo final en pequeño: pruébalo antes de montarlo entero."
+      "pista": "Es el modelo final en pequeño: pruébalo antes de montarlo entero.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está presionado? F"
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "nivel": 0,
+          "valor": "timbre"
+        },
+        {
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valor": "¿Está más próximo a 15 cm? E"
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        },
+        {
+          "texto": "Tocar sonido hasta acabar",
+          "nivel": 0,
+          "valor": "timbre"
+        }
+      ],
+      "notas": "Es el modelo final en pequeño. Un ejemplo: también vale avisar al final en vez de al principio."
     }
   ],
   "construccion": {
