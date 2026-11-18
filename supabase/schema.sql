@@ -121,7 +121,9 @@ create table if not exists public.entregas (
   bloques       jsonb not null default '[]'::jsonb,
   explicacion   text not null default '',
   entregada_en  timestamptz not null default now(),
-  nota          numeric(4, 2) check (nota is null or (nota >= 0 and nota <= 10)),
+  -- La PRUEBA son 10 puntos de 1: 8 preguntas de test y estas 2
+  -- programaciones. Por eso aquí se puntúa sobre 1, no sobre 10.
+  puntos        numeric(4, 2) check (puntos is null or (puntos >= 0 and puntos <= 1)),
   comentario    text not null default '',
   corregida_en  timestamptz,
   corregida_por text,

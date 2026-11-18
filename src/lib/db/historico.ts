@@ -25,6 +25,7 @@ export interface FilaHistorico {
   mediaTest: number | null;
   entregas: number;
   entregasCorregidas: number;
+  /** Media de los puntos de las programaciones corregidas, sobre 1. */
   mediaEntregas: number | null;
 }
 
@@ -51,7 +52,7 @@ export async function getHistorico(anio: string): Promise<CursoHistorico[]> {
       .select("alumno_id, unidad, test_aciertos")
       .eq("anio", anio)
       .in("alumno_id", ids),
-    supabase.from("entregas").select("alumno_id, nota").eq("anio", anio).in("alumno_id", ids),
+    supabase.from("entregas").select("alumno_id, puntos").eq("anio", anio).in("alumno_id", ids),
   ]);
   assertNoError(usuarios.error, "getHistorico:users");
   assertNoError(progreso.error, "getHistorico:progreso");
@@ -62,7 +63,7 @@ export async function getHistorico(anio: string): Promise<CursoHistorico[]> {
     unidad: number;
     test_aciertos: number | null;
   }[];
-  const filasEntregas = (entregas.data ?? []) as { alumno_id: string; nota: number | null }[];
+  const filasEntregas = (entregas.data ?? []) as { alumno_id: string; puntos: number | null }[];
 
   const filas: FilaHistorico[] = [];
   for (const fila of (usuarios.data ?? []) as { id: string; name: string; email: string }[]) {
@@ -74,7 +75,7 @@ export async function getHistorico(anio: string): Promise<CursoHistorico[]> {
       return item && item.test_aciertos !== null ? testScore(item.test_aciertos) : null;
     });
     const susEntregas = filasEntregas.filter((e) => e.alumno_id === fila.id);
-    const corregidas = susEntregas.filter((e) => e.nota !== null).map((e) => Number(e.nota));
+    const corregidas = susEntregas.filter((e) => e.puntos !== null).map((e) => Number(e.puntos));
 
     filas.push({
       alumno: { id: fila.id, name: fila.name, email: fila.email, course },

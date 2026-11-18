@@ -165,8 +165,13 @@ export interface Entrega {
   /** Comentario opcional del alumno sobre su programa. */
   explicacion: string;
   entregadaEn: string;
-  /** Nota del profesor (0–10). null = pendiente de corregir. */
-  nota: number | null;
+  /**
+   * Lo que el profesor le da a esta programación dentro de la PRUEBA: de 0 a
+   * 1 punto. La PRUEBA son 10 puntos de 1 —8 preguntas de test y estas dos
+   * programaciones—, así que aquí no se puntúa sobre 10.
+   * null = pendiente de corregir.
+   */
+  puntos: number | null;
   comentario: string;
   corregidaEn: string | null;
   corregidaPor: string | null;

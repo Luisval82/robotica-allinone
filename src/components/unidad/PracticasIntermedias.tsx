@@ -53,7 +53,7 @@ export function PracticasIntermedias({
               bloques: guardada.bloques,
               explicacion: guardada.explicacion,
               entregadaEn: formatFecha(cerrada ?? guardada.entregadaEn),
-              nota: null,
+              puntos: null,
               comentario: "",
               corregidaPor: null,
             }

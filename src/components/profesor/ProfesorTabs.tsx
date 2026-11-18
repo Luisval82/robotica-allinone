@@ -9,8 +9,8 @@ const TABS = [
   { href: BASE, label: "Alumnado" },
   { href: `${BASE}/alumnos`, label: "Fichas" },
   { href: `${BASE}/unidades`, label: "Unidades y pruebas" },
-  { href: `${BASE}/notas`, label: "Notas de los tests" },
-  { href: `${BASE}/entregas`, label: "Entregas" },
+  { href: `${BASE}/notas`, label: "Nota pruebas" },
+  { href: `${BASE}/practicas`, label: "Prácticas de programación" },
   { href: `${BASE}/soluciones`, label: "Soluciones" },
 ];
 

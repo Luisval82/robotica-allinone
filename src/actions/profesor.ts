@@ -78,12 +78,14 @@ export async function gradeEntregaAction(
   const session = await requireRole(TEACHER_ROLES);
 
   const entregaId = field(formData, "entregaId");
-  const notaTexto = field(formData, "nota").trim().replace(",", ".");
+  // Sobre 1, no sobre 10: cada programación vale 1 punto de los 10 de la
+  // prueba. Se admite la coma, que es como se escribe un decimal aquí.
+  const puntosTexto = field(formData, "puntos").trim().replace(",", ".");
   const comentario = field(formData, "comentario").trim();
 
-  const nota = Number(notaTexto);
-  if (notaTexto === "" || !Number.isFinite(nota) || nota < 0 || nota > 10) {
-    return { error: "Escribe una nota entre 0 y 10." };
+  const puntos = Number(puntosTexto);
+  if (puntosTexto === "" || !Number.isFinite(puntos) || puntos < 0 || puntos > 1) {
+    return { error: "Escribe los puntos de esta programación, entre 0 y 1." };
   }
   if (comentario.length > MAX_COMMENT_LENGTH) {
     return { error: `El comentario no puede pasar de ${MAX_COMMENT_LENGTH} caracteres.` };
@@ -100,7 +102,7 @@ export async function gradeEntregaAction(
   }
 
   const saved = await gradeEntrega(entregaId, {
-    nota: Math.round(nota * 100) / 100,
+    puntos: Math.round(puntos * 100) / 100,
     comentario,
     profesor: session.name,
   });

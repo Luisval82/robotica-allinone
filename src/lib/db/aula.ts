@@ -331,20 +331,20 @@ export async function getStudentSummary(student: {
   id: string;
   course: Course;
 }): Promise<StudentSummary> {
-  async function getEntregaNotas(): Promise<{ nota: number | null }[]> {
+  async function getEntregaPuntos(): Promise<{ puntos: number | null }[]> {
     const { data, error } = await supabase
       .from("entregas")
-      .select("nota")
+      .select("puntos")
       .eq("anio", await getAnioActivo())
       .eq("alumno_id", student.id);
     assertNoError(error, "getStudentSummary:entregas");
-    return (data ?? []) as { nota: number | null }[];
+    return (data ?? []) as { puntos: number | null }[];
   }
 
   const [progreso, acceso, entregas] = await Promise.all([
     getProgress(student.id),
     getStudentAccess(student),
-    getEntregaNotas(),
+    getEntregaPuntos(),
   ]);
 
   const tests = progreso.filter((item) => item.testAciertos !== null);
@@ -357,7 +357,7 @@ export async function getStudentSummary(student: {
     unidadesAbiertas: acceso.filter((item) => item.abierta).length,
     testsHechos: tests.length,
     mediaTests: tests.length > 0 ? Math.round((sumaNotas / tests.length) * 100) / 100 : null,
-    entregasPorCorregir: entregas.filter((item) => item.nota === null).length,
+    entregasPorCorregir: entregas.filter((item) => item.puntos === null).length,
   };
 }
 
@@ -376,41 +376,108 @@ export async function listStudentsWithSummary(course: Course): Promise<StudentWi
   );
 }
 
-export interface StudentTestScores {
+export interface NotaPrueba {
+  unidad: number;
+  /** Aciertos del test, de 0 a 8. Cada acierto vale 1 punto. null = sin entregar. */
+  aciertos: number | null;
+  /** Lo que el profesor da a cada programación: de 0 a 1 punto. null = sin corregir. */
+  practicas: (number | null)[];
+  /** Cuántas de las 2 programaciones ha entregado el alumno. */
+  entregadas: number;
+  /**
+   * Lo que suma hasta ahora, sobre 10. Es null solo cuando no hay nada:
+   * ni test entregado ni ninguna programación corregida.
+   */
+  final: number | null;
+  /** Están el test y las dos programaciones corregidas: la nota es definitiva. */
+  completa: boolean;
+}
+
+export interface NotasDeAlumno {
   alumno: PublicUser;
-  /** Nota sobre 10 de cada unidad (posición 0 = UD 1). null = test sin entregar. */
-  notas: (number | null)[];
+  /** Una por unidad, en orden (posición 0 = UD 1). */
+  pruebas: NotaPrueba[];
+  /** Media de las pruebas completas. Las que están a medias no cuentan. */
   media: number | null;
 }
 
-/** Notas automáticas de los tests de un curso: una fila por alumno. */
-export async function getTestScores(course: Course): Promise<StudentTestScores[]> {
+/**
+ * La nota de cada PRUEBA, curso por curso.
+ *
+ * La PRUEBA son 10 puntos de 1: las 8 preguntas del test (que se corrigen
+ * solas al entregar) y las 2 programaciones que corrige el profesor. Por eso
+ * aquí no se pondera nada: se suma.
+ *
+ * Una prueba a medias enseña lo que lleva sumado, pero se marca como
+ * incompleta y no entra en la media: dar por nota final algo a lo que le
+ * falta la mitad sería mentirle al profesor en su propia tabla.
+ */
+export async function getNotasPruebas(course: Course): Promise<NotasDeAlumno[]> {
   const students = await listStudents(course);
   const ids = students.map((alumno) => alumno.id);
+  if (ids.length === 0) return [];
 
-  type ScoreRow = { alumno_id: string; unidad: number; test_aciertos: number | null };
-  let rows: ScoreRow[] = [];
-  if (ids.length > 0) {
-    const { data, error } = await supabase
+  const anio = await getAnioActivo();
+
+  type ProgresoRow = { alumno_id: string; unidad: number; test_aciertos: number | null };
+  type PuntosRow = { alumno_id: string; unidad: number; practica: number; puntos: number | null };
+
+  const [progreso, entregas] = await Promise.all([
+    supabase
       .from("progreso")
       .select("alumno_id, unidad, test_aciertos")
-      .eq("anio", await getAnioActivo())
-      .in("alumno_id", ids);
-    assertNoError(error, "getTestScores");
-    rows = (data ?? []) as ScoreRow[];
-  }
+      .eq("anio", anio)
+      .in("alumno_id", ids),
+    supabase
+      .from("entregas")
+      .select("alumno_id, unidad, practica, puntos")
+      .eq("anio", anio)
+      .in("alumno_id", ids),
+  ]);
+  assertNoError(progreso.error, "getNotasPruebas/progreso");
+  assertNoError(entregas.error, "getNotasPruebas/entregas");
+
+  const filasProgreso = (progreso.data ?? []) as ProgresoRow[];
+  const filasEntregas = (entregas.data ?? []) as PuntosRow[];
 
   return students.map((alumno) => {
-    const notas = UNIT_NUMBERS.map((unidad) => {
-      const item = rows.find((p) => p.alumno_id === alumno.id && p.unidad === unidad);
-      return item && item.test_aciertos !== null ? testScore(item.test_aciertos) : null;
+    const pruebas = UNIT_NUMBERS.map((unidad): NotaPrueba => {
+      const fila = filasProgreso.find((p) => p.alumno_id === alumno.id && p.unidad === unidad);
+      const aciertos = fila?.test_aciertos ?? null;
+
+      const practicas = [1, 2].map((numero) => {
+        const entrega = filasEntregas.find(
+          (e) => e.alumno_id === alumno.id && e.unidad === unidad && e.practica === numero,
+        );
+        return entrega?.puntos === null || entrega?.puntos === undefined
+          ? null
+          : Number(entrega.puntos);
+      });
+      const entregadas = filasEntregas.filter(
+        (e) => e.alumno_id === alumno.id && e.unidad === unidad,
+      ).length;
+
+      const corregidas = practicas.filter((p): p is number => p !== null);
+      const hayAlgo = aciertos !== null || corregidas.length > 0;
+      const suma = (aciertos ?? 0) + corregidas.reduce((total, p) => total + p, 0);
+
+      return {
+        unidad,
+        aciertos,
+        practicas,
+        entregadas,
+        final: hayAlgo ? Math.round(suma * 100) / 100 : null,
+        completa: aciertos !== null && corregidas.length === 2,
+      };
     });
-    const hechas = notas.filter((nota): nota is number => nota !== null);
+
+    const completas = pruebas.filter((p) => p.completa).map((p) => p.final ?? 0);
     const media =
-      hechas.length > 0
-        ? Math.round((hechas.reduce((total, nota) => total + nota, 0) / hechas.length) * 100) / 100
+      completas.length > 0
+        ? Math.round((completas.reduce((t, n) => t + n, 0) / completas.length) * 100) / 100
         : null;
-    return { alumno, notas, media };
+
+    return { alumno, pruebas, media };
   });
 }
 
@@ -441,7 +508,10 @@ export async function listEntregas(filter: {
     .select("*")
     .eq("anio", await getAnioActivo())
     .in("alumno_id", ids);
-  query = filter.estado === "corregidas" ? query.not("nota", "is", null) : query.is("nota", null);
+  query =
+    filter.estado === "corregidas"
+      ? query.not("puntos", "is", null)
+      : query.is("puntos", null);
   const { data, error } = await query;
   assertNoError(error, "listEntregas");
 
@@ -487,7 +557,7 @@ export async function saveEntrega(
   input: { unidad: number; practica: 1 | 2; bloques: ProgramRow[]; explicacion: string },
 ): Promise<"guardada" | "entregada" | "corregida"> {
   const previa = await getEntrega(studentId, input.unidad, input.practica);
-  if (previa?.nota != null) return "corregida";
+  if (previa?.puntos != null) return "corregida";
   if (previa) return "entregada";
 
   const { error } = await supabase.from("entregas").upsert(
@@ -501,7 +571,7 @@ export async function saveEntrega(
       bloques: input.bloques,
       explicacion: input.explicacion,
       entregada_en: new Date().toISOString(),
-      nota: null,
+      puntos: null,
       comentario: "",
       corregida_en: null,
       corregida_por: null,
@@ -539,12 +609,12 @@ export async function getCursoDeEntrega(entregaId: string): Promise<Course | nul
 /** Guarda la nota y el comentario del profesor. Devuelve false si la entrega no existe. */
 export async function gradeEntrega(
   entregaId: string,
-  correccion: { nota: number; comentario: string; profesor: string },
+  correccion: { puntos: number; comentario: string; profesor: string },
 ): Promise<boolean> {
   const { data, error } = await supabase
     .from("entregas")
     .update({
-      nota: correccion.nota,
+      puntos: correccion.puntos,
       comentario: correccion.comentario,
       corregida_en: new Date().toISOString(),
       corregida_por: correccion.profesor,
@@ -590,6 +660,57 @@ export async function getPracticasIntermedias(
     entregadaEn: fila.entregada_en as string,
     comprobadaEn: (fila.comprobada_en ?? null) as string | null,
   }));
+}
+
+export interface SeguimientoPracticas {
+  alumno: PublicUser;
+  /** Una por unidad: de las 4 prácticas, cuántas tiene empezadas y cuántas cerradas. */
+  unidades: { unidad: number; guardadas: number; comprobadas: number }[];
+  guardadasTotal: number;
+  comprobadasTotal: number;
+}
+
+/**
+ * Cómo van las 4 prácticas de programación de cada unidad, alumno por alumno.
+ *
+ * Esto no lleva nota ni la va a llevar: son los retos con los que el alumno
+ * aprende, no el examen. Lo que importa es si las ha hecho y si las ha dado
+ * por terminadas con «Guardar y comprobar».
+ */
+export async function getSeguimientoPracticas(
+  course?: Course | readonly Course[],
+): Promise<SeguimientoPracticas[]> {
+  const students = await listStudents(course);
+  const ids = students.map((alumno) => alumno.id);
+  if (ids.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from("practicas_intermedias")
+    .select("alumno_id, unidad, comprobada_en")
+    .eq("anio", await getAnioActivo())
+    .in("alumno_id", ids);
+  assertNoError(error, "getSeguimientoPracticas");
+
+  type Fila = { alumno_id: string; unidad: number; comprobada_en: string | null };
+  const filas = (data ?? []) as Fila[];
+
+  return students.map((alumno) => {
+    const suyas = filas.filter((f) => f.alumno_id === alumno.id);
+    const unidades = UNIT_NUMBERS.map((unidad) => {
+      const deLaUnidad = suyas.filter((f) => f.unidad === unidad);
+      return {
+        unidad,
+        guardadas: deLaUnidad.length,
+        comprobadas: deLaUnidad.filter((f) => f.comprobada_en !== null).length,
+      };
+    });
+    return {
+      alumno,
+      unidades,
+      guardadasTotal: suyas.length,
+      comprobadasTotal: suyas.filter((f) => f.comprobada_en !== null).length,
+    };
+  });
 }
 
 /** Cuántas prácticas intermedias lleva guardadas el alumno en cada unidad. */

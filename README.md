@@ -110,8 +110,8 @@ servidor con la Secret key.
 | --- | --- |
 | Alumnado | Alumnos por curso con su progreso general, unidades abiertas, media de tests y entregas por corregir. |
 | Unidades y pruebas | Interruptores de cada unidad (UD 1–9) y de su PRUEBA UD-X, para toda la clase o alumno por alumno. |
-| Notas de los tests | Nota automática de cada test (8 preguntas, sobre 10) por alumno y unidad, con la media. |
-| Entregas | Programa entregado, enlace a la solución oficial, nota (0–10) y comentario. |
+| Nota pruebas | La nota de cada PRUEBA por alumno y unidad, con la media. Al pulsar una casilla: el test pregunta a pregunta y las 2 programaciones de esa prueba, cada una con su programa, la solución oficial y su corrección. |
+| Prácticas de programación | Las 4 programaciones de cada unidad, alumno a alumno. **Sin nota**: solo si las ha montado y si las ha dado por terminadas. |
 | Soluciones | Enunciado y solución oficial, en bloques de palabras, de las 2 prácticas de cada unidad. |
 
 Pulsando cualquier casilla de la tabla de **Notas** se abre el seguimiento de ese alumno en esa
@@ -166,7 +166,7 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
     recordatorio de que es *un* ejemplo válido, no la única respuesta.
   - El cierre se comprueba **en el servidor**: deshabilitar los campos no basta, porque el
     formulario se puede reenviar a mano.
-- **Entregas de la PRUEBA (las 2 con nota)**: igual, pero se entregan **una sola vez** —también con
+- **Entregas de la PRUEBA (las 2 que puntúan)**: igual, pero se entregan **una sola vez** —también con
   confirmación— y ahí **no** se enseña la solución: esas las corrige el profesor, y su solución
   oficial sigue siendo material solo para él.
 - **Convenio de puertos** (`src/lib/unidades.ts`): motores en A, B y C por orden; sensor de color en
@@ -204,6 +204,31 @@ Qué está comprobado y qué no:
   cantidad a propósito; para fijarlas hay que montar el modelo y anotarlas.
 - Los dibujos son propios. Las imágenes y las instrucciones de montaje oficiales son de LEGO y no
   se copian al repositorio: lo que hay aquí son esquemas dibujados a mano en SVG.
+
+### Cómo se califica una PRUEBA
+
+Una PRUEBA vale **10 puntos de 1**:
+
+| Parte | Puntos | Quién corrige |
+| --- | --- | --- |
+| 8 preguntas de test | 1 cada una → 8 | La plataforma, al pulsar «Entregar» |
+| Programación 1 | 1 | El profesor |
+| Programación 2 | 1 | El profesor |
+
+La nota final es la **suma**, no una media ponderada: no hay pesos que ajustar ni nada que
+configurar. En la tabla de Nota pruebas cada casilla enseña esa suma; si falta el test o alguna
+programación por corregir, la casilla lleva un punto amarillo, la nota se marca como provisional y
+**esa prueba no entra en la media**, porque dar por nota final algo a lo que le falta la mitad
+sería mentir en la propia tabla.
+
+Las programaciones se puntúan sobre **1**, no sobre 10 (columna `entregas.puntos`, con un `check`
+de 0 a 1 en la base de datos). El formulario trae los cuatro valores de siempre —1, 0,75, 0,5 y
+0— y un campo por si hace falta otro. Las correcciones que había sobre 10 se convirtieron al
+cambiar la escala, dividiéndolas entre 10.
+
+Las **4 prácticas de programación** de cada unidad no llevan nota ni la van a llevar: son los retos
+con los que el alumno aprende, no el examen. Su pestaña solo sigue si están montadas y si el alumno
+las dio por terminadas con «Guardar y comprobar».
 
 ### Comprobar los tipos (`scripts/tipos.sh`)
 

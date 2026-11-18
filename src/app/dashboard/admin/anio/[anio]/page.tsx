@@ -91,7 +91,10 @@ export default async function AnioArchivadoPage({
                       Entregas
                     </th>
                     <th scope="col" className="px-4 py-4 text-center">
-                      Media entregas
+                      Media programaciones
+                      <span className="block font-sans text-[0.65rem] normal-case text-ink-400">
+                        sobre 1 punto
+                      </span>
                     </th>
                   </tr>
                 </thead>

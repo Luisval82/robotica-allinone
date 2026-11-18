@@ -77,7 +77,7 @@ export interface EntregaRow {
   bloques: ProgramRow[];
   explicacion: string;
   entregada_en: string;
-  nota: number | null;
+  puntos: number | null;
   comentario: string;
   corregida_en: string | null;
   corregida_por: string | null;
@@ -92,7 +92,7 @@ export function entregaFromRow(row: EntregaRow): Entrega {
     bloques: row.bloques,
     explicacion: row.explicacion,
     entregadaEn: row.entregada_en,
-    nota: row.nota,
+    puntos: row.puntos,
     comentario: row.comentario,
     corregidaEn: row.corregida_en,
     corregidaPor: row.corregida_por,

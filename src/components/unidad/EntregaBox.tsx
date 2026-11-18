@@ -35,7 +35,8 @@ export interface EntregaView {
   explicacion: string;
   /** Fecha ya formateada, p. ej. «12 nov, 11:05». */
   entregadaEn: string;
-  nota: number | null;
+  /** Puntos que le ha puesto el profesor, de 0 a 1. null = sin corregir. */
+  puntos: number | null;
   comentario: string;
   corregidaPor: string | null;
 }
@@ -231,7 +232,7 @@ export function EntregaBox({
   const [modo, setModo] = useState<"mesa" | "lista">("mesa");
   const [montaje, setMontaje] = useState(0);
   const id = `entrega-${unidad}-${practica}`;
-  const corregida = entrega !== null && entrega.nota !== null;
+  const corregida = entrega !== null && entrega.puntos !== null;
 
   const head = (
     <>
@@ -257,7 +258,8 @@ export function EntregaBox({
         </div>
         <div className="mt-5 flex flex-wrap items-start gap-x-6 gap-y-3 rounded-2xl bg-spike-50 p-5">
           <p className="font-display text-5xl font-semibold leading-none text-spike-700">
-            {formatNota(entrega.nota)}
+            {formatNota(entrega.puntos)}
+            <span className="font-sans text-base font-bold text-spike-600"> / 1 punto</span>
           </p>
           <div className="min-w-0 flex-1">
             <p className="font-display text-lg font-semibold text-ink-900">

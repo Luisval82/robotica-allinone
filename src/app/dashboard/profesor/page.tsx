@@ -117,7 +117,7 @@ export default async function ProfesorAlumnadoPage() {
                       <td className="px-4 py-3.5">
                         {resumen.entregasPorCorregir > 0 ? (
                           <Link
-                            href={`/dashboard/profesor/entregas?curso=${course}`}
+                            href={`/dashboard/profesor/notas?curso=${course}`}
                             className="inline-flex rounded-full bg-hub-400 px-3 py-1 text-xs font-extrabold text-ink-900 hover:bg-hub-300"
                           >
                             {resumen.entregasPorCorregir}{" "}

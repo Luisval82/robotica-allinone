@@ -129,7 +129,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
             bloques: entrega.bloques,
             explicacion: entrega.explicacion,
             entregadaEn: formatFecha(entrega.entregadaEn),
-            nota: entrega.nota,
+            puntos: entrega.puntos,
             comentario: entrega.comentario,
             corregidaPor: entrega.corregidaPor,
           }
