@@ -130,7 +130,15 @@
           ]
         }
       ],
-      "notas": "Ojo: al soltar, la presión vuelve a 0. Si la aguja se queda a cero, fija la variable justo ANTES de soltar."
+      "notas": "Ojo: al soltar, la presión vuelve a 0. Si la aguja se queda a cero, fija la variable justo ANTES de soltar.",
+      "pasos": [
+        {
+          "texto": "Crea la variable «fuerza»"
+        },
+        {
+          "texto": "Guarda en ella la presión en el momento de soltar"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -234,7 +242,18 @@
           ]
         }
       ],
-      "notas": "Volver a 0 al final es lo que deja la máquina lista para el siguiente. Es el modelo final en pequeño."
+      "notas": "Volver a 0 al final es lo que deja la máquina lista para el siguiente. Es el modelo final en pequeño.",
+      "pasos": [
+        {
+          "texto": "La aguja va al ángulo calculado"
+        },
+        {
+          "texto": "Espera 3 segundos"
+        },
+        {
+          "texto": "Vuelve a 0 para el siguiente"
+        }
+      ]
     }
   ],
   "construccion": {
@@ -425,7 +444,15 @@
           ]
         }
       ],
-      "notas": "La espera de medio segundo da tiempo a apretar del todo antes de medir. Fijar el sentido de giro evita que la aguja dé la vuelta por el camino corto."
+      "notas": "La espera de medio segundo da tiempo a apretar del todo antes de medir. Fijar el sentido de giro evita que la aguja dé la vuelta por el camino corto.",
+      "pasos": [
+        {
+          "texto": "El programa espera a que aprietes el sensor, mide la fuerza, la convierte en grados (fuerza × 1,8) y lleva la aguja a esa posición"
+        },
+        {
+          "texto": "A los 3 segundos, la aguja vuelve a 0"
+        }
+      ]
     },
     {
       "titulo": "Premio según la fuerza",
@@ -502,7 +529,15 @@
           ]
         }
       ],
-      "notas": "El cálculo puede ir en una variable aparte o directamente dentro del bloque del motor. El umbral de 70 se puede adaptar al grupo."
+      "notas": "El cálculo puede ir en una variable aparte o directamente dentro del bloque del motor. El umbral de 70 se puede adaptar al grupo.",
+      "pasos": [
+        {
+          "texto": "Amplía la máquina para cinco jugadores seguidos"
+        },
+        {
+          "texto": "Si la fuerza supera 70, la matriz muestra una cara contenta; si no, una cara triste"
+        }
+      ]
     }
   ]
 }

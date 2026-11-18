@@ -203,7 +203,15 @@
           ]
         }
       ],
-      "notas": "Cerrar es volver a la posición 0, igual que la barrera de la unidad 3."
+      "notas": "Cerrar es volver a la posición 0, igual que la barrera de la unidad 3.",
+      "pasos": [
+        {
+          "texto": "Después de abrirse, la puerta espera 3 segundos"
+        },
+        {
+          "texto": "Se cierra"
+        }
+      ]
     },
     {
       "practica": 4,
@@ -257,7 +265,19 @@
           ]
         }
       ],
-      "notas": "El timbre suena entero antes de que la puerta se mueva, porque «Tocar sonido hasta acabar» no deja pasar al siguiente bloque."
+      "notas": "El timbre suena entero antes de que la puerta se mueva, porque «Tocar sonido hasta acabar» no deja pasar al siguiente bloque.",
+      "pasos": [
+        {
+          "texto": "Monta la puerta completa",
+          "hijos": [
+            "Espera la pulsación",
+            "Suena el timbre",
+            "Se abre",
+            "Espera",
+            "Se cierra"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
@@ -432,7 +452,21 @@
           ]
         }
       ],
-      "notas": "Si la puerta abre hacia el otro lado, vale 270 en lugar de 90."
+      "notas": "Si la puerta abre hacia el otro lado, vale 270 en lugar de 90.",
+      "pasos": [
+        {
+          "texto": "La puerta permanece cerrada hasta que alguien pulsa el sensor de fuerza"
+        },
+        {
+          "texto": "Entonces se abre a 90°"
+        },
+        {
+          "texto": "Espera 3 segundos"
+        },
+        {
+          "texto": "Se cierra"
+        }
+      ]
     },
     {
       "titulo": "Puerta con timbre para cinco visitas",

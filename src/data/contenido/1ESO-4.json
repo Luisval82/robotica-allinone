@@ -476,7 +476,24 @@
           "valores": []
         }
       ],
-      "notas": "Tres vueltas de cuatro tramos son 12 repeticiones. Comprueba que «Apagar la matriz» queda fuera del bucle."
+      "notas": "Tres vueltas de cuatro tramos son 12 repeticiones. Comprueba que «Apagar la matriz» queda fuera del bucle.",
+      "pasos": [
+        {
+          "texto": "La noria da tres vueltas completas"
+        },
+        {
+          "texto": "En cada parada se enciende un dibujo en la matriz"
+        },
+        {
+          "texto": "Suena un aviso"
+        },
+        {
+          "texto": "Espera 1 segundo"
+        },
+        {
+          "texto": "Al terminar, la matriz se apaga"
+        }
+      ]
     }
   ]
 }

@@ -415,7 +415,16 @@
           ]
         }
       ],
-      "notas": "El signo depende del borde que se siga: si el robot huye de la línea, basta con cambiar el signo de la ganancia."
+      "notas": "El signo depende del borde que se siga: si el robot huye de la línea, basta con cambiar el signo de la ganancia.",
+      "pasos": [
+        {
+          "texto": "Programa el seguidor proporcional con umbral 50 y ganancia 0,5",
+          "hijos": [
+            "Calcula el error",
+            "Calcula la dirección y muévete con ella, sin parar"
+          ]
+        }
+      ]
     },
     {
       "titulo": "Ganancia ajustada",
@@ -454,7 +463,18 @@
           ]
         }
       ],
-      "notas": "No hay un valor único correcto. Valora la explicación de las pruebas: qué ganancia se quedaba corta y cuál hacía oscilar al robot."
+      "notas": "No hay un valor único correcto. Valora la explicación de las pruebas: qué ganancia se quedaba corta y cuál hacía oscilar al robot.",
+      "pasos": [
+        {
+          "texto": "Mide el umbral de tu pista"
+        },
+        {
+          "texto": "Prueba al menos tres ganancias distintas en el circuito con curvas"
+        },
+        {
+          "texto": "Entrega el programa con la ganancia que mejor funciona y explica qué pasó con las otras"
+        }
+      ]
     }
   ]
 }

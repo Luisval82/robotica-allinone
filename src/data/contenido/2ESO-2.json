@@ -468,7 +468,15 @@
           ]
         }
       ],
-      "notas": "Pide que anoten los dos valores medidos y el umbral. «fijar velocidad de movimiento» es de 1º (unidad 6). Valora que el circuito se complete, no los números concretos."
+      "notas": "Pide que anoten los dos valores medidos y el umbral. «fijar velocidad de movimiento» es de 1º (unidad 6). Valora que el circuito se complete, no los números concretos.",
+      "pasos": [
+        {
+          "texto": "Mide la luz reflejada sobre el blanco y sobre el negro de tu pista"
+        },
+        {
+          "texto": "Calcula el umbral y ajusta la velocidad y el giro para completar el circuito con curvas sin salirte"
+        }
+      ]
     }
   ]
 }

@@ -245,7 +245,16 @@
           ]
         }
       ],
-      "notas": "Tres bloques dentro del «Si», y el «Si» dentro del bucle: fíjate en los dos niveles de sangría."
+      "notas": "Tres bloques dentro del «Si», y el «Si» dentro del bucle: fíjate en los dos niveles de sangría.",
+      "pasos": [
+        {
+          "texto": "Con la tarjeta correcta",
+          "hijos": [
+            "Sube la barrera",
+            "Espera 3 segundos y vuelve a bajarla, todo dentro del bucle"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
@@ -424,7 +433,20 @@
           ]
         }
       ],
-      "notas": "También vale una pila que empiece con «Cuando el color es verde», sin bucle."
+      "notas": "También vale una pila que empiece con «Cuando el color es verde», sin bucle.",
+      "pasos": [
+        {
+          "texto": "La puerta se abre únicamente cuando el sensor ve la tarjeta verde",
+          "hijos": [
+            "Sube a 90°",
+            "Espera 3 segundos",
+            "Baja"
+          ]
+        },
+        {
+          "texto": "Con cualquier otra tarjeta sigue cerrada"
+        }
+      ]
     },
     {
       "titulo": "Verde abre, rojo avisa",
@@ -491,7 +513,19 @@
           "nivel": 2
         }
       ],
-      "notas": "Son dos decisiones seguidas dentro del mismo bucle. El «Si… entonces… Si no» se estudia en 2º."
+      "notas": "Son dos decisiones seguidas dentro del mismo bucle. El «Si… entonces… Si no» se estudia en 2º.",
+      "pasos": [
+        {
+          "texto": "Con la tarjeta verde, el botón central se pone verde y la puerta se abre y se cierra"
+        },
+        {
+          "texto": "Con la roja, la puerta no se mueve",
+          "hijos": [
+            "El botón se pone rojo",
+            "Suena un pitido grave de 1 segundo"
+          ]
+        }
+      ]
     }
   ]
 }

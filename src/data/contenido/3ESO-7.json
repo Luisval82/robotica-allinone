@@ -264,7 +264,15 @@
           ]
         }
       ],
-      "notas": "Misma duración y misma velocidad en las dos pruebas: si cambias eso, la comparación no vale de nada."
+      "notas": "Misma duración y misma velocidad en las dos pruebas: si cambias eso, la comparación no vale de nada.",
+      "pasos": [
+        {
+          "texto": "Repite la prueba con dos torres distintas"
+        },
+        {
+          "texto": "Compara los gráficos para decidir cuál aguanta mejor"
+        }
+      ]
     }
   ],
   "construccion": {
@@ -450,7 +458,18 @@
           ]
         }
       ],
-      "notas": "Según cómo esté orientado el Hub en la torre, el ángulo que cambia puede ser el alabeo en lugar del cabeceo. Compruébalo antes del ensayo."
+      "notas": "Según cómo esté orientado el Hub en la torre, el ángulo que cambia puede ser el alabeo en lugar del cabeceo. Compruébalo antes del ensayo.",
+      "pasos": [
+        {
+          "texto": "La mesa sísmica funciona 10 segundos al 50 % de velocidad"
+        },
+        {
+          "texto": "Durante ese tiempo, el programa dibuja en la gráfica el ángulo de cabeceo del Hub diez veces por segundo"
+        },
+        {
+          "texto": "Al terminar, el motor se para"
+        }
+      ]
     },
     {
       "titulo": "Registrar y comparar",
@@ -535,7 +554,25 @@
           ]
         }
       ],
-      "notas": "El ángulo puede ser negativo: para comparar torres basta con el máximo positivo. Hay que vaciar la lista antes de cada ensayo. Valora sobre todo la conclusión escrita."
+      "notas": "El ángulo puede ser negativo: para comparar torres basta con el máximo positivo. Hay que vaciar la lista antes de cada ensayo. Valora sobre todo la conclusión escrita.",
+      "pasos": [
+        {
+          "texto": "Añade al ensayo el registro de datos",
+          "hijos": [
+            "Guarda cada medida en una lista",
+            "Calcula la inclinación máxima"
+          ]
+        },
+        {
+          "texto": "Al terminar, escríbela en la matriz"
+        },
+        {
+          "texto": "Ensaya las dos torres"
+        },
+        {
+          "texto": "Entrega el programa con los dos máximos en la explicación"
+        }
+      ]
     }
   ]
 }

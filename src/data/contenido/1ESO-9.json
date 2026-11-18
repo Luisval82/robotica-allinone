@@ -262,7 +262,17 @@
           "valor": "timbre"
         }
       ],
-      "notas": "Es el modelo final en pequeño. Un ejemplo: también vale avisar al final en vez de al principio."
+      "notas": "Es el modelo final en pequeño. Un ejemplo: también vale avisar al final en vez de al principio.",
+      "pasos": [
+        {
+          "texto": "Junta todo",
+          "hijos": [
+            "Espera la pulsación",
+            "Suena el aviso, el tiovivo gira",
+            "Se para cuando alguien se acerca"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
@@ -449,7 +459,15 @@
           ]
         }
       ],
-      "notas": "La barrera es el motor mediano, en el puerto B. Si sube hacia el otro lado, vale 270."
+      "notas": "La barrera es el motor mediano, en el puerto B. Si sube hacia el otro lado, vale 270.",
+      "pasos": [
+        {
+          "texto": "Al pulsar la taquilla, la barrera sube a 90°, espera 3 segundos y baja"
+        },
+        {
+          "texto": "El programa atiende a tres pasajeros seguidos"
+        }
+      ]
     },
     {
       "titulo": "Viaje con parada de seguridad",
@@ -538,7 +556,21 @@
           "nivel": 0
         }
       ],
-      "notas": "Si alguien se acerca, el tiovivo se para y no vuelve a arrancar en ese viaje: es lo esperado. Cien repeticiones de 0,1 segundos son unos 10 segundos."
+      "notas": "Si alguien se acerca, el tiovivo se para y no vuelve a arrancar en ese viaje: es lo esperado. Cien repeticiones de 0,1 segundos son unos 10 segundos.",
+      "pasos": [
+        {
+          "texto": "Al pulsar la taquilla se abre"
+        },
+        {
+          "texto": "Se cierra la barrera y el tiovivo arranca"
+        },
+        {
+          "texto": "Gira unos 10 segundos, pero se detiene antes si alguien se acerca a menos de 10 cm"
+        },
+        {
+          "texto": "Al terminar suena un aviso"
+        }
+      ]
     }
   ]
 }

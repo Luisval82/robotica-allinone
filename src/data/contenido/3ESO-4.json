@@ -436,7 +436,21 @@
           ]
         }
       ],
-      "notas": "«Cerca de» significa un margen de unos 10 grados, hecho con dos comparaciones unidas por «y». En la app las listas conservan su contenido: hay que vaciarla al empezar o añadir los valores una sola vez, o la combinación crecerá en cada ejecución."
+      "notas": "«Cerca de» significa un margen de unos 10 grados, hecho con dos comparaciones unidas por «y». En la app las listas conservan su contenido: hay que vaciarla al empezar o añadir los valores una sola vez, o la combinación crecerá en cada ejecución.",
+      "pasos": [
+        {
+          "texto": "Guarda la combinación 90, 180, 270 en una lista"
+        },
+        {
+          "texto": "El programa espera a que el dial esté en cada número, en orden, pitando en cada acierto"
+        },
+        {
+          "texto": "Al completar la combinación"
+        },
+        {
+          "texto": "Abre el cerrojo"
+        }
+      ]
     },
     {
       "titulo": "Cuatro números y pistas",
@@ -532,7 +546,15 @@
           ]
         }
       ],
-      "notas": "El bucle principal no cambia al añadir un número: valora que use la longitud de la lista. La pista exige que el dial esté exactamente en el valor; da por bueno que redondeen la posición."
+      "notas": "El bucle principal no cambia al añadir un número: valora que use la longitud de la lista. La pista exige que el dial esté exactamente en el valor; da por bueno que redondeen la posición.",
+      "pasos": [
+        {
+          "texto": "Amplía la combinación a cuatro números"
+        },
+        {
+          "texto": "En una segunda pila, el botón central se pone verde cuando el dial está en un número que forma parte de la combinación y rojo cuando no"
+        }
+      ]
     }
   ]
 }

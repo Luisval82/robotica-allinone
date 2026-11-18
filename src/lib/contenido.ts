@@ -23,10 +23,18 @@ export interface BlockExplanation {
  * Práctica intermedia: un reto corto para afianzar los bloques de la unidad.
  * Va antes del modelo final y no la corrige el profesor.
  */
+/** Un paso del enunciado, con sus subpasos si los tiene. */
+export interface PasoEnunciado {
+  texto: string;
+  hijos?: string[];
+}
+
 export interface PracticaIntermedia {
   practica: number;
   titulo: string;
   enunciado: string;
+  /** El enunciado partido en pasos. Sin esto, se enseña la frase entera. */
+  pasos?: PasoEnunciado[];
   pista: string;
   /** Programa resuelto de ejemplo. Se le enseña al alumno al comprobar. */
   solucion: ProgramRow[];
@@ -56,6 +64,7 @@ interface TestQuestion {
 interface RawPractica {
   titulo: string;
   enunciado: string;
+  pasos?: PasoEnunciado[];
   solucion: ProgramRow[];
   notas?: string;
 }
@@ -135,6 +144,7 @@ export interface StudentPractica {
   practica: 1 | 2;
   titulo: string;
   enunciado: string;
+  pasos?: PasoEnunciado[];
 }
 
 /** Enunciados de las prácticas SIN la solución. */
@@ -143,6 +153,7 @@ export function getPracticasForStudent(curso: Course, unidad: number): StudentPr
     practica: index === 0 ? 1 : 2,
     titulo: item.titulo,
     enunciado: item.enunciado,
+    pasos: item.pasos,
   }));
 }
 

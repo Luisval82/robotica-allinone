@@ -190,6 +190,8 @@ export interface Practica {
   practica: 1 | 2;
   titulo: string;
   enunciado: string;
+  /** El enunciado partido en pasos, para no soltarle un párrafo al alumno. */
+  pasos?: { texto: string; hijos?: string[] }[];
   solucion: ProgramRow[];
   notas?: string;
 }

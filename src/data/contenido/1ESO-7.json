@@ -186,7 +186,15 @@
           "valores": []
         }
       ],
-      "notas": "«empezar a mover» no espera a nada: el programa sigue y es el «Esperar» el que decide cuánto rueda."
+      "notas": "«empezar a mover» no espera a nada: el programa sigue y es el «Esperar» el que decide cuánto rueda.",
+      "pasos": [
+        {
+          "texto": "Usa «empezar a mover»"
+        },
+        {
+          "texto": "Comprueba que el programa sigue mientras el robot rueda"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -238,7 +246,15 @@
           "valores": []
         }
       ],
-      "notas": "Esta es la diferencia con «mover durante»: aquí el robot no sabe cuánto va a rodar, para cuando el sensor lo dice."
+      "notas": "Esta es la diferencia con «mover durante»: aquí el robot no sabe cuánto va a rodar, para cuando el sensor lo dice.",
+      "pasos": [
+        {
+          "texto": "El robot arranca"
+        },
+        {
+          "texto": "Se detiene cuando el obstáculo está a menos de 15 cm"
+        }
+      ]
     },
     {
       "practica": 4,
@@ -460,7 +476,15 @@
           "valores": []
         }
       ],
-      "notas": "La distancia de frenado depende de la velocidad: vale cualquier valor con el que el robot no llegue a tocar el obstáculo."
+      "notas": "La distancia de frenado depende de la velocidad: vale cualquier valor con el que el robot no llegue a tocar el obstáculo.",
+      "pasos": [
+        {
+          "texto": "El vehículo avanza recto"
+        },
+        {
+          "texto": "Se detiene solo cuando está a menos de 15 cm de un obstáculo"
+        }
+      ]
     },
     {
       "titulo": "Freno con aviso y retroceso",
@@ -509,7 +533,21 @@
           ]
         }
       ],
-      "notas": "También es válido poner el pitido en una pila aparte que empiece con «Cuando está más próximo a»."
+      "notas": "También es válido poner el pitido en una pila aparte que empiece con «Cuando está más próximo a».",
+      "pasos": [
+        {
+          "texto": "El vehículo avanza despacio"
+        },
+        {
+          "texto": "Al detectar un obstáculo a menos de 20 cm se detiene"
+        },
+        {
+          "texto": "Pita medio segundo"
+        },
+        {
+          "texto": "Retrocede 10 cm"
+        }
+      ]
     }
   ]
 }

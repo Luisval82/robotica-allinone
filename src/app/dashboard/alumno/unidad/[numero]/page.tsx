@@ -449,6 +449,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                   practica={practica.practica}
                   titulo={practica.titulo}
                   enunciado={practica.enunciado}
+                  pasos={practica.pasos}
                   paleta={paleta}
                   bloquesTaller={getBloquesDePractica(curso, numero)}
                   entrega={entregas[index]}

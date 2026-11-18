@@ -97,7 +97,15 @@
           ]
         }
       ],
-      "notas": "Con «Si… entonces… Si no…» basta un bloque: la rama de abajo se hace justo cuando la respuesta es «no»."
+      "notas": "Con «Si… entonces… Si no…» basta un bloque: la rama de abajo se hace justo cuando la respuesta es «no».",
+      "pasos": [
+        {
+          "texto": "Con un «Si… entonces… Si no…»"
+        },
+        {
+          "texto": "Escribe «PASA» cuando veas verde y «ALTO» cuando no"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -458,7 +466,15 @@
           "valores": []
         }
       ],
-      "notas": "Sin el «Bucle infinito» el programa comprueba el color una sola vez y termina."
+      "notas": "Sin el «Bucle infinito» el programa comprueba el color una sola vez y termina.",
+      "pasos": [
+        {
+          "texto": "El vehículo avanza solo mientras el sensor de color ve la tarjeta verde"
+        },
+        {
+          "texto": "En cualquier otro caso se queda parado"
+        }
+      ]
     },
     {
       "titulo": "Verde y rojo",
@@ -503,7 +519,21 @@
           "nivel": 2
         }
       ],
-      "notas": "La segunda decisión va dentro del «Si no» de la primera, con su propio «Si no» vacío: así, sin tarjeta, el vehículo no cambia de estado."
+      "notas": "La segunda decisión va dentro del «Si no» de la primera, con su propio «Si no» vacío: así, sin tarjeta, el vehículo no cambia de estado.",
+      "pasos": [
+        {
+          "texto": "El vehículo arranca con la tarjeta verde"
+        },
+        {
+          "texto": "Se para con la roja"
+        },
+        {
+          "texto": "Si no ve ninguna de las dos"
+        },
+        {
+          "texto": "Sigue haciendo lo que estaba haciendo"
+        }
+      ]
     }
   ]
 }

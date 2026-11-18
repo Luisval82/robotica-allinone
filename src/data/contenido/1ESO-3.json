@@ -170,7 +170,18 @@
           ]
         }
       ],
-      "notas": "Bajar es volver a la posición 0: el mismo bloque con otro número."
+      "notas": "Bajar es volver a la posición 0: el mismo bloque con otro número.",
+      "pasos": [
+        {
+          "texto": "La barrera sube a 90"
+        },
+        {
+          "texto": "Espera 3 segundos"
+        },
+        {
+          "texto": "Vuelve a la posición 0"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -507,7 +518,15 @@
           ]
         }
       ],
-      "notas": "Usa «poner luz del botón central», que es de la unidad 1. El color debe cambiar después de mover la barrera, no antes."
+      "notas": "Usa «poner luz del botón central», que es de la unidad 1. El color debe cambiar después de mover la barrera, no antes.",
+      "pasos": [
+        {
+          "texto": "Mejora la barrera: suena un pitido de medio segundo antes de subir y otro antes de bajar"
+        },
+        {
+          "texto": "El botón central está en rojo con la barrera bajada y en verde mientras está arriba"
+        }
+      ]
     }
   ]
 }

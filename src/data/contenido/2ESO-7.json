@@ -91,7 +91,15 @@
           ]
         }
       ],
-      "notas": "Este bloque es un sombrero: empieza su propia pila y no se encaja debajo de nada."
+      "notas": "Este bloque es un sombrero: empieza su propia pila y no se encaja debajo de nada.",
+      "pasos": [
+        {
+          "texto": "Cuando se presione el botón izquierdo del Hub"
+        },
+        {
+          "texto": "Enciende un dibujo"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -428,7 +436,15 @@
           ]
         }
       ],
-      "notas": "Son dos pilas independientes. No hace falta «Cuando se inicia el programa»."
+      "notas": "Son dos pilas independientes. No hace falta «Cuando se inicia el programa».",
+      "pasos": [
+        {
+          "texto": "Con el botón izquierdo, la grúa gira un cuarto de vuelta"
+        },
+        {
+          "texto": "Con el derecho, el brazo sube a 60°, espera 2 segundos y baja"
+        }
+      ]
     },
     {
       "titulo": "Maniobra de carga con mensajes",
@@ -514,7 +530,21 @@
           ]
         }
       ],
-      "notas": "Son cuatro pilas. Lo importante es que un único mensaje ponga en marcha dos pilas a la vez."
+      "notas": "Son cuatro pilas. Lo importante es que un único mensaje ponga en marcha dos pilas a la vez.",
+      "pasos": [
+        {
+          "texto": "El botón izquierdo pone la grúa a girar despacio"
+        },
+        {
+          "texto": "El derecho la detiene"
+        },
+        {
+          "texto": "Envía el mensaje «carga»"
+        },
+        {
+          "texto": "Al recibirlo, el brazo sube, espera y baja, y a la vez la matriz muestra una flecha durante 3 segundos"
+        }
+      ]
     }
   ]
 }

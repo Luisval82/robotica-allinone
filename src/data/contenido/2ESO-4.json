@@ -124,7 +124,15 @@
           "valor": "72 · 0.5"
         }
       ],
-      "notas": "Media décima de segundo basta para el aviso: si la nota dura más, los pitidos se juntan."
+      "notas": "Media décima de segundo basta para el aviso: si la nota dura más, los pitidos se juntan.",
+      "pasos": [
+        {
+          "texto": "Si está a menos de 20 cm"
+        },
+        {
+          "texto": "Suena una nota corta"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -391,7 +399,15 @@
           "nivel": 2
         }
       ],
-      "notas": "El coche no se detiene en esta práctica: páralo a mano. La espera del «Si no» evita que el bucle vaya demasiado rápido."
+      "notas": "El coche no se detiene en esta práctica: páralo a mano. La espera del «Si no» evita que el bucle vaya demasiado rápido.",
+      "pasos": [
+        {
+          "texto": "El coche avanza despacio hacia el muro"
+        },
+        {
+          "texto": "Mientras la distancia sea menor de 30 cm, pita; si no, se queda en silencio"
+        }
+      ]
     },
     {
       "titulo": "Pitido proporcional y parada",
@@ -444,7 +460,18 @@
           "nivel": 2
         }
       ],
-      "notas": "Con el coche ya parado el bucle sigue comprobando: es correcto. Valora que la pausa se calcule con el operador y no con valores fijos."
+      "notas": "Con el coche ya parado el bucle sigue comprobando: es correcto. Valora que la pausa se calcule con el operador y no con valores fijos.",
+      "pasos": [
+        {
+          "texto": "El coche pita con una pausa entre pitidos igual a la distancia dividida entre 50, de modo que pita más rápido cuanto más cerca está"
+        },
+        {
+          "texto": "Cuando la distancia es menor de 8 cm"
+        },
+        {
+          "texto": "Se detiene"
+        }
+      ]
     }
   ]
 }

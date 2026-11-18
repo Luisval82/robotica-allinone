@@ -4,6 +4,7 @@
 
 import { reabrirPracticaAction } from "@/actions/profesor";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
+import { Enunciado } from "@/components/unidad/Enunciado";
 import { PendingButton } from "@/components/ui/PendingButton";
 import type { PracticaIntermedia } from "@/lib/contenido";
 import type { PracticaIntermediaEntrega } from "@/lib/db";
@@ -73,7 +74,9 @@ export function PracticasDelAlumno({
                 </p>
               </div>
 
-              <p className="mt-2 font-semibold text-ink-600">{practica.enunciado}</p>
+              <div className="mt-2">
+                <Enunciado texto={practica.enunciado} pasos={practica.pasos} tono="apagado" />
+              </div>
 
               {guardada ? (
                 <>

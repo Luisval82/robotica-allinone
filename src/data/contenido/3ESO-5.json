@@ -220,7 +220,15 @@
           "valor": "velocidad"
         }
       ],
-      "notas": "Si da tirones, baja el multiplicador. Esto es un control proporcional, lo mismo que el seguidor de línea."
+      "notas": "Si da tirones, baja el multiplicador. Esto es un control proporcional, lo mismo que el seguidor de línea.",
+      "pasos": [
+        {
+          "texto": "Mete el cálculo en un bucle infinito"
+        },
+        {
+          "texto": "Comprueba que mantiene la distancia al moverse el de delante"
+        }
+      ]
     }
   ],
   "construccion": {
@@ -435,7 +443,15 @@
           ]
         }
       ],
-      "notas": "No hay una ganancia única correcta. Valora la explicación de las pruebas y que la condición use el operador «y»."
+      "notas": "No hay una ganancia única correcta. Valora la explicación de las pruebas y que la condición use el operador «y».",
+      "pasos": [
+        {
+          "texto": "Prueba al menos tres ganancias y quédate con la mejor"
+        },
+        {
+          "texto": "Añade un indicador: el botón central en verde cuando el error está entre −2 y 2, y en rojo en caso contrario"
+        }
+      ]
     }
   ]
 }

@@ -4,6 +4,7 @@ import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import { BotonSpike } from "@/components/unidad/BotonSpike";
 import { PiezasNecesarias } from "@/components/unidad/PiezasNecesarias";
+import { Enunciado } from "@/components/unidad/Enunciado";
 import { requireRole } from "@/lib/auth";
 import { firstParam, parseCourse } from "@/lib/format";
 import { countSoluciones, getContenido, getPractica } from "@/lib/contenido";
@@ -128,7 +129,9 @@ export default async function ProfesorSolucionesPage({
                   >
                     {practica.titulo}
                   </h3>
-                  <p className="mt-3 font-semibold text-ink-700">{practica.enunciado}</p>
+                  <div className="mt-3">
+                    <Enunciado texto={practica.enunciado} pasos={practica.pasos} />
+                  </div>
                   {/* El mismo botón que ve el alumno: así el profesor puede
                       montar la solución en su iPad antes de la clase. */}
                   <BotonSpike />

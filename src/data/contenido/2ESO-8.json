@@ -97,7 +97,15 @@
           "valor": "0.2"
         }
       ],
-      "notas": "El cronómetro corre solo: no hay que hacer nada para que suba, solo leerlo."
+      "notas": "El cronómetro corre solo: no hay que hacer nada para que suba, solo leerlo.",
+      "pasos": [
+        {
+          "texto": "Reinicia el cronómetro"
+        },
+        {
+          "texto": "Escribe su valor en la matriz"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -126,7 +134,18 @@
           ]
         }
       ],
-      "notas": "Entre el reinicio y la pulsación pasa tu tiempo de reacción: eso es justo lo que lee el cronómetro."
+      "notas": "Entre el reinicio y la pulsación pasa tu tiempo de reacción: eso es justo lo que lee el cronómetro.",
+      "pasos": [
+        {
+          "texto": "Reinicia el cronómetro"
+        },
+        {
+          "texto": "Espera a que pulses el botón"
+        },
+        {
+          "texto": "Escribe el tiempo que tardaste"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -202,7 +221,17 @@
           ]
         }
       ],
-      "notas": "El reinicio del cronómetro va justo después de levantar la bandera: si lo pones antes, estarías midiendo también la espera."
+      "notas": "El reinicio del cronómetro va justo después de levantar la bandera: si lo pones antes, estarías midiendo también la espera.",
+      "pasos": [
+        {
+          "texto": "Junta todo",
+          "hijos": [
+            "Espera sorpresa",
+            "Levanta la bandera",
+            "Mide el tiempo y enséñalo"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
@@ -397,7 +426,21 @@
           ]
         }
       ],
-      "notas": "El cronómetro se reinicia después de subir la bandera, no antes. El tiempo debe guardarse en la variable antes de escribirlo."
+      "notas": "El cronómetro se reinicia después de subir la bandera, no antes. El tiempo debe guardarse en la variable antes de escribirlo.",
+      "pasos": [
+        {
+          "texto": "La bandera empieza bajada"
+        },
+        {
+          "texto": "Tras una espera al azar de entre 2 y 6 segundos"
+        },
+        {
+          "texto": "Se levanta"
+        },
+        {
+          "texto": "El programa mide cuánto tardas en pulsar y lo escribe en la matriz"
+        }
+      ]
     },
     {
       "titulo": "Cinco rondas con bandera que se rinde",
@@ -471,7 +514,15 @@
           ]
         }
       ],
-      "notas": "La pila del cronómetro también puede dispararse entre rondas, con la bandera ya bajada: no tiene efecto. Compruébalo en la app antes de corregir."
+      "notas": "La pila del cronómetro también puede dispararse entre rondas, con la bandera ya bajada: no tiene efecto. Compruébalo en la app antes de corregir.",
+      "pasos": [
+        {
+          "texto": "El juego se repite cinco rondas"
+        },
+        {
+          "texto": "Además, en una pila aparte, si pasan más de 5 segundos desde que subió la bandera, esta se baja sola"
+        }
+      ]
     }
   ]
 }

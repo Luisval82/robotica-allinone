@@ -485,7 +485,15 @@
           "nivel": 1
         }
       ],
-      "notas": "El giro de 90° hay que calibrarlo en cada robot: depende de la separación entre ruedas. Valora que el giro esté dentro de la definición y no repetido fuera."
+      "notas": "El giro de 90° hay que calibrarlo en cada robot: depende de la separación entre ruedas. Valora que el giro esté dentro de la definición y no repetido fuera.",
+      "pasos": [
+        {
+          "texto": "Crea un bloque «lado» con una entrada «longitud» que avance esa distancia y gire 90°"
+        },
+        {
+          "texto": "Úsalo para dibujar un cuadrado de 10 cm de lado"
+        }
+      ]
     },
     {
       "titulo": "Polígono de N lados",
@@ -534,7 +542,15 @@
           "nivel": 1
         }
       ],
-      "notas": "Usa «Fijar variable a» y la división, que son de 2º. Si escriben el ángulo a mano (60) en lugar de calcularlo, funciona pero es menos general."
+      "notas": "Usa «Fijar variable a» y la división, que son de 2º. Si escriben el ángulo a mano (60) en lugar de calcularlo, funciona pero es menos general.",
+      "pasos": [
+        {
+          "texto": "Añade al bloque una segunda entrada para el giro"
+        },
+        {
+          "texto": "Guarda el número de lados en una variable y haz que el robot dibuje el polígono regular que corresponda, calculando el giro como 360 entre el número de lados"
+        }
+      ]
     }
   ]
 }

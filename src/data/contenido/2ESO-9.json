@@ -552,7 +552,15 @@
           ]
         }
       ],
-      "notas": "Las posiciones de la rampa (45 y 315) dependen del montaje. El empujador va después de la decisión, fuera del «Si… Si no»."
+      "notas": "Las posiciones de la rampa (45 y 315) dependen del montaje. El empujador va después de la decisión, fuera del «Si… Si no».",
+      "pasos": [
+        {
+          "texto": "La máquina clasifica seis piezas, una cada vez: las rojas caen a un cajón y las demás al otro"
+        },
+        {
+          "texto": "Deja 2 segundos para colocar cada pieza"
+        }
+      ]
     },
     {
       "titulo": "Clasificar y contar",
@@ -644,7 +652,21 @@
           ]
         }
       ],
-      "notas": "Si no hay pieza en la bandeja, la máquina la cuenta como «otras»: es una limitación aceptable en este nivel."
+      "notas": "Si no hay pieza en la bandeja, la máquina la cuenta como «otras»: es una limitación aceptable en este nivel.",
+      "pasos": [
+        {
+          "texto": "Añade dos contadores, uno por cajón"
+        },
+        {
+          "texto": "La máquina trabaja hasta que ha clasificado seis piezas en total"
+        },
+        {
+          "texto": "Al terminar"
+        },
+        {
+          "texto": "Escribe en la matriz cuántas hay en cada cajón"
+        }
+      ]
     }
   ]
 }

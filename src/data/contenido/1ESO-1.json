@@ -144,7 +144,15 @@
           "valores": []
         }
       ],
-      "notas": "Con «durante» el dibujo se apaga solo al acabar. El «apagar píxeles» del final deja la matriz limpia del todo."
+      "notas": "Con «durante» el dibujo se apaga solo al acabar. El «apagar píxeles» del final deja la matriz limpia del todo.",
+      "pasos": [
+        {
+          "texto": "Haz que la matriz del Hub muestre un corazón durante 3 segundos"
+        },
+        {
+          "texto": "Después se apague"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -214,7 +222,21 @@
           "valor": "2"
         }
       ],
-      "notas": "Sin los «Esperar» en medio, los dos colores se pondrían tan rápido que solo verías el último."
+      "notas": "Sin los «Esperar» en medio, los dos colores se pondrían tan rápido que solo verías el último.",
+      "pasos": [
+        {
+          "texto": "Pon la luz del botón central en verde"
+        },
+        {
+          "texto": "Espera 2 segundos"
+        },
+        {
+          "texto": "Cámbiala a rojo"
+        },
+        {
+          "texto": "Espera otros 2"
+        }
+      ]
     },
     {
       "practica": 4,
@@ -454,7 +476,18 @@
           "valores": []
         }
       ],
-      "notas": "Las tres notas pueden ser otras. Comprueba que el bloque «Esperar» está entre la melodía y el apagado."
+      "notas": "Las tres notas pueden ser otras. Comprueba que el bloque «Esperar» está entre la melodía y el apagado.",
+      "pasos": [
+        {
+          "texto": "Convierte el Hub en un rótulo de sobremesa",
+          "hijos": [
+            "Muestra un dibujo durante 2 segundos",
+            "Toca una melodía de tres notas",
+            "Espera 1 segundo",
+            "Apaga la matriz"
+          ]
+        }
+      ]
     }
   ]
 }

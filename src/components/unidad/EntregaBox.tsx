@@ -4,6 +4,7 @@ import { useActionState, useRef, useState, type ReactNode } from "react";
 import { submitEntregaAction } from "@/actions/alumno";
 import { BlockPartIcon } from "@/components/brand/BlockParts";
 import { BotonSpike } from "@/components/unidad/BotonSpike";
+import { Enunciado } from "@/components/unidad/Enunciado";
 import { EditorBloques } from "@/components/unidad/EditorBloques";
 import { MesaSegura } from "@/components/unidad/MesaSegura";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
@@ -170,6 +171,7 @@ export function EntregaBox({
   practica,
   titulo,
   enunciado,
+  pasos,
   paleta,
   entrega,
   etiqueta,
@@ -187,6 +189,8 @@ export function EntregaBox({
   practica: number;
   titulo: string;
   enunciado: string;
+  /** El enunciado partido en pasos. Sin esto, se enseña la frase entera. */
+  pasos?: { texto: string; hijos?: string[] }[];
   paleta: { propios: BlockInfo[]; anteriores: BlockInfo[]; huecos: BlockInfo[] };
   entrega: EntregaView | null;
   /** Lo que va encima del título: «Entrega 1 de 2», «Práctica 1 de 4»… */
@@ -235,7 +239,9 @@ export function EntregaBox({
         {etiqueta ?? `Entrega ${practica} de 2`}
       </p>
       <h4 className="mt-1 font-display text-2xl font-semibold text-ink-900">{titulo}</h4>
-      <p className="mt-2 font-semibold text-ink-700">{enunciado}</p>
+      <div className="mt-2">
+        <Enunciado texto={enunciado} pasos={pasos} />
+      </div>
       <BotonSpike />
       {extra}
     </>

@@ -181,7 +181,15 @@
           ]
         }
       ],
-      "notas": "«fijar velocidad» no mueve nada por sí solo: hay que ponerlo ANTES de cada giro para que ese giro lo use."
+      "notas": "«fijar velocidad» no mueve nada por sí solo: hay que ponerlo ANTES de cada giro para que ese giro lo use.",
+      "pasos": [
+        {
+          "texto": "El motor gira 3 segundos al 20 %"
+        },
+        {
+          "texto": "Después 3 segundos al 100 %"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -214,7 +222,18 @@
           ]
         }
       ],
-      "notas": "«arrancar motor» no espera: el programa sigue y es el «Esperar» el que decide cuánto gira antes de pararlo."
+      "notas": "«arrancar motor» no espera: el programa sigue y es el «Esperar» el que decide cuánto gira antes de pararlo.",
+      "pasos": [
+        {
+          "texto": "Usa «arrancar motor»"
+        },
+        {
+          "texto": "Espera 4 segundos"
+        },
+        {
+          "texto": "Para el motor"
+        }
+      ]
     },
     {
       "practica": 4,
@@ -437,7 +456,15 @@
           ]
         }
       ],
-      "notas": "También es correcto «arrancar motor», «Esperar 5 segundos» y «parar motor». Comprueba que la velocidad se fija antes de mover el motor."
+      "notas": "También es correcto «arrancar motor», «Esperar 5 segundos» y «parar motor». Comprueba que la velocidad se fija antes de mover el motor.",
+      "pasos": [
+        {
+          "texto": "Programa el ventilador para que gire durante 5 segundos al 30 % de velocidad"
+        },
+        {
+          "texto": "Después se pare"
+        }
+      ]
     },
     {
       "titulo": "Tres velocidades",
@@ -518,7 +545,15 @@
           ]
         }
       ],
-      "notas": "La velocidad nueva se aplica al volver a arrancar el motor: por eso se repite «arrancar motor» tras cada cambio. Compruébalo en la app antes de corregir."
+      "notas": "La velocidad nueva se aplica al volver a arrancar el motor: por eso se repite «arrancar motor» tras cada cambio. Compruébalo en la app antes de corregir.",
+      "pasos": [
+        {
+          "texto": "El ventilador gira 3 segundos al 30 %, 3 segundos al 60 % y 3 segundos al 100 %, sin pararse entre una velocidad y la siguiente"
+        },
+        {
+          "texto": "Al final se detiene"
+        }
+      ]
     }
   ]
 }

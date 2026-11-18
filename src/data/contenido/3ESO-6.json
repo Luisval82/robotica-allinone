@@ -101,7 +101,15 @@
           ]
         }
       ],
-      "notas": "«Enviar mensaje y esperar» no sigue hasta que la otra pila termina: por eso el dibujo aparece con la puerta ya abierta."
+      "notas": "«Enviar mensaje y esperar» no sigue hasta que la otra pila termina: por eso el dibujo aparece con la puerta ya abierta.",
+      "pasos": [
+        {
+          "texto": "Envía un mensaje"
+        },
+        {
+          "texto": "Espera a que termine antes de seguir con el programa"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -152,7 +160,15 @@
           ]
         }
       ],
-      "notas": "La pila de arriba vigila y avisa; la de abajo solo sabe mover el motor. Cada una hace una cosa."
+      "notas": "La pila de arriba vigila y avisa; la de abajo solo sabe mover el motor. Cada una hace una cosa.",
+      "pasos": [
+        {
+          "texto": "Cuando el sensor vea el coche"
+        },
+        {
+          "texto": "Envía el mensaje «abrir puerta»"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -537,7 +553,18 @@
           "nivel": 0
         }
       ],
-      "notas": "Son cuatro pilas. Si usan «Enviar mensaje» sin esperar, las fases se pisan: es el error que hay que detectar."
+      "notas": "Son cuatro pilas. Si usan «Enviar mensaje» sin esperar, las fases se pisan: es el error que hay que detectar.",
+      "pasos": [
+        {
+          "texto": "El túnel espera a que llegue un coche (a menos de 10 cm)"
+        },
+        {
+          "texto": "Entonces ejecuta tres fases, cada una en su pila: abrir la puerta, lavar 5 segundos y despedir (cerrar la puerta y sonar un aviso)"
+        },
+        {
+          "texto": "Guarda el estado en una variable"
+        }
+      ]
     },
     {
       "titulo": "Programa elegido con tarjeta",
@@ -627,7 +654,21 @@
           ]
         }
       ],
-      "notas": "Las pilas «abrir» y «despedir» son las de la práctica 1 y no cambian. Valora que la decisión esté dentro de la fase de lavado y no en el programa principal."
+      "notas": "Las pilas «abrir» y «despedir» son las de la práctica 1 y no cambian. Valora que la decisión esté dentro de la fase de lavado y no en el programa principal.",
+      "pasos": [
+        {
+          "texto": "Añade dos programas de lavado"
+        },
+        {
+          "texto": "Por defecto es «normal» (5 segundos)"
+        },
+        {
+          "texto": "Si se muestra una tarjeta roja, pasa a «intenso» (10 segundos)"
+        },
+        {
+          "texto": "Cambia solo la pila de lavado y añade la pila que lee la tarjeta"
+        }
+      ]
     }
   ]
 }

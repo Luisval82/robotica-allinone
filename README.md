@@ -149,6 +149,14 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
 - **Test**: al pulsar «Entregar» se corrige en el servidor, la nota aparece al momento y queda
   guardada para el profesor. Hay un solo intento. Las respuestas correctas no se envían al
   navegador hasta que el test está entregado.
+- **Enunciados paso a paso**: los enunciados que encadenan varias acciones («Pon la luz en verde,
+  espera 2 segundos, cámbiala a rojo y espera otros 2») se enseñan desglosados en pasos numerados,
+  con subpasos cuando la frase los lleva detrás de dos puntos. Los pasos están en el campo `pasos`
+  de cada práctica y se generan con `scripts/enunciados.py`, que parte la frase **por donde ella
+  misma separa las acciones**: no añade nada ni dice qué bloques usar. **80 de los 162 enunciados**
+  se desglosan en 228 pasos; los otros 82 son una sola acción y se enseñan de una pieza, porque
+  desglosar una sola cosa no desglosa nada. Si un corte no queda limpio, el script deja la frase
+  entera: media frase suelta es peor que la frase completa.
 - **Prácticas de programación (las 4 intermedias)**: el alumno compone su programa eligiendo
   bloques de la unidad (y de las anteriores) y rellenando sus huecos. Puede **guardar borrador**
   tantas veces como quiera y, cuando lo tiene, pulsa **«Guardar y comprobar»**:

@@ -95,7 +95,15 @@
           ]
         }
       ],
-      "notas": "Fijar la variable a 0 al empezar evita arrastrar el aforo de la vez anterior."
+      "notas": "Fijar la variable a 0 al empezar evita arrastrar el aforo de la vez anterior.",
+      "pasos": [
+        {
+          "texto": "Crea una variable «aforo»"
+        },
+        {
+          "texto": "Ponla a 0 al empezar el programa"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -217,7 +225,15 @@
           ]
         }
       ],
-      "notas": "90 grados es un cuarto de vuelta del torno: justo el hueco para que pase una persona."
+      "notas": "90 grados es un cuarto de vuelta del torno: justo el hueco para que pase una persona.",
+      "pasos": [
+        {
+          "texto": "Junta las tres partes"
+        },
+        {
+          "texto": "Haz que además el motor dé un cuarto de vuelta por cada persona"
+        }
+      ]
     }
   ],
   "construccion": {
@@ -401,7 +417,15 @@
           ]
         }
       ],
-      "notas": "Son dos pilas: una pone el contador a 0 y otra cuenta. Comprueba que usan «Cambiar por» y no «Fijar a» para sumar."
+      "notas": "Son dos pilas: una pone el contador a 0 y otra cuenta. Comprueba que usan «Cambiar por» y no «Fijar a» para sumar.",
+      "pasos": [
+        {
+          "texto": "Cada vez que alguien se acerca a menos de 10 cm del sensor, el programa suma 1 al aforo y muestra el total en la matriz"
+        },
+        {
+          "texto": "Al iniciar, el contador empieza en 0"
+        }
+      ]
     },
     {
       "titulo": "Torno que gira y cuenta",
@@ -451,7 +475,16 @@
           ]
         }
       ],
-      "notas": "El orden entre girar y sumar no importa. Un cuarto de vuelta son 90 grados porque el torno tiene cuatro aspas."
+      "notas": "El orden entre girar y sumar no importa. Un cuarto de vuelta son 90 grados porque el torno tiene cuatro aspas.",
+      "pasos": [
+        {
+          "texto": "Amplía el programa anterior",
+          "hijos": [
+            "Cuando alguien se acerca, el torno gira un cuarto de vuelta para dejarle pasar",
+            "Después suma 1 y muestra el aforo"
+          ]
+        }
+      ]
     }
   ]
 }

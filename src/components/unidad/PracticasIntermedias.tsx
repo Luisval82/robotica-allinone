@@ -71,6 +71,7 @@ export function PracticasIntermedias({
             practica={practica.practica}
             titulo={practica.titulo}
             enunciado={practica.enunciado}
+            pasos={practica.pasos}
             etiqueta={`Práctica ${practica.practica} de ${practicas.length}`}
             paleta={paleta}
             // El cajón trae los bloques de la unidad y los que use su

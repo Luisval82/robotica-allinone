@@ -171,7 +171,15 @@
           ]
         }
       ],
-      "notas": "Apunta la correspondencia antes de programar: un color para cada estación y el mismo criterio para todos."
+      "notas": "Apunta la correspondencia antes de programar: un color para cada estación y el mismo criterio para todos.",
+      "pasos": [
+        {
+          "texto": "Cuando el sensor vea un color"
+        },
+        {
+          "texto": "Escribe en la matriz a qué estación corresponde"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -514,7 +522,15 @@
           "nivel": 0
         }
       ],
-      "notas": "El umbral (50), la ganancia (0,5) y la altura de la horquilla (200) dependen del montaje. Lo esencial es que el seguimiento esté dentro de un «Repetir hasta» que termine al ver el color."
+      "notas": "El umbral (50), la ganancia (0,5) y la altura de la horquilla (200) dependen del montaje. Lo esencial es que el seguimiento esté dentro de un «Repetir hasta» que termine al ver el color.",
+      "pasos": [
+        {
+          "texto": "Define el bloque «seguir hasta (color)», que sigue la línea de forma proporcional hasta ver ese color, y el bloque «recoger», que avanza un poco y sube la horquilla"
+        },
+        {
+          "texto": "Úsalos para llegar a la estación roja y cargar el palé"
+        }
+      ]
     },
     {
       "titulo": "Reparto completo con registro",
@@ -599,7 +615,18 @@
           "nivel": 0
         }
       ],
-      "notas": "Las definiciones de «seguir hasta» y «recoger» son las de la práctica 1. Los sensores de seguridad (distancia y fuerza) son una ampliación: valóralos si están, pero no los exijas."
+      "notas": "Las definiciones de «seguir hasta» y «recoger» son las de la práctica 1. Los sensores de seguridad (distancia y fuerza) son una ampliación: valóralos si están, pero no los exijas.",
+      "pasos": [
+        {
+          "texto": "Añade el bloque «dejar (estacion)», que baja la horquilla, retrocede y envía el mensaje «entregado»"
+        },
+        {
+          "texto": "Otra pila recibe el mensaje, añade la estación a la lista de entregas y suma uno al total"
+        },
+        {
+          "texto": "Haz un reparto: cargar en la estación roja y entregar en la azul"
+        }
+      ]
     }
   ]
 }

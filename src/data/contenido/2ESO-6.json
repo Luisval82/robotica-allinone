@@ -91,7 +91,15 @@
           "valor": "0.2"
         }
       ],
-      "notas": "Mueve el Hub con la mano: el número es el giro acumulado desde que lo pusiste a cero."
+      "notas": "Mueve el Hub con la mano: el número es el giro acumulado desde que lo pusiste a cero.",
+      "pasos": [
+        {
+          "texto": "Fija el ángulo de guiñada a 0"
+        },
+        {
+          "texto": "Escribe el valor del giroscopio en la matriz"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -500,7 +508,15 @@
           "valores": []
         }
       ],
-      "notas": "La guiñada se pone a 0 dentro del bucle, antes de cada giro. Valora que el robot termine cerca del punto de partida."
+      "notas": "La guiñada se pone a 0 dentro del bucle, antes de cada giro. Valora que el robot termine cerca del punto de partida.",
+      "pasos": [
+        {
+          "texto": "El robot recorre un cuadrado de 30 cm de lado"
+        },
+        {
+          "texto": "Cada esquina es un giro de 90° medido con el giroscopio"
+        }
+      ]
     }
   ]
 }

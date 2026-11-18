@@ -491,7 +491,15 @@
           "nivel": 0
         }
       ],
-      "notas": "El margen de 3 grados compensa la inercia y depende de la velocidad. Comprueba el signo de la guiñada en tu Hub, como en 2º."
+      "notas": "El margen de 3 grados compensa la inercia y depende de la velocidad. Comprueba el signo de la guiñada en tu Hub, como en 2º.",
+      "pasos": [
+        {
+          "texto": "Define los dos bloques propios. «girar (grados)» usa el giroscopio. «avanzar hasta pared» avanza recto hasta que hay una pared a menos de 8 cm o se pulsa el parachoques"
+        },
+        {
+          "texto": "Pruébalos: avanzar hasta pared, girar 90° y avanzar hasta la siguiente pared"
+        }
+      ]
     },
     {
       "titulo": "Salir del laberinto",
@@ -551,7 +559,15 @@
           "nivel": 1
         }
       ],
-      "notas": "Incluye las definiciones de la práctica 1. Dos giros más a la derecha dejan al robot mirando a la izquierda del pasillo por el que venía. Se hacen de 90 en 90 porque la guiñada cambia de signo al llegar a 180°. La estrategia resuelve laberintos sencillos, no cualquiera."
+      "notas": "Incluye las definiciones de la práctica 1. Dos giros más a la derecha dejan al robot mirando a la izquierda del pasillo por el que venía. Se hacen de 90 en 90 porque la guiñada cambia de signo al llegar a 180°. La estrategia resuelve laberintos sencillos, no cualquiera.",
+      "pasos": [
+        {
+          "texto": "Con los bloques de la práctica anterior, programa la estrategia completa: avanzar hasta una pared, retroceder un poco y girar a la derecha; si sigue habiendo pared, dar media vuelta"
+        },
+        {
+          "texto": "Repite sin parar"
+        }
+      ]
     }
   ]
 }

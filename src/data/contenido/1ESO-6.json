@@ -180,7 +180,15 @@
           ]
         }
       ],
-      "notas": "Los tres bloques de preparación van una sola vez, al principio. Sin el de los centímetros, «100 cm» no significaría nada."
+      "notas": "Los tres bloques de preparación van una sola vez, al principio. Sin el de los centímetros, «100 cm» no significaría nada.",
+      "pasos": [
+        {
+          "texto": "Prepara los motores de movimiento"
+        },
+        {
+          "texto": "Haz que el robot avance 100 cm"
+        }
+      ]
     },
     {
       "practica": 2,
@@ -233,7 +241,15 @@
           ]
         }
       ],
-      "notas": "Para volver no hace falta otro bloque: basta con cambiar la flecha del desplegable a ↓."
+      "notas": "Para volver no hace falta otro bloque: basta con cambiar la flecha del desplegable a ↓.",
+      "pasos": [
+        {
+          "texto": "El robot avanza 30 cm"
+        },
+        {
+          "texto": "Vuelve hacia atrás otros 30 cm"
+        }
+      ]
     },
     {
       "practica": 3,
@@ -286,7 +302,15 @@
           ]
         }
       ],
-      "notas": "El giro va en grados y con dirección 100: con 100 el robot gira sobre sí mismo, como un compás."
+      "notas": "El giro va en grados y con dirección 100: con 100 el robot gira sobre sí mismo, como un compás.",
+      "pasos": [
+        {
+          "texto": "Haz que el robot avance 20 cm"
+        },
+        {
+          "texto": "Después gire 90 grados a la derecha"
+        }
+      ]
     },
     {
       "practica": 4,
@@ -544,7 +568,18 @@
           ]
         }
       ],
-      "notas": "La cantidad que produce un giro de 180° se ajusta probando: depende de la separación entre ruedas."
+      "notas": "La cantidad que produce un giro de 180° se ajusta probando: depende de la separación entre ruedas.",
+      "pasos": [
+        {
+          "texto": "El robot avanza 30 cm"
+        },
+        {
+          "texto": "Gira media vuelta sobre sí mismo"
+        },
+        {
+          "texto": "Vuelve al punto de partida"
+        }
+      ]
     },
     {
       "titulo": "Circuito cuadrado",
@@ -600,7 +635,15 @@
           ]
         }
       ],
-      "notas": "Valora el uso de «Repetir» y que el robot termine cerca de donde empezó. El giro de 90° no saldrá perfecto a la primera."
+      "notas": "Valora el uso de «Repetir» y que el robot termine cerca de donde empezó. El giro de 90° no saldrá perfecto a la primera.",
+      "pasos": [
+        {
+          "texto": "El robot recorre un cuadrado de 40 cm de lado y termina donde empezó"
+        },
+        {
+          "texto": "Usa un bucle"
+        }
+      ]
     }
   ]
 }
