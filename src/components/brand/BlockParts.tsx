@@ -38,8 +38,21 @@ function Agujeros({ cx, cy, r = 2.75 }: { cx: number; cy: number; r?: number }) 
   );
 }
 
-/** El icono del bloque y la raya que lo separa de las palabras. */
-function Icono({ ancho, children }: { ancho: number; children: ReactNode }) {
+/**
+ * El icono del bloque y la raya que lo separa de las palabras.
+ *
+ * El bloque de sombrero es la excepción: su triángulo de reproducción va
+ * pegado a las palabras, sin raya, igual que en la app.
+ */
+function Icono({
+  ancho,
+  conRaya = true,
+  children,
+}: {
+  ancho: number;
+  conRaya?: boolean;
+  children: ReactNode;
+}) {
   return (
     <>
       <span className="word-block__icono">
@@ -47,13 +60,28 @@ function Icono({ ancho, children }: { ancho: number; children: ReactNode }) {
           {children}
         </svg>
       </span>
-      <span className="word-block__raya" aria-hidden="true" />
+      {conRaya ? <span className="word-block__raya" aria-hidden="true" /> : null}
     </>
   );
 }
 
 /** Icono de la izquierda del bloque. El dibujo es blanco; los huecos, del color. */
 export function BlockPartIcon({ nombre }: { nombre: string }) {
+  if (nombre === "play") {
+    // El triángulo blanco de «Cuando se inicia el programa»: la bandera de
+    // salida. Va solo, sin raya, y con las puntas redondeadas como en la app.
+    return (
+      <Icono ancho={16} conRaya={false}>
+        <path
+          d="M4.4 4.6 14.6 12.5 4.4 20.4Z"
+          fill="#fff"
+          stroke="#fff"
+          strokeWidth="2.6"
+          strokeLinejoin="round"
+        />
+      </Icono>
+    );
+  }
   if (nombre === "motor") {
     // Una polea: 22 x 22 px en la app.
     return (

@@ -51,7 +51,17 @@
       "texto": "Cuando se inicia el programa",
       "categoria": "eventos",
       "forma": "inicio",
-      "pendiente": false
+      "pendiente": false,
+      "partes": [
+        {
+          "t": "icono",
+          "v": "play"
+        },
+        {
+          "t": "palabra",
+          "v": "Cuando se inicia el programa"
+        }
+      ]
     },
     {
       "texto": "Tocar nota X segundos",

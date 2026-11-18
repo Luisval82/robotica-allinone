@@ -62,7 +62,7 @@
   --color-block-control: #ffb515;
   --color-block-sensores: #34ccf1;
   --color-block-operadores: #00b94d;
-  --color-block-variables: #ff9835;
+  --color-block-variables: #ff8f24;
   --color-block-misbloques: #ff5d64;
   --color-block-extensiones: #0fbd8c;
 
@@ -100,7 +100,8 @@
    */
   .word-block {
     position: relative;
-    border-radius: 0.3rem;
+    /* Medido en las capturas de la app: la esquina casi no está redondeada. */
+    border-radius: 2px;
     padding: 0.6rem 0.95rem;
     font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 0.875rem;
@@ -109,45 +110,83 @@
   }
 
   /*
-   * Silueta de un bloque que se encaja en una pila, medida de la app:
-   * muesca trapezoidal arriba y pestaña igual abajo, a 9 px del borde
-   * izquierdo, 23 px de ancho arriba, 11 px abajo y 6 px de fondo.
-   * Comprobado contra la captura: coincide en un 99,6 % de los píxeles.
+   * Silueta de un bloque que se encaja en una pila. Sale de medir las
+   * capturas de la app, donde el cuerpo mide 38 px de alto, que es justo lo
+   * que mide aquí el bloque (0,6rem × 2 de relleno + 1,3 × 14 px de línea).
+   * Ajustando la forma contra la captura píxel a píxel, la que más se parece
+   * —97,9 % de los píxeles— es esta:
+   *   · muesca arriba y pestaña abajo, las dos de 4 px de fondo;
+   *   · arriba van del píxel 9 al 28; abajo, del 13 al 24.
    */
   .word-block--pila,
   .word-block--inicio {
-    padding-bottom: calc(0.6rem + 8px);
+    padding-bottom: calc(0.6rem + 4px);
   }
 
   .word-block--pila {
     clip-path: polygon(
       0 0,
-      12px 0,
-      20px 8px,
-      35px 8px,
-      43px 0,
+      9px 0,
+      13px 4px,
+      24px 4px,
+      28px 0,
       100% 0,
-      100% calc(100% - 8px),
-      43px calc(100% - 8px),
-      35px 100%,
-      20px 100%,
-      12px calc(100% - 8px),
-      0 calc(100% - 8px)
+      100% calc(100% - 4px),
+      28px calc(100% - 4px),
+      24px 100%,
+      13px 100%,
+      9px calc(100% - 4px),
+      0 calc(100% - 4px)
     );
   }
 
-  /* Bloque de inicio («Cuando…»): sin muesca arriba, la parte de arriba curva */
+  /*
+   * Bloque de sombrero («Cuando se inicia el programa» y los demás «Cuando…»).
+   *
+   * Arriba no lleva muesca —no se le encaja nada encima— sino el domo
+   * característico: una curva que sube desde el borde izquierdo y vuelve a
+   * bajar, y a partir de ahí el borde sigue recto hasta la derecha.
+   *
+   * La curva es la misma cúbica del editor de bloques en el que está hecha la
+   * app (de 0,16 con tirantes en 25,-6 y 71,-6 hasta 96,16), escalada al alto
+   * de nuestro bloque: 12 px de domo sobre 70 px de ancho. Abajo, la misma
+   * pestaña de 5 px que los demás, para que encajen igual.
+   */
   .word-block--inicio {
-    border-radius: 1.1rem 1.1rem 0.3rem 0.3rem;
+    padding-top: calc(0.6rem + 12px);
     clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(100% - 8px),
-      43px calc(100% - 8px),
-      35px 100%,
-      20px 100%,
-      12px calc(100% - 8px),
-      0 calc(100% - 8px)
+      0 12px,
+      2.4px 10.1px,
+      4.8px 8.3px,
+      7.5px 6.8px,
+      10.2px 5.3px,
+      13.1px 4.1px,
+      16px 3px,
+      19px 2.1px,
+      22.1px 1.3px,
+      25.3px 0.8px,
+      28.5px 0.3px,
+      31.7px 0.1px,
+      34.9px 0,
+      38.1px 0.1px,
+      41.3px 0.3px,
+      44.5px 0.8px,
+      47.7px 1.3px,
+      50.8px 2.1px,
+      53.8px 3px,
+      56.7px 4.1px,
+      59.6px 5.3px,
+      62.3px 6.8px,
+      65px 8.3px,
+      67.5px 10.1px,
+      69.8px 12px,
+      100% 12px,
+      100% calc(100% - 4px),
+      28px calc(100% - 4px),
+      24px 100%,
+      13px 100%,
+      9px calc(100% - 4px),
+      0 calc(100% - 4px)
     );
   }
 
@@ -173,7 +212,7 @@
 
   /* En una pila, cada bloque encaja en la muesca del anterior */
   .program-stack > .word-block + .word-block {
-    margin-top: -8px;
+    margin-top: -4px;
   }
 
   .program-stack > .word-block--inicio:not(:first-child) {
