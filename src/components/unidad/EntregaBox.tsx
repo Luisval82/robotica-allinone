@@ -5,6 +5,7 @@ import { submitEntregaAction } from "@/actions/alumno";
 import { BlockPartIcon } from "@/components/brand/BlockParts";
 import { BotonSpike } from "@/components/unidad/BotonSpike";
 import { EditorBloques } from "@/components/unidad/EditorBloques";
+import { MesaSegura } from "@/components/unidad/MesaSegura";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import {
   ArrowDownIcon,
@@ -13,7 +14,13 @@ import {
   ArrowUpIcon,
   CloseIcon,
 } from "@/components/ui/icons";
-import { blockClass, defaultValues, getBlockInfo, type BlockInfo } from "@/lib/bloques";
+import {
+  blockClass,
+  defaultValues,
+  getBlockInfo,
+  isKnownBlock,
+  type BlockInfo,
+} from "@/lib/bloques";
 import { formatNota } from "@/lib/format";
 import { CheckIcon, LockIcon } from "@/components/ui/icons";
 import type { ProgramRow, StudentFormState } from "@/lib/types";
@@ -279,13 +286,21 @@ export function EntregaBox({
               Tu programa
             </h5>
             {/* El mismo lienzo, pero cerrado: se puede mirar y mover, no tocar. */}
-            <EditorBloques
-              bloques={[]}
-              filas={entrega.bloques}
-              soloLectura
-              alto={340}
-              etiqueta={`Tu programa, ya comprobado: ${titulo}`}
-            />
+            <MesaSegura
+              alFallar={
+                <div className="overflow-x-auto rounded-2xl bg-ink-50 p-4">
+                  <ProgramBlocks rows={entrega.bloques} label={`Tu programa: ${titulo}`} />
+                </div>
+              }
+            >
+              <EditorBloques
+                bloques={[]}
+                filas={entrega.bloques}
+                soloLectura
+                alto={340}
+                etiqueta={`Tu programa, ya comprobado: ${titulo}`}
+              />
+            </MesaSegura>
             {entrega.explicacion ? (
               <p className="mt-2 text-sm font-semibold text-ink-600">
                 Lo explicaste así: {entrega.explicacion}
@@ -298,13 +313,21 @@ export function EntregaBox({
               <h5 className="mb-2 text-sm font-extrabold uppercase tracking-wide text-spike-700">
                 Solución de ejemplo
               </h5>
-              <EditorBloques
-                bloques={[]}
-                filas={solucion.bloques}
-                soloLectura
-                alto={340}
-                etiqueta={`Solución de ejemplo: ${titulo}`}
-              />
+              <MesaSegura
+                alFallar={
+                  <div className="overflow-x-auto rounded-2xl bg-spike-50 p-4">
+                    <ProgramBlocks rows={solucion.bloques} label={`Solución de ejemplo: ${titulo}`} />
+                  </div>
+                }
+              >
+                <EditorBloques
+                  bloques={[]}
+                  filas={solucion.bloques}
+                  soloLectura
+                  alto={340}
+                  etiqueta={`Solución de ejemplo: ${titulo}`}
+                />
+              </MesaSegura>
               <p className="mt-2 text-sm font-bold text-spike-800">{solucion.notas}</p>
               <p className="mt-1.5 text-sm font-semibold text-ink-500">
                 Es UN ejemplo que funciona, no la única respuesta: si el tuyo hace lo mismo con
@@ -360,8 +383,9 @@ export function EntregaBox({
 
   /** Lo que el alumno monta en la mesa, traído a la lista de bloques. */
   function deLaMesa(nuevas: ProgramRow[]) {
+    const limpias = nuevas.filter((fila) => isKnownBlock(fila.texto));
     setRows(
-      nuevas.map((fila, indice) => ({
+      limpias.map((fila, indice) => ({
         key: indice,
         texto: fila.texto,
         valor: fila.valor ?? "",
@@ -369,7 +393,7 @@ export function EntregaBox({
         nivel: fila.nivel,
       })),
     );
-    nextKey.current = nuevas.length;
+    nextKey.current = limpias.length;
   }
 
   const bloquesMesa =
@@ -399,14 +423,23 @@ export function EntregaBox({
                 Montarlo con la lista
               </button>
             </div>
-            <EditorBloques
-              key={`mesa-${montaje}`}
-              bloques={bloquesMesa}
-              filas={filas}
-              onChange={deLaMesa}
-              alto={500}
-              etiqueta={`Mesa de bloques: ${titulo}`}
-            />
+            <MesaSegura
+              alFallar={
+                <p className="rounded-2xl border-2 border-dashed border-ink-300 bg-ink-50 p-5 font-bold text-ink-700">
+                  La mesa de bloques se ha quedado atascada. Pulsa «Montarlo con la lista», aquí
+                  arriba: tu programa sigue guardado y se monta igual.
+                </p>
+              }
+            >
+              <EditorBloques
+                key={`mesa-${montaje}`}
+                bloques={bloquesMesa}
+                filas={filas}
+                onChange={deLaMesa}
+                alto={500}
+                etiqueta={`Mesa de bloques: ${titulo}`}
+              />
+            </MesaSegura>
             <p className="mt-2 text-sm font-semibold text-ink-500">
               Arrastra los bloques del cajón de la izquierda al lienzo y encájalos unos con otros.
               Toca un desplegable para cambiar el puerto, los segundos o el color. Abajo a la

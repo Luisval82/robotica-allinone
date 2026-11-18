@@ -97,22 +97,7 @@ export function EditorBloques({
         }
 
         // 2 · El tema, con los colores de categoría de la app.
-        const tema = Blockly.Theme.defineTheme(`spike-${soloLectura ? "ro" : "rw"}`, {
-          name: `spike-${soloLectura ? "ro" : "rw"}`,
-          base: Blockly.Themes.Zelos,
-          blockStyles: estilosPorCategoria(),
-          componentStyles: {
-            workspaceBackgroundColour: soloLectura ? "#ffffff" : "#f7f9fa",
-            toolboxBackgroundColour: "#ffffff",
-            flyoutBackgroundColour: "#eef2f4",
-            scrollbarColour: "#b2bec6",
-          },
-          fontStyle: {
-            family: "ui-sans-serif, system-ui, sans-serif",
-            weight: "bold",
-            size: 12,
-          },
-        });
+        const tema = temaDe(Blockly, soloLectura);
 
         // 3 · El cajón: solo las categorías que hacen falta en esta práctica,
         //     y dentro, solo sus bloques.
@@ -156,18 +141,36 @@ export function EditorBloques({
         }) as MesaDeTrabajo;
 
         // 4 · El programa guardado, puesto en la mesa.
-        montar(mesa, arbolDeFilas(partida.current));
-        mesa.render();
-        mesa.scrollCenter();
+        try {
+          montar(mesa, arbolDeFilas(partida.current));
+          mesa.render();
+          mesa.scrollCenter();
+        } catch {
+          // Si un programa guardado no se pudiera recomponer, la mesa se
+          // abre vacía en vez de dejar la pantalla rota.
+        }
 
         // 5 · Cada cambio se traduce a filas y se avisa hacia arriba.
         if (!soloLectura) {
+          // Arrastrar un bloque dispara muchos avisos seguidos. En vez de
+          // rehacer el programa con cada uno, se espera al siguiente repintado
+          // y se hace una sola vez: va más suave en el iPad y no ahoga a React.
+          let pendiente = 0;
           mesa.addChangeListener((evento) => {
-            if (evento.isUiEvent || !mesa) return;
-            const filasAhora = mesa
-              .getTopBlocks(true)
-              .flatMap((bloque) => filasDeBloques(bloque, 0));
-            avisar.current?.(filasAhora);
+            if (evento.isUiEvent || !mesa || !vivo || pendiente) return;
+            pendiente = window.requestAnimationFrame(() => {
+              pendiente = 0;
+              if (!mesa || !vivo) return;
+              try {
+                const filasAhora = mesa
+                  .getTopBlocks(true)
+                  .flatMap((bloque) => filasDeBloques(bloque, 0));
+                avisar.current?.(filasAhora);
+              } catch {
+                // Un cambio que no sepamos leer no puede tirar la unidad: se
+                // queda lo último que sí se leyó y el alumno sigue montando.
+              }
+            });
           });
         }
       } catch (e) {
@@ -197,7 +200,11 @@ export function EditorBloques({
     return () => {
       vivo = false;
       vigilante?.disconnect();
-      mesa?.dispose();
+      try {
+        mesa?.dispose();
+      } catch {
+        /* la mesa ya estaba recogida */
+      }
     };
     // La mesa se monta una vez por práctica: `filas` no entra aquí a
     // propósito, porque volver a montarla a cada cambio sería inmanejable.
@@ -221,6 +228,42 @@ export function EditorBloques({
       className="editor-bloques w-full overflow-hidden rounded-2xl border-2 border-ink-100"
     />
   );
+}
+
+/**
+ * El tema de la mesa: uno para editar y otro para mirar. Blockly guarda los
+ * temas por nombre y protesta si se registra dos veces el mismo, y en una
+ * unidad puede haber seis mesas, así que se crea una sola vez y se reparte.
+ */
+const TEMAS = new Map<string, unknown>();
+
+function temaDe(Blockly: BlocklyModulo, soloLectura: boolean): unknown {
+  const nombre = `spike-${soloLectura ? "ro" : "rw"}`;
+  const guardado = TEMAS.get(nombre);
+  if (guardado) return guardado;
+
+  const definicion = {
+    name: nombre,
+    base: Blockly.Themes.Zelos,
+    blockStyles: estilosPorCategoria(),
+    componentStyles: {
+      workspaceBackgroundColour: soloLectura ? "#ffffff" : "#f7f9fa",
+      toolboxBackgroundColour: "#ffffff",
+      flyoutBackgroundColour: "#eef2f4",
+      scrollbarColour: "#b2bec6",
+    },
+    fontStyle: { family: "ui-sans-serif, system-ui, sans-serif", weight: "bold", size: 12 },
+  };
+
+  let tema: unknown;
+  try {
+    tema = Blockly.Theme.defineTheme(nombre, definicion);
+  } catch {
+    // Ya estaba registrado (otra mesa llegó antes): con el de serie vale.
+    tema = Blockly.Themes.Zelos;
+  }
+  TEMAS.set(nombre, tema);
+  return tema;
 }
 
 // ── Montar el árbol de bloques en la mesa ────────────────────────────────
