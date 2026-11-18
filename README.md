@@ -174,24 +174,36 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
 
 ### Piezas del set (`src/lib/piezas.ts`)
 
-Catálogo de los componentes del set **SPIKE Prime (45678)**: los seis electrónicos con cuántos trae
-la caja, las vigas por longitud (3M, 5M, 7M, 9M, 11M, 15M), los ejes (2M–12M), ruedas, engranajes,
-pasadores y bujes. Cada pieza lleva su color y una línea de qué es.
+Catálogo de los componentes del set **SPIKE Prime (45678)**, sacado de la hoja de inventario de la
+caja mirándola pieza a pieza: los seis electrónicos, las vigas (3M–15M), los ejes (2M–11M), ruedas,
+engranajes, marcos, cremallera, pasadores, bujes y gomas, cada uno con su color, su medida y
+**cuántos trae la caja**.
+
+Lo más útil para un alumno es el **código de colores**: en esta caja el color dice la medida.
+
+| Vigas | 3 amarilla · 5 morada · 7 azul · 9 negra · 11 morada · 13 azul · 15 negra |
+| --- | --- |
+| **Ejes** | 2 rojo · 3 amarillo · 4 negro · 5 gris · 7 amarillo · 8 negro · 9 gris · 11 amarillo |
+
+Por eso, cuando un modelo pide una viga o un eje, debajo de las piezas aparece la **regla de
+colores** (`ReglaDeColores.tsx`): las siete vigas y los ocho ejes dibujados a escala, con sus
+agujeros y cuántos hay en la caja. Contar los agujeros de una viga de 11 cuesta diez segundos; ver
+que es morada y larga, medio.
 
 Cada unidad tiene en su archivo de contenido una lista **`construccion.materiales`** con las piezas
 de su modelo y, donde el texto lo dice, cuántas. Esa lista se pinta con sus dibujos en «Prepara
 estas piezas de tu caja», encima del carrusel de montaje del alumno y en las Soluciones del
 profesor. Se genera con `scripts/materiales.py` a partir de la frase de piezas de cada unidad, y se
-puede corregir a mano editando el archivo de esa unidad.
+puede corregir a mano editando el archivo de esa unidad. Si un modelo pide más piezas de las que
+trae una caja, el panel lo avisa antes de empezar a montar.
 
 Qué está comprobado y qué no:
 
-- Los seis componentes electrónicos y cuántos trae la caja: **sí**.
-- Las medidas en módulos y el convenio de color de ejes (impares gris, pares negro) y pasadores
-  (negro de 2M, azul de 3M): **sí**, es el convenio de LEGO Technic.
-- El color exacto de cada viga en este set y **cuántas vigas de cada medida lleva cada modelo**:
-  **no**. Las piezas de construcción van sin cantidad a propósito; para fijarlas hay que montar el
-  modelo y anotarlas.
+- Nombres, medidas, colores y cantidades de la caja: **sí**, están en la hoja del set.
+- **Cuántas piezas de cada medida lleva cada modelo**: **no**. Las piezas de construcción van sin
+  cantidad a propósito; para fijarlas hay que montar el modelo y anotarlas.
+- Los dibujos son propios. Las imágenes y las instrucciones de montaje oficiales son de LEGO y no
+  se copian al repositorio: lo que hay aquí son esquemas dibujados a mano en SVG.
 
 ### Contenido de las unidades
 

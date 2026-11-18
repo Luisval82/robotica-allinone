@@ -321,6 +321,9 @@
       },
       {
         "pieza": "viga"
+      },
+      {
+        "pieza": "marco"
       }
     ]
   },

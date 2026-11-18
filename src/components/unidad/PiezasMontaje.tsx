@@ -11,13 +11,42 @@
 import { getPieza, type Pieza } from "@/lib/piezas";
 import { HubReal } from "@/components/brand/Hub";
 
+/** El mismo color, más oscuro. Para el borde del agujero y las sombras. */
+export function oscurecer(hex: string, cuanto = 0.35): string {
+  const n = Number.parseInt(hex.slice(1), 16);
+  const canal = (desp: number) =>
+    Math.round(((n >> desp) & 255) * (1 - cuanto))
+      .toString(16)
+      .padStart(2, "0");
+  return `#${canal(16)}${canal(8)}${canal(0)}`;
+}
+
 /** Los agujeros de una viga, uno por módulo. */
-function Agujeros({ modulos, y, r = 3.1 }: { modulos: number; y: number; r?: number }) {
+function Agujeros({
+  modulos,
+  y,
+  r = 3.1,
+  color,
+}: {
+  modulos: number;
+  y: number;
+  r?: number;
+  /** El color de la pieza: el agujero se perfila con ese color, más oscuro. */
+  color?: string;
+}) {
   return (
     <>
       {/* Un agujero por módulo, centrado en su cuadradito de 10. */}
       {Array.from({ length: modulos }, (_, i) => (
-        <circle key={i} cx={5 + i * 10} cy={y} r={r} fill="#ffffff" />
+        <circle
+          key={i}
+          cx={5 + i * 10}
+          cy={y}
+          r={r}
+          fill="#ffffff"
+          stroke={color ? oscurecer(color) : undefined}
+          strokeWidth={color ? 1 : undefined}
+        />
       ))}
     </>
   );
@@ -108,11 +137,74 @@ function Dibujo({ pieza }: { pieza: Pieza }) {
       );
 
     case "rueda":
+      // Neumático negro y llanta azul claro, como las cuatro de la caja.
       return (
         <svg viewBox="0 0 64 64" className="size-full" aria-hidden="true">
           <circle cx="32" cy="32" r="28" fill="#2c3238" />
-          <circle cx="32" cy="32" r="19" fill="#d9dee1" />
-          <circle cx="32" cy="32" r="6" fill="#2c3238" />
+          <circle cx="32" cy="32" r="19" fill="#4db6d4" />
+          <circle cx="32" cy="32" r="12" fill="#3c9cb8" />
+          <circle cx="32" cy="32" r="5" fill="#ffffff" />
+        </svg>
+      );
+
+    case "marco":
+      // El marco Technic: un rectángulo hueco con agujeros en el borde.
+      return (
+        <svg viewBox="0 0 64 64" className="size-full" aria-hidden="true">
+          <path
+            d="M6 14h52a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4Zm4 7v22h44V21Z"
+            fill={pieza.color}
+            fillRule="evenodd"
+          />
+          {[9, 23, 41, 55].map((cx) => (
+            <circle key={cx} cx={cx} cy={17.5} r="2.4" fill="#ffffff" />
+          ))}
+          {[9, 23, 41, 55].map((cx) => (
+            <circle key={cx} cx={cx} cy={46.5} r="2.4" fill="#ffffff" />
+          ))}
+        </svg>
+      );
+
+    case "cremallera":
+      // Barra dentada: los dientes arriba, los agujeros abajo.
+      return (
+        <svg viewBox="0 0 130 24" className="size-full object-contain" aria-hidden="true">
+          {Array.from({ length: 12 }, (_, i) => (
+            <rect key={i} x={5 + i * 10} y="2" width="6" height="6" rx="1" fill={pieza.color} />
+          ))}
+          <rect x="0" y="7" width="130" height="12" rx="3" fill={pieza.color} />
+          <Agujeros modulos={13} y={13} r="2.6" color={pieza.color} />
+        </svg>
+      );
+
+    case "goma":
+      return (
+        <svg viewBox="0 0 64 64" className="size-full" aria-hidden="true">
+          <ellipse
+            cx="32"
+            cy="32"
+            rx="22"
+            ry="26"
+            fill="none"
+            stroke={pieza.color}
+            strokeWidth="4"
+          />
+        </svg>
+      );
+
+    case "cable":
+      return (
+        <svg viewBox="0 0 64 64" className="size-full" aria-hidden="true">
+          {/* Cable rizado con su conector en cada punta. */}
+          <path
+            d="M12 32q5-11 10 0t10 0t10 0t10 0"
+            fill="none"
+            stroke={pieza.color}
+            strokeWidth="4"
+            strokeLinecap="round"
+          />
+          <rect x="2" y="26" width="11" height="12" rx="3" fill={pieza.color} />
+          <rect x="51" y="26" width="11" height="12" rx="3" fill={pieza.color} />
         </svg>
       );
 
@@ -181,12 +273,13 @@ function Dibujo({ pieza }: { pieza: Pieza }) {
   const ancho = modulos * 10;
 
   if (pieza.familia === "transmision" || pieza.id.startsWith("eje")) {
-    // Un eje: barra con la cruz del perfil en las dos puntas.
+    // Un eje: barra con la cruz del perfil marcada a lo largo.
     return (
       <svg viewBox={`0 0 ${ancho} 18`} className="size-full object-contain" aria-hidden="true">
-        <rect x="0" y="6" width={ancho} height="6" rx="1.4" fill={pieza.color} />
-        <rect x="0" y="3" width="5" height="12" rx="1.4" fill={pieza.color} />
-        <rect x={ancho - 5} y="3" width="5" height="12" rx="1.4" fill={pieza.color} />
+        <rect x="0" y="5" width={ancho} height="8" rx="1.4" fill={pieza.color} />
+        <rect x="0" y="7.6" width={ancho} height="2.8" fill={oscurecer(pieza.color, 0.25)} />
+        <rect x="0" y="3" width="4" height="12" rx="1.4" fill={pieza.color} />
+        <rect x={ancho - 4} y="3" width="4" height="12" rx="1.4" fill={pieza.color} />
       </svg>
     );
   }
@@ -205,7 +298,7 @@ function Dibujo({ pieza }: { pieza: Pieza }) {
   return (
     <svg viewBox={`0 0 ${ancho} 18`} className="size-full object-contain" aria-hidden="true">
       <rect x="0" y="2" width={ancho} height="14" rx="7" fill={pieza.color} />
-      <Agujeros modulos={modulos} y={9} />
+      <Agujeros modulos={modulos} y={9} color={pieza.color} />
     </svg>
   );
 }
@@ -244,6 +337,9 @@ export function PiezaSpike({
         className={`text-center font-bold leading-tight text-ink-700 ${grande ? "text-sm" : "text-xs"}`}
       >
         {info.nombre}
+        {info.colorNombre ? (
+          <span className="block font-semibold text-ink-500">la {info.colorNombre}</span>
+        ) : null}
         {nota ? <span className="block font-extrabold text-ink-900">{nota}</span> : null}
       </figcaption>
     </figure>
@@ -272,6 +368,9 @@ export function piezasDelTexto(texto: string): { pieza: string; nota?: string }[
   busca(/\bpasador(es)?\b/, "pasador");
   busca(/\bengranajes?\b/, "engranaje");
   busca(/\bpaneles?\b/, "panel");
+  busca(/\bmarcos?\b/, "marco");
+  busca(/\bcremallera\b/, "cremallera");
+  busca(/\bgomas?( elastica)?\b/, "goma");
   busca(/sensor(es)? de distancia|ultrasonid/, "distancia");
   busca(/sensor(es)? de color/, "color");
   busca(/sensor(es)? de fuerza/, "fuerza");

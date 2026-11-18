@@ -308,6 +308,9 @@
       },
       {
         "pieza": "viga"
+      },
+      {
+        "pieza": "goma"
       }
     ]
   },
