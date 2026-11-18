@@ -6,6 +6,7 @@
 
 import "server-only";
 import { CONTENIDOS } from "@/data/contenido";
+import type { Material } from "@/lib/piezas";
 import { isCourse, type Course, type Practica, type ProgramRow } from "@/lib/types";
 
 export interface VideoScene {
@@ -73,7 +74,13 @@ export interface UnitContent {
   bloques: BlockExplanation[];
   programa?: ProgramaEjemplo;
   intermedias?: PracticaIntermedia[];
-  construccion: { piezas: string; pasos: BuildStep[] };
+  construccion: {
+    /** La frase de siempre, para leer. */
+    piezas: string;
+    /** La misma lista, pieza a pieza, para enseñar los dibujos de la caja. */
+    materiales?: Material[];
+    pasos: BuildStep[];
+  };
   test: TestQuestion[];
   practicas: RawPractica[];
 }

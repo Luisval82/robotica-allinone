@@ -3,9 +3,10 @@ import Link from "next/link";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import { BotonSpike } from "@/components/unidad/BotonSpike";
+import { PiezasNecesarias } from "@/components/unidad/PiezasNecesarias";
 import { requireRole } from "@/lib/auth";
 import { firstParam, parseCourse } from "@/lib/format";
-import { countSoluciones, getPractica } from "@/lib/contenido";
+import { countSoluciones, getContenido, getPractica } from "@/lib/contenido";
 import { COURSE_LABEL, UNIT_NUMBERS } from "@/lib/types";
 import { getUnidadesDeCurso } from "@/lib/unidades";
 
@@ -29,6 +30,7 @@ export default async function ProfesorSolucionesPage({
 
   const unidades = getUnidadesDeCurso(curso);
   const unidad = unidades.find((item) => item.numero === numero);
+  const construccion = getContenido(curso, numero)?.construccion;
 
   return (
     <>
@@ -93,6 +95,16 @@ export default async function ProfesorSolucionesPage({
           </dl>
         ) : null}
       </section>
+
+      {/* Lo que hay que sacar de las cajas antes de la clase. */}
+      {construccion ? (
+        <div className="mt-6">
+          <PiezasNecesarias
+            materiales={construccion.materiales ?? []}
+            descripcion={construccion.piezas}
+          />
+        </div>
+      ) : null}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         {PRACTICAS.map((n) => {

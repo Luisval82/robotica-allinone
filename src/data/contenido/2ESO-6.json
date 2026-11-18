@@ -305,6 +305,18 @@
         "titulo": "Comprueba",
         "texto": "Deja el robot quieto sobre la mesa al iniciar el programa: el giroscopio necesita un instante de reposo para medir bien."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      }
     ]
   },
   "test": [

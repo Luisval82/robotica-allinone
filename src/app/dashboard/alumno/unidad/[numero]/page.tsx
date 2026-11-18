@@ -6,6 +6,7 @@ import { EntregaBox, type EntregaView } from "@/components/unidad/EntregaBox";
 import { HubPorts } from "@/components/unidad/HubPorts";
 import { IpadWorkflowBanner } from "@/components/unidad/IpadWorkflowBanner";
 import { CarruselMontaje } from "@/components/unidad/CarruselMontaje";
+import { PiezasNecesarias } from "@/components/unidad/PiezasNecesarias";
 import { PracticasIntermedias } from "@/components/unidad/PracticasIntermedias";
 import { StepSection, type StepState } from "@/components/unidad/StepSection";
 import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
@@ -385,11 +386,17 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
           paso={4}
         >
           {contenido ? (
-            <CarruselMontaje
-              modelo={unidad.modelo}
-              piezas={contenido.construccion.piezas}
-              pasos={contenido.construccion.pasos}
-            />
+            <div className="grid gap-5">
+              <PiezasNecesarias
+                materiales={contenido.construccion.materiales ?? []}
+                descripcion={contenido.construccion.piezas}
+              />
+              <CarruselMontaje
+                modelo={unidad.modelo}
+                piezas={contenido.construccion.piezas}
+                pasos={contenido.construccion.pasos}
+              />
+            </div>
           ) : (
             <div className="mt-4">
               <Pending>Los pasos de montaje de esta unidad todavía están en preparación.</Pending>

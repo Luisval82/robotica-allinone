@@ -333,6 +333,14 @@
         "titulo": "Comprueba",
         "texto": "Acerca la mano al sensor: sus luces deben mirar hacia delante y el robot no debe tapar su campo de visión."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "distancia"
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

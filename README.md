@@ -164,6 +164,27 @@ El alumno ve las 9 unidades de su curso y entra en las que tiene abiertas
 - **Convenio de puertos** (`src/lib/unidades.ts`): motores en A, B y C por orden; sensor de color en
   D, de distancia en E y de fuerza en F.
 
+### Piezas del set (`src/lib/piezas.ts`)
+
+Catálogo de los componentes del set **SPIKE Prime (45678)**: los seis electrónicos con cuántos trae
+la caja, las vigas por longitud (3M, 5M, 7M, 9M, 11M, 15M), los ejes (2M–12M), ruedas, engranajes,
+pasadores y bujes. Cada pieza lleva su color y una línea de qué es.
+
+Cada unidad tiene en su archivo de contenido una lista **`construccion.materiales`** con las piezas
+de su modelo y, donde el texto lo dice, cuántas. Esa lista se pinta con sus dibujos en «Prepara
+estas piezas de tu caja», encima del carrusel de montaje del alumno y en las Soluciones del
+profesor. Se genera con `scripts/materiales.py` a partir de la frase de piezas de cada unidad, y se
+puede corregir a mano editando el archivo de esa unidad.
+
+Qué está comprobado y qué no:
+
+- Los seis componentes electrónicos y cuántos trae la caja: **sí**.
+- Las medidas en módulos y el convenio de color de ejes (impares gris, pares negro) y pasadores
+  (negro de 2M, azul de 3M): **sí**, es el convenio de LEGO Technic.
+- El color exacto de cada viga en este set y **cuántas vigas de cada medida lleva cada modelo**:
+  **no**. Las piezas de construcción van sin cantidad a propósito; para fijarlas hay que montar el
+  modelo y anotarlas.
+
 ### Contenido de las unidades
 
 - `src/data/unidades.json` y `src/data/bloques.json` cubren las **27 unidades**: título, hardware,

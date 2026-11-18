@@ -277,6 +277,21 @@
         "titulo": "Comprueba",
         "texto": "Mide la luz reflejada sobre blanco y sobre negro y calcula el umbral antes de programar."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "color"
+      }
     ]
   },
   "test": [

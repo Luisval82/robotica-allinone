@@ -262,6 +262,29 @@
         "titulo": "Comprueba",
         "texto": "Gira el dial con la mano: debe moverse suave. Cierra la puerta y comprueba que el pestillo la traba."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "rueda",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga"
+      },
+      {
+        "pieza": "panel"
+      }
     ]
   },
   "test": [

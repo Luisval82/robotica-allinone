@@ -232,6 +232,25 @@
         "titulo": "Los cables y la prueba",
         "texto": "Motor al puerto A y sensor de fuerza al puerto F. Levanta la bandera con la mano: no debe chocar con nada."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 1
+      },
+      {
+        "pieza": "color"
+      }
     ]
   },
   "test": [

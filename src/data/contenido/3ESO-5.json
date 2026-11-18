@@ -246,6 +246,21 @@
         "titulo": "Comprueba",
         "texto": "Con un programa que escriba la distancia en la matriz, acerca y aleja la caja: el valor debe cambiar sin saltos."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "distancia"
+      }
     ]
   },
   "test": [

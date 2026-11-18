@@ -293,6 +293,22 @@
         "titulo": "Comprueba",
         "texto": "Sube el brazo con la mano hasta dejarlo vertical: no debe chocar con el poste ni con el Hub."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 1
+      },
+      {
+        "pieza": "pasador"
+      }
     ]
   },
   "test": [

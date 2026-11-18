@@ -271,6 +271,22 @@
         "titulo": "Comprueba",
         "texto": "Gira la torre con la mano un cuarto de vuelta a cada lado: los cables no deben tensarse."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

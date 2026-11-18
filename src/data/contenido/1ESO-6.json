@@ -374,6 +374,25 @@
         "titulo": "Comprueba y mide",
         "texto": "Empuja el robot: debe rodar recto. Mide con una cinta cuánto avanza con una vuelta de rueda y apúntalo."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga"
+      },
+      {
+        "pieza": "pasador"
+      }
     ]
   },
   "test": [

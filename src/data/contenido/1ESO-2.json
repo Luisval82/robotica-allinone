@@ -298,6 +298,25 @@
         "titulo": "Comprueba",
         "texto": "Gira las aspas con la mano una vuelta completa: no deben tocar la base, la columna ni el cable."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga"
+      },
+      {
+        "pieza": "pasador"
+      }
     ]
   },
   "test": [

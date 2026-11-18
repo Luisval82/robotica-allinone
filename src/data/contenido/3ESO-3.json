@@ -260,6 +260,25 @@
         "titulo": "Comprueba",
         "texto": "Abre y cierra la pinza con la mano: debe moverse libre, sin rozar el suelo ni las ruedas. Déjala abierta antes de iniciar el programa."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

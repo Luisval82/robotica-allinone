@@ -294,6 +294,18 @@
         "titulo": "Comprueba",
         "texto": "Gira la manivela con la mano: la plataforma debe moverse suave en todo su recorrido."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

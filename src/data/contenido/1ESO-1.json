@@ -278,6 +278,17 @@
         "titulo": "Comprueba",
         "texto": "Empuja el Hub con un dedo: no debe moverse ni volcar. El puerto de carga tiene que quedar accesible."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "viga"
+      },
+      {
+        "pieza": "pasador"
+      }
     ]
   },
   "test": [

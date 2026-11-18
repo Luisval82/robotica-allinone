@@ -384,6 +384,25 @@
         "titulo": "Comprueba",
         "texto": "Haz con la mano el recorrido de una pieza: lectura, empujón y caída a cada cajón."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "color"
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

@@ -297,6 +297,28 @@
         "titulo": "Comprueba",
         "texto": "Empuja el robot contra una pared: el parachoques debe pulsar el sensor antes de que choque ninguna otra pieza."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "distancia"
+      },
+      {
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 1
+      }
     ]
   },
   "test": [

@@ -315,6 +315,22 @@
         "titulo": "Comprueba",
         "texto": "Empuja el vehículo con la mano: debe rodar recto. Acerca una tarjeta al sensor: tiene que quedar a unos dos centímetros."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda",
+        "cantidad": 2
+      },
+      {
+        "pieza": "color"
+      }
     ]
   },
   "test": [

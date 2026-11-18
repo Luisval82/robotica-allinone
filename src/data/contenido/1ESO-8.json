@@ -275,6 +275,21 @@
         "titulo": "Los cables y la prueba",
         "texto": "Motor grande al puerto A y sensor de color al puerto D. Sube la hoja con la mano: debe quedar horizontal sin chocar."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "color"
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

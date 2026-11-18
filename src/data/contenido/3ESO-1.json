@@ -338,6 +338,18 @@
         "titulo": "Comprueba",
         "texto": "Gira el robot sobre sí mismo con la mano: el rotulador debe dibujar un punto, no un círculo."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      }
     ]
   },
   "test": [

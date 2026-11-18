@@ -264,6 +264,22 @@
         "titulo": "Los cables y la prueba",
         "texto": "Motor grande al puerto A y sensor de fuerza al puerto F. Mueve la aguja con la mano de un extremo a otro: no debe rozar."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 1
+      }
     ]
   },
   "test": [

@@ -275,6 +275,29 @@
         "titulo": "Comprueba",
         "texto": "Gira la rueda con la mano una vuelta completa: ninguna cabina debe tocar la base ni las torres."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga"
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "pieza-pequena",
+        "cantidad": 4
+      }
     ]
   },
   "test": [

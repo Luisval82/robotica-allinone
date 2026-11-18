@@ -279,6 +279,21 @@
         "titulo": "Comprueba",
         "texto": "Pasa el robot con la mano del blanco al negro: el sensor no debe rozar el suelo ni quedar a más de dos centímetros."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "color"
+      }
     ]
   },
   "test": [

@@ -287,6 +287,21 @@
         "titulo": "Los cables y la prueba",
         "texto": "Motor al puerto A y sensor de fuerza al puerto F. Abre la puerta con la mano: no debe rozar el marco."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

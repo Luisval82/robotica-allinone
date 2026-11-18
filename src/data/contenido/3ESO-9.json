@@ -328,6 +328,34 @@
         "titulo": "El almacén",
         "texto": "Prepara una línea negra sobre fondo blanco con dos marcas de color, una para la carga y otra para la entrega."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "color"
+      },
+      {
+        "pieza": "distancia"
+      },
+      {
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

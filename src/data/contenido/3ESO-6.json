@@ -325,6 +325,28 @@
         "titulo": "Los cables y la prueba",
         "texto": "Motor grande al puerto A, motor mediano al B, sensor de color al D y sensor de distancia al E. Pasa el coche con la mano: nada debe rozarlo."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "distancia"
+      },
+      {
+        "pieza": "color"
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

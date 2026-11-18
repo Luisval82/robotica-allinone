@@ -292,6 +292,28 @@
         "titulo": "Comprueba por partes",
         "texto": "Mueve con la mano el tiovivo y la barrera: nada debe rozar. Después prueba cada sensor por separado."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande",
+        "cantidad": 1
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "distancia"
+      },
+      {
+        "pieza": "viga"
+      }
     ]
   },
   "test": [

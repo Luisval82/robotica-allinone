@@ -237,6 +237,21 @@
         "titulo": "Comprueba",
         "texto": "Con un programa de dos bloques que escriba la distancia en la matriz, acerca la mano: el número debe bajar."
       }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "rueda"
+      },
+      {
+        "pieza": "distancia"
+      }
     ]
   },
   "test": [
