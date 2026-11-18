@@ -2,11 +2,10 @@
 // se monta aquí, pero se ejecuta en la app oficial de SPIKE del iPad, con el
 // Hub de la mesa conectado por Bluetooth.
 
-import { BluetoothIcon, ExternalLinkIcon, TabletIcon } from "@/components/ui/icons";
-import { LEGO_EDUCATION_URL } from "@/config/site";
+import { BluetoothIcon, TabletIcon } from "@/components/ui/icons";
 
 const PASOS = [
-  "Abre la app LEGO® Education SPIKE™ en tu iPad.",
+  "Abre la app LEGO® Education SPIKE™ en tu iPad con el botón de arriba.",
   "Enciende el Hub de tu mesa con el botón central.",
   "Pulsa el icono del Hub y conéctalo por Bluetooth.",
   "Comprueba que el nombre que aparece es el del Hub de tu mesa, no el de la mesa de al lado.",
@@ -39,18 +38,6 @@ export function AvisoHub() {
         Si el Hub no aparece, apágalo y vuelve a encenderlo: solo se deja ver un rato.
       </p>
 
-      <p className="mt-3 text-xs font-semibold text-ink-500">
-        ¿Estás en un ordenador y no en el iPad?{" "}
-        <a
-          href={LEGO_EDUCATION_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 font-bold text-ink-600 underline underline-offset-2 transition hover:text-ink-900"
-        >
-          Abrir SPIKE en el navegador
-          <ExternalLinkIcon className="size-3" />
-        </a>
-      </p>
     </aside>
   );
 }

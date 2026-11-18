@@ -169,6 +169,17 @@ export function TabletIcon(props: IconProps) {
   );
 }
 
+/** Dos bloques encajados: la app de bloques de palabras. */
+export function BlocksIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M3.5 4.5h7a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z" />
+      <path d="M8 9.5v1.2M13.5 14.5h7a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z" />
+      <path d="M18 19.5v1.2M6 9.5v5h6.5" />
+    </Icon>
+  );
+}
+
 export function BluetoothIcon(props: IconProps) {
   return (
     <Icon {...props}>

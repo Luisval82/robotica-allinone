@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
+import { BotonSpike } from "@/components/unidad/BotonSpike";
 import { requireRole } from "@/lib/auth";
 import { firstParam, parseCourse } from "@/lib/format";
 import { countSoluciones, getPractica } from "@/lib/contenido";
@@ -116,6 +117,9 @@ export default async function ProfesorSolucionesPage({
                     {practica.titulo}
                   </h3>
                   <p className="mt-3 font-semibold text-ink-700">{practica.enunciado}</p>
+                  {/* El mismo botón que ve el alumno: así el profesor puede
+                      montar la solución en su iPad antes de la clase. */}
+                  <BotonSpike />
 
                   <h4 className="mb-3 mt-6 text-sm font-extrabold uppercase tracking-wide text-ink-500">
                     Solución

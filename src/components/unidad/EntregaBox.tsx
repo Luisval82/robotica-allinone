@@ -3,6 +3,7 @@
 import { useActionState, useRef, useState, type ReactNode } from "react";
 import { submitEntregaAction } from "@/actions/alumno";
 import { BlockPartIcon } from "@/components/brand/BlockParts";
+import { BotonSpike } from "@/components/unidad/BotonSpike";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import {
   ArrowDownIcon,
@@ -192,6 +193,7 @@ export function EntregaBox({
       </p>
       <h4 className="mt-1 font-display text-2xl font-semibold text-ink-900">{titulo}</h4>
       <p className="mt-2 font-semibold text-ink-700">{enunciado}</p>
+      <BotonSpike />
       {extra}
     </>
   );
