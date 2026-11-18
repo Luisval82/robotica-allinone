@@ -400,6 +400,21 @@ acciones; después se pintan una a una. Así el programa no puede colgar la pest
 media ejecución y se ve la secuencia paso a paso. Además, el generador mete un seguro antibucle
 (`INFINITE_LOOP_TRAP`) solo en el código que se ejecuta, no en el que se enseña en el panel.
 
+### Probarlo en local
+
+No hace falta ni Supabase ni `.env.local`: `/bloques` no toca la base de datos ni la sesión.
+
+```bash
+npm install
+npm run dev        # http://localhost:3000/bloques
+```
+
+El `predev` copia los iconos y sonidos de Blockly a `public/blockly-media/` antes de arrancar; sin
+eso la papelera y los botones de zoom salen sin dibujo.
+
+Para verlo en el iPad desde el mismo wifi: `npm run dev -- -H 0.0.0.0` y entra en
+`http://LA-IP-DE-TU-ORDENADOR:3000/bloques`.
+
 Qué hay que probar en el iPad: que los bloques se arrastren sin pelearse con el scroll, que
 encastren como en SPIKE, que el menú del botón derecho (duplicar, borrar) salga con pulsación
 larga, y que la papelera trague.

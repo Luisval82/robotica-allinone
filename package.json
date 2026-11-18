@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/copiar-media-blockly.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/copiar-media-blockly.mjs",
     "build": "next build",
