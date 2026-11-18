@@ -371,3 +371,35 @@ Nunito Sans para el texto.
 
 LEGO®, SPIKE™ y el logotipo de LEGO Education son marcas de The LEGO Group. Este proyecto es un
 material docente independiente y no está patrocinado ni avalado por The LEGO Group.
+
+## Prueba: mesa de Blockly real (`/bloques`, rama `prueba-blockly`)
+
+Banco de pruebas con los bloques **reales de Google Blockly**, para ver si ese camino puede
+sustituir algún día a la mesa de bloques de palabras de las unidades. **No toca nada de lo que ya
+funciona**: es una ruta suelta, sin enlace en ningún menú, con archivos propios.
+
+| Archivo | Qué hace |
+| --- | --- |
+| `src/lib/bloques-prueba.ts` | Los tres bloques nuestros, la caja de herramientas y los generadores de código. Sin importar Blockly: solo datos. |
+| `src/components/bloques/BlocklyEditor.tsx` | La mesa: `Blockly.inject` con `renderer: 'zelos'` en 550 px fijos. |
+| `src/components/bloques/Simulador.tsx` | El robot de mentira que ejecuta la secuencia. |
+| `src/app/bloques/page.tsx` | La ruta `/bloques`. |
+
+Cinco categorías: **Eventos, Robótica, Bucles, Lógica y Matemáticas**. Las tres últimas son bloques
+de serie de Blockly; las dos primeras son nuestras, porque Blockly **no trae categoría de eventos**
+(eso es de Scratch) ni sabe nada de motores:
+
+- `robotica_al_empezar` — sombrero, no se le engancha nada por arriba.
+- `robotica_mover_motor` — se apila; puerto A–F y dos huecos de número.
+- `robotica_sensor_distancia` — devuelve un número, así que encaja dentro de otros bloques.
+
+Cómo se ejecuta, que tiene truco: el código generado **no toca la pantalla**. Solo puede llamar a
+`motor(...)` y a `distancia()`, dos funciones que le pasa el simulador y que se limitan a apuntar
+lo que el programa quiere hacer. Primero se recorre el programa entero y sale una lista de
+acciones; después se pintan una a una. Así el programa no puede colgar la pestaña, se puede parar a
+media ejecución y se ve la secuencia paso a paso. Además, el generador mete un seguro antibucle
+(`INFINITE_LOOP_TRAP`) solo en el código que se ejecuta, no en el que se enseña en el panel.
+
+Qué hay que probar en el iPad: que los bloques se arrastren sin pelearse con el scroll, que
+encastren como en SPIKE, que el menú del botón derecho (duplicar, borrar) salga con pulsación
+larga, y que la papelera trague.
