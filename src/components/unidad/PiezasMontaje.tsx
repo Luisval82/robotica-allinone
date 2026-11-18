@@ -4,6 +4,8 @@
 // un esquema propio para que el alumno vea de un vistazo qué entra en cada
 // paso del montaje.
 
+import { HubReal } from "@/components/brand/Hub";
+
 export type Pieza =
   | "hub"
   | "motor"
@@ -52,29 +54,9 @@ function CaraMotor({ cx, cy, r }: { cx: number; cy: number; r: number }) {
 function Dibujo({ pieza }: { pieza: Pieza }) {
   switch (pieza) {
     case "hub":
-      return (
-        <svg viewBox="0 0 64 64" className="size-full text-ink-900" aria-hidden="true">
-          <rect x="16" y="4" width="32" height="56" rx="7" fill="currentColor" />
-          {[0, 1, 2, 3, 4].map((f) =>
-            [0, 1, 2, 3, 4].map((c) => (
-              <rect
-                key={`${f}-${c}`}
-                x={21 + c * 4.6}
-                y={13 + f * 4.6}
-                width="3.2"
-                height="3.2"
-                rx="0.6"
-                className="fill-hub-400"
-              />
-            )),
-          )}
-          <circle cx="32" cy="48" r="5" className="fill-white" />
-          <rect x="10" y="12" width="6" height="9" rx="2" fill="currentColor" />
-          <rect x="10" y="28" width="6" height="9" rx="2" fill="currentColor" />
-          <rect x="48" y="12" width="6" height="9" rx="2" fill="currentColor" />
-          <rect x="48" y="28" width="6" height="9" rx="2" fill="currentColor" />
-        </svg>
-      );
+      // El mismo dibujo del Hub que en el esquema de puertos, para que el
+      // alumno vea siempre el mismo aparato.
+      return <HubReal className="size-full object-contain" />;
     case "motor":
     case "motor-grande": {
       const ancho = pieza === "motor" ? 30 : 38;

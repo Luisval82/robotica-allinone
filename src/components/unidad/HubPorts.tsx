@@ -1,4 +1,4 @@
-import { HubIllustration } from "@/components/brand/Hub";
+import { HubReal } from "@/components/brand/Hub";
 import type { HubSetup, PortDevice, PortLetter } from "@/lib/unidades";
 
 // En el Hub, los puertos A, C y E están a la izquierda y B, D y F a la derecha.
@@ -80,7 +80,12 @@ export function HubPorts({ setup }: { setup: HubSetup }) {
           ))}
         </ul>
         <div className="order-1 mx-auto sm:order-2">
-          <HubIllustration blink={false} className="w-28 drop-shadow-lg sm:w-32" />
+          {/* El Hub de verdad, con los puertos que se usan en esta unidad
+              marcados en oscuro. object-contain: nunca se deforma. */}
+          <HubReal
+            puertosUsados={setup.dispositivos.map((device) => device.puerto)}
+            className="h-auto w-28 object-contain drop-shadow-lg sm:w-36"
+          />
         </div>
         <ul className="order-3 grid gap-3">
           {RIGHT.map((puerto) => (
