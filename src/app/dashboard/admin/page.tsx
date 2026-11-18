@@ -6,6 +6,7 @@ import { RoleControl } from "@/components/admin/RoleControl";
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { requireRole } from "@/lib/auth";
 import { getAnioActivo, getCursosDeDocentes, listUsers } from "@/lib/db";
+import { saludo } from "@/lib/format";
 import { COURSE_LABEL, ROLES, type Role } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Gestión de usuarios" };
@@ -32,7 +33,7 @@ export default async function AdminDashboardPage() {
     <>
       <h1 className="font-display text-4xl font-semibold text-ink-900">Gestión de usuarios</h1>
       <p className="mt-2 max-w-3xl text-lg font-semibold text-ink-500">
-        Quien entra con la cuenta del colegio empieza como alumno. Aquí decides el rol de cada
+        {saludo(session)}. Quien entra con la cuenta del colegio empieza como alumno. Aquí decides el rol de cada
         cuenta —Alumno, Profesor o Superadministrador—: el cambio se aplica al momento, aunque esa
         persona tenga la sesión abierta. Si entra un compañero docente con su correo del colegio,
         aparecerá en la lista como alumno y basta con pasarlo a Profesor.

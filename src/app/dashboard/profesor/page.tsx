@@ -5,7 +5,7 @@ import { COURSE_TONE } from "@/components/profesor/courseTone";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { requireRole } from "@/lib/auth";
 import { getCursosVisibles, listStudentsWithSummary } from "@/lib/db";
-import { firstName, formatNota } from "@/lib/format";
+import { formatNota, saludo } from "@/lib/format";
 import { COURSE_LABEL, UNIT_NUMBERS } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Alumnado" };
@@ -27,7 +27,7 @@ export default async function ProfesorAlumnadoPage() {
     <>
       <h1 className="font-display text-4xl font-semibold text-ink-900">Alumnado</h1>
       <p className="mt-2 max-w-3xl text-lg font-semibold text-ink-500">
-        Hola, {firstName(session.name)}. Así va cada curso. El progreso cuenta la teoría, el test y
+        {saludo(session)}. Así va cada curso. El progreso cuenta la teoría, el test y
         las dos entregas de cada una de las {UNIT_NUMBERS.length} unidades.
       </p>
 

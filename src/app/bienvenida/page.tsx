@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { PerfilForm } from "@/components/auth/PerfilForm";
 import { getSession } from "@/lib/auth";
 import { getAnioActivo, getUltimaMatricula } from "@/lib/db";
+import { firstName, nombreDelCorreo } from "@/lib/format";
 import { LOGIN_PATH, ROLE_HOME, necesitaPerfil } from "@/lib/routes";
 import { COURSE_LABEL, COURSES } from "@/lib/types";
 
@@ -22,6 +23,8 @@ export default async function BienvenidaPage() {
 
   const [anio, ultima] = await Promise.all([getAnioActivo(), getUltimaMatricula(session.id)]);
   const vuelve = ultima !== null;
+  // En la primera entrada el nombre es el que ha dado Google; puede faltar.
+  const nombre = firstName(session.name) || nombreDelCorreo(session.email);
 
   // A quien vuelve se le propone el curso siguiente al que hizo.
   const siguiente = ultima ? COURSES[COURSES.indexOf(ultima.course) + 1] : undefined;
@@ -35,7 +38,17 @@ export default async function BienvenidaPage() {
             {vuelve ? `Curso ${anio}` : "Primera vez por aquí"}
           </p>
           <h1 className="mt-1 font-display text-3xl font-semibold text-ink-900">
-            {vuelve ? "¡Curso nuevo!" : "¡Bienvenido a ROBOTICA ALLINONE!"}
+            {nombre === "" ? (
+              vuelve ? (
+                "¡Curso nuevo!"
+              ) : (
+                "¡Bienvenido a ROBOTICA ALLINONE!"
+              )
+            ) : (
+              <>
+                ¡{vuelve ? "Curso nuevo" : "Hola"}, {nombre}!
+              </>
+            )}
           </h1>
           <p className="mt-2 font-semibold text-ink-600">
             {vuelve ? (

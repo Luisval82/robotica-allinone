@@ -207,8 +207,13 @@ export async function findOrCreateGoogleUser(cuenta: {
   sub: string;
   email: string;
   nombre: string;
+  nombrePila?: string;
 }): Promise<User> {
   const email = normalizeEmail(cuenta.email);
+  // Cómo se llama, según Google: el nombre completo si lo manda y, si no, al
+  // menos el nombre de pila (given_name). Así nunca hay que saludar a nadie
+  // con su dirección de correo.
+  const nombreDeGoogle = cuenta.nombre || (cuenta.nombrePila ?? "").trim();
 
   const { data: porSub, error: errorSub } = await supabase
     .from("users")
@@ -224,6 +229,15 @@ export async function findOrCreateGoogleUser(cuenta: {
       assertNoError(error, "findOrCreateGoogleUser (correo nuevo)");
       fila.email = email;
     }
+    // Si la cuenta se quedó sin nombre guardado, se rellena con el de Google.
+    if (fila.name.trim() === "" && nombreDeGoogle !== "") {
+      const { error } = await supabase
+        .from("users")
+        .update({ name: nombreDeGoogle })
+        .eq("id", fila.id);
+      assertNoError(error, "findOrCreateGoogleUser (nombre de Google)");
+      fila.name = nombreDeGoogle;
+    }
     return aplicarRolDeEntrada(userFromRow(fila));
   }
 
@@ -232,12 +246,17 @@ export async function findOrCreateGoogleUser(cuenta: {
   // CONSERVA SU ROL. No se le crea un perfil de alumno ni se le pide curso.
   const existente = await findUserByEmail(email);
   if (existente) {
+    const sinNombre = existente.name.trim() === "" && nombreDeGoogle !== "";
     const { error } = await supabase
       .from("users")
-      .update({ google_sub: cuenta.sub })
+      .update({ google_sub: cuenta.sub, ...(sinNombre ? { name: nombreDeGoogle } : {}) })
       .eq("id", existente.id);
     assertNoError(error, "findOrCreateGoogleUser (enlazar)");
-    return aplicarRolDeEntrada({ ...existente, googleSub: cuenta.sub });
+    return aplicarRolDeEntrada({
+      ...existente,
+      googleSub: cuenta.sub,
+      ...(sinNombre ? { name: nombreDeGoogle } : {}),
+    });
   }
 
   // Cuenta nueva: alumno, salvo que el correo esté en las listas de docentes.
@@ -246,7 +265,7 @@ export async function findOrCreateGoogleUser(cuenta: {
   const { data, error } = await supabase
     .from("users")
     .insert({
-      name: cuenta.nombre || email.split("@")[0],
+      name: nombreDeGoogle,
       email,
       password_hash: null,
       google_sub: cuenta.sub,

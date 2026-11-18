@@ -20,7 +20,10 @@ const DOMINIO = SCHOOL_EMAIL_SUFFIX.replace(/^@/, "");
 export interface CuentaGoogle {
   sub: string;
   email: string;
+  /** Nombre completo tal y como lo tiene Google ("name"). Puede venir vacío. */
   nombre: string;
+  /** Nombre de pila que da Google ("given_name"): el respaldo para saludar. */
+  nombrePila: string;
 }
 
 /** ¿Están puestas las credenciales? Sin ellas, el botón no se enseña. */
@@ -95,6 +98,9 @@ export async function cuentaDesdeCodigo(
   const sub = typeof carga.sub === "string" ? carga.sub : "";
   const email = typeof carga.email === "string" ? carga.email.toLowerCase() : "";
   const nombre = typeof carga.name === "string" ? carga.name.trim() : "";
+  // Google manda también el nombre de pila por separado: se guarda para
+  // cuando «name» viene vacío y no sabríamos cómo llamar a esa persona.
+  const nombrePila = typeof carga.given_name === "string" ? carga.given_name.trim() : "";
   const aud = carga.aud;
   const iss = typeof carga.iss === "string" ? carga.iss : "";
 
@@ -102,5 +108,5 @@ export async function cuentaDesdeCodigo(
   if (carga.email_verified !== true) return null;
   if (!sub || !email.endsWith(SCHOOL_EMAIL_SUFFIX)) return null;
 
-  return { sub, email, nombre };
+  return { sub, email, nombre, nombrePila };
 }

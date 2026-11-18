@@ -5,6 +5,7 @@ import { HeaderNav } from "@/components/layout/HeaderNav";
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { ExternalLinkIcon, LogOutIcon } from "@/components/ui/icons";
 import { LEGO_EDUCATION_URL } from "@/config/site";
+import { firstName } from "@/lib/format";
 import type { SessionUser } from "@/lib/types";
 
 /**
@@ -24,8 +25,14 @@ export function Header({ user }: { user?: SessionUser | null }) {
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <HeaderNav role={user.role} />
             <div className="flex items-center gap-3">
-              <span className="hidden max-w-44 truncate text-sm font-bold text-ink-700 md:block">
-                {user.name}
+              {/* Solo el nombre de pila: cabe siempre y es como se dirige la
+                  plataforma a cada persona. El nombre completo, al pasar el
+                  ratón, por si alguien comparte ordenador. */}
+              <span
+                title={user.name}
+                className="hidden max-w-44 truncate text-sm font-bold text-ink-700 md:block"
+              >
+                {firstName(user.name, user.email)}
               </span>
               <RoleBadge role={user.role} course={user.course} />
               <form action={logoutAction}>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRightIcon, LockIcon, LockOpenIcon } from "@/components/ui/icons";
 import { requireRole } from "@/lib/auth";
 import { getProgress, getStudentAccess, testScore } from "@/lib/db";
-import { firstName, formatNota } from "@/lib/format";
+import { formatNota, saludo } from "@/lib/format";
 import { COURSE_LABEL, THEORY_STEPS } from "@/lib/types";
 import { getUnidadesDeCurso } from "@/lib/unidades";
 import { unitTone } from "@/lib/unitTone";
@@ -36,7 +36,7 @@ export default async function AlumnoDashboardPage() {
           {COURSE_LABEL[session.course]} · Robótica SPIKE Prime
         </p>
         <h1 className="mt-2 font-display text-4xl font-semibold sm:text-5xl">
-          Hola, {firstName(session.name)}
+          {saludo(session)}
         </h1>
         <p className="mt-3 max-w-xl text-lg font-semibold text-spike-100">
           {abiertas === 1
