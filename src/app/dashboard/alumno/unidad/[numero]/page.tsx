@@ -30,7 +30,7 @@ import {
   testScore,
 } from "@/lib/db";
 import { formatFecha } from "@/lib/format";
-import { getPaleta } from "@/lib/paleta";
+import { getBloquesDePractica, getPaleta } from "@/lib/paleta";
 import { COURSE_LABEL, THEORY_STEPS, UNIT_NUMBERS } from "@/lib/types";
 import { getHubSetup, getUnidad } from "@/lib/unidades";
 import { unitTone } from "@/lib/unitTone";
@@ -362,6 +362,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
         >
           {intermedias.length > 0 ? (
             <PracticasIntermedias
+              curso={curso}
               unidad={numero}
               practicas={intermedias}
               guardadas={practicasGuardadas}
@@ -431,7 +432,8 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
           <div className="mt-5 grid gap-5">
             {/* La PRUEBA se entrega una sola vez: al entregar queda cerrada.
                 Aquí NO se enseña la solución, porque estas dos las corrige el
-                profesor con nota. */}
+                profesor con nota. Y el cajón de la mesa trae los bloques de la
+                unidad sin mirar la solución, por lo mismo. */}
             {practicas.length > 0 ? (
               practicas.map((practica, index) => (
                 <EntregaBox
@@ -441,6 +443,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                   titulo={practica.titulo}
                   enunciado={practica.enunciado}
                   paleta={paleta}
+                  bloquesTaller={getBloquesDePractica(curso, numero)}
                   entrega={entregas[index]}
                   bloqueada={entregas[index] !== null}
                   textoCerrada="Entregada"

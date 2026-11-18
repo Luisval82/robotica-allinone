@@ -13,13 +13,17 @@ import type { BlockInfo } from "@/lib/bloques";
 import type { PracticaIntermedia } from "@/lib/contenido";
 import type { PracticaIntermediaEntrega } from "@/lib/db";
 import { formatFecha } from "@/lib/format";
+import type { Course } from "@/lib/types";
+import { getBloquesDePractica } from "@/lib/paleta";
 
 export function PracticasIntermedias({
+  curso,
   unidad,
   practicas,
   guardadas,
   paleta,
 }: {
+  curso: Course;
   unidad: number;
   practicas: PracticaIntermedia[];
   guardadas: PracticaIntermediaEntrega[];
@@ -69,6 +73,9 @@ export function PracticasIntermedias({
             enunciado={practica.enunciado}
             etiqueta={`Práctica ${practica.practica} de ${practicas.length}`}
             paleta={paleta}
+            // El cajón trae los bloques de la unidad y los que use su
+            // solución: lo que hace falta para este reto, sin más ruido.
+            bloquesTaller={getBloquesDePractica(curso, unidad, practica.solucion ?? [])}
             entrega={entrega}
             accion={submitPracticaIntermediaAction}
             textoBoton="Guardar"

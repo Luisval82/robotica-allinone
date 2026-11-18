@@ -1,7 +1,7 @@
 // Paleta de bloques con la que el alumno compone sus entregas en una unidad.
 
-import { getBlockInfo, getCompanions, type BlockInfo } from "@/lib/bloques";
-import type { Course } from "@/lib/types";
+import { ALL_BLOCKS, getBlockInfo, getCompanions, type BlockInfo } from "@/lib/bloques";
+import type { Course, ProgramRow } from "@/lib/types";
 import { getUnidad, getUnidadesAnteriores } from "@/lib/unidades";
 
 export interface Paleta {
@@ -44,4 +44,31 @@ export function getPaleta(curso: Course, numero: number): Paleta {
 export function getAllowedBlocks(curso: Course, numero: number): Set<string> {
   const { propios, anteriores } = getPaleta(curso, numero);
   return new Set([...propios, ...anteriores].map((info) => info.texto));
+}
+
+/**
+ * Los bloques que se ofrecen en la mesa de trabajo de UNA práctica.
+ *
+ * No la paleta entera —que a estas alturas del curso son decenas de bloques y
+ * solo hacen ruido—, sino los de la unidad más los que use su solución. Así
+ * el cajón trae lo que hace falta para ese reto y deja sitio para resolverlo
+ * de otra manera, que en los retos abiertos es justo lo que se busca.
+ *
+ * El bloque de inicio va siempre: todo programa empieza por él.
+ */
+export function getBloquesDePractica(
+  curso: Course,
+  numero: number,
+  solucion: ProgramRow[] = [],
+): string[] {
+  const { propios, anteriores } = getPaleta(curso, numero);
+  const permitidos = new Set([...propios, ...anteriores].map((info) => info.texto));
+
+  const nombres = new Set<string>(["Cuando se inicia el programa"]);
+  for (const info of propios) nombres.add(info.texto);
+  for (const fila of solucion) {
+    if (permitidos.has(fila.texto)) nombres.add(fila.texto);
+  }
+  // En el orden del catálogo, que es el de las categorías de la app.
+  return ALL_BLOCKS.filter((info) => nombres.has(info.texto)).map((info) => info.texto);
 }

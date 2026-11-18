@@ -4,6 +4,7 @@ import { useActionState, useRef, useState, type ReactNode } from "react";
 import { submitEntregaAction } from "@/actions/alumno";
 import { BlockPartIcon } from "@/components/brand/BlockParts";
 import { BotonSpike } from "@/components/unidad/BotonSpike";
+import { EditorBloques } from "@/components/unidad/EditorBloques";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
 import {
   ArrowDownIcon,
@@ -173,6 +174,7 @@ export function EntregaBox({
   solucion,
   permiteComprobar = false,
   textoCerrada = "Entregada",
+  bloquesTaller,
 }: {
   unidad: number;
   practica: number;
@@ -197,6 +199,8 @@ export function EntregaBox({
   permiteComprobar?: boolean;
   /** Cómo se llama el estado cerrado: «Comprobada», «Entregada»… */
   textoCerrada?: string;
+  /** Los bloques del cajón de la mesa. Sin esto, la paleta entera. */
+  bloquesTaller?: string[];
 }) {
   const [state, formAction, pending] = useActionState(accion, EMPTY_STATE);
   const nextKey = useRef(entrega?.bloques.length ?? 0);
@@ -211,6 +215,10 @@ export function EntregaBox({
   );
   const [explicacion, setExplicacion] = useState(entrega?.explicacion ?? "");
   const [confirmando, setConfirmando] = useState(false);
+  // La mesa de bloques es lo primero que se ve; la lista queda de reserva,
+  // para teclado y por si la mesa no abriera.
+  const [modo, setModo] = useState<"mesa" | "lista">("mesa");
+  const [montaje, setMontaje] = useState(0);
   const id = `entrega-${unidad}-${practica}`;
   const corregida = entrega !== null && entrega.nota !== null;
 
@@ -270,9 +278,14 @@ export function EntregaBox({
               <LockIcon className="size-4" />
               Tu programa
             </h5>
-            <div className="overflow-x-auto rounded-2xl bg-ink-50 p-4">
-              <ProgramBlocks rows={entrega.bloques} label={`Tu programa: ${titulo}`} />
-            </div>
+            {/* El mismo lienzo, pero cerrado: se puede mirar y mover, no tocar. */}
+            <EditorBloques
+              bloques={[]}
+              filas={entrega.bloques}
+              soloLectura
+              alto={340}
+              etiqueta={`Tu programa, ya comprobado: ${titulo}`}
+            />
             {entrega.explicacion ? (
               <p className="mt-2 text-sm font-semibold text-ink-600">
                 Lo explicaste así: {entrega.explicacion}
@@ -285,9 +298,13 @@ export function EntregaBox({
               <h5 className="mb-2 text-sm font-extrabold uppercase tracking-wide text-spike-700">
                 Solución de ejemplo
               </h5>
-              <div className="overflow-x-auto rounded-2xl bg-spike-50 p-4">
-                <ProgramBlocks rows={solucion.bloques} label={`Solución de ejemplo: ${titulo}`} />
-              </div>
+              <EditorBloques
+                bloques={[]}
+                filas={solucion.bloques}
+                soloLectura
+                alto={340}
+                etiqueta={`Solución de ejemplo: ${titulo}`}
+              />
               <p className="mt-2 text-sm font-bold text-spike-800">{solucion.notas}</p>
               <p className="mt-1.5 text-sm font-semibold text-ink-500">
                 Es UN ejemplo que funciona, no la única respuesta: si el tuyo hace lo mismo con
@@ -334,13 +351,30 @@ export function EntregaBox({
     setRows((current) => current.filter((_, i) => i !== index));
   }
 
-  const programa = JSON.stringify(
-    rows.map(({ texto, valor, valores, nivel }) =>
-      getBlockInfo(texto).partes
-        ? { texto, valores, nivel }
-        : { texto, valor: valor.trim(), nivel },
-    ),
+  const filas: ProgramRow[] = rows.map(({ texto, valor, valores, nivel }) =>
+    getBlockInfo(texto).partes
+      ? { texto, valores, nivel }
+      : { texto, valor: valor.trim(), nivel },
   );
+  const programa = JSON.stringify(filas);
+
+  /** Lo que el alumno monta en la mesa, traído a la lista de bloques. */
+  function deLaMesa(nuevas: ProgramRow[]) {
+    setRows(
+      nuevas.map((fila, indice) => ({
+        key: indice,
+        texto: fila.texto,
+        valor: fila.valor ?? "",
+        valores: fila.valores ?? defaultValues(getBlockInfo(fila.texto)),
+        nivel: fila.nivel,
+      })),
+    );
+    nextKey.current = nuevas.length;
+  }
+
+  const bloquesMesa =
+    bloquesTaller ??
+    [...paleta.propios, ...paleta.anteriores].map((info) => info.texto);
 
   return (
     <article className="rounded-2xl border-2 border-ink-100 p-5 sm:p-6">
@@ -351,6 +385,36 @@ export function EntregaBox({
         <input type="hidden" name="practica" value={practica} />
         <input type="hidden" name="programa" value={programa} />
 
+        {modo === "mesa" ? (
+          <div>
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <h5 className="text-sm font-extrabold uppercase tracking-wide text-ink-500">
+                Tu programa
+              </h5>
+              <button
+                type="button"
+                onClick={() => setModo("lista")}
+                className="text-sm font-extrabold text-spike-700 underline underline-offset-2 transition hover:text-spike-800"
+              >
+                Montarlo con la lista
+              </button>
+            </div>
+            <EditorBloques
+              key={`mesa-${montaje}`}
+              bloques={bloquesMesa}
+              filas={filas}
+              onChange={deLaMesa}
+              alto={500}
+              etiqueta={`Mesa de bloques: ${titulo}`}
+            />
+            <p className="mt-2 text-sm font-semibold text-ink-500">
+              Arrastra los bloques del cajón de la izquierda al lienzo y encájalos unos con otros.
+              Toca un desplegable para cambiar el puerto, los segundos o el color. Abajo a la
+              derecha tienes acercar, alejar, centrar y la papelera.
+            </p>
+          </div>
+        ) : (
+        <>
         <div>
           <h5 className="mb-2 text-sm font-extrabold uppercase tracking-wide text-ink-500">
             Tu programa
@@ -480,7 +544,20 @@ export function EntregaBox({
               </div>
             </details>
           ) : null}
+
+          <button
+            type="button"
+            onClick={() => {
+              setMontaje((n) => n + 1);
+              setModo("mesa");
+            }}
+            className="mt-4 text-sm font-extrabold text-spike-700 underline underline-offset-2 transition hover:text-spike-800"
+          >
+            Volver a la mesa de bloques
+          </button>
         </div>
+        </>
+        )}
 
         <div>
           <label

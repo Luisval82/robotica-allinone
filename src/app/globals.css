@@ -558,3 +558,39 @@
     transition: none !important;
   }
 }
+
+/*
+ * La mesa de bloques (Blockly con el renderizador zelos).
+ *
+ * Blockly mete sus propios estilos en la página; estos van con la clase
+ * .editor-bloques delante para pesar más que los suyos pase lo que pase, y
+ * dejan la columna de categorías como la de la app: píldora de color a la
+ * izquierda, el nombre en mayúsculas y bien apretado.
+ */
+.editor-bloques .blocklyToolboxDiv {
+  padding: 0.5rem 0;
+  border-right: 2px solid var(--color-ink-100);
+}
+
+.editor-bloques .blocklyTreeRow {
+  margin-bottom: 2px;
+  padding-right: 0.7rem;
+  border-radius: 0 999px 999px 0;
+}
+
+.editor-bloques .blocklyTreeLabel {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.editor-bloques .blocklyTreeSelected .blocklyTreeLabel {
+  color: var(--color-ink-900);
+}
+
+/* En el iPad, el arrastre es del bloque: la página no se mueve debajo. */
+.editor-bloques .blocklySvg {
+  touch-action: none;
+}

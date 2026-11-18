@@ -17,3 +17,4 @@ next-env.d.ts
 # varios
 .DS_Store
 npm-debug.log*
+public/blockly-media/

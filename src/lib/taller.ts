@@ -5,7 +5,14 @@
 // Blockly se dibuja con el renderizador «zelos», que es el diseño de bloques
 // de Scratch 3 — el mismo que usa la app de SPIKE.
 
-import { ALL_BLOCKS, CATEGORY_HEX, isFillable, type BlockInfo, type BlockPart } from "@/lib/bloques";
+import {
+  ALL_BLOCKS,
+  CATEGORY_HEX,
+  getBlockInfo,
+  isFillable,
+  type BlockInfo,
+  type BlockPart,
+} from "@/lib/bloques";
 import type { ProgramRow } from "@/lib/types";
 
 /** Un id válido para Blockly a partir del nombre del bloque. */
@@ -48,18 +55,24 @@ interface DefinicionBlockly {
 }
 
 /**
- * Bloques que llevan otros dentro (la boca de un bucle o de un «si»). Sin
+ * Bloques que llevan otros dentro: la boca de un bucle o de un «si». Sin
  * esto, en el taller no se podría meter nada dentro de un «Repetir».
+ *
+ * «Esperar hasta que» NO está aquí: en la app es un bloque de pila normal
+ * con su condición dentro, no una boca que se rellena con más bloques.
  */
 const CONTENEDORES = new Set([
   "Repetir bucle",
+  "Repetir bucle hasta",
   "Bucle infinito",
   "Si... entonces...",
-  "Esperar hasta que",
 ]);
 
 /** El «Si… entonces… Si no…» tiene dos bocas. */
-const DOS_BOCAS = new Set(["Si... entonces... Si no..."]);
+export const DOS_BOCAS = new Set(["Si... entonces... Si no..."]);
+
+/** La fila que separa las dos bocas del «Si… entonces… Si no…». */
+export const FILA_SI_NO = "Si no";
 
 function campo(parte: BlockPart, indice: number): CampoBlockly {
   const name = `H${indice}`;
@@ -94,14 +107,17 @@ export function definicionDe(info: BlockInfo): DefinicionBlockly {
       message0 += `%${args0.length} `;
     }
   } else {
-    // Bloques que todavía no están pieza a pieza: el nombre, y un hueco solo
-    // si el propio nombre lo pide (la «X» de «Esperar X segundos»).
+    // Bloques que todavía no están descritos pieza a pieza. Llevan un único
+    // campo de texto con su valor: en la app ahí van desplegables y huecos
+    // hexagonales, y aquí, hasta tener su captura para dibujarlos igual, se
+    // escribe a mano. Así no se pierde nada de lo que monte el alumno.
     if (info.texto.includes(" X ")) {
       const [antes, despues] = info.texto.split(" X ");
       message0 = `${antes} %1 ${despues} `;
       args0.push({ type: "field_number", name: "H0", value: 1 });
     } else {
-      message0 = `${info.texto} `;
+      message0 = `${info.texto} %1 `;
+      args0.push({ type: "field_input", name: "H0", text: "" });
     }
   }
 
@@ -184,4 +200,101 @@ export function filaDeBloque(
   const texto = TEXTO_POR_ID.get(id);
   if (!texto) return null;
   return { texto, valores, nivel };
+}
+
+// ── De la mesa de trabajo a un programa, y al revés ──────────────────────
+//
+// El resto de la plataforma guarda los programas como filas (ProgramRow):
+// nombre del bloque, sus valores y la sangría. El taller trabaja con bloques
+// encajados. Estas dos funciones traducen de una cosa a la otra, así que lo
+// que el alumno monta arrastrando se guarda igual que siempre y se puede
+// volver a cargar tal cual.
+
+/** Lo mínimo que necesitamos de un bloque de Blockly para leerlo. */
+export interface BloqueDelTaller {
+  type: string;
+  getFieldValue(name: string): string | null;
+  getInputTargetBlock(name: string): BloqueDelTaller | null;
+  getNextBlock(): BloqueDelTaller | null;
+}
+
+/** Las filas de una pila de bloques, con su sangría. */
+export function filasDeBloques(primero: BloqueDelTaller | null, nivel = 0): ProgramRow[] {
+  const filas: ProgramRow[] = [];
+  let bloque = primero;
+
+  while (bloque) {
+    const texto = TEXTO_POR_ID.get(bloque.type);
+    if (texto) {
+      const info = getBlockInfo(texto);
+      const huecos = numeroDeHuecos(info);
+      const valores: string[] = [];
+      for (let i = 0; i < huecos; i += 1) valores.push(bloque.getFieldValue(`H${i}`) ?? "");
+
+      const fila: ProgramRow = { texto, nivel };
+      if (info.partes) fila.valores = valores;
+      else if (valores[0]) fila.valor = valores[0];
+      filas.push(fila);
+
+      const cuerpo = bloque.getInputTargetBlock("CUERPO");
+      if (cuerpo) filas.push(...filasDeBloques(cuerpo, nivel + 1));
+
+      if (DOS_BOCAS.has(texto)) {
+        filas.push({ texto: FILA_SI_NO, nivel });
+        const siNo = bloque.getInputTargetBlock("SI_NO");
+        if (siNo) filas.push(...filasDeBloques(siNo, nivel + 1));
+      }
+    }
+    bloque = bloque.getNextBlock();
+  }
+  return filas;
+}
+
+/** Un bloque a punto de crearse en la mesa, con lo que lleva dentro. */
+export interface NodoTaller {
+  id: string;
+  texto: string;
+  campos: string[];
+  cuerpo: NodoTaller[];
+  siNo: NodoTaller[];
+}
+
+function nodo(fila: ProgramRow): NodoTaller | null {
+  const id = ID_POR_TEXTO.get(fila.texto);
+  if (!id) return null;
+  const info = getBlockInfo(fila.texto);
+  const campos = info.partes
+    ? (fila.valores ?? []).slice(0, numeroDeHuecos(info))
+    : [fila.valor ?? ""];
+  return { id, texto: fila.texto, campos, cuerpo: [], siNo: [] };
+}
+
+/**
+ * El árbol de bloques que describe un programa guardado. La sangría de cada
+ * fila dice dentro de qué va; la fila «Si no» cambia a la segunda boca del
+ * bloque que la abrió.
+ */
+export function arbolDeFilas(filas: ProgramRow[]): NodoTaller[] {
+  const raiz: NodoTaller[] = [];
+  // Dónde van los bloques de cada nivel de sangría.
+  const destino: NodoTaller[][] = [raiz];
+
+  for (const fila of filas) {
+    const nivel = Math.max(0, Math.min(fila.nivel ?? 0, destino.length - 1));
+    const lista = destino[nivel];
+
+    if (fila.texto === FILA_SI_NO) {
+      // Lo que venga ahora va en la segunda boca del «Si… Si no…» abierto.
+      const abierto = lista[lista.length - 1];
+      if (abierto && DOS_BOCAS.has(abierto.texto)) destino[nivel + 1] = abierto.siNo;
+      continue;
+    }
+
+    const nuevo = nodo(fila);
+    if (!nuevo) continue;
+    lista.push(nuevo);
+    destino.length = nivel + 1;
+    destino[nivel + 1] = nuevo.cuerpo;
+  }
+  return raiz;
 }
