@@ -52,10 +52,16 @@ estén vacías: `marta.ejemplo`, `hugo.ejemplo`, `nora.ejemplo`, `ivan.ejemplo`,
 
 ## Panel del superadministrador (`/dashboard/admin`)
 
-Pestaña exclusiva «Gestión de usuarios»: lista todas las cuentas con un botón para **dar** o
-**quitar el rol de Profesor**. El cambio se aplica al momento: si esa persona tiene la sesión
-abierta, su siguiente clic ya la lleva al panel que le corresponde. Quien deja de ser profesor
-vuelve a ser alumno del curso con el que se registró. El superadministrador no se puede cambiar.
+Pestaña exclusiva «Gestión de usuarios»: lista todas las cuentas con un **selector de rol**
+(Alumno, Profesor o Superadministrador) y un botón de Guardar. El cambio se aplica al momento: si
+esa persona tiene la sesión abierta, su siguiente clic ya la lleva al panel que le corresponde.
+Quien pasa a alumno conserva el curso con el que se registró; si no tenía, se le elige ahí mismo.
+
+Dos cosas que el panel no deja hacer, para no quedarse fuera de la plataforma: **cambiarte el rol
+a ti mismo** y **quitar el último superadministrador**. Ambas se comprueban también en el servidor.
+
+Desde aquí hay un botón directo a las **fichas del alumnado** (`/dashboard/profesor/alumnos`), que
+es donde se corrige el nombre y se mueve de curso a cada alumno.
 
 ## Panel del profesor (`/dashboard/profesor`)
 
@@ -147,6 +153,17 @@ cero y sirven para probar el recorrido completo. Vacía sus dos listas cuando em
 
 ## Cómo funciona el acceso
 
+- **Entrar con Google** (`/acceso/google`): botón «Entrar con la cuenta del colegio». Solo aparece
+  si están puestas `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET`, y solo admite correos verificados
+  del dominio del colegio. Se reconoce a cada persona por el identificador de Google, que no
+  cambia aunque le cambien el correo.
+  - Si **ya tenía cuenta** con ese correo (un profesor o el superadministrador dados de alta con
+    contraseña), se le enlaza Google y **conserva su rol**: entra directo a su panel, sin pantalla
+    de curso ni perfil de alumno.
+  - Si es **nueva**, nace como alumno y pasa por `/bienvenida` a decir su nombre y su curso… salvo
+    que su correo esté en `SUPERADMIN_EMAILS` o `PROFESOR_EMAILS` (listas separadas por comas en
+    Vercel), en cuyo caso entra ya con ese rol. Útil para la primera entrada del superadministrador,
+    cuando todavía no hay nadie que le pueda dar el rol.
 - **Registro**: nombre, correo del colegio, contraseña (mínimo 8 caracteres) y curso. Toda cuenta
   nueva entra como **alumno**; el rol de Profesor lo concederá el superadministrador.
 - **Correo corporativo**: se comprueba en el navegador (aviso inmediato) y otra vez en el servidor.

@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { startSession } from "@/lib/auth";
 import { findOrCreateGoogleUser } from "@/lib/db";
 import { cuentaDesdeCodigo } from "@/lib/google";
-import { BIENVENIDA_PATH, LOGIN_PATH, ROLE_HOME } from "@/lib/routes";
+import { BIENVENIDA_PATH, LOGIN_PATH, ROLE_HOME, necesitaPerfil } from "@/lib/routes";
 
 /** La vuelta de Google: comprueba quién es, lo da de alta si hace falta y abre su sesión. */
 export async function GET(request: NextRequest) {
@@ -26,6 +26,8 @@ export async function GET(request: NextRequest) {
   const user = await findOrCreateGoogleUser(cuenta);
   await startSession(user);
 
-  const destino = user.perfilCompleto ? ROLE_HOME[user.role] : BIENVENIDA_PATH;
+  // El profesor y el superadministrador entran directamente a su panel: la
+  // pantalla de curso es solo para el alumno que acaba de llegar.
+  const destino = necesitaPerfil(user) ? BIENVENIDA_PATH : ROLE_HOME[user.role];
   return NextResponse.redirect(new URL(destino, request.url));
 }

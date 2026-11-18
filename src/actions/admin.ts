@@ -1,26 +1,40 @@
 "use server";
 
-// Acciones del superadministrador: dar o quitar el rol de Profesor.
+// Acciones del superadministrador: cambiar el rol de cualquier cuenta.
 
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/auth";
-import { setProfesorRole } from "@/lib/db";
-import { isCourse } from "@/lib/types";
+import { setUserRole } from "@/lib/db";
+import { isCourse, isRole, isUuid } from "@/lib/types";
 
 function field(formData: FormData, name: string): string {
   const value = formData.get(name);
   return typeof value === "string" ? value : "";
 }
 
-export async function setProfesorRoleAction(formData: FormData): Promise<void> {
-  // Solo el superadministrador puede cambiar roles (se comprueba en el servidor).
-  await requireRole(["superadmin"]);
+/**
+ * Pasa una cuenta a Alumno, Profesor o Superadministrador.
+ *
+ * Solo el superadministrador puede hacerlo, y se comprueba en el servidor: no
+ * basta con que el selector no aparezca en pantalla. Los dos casos que la base
+ * de datos rechaza —cambiarse el rol a uno mismo y dejar la plataforma sin
+ * ningún superadministrador— ya no se ofrecen en la tabla, así que aquí basta
+ * con no hacer nada.
+ */
+export async function setUserRoleAction(formData: FormData): Promise<void> {
+  const session = await requireRole(["superadmin"]);
 
   const userId = field(formData, "userId");
-  const accion = field(formData, "accion");
+  const role = field(formData, "role");
   const course = field(formData, "course");
-  if (userId === "" || (accion !== "asignar" && accion !== "revocar")) return;
+  if (!isUuid(userId) || !isRole(role)) return;
 
-  await setProfesorRole(userId, accion === "asignar", isCourse(course) ? course : undefined);
+  await setUserRole(userId, role, {
+    actorId: session.id,
+    fallbackCourse: isCourse(course) ? course : undefined,
+  });
+
+  // El cambio se nota al momento, incluso si esa persona tiene la sesión
+  // abierta: al entrar en cualquier panel se le renueva la cookie.
   revalidatePath("/dashboard", "layout");
 }

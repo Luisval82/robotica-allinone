@@ -17,20 +17,23 @@ const ROLE_PLURAL: Record<Role, string> = {
 
 export default async function AdminDashboardPage() {
   // Pestaña exclusiva del superadministrador.
-  await requireRole(["superadmin"]);
+  const session = await requireRole(["superadmin"]);
 
   // Orden: superadministrador, profesores y alumnos; dentro de cada rol, por nombre.
   const users = (await listUsers()).sort(
     (a, b) =>
       ROLES.indexOf(a.role) - ROLES.indexOf(b.role) || a.name.localeCompare(b.name, "es"),
   );
+  const superadmins = users.filter((user) => user.role === "superadmin").length;
 
   return (
     <>
       <h1 className="font-display text-4xl font-semibold text-ink-900">Gestión de usuarios</h1>
       <p className="mt-2 max-w-3xl text-lg font-semibold text-ink-500">
-        Quien entra con la cuenta del colegio empieza como alumno. Aquí decides quién es Profesor:
-        el cambio se aplica al momento, aunque esa persona tenga la sesión abierta.
+        Quien entra con la cuenta del colegio empieza como alumno. Aquí decides el rol de cada
+        cuenta —Alumno, Profesor o Superadministrador—: el cambio se aplica al momento, aunque esa
+        persona tenga la sesión abierta. Si entra un compañero docente con su correo del colegio,
+        aparecerá en la lista como alumno y basta con pasarlo a Profesor.
       </p>
       <Link
         href="/dashboard/profesor/alumnos"
@@ -71,7 +74,7 @@ export default async function AdminDashboardPage() {
                 Curso
               </th>
               <th scope="col" className="px-6 py-4">
-                Rol de Profesor
+                Cambiar rol
               </th>
             </tr>
           </thead>
@@ -89,7 +92,11 @@ export default async function AdminDashboardPage() {
                   {user.role === "alumno" && user.course ? COURSE_LABEL[user.course] : "—"}
                 </td>
                 <td className="px-6 py-3">
-                  <RoleControl user={user} />
+                  <RoleControl
+                    user={user}
+                    esTuCuenta={user.id === session.id}
+                    esUnicoSuperadmin={user.role === "superadmin" && superadmins <= 1}
+                  />
                 </td>
               </tr>
             ))}

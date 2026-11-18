@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 import { getSession } from "@/lib/auth";
-import { BIENVENIDA_PATH, LOGIN_PATH } from "@/lib/routes";
+import { BIENVENIDA_PATH, LOGIN_PATH, necesitaPerfil } from "@/lib/routes";
 
 // Marco común de los tres paneles. Nadie llega aquí sin sesión.
 export default async function DashboardLayout({ children }: Readonly<{ children: ReactNode }>) {
@@ -11,7 +11,7 @@ export default async function DashboardLayout({ children }: Readonly<{ children:
 
   // Un alumno sin curso es alguien que acaba de entrar con Google y todavía
   // no ha dicho quién es: no puede usar la plataforma hasta completarlo.
-  if (session.role === "alumno" && session.course === null) redirect(BIENVENIDA_PATH);
+  if (necesitaPerfil(session)) redirect(BIENVENIDA_PATH);
 
   return (
     <div className="flex min-h-dvh flex-col">

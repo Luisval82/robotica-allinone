@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { PerfilForm } from "@/components/auth/PerfilForm";
 import { getSession } from "@/lib/auth";
-import { LOGIN_PATH, ROLE_HOME } from "@/lib/routes";
+import { LOGIN_PATH, ROLE_HOME, necesitaPerfil } from "@/lib/routes";
 
 export const metadata: Metadata = { title: "Bienvenido" };
 
@@ -14,7 +14,8 @@ export const metadata: Metadata = { title: "Bienvenido" };
 export default async function BienvenidaPage() {
   const session = await getSession();
   if (!session) redirect(LOGIN_PATH);
-  if (session.role !== "alumno" || session.course !== null) redirect(ROLE_HOME[session.role]);
+  // Quien ya tiene curso —y todo profesor o superadministrador— va a su panel.
+  if (!necesitaPerfil(session)) redirect(ROLE_HOME[session.role]);
 
   return (
     <div className="flex min-h-dvh flex-col">

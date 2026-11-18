@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { FichaAlumno } from "@/components/profesor/FichaAlumno";
 import { COURSE_TONE } from "@/components/profesor/courseTone";
 import { requireRole } from "@/lib/auth";
@@ -12,7 +14,7 @@ export const metadata: Metadata = { title: "Fichas del alumnado" };
  * puede corregir si puso uno falso— y su curso, que se puede cambiar.
  */
 export default async function FichasPage() {
-  await requireRole(["profesor", "superadmin"]);
+  const session = await requireRole(["profesor", "superadmin"]);
 
   const alumnos = (await listUsers()).filter((user) => user.role === "alumno");
   const sinCurso = alumnos.filter((alumno) => alumno.course === null);
@@ -24,6 +26,21 @@ export default async function FichasPage() {
         Aquí ves con qué correo ha entrado cada alumno. Puedes corregirle el nombre si puso uno
         que no es el suyo, y moverlo de curso si se equivocó al elegir.
       </p>
+
+      {session.role === "superadmin" ? (
+        <Link
+          href="/dashboard/admin"
+          className="mt-4 inline-flex h-11 items-center gap-2 rounded-2xl bg-ink-900 px-5 font-display font-semibold text-white transition hover:bg-ink-700"
+        >
+          Cambiar el rol de una cuenta
+          <ArrowRightIcon className="size-4" />
+        </Link>
+      ) : (
+        <p className="mt-3 font-semibold text-ink-500">
+          ¿Ha entrado un compañero docente con su correo del colegio? Aparecerá aquí como alumno
+          hasta que el superadministrador le dé el rol de Profesor.
+        </p>
+      )}
 
       {sinCurso.length > 0 ? (
         <section className="mt-8 overflow-hidden rounded-card bg-white shadow-card">

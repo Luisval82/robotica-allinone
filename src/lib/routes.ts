@@ -1,13 +1,26 @@
 // Mapa de rutas por rol. Lo usan el proxy (src/proxy.ts), las acciones de
 // login/registro y las propias páginas, para que la regla viva en un solo sitio.
 
-import type { Role } from "@/lib/types";
+import type { Course, Role } from "@/lib/types";
 
 export const LOGIN_PATH = "/login";
 export const REGISTER_PATH = "/registro";
 
 /** Primera entrada: el alumno dice su nombre y elige curso. */
 export const BIENVENIDA_PATH = "/bienvenida";
+
+/**
+ * ¿Hay que llevarle a la pantalla de bienvenida?
+ *
+ * Solo al ALUMNO que todavía no ha dicho a qué curso va. Un profesor o un
+ * superadministrador que entra con la cuenta del colegio nunca pasa por ahí:
+ * va directo a su panel con su rol, sin elegir curso ni crearle perfil de
+ * alumno. La regla vive aquí para que la usen igual la vuelta de Google, el
+ * marco del panel y la propia pantalla de bienvenida.
+ */
+export function necesitaPerfil(user: { role: Role; course: Course | null }): boolean {
+  return user.role === "alumno" && user.course === null;
+}
 
 /** Renueva la cookie cuando el rol guardado en ella ya no coincide con la base de datos. */
 export const REFRESH_SESSION_PATH = "/sesion/actualizar";
