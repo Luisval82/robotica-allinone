@@ -143,7 +143,7 @@ export function BlockPartColor({ valor }: { valor: string }) {
     <span className="word-block__menu">
       <span
         className="word-block__color"
-        style={{ background: COLORES[valor.toLowerCase()] ?? valor }}
+        style={{ background: COLORES[String(valor).toLowerCase()] ?? String(valor) }}
         title={valor}
       />
     </span>

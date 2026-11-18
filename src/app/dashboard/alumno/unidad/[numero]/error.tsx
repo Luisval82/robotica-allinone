@@ -27,6 +27,18 @@ export default function ErrorDeUnidad({
         No se ha perdido nada de lo que tenías guardado. Vuelve a intentarlo y, si sigue pasando,
         avisa a tu profesor.
       </p>
+      {/* El detalle, plegado: al alumno no le dice nada, pero cuando avisa
+          a su profesor evita tener que abrir la consola del navegador. */}
+      <details className="mt-6 text-left">
+        <summary className="cursor-pointer text-center text-sm font-extrabold text-ink-500">
+          Detalle técnico, para tu profesor
+        </summary>
+        <p className="mt-2 overflow-x-auto rounded-xl bg-ink-100 p-3 font-mono text-xs text-ink-700">
+          {error.message || "Sin mensaje"}
+          {error.digest ? ` · ${error.digest}` : ""}
+        </p>
+      </details>
+
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <button
           type="button"

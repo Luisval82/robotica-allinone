@@ -376,8 +376,8 @@ export function EntregaBox({
 
   const filas: ProgramRow[] = rows.map(({ texto, valor, valores, nivel }) =>
     getBlockInfo(texto).partes
-      ? { texto, valores, nivel }
-      : { texto, valor: valor.trim(), nivel },
+      ? { texto, valores: valores.map((v) => String(v ?? "")), nivel }
+      : { texto, valor: String(valor ?? "").trim(), nivel },
   );
   const programa = JSON.stringify(filas);
 
@@ -388,8 +388,10 @@ export function EntregaBox({
       limpias.map((fila, indice) => ({
         key: indice,
         texto: fila.texto,
-        valor: fila.valor ?? "",
-        valores: fila.valores ?? defaultValues(getBlockInfo(fila.texto)),
+        valor: String(fila.valor ?? ""),
+        valores: (fila.valores ?? defaultValues(getBlockInfo(fila.texto))).map((v) =>
+          String(v ?? ""),
+        ),
         nivel: fila.nivel,
       })),
     );

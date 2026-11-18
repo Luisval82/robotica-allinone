@@ -229,7 +229,12 @@ export function filasDeBloques(primero: BloqueDelTaller | null, nivel = 0): Prog
       const info = getBlockInfo(texto);
       const huecos = numeroDeHuecos(info);
       const valores: string[] = [];
-      for (let i = 0; i < huecos; i += 1) valores.push(bloque.getFieldValue(`H${i}`) ?? "");
+      for (let i = 0; i < huecos; i += 1) {
+        // Ojo: un campo de número devuelve un NÚMERO, no una cadena. Todo lo
+        // que sale de la mesa se guarda como texto, que es lo que espera el
+        // resto de la plataforma.
+        valores.push(String(bloque.getFieldValue(`H${i}`) ?? ""));
+      }
 
       const fila: ProgramRow = { texto, nivel };
       if (info.partes) fila.valores = valores;
