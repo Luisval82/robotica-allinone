@@ -173,7 +173,7 @@ function Dibujo({ pieza }: { pieza: Pieza }) {
             <rect key={i} x={5 + i * 10} y="2" width="6" height="6" rx="1" fill={pieza.color} />
           ))}
           <rect x="0" y="7" width="130" height="12" rx="3" fill={pieza.color} />
-          <Agujeros modulos={13} y={13} r="2.6" color={pieza.color} />
+          <Agujeros modulos={13} y={13} r={2.6} color={pieza.color} />
         </svg>
       );
 

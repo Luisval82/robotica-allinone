@@ -205,6 +205,22 @@ Qué está comprobado y qué no:
 - Los dibujos son propios. Las imágenes y las instrucciones de montaje oficiales son de LEGO y no
   se copian al repositorio: lo que hay aquí son esquemas dibujados a mano en SVG.
 
+### Comprobar los tipos (`scripts/tipos.sh`)
+
+En este repositorio `npx tsc --noEmit` no sirve a secas si se ejecuta sin `node_modules`: faltan los
+tipos de React, Next y Node y salen cientos de errores que en Vercel no existen. Filtrarlos por
+código de error (TS2322, TS2345…) parece lo lógico y es justo lo que falló una vez: el filtro tapó
+un error de verdad y el build se rompió en Vercel.
+
+Por eso el script no filtra por criterio: guarda una foto del ruido conocido en
+`scripts/tipos-base.txt`, tomada de un commit que Vercel compiló bien, y avisa **solo de lo que es
+nuevo**.
+
+```bash
+./scripts/tipos.sh          # comprueba
+./scripts/tipos.sh --fijar  # vuelve a tomar la foto (solo si Vercel va bien)
+```
+
 ### Contenido de las unidades
 
 - `src/data/unidades.json` y `src/data/bloques.json` cubren las **27 unidades**: título, hardware,
