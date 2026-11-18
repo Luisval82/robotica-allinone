@@ -11,13 +11,19 @@ export function CourseTabs({
   active,
   allLabel,
   extraQuery = "",
+  cursos = COURSES,
 }: {
   basePath: string;
   active: Course | null;
   allLabel?: string;
   /** Otros parámetros que hay que conservar, p. ej. "&estado=corregidas". */
   extraQuery?: string;
+  /** Cursos que puede ver quien mira: por defecto, los tres. */
+  cursos?: readonly Course[];
 }) {
+  // Con un solo curso visible no hay nada que elegir.
+  if (cursos.length < 2 && !allLabel) return null;
+
   const base = "rounded-full px-4 py-2 text-sm font-extrabold transition-colors";
   const idle = "border-2 border-ink-200 bg-white text-ink-700 hover:border-ink-900";
 
@@ -32,7 +38,7 @@ export function CourseTabs({
           {allLabel}
         </Link>
       ) : null}
-      {COURSES.map((course) => (
+      {cursos.map((course) => (
         <Link
           key={course}
           href={`${basePath}?curso=${course}${extraQuery}`}

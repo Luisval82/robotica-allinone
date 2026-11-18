@@ -1,6 +1,7 @@
 // Usuarios: consultas, altas y cambio de rol. Todo contra Supabase.
 
 import "server-only";
+import { matricular } from "@/lib/db/anios";
 import { assertNoError, supabase, userFromRow, type UserRow } from "@/lib/db/store";
 import { SCHOOL_EMAIL_SUFFIX, normalizeEmail } from "@/lib/validation";
 import { hashPassword } from "@/lib/password";
@@ -139,6 +140,16 @@ export async function setUserRole(
     .select("*")
     .maybeSingle();
   assertNoError(error, "setUserRole");
+
+  // Quien deja de ser docente deja de tener cursos asignados.
+  if (role === "alumno") {
+    const { error: errorCursos } = await supabase
+      .from("docente_cursos")
+      .delete()
+      .eq("docente_id", userId);
+    assertNoError(errorCursos, "setUserRole:docente_cursos");
+  }
+
   return data
     ? { ok: true, user: toPublicUser(userFromRow(data as UserRow)) }
     : { ok: false, motivo: "no-existe" };
@@ -249,7 +260,10 @@ export async function findOrCreateGoogleUser(cuenta: {
   return userFromRow(data as UserRow);
 }
 
-/** Guarda el nombre y el curso que el alumno elige en su primera entrada. */
+/**
+ * Guarda el nombre y el curso que el alumno elige al matricularse: en su
+ * primera entrada y, después de cada cierre de año, al empezar el curso nuevo.
+ */
 export async function completarPerfil(
   userId: string,
   datos: { name: string; course: Course },
@@ -259,6 +273,10 @@ export async function completarPerfil(
     .update({ name: datos.name, course: datos.course, perfil_completo: true })
     .eq("id", userId);
   assertNoError(error, "completarPerfil");
+
+  // Queda constancia de en qué curso está este año: es lo que se consulta
+  // después en el histórico de años cerrados.
+  await matricular(userId, datos.course);
 }
 
 /** Cambios que hacen el profesor y el superadmin sobre un alumno. */
@@ -273,4 +291,7 @@ export async function actualizarAlumno(
 
   const { error } = await supabase.from("users").update(cambios).eq("id", userId).eq("role", "alumno");
   assertNoError(error, "actualizarAlumno");
+
+  // Si lo han movido de curso, su matrícula de este año cambia con él.
+  if (datos.course !== undefined) await matricular(userId, datos.course);
 }

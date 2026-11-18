@@ -3,6 +3,7 @@
 // progreso y entregas — ver supabase/schema.sql).
 
 import "server-only";
+import { getAnioActivo } from "@/lib/db/anios";
 import {
   assertNoError,
   entregaFromRow,
@@ -46,9 +47,19 @@ export function testScore(aciertos: number): number {
 
 // ── Alumnado ─────────────────────────────────────────────────────────────
 
-export async function listStudents(course?: Course): Promise<PublicUser[]> {
+/**
+ * Alumnado. Con `course` se limita a un curso; con una lista de cursos, a
+ * esos (es lo que necesita el panel de un profesor, que ve solo los suyos).
+ * Una lista vacía no devuelve a nadie.
+ */
+export async function listStudents(course?: Course | readonly Course[]): Promise<PublicUser[]> {
   let query = supabase.from("users").select("*").eq("role", "alumno");
-  if (course) query = query.eq("course", course);
+  if (Array.isArray(course)) {
+    if (course.length === 0) return [];
+    query = query.in("course", course as string[]);
+  } else if (typeof course === "string") {
+    query = query.eq("course", course);
+  }
   const { data, error } = await query;
   assertNoError(error, "listStudents");
   const rows = (data ?? []) as UserRow[];
@@ -61,6 +72,7 @@ export async function getClassAccess(course: Course): Promise<ClassUnitAccess[]>
   const { data, error } = await supabase
     .from("class_access")
     .select("unidad, kind, abierta")
+    .eq("anio", await getAnioActivo())
     .eq("course", course);
   assertNoError(error, "getClassAccess");
 
@@ -78,10 +90,23 @@ export async function getStudentAccess(student: {
   id: string;
   course: Course;
 }): Promise<StudentUnitAccess[]> {
+  const anio = await getAnioActivo();
   const [classResult, studentResult, progresoResult] = await Promise.all([
-    supabase.from("class_access").select("unidad, kind, abierta").eq("course", student.course),
-    supabase.from("student_access").select("unidad, kind, abierta").eq("student_id", student.id),
-    supabase.from("progreso").select("unidad, pasos_teoria").eq("alumno_id", student.id),
+    supabase
+      .from("class_access")
+      .select("unidad, kind, abierta")
+      .eq("anio", anio)
+      .eq("course", student.course),
+    supabase
+      .from("student_access")
+      .select("unidad, kind, abierta")
+      .eq("anio", anio)
+      .eq("student_id", student.id),
+    supabase
+      .from("progreso")
+      .select("unidad, pasos_teoria")
+      .eq("anio", anio)
+      .eq("alumno_id", student.id),
   ]);
   assertNoError(classResult.error, "getStudentAccess:class_access");
   assertNoError(studentResult.error, "getStudentAccess:student_access");
@@ -130,9 +155,10 @@ export async function setClassAccess(
   kind: AccessKind,
   abierta: boolean,
 ): Promise<void> {
+  const anio = await getAnioActivo();
   const { error: upsertError } = await supabase
     .from("class_access")
-    .upsert({ course, unidad, kind, abierta }, { onConflict: "course,unidad,kind" });
+    .upsert({ anio, course, unidad, kind, abierta }, { onConflict: "anio,course,unidad,kind" });
   assertNoError(upsertError, "setClassAccess:upsert");
 
   const { data: students, error: studentsError } = await supabase
@@ -149,6 +175,7 @@ export async function setClassAccess(
   const { error: deleteError } = await supabase
     .from("student_access")
     .delete()
+    .eq("anio", anio)
     .eq("unidad", unidad)
     .eq("kind", kind)
     .in("student_id", ids);
@@ -166,6 +193,7 @@ export async function setStudentAccess(
   kind: AccessKind,
   abierta: boolean,
 ): Promise<boolean> {
+  const anio = await getAnioActivo();
   const { data: student, error: studentError } = await supabase
     .from("users")
     .select("id, course")
@@ -179,6 +207,7 @@ export async function setStudentAccess(
   const { data: classRow, error: classError } = await supabase
     .from("class_access")
     .select("abierta")
+    .eq("anio", anio)
     .eq("course", alumno.course)
     .eq("unidad", unidad)
     .eq("kind", kind)
@@ -190,6 +219,7 @@ export async function setStudentAccess(
     const { error } = await supabase
       .from("student_access")
       .delete()
+      .eq("anio", anio)
       .eq("student_id", studentId)
       .eq("unidad", unidad)
       .eq("kind", kind);
@@ -198,8 +228,8 @@ export async function setStudentAccess(
     const { error } = await supabase
       .from("student_access")
       .upsert(
-        { student_id: studentId, unidad, kind, abierta },
-        { onConflict: "student_id,unidad,kind" },
+        { anio, student_id: studentId, unidad, kind, abierta },
+        { onConflict: "anio,student_id,unidad,kind" },
       );
     assertNoError(error, "setStudentAccess:upsert");
   }
@@ -209,7 +239,11 @@ export async function setStudentAccess(
 // ── Progreso y notas de los tests ────────────────────────────────────────
 
 export async function getProgress(studentId: string): Promise<UnitProgress[]> {
-  const { data, error } = await supabase.from("progreso").select("*").eq("alumno_id", studentId);
+  const { data, error } = await supabase
+    .from("progreso")
+    .select("*")
+    .eq("anio", await getAnioActivo())
+    .eq("alumno_id", studentId);
   assertNoError(error, "getProgress");
   const rows = (data ?? []) as ProgresoRow[];
   return rows.map((row) => progresoFromRow(row));
@@ -220,6 +254,7 @@ export async function getUnitProgress(studentId: string, unidad: number): Promis
   const { data, error } = await supabase
     .from("progreso")
     .select("*")
+    .eq("anio", await getAnioActivo())
     .eq("alumno_id", studentId)
     .eq("unidad", unidad)
     .maybeSingle();
@@ -243,13 +278,14 @@ export async function completeTheoryStep(
 
   const { error } = await supabase.from("progreso").upsert(
     {
+      anio: await getAnioActivo(),
       alumno_id: studentId,
       unidad,
       pasos_teoria: paso,
       test_aciertos: actual.testAciertos,
       test_respuestas: actual.testRespuestas,
     },
-    { onConflict: "alumno_id,unidad" },
+    { onConflict: "anio,alumno_id,unidad" },
   );
   assertNoError(error, "completeTheoryStep");
   return true;
@@ -278,13 +314,14 @@ export async function saveTestResult(
 
   const { error } = await supabase.from("progreso").upsert(
     {
+      anio: await getAnioActivo(),
       alumno_id: studentId,
       unidad,
       pasos_teoria: actual.pasosTeoria,
       test_aciertos: aciertos,
       test_respuestas: respuestas,
     },
-    { onConflict: "alumno_id,unidad" },
+    { onConflict: "anio,alumno_id,unidad" },
   );
   assertNoError(error, "saveTestResult");
   return true;
@@ -295,7 +332,11 @@ export async function getStudentSummary(student: {
   course: Course;
 }): Promise<StudentSummary> {
   async function getEntregaNotas(): Promise<{ nota: number | null }[]> {
-    const { data, error } = await supabase.from("entregas").select("nota").eq("alumno_id", student.id);
+    const { data, error } = await supabase
+      .from("entregas")
+      .select("nota")
+      .eq("anio", await getAnioActivo())
+      .eq("alumno_id", student.id);
     assertNoError(error, "getStudentSummary:entregas");
     return (data ?? []) as { nota: number | null }[];
   }
@@ -353,6 +394,7 @@ export async function getTestScores(course: Course): Promise<StudentTestScores[]
     const { data, error } = await supabase
       .from("progreso")
       .select("alumno_id, unidad, test_aciertos")
+      .eq("anio", await getAnioActivo())
       .in("alumno_id", ids);
     assertNoError(error, "getTestScores");
     rows = (data ?? []) as ScoreRow[];
@@ -387,14 +429,18 @@ export type EntregaEstado = "pendientes" | "corregidas";
  */
 export async function listEntregas(filter: {
   estado: EntregaEstado;
-  course?: Course;
+  course?: Course | readonly Course[];
 }): Promise<EntregaConAlumno[]> {
   const students = await listStudents(filter.course);
   const byId = new Map(students.map((alumno) => [alumno.id, alumno]));
   const ids = students.map((alumno) => alumno.id);
   if (ids.length === 0) return [];
 
-  let query = supabase.from("entregas").select("*").in("alumno_id", ids);
+  let query = supabase
+    .from("entregas")
+    .select("*")
+    .eq("anio", await getAnioActivo())
+    .in("alumno_id", ids);
   query = filter.estado === "corregidas" ? query.not("nota", "is", null) : query.is("nota", null);
   const { data, error } = await query;
   assertNoError(error, "listEntregas");
@@ -420,6 +466,7 @@ export async function getEntrega(
   const { data, error } = await supabase
     .from("entregas")
     .select("*")
+    .eq("anio", await getAnioActivo())
     .eq("alumno_id", studentId)
     .eq("unidad", unidad)
     .eq("practica", practica)
@@ -443,6 +490,7 @@ export async function saveEntrega(
   const { error } = await supabase.from("entregas").upsert(
     {
       id: previa?.id ?? crypto.randomUUID(),
+      anio: await getAnioActivo(),
       alumno_id: studentId,
       unidad: input.unidad,
       practica: input.practica,
@@ -454,10 +502,34 @@ export async function saveEntrega(
       corregida_en: null,
       corregida_por: null,
     },
-    { onConflict: "alumno_id,unidad,practica" },
+    { onConflict: "anio,alumno_id,unidad,practica" },
   );
   assertNoError(error, "saveEntrega");
   return "guardada";
+}
+
+/**
+ * De qué curso es una entrega, para comprobar si quien va a corregirla
+ * imparte ese curso. Devuelve null si la entrega no existe.
+ */
+export async function getCursoDeEntrega(entregaId: string): Promise<Course | null> {
+  const { data, error } = await supabase
+    .from("entregas")
+    .select("alumno_id")
+    .eq("id", entregaId)
+    .maybeSingle();
+  assertNoError(error, "getCursoDeEntrega:entrega");
+
+  const fila = data as { alumno_id: string } | null;
+  if (!fila) return null;
+
+  const { data: alumno, error: errorAlumno } = await supabase
+    .from("users")
+    .select("course")
+    .eq("id", fila.alumno_id)
+    .maybeSingle();
+  assertNoError(errorAlumno, "getCursoDeEntrega:alumno");
+  return ((alumno as { course: Course | null } | null)?.course) ?? null;
 }
 
 /** Guarda la nota y el comentario del profesor. Devuelve false si la entrega no existe. */
@@ -499,6 +571,7 @@ export async function getPracticasIntermedias(
   const { data, error } = await supabase
     .from("practicas_intermedias")
     .select("practica, bloques, explicacion, entregada_en")
+    .eq("anio", await getAnioActivo())
     .eq("alumno_id", studentId)
     .eq("unidad", unidad)
     .order("practica");
@@ -519,6 +592,7 @@ export async function getPracticasIntermediasCount(
   const { data, error } = await supabase
     .from("practicas_intermedias")
     .select("unidad")
+    .eq("anio", await getAnioActivo())
     .eq("alumno_id", studentId);
   assertNoError(error, "getPracticasIntermediasCount");
 
@@ -536,6 +610,7 @@ export async function savePracticaIntermedia(
 ): Promise<void> {
   const { error } = await supabase.from("practicas_intermedias").upsert(
     {
+      anio: await getAnioActivo(),
       alumno_id: studentId,
       unidad: input.unidad,
       practica: input.practica,
@@ -543,7 +618,7 @@ export async function savePracticaIntermedia(
       explicacion: input.explicacion,
       entregada_en: new Date().toISOString(),
     },
-    { onConflict: "alumno_id,unidad,practica" },
+    { onConflict: "anio,alumno_id,unidad,practica" },
   );
   assertNoError(error, "savePracticaIntermedia");
 }

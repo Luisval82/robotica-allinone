@@ -7,11 +7,20 @@
 --
 --  Qué crea:
 --   1) users            → cuentas, rol (superadmin/profesor/alumno) y curso.
---   2) class_access      → interruptores de unidad y PRUEBA UD-X por CURSO.
---   3) student_access    → interruptores individuales por ALUMNO.
---   4) progreso           → pasos de teoría hechos y nota del test (8 preguntas).
---   5) entregas            → las 2 entregas de programación por bloques de cada unidad.
---   6) practicas_intermedias → los 4 retos cortos de cada unidad, sin nota.
+--   2) anios_academicos  → los años escolares, con uno (y solo uno) activo.
+--   3) class_access      → interruptores de unidad y PRUEBA UD-X por CURSO.
+--   4) student_access    → interruptores individuales por ALUMNO.
+--   5) progreso           → pasos de teoría hechos y nota del test (8 preguntas).
+--   6) entregas            → las 2 entregas de programación por bloques de cada unidad.
+--   7) practicas_intermedias → los 4 retos cortos de cada unidad, sin nota.
+--   8) matriculas          → en qué curso estuvo cada alumno cada año.
+--   9) docente_cursos      → qué cursos imparte cada docente cada año.
+--  10) cerrar_anio_academico() → el cierre de curso, en una sola operación.
+--
+--  TODO dato de trabajo (interruptores, progreso, entregas, prácticas) lleva
+--  el AÑO ACADÉMICO en el que se hizo y forma parte de su clave. Así, al
+--  empezar un año nuevo, todo arranca de cero sin borrar el año anterior:
+--  lo de antes sigue ahí, consultable desde el histórico.
 --  Al final: Row Level Security activado sin políticas (nadie puede leer ni
 --  escribir con la Publishable key; la aplicación usa la Secret key, que
 --  salta RLS igual que antes hacía la service_role key) y unos usuarios de
@@ -44,35 +53,55 @@ create unique index if not exists users_google_sub_key
 create index if not exists users_role_idx on public.users (role);
 create index if not exists users_course_idx on public.users (course);
 
--- ── 2) Interruptores por curso (clase entera) ─────────────────────────
+-- ── 2) Años académicos ────────────────────────────────────────────────
+-- Uno y solo uno está activo: es el año en el que se trabaja. Los demás son
+-- el histórico. Al cerrar un año no se borra nada: se cambia cuál es el activo.
+
+create table if not exists public.anios_academicos (
+  anio       text primary key check (anio ~ '^[0-9]{4}-[0-9]{4}$'),
+  activo     boolean not null default false,
+  abierto_en timestamptz not null default now(),
+  cerrado_en timestamptz
+);
+
+create unique index if not exists anios_academicos_un_solo_activo
+  on public.anios_academicos (activo) where activo;
+
+insert into public.anios_academicos (anio, activo) values ('2026-2027', true)
+on conflict (anio) do nothing;
+
+-- ── 3) Interruptores por curso (clase entera) ─────────────────────────
 
 create table if not exists public.class_access (
+  anio    text not null references public.anios_academicos (anio),
   course  text not null check (course in ('1ESO', '2ESO', '3ESO')),
   unidad  integer not null check (unidad between 1 and 9),
   kind    text not null check (kind in ('unidad', 'prueba')),
   abierta boolean not null,
-  primary key (course, unidad, kind)
+  primary key (anio, course, unidad, kind)
 );
 
--- ── 3) Interruptores individuales por alumno ──────────────────────────
+-- ── 4) Interruptores individuales por alumno ──────────────────────────
 
 create table if not exists public.student_access (
+  anio       text not null references public.anios_academicos (anio),
   student_id uuid not null references public.users (id) on delete cascade,
   unidad     integer not null check (unidad between 1 and 9),
   kind       text not null check (kind in ('unidad', 'prueba')),
   abierta    boolean not null,
-  primary key (student_id, unidad, kind)
+  primary key (anio, student_id, unidad, kind)
 );
 
--- ── 4) Progreso y nota del test de cada unidad ────────────────────────
+-- ── 5) Progreso y nota del test de cada unidad ────────────────────────
 
 create table if not exists public.progreso (
+  anio            text not null references public.anios_academicos (anio),
   alumno_id       uuid not null references public.users (id) on delete cascade,
   unidad          integer not null check (unidad between 1 and 9),
   pasos_teoria    integer not null default 0 check (pasos_teoria between 0 and 4),
   test_aciertos   integer check (test_aciertos between 0 and 8),
   test_respuestas jsonb,
-  primary key (alumno_id, unidad),
+  primary key (anio, alumno_id, unidad),
   -- Una nota sin sus respuestas no se puede desglosar pregunta a pregunta:
   -- si hay aciertos, tiene que haber una respuesta por pregunta.
   constraint progreso_test_respuestas_completas check (
@@ -81,10 +110,11 @@ create table if not exists public.progreso (
   )
 );
 
--- ── 5) Entregas de programación por bloques (2 por unidad) ────────────
+-- ── 6) Entregas de programación por bloques (2 por unidad) ────────────
 
 create table if not exists public.entregas (
   id            uuid primary key default gen_random_uuid(),
+  anio          text not null references public.anios_academicos (anio),
   alumno_id     uuid not null references public.users (id) on delete cascade,
   unidad        integer not null check (unidad between 1 and 9),
   practica      integer not null check (practica in (1, 2)),
@@ -95,29 +125,135 @@ create table if not exists public.entregas (
   comentario    text not null default '',
   corregida_en  timestamptz,
   corregida_por text,
-  unique (alumno_id, unidad, practica)
+  constraint entregas_anio_alumno_unidad_practica_key
+    unique (anio, alumno_id, unidad, practica)
 );
 
 create index if not exists entregas_alumno_idx on public.entregas (alumno_id);
 create index if not exists entregas_pendientes_idx on public.entregas (nota) where nota is null;
 
--- ── 6) Prácticas intermedias ──────────────────────────────────────────
+-- ── 7) Prácticas intermedias ──────────────────────────────────────────
 -- Retos cortos de cada unidad, para afianzar lo aprendido antes del modelo
 -- final. No las corrige el profesor —para eso están las 2 entregas de la
 -- PRUEBA—, así que no llevan nota: guardan lo que montó el alumno y cuándo.
 
 create table if not exists public.practicas_intermedias (
+  anio         text not null references public.anios_academicos (anio),
   alumno_id    uuid not null references public.users (id) on delete cascade,
   unidad       integer not null check (unidad between 1 and 9),
   practica     integer not null check (practica between 1 and 4),
   bloques      jsonb not null default '[]'::jsonb,
   explicacion  text not null default '',
   entregada_en timestamptz not null default now(),
-  primary key (alumno_id, unidad, practica)
+  primary key (anio, alumno_id, unidad, practica)
 );
 
 create index if not exists practicas_intermedias_alumno_idx
   on public.practicas_intermedias (alumno_id, unidad);
+
+-- ── 8) Matrículas: en qué curso estuvo cada alumno cada año ───────────
+-- Se escribe cuando el alumno elige curso, cuando el profesor lo mueve y al
+-- cerrar el año. Es lo que permite ver un curso pasado tal y como fue.
+
+create table if not exists public.matriculas (
+  alumno_id      uuid not null references public.users (id) on delete cascade,
+  anio           text not null references public.anios_academicos (anio),
+  course         text not null check (course in ('1ESO', '2ESO', '3ESO')),
+  matriculada_en timestamptz not null default now(),
+  primary key (alumno_id, anio)
+);
+
+create index if not exists matriculas_anio_idx on public.matriculas (anio, course);
+
+-- ── 9) Qué cursos imparte cada docente, año por año ───────────────────
+-- Un profesor ve en su panel solo el alumnado y las entregas de los cursos
+-- que tiene asignados este año. El superadministrador lo ve todo siempre.
+-- Un profesor sin ninguna asignación ve todos los cursos, con un aviso: así
+-- un profesor nuevo no se encuentra el panel vacío sin saber por qué.
+
+create table if not exists public.docente_cursos (
+  docente_id uuid not null references public.users (id) on delete cascade,
+  anio       text not null references public.anios_academicos (anio),
+  course     text not null check (course in ('1ESO', '2ESO', '3ESO')),
+  primary key (docente_id, anio, course)
+);
+
+create index if not exists docente_cursos_anio_idx on public.docente_cursos (anio, docente_id);
+
+-- ── 10) Cierre de año escolar ─────────────────────────────────────────
+-- Todo en una sola operación: o se hace completo, o no se hace nada.
+--  1. Archiva las matrículas del año que termina.
+--  2. Cierra ese año y activa el nuevo.
+--  3. Copia (o no) las asignaciones de cursos de los docentes.
+--  4. Deja a los alumnos sin curso: al entrar eligen su nuevo nivel y
+--     empiezan las unidades desde cero, porque el progreso y las entregas
+--     del año anterior se quedan guardados con SU año.
+
+create or replace function public.cerrar_anio_academico(
+  p_anio_nuevo      text,
+  p_copiar_docentes boolean default true
+) returns jsonb
+language plpgsql
+security invoker
+set search_path = public
+as $$
+declare
+  v_actual       text;
+  v_matriculas   integer := 0;
+  v_alumnos      integer := 0;
+  v_asignaciones integer := 0;
+begin
+  p_anio_nuevo := btrim(p_anio_nuevo);
+  if p_anio_nuevo !~ '^[0-9]{4}-[0-9]{4}$' then
+    raise exception 'El año académico se escribe así: 2026-2027 (ha llegado "%").', p_anio_nuevo;
+  end if;
+
+  select anio into v_actual from public.anios_academicos where activo limit 1;
+  if v_actual is null then
+    raise exception 'No hay ningún año académico activo.';
+  end if;
+  if p_anio_nuevo = v_actual then
+    raise exception 'El año % ya es el que está activo.', p_anio_nuevo;
+  end if;
+
+  insert into public.matriculas (alumno_id, anio, course)
+  select u.id, v_actual, u.course
+    from public.users u
+   where u.role = 'alumno' and u.course is not null
+  on conflict (alumno_id, anio) do nothing;
+  get diagnostics v_matriculas = row_count;
+
+  update public.anios_academicos set activo = false, cerrado_en = now() where anio = v_actual;
+  insert into public.anios_academicos (anio, activo) values (p_anio_nuevo, true)
+  on conflict (anio) do update set activo = true, cerrado_en = null;
+
+  if p_copiar_docentes then
+    insert into public.docente_cursos (docente_id, anio, course)
+    select dc.docente_id, p_anio_nuevo, dc.course
+      from public.docente_cursos dc
+     where dc.anio = v_actual
+    on conflict (docente_id, anio, course) do nothing;
+    get diagnostics v_asignaciones = row_count;
+  end if;
+
+  update public.users set course = null, perfil_completo = false where role = 'alumno';
+  get diagnostics v_alumnos = row_count;
+
+  return jsonb_build_object(
+    'anioCerrado',          v_actual,
+    'anioActivo',           p_anio_nuevo,
+    'matriculasArchivadas', v_matriculas,
+    'alumnosSinCurso',      v_alumnos,
+    'asignacionesCopiadas', v_asignaciones
+  );
+end;
+$$;
+
+-- Nadie la puede llamar con la Publishable key: solo el servidor, que usa la
+-- Secret key. Sin esto, cualquiera con la clave pública podría cerrar el año.
+revoke all on function public.cerrar_anio_academico(text, boolean) from public;
+revoke all on function public.cerrar_anio_academico(text, boolean) from anon, authenticated;
+grant execute on function public.cerrar_anio_academico(text, boolean) to service_role;
 
 -- ── Seguridad: RLS activado, sin políticas ────────────────────────────
 --
@@ -133,6 +269,9 @@ alter table public.student_access enable row level security;
 alter table public.progreso       enable row level security;
 alter table public.entregas       enable row level security;
 alter table public.practicas_intermedias enable row level security;
+alter table public.anios_academicos enable row level security;
+alter table public.matriculas       enable row level security;
+alter table public.docente_cursos   enable row level security;
 
 -- ── Datos de demostración ──────────────────────────────────────────────
 --
@@ -162,22 +301,28 @@ insert into public.users (id, name, email, password_hash, role, course, created_
   ('62616f77-9ff9-464e-af15-30cb190c14f4', 'Leo Ejemplo',            'leo.ejemplo@colegiovaldeserra.com',   '87059efc566834e6450e4b8e13ddd4a9:4a2bd9d6d7ca267a328f0cb48fbdb95312fdd77f4a7d29b3fcd85cddf0a448ba03efe9b97794a920ccab4b9ed0848f5dc5e8966b6dbfde0c5ce7166c8319e177', 'alumno',     '3ESO', '2026-11-14T09:00:00.000Z')
 on conflict (id) do nothing;
 
+-- Matrícula del año activo de cada alumno de demostración: es lo que verás
+-- en el histórico cuando cierres este año.
+insert into public.matriculas (alumno_id, anio, course)
+select id, '2026-2027', course from public.users where role = 'alumno' and course is not null
+on conflict (alumno_id, anio) do nothing;
+
 -- Las respuestas cuadran con los aciertos de cada uno: así el desglose
 -- pregunta a pregunta del panel del profesor tiene algo que enseñar desde
 -- el primer despliegue.
-insert into public.progreso (alumno_id, unidad, pasos_teoria, test_aciertos, test_respuestas) values
-  ('6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 4, 8,    '[1,3,0,2,1,3,0,2]'::jsonb),
-  ('42a2e782-b592-47a1-af10-2949d3956360', 1, 4, 5,    '[1,3,0,2,1,1,1,1]'::jsonb),
-  ('25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 4, 6,    '[1,3,0,2,3,0,3,0]'::jsonb),
-  ('b9db7151-436e-4528-bfe9-0aea79cc6645', 1, 4, 3,    '[1,3,0,0,2,1,2,3]'::jsonb),
-  ('539ab4ad-0f60-4c53-b6d2-33c036abce29', 1, 4, 7,    '[0,2,1,3,0,3,1,0]'::jsonb),
-  ('62616f77-9ff9-464e-af15-30cb190c14f4', 1, 2, null, null)
-on conflict (alumno_id, unidad) do nothing;
+insert into public.progreso (anio, alumno_id, unidad, pasos_teoria, test_aciertos, test_respuestas) values
+  ('2026-2027', '6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 4, 8,    '[1,3,0,2,1,3,0,2]'::jsonb),
+  ('2026-2027', '42a2e782-b592-47a1-af10-2949d3956360', 1, 4, 5,    '[1,3,0,2,1,1,1,1]'::jsonb),
+  ('2026-2027', '25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 4, 6,    '[1,3,0,2,3,0,3,0]'::jsonb),
+  ('2026-2027', 'b9db7151-436e-4528-bfe9-0aea79cc6645', 1, 4, 3,    '[1,3,0,0,2,1,2,3]'::jsonb),
+  ('2026-2027', '539ab4ad-0f60-4c53-b6d2-33c036abce29', 1, 4, 7,    '[0,2,1,3,0,3,1,0]'::jsonb),
+  ('2026-2027', '62616f77-9ff9-464e-af15-30cb190c14f4', 1, 2, null, null)
+on conflict (anio, alumno_id, unidad) do nothing;
 
 insert into public.entregas
-  (id, alumno_id, unidad, practica, bloques, explicacion, entregada_en, nota, comentario, corregida_en, corregida_por)
+  (anio, id, alumno_id, unidad, practica, bloques, explicacion, entregada_en, nota, comentario, corregida_en, corregida_por)
 values
-  ('2226b3ae-6e7b-49e9-b770-77d83650980b', '6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 1,
+  ('2026-2027', '2226b3ae-6e7b-49e9-b770-77d83650980b', '6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 1,
    '[{"texto":"Cuando se inicia el programa","nivel":0},
      {"texto":"Fijar luz del botón central","valor":"azul","nivel":0},
      {"texto":"Escribir en la matriz de luces 5x5","valor":"MARTA","nivel":0},
@@ -186,7 +331,7 @@ values
    'Bien resuelto y en el orden correcto. Prueba ahora a cambiar el color del botón antes de apagar la matriz.',
    '2026-11-11T08:45:00.000Z', 'Profe Demo'),
 
-  ('7cf8f305-b6a4-43fd-9990-fde2c9aa615a', '6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 2,
+  ('2026-2027', '7cf8f305-b6a4-43fd-9990-fde2c9aa615a', '6b25a793-88f1-4a13-b91d-051aab875fc5', 1, 2,
    '[{"texto":"Cuando se inicia el programa","nivel":0},
      {"texto":"Encender la matriz de luces 5x5 X segundos","valor":"corazón · 2","nivel":0},
      {"texto":"Tocar nota X segundos","valor":"60 · 0.5","nivel":0},
@@ -196,7 +341,7 @@ values
      {"texto":"Apagar la matriz de luces 5x5","nivel":0}]'::jsonb,
    '', '2026-11-12T10:12:00.000Z', null, '', null, null),
 
-  ('1d2c3e5e-04cf-4c8e-ab6c-acb8ba451531', '42a2e782-b592-47a1-af10-2949d3956360', 1, 1,
+  ('2026-2027', '1d2c3e5e-04cf-4c8e-ab6c-acb8ba451531', '42a2e782-b592-47a1-af10-2949d3956360', 1, 1,
    '[{"texto":"Cuando se inicia el programa","nivel":0},
      {"texto":"Escribir en la matriz de luces 5x5","valor":"HUGO","nivel":0},
      {"texto":"Fijar luz del botón central","valor":"verde","nivel":0},
@@ -204,7 +349,7 @@ values
    'He puesto el color del botón después del nombre porque no sabía dónde iba.',
    '2026-11-12T10:05:00.000Z', null, '', null, null),
 
-  ('2a777d2a-85db-4e9e-a1b3-181223a7f1dc', '25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 1,
+  ('2026-2027', '2a777d2a-85db-4e9e-a1b3-181223a7f1dc', '25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 1,
    '[{"texto":"Cuando se inicia el programa","nivel":0},
      {"texto":"Bucle infinito","nivel":0},
      {"texto":"Si... entonces... Si no...","valor":"¿Es de color verde?","nivel":1},
@@ -215,7 +360,7 @@ values
    'Funciona. Te falta explicar qué pasa cuando el sensor no ve ninguna tarjeta.',
    '2026-11-11T09:10:00.000Z', 'Profe Demo'),
 
-  ('67b8fa12-2c7f-4392-8919-6bd0a13df24a', '25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 2,
+  ('2026-2027', '67b8fa12-2c7f-4392-8919-6bd0a13df24a', '25d2c019-c3f0-4b6d-bb2f-65fa01f706b4', 1, 2,
    '[{"texto":"Cuando se inicia el programa","nivel":0},
      {"texto":"Bucle infinito","nivel":0},
      {"texto":"Si... entonces... Si no...","valor":"¿Es de color verde?","nivel":1},
@@ -225,7 +370,7 @@ values
      {"texto":"Parar movimiento","nivel":3}]'::jsonb,
    '', '2026-11-13T12:20:00.000Z', null, '', null, null),
 
-  ('33b4a736-4ea6-47d1-a2ef-16e546a49adc', '539ab4ad-0f60-4c53-b6d2-33c036abce29', 1, 1,
+  ('2026-2027', '33b4a736-4ea6-47d1-a2ef-16e546a49adc', '539ab4ad-0f60-4c53-b6d2-33c036abce29', 1, 1,
    '[{"texto":"Cuando se inicia el programa","nivel":0},
      {"texto":"Repetir bucle","valor":"4","nivel":0},
      {"texto":"Mover durante","valor":"10 cm","nivel":1},

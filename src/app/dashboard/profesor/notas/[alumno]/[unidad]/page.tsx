@@ -5,7 +5,7 @@ import { ArrowLeftIcon } from "@/components/ui/icons";
 import { CabeceraNota, RevisionTest } from "@/components/unidad/RevisionTest";
 import { requireRole } from "@/lib/auth";
 import { getTestForStudent, getTestReview } from "@/lib/contenido";
-import { findUserById, getUnitProgress, testScore } from "@/lib/db";
+import { findUserById, getCursosVisibles, getUnitProgress, puedeVerCurso, testScore } from "@/lib/db";
 import { COURSE_LABEL, isUuid, UNIT_NUMBERS } from "@/lib/types";
 import { getUnidad } from "@/lib/unidades";
 
@@ -20,7 +20,7 @@ export default async function CorreccionTestPage({
 }: {
   params: Promise<{ alumno: string; unidad: string }>;
 }) {
-  await requireRole(["profesor", "superadmin"]);
+  const session = await requireRole(["profesor", "superadmin"]);
 
   const { alumno: alumnoId, unidad: unidadTexto } = await params;
   const unidad = Number(unidadTexto);
@@ -29,6 +29,11 @@ export default async function CorreccionTestPage({
 
   const alumno = await findUserById(alumnoId);
   if (!alumno || alumno.role !== "alumno" || !alumno.course) notFound();
+
+  // Un profesor solo corrige a los alumnos de los cursos que imparte, aunque
+  // llegue aquí escribiendo la dirección a mano.
+  const visibles = await getCursosVisibles(session);
+  if (!puedeVerCurso(visibles, alumno.course)) notFound();
 
   const progreso = await getUnitProgress(alumnoId, unidad);
   const preguntas = getTestForStudent(alumno.course, unidad);

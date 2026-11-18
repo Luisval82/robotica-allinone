@@ -200,6 +200,21 @@ export interface GradeFormState {
   error?: string;
 }
 
+/** Lo que deja hecho un cierre de año escolar. */
+export interface CierreDeAnio {
+  anioCerrado: string;
+  anioActivo: string;
+  matriculasArchivadas: number;
+  alumnosSinCurso: number;
+  asignacionesCopiadas: number;
+}
+
+/** Respuesta del formulario de cierre de año escolar. */
+export interface CierreFormState {
+  error?: string;
+  cierre?: CierreDeAnio;
+}
+
 /** Respuesta de los formularios del alumno (test y entregas). */
 export interface StudentFormState {
   ok?: boolean;

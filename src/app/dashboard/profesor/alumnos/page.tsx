@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
+import { AvisoAlcance } from "@/components/profesor/AvisoAlcance";
 import { FichaAlumno } from "@/components/profesor/FichaAlumno";
 import { COURSE_TONE } from "@/components/profesor/courseTone";
 import { requireRole } from "@/lib/auth";
-import { listUsers } from "@/lib/db";
-import { COURSES, COURSE_LABEL } from "@/lib/types";
+import { getCursosVisibles, listUsers } from "@/lib/db";
+import { COURSE_LABEL } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Fichas del alumnado" };
 
@@ -16,8 +17,15 @@ export const metadata: Metadata = { title: "Fichas del alumnado" };
 export default async function FichasPage() {
   const session = await requireRole(["profesor", "superadmin"]);
 
-  const alumnos = (await listUsers()).filter((user) => user.role === "alumno");
-  const sinCurso = alumnos.filter((alumno) => alumno.course === null);
+  const visibles = await getCursosVisibles(session);
+  const todos = (await listUsers()).filter((user) => user.role === "alumno");
+  // Un profesor ve las fichas de sus cursos. Las de quien todavía no ha
+  // elegido curso las ve todo el profesorado: hasta que eligen, no son de
+  // nadie, y alguien tiene que poder colocarlos.
+  const alumnos = todos.filter(
+    (alumno) => alumno.course !== null && visibles.cursos.includes(alumno.course),
+  );
+  const sinCurso = todos.filter((alumno) => alumno.course === null);
 
   return (
     <>
@@ -26,6 +34,8 @@ export default async function FichasPage() {
         Aquí ves con qué correo ha entrado cada alumno. Puedes corregirle el nombre si puso uno
         que no es el suyo, y moverlo de curso si se equivocó al elegir.
       </p>
+
+      <AvisoAlcance alcance={visibles.alcance} cursos={visibles.cursos} />
 
       {session.role === "superadmin" ? (
         <Link
@@ -50,7 +60,8 @@ export default async function FichasPage() {
               <span className="ml-3 text-base font-semibold opacity-80">{sinCurso.length}</span>
             </h2>
             <p className="mt-1 font-semibold text-ink-800">
-              Han entrado con su cuenta del colegio pero no han terminado de decir quiénes son.
+              Han entrado con su cuenta del colegio pero todavía no han elegido curso. Los ve todo
+              el profesorado hasta que se matriculen.
             </p>
           </div>
           <div className="grid gap-3 p-5">
@@ -61,7 +72,7 @@ export default async function FichasPage() {
         </section>
       ) : null}
 
-      {COURSES.map((course) => {
+      {visibles.cursos.map((course) => {
         const delCurso = alumnos.filter((alumno) => alumno.course === course);
         return (
           <section

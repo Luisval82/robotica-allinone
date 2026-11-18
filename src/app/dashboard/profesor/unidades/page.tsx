@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AccessTable, type AccessRow } from "@/components/profesor/AccessTable";
+import { AvisoAlcance } from "@/components/profesor/AvisoAlcance";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { requireRole } from "@/lib/auth";
-import { getClassAccess, getStudentAccess, listStudents } from "@/lib/db";
-import { firstParam, parseCourse } from "@/lib/format";
+import { cursoDeLaUrl, getClassAccess, getCursosVisibles, getStudentAccess, listStudents } from "@/lib/db";
+import { firstParam } from "@/lib/format";
 import { COURSE_LABEL } from "@/lib/types";
 import { getUnidadesDeCurso } from "@/lib/unidades";
 
@@ -17,10 +18,11 @@ export default async function ProfesorUnidadesPage({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  await requireRole(["profesor", "superadmin"]);
+  const session = await requireRole(["profesor", "superadmin"]);
 
   const params = await searchParams;
-  const curso = parseCourse(firstParam(params.curso));
+  const visibles = await getCursosVisibles(session);
+  const curso = cursoDeLaUrl(visibles, firstParam(params.curso));
   const alumnoId = firstParam(params.alumno);
 
   const unidades = getUnidadesDeCurso(curso);
@@ -69,8 +71,10 @@ export default async function ProfesorUnidadesPage({
         Abre o bloquea cada unidad y su PRUEBA final. Por defecto solo está abierta la unidad 1.
       </p>
 
+      <AvisoAlcance alcance={visibles.alcance} cursos={visibles.cursos} />
+
       <div className="mt-6">
-        <CourseTabs basePath={PATH} active={curso} />
+        <CourseTabs basePath={PATH} active={curso} cursos={visibles.cursos} />
       </div>
 
       <section aria-labelledby="toda-la-clase" className="mt-8">

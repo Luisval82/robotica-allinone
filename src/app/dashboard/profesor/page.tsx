@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AvisoAlcance } from "@/components/profesor/AvisoAlcance";
 import { COURSE_TONE } from "@/components/profesor/courseTone";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { requireRole } from "@/lib/auth";
-import { listStudentsWithSummary } from "@/lib/db";
+import { getCursosVisibles, listStudentsWithSummary } from "@/lib/db";
 import { firstName, formatNota } from "@/lib/format";
-import { COURSES, COURSE_LABEL, UNIT_NUMBERS } from "@/lib/types";
+import { COURSE_LABEL, UNIT_NUMBERS } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Alumnado" };
 
 export default async function ProfesorAlumnadoPage() {
   // El superadministrador también es docente y puede entrar aquí.
   const session = await requireRole(["profesor", "superadmin"]);
+
+  // Un profesor ve solo los cursos que imparte; el superadministrador, todos.
+  const visibles = await getCursosVisibles(session);
   const grupos = await Promise.all(
-    COURSES.map(async (course) => ({ course, filas: await listStudentsWithSummary(course) })),
+    visibles.cursos.map(async (course) => ({
+      course,
+      filas: await listStudentsWithSummary(course),
+    })),
   );
 
   return (
@@ -23,6 +30,8 @@ export default async function ProfesorAlumnadoPage() {
         Hola, {firstName(session.name)}. Así va cada curso. El progreso cuenta la teoría, el test y
         las dos entregas de cada una de las {UNIT_NUMBERS.length} unidades.
       </p>
+
+      <AvisoAlcance alcance={visibles.alcance} cursos={visibles.cursos} />
 
       {grupos.map(({ course, filas }) => (
         <section

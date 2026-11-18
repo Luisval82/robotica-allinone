@@ -1,7 +1,8 @@
 "use client";
 
-// Primera entrada: quien acaba de entrar con la cuenta del colegio dice cómo
-// se llama y a qué curso va. Hasta que no lo rellena no puede usar nada.
+// Matrícula: el alumno dice cómo se llama y a qué curso va. Hasta que no lo
+// rellena no puede usar nada. Se usa en la primera entrada y al empezar cada
+// año escolar, cuando a todos les toca matricularse otra vez.
 
 import { useActionState } from "react";
 import { completarPerfilAction } from "@/actions/auth";
@@ -12,7 +13,14 @@ import type { AuthFormState } from "@/lib/validation";
 const CURSOS: Course[] = ["1ESO", "2ESO", "3ESO"];
 const VACIO: AuthFormState = {};
 
-export function PerfilForm({ nombreSugerido }: { nombreSugerido: string }) {
+export function PerfilForm({
+  nombreSugerido,
+  cursoSugerido,
+}: {
+  nombreSugerido: string;
+  /** Curso marcado por defecto: el siguiente al del año pasado, si lo hubo. */
+  cursoSugerido?: Course;
+}) {
   const [state, formAction, pending] = useActionState(completarPerfilAction, VACIO);
 
   return (
@@ -62,7 +70,7 @@ export function PerfilForm({ nombreSugerido }: { nombreSugerido: string }) {
                 type="radio"
                 name="course"
                 value={curso}
-                defaultChecked={index === 0}
+                defaultChecked={cursoSugerido ? curso === cursoSugerido : index === 0}
                 className="sr-only"
               />
               {COURSE_LABEL[curso]}

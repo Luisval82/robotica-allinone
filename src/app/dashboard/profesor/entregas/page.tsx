@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProgramBlocks } from "@/components/brand/ProgramBlocks";
+import { AvisoAlcance } from "@/components/profesor/AvisoAlcance";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { COURSE_TONE } from "@/components/profesor/courseTone";
 import { GradeForm } from "@/components/profesor/GradeForm";
 import { requireRole } from "@/lib/auth";
-import { listEntregas, type EntregaEstado } from "@/lib/db";
+import { getCursosVisibles, listEntregas, type EntregaEstado } from "@/lib/db";
 import { firstParam, formatFecha, formatNota } from "@/lib/format";
 import { getPractica } from "@/lib/contenido";
 import { COURSE_LABEL, isCourse } from "@/lib/types";
@@ -20,17 +21,19 @@ export default async function ProfesorEntregasPage({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  await requireRole(["profesor", "superadmin"]);
+  const session = await requireRole(["profesor", "superadmin"]);
 
   const params = await searchParams;
+  const visibles = await getCursosVisibles(session);
   const cursoParam = firstParam(params.curso);
-  const curso = isCourse(cursoParam) ? cursoParam : null;
+  // «Todos» significa todos los que puede ver este docente, no los tres.
+  const curso = isCourse(cursoParam) && visibles.cursos.includes(cursoParam) ? cursoParam : null;
   const estado: EntregaEstado =
     firstParam(params.estado) === "corregidas" ? "corregidas" : "pendientes";
 
   const [pendientes, corregidas] = await Promise.all([
-    listEntregas({ estado: "pendientes", course: curso ?? undefined }),
-    listEntregas({ estado: "corregidas", course: curso ?? undefined }),
+    listEntregas({ estado: "pendientes", course: curso ?? visibles.cursos }),
+    listEntregas({ estado: "corregidas", course: curso ?? visibles.cursos }),
   ]);
   const lista = estado === "pendientes" ? pendientes : corregidas;
   const cursoQuery = `curso=${curso ?? "todos"}`;
@@ -68,10 +71,13 @@ export default async function ProfesorEntregasPage({
         <CourseTabs
           basePath={PATH}
           active={curso}
-          allLabel="Todos los cursos"
+          allLabel={visibles.cursos.length > 1 ? "Todos mis cursos" : undefined}
           extraQuery={`&estado=${estado}`}
+          cursos={visibles.cursos}
         />
       </div>
+
+      <AvisoAlcance alcance={visibles.alcance} cursos={visibles.cursos} />
 
       {lista.length === 0 ? (
         <p className="mt-8 rounded-card bg-white p-6 font-semibold text-ink-500 shadow-card">

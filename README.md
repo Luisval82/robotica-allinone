@@ -63,6 +63,47 @@ a ti mismo** y **quitar el último superadministrador**. Ambas se comprueban tam
 Desde aquí hay un botón directo a las **fichas del alumnado** (`/dashboard/profesor/alumnos`), que
 es donde se corrige el nombre y se mueve de curso a cada alumno.
 
+### Cursos que imparte cada docente
+
+En la misma tabla, cada profesor (y el superadministrador, si da clase) tiene unas **casillas 1º /
+2º / 3º ESO**: los cursos que imparte **este año académico**, guardados en `docente_cursos`.
+
+En su panel, ese profesor ve solo el alumnado, las notas, las entregas y los interruptores de
+unidad de esos cursos; tampoco puede corregir una entrega ni mover a un alumno de un curso ajeno
+(se comprueba en el servidor, no solo escondiendo los botones). Dos excepciones pensadas a
+propósito:
+
+- Un profesor **sin ningún curso marcado los ve todos**, con un aviso en pantalla. Así un profesor
+  nuevo no se encuentra un panel vacío sin saber por qué.
+- Las fichas de los alumnos que **todavía no han elegido curso** las ve todo el profesorado: hasta
+  que se matriculan no son de nadie, y alguien tiene que poder colocarlos.
+- Las **Soluciones** oficiales no se filtran: son material de clase, útil para preparar.
+
+El superadministrador tiene visibilidad global siempre.
+
+### Gestión de año escolar (`/dashboard/admin/anio`)
+
+Cada entrega, cada test, cada práctica y cada interruptor de unidad lleva guardado el **año
+académico** (`2026-2027`) en el que se hizo, y ese año forma parte de su clave. Solo hay un año
+activo a la vez: eso es lo que se está trabajando, y todo lo demás es histórico.
+
+**Al cerrar un año** (botón con confirmación: hay que escribir a mano el año que se cierra):
+
+1. Se archivan las **matrículas** del año que termina —en qué curso estaba cada alumno—, y el año
+   queda marcado con su fecha de cierre.
+2. Se activa el año nuevo. Las asignaciones de cursos del profesorado se copian, o se dejan en
+   blanco si desmarcas la casilla.
+3. Los alumnos se quedan **sin curso activo**: al entrar les sale otra vez la pantalla de matrícula
+   —con el curso siguiente ya propuesto— y empiezan las unidades desde cero, porque el progreso del
+   año anterior está guardado con *su* año.
+
+**No se borra nada.** Lo de los años cerrados se consulta en `/dashboard/admin/anio/<año>`: notas de
+los tests unidad por unidad, entregas y medias, con el curso que cada alumno tenía *ese* año.
+
+Todo el cierre lo hace la base de datos en una sola operación (`cerrar_anio_academico()`, en
+`supabase/schema.sql`): o se hace completo, o no se hace nada. Esa función solo la puede ejecutar el
+servidor con la Secret key.
+
 ## Panel del profesor (`/dashboard/profesor`)
 
 | Pestaña | Qué hace |

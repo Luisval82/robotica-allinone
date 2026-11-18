@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AvisoAlcance } from "@/components/profesor/AvisoAlcance";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { requireRole } from "@/lib/auth";
-import { getTestScores } from "@/lib/db";
-import { firstParam, formatNota, parseCourse } from "@/lib/format";
+import { cursoDeLaUrl, getCursosVisibles, getTestScores } from "@/lib/db";
+import { firstParam, formatNota } from "@/lib/format";
 import { COURSE_LABEL, TEST_QUESTIONS, UNIT_NUMBERS } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Notas de los tests" };
@@ -18,9 +19,10 @@ export default async function ProfesorNotasPage({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  await requireRole(["profesor", "superadmin"]);
+  const session = await requireRole(["profesor", "superadmin"]);
 
-  const curso = parseCourse(firstParam((await searchParams).curso));
+  const visibles = await getCursosVisibles(session);
+  const curso = cursoDeLaUrl(visibles, firstParam((await searchParams).curso));
   const filas = await getTestScores(curso);
 
   return (
@@ -31,8 +33,14 @@ export default async function ProfesorNotasPage({
         pulsa «Entregar». La nota es sobre 10.
       </p>
 
+      <AvisoAlcance alcance={visibles.alcance} cursos={visibles.cursos} />
+
       <div className="mt-6">
-        <CourseTabs basePath="/dashboard/profesor/notas" active={curso} />
+        <CourseTabs
+          basePath="/dashboard/profesor/notas"
+          active={curso}
+          cursos={visibles.cursos}
+        />
       </div>
 
       {filas.length === 0 ? (

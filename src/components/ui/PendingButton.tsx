@@ -6,6 +6,8 @@ import { useFormStatus } from "react-dom";
 const TONES = {
   primary: "bg-spike-600 text-white shadow-press-spike hover:bg-spike-700",
   neutral: "border-2 border-ink-200 bg-white text-ink-800 shadow-press-ink hover:border-ink-900",
+  // Para lo que no se puede deshacer, como el cierre de año escolar.
+  danger: "bg-red-600 text-white hover:bg-red-700",
 } as const;
 
 /**
