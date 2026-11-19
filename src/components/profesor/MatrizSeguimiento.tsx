@@ -37,7 +37,18 @@ const TEXTO_NIVEL: Record<Nivel, string> = {
   "sin-hacer": "sin empezar",
 };
 
-/** Un cuadradito. Es un enlace cuando hay algo que mirar detrás. */
+/**
+ * Un cuadradito. Es un enlace cuando hay algo que mirar detrás.
+ *
+ * Con ratón mide 20 px, que es lo que permite meter 9 unidades en la fila.
+ * Con el dedo —`pointer-coarse`, o sea el iPad— pasa a 40 px, que con los 6
+ * de separación deja 46 px de centro a centro: por encima de los 44 que pide
+ * Apple. Crece el cuadrado, no un relleno invisible, para que lo que se ve
+ * sea exactamente lo que se puede tocar y no haya zonas que se solapen.
+ *
+ * `touch-manipulation` quita el retardo del doble toque: sin él, el primer
+ * toque puede quedarse esperando a ver si llega un segundo.
+ */
 function Cuadro({
   className,
   titulo,
@@ -49,7 +60,7 @@ function Cuadro({
   href?: string;
   children?: ReactNode;
 }) {
-  const clase = `grid size-5 place-items-center rounded-[0.2rem] text-[0.6rem] font-extrabold leading-none ${className}`;
+  const clase = `grid size-5 place-items-center rounded-[0.2rem] text-[0.6rem] font-extrabold leading-none pointer-coarse:size-10 pointer-coarse:rounded-md pointer-coarse:text-xs ${className}`;
   if (!href) {
     return (
       <span className={clase} title={titulo}>
@@ -62,7 +73,7 @@ function Cuadro({
     <Link
       href={href}
       title={titulo}
-      className={`${clase} transition hover:ring-2 hover:ring-ink-900 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ink-900`}
+      className={`${clase} touch-manipulation transition hover:ring-2 hover:ring-ink-900 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ink-900`}
     >
       <span className="sr-only">{titulo}</span>
       {children}
@@ -80,14 +91,13 @@ function CuadrosDeUnidad({
   alumnoId: string;
   alumnoNombre: string;
 }) {
-  const practicas = `/dashboard/profesor/practicas/${alumnoId}/${celda.unidad}`;
   const teoriaCompleta = celda.teoria >= THEORY_STEPS;
 
   return (
-    <div className="flex items-center gap-[3px]">
+    <div className="flex items-center gap-[3px] pointer-coarse:gap-1.5">
       {/* La teoría va primero y algo separada: no es una práctica. */}
       <Cuadro
-        className={`mr-1 ${
+        className={`mr-1 pointer-coarse:mr-2 ${
           teoriaCompleta
             ? "bg-nivel-bien text-white"
             : celda.teoria > 0
@@ -99,20 +109,29 @@ function CuadrosDeUnidad({
         <span aria-hidden="true">T</span>
       </Cuadro>
 
+      {/* Cada práctica abre SU práctica, no las cuatro: el profesor pulsa el
+          cuadrado naranja y ve ese programa, no una lista por la que bajar. */}
       {celda.practicas.map((practica) => (
         <Cuadro
           key={practica.practica}
-          className={`${COLOR_NIVEL[practica.nivel]} ${
-            practica.nivel === "sin-hacer" ? "" : "hover:opacity-80"
-          }`}
-          href={practica.nivel === "sin-hacer" ? undefined : practicas}
+          className={`${COLOR_NIVEL[practica.nivel]} hover:opacity-80`}
+          href={`/dashboard/profesor/practicas/${alumnoId}/${celda.unidad}/${practica.practica}`}
           titulo={`${alumnoNombre}, UD ${celda.unidad}, práctica ${practica.practica}: ${
             TEXTO_NIVEL[practica.nivel]
-          }${practica.comprobada ? " · terminada" : practica.nivel === "sin-hacer" ? "" : " · a medias"}`}
+          }${
+            practica.nivel === "sin-hacer"
+              ? ""
+              : practica.comprobada
+                ? " · terminada"
+                : " · a medias"
+          }. Pulsa para verla.`}
         >
           {/* Un punto marca lo que el alumno todavía no ha dado por terminado. */}
           {practica.nivel !== "sin-hacer" && !practica.comprobada ? (
-            <span aria-hidden="true" className="size-1.5 rounded-full bg-white/80" />
+            <span
+              aria-hidden="true"
+              className="size-1.5 rounded-full bg-white/80 pointer-coarse:size-2.5"
+            />
           ) : null}
         </Cuadro>
       ))}
@@ -156,7 +175,7 @@ function NotaDeLaPrueba({
     <Link
       href={`/dashboard/profesor/notas/${alumnoId}/${celda.unidad}`}
       title={explicacion}
-      className={`relative grid h-7 w-11 place-items-center rounded-lg text-sm font-extrabold tabular-nums transition hover:ring-2 hover:ring-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-900 ${tono}`}
+      className={`relative grid h-7 w-11 touch-manipulation place-items-center rounded-lg text-sm font-extrabold tabular-nums transition hover:ring-2 hover:ring-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-900 pointer-coarse:h-11 pointer-coarse:w-16 pointer-coarse:text-base ${tono}`}
     >
       <span className="sr-only">{explicacion}</span>
       <span aria-hidden="true">{formatNota(prueba.final)}</span>
@@ -182,7 +201,9 @@ export function MatrizSeguimiento({ filas, curso }: { filas: FilaMatriz[]; curso
 
   return (
     <div className="mt-6 overflow-x-auto rounded-card bg-white shadow-card">
-      <table className="w-full border-collapse text-left">
+      {/* border-separate, no collapse: con las celdas colapsadas, la columna
+          del alumno fijada con `sticky` pierde los bordes al desplazar. */}
+      <table className="w-full border-separate border-spacing-0 text-left">
         <caption className="sr-only">
           Seguimiento de {COURSE_LABEL[curso]}: por cada alumno y unidad, la teoría, las 4
           prácticas de programación y la nota de la prueba
@@ -241,12 +262,7 @@ export function MatrizSeguimiento({ filas, curso }: { filas: FilaMatriz[]; curso
                 scope="row"
                 className="sticky left-0 z-10 border-r-2 border-ink-100 bg-white px-5 py-2 text-sm font-bold text-ink-900"
               >
-                <Link
-                  href={`/dashboard/profesor/notas/${alumno.id}/1`}
-                  className="underline decoration-ink-200 decoration-2 underline-offset-4 transition hover:decoration-spike-500"
-                >
-                  {alumno.name}
-                </Link>
+                {alumno.name}
               </th>
 
               {unidades.map((celda) => (

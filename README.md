@@ -108,7 +108,7 @@ servidor con la Secret key.
 
 | Pestaña | Qué hace |
 | --- | --- |
-| Progreso y notas alumnado | **La matriz**: una fila por alumno y, por cada unidad, 5 cuadrados (la teoría y las 4 prácticas de programación) más la nota de la PRUEBA. Pulsar la nota abre la corrección de ese examen; pulsar un cuadrado, las prácticas de esa unidad. |
+| Progreso y notas alumnado | **La matriz**: una fila por alumno y, por cada unidad, 5 cuadrados (la teoría y las 4 prácticas de programación) más la nota de la PRUEBA. Pulsar la nota abre la corrección de ese examen; pulsar un cuadrado, esa práctica concreta. |
 | Unidades y pruebas | Interruptores de cada unidad (UD 1–9) y de su PRUEBA UD-X, para toda la clase o alumno por alumno. |
 | Fichas | El correo con el que entró cada alumno, su nombre (corregible) y su curso (cambiable). |
 | Soluciones | Enunciado y solución oficial, en bloques de palabras, de las 2 prácticas de cada unidad. |
@@ -218,8 +218,20 @@ Por cada alumno y unidad hay cinco cuadrados y una nota:
 | | |
 | --- | --- |
 | **T** | La teoría: verde con los 4 pasos leídos, naranja a medias, gris sin empezar. |
-| **4 cuadrados** | Las 4 prácticas de programación, con un punto blanco si están guardadas pero sin «Guardar y comprobar». |
+| **4 cuadrados** | Las 4 prácticas de programación, con un punto blanco si están guardadas pero sin «Guardar y comprobar». Cada uno abre **esa** práctica: el programa del alumno y la solución, uno al lado del otro. |
 | **La nota** | La de la PRUEBA, sobre 10. Gris = provisional. Punto amarillo = tienes entregas sin corregir. Al pulsarla se abre la corrección de ese examen. |
+
+Cada zona abre una cosa y solo una: los 4 cuadrados llevan a
+`/practicas/[alumno]/[unidad]/[practica]` —una práctica, con su programa y la solución al lado— y
+la nota, a `/notas/[alumno]/[unidad]`, que es la PRUEBA. Son direcciones propias, no ventanas
+flotantes: se pueden compartir y recargar, y el botón de atrás devuelve la matriz donde estaba.
+
+En pantallas táctiles los cuadrados pasan de 20 a 40 px (`pointer-coarse:`), con 6 px de
+separación: 46 px de centro a centro, por encima de los 44 que pide Apple. Crece el cuadrado y no
+un relleno invisible, para que lo que se ve sea exactamente lo que se toca y no haya zonas que se
+solapen; y `touch-manipulation` quita el retardo del doble toque. A cambio, en el iPad la tabla se
+desplaza unas tres pantallas a lo ancho, con la columna del alumno fijada. Si se prefiere verlo
+todo de golpe y apuntar mejor, es un número en `MatrizSeguimiento.tsx`.
 
 **El color de las prácticas no es una nota, y la pantalla lo dice.** Sale de comparar el programa
 del alumno con la solución oficial (`src/lib/parecido.ts`): estructura^1,5 × (0,6 + 0,4 × valores),
