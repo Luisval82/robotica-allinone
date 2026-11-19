@@ -5,14 +5,27 @@ import { usePathname } from "next/navigation";
 
 const BASE = "/dashboard/profesor";
 
+// Cuatro pestañas y ninguna que repita lo de otra. El progreso, las notas de
+// las pruebas y el seguimiento de las prácticas eran tres pestañas distintas
+// para mirar al mismo alumno: ahora son una matriz.
 const TABS = [
-  { href: BASE, label: "Alumnado" },
+  { href: BASE, label: "Progreso y notas alumnado" },
   { href: `${BASE}/alumnos`, label: "Fichas" },
   { href: `${BASE}/unidades`, label: "Unidades y pruebas" },
-  { href: `${BASE}/notas`, label: "Nota pruebas" },
-  { href: `${BASE}/practicas`, label: "Prácticas de programación" },
   { href: `${BASE}/soluciones`, label: "Soluciones" },
 ];
+
+/**
+ * Las pantallas de corregir una prueba y de ver las prácticas de un alumno no
+ * tienen pestaña propia: se entra a ellas desde la matriz, así que la pestaña
+ * que se queda encendida es la suya.
+ */
+const DE_LA_MATRIZ = [`${BASE}/notas`, `${BASE}/practicas`];
+
+function estaActiva(href: string, pathname: string): boolean {
+  if (href !== BASE) return pathname.startsWith(href);
+  return pathname === BASE || DE_LA_MATRIZ.some((ruta) => pathname.startsWith(ruta));
+}
 
 /** Pestañas del panel de profesor. */
 export function ProfesorTabs() {
@@ -24,7 +37,7 @@ export function ProfesorTabs() {
       className="mb-8 flex gap-1 overflow-x-auto border-b-2 border-ink-200"
     >
       {TABS.map((tab) => {
-        const active = tab.href === BASE ? pathname === BASE : pathname.startsWith(tab.href);
+        const active = estaActiva(tab.href, pathname);
         return (
           <Link
             key={tab.href}

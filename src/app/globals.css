@@ -37,6 +37,15 @@
   --color-hub-500: #f0c200;
   --color-hub-700: #a37f00;
 
+  /* Escala de la matriz de seguimiento del profesor: de bien a mal resuelto.
+     No se usa el turquesa de la marca a propósito: aquí el color tiene que
+     leerse como un semáforo, no como «esto es de la plataforma». */
+  --color-nivel-bien: #15703a;
+  --color-nivel-casi: #7cc47f;
+  --color-nivel-regular: #ef8a24;
+  --color-nivel-flojo: #d6402f;
+  --color-nivel-nada: #e3e8eb;
+
   /* Tinta — grises con un punto azulado (textos, bordes y fondos) */
   --color-ink-50: #f3f6f8;
   --color-ink-100: #e7ecef;

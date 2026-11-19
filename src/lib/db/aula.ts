@@ -15,6 +15,8 @@ import {
   type UserRow,
 } from "@/lib/db/store";
 import { toPublicUser } from "@/lib/db/users";
+import { getPracticasIntermediasDeUnidad } from "@/lib/contenido";
+import { nivelDeParecido, parecidoDeProgramas, type Nivel } from "@/lib/parecido";
 import {
   TEST_QUESTIONS,
   THEORY_STEPS,
@@ -25,7 +27,6 @@ import {
   type Entrega,
   type ProgramRow,
   type PublicUser,
-  type StudentSummary,
   type StudentUnitAccess,
   type UnitProgress,
 } from "@/lib/types";
@@ -327,55 +328,6 @@ export async function saveTestResult(
   return true;
 }
 
-export async function getStudentSummary(student: {
-  id: string;
-  course: Course;
-}): Promise<StudentSummary> {
-  async function getEntregaPuntos(): Promise<{ puntos: number | null }[]> {
-    const { data, error } = await supabase
-      .from("entregas")
-      .select("puntos")
-      .eq("anio", await getAnioActivo())
-      .eq("alumno_id", student.id);
-    assertNoError(error, "getStudentSummary:entregas");
-    return (data ?? []) as { puntos: number | null }[];
-  }
-
-  const [progreso, acceso, entregas] = await Promise.all([
-    getProgress(student.id),
-    getStudentAccess(student),
-    getEntregaPuntos(),
-  ]);
-
-  const tests = progreso.filter((item) => item.testAciertos !== null);
-  const hitos =
-    progreso.filter((item) => item.pasosTeoria >= THEORY_STEPS).length + tests.length + entregas.length;
-  const sumaNotas = tests.reduce((total, item) => total + testScore(item.testAciertos ?? 0), 0);
-
-  return {
-    porcentaje: Math.round((hitos / (UNIT_NUMBERS.length * MILESTONES_PER_UNIT)) * 100),
-    unidadesAbiertas: acceso.filter((item) => item.abierta).length,
-    testsHechos: tests.length,
-    mediaTests: tests.length > 0 ? Math.round((sumaNotas / tests.length) * 100) / 100 : null,
-    entregasPorCorregir: entregas.filter((item) => item.puntos === null).length,
-  };
-}
-
-export interface StudentWithSummary {
-  alumno: PublicUser;
-  resumen: StudentSummary;
-}
-
-export async function listStudentsWithSummary(course: Course): Promise<StudentWithSummary[]> {
-  const students = await listStudents(course);
-  return Promise.all(
-    students.map(async (alumno) => ({
-      alumno,
-      resumen: await getStudentSummary({ id: alumno.id, course }),
-    })),
-  );
-}
-
 export interface NotaPrueba {
   unidad: number;
   /** Aciertos del test, de 0 a 8. Cada acierto vale 1 punto. null = sin entregar. */
@@ -393,39 +345,97 @@ export interface NotaPrueba {
   completa: boolean;
 }
 
-export interface NotasDeAlumno {
+/**
+ * La nota de una PRUEBA a partir de sus tres partes.
+ *
+ * La PRUEBA son 10 puntos de 1: las 8 preguntas del test, que se corrigen
+ * solas al entregar, y las 2 programaciones que corrige el profesor. Por eso
+ * aquí no se pondera nada: se suma.
+ */
+function construirNotaPrueba(
+  unidad: number,
+  aciertos: number | null,
+  practicas: (number | null)[],
+  entregadas: number,
+): NotaPrueba {
+  const corregidas = practicas.filter((p): p is number => p !== null);
+  const hayAlgo = aciertos !== null || corregidas.length > 0;
+  const suma = (aciertos ?? 0) + corregidas.reduce((total, p) => total + p, 0);
+
+  return {
+    unidad,
+    aciertos,
+    practicas,
+    entregadas,
+    final: hayAlgo ? Math.round(suma * 100) / 100 : null,
+    completa: aciertos !== null && corregidas.length === 2,
+  };
+}
+
+/** Una unidad de un alumno en la matriz de seguimiento. */
+export interface CeldaUnidad {
+  unidad: number;
+  /** Pasos de teoría leídos, de THEORY_STEPS. */
+  teoria: number;
+  /**
+   * Las 4 prácticas de programación de la unidad. El nivel sale de comparar
+   * el programa del alumno con la solución oficial (src/lib/parecido.ts);
+   * NO es una nota, y la pantalla lo avisa.
+   */
+  practicas: { practica: number; nivel: Nivel; parecido: number | null; comprobada: boolean }[];
+  prueba: NotaPrueba;
+}
+
+export interface FilaMatriz {
   alumno: PublicUser;
-  /** Una por unidad, en orden (posición 0 = UD 1). */
-  pruebas: NotaPrueba[];
+  unidades: CeldaUnidad[];
+  /** De 0 a 100: teoría, test y las 2 entregas de cada unidad. */
+  porcentaje: number;
   /** Media de las pruebas completas. Las que están a medias no cuentan. */
   media: number | null;
+  /** Programaciones de PRUEBA entregadas que el profesor no ha corregido. */
+  porCorregir: number;
 }
 
 /**
- * La nota de cada PRUEBA, curso por curso.
+ * Todo el seguimiento de un curso en una sola consulta por tabla.
  *
- * La PRUEBA son 10 puntos de 1: las 8 preguntas del test (que se corrigen
- * solas al entregar) y las 2 programaciones que corrige el profesor. Por eso
- * aquí no se pondera nada: se suma.
- *
- * Una prueba a medias enseña lo que lleva sumado, pero se marca como
- * incompleta y no entra en la media: dar por nota final algo a lo que le
- * falta la mitad sería mentirle al profesor en su propia tabla.
+ * Antes esto eran tres pantallas con tres consultas que se pisaban: el
+ * progreso, las notas de las pruebas y las prácticas. Al juntarlas en una
+ * matriz, la consulta también se junta: tres SELECT para todo el curso en
+ * lugar de tres por alumno.
  */
-export async function getNotasPruebas(course: Course): Promise<NotasDeAlumno[]> {
+export async function getMatrizSeguimiento(course: Course): Promise<FilaMatriz[]> {
   const students = await listStudents(course);
   const ids = students.map((alumno) => alumno.id);
   if (ids.length === 0) return [];
 
   const anio = await getAnioActivo();
 
-  type ProgresoRow = { alumno_id: string; unidad: number; test_aciertos: number | null };
-  type PuntosRow = { alumno_id: string; unidad: number; practica: number; puntos: number | null };
+  type ProgresoFila = {
+    alumno_id: string;
+    unidad: number;
+    pasos_teoria: number;
+    test_aciertos: number | null;
+  };
+  type EntregaFila = {
+    alumno_id: string;
+    unidad: number;
+    practica: number;
+    puntos: number | null;
+  };
+  type IntermediaFila = {
+    alumno_id: string;
+    unidad: number;
+    practica: number;
+    bloques: ProgramRow[] | null;
+    comprobada_en: string | null;
+  };
 
-  const [progreso, entregas] = await Promise.all([
+  const [progreso, entregas, intermedias] = await Promise.all([
     supabase
       .from("progreso")
-      .select("alumno_id, unidad, test_aciertos")
+      .select("alumno_id, unidad, pasos_teoria, test_aciertos")
       .eq("anio", anio)
       .in("alumno_id", ids),
     supabase
@@ -433,53 +443,94 @@ export async function getNotasPruebas(course: Course): Promise<NotasDeAlumno[]> 
       .select("alumno_id, unidad, practica, puntos")
       .eq("anio", anio)
       .in("alumno_id", ids),
+    supabase
+      .from("practicas_intermedias")
+      .select("alumno_id, unidad, practica, bloques, comprobada_en")
+      .eq("anio", anio)
+      .in("alumno_id", ids),
   ]);
-  assertNoError(progreso.error, "getNotasPruebas/progreso");
-  assertNoError(entregas.error, "getNotasPruebas/entregas");
+  assertNoError(progreso.error, "getMatrizSeguimiento/progreso");
+  assertNoError(entregas.error, "getMatrizSeguimiento/entregas");
+  assertNoError(intermedias.error, "getMatrizSeguimiento/intermedias");
 
-  const filasProgreso = (progreso.data ?? []) as ProgresoRow[];
-  const filasEntregas = (entregas.data ?? []) as PuntosRow[];
+  const filasProgreso = (progreso.data ?? []) as ProgresoFila[];
+  const filasEntregas = (entregas.data ?? []) as EntregaFila[];
+  const filasIntermedias = (intermedias.data ?? []) as IntermediaFila[];
+
+  // Las soluciones oficiales son contenido del repositorio, no de la base de
+  // datos: se leen una vez por unidad y valen para todo el curso.
+  const soluciones = new Map(
+    UNIT_NUMBERS.map((unidad) => [unidad, getPracticasIntermediasDeUnidad(course, unidad)]),
+  );
 
   return students.map((alumno) => {
-    const pruebas = UNIT_NUMBERS.map((unidad): NotaPrueba => {
-      const fila = filasProgreso.find((p) => p.alumno_id === alumno.id && p.unidad === unidad);
-      const aciertos = fila?.test_aciertos ?? null;
+    const unidades = UNIT_NUMBERS.map((unidad): CeldaUnidad => {
+      const suProgreso = filasProgreso.find(
+        (f) => f.alumno_id === alumno.id && f.unidad === unidad,
+      );
 
-      const practicas = [1, 2].map((numero) => {
-        const entrega = filasEntregas.find(
-          (e) => e.alumno_id === alumno.id && e.unidad === unidad && e.practica === numero,
+      const puntos = [1, 2].map((numero) => {
+        const fila = filasEntregas.find(
+          (f) => f.alumno_id === alumno.id && f.unidad === unidad && f.practica === numero,
         );
-        return entrega?.puntos === null || entrega?.puntos === undefined
-          ? null
-          : Number(entrega.puntos);
+        return fila?.puntos === null || fila?.puntos === undefined ? null : Number(fila.puntos);
       });
       const entregadas = filasEntregas.filter(
-        (e) => e.alumno_id === alumno.id && e.unidad === unidad,
+        (f) => f.alumno_id === alumno.id && f.unidad === unidad,
       ).length;
 
-      const corregidas = practicas.filter((p): p is number => p !== null);
-      const hayAlgo = aciertos !== null || corregidas.length > 0;
-      const suma = (aciertos ?? 0) + corregidas.reduce((total, p) => total + p, 0);
+      const practicas = [1, 2, 3, 4].map((numero) => {
+        const suya = filasIntermedias.find(
+          (f) => f.alumno_id === alumno.id && f.unidad === unidad && f.practica === numero,
+        );
+        const oficial = soluciones.get(unidad)?.find((p) => p.practica === numero);
+        const parecido =
+          suya && oficial ? parecidoDeProgramas(suya.bloques ?? [], oficial.solucion) : null;
+        return {
+          practica: numero,
+          parecido,
+          nivel: nivelDeParecido(parecido),
+          comprobada: suya?.comprobada_en != null,
+        };
+      });
 
       return {
         unidad,
-        aciertos,
+        teoria: suProgreso?.pasos_teoria ?? 0,
         practicas,
-        entregadas,
-        final: hayAlgo ? Math.round(suma * 100) / 100 : null,
-        completa: aciertos !== null && corregidas.length === 2,
+        prueba: construirNotaPrueba(unidad, suProgreso?.test_aciertos ?? null, puntos, entregadas),
       };
     });
 
-    const completas = pruebas.filter((p) => p.completa).map((p) => p.final ?? 0);
-    const media =
-      completas.length > 0
-        ? Math.round((completas.reduce((t, n) => t + n, 0) / completas.length) * 100) / 100
-        : null;
+    // El mismo porcentaje de siempre: teoría, test y las 2 entregas por unidad.
+    const hitos = unidades.reduce(
+      (total, celda) =>
+        total +
+        (celda.teoria >= THEORY_STEPS ? 1 : 0) +
+        (celda.prueba.aciertos !== null ? 1 : 0) +
+        celda.prueba.entregadas,
+      0,
+    );
+    const completas = unidades.filter((c) => c.prueba.completa).map((c) => c.prueba.final ?? 0);
 
-    return { alumno, pruebas, media };
+    return {
+      alumno,
+      unidades,
+      porcentaje: Math.round((hitos / (UNIT_NUMBERS.length * MILESTONES_PER_UNIT)) * 100),
+      media:
+        completas.length > 0
+          ? Math.round((completas.reduce((t, n) => t + n, 0) / completas.length) * 100) / 100
+          : null,
+      porCorregir: unidades.reduce(
+        (total, celda) =>
+          total +
+          (celda.prueba.entregadas - celda.prueba.practicas.filter((p) => p !== null).length),
+        0,
+      ),
+    };
   });
 }
+
 
 // ── Entregas de programación ─────────────────────────────────────────────
 
@@ -660,57 +711,6 @@ export async function getPracticasIntermedias(
     entregadaEn: fila.entregada_en as string,
     comprobadaEn: (fila.comprobada_en ?? null) as string | null,
   }));
-}
-
-export interface SeguimientoPracticas {
-  alumno: PublicUser;
-  /** Una por unidad: de las 4 prácticas, cuántas tiene empezadas y cuántas cerradas. */
-  unidades: { unidad: number; guardadas: number; comprobadas: number }[];
-  guardadasTotal: number;
-  comprobadasTotal: number;
-}
-
-/**
- * Cómo van las 4 prácticas de programación de cada unidad, alumno por alumno.
- *
- * Esto no lleva nota ni la va a llevar: son los retos con los que el alumno
- * aprende, no el examen. Lo que importa es si las ha hecho y si las ha dado
- * por terminadas con «Guardar y comprobar».
- */
-export async function getSeguimientoPracticas(
-  course?: Course | readonly Course[],
-): Promise<SeguimientoPracticas[]> {
-  const students = await listStudents(course);
-  const ids = students.map((alumno) => alumno.id);
-  if (ids.length === 0) return [];
-
-  const { data, error } = await supabase
-    .from("practicas_intermedias")
-    .select("alumno_id, unidad, comprobada_en")
-    .eq("anio", await getAnioActivo())
-    .in("alumno_id", ids);
-  assertNoError(error, "getSeguimientoPracticas");
-
-  type Fila = { alumno_id: string; unidad: number; comprobada_en: string | null };
-  const filas = (data ?? []) as Fila[];
-
-  return students.map((alumno) => {
-    const suyas = filas.filter((f) => f.alumno_id === alumno.id);
-    const unidades = UNIT_NUMBERS.map((unidad) => {
-      const deLaUnidad = suyas.filter((f) => f.unidad === unidad);
-      return {
-        unidad,
-        guardadas: deLaUnidad.length,
-        comprobadas: deLaUnidad.filter((f) => f.comprobada_en !== null).length,
-      };
-    });
-    return {
-      alumno,
-      unidades,
-      guardadasTotal: suyas.length,
-      comprobadasTotal: suyas.filter((f) => f.comprobada_en !== null).length,
-    };
-  });
 }
 
 /** Cuántas prácticas intermedias lleva guardadas el alumno en cada unidad. */

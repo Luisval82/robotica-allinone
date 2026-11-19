@@ -108,16 +108,16 @@ servidor con la Secret key.
 
 | Pestaña | Qué hace |
 | --- | --- |
-| Alumnado | Alumnos por curso con su progreso general, unidades abiertas, media de tests y entregas por corregir. |
+| Progreso y notas alumnado | **La matriz**: una fila por alumno y, por cada unidad, 5 cuadrados (la teoría y las 4 prácticas de programación) más la nota de la PRUEBA. Pulsar la nota abre la corrección de ese examen; pulsar un cuadrado, las prácticas de esa unidad. |
 | Unidades y pruebas | Interruptores de cada unidad (UD 1–9) y de su PRUEBA UD-X, para toda la clase o alumno por alumno. |
-| Nota pruebas | La nota de cada PRUEBA por alumno y unidad, con la media. Al pulsar una casilla: el test pregunta a pregunta y las 2 programaciones de esa prueba, cada una con su programa, la solución oficial y su corrección. |
-| Prácticas de programación | Las 4 programaciones de cada unidad, alumno a alumno. **Sin nota**: solo si las ha montado y si las ha dado por terminadas. |
+| Fichas | El correo con el que entró cada alumno, su nombre (corregible) y su curso (cambiable). |
 | Soluciones | Enunciado y solución oficial, en bloques de palabras, de las 2 prácticas de cada unidad. |
 
-Pulsando cualquier casilla de la tabla de **Notas** se abre el seguimiento de ese alumno en esa
-unidad: el test pregunta a pregunta y sus **4 prácticas de programación** con su estado (sin
-empezar, borrador o comprobada), el programa con el que cerró cada una y un botón para **reabrir**
-la que haya comprobado por error.
+Pulsando un cuadrado de la matriz se abre esa unidad del alumno: sus **4 prácticas de
+programación** con su estado (sin empezar, borrador o comprobada), el programa con el que cerró
+cada una y un botón para **reabrir** la que haya comprobado por error. Pulsando la nota se abre la
+PRUEBA: el test pregunta a pregunta y las 2 programaciones, con la solución oficial al lado y el
+campo de puntos.
 
 Reglas de los interruptores (`src/lib/db/aula.ts`):
 
@@ -204,6 +204,33 @@ Qué está comprobado y qué no:
   cantidad a propósito; para fijarlas hay que montar el modelo y anotarlas.
 - Los dibujos son propios. Las imágenes y las instrucciones de montaje oficiales son de LEGO y no
   se copian al repositorio: lo que hay aquí son esquemas dibujados a mano en SVG.
+
+### La matriz de seguimiento
+
+Era absurdo tener tres pestañas —progreso, notas de las pruebas y seguimiento de prácticas— para
+mirar al mismo alumno: para saber cómo iba en la unidad 3 había que entrar en las tres. Ahora es
+una matriz, y las tres consultas por alumno son **tres consultas para todo el curso**
+(`getMatrizSeguimiento`). `/dashboard/profesor/notas` y `/practicas` redirigen a ella; sus
+pantallas de detalle siguen donde estaban, porque es a donde lleva la matriz.
+
+Por cada alumno y unidad hay cinco cuadrados y una nota:
+
+| | |
+| --- | --- |
+| **T** | La teoría: verde con los 4 pasos leídos, naranja a medias, gris sin empezar. |
+| **4 cuadrados** | Las 4 prácticas de programación, con un punto blanco si están guardadas pero sin «Guardar y comprobar». |
+| **La nota** | La de la PRUEBA, sobre 10. Gris = provisional. Punto amarillo = tienes entregas sin corregir. Al pulsarla se abre la corrección de ese examen. |
+
+**El color de las prácticas no es una nota, y la pantalla lo dice.** Sale de comparar el programa
+del alumno con la solución oficial (`src/lib/parecido.ts`): estructura^1,5 × (0,6 + 0,4 × valores),
+donde la estructura es la subsecuencia común más larga de bloques contando la sangría. Un programa
+distinto que funcione saldrá en naranja, y eso es inevitable comparando contra una sola solución:
+el cuadrado sirve para decidir a quién mirar primero, no para calificar.
+
+La fórmula no se eligió a ojo. Medida sobre las 108 soluciones oficiales: idéntica da 1; un valor
+cambiado, 0,90; un bloque de menos, 0,84; dos bloques intercambiados, 0,72 (naranja, que es donde
+debe caer un error de lógica); sacar todo fuera del bucle, 0,25. Y el programa de **otra** práctica
+llega a verde claro en 1 de cada 9 casos; con una media ponderada normal eran 1 de cada 4.
 
 ### Cómo se califica una PRUEBA
 

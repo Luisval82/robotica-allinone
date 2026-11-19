@@ -177,17 +177,6 @@ export interface Entrega {
   corregidaPor: string | null;
 }
 
-/** Resumen de un alumno para el listado del profesor. */
-export interface StudentSummary {
-  /** Porcentaje del curso completado (teoría, test y 2 entregas de cada unidad). */
-  porcentaje: number;
-  unidadesAbiertas: number;
-  testsHechos: number;
-  /** Media de los tests entregados, sobre 10. null = ninguno todavía. */
-  mediaTests: number | null;
-  entregasPorCorregir: number;
-}
-
 /** Práctica de programación de una unidad, con su solución oficial (solo profesorado). */
 export interface Practica {
   curso: Course;
