@@ -94,6 +94,11 @@ src/app/dashboard/profesor/page.tsx: error TS2307: Cannot find module 'next/link
 src/app/dashboard/profesor/page.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
 src/app/dashboard/profesor/page.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/app/dashboard/profesor/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/dashboard/profesor/practicas/[alumno]/[unidad]/[practica]/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/dashboard/profesor/practicas/[alumno]/[unidad]/[practica]/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/dashboard/profesor/practicas/[alumno]/[unidad]/[practica]/page.tsx: error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/dashboard/profesor/practicas/[alumno]/[unidad]/[practica]/page.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/dashboard/profesor/practicas/[alumno]/[unidad]/[practica]/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/app/dashboard/profesor/practicas/[alumno]/[unidad]/page.tsx: error TS18048: 'alumno' is possibly 'undefined'.
 src/app/dashboard/profesor/practicas/[alumno]/[unidad]/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
 src/app/dashboard/profesor/practicas/[alumno]/[unidad]/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
@@ -205,11 +210,15 @@ src/components/profesor/CourseTabs.tsx: error TS2875: This JSX tag requires the 
 src/components/profesor/CourseTabs.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/profesor/FichaAlumno.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/profesor/FichaAlumno.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/components/profesor/FichaPractica.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/profesor/FichaPractica.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/profesor/FichaPractica.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/profesor/MatrizSeguimiento.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
 src/components/profesor/MatrizSeguimiento.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
-src/components/profesor/MatrizSeguimiento.tsx: error TS2322: Type '{ key: number; className: string; href: string | undefined; titulo: string; children: any; }' is not assignable to type '{ className: string; titulo: string; href?: string | undefined; children?: any; }'.
+src/components/profesor/MatrizSeguimiento.tsx: error TS2322: Type '{ key: number; className: string; href: string; titulo: string; children: any; }' is not assignable to type '{ className: string; titulo: string; href?: string | undefined; children?: any; }'.
 src/components/profesor/MatrizSeguimiento.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/profesor/MatrizSeguimiento.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/components/profesor/PracticasDelAlumno.tsx: error TS2322: Type '{ key: number; practica: PracticaIntermedia; guardada: PracticaIntermediaEntrega | undefined; alumnoId: string; unidad: number; deCuantas: number; }' is not assignable to type '{ practica: PracticaIntermedia; guardada: PracticaIntermediaEntrega | undefined; alumnoId: string; unidad: number; deCuantas: number; solucionAbierta?: boolean | undefined; children?: any; }'.
 src/components/profesor/PracticasDelAlumno.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/profesor/PracticasDelAlumno.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/profesor/ProfesorTabs.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
