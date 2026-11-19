@@ -10,16 +10,24 @@ const TONES = {
   danger: "bg-red-600 text-white hover:bg-red-700",
 } as const;
 
+/** El tamaño de siempre y uno más pequeño para listados de una línea. */
+const TAMANOS = {
+  normal: "h-10 px-4 text-sm",
+  compacto: "h-8 px-3 text-xs",
+} as const;
+
 /**
  * Botón de envío para formularios con acción de servidor: mientras la acción
  * está en marcha se desactiva y muestra `pendingLabel`.
  */
 export function PendingButton({
   tone = "primary",
+  size = "normal",
   pendingLabel,
   children,
 }: {
   tone?: keyof typeof TONES;
+  size?: keyof typeof TAMANOS;
   pendingLabel: string;
   children: ReactNode;
 }) {
@@ -29,7 +37,7 @@ export function PendingButton({
     <button
       type="submit"
       disabled={pending}
-      className={`inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 text-sm font-extrabold transition active:translate-y-1 active:shadow-none disabled:cursor-wait disabled:opacity-70 ${TONES[tone]}`}
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-extrabold transition active:translate-y-1 active:shadow-none disabled:cursor-wait disabled:opacity-70 ${TAMANOS[size]} ${TONES[tone]}`}
     >
       {pending ? pendingLabel : children}
     </button>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { AvisoAlcance } from "@/components/profesor/AvisoAlcance";
-import { FichaAlumno } from "@/components/profesor/FichaAlumno";
+import { CabeceraAlumnos, FilaAlumno } from "@/components/profesor/FilaAlumno";
 import { COURSE_TONE } from "@/components/profesor/courseTone";
 import { requireRole } from "@/lib/auth";
 import { getCursosVisibles, listUsers } from "@/lib/db";
@@ -64,10 +64,13 @@ export default async function FichasPage() {
               el profesorado hasta que se matriculen.
             </p>
           </div>
-          <div className="grid gap-3 p-5">
-            {sinCurso.map((alumno) => (
-              <FichaAlumno key={alumno.id} alumno={alumno} />
-            ))}
+          <div className="p-2">
+            <CabeceraAlumnos />
+            <div className="divide-y divide-ink-100">
+              {sinCurso.map((alumno) => (
+                <FilaAlumno key={alumno.id} alumno={alumno} />
+              ))}
+            </div>
           </div>
         </section>
       ) : null}
@@ -94,10 +97,13 @@ export default async function FichasPage() {
                 Todavía no ha entrado nadie de este curso.
               </p>
             ) : (
-              <div className="grid gap-3 p-5">
-                {delCurso.map((alumno) => (
-                  <FichaAlumno key={alumno.id} alumno={alumno} />
-                ))}
+              <div className="p-2">
+                <CabeceraAlumnos />
+                <div className="divide-y divide-ink-100">
+                  {delCurso.map((alumno) => (
+                    <FilaAlumno key={alumno.id} alumno={alumno} />
+                  ))}
+                </div>
               </div>
             )}
           </section>
