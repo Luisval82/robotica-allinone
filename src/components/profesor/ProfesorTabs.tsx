@@ -10,7 +10,7 @@ const BASE = "/dashboard/profesor";
 // para mirar al mismo alumno: ahora son una matriz.
 const TABS = [
   { href: BASE, label: "Progreso y notas alumnado" },
-  { href: `${BASE}/alumnos`, label: "Fichas" },
+  { href: `${BASE}/alumnos`, label: "Alumnado" },
   { href: `${BASE}/unidades`, label: "Unidades y pruebas" },
   { href: `${BASE}/soluciones`, label: "Soluciones" },
 ];

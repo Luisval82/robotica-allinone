@@ -110,7 +110,7 @@ servidor con la Secret key.
 | --- | --- |
 | Progreso y notas alumnado | **La matriz**: una fila por alumno y, por cada unidad, 5 cuadrados (la teoría y las 4 prácticas de programación) más la nota de la PRUEBA. Pulsar la nota abre la corrección de ese examen; pulsar un cuadrado, esa práctica concreta. |
 | Unidades y pruebas | Interruptores de cada unidad (UD 1–9) y de su PRUEBA UD-X, para toda la clase o alumno por alumno. |
-| Fichas | El correo con el que entró cada alumno, su nombre (corregible) y su curso (cambiable). |
+| Alumnado | El correo con el que entró cada alumno, su nombre (corregible) y su curso (cambiable). |
 | Soluciones | Enunciado y solución oficial, en bloques de palabras, de las 2 prácticas de cada unidad. |
 
 Pulsando un cuadrado de la matriz se abre esa unidad del alumno: sus **4 prácticas de
