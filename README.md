@@ -285,6 +285,41 @@ nuevo**.
 ./scripts/tipos.sh --fijar  # vuelve a tomar la foto (solo si Vercel va bien)
 ```
 
+### El temario de 1º de ESO (`scripts/temario-1eso.py`)
+
+Las 9 unidades de 1º están repartidas en **3 evaluaciones de 3 unidades**. En cada evaluación se
+tocan **todos los ámbitos** —pantalla, botón y sonido, motores y giros, y los tres sensores—, y lo
+que sube de una a otra es la dificultad:
+
+| | Unidades | Nivel | Qué se añade |
+| --- | --- | --- | --- |
+| **1.ª evaluación** | 1 · El Hub se enciende<br>2 · El primer motor<br>3 · Los tres sentidos | 1 | Programas cortos y seguidos. Sin anidar nada: una cosa detrás de otra, y los sensores solo con «Esperar hasta que». |
+| **2.ª evaluación** | 4 · Repetir sin copiar<br>5 · Conducir y el girosensor<br>6 · Si... entonces | 2 | Bucles, base de dos motores, giros controlados, el girosensor puesto a cero y las primeras condiciones. |
+| **3.ª evaluación** | 7 · Dos caminos<br>8 · Giros precisos<br>9 · La feria automática | 3 | Dos respuestas según el sensor, bucles con condición de salida, giros medidos con el giroscopio y varios programas a la vez. |
+
+Cada unidad tiene **4 prácticas de programación** (36 en total) y una **PRUEBA** de 8 preguntas de
+test más 2 programaciones evaluables (9 pruebas, 72 preguntas). Todo sale de un solo script, y no
+por comodidad: el contenido tiene que cumplir reglas que a mano se incumplen sin enterarse. El
+script **no escribe nada** si alguna falla:
+
+- Ninguna solución puede usar un bloque fuera de la paleta de su unidad (la paleta de la unidad N
+  son sus bloques más los de todas las anteriores).
+- Los valores de un bloque tienen que caber en sus huecos: `escribir Hello` admite uno, no dos.
+- Un sombrero va siempre a nivel 0, y nada se mete dentro de un bloque que no sea un contenedor.
+- 4 prácticas, 2 programaciones de prueba y 8 preguntas con la respuesta correcta en rango.
+
+Está probado metiendo errores a propósito de las cuatro clases: los caza todos. Los `pasos` con
+viñetas y la lista de `materiales` no los escribe este script: los generan `enunciados.py` y
+`materiales.py`, que ya existían.
+
+```bash
+python3 scripts/temario-1eso.py && python3 scripts/materiales.py && python3 scripts/enunciados.py
+```
+
+**2º y 3º no se tocan.** Los tres scripts antiguos que generaban contenido de 1º
+(`soluciones-intermedias.py`, `practicas-intermedias.py`, `programas-1eso.py`) ahora lo saltan o
+están jubilados: si volvieran a escribir sobre 1º, revertirían este temario sin avisar.
+
 ### Contenido de las unidades
 
 - `src/data/unidades.json` y `src/data/bloques.json` cubren las **27 unidades**: título, hardware,

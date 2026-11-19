@@ -104,7 +104,13 @@ def pasos_de(enunciado: str):
         # Con dos puntos, lo de delante es el objetivo y lo de detrás, los pasos.
         cabeza, _, cola = frase.partition(":")
         if cola.strip():
-            hijos = juntar_colgantes(trocear(cola))
+            # El punto y coma manda sobre la coma. «Si A, haz B; si C, haz D»
+            # son DOS pasos, no cuatro: cortando por comas se parten los pares
+            # y cada mitad queda sin sentido.
+            if ";" in cola:
+                hijos = [t.strip(" .") for t in cola.split(";") if t.strip(" .")]
+            else:
+                hijos = juntar_colgantes(trocear(cola))
             if len(hijos) >= 2:
                 pasos.append(
                     {"texto": mayuscula(cabeza.strip()), "hijos": [mayuscula(h) for h in hijos]}

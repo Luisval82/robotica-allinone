@@ -1,206 +1,221 @@
 {
   "curso": "1ESO",
   "unidad": 7,
-  "reto": "Programa un vehículo que frene solo antes de chocar con un obstáculo.",
+  "reto": "Monta un clasificador que mande las tarjetas a un lado o a otro según su color, y que lo diga en la pantalla.",
   "video": {
-    "titulo": "Frenar a tiempo",
+    "titulo": "Cuando hay dos respuestas",
     "duracion": "5 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Cart Control» (sensor de distancia)",
-      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l3/"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
     "escenas": [
       {
-        "plano": "Un vehículo avanza hacia una caja y se detiene a unos centímetros.",
-        "locucion": "Muchos coches frenan solos si el conductor no reacciona a tiempo. Hoy tu robot va a hacer lo mismo."
+        "plano": "Dos bloques «Si... entonces» seguidos, con preguntas contrarias.",
+        "locucion": "Con lo que sabes, para hacer dos cosas distintas tienes que poner dos preguntas contrarias: si es verde, abre; si no es verde, cierra. Funciona, pero se repite y se puede equivocar."
       },
       {
-        "plano": "Primer plano del sensor de distancia, con sus dos «ojos», conectado al puerto E.",
-        "locucion": "El sensor de distancia emite ultrasonidos y mide cuánto tardan en volver. Así sabe a cuántos centímetros está lo que tiene delante. Va en el puerto E."
+        "plano": "El bloque «Si... entonces... Si no...» con sus dos bocas.",
+        "locucion": "Este bloque tiene dos bocas. La pregunta se mira una sola vez: si es verdad, pasa por la boca de arriba, y si no, por la de abajo. Nunca por las dos."
       },
       {
-        "plano": "Captura de la app: «mover durante 20 cm» junto a «Empezar a mover».",
-        "locucion": "«mover durante» recorre una distancia fija. Ahora no sabemos cuánto hay que avanzar, así que usamos «Empezar a mover», que arranca y deja que el programa siga."
+        "plano": "Una tarjeta verde baja por la rampa y la compuerta se abre a la izquierda; una roja, a la derecha.",
+        "locucion": "Esto es exactamente un clasificador. Una pregunta, dos caminos, y cada tarjeta se va por el suyo."
       },
       {
-        "plano": "Captura de la pila «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «parar movimiento».",
-        "locucion": "Con el robot en marcha, «Esperar hasta que» vigila la pregunta «¿Está más próximo a 15 cm?». Cuando la respuesta es sí, el programa continúa y llega a «parar movimiento»."
+        "plano": "El bloque «Repetir bucle hasta» con una pregunta dentro.",
+        "locucion": "Y hay un bucle nuevo. El de antes repetía un número de veces. Este repite hasta que se cumpla una condición: no sabes cuántas vueltas va a dar, y da igual."
       },
       {
-        "plano": "Captura del bloque amarillo «Cuando está más próximo a» con una pila que toca una nota.",
-        "locucion": "Otra forma de reaccionar: el bloque amarillo «Cuando está más próximo a» inicia su propia pila en el momento en que algo se acerca. Sirve para añadir un pitido de aviso."
+        "plano": "La pantalla encendiendo un solo punto que se mueve por la cuadrícula.",
+        "locucion": "Para la pantalla hay un bloque que enciende un píxel suelto. Le das la fila, la columna y el brillo. Con eso puedes hacer una barra que crece."
       },
       {
-        "plano": "El vehículo frena ante la caja, pita y retrocede.",
-        "locucion": "Tu reto: un vehículo que frena a tiempo, avisa y se aparta del obstáculo."
+        "plano": "El clasificador funcionando con cuatro tarjetas seguidas.",
+        "locucion": "Junta las tres cosas y tienes una máquina que trabaja sola hasta que se acaban las tarjetas."
       }
-    ]
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 3 — Reacting to Lines» (sensor de color)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
+    }
   },
   "bloques": [
     {
-      "texto": "empezar a mover a ↑",
-      "explicacion": "Pone el robot en marcha y pasa al bloque siguiente sin esperar.",
-      "valores": [
-        "↑"
-      ]
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Dos caminos y una sola pregunta. Si es verdad, hace lo de la boca de arriba; si es mentira, lo de la boca de abajo. Siempre hace uno de los dos."
     },
     {
-      "texto": "parar movimiento",
-      "explicacion": "Detiene los dos motores de movimiento.",
-      "valores": []
+      "texto": "Repetir bucle hasta",
+      "explicacion": "Repite lo de dentro hasta que la pregunta sea verdad. No sabes cuántas vueltas dará: las que hagan falta."
     },
     {
-      "texto": "Esperar hasta que",
-      "explicacion": "Mantiene el programa esperando, con el robot en marcha, hasta que la pregunta se cumple."
+      "texto": "fijar píxel en 1 , 1 al 100 %",
+      "explicacion": "Enciende una sola luz de la pantalla. Le dices la fila, la columna y el brillo. Las filas y columnas van del 1 al 5."
     },
     {
-      "texto": "¿Está más próximo a?",
-      "explicacion": "Pregunta al sensor de distancia si hay algo más cerca de la distancia elegida. Responde verdadero o falso."
-    },
-    {
-      "texto": "Cuando está más próximo a",
-      "explicacion": "Bloque de inicio: arranca su propia pila cuando algo se acerca a menos de la distancia elegida."
-    },
-    {
-      "texto": "Tocar nota X segundos",
-      "explicacion": "Pitido de aviso al detectar el obstáculo."
+      "texto": "¿Es la luz reflejada...?",
+      "explicacion": "Pregunta sobre el número de luz reflejada: sirve para distinguir claro de oscuro cuando el color exacto no importa."
     }
   ],
   "programa": {
-    "titulo": "Frena antes de chocar",
-    "explicacion": "«empezar a mover» arranca el robot y el programa sigue adelante, así que puede quedarse vigilando el sensor mientras rueda. En cuanto el obstáculo está cerca, para.",
+    "titulo": "El clasificador",
+    "explicacion": "Una pregunta, dos respuestas. La compuerta se mueve a un lado o al otro según el color, y la pantalla dice lo que ha hecho.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
         "nivel": 0
       },
       {
-        "texto": "fijar velocidad de movimiento al 50 %",
-        "nivel": 0,
-        "valores": [
-          "25"
-        ]
-      },
-      {
-        "texto": "empezar a mover a ↑",
-        "nivel": 0,
-        "valores": [
-          "↑"
-        ]
-      },
-      {
-        "texto": "Esperar hasta que",
-        "nivel": 0,
-        "valor": "¿Está más próximo a 15 cm? E"
-      },
-      {
-        "texto": "parar movimiento",
+        "texto": "Bucle infinito",
         "nivel": 0
       },
       {
-        "texto": "Tocar nota X segundos",
-        "nivel": 0,
-        "valor": "48 · 1"
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "¿Está más próximo a? E 5 cm"
+        ]
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 1,
+        "valores": [
+          "¿Es de color verde? D"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 2,
+        "valores": [
+          "SI"
+        ]
+      },
+      {
+        "texto": "A ir durante 1 rotaciones",
+        "nivel": 2,
+        "valores": [
+          "A",
+          "↻",
+          "90",
+          "grados"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 2,
+        "valores": [
+          "NO"
+        ]
+      },
+      {
+        "texto": "A ir durante 1 rotaciones",
+        "nivel": 2,
+        "valores": [
+          "A",
+          "↺",
+          "90",
+          "grados"
+        ]
       }
     ]
   },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Mira la distancia",
-      "enunciado": "Haz que el Hub escriba en la matriz la distancia que mide el sensor.",
-      "pista": "El bloque redondo de distancia se mete dentro del hueco de «escribir».",
+      "titulo": "Verde o no verde",
+      "enunciado": "Usa un «Si... entonces... Si no...» con el sensor de color: si ve verde, escribe SI en la pantalla, y en caso contrario escribe NO.",
+      "pista": "Una sola pregunta y dos bocas: no hagas dos bloques separados.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Repetir bucle",
+          "texto": "Si... entonces... Si no...",
           "nivel": 0,
-          "valor": "10"
+          "valores": [
+            "¿Es de color verde? D"
+          ]
         },
         {
           "texto": "escribir Hello",
           "nivel": 1,
           "valores": [
-            "Distancia"
+            "SI"
           ]
         },
         {
-          "texto": "Esperar X segundos",
+          "texto": "escribir Hello",
           "nivel": 1,
-          "valor": "0.5"
+          "valores": [
+            "NO"
+          ]
         }
       ],
-      "notas": "El bloque redondo del sensor se mete dentro del hueco de «escribir»: lo que se ve es el número que mide en ese momento."
+      "notas": "Los dos bloques de escribir van al mismo nivel: el primero en la boca de arriba y el segundo en la de abajo.",
+      "pasos": [
+        {
+          "texto": "Usa un «Si... entonces"
+        },
+        {
+          "texto": "Si no...» con el sensor de color",
+          "hijos": [
+            "Si ve verde",
+            "Escribe SI en la pantalla, y en caso contrario escribe NO"
+          ]
+        }
+      ]
     },
     {
       "practica": 2,
-      "titulo": "Arranca sin parar",
-      "enunciado": "Usa «empezar a mover» y comprueba que el programa sigue mientras el robot rueda.",
-      "pista": "«empezar a mover» no espera: por eso puedes vigilar el sensor a la vez.",
+      "titulo": "Claro u oscuro",
+      "enunciado": "Dentro de un bucle infinito, comprueba la luz reflejada: si es oscuro, pon el botón central en rojo, y si no, ponlo en blanco.",
+      "pista": "Aquí no importa el color exacto, solo si refleja mucha o poca luz.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
           "valores": [
-            "A+B"
+            "¿Es la luz reflejada < 30? D"
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
           "valores": [
-            "17.5",
-            "cm"
+            "rojo"
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
           "valores": [
-            "30"
+            "blanco"
           ]
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 0,
-          "valores": [
-            "↑"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "3"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
         }
       ],
-      "notas": "«empezar a mover» no espera a nada: el programa sigue y es el «Esperar» el que decide cuánto rueda.",
+      "notas": "Pasando la mano por debajo se ve cambiar el botón al momento. El umbral de 30 se ajusta según la mesa.",
       "pasos": [
         {
-          "texto": "Usa «empezar a mover»"
-        },
-        {
-          "texto": "Comprueba que el programa sigue mientras el robot rueda"
+          "texto": "Dentro de un bucle infinito, comprueba la luz reflejada",
+          "hijos": [
+            "Si es oscuro",
+            "Pon el botón central en rojo, y si no, ponlo en blanco"
+          ]
         }
       ]
     },
     {
       "practica": 3,
-      "titulo": "Frena a 15 cm",
-      "enunciado": "El robot arranca y se detiene cuando el obstáculo está a menos de 15 cm.",
-      "pista": "«Esperar hasta que» con la pregunta del sensor de distancia.",
+      "titulo": "Hasta que se acerque",
+      "enunciado": "Usa un «Repetir bucle hasta» para avanzar media rotación una y otra vez hasta que haya algo a menos de 10 centímetros, y después para el movimiento.",
+      "pista": "La pregunta del bucle es la condición de parada: cuando se cumple, el bucle termina.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -214,285 +229,331 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "texto": "Repetir bucle hasta",
           "nivel": 0,
           "valores": [
-            "17.5",
-            "cm"
+            "¿Está más próximo a? E 10 cm"
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
           "valores": [
-            "30"
+            "↑",
+            "0.5",
+            "rotaciones"
           ]
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 0,
-          "valores": [
-            "↑"
-          ]
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está más próximo a 15 cm? E"
         },
         {
           "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
+          "nivel": 0
         }
       ],
-      "notas": "Esta es la diferencia con «mover durante»: aquí el robot no sabe cuánto va a rodar, para cuando el sensor lo dice.",
-      "pasos": [
-        {
-          "texto": "El robot arranca"
-        },
-        {
-          "texto": "Se detiene cuando el obstáculo está a menos de 15 cm"
-        }
-      ]
+      "notas": "Se acerca a saltitos. Es menos elegante que «empezar a mover», pero deja ver muy bien cuándo se cumple la condición."
     },
     {
       "practica": 4,
-      "titulo": "Frena y avisa",
-      "enunciado": "Igual que la anterior, pero al frenar suena una nota grave y se enciende un dibujo.",
-      "pista": "Después de parar el movimiento, añade el aviso.",
+      "titulo": "La barra que crece",
+      "enunciado": "Enciende los cinco píxeles de la fila 3 uno a uno, de la columna 1 a la 5, con medio segundo entre cada uno.",
+      "pista": "Son cinco bloques de píxel seguidos, cambiando solo el número de la columna.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar A+B como motores en movimiento",
+          "texto": "fijar píxel en 1 , 1 al 100 %",
           "nivel": 0,
           "valores": [
-            "A+B"
+            "3",
+            "1",
+            "100"
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "texto": "Esperar X segundos",
           "nivel": 0,
           "valores": [
-            "17.5",
-            "cm"
+            "0.5"
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "fijar píxel en 1 , 1 al 100 %",
           "nivel": 0,
           "valores": [
-            "30"
+            "3",
+            "2",
+            "100"
           ]
         },
         {
-          "texto": "empezar a mover a ↑",
+          "texto": "Esperar X segundos",
           "nivel": 0,
           "valores": [
-            "↑"
+            "0.5"
           ]
         },
         {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está más próximo a 15 cm? E"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "nivel": 0,
-          "valor": "48 · 1"
-        },
-        {
-          "texto": "encender dibujo durante 2 segundos",
+          "texto": "fijar píxel en 1 , 1 al 100 %",
           "nivel": 0,
           "valores": [
-            "corazón",
-            "2"
+            "3",
+            "3",
+            "100"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "0.5"
+          ]
+        },
+        {
+          "texto": "fijar píxel en 1 , 1 al 100 %",
+          "nivel": 0,
+          "valores": [
+            "3",
+            "4",
+            "100"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "0.5"
+          ]
+        },
+        {
+          "texto": "fijar píxel en 1 , 1 al 100 %",
+          "nivel": 0,
+          "valores": [
+            "3",
+            "5",
+            "100"
           ]
         }
       ],
-      "notas": "El aviso va después de parar: primero se frena y luego se avisa, no al revés."
+      "notas": "Repetitivo a propósito: deja la puerta abierta a preguntar en clase cómo se haría con un bucle y una variable, que es de 2º."
     }
   ],
   "construccion": {
-    "piezas": "La base de conducción de la unidad 6, el sensor de distancia, vigas para su soporte y una caja o un libro como obstáculo.",
+    "piezas": "El Hub, dos motores medianos, el sensor de color, dos vigas de 15, cuatro vigas de 11, dos vigas angulares, un panel, un eje de 5 y doce pasadores.",
     "pasos": [
       {
-        "titulo": "La base de conducción",
-        "texto": "Parte del robot de la unidad anterior: dos motores medianos, dos ruedas y un apoyo trasero."
+        "titulo": "La rampa",
+        "texto": "Pon las dos vigas de 15 en paralelo e inclinadas, apoyadas en dos vigas de 11 por un extremo. Las tarjetas bajarán por ahí."
       },
       {
-        "titulo": "El soporte del sensor",
-        "texto": "Monta delante un soporte firme, a la altura del obstáculo que vas a usar."
+        "titulo": "El sensor",
+        "texto": "Coloca el sensor de color a mitad de la rampa, mirando hacia la superficie por la que pasan las tarjetas, a un dedo de distancia."
       },
       {
-        "titulo": "El sensor de distancia",
-        "texto": "Fija el sensor mirando al frente. No debe quedar ninguna pieza del robot delante de él."
+        "titulo": "La compuerta",
+        "texto": "Monta el primer motor al final de la rampa, con el eje de 5 cruzado, y fija el panel al eje. Al girar, el panel desvía la tarjeta a un lado o a otro."
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de distancia al puerto E."
+        "titulo": "Los cajetines",
+        "texto": "Con las vigas angulares y las vigas de 11 que quedan, haz dos paredes bajo la compuerta: una a cada lado. Son los dos montones."
       },
       {
-        "titulo": "El obstáculo",
-        "texto": "Coloca una caja o un libro de pie al final del recorrido, perpendicular al robot."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Acerca la mano al sensor: sus luces deben mirar hacia delante y el robot no debe tapar su campo de visión."
+        "titulo": "Ajuste",
+        "texto": "Deja caer una tarjeta con el motor parado. Si no llega al sensor, sube un poco más la rampa por el extremo alto."
       }
     ],
     "materiales": [
       {
-        "pieza": "distancia"
+        "pieza": "hub"
       },
       {
-        "pieza": "viga"
+        "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "color"
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 8
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 1
+      },
+      {
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué mide el sensor de distancia?",
+      "pregunta": "¿Cuántas bocas tiene el bloque «Si... entonces... Si no...»?",
       "opciones": [
-        "La velocidad del robot",
-        "El color del obstáculo",
-        "Los centímetros que hay hasta un objeto",
-        "La fuerza del choque"
-      ],
-      "correcta": 2,
-      "explicacion": "Mide cuánto tarda en volver el ultrasonido y lo convierte en centímetros."
-    },
-    {
-      "pregunta": "¿Por qué usamos «Empezar a mover» en lugar de «mover durante»?",
-      "opciones": [
-        "Porque no sabemos de antemano cuánto hay que avanzar",
-        "Porque es más rápido",
-        "Porque gasta menos batería",
-        "Porque «mover durante» no funciona con sensores"
-      ],
-      "correcta": 0,
-      "explicacion": "El robot debe seguir avanzando hasta que el sensor diga basta, no una distancia fija."
-    },
-    {
-      "pregunta": "Programa: «Empezar a mover», «Esperar hasta que ¿Está más próximo a 15 cm?», «parar movimiento». ¿Cuándo se detiene el robot?",
-      "opciones": [
-        "A los 15 segundos",
-        "Al recorrer 15 cm",
-        "Nunca",
-        "Cuando el obstáculo está a menos de 15 cm"
-      ],
-      "correcta": 3,
-      "explicacion": "La espera termina cuando la pregunta es verdadera; entonces se ejecuta «parar movimiento»."
-    },
-    {
-      "pregunta": "El robot frena demasiado tarde y toca la caja. ¿Qué cambias?",
-      "opciones": [
-        "Bajo la distancia de la pregunta a 5 cm",
-        "Aumento la distancia de la pregunta o bajo la velocidad",
-        "Quito el bloque «parar movimiento»",
-        "Subo el volumen del pitido"
+        "Una",
+        "Dos",
+        "Tres",
+        "Las que quieras"
       ],
       "correcta": 1,
-      "explicacion": "Con más margen o menos velocidad, al robot le da tiempo a detenerse."
+      "explicacion": "Dos: la de arriba para cuando la pregunta es verdad y la de abajo para cuando es mentira."
     },
     {
-      "pregunta": "¿En qué puerto conectamos el sensor de distancia?",
+      "pregunta": "Con «Si... entonces... Si no...», ¿cuántas bocas se ejecutan en cada pasada?",
       "opciones": [
-        "En el E",
-        "En el A",
-        "En el D",
-        "En el F"
-      ],
-      "correcta": 0,
-      "explicacion": "Color en D, distancia en E y fuerza en F."
-    },
-    {
-      "pregunta": "¿Qué tipo de bloque es «Cuando está más próximo a»?",
-      "opciones": [
-        "Una pregunta",
-        "Un dato",
-        "Un bucle",
-        "Un bloque de inicio, que arranca su propia pila"
-      ],
-      "correcta": 3,
-      "explicacion": "Es amarillo y tiene forma de inicio: no se encaja debajo de otros bloques."
-    },
-    {
-      "pregunta": "¿Qué tipo de bloque es «¿Está más próximo a?»?",
-      "opciones": [
-        "Un bloque de inicio",
-        "Una orden para el motor",
-        "Una pregunta que responde verdadero o falso",
-        "Un sonido"
-      ],
-      "correcta": 2,
-      "explicacion": "Es hexagonal y se encaja en huecos de condición, como el de «Esperar hasta que»."
-    },
-    {
-      "pregunta": "El robot se para nada más arrancar aunque no hay ningún obstáculo. ¿Cuál es la causa más probable?",
-      "opciones": [
-        "La velocidad es muy baja",
-        "Una pieza del propio robot tapa el sensor",
-        "El sensor está en el puerto correcto",
-        "El obstáculo es demasiado grande"
+        "Las dos",
+        "Solo una",
+        "Ninguna si la pregunta es mentira",
+        "Depende del sensor"
       ],
       "correcta": 1,
-      "explicacion": "Si el sensor ve una pieza del robot justo delante, cree que hay un obstáculo."
+      "explicacion": "Siempre una y solo una. Si es verdad, la de arriba; si no, la de abajo."
+    },
+    {
+      "pregunta": "¿Qué hace «Repetir bucle hasta»?",
+      "opciones": [
+        "Repite un número fijo de veces",
+        "Repite hasta que la pregunta sea verdad",
+        "Repite mientras la pregunta sea verdad",
+        "Repite para siempre"
+      ],
+      "correcta": 1,
+      "explicacion": "La pregunta es la condición de salida: en cuanto se cumple, el bucle termina y el programa sigue."
+    },
+    {
+      "pregunta": "En «fijar píxel en 3, 2 al 100 %», ¿qué es el 2?",
+      "opciones": [
+        "El brillo",
+        "La columna",
+        "Los segundos",
+        "El número de píxeles"
+      ],
+      "correcta": 1,
+      "explicacion": "Primero la fila, luego la columna y al final el brillo. Filas y columnas van del 1 al 5."
+    },
+    {
+      "pregunta": "¿Cuándo usarías «¿Es la luz reflejada...?» en vez de «¿Es de color...?»",
+      "opciones": [
+        "Cuando solo necesitas saber si es claro u oscuro",
+        "Cuando quieres saber el color exacto",
+        "Cuando el sensor está lejos",
+        "Nunca: hacen lo mismo"
+      ],
+      "correcta": 0,
+      "explicacion": "La luz reflejada no distingue colores, pero sí claro de oscuro, y para seguir una línea negra con eso basta."
+    },
+    {
+      "pregunta": "¿Por qué dos «Si... entonces» con preguntas contrarias es peor que un «Si no»?",
+      "opciones": [
+        "Porque ocupa más y te puedes equivocar al escribir la pregunta contraria",
+        "Porque va más lento",
+        "Porque no funciona",
+        "Porque solo se puede usar un «Si» por programa"
+      ],
+      "correcta": 0,
+      "explicacion": "Funciona, pero repites la pregunta y si cambias una y olvidas la otra, el robot hace las dos cosas o ninguna."
+    },
+    {
+      "pregunta": "Tu clasificador manda todas las tarjetas al mismo lado. ¿Qué miras primero?",
+      "opciones": [
+        "Que el sensor de color esté a la altura correcta y vea la tarjeta",
+        "Que el Hub esté cargado",
+        "Que el bucle sea infinito",
+        "Que el motor esté al 100 %"
+      ],
+      "correcta": 0,
+      "explicacion": "Si el sensor no llega a ver el color, la pregunta sale siempre mentira y todas van por la misma boca."
+    },
+    {
+      "pregunta": "«Repetir bucle hasta que haya algo a menos de 10 cm», y nunca se acerca nada. ¿Qué pasa?",
+      "opciones": [
+        "El bucle da una vuelta y sale",
+        "El bucle no termina nunca",
+        "Da error",
+        "Se salta el bucle"
+      ],
+      "correcta": 1,
+      "explicacion": "Como la espera: si la condición no llega a cumplirse, el bucle sigue dando vueltas."
     }
   ],
   "practicas": [
     {
-      "titulo": "Freno automático",
-      "enunciado": "El vehículo avanza recto y se detiene solo cuando está a menos de 15 cm de un obstáculo.",
+      "titulo": "El clasificador de tarjetas",
+      "enunciado": "En un bucle infinito, espera a que una tarjeta se acerque a menos de 5 centímetros y entonces, si es verde, escribe SI y gira el motor A 90 grados a un lado, y si no, escribe NO y gíralo 90 grados al otro.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "empezar a mover a ↑",
-          "nivel": 0,
-          "valores": [
-            "↑"
-          ]
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
           "texto": "Esperar hasta que",
-          "valor": "¿Está más próximo a 15 cm? E",
-          "nivel": 0
+          "nivel": 1,
+          "valores": [
+            "¿Está más próximo a? E 5 cm"
+          ]
         },
         {
-          "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "¿Es de color verde? D"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "SI"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "NO"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "↺",
+            "90",
+            "grados"
+          ]
         }
       ],
-      "notas": "La distancia de frenado depende de la velocidad: vale cualquier valor con el que el robot no llegue a tocar el obstáculo.",
-      "pasos": [
-        {
-          "texto": "El vehículo avanza recto"
-        },
-        {
-          "texto": "Se detiene solo cuando está a menos de 15 cm de un obstáculo"
-        }
-      ]
+      "notas": "Lo difícil es la sangría: la espera y el «Si no» dentro del bucle, y cada par de acciones en su boca."
     },
     {
-      "titulo": "Freno con aviso y retroceso",
-      "enunciado": "El vehículo avanza despacio. Al detectar un obstáculo a menos de 20 cm se detiene, pita medio segundo y retrocede 10 cm.",
+      "titulo": "El aparcamiento automático",
+      "enunciado": "Prepara la base al 30 %, avanza con «Repetir bucle hasta» de media en media rotación hasta que haya algo a menos de 12 centímetros, para el movimiento y después, si el sensor de color ve rojo, toca una nota grave, y si no, toca una aguda.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
         },
         {
           "texto": "fijar velocidad de movimiento al 50 %",
@@ -502,52 +563,48 @@
           ]
         },
         {
-          "texto": "empezar a mover a ↑",
+          "texto": "Repetir bucle hasta",
           "nivel": 0,
           "valores": [
-            "↑"
+            "¿Está más próximo a? E 12 cm"
           ]
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está más próximo a 20 cm? E",
-          "nivel": 0
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "72 · 0.5",
-          "nivel": 0
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "0.5",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
           "nivel": 0,
           "valores": [
-            "↓",
-            "10",
-            "cm"
+            "¿Es de color rojo? D"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 1,
+          "valores": [
+            "48 · 0.6"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 1,
+          "valores": [
+            "84 · 0.6"
           ]
         }
       ],
-      "notas": "También es válido poner el pitido en una pila aparte que empiece con «Cuando está más próximo a».",
-      "pasos": [
-        {
-          "texto": "El vehículo avanza despacio"
-        },
-        {
-          "texto": "Al detectar un obstáculo a menos de 20 cm se detiene"
-        },
-        {
-          "texto": "Pita medio segundo"
-        },
-        {
-          "texto": "Retrocede 10 cm"
-        }
-      ]
+      "notas": "Encadena las tres cosas de la unidad: bucle con condición de salida, parada y decisión de dos caminos."
     }
   ]
 }

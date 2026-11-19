@@ -1,86 +1,75 @@
 {
   "curso": "1ESO",
   "unidad": 1,
-  "reto": "Convierte el Hub en un rótulo luminoso de sobremesa que salude con un mensaje y una melodía.",
+  "reto": "Convierte el Hub en un cartel de bienvenida que escribe tu nombre, dibuja algo en la pantalla y suena.",
   "video": {
-    "titulo": "Hola, Hub",
+    "titulo": "El Hub por fuera y por dentro",
     "duracion": "3 min",
+    "escenas": [
+      {
+        "plano": "El Hub apagado sobre la mesa. Una mano pulsa el botón grande del centro y la pantalla se enciende.",
+        "locucion": "Esto es el Hub. Es el cerebro de todos los robots que vas a montar este curso. Por fuera no tiene nada raro: una pantalla de 25 luces, un botón grande en el centro y seis puertos alrededor."
+      },
+      {
+        "plano": "Primer plano de la pantalla: se encienden 25 cuadraditos uno a uno formando una cuadrícula.",
+        "locucion": "La pantalla son 25 luces en cinco filas y cinco columnas. No es una pantalla de móvil: no puede enseñar fotos. Puede encender cada luz más o menos fuerte, y con eso se dibuja."
+      },
+      {
+        "plano": "La pantalla muestra letras que van pasando de derecha a izquierda.",
+        "locucion": "Para escribir, las letras pasan de una en una, como los carteles luminosos de las carreteras. Si el texto es largo, tarda. Eso luego hay que tenerlo en cuenta."
+      },
+      {
+        "plano": "El botón central cambia de color: blanco, rojo, verde, azul.",
+        "locucion": "El botón del centro también es una luz, y de colores. Sirve para avisar sin gastar la pantalla: verde para «listo», rojo para «cuidado»."
+      },
+      {
+        "plano": "Se oye un pitido y en la pantalla aparece el icono del altavoz.",
+        "locucion": "Y suena. El Hub lleva un altavoz pequeño que toca notas, como un piano de juguete."
+      },
+      {
+        "plano": "Vista general del Hub con los seis puertos señalados con las letras A a F.",
+        "locucion": "De los seis puertos todavía no vas a usar ninguno. Hoy el Hub trabaja solo: pantalla, botón y altavoz. En la unidad 2 le enchufas el primer motor."
+      }
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=d38c988135454133ec8220b25f9663e3&source=embed&photo_id=56312726&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
     "enlaceOficial": {
       "titulo": "LEGO Education: «Digital Sign» (luces y sonido en el Hub)",
       "url": "https://education.lego.com/en-us/lessons/prime-python-communicating-ideas/digital-sign"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=d38c988135454133ec8220b25f9663e3&source=embed&photo_id=56312726&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
-    "escenas": [
-      {
-        "plano": "Primer plano del Hub apagado sobre la mesa. Una mano pulsa el botón central y se enciende.",
-        "locucion": "Este es el Hub, el cerebro de todos tus robots. Tiene una pantalla de 25 luces, un altavoz y un botón central que también se ilumina."
-      },
-      {
-        "plano": "Pantalla de la app SPIKE: se crea un proyecto nuevo de bloques de palabras y se conecta el Hub.",
-        "locucion": "Abre la app SPIKE, crea un proyecto de bloques de palabras y conecta el Hub por Bluetooth o con el cable USB."
-      },
-      {
-        "plano": "Captura de la app: el bloque amarillo «Cuando se inicia el programa» con un bloque morado encajado debajo.",
-        "locucion": "Todo programa empieza con el bloque amarillo «Cuando se inicia el programa». Debajo encajamos los bloques que queremos que se ejecuten, de arriba abajo y de uno en uno."
-      },
-      {
-        "plano": "El Hub muestra una cara sonriente y después escribe HOLA letra a letra.",
-        "locucion": "Los bloques morados controlan las luces: encienden un dibujo durante unos segundos, escriben un texto o apagan la matriz."
-      },
-      {
-        "plano": "El Hub toca tres notas mientras el botón central cambia de color.",
-        "locucion": "Los bloques de sonido tocan notas. Cada nota tiene un número y una duración. Con «Esperar» hacemos una pausa entre una acción y la siguiente."
-      },
-      {
-        "plano": "El Hub colocado en su atril, mostrando un mensaje mientras suena una melodía.",
-        "locucion": "Tu reto: montar un atril para el Hub y programar un rótulo que salude con un mensaje animado y una melodía."
-      }
-    ]
+    }
   },
   "bloques": [
     {
       "texto": "Cuando se inicia el programa",
-      "explicacion": "Es el primer bloque de la pila. Lo que encajes debajo se ejecuta al pulsar ▶ en la app o el botón central del Hub."
+      "explicacion": "Es el sombrero amarillo con el que empieza todo. Lo que encajes debajo se ejecuta de arriba abajo cuando pulsas el botón de reproducir."
     },
     {
       "texto": "encender dibujo durante 2 segundos",
-      "explicacion": "Muestra el dibujo que elijas durante los segundos indicados y después lo apaga.",
-      "valores": [
-        "dibujo",
-        "2"
-      ]
+      "explicacion": "Enciende un dibujo en la pantalla y lo deja puesto los segundos que le digas. Al acabar lo apaga él solo."
     },
     {
       "texto": "escribir Hello",
-      "explicacion": "Hace pasar un texto, letra a letra, por la matriz. El programa espera a que termine antes de seguir.",
-      "valores": [
-        "Hello"
-      ]
+      "explicacion": "Escribe un texto que va pasando de derecha a izquierda. Cámbiale el «Hello» por lo que quieras. Ojo: hasta que no termina de pasar, el programa no sigue."
     },
     {
       "texto": "apagar píxeles",
-      "explicacion": "Apaga todas las luces de la matriz.",
-      "valores": []
+      "explicacion": "Apaga las 25 luces de golpe. Se usa al final, para dejar la pantalla limpia."
     },
     {
       "texto": "poner luz del botón central en rojo",
-      "explicacion": "Cambia el color de la luz del botón central.",
-      "valores": [
-        "rojo"
-      ]
+      "explicacion": "Cambia el color del botón grande. El desplegable trae los colores que puede hacer."
     },
     {
       "texto": "Tocar nota X segundos",
-      "explicacion": "Toca una nota por el altavoz. El número indica la nota (60 es un do) y los segundos, cuánto dura."
+      "explicacion": "Toca una nota por el altavoz durante los segundos que le pongas. El número de la nota es la tecla del piano: cuanto más alto, más agudo."
     },
     {
       "texto": "Esperar X segundos",
-      "explicacion": "Detiene el programa el tiempo indicado antes de pasar al bloque siguiente."
+      "explicacion": "Para el programa el tiempo que le digas y luego sigue. Sin él, los bloques van tan seguidos que no da tiempo a ver nada."
     }
   ],
   "programa": {
-    "titulo": "El Hub saluda",
-    "explicacion": "Los bloques se encajan de arriba abajo y se ejecutan en ese orden. Fíjate en que el último bloque apaga la matriz: si no, el dibujo se quedaría encendido para siempre.",
+    "titulo": "El cartel de bienvenida",
+    "explicacion": "Los bloques se encajan de arriba abajo y se ejecutan en ese orden, uno detrás de otro. Este programa escribe un saludo, enseña un dibujo, pita y deja la pantalla apagada.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
@@ -94,6 +83,13 @@
         ]
       },
       {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "Hola"
+        ]
+      },
+      {
         "texto": "encender dibujo durante 2 segundos",
         "nivel": 0,
         "valores": [
@@ -102,16 +98,11 @@
         ]
       },
       {
-        "texto": "escribir Hello",
-        "nivel": 0,
-        "valores": [
-          "HOLA"
-        ]
-      },
-      {
         "texto": "Tocar nota X segundos",
         "nivel": 0,
-        "valor": "60 · 0.5"
+        "valores": [
+          "60 · 0.5"
+        ]
       },
       {
         "texto": "apagar píxeles",
@@ -123,8 +114,8 @@
     {
       "practica": 1,
       "titulo": "Enciende un dibujo",
-      "enunciado": "Haz que la matriz del Hub muestre un corazón durante 3 segundos y después se apague.",
-      "pista": "Acuérdate de «apagar píxeles» al final: si no, el dibujo se queda puesto.",
+      "enunciado": "Haz que la pantalla muestre un corazón durante 3 segundos y después se quede apagada.",
+      "pista": "Acuérdate de apagar los píxeles al final: si no, el último dibujo se queda puesto.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -140,25 +131,24 @@
         },
         {
           "texto": "apagar píxeles",
-          "nivel": 0,
-          "valores": []
+          "nivel": 0
         }
       ],
-      "notas": "Con «durante» el dibujo se apaga solo al acabar. El «apagar píxeles» del final deja la matriz limpia del todo.",
+      "notas": "Con «durante» el dibujo se apaga solo al acabar, pero el bloque de apagar deja la pantalla segura por si el alumno cambia luego el dibujo por uno sin tiempo.",
       "pasos": [
         {
-          "texto": "Haz que la matriz del Hub muestre un corazón durante 3 segundos"
+          "texto": "Haz que la pantalla muestre un corazón durante 3 segundos"
         },
         {
-          "texto": "Después se apague"
+          "texto": "Después se quede apagada"
         }
       ]
     },
     {
       "practica": 2,
-      "titulo": "Tu nombre en la matriz",
-      "enunciado": "Escribe tu nombre en la matriz y, justo después, muestra un dibujo cualquiera durante 2 segundos.",
-      "pista": "«escribir» hace pasar las letras una a una y el programa espera a que termine.",
+      "titulo": "Tu nombre en la pantalla",
+      "enunciado": "Escribe tu nombre en la pantalla y, cuando termine de pasar, pon el botón central en verde.",
+      "pista": "El bloque de escribir no deja seguir hasta que la última letra sale por la izquierda, así que el verde se enciende justo al final.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -168,30 +158,35 @@
           "texto": "escribir Hello",
           "nivel": 0,
           "valores": [
-            "tu nombre"
+            "Luis"
           ]
         },
         {
-          "texto": "encender dibujo durante 2 segundos",
+          "texto": "poner luz del botón central en rojo",
           "nivel": 0,
           "valores": [
-            "corazón",
-            "2"
+            "verde"
           ]
-        },
-        {
-          "texto": "apagar píxeles",
-          "nivel": 0,
-          "valores": []
         }
       ],
-      "notas": "El orden es lo que cuenta: «escribir» no deja pasar al bloque siguiente hasta que termina de escribir tu nombre."
+      "notas": "Vale cualquier nombre. Lo que se comprueba es el orden: primero escribir y después el color.",
+      "pasos": [
+        {
+          "texto": "Escribe tu nombre en la pantalla"
+        },
+        {
+          "texto": "Cuando termine de pasar"
+        },
+        {
+          "texto": "Pon el botón central en verde"
+        }
+      ]
     },
     {
       "practica": 3,
-      "titulo": "Semáforo del botón",
-      "enunciado": "Pon la luz del botón central en verde, espera 2 segundos, cámbiala a rojo y espera otros 2.",
-      "pista": "Son dos bloques de luz con un «Esperar» entre medias.",
+      "titulo": "El semáforo",
+      "enunciado": "Pon la luz del botón central en verde, espera 2 segundos, cámbiala a amarillo, espera 1 segundo y acaba en rojo.",
+      "pista": "Entre color y color tiene que haber una espera; si no, los tres cambios pasan tan rápido que solo ves el último.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -207,7 +202,279 @@
         {
           "texto": "Esperar X segundos",
           "nivel": 0,
-          "valor": "2"
+          "valores": [
+            "2"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "amarillo"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "1"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        }
+      ],
+      "notas": "Es el primer programa en el que el tiempo importa. Sin las esperas el programa hace lo mismo, pero no se ve.",
+      "pasos": [
+        {
+          "texto": "Pon la luz del botón central en verde"
+        },
+        {
+          "texto": "Espera 2 segundos"
+        },
+        {
+          "texto": "Cámbiala a amarillo"
+        },
+        {
+          "texto": "Espera 1 segundo y acaba en rojo"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "Tres notas seguidas",
+      "enunciado": "Toca tres notas distintas de medio segundo cada una y enciende un dibujo de una cara contenta al terminar.",
+      "pista": "Las notas van por número: 60 es un do, y cuanto más alto el número, más agudo suena.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.5"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "64 · 0.5"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "67 · 0.5"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "cara contenta",
+            "2"
+          ]
+        }
+      ],
+      "notas": "Valen otras tres notas. 60, 64 y 67 forman un acorde que suena bien.",
+      "pasos": [
+        {
+          "texto": "Toca tres notas distintas de medio segundo cada una"
+        },
+        {
+          "texto": "Enciende un dibujo de una cara contenta al terminar"
+        }
+      ]
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, dos vigas de 11, dos vigas de 7, dos vigas angulares y ocho pasadores. No hace falta ningún motor.",
+    "pasos": [
+      {
+        "titulo": "La base",
+        "texto": "Pon las dos vigas de 11 en paralelo sobre la mesa, separadas el ancho del Hub, y únelas por los extremos con las dos vigas de 7 usando cuatro pasadores."
+      },
+      {
+        "titulo": "El respaldo",
+        "texto": "Encaja las dos vigas angulares en los agujeros traseros de las vigas largas, con la parte doblada hacia arriba y hacia atrás."
+      },
+      {
+        "titulo": "La inclinación",
+        "texto": "Apoya el Hub contra las vigas angulares. La pantalla tiene que quedar mirando hacia arriba, inclinada como un atril de lectura."
+      },
+      {
+        "titulo": "La sujeción",
+        "texto": "Pasa los cuatro pasadores que quedan por los agujeros del Hub y fíjalos a las vigas largas. Empuja hasta oír el clic."
+      },
+      {
+        "titulo": "La prueba",
+        "texto": "Levanta el atril por la base y agítalo un poco. Si el Hub se mueve, aprieta más los pasadores de la sujeción."
+      }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 6
+      },
+      {
+        "pieza": "pasador",
+        "cantidad": 8
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Con qué bloque empieza cualquier programa?",
+      "opciones": [
+        "Esperar 1 segundos",
+        "Cuando se inicia el programa",
+        "encender dibujo",
+        "apagar píxeles"
+      ],
+      "correcta": 1,
+      "explicacion": "El sombrero amarillo «Cuando se inicia el programa» es el único que puede ir arriba del todo: marca por dónde empieza."
+    },
+    {
+      "pregunta": "¿Cuántas luces tiene la pantalla del Hub?",
+      "opciones": [
+        "9, en tres filas de tres",
+        "25, en cinco filas de cinco",
+        "100, en diez filas de diez",
+        "Una sola, muy grande"
+      ],
+      "correcta": 1,
+      "explicacion": "Son 5 filas por 5 columnas: 25 luces. Por eso los dibujos tienen que ser muy sencillos."
+    },
+    {
+      "pregunta": "Pones «escribir Hola» y justo debajo «apagar píxeles». ¿Qué pasa?",
+      "opciones": [
+        "No se ve nada, porque se apaga antes de escribir",
+        "Se escribe «Hola» entero y después se apaga la pantalla",
+        "Se escribe solo la H",
+        "El programa da error"
+      ],
+      "correcta": 1,
+      "explicacion": "El bloque de escribir no deja pasar al siguiente hasta que la última letra sale por la izquierda. El apagado llega después."
+    },
+    {
+      "pregunta": "¿Para qué sirve el bloque «Esperar 2 segundos»?",
+      "opciones": [
+        "Para que el robot descanse y no se caliente",
+        "Para parar el programa 2 segundos y que dé tiempo a ver lo anterior",
+        "Para que el programa vaya más rápido",
+        "Para repetir el bloque anterior dos veces"
+      ],
+      "correcta": 1,
+      "explicacion": "Sin esperas los bloques se ejecutan tan seguidos que el ojo no los distingue. La espera es lo que hace visible un cambio."
+    },
+    {
+      "pregunta": "El botón central del Hub, además de pulsarse, ¿qué más hace?",
+      "opciones": [
+        "Se ilumina de colores",
+        "Suena",
+        "Mide la distancia",
+        "Gira"
+      ],
+      "correcta": 0,
+      "explicacion": "Es también una luz de colores, y sirve para avisar sin ocupar la pantalla."
+    },
+    {
+      "pregunta": "¿Qué hace «encender dibujo durante 2 segundos»?",
+      "opciones": [
+        "Enciende el dibujo y lo deja puesto para siempre",
+        "Enciende el dibujo, espera 2 segundos y lo apaga solo",
+        "Enciende el dibujo solo si antes has apagado los píxeles",
+        "Enciende el botón central durante 2 segundos"
+      ],
+      "correcta": 1,
+      "explicacion": "El «durante» incluye el apagado: cuando pasa el tiempo, la pantalla se queda limpia sin tener que apagarla."
+    },
+    {
+      "pregunta": "En «Tocar nota 72 durante 0.5 segundos», ¿qué es el 72?",
+      "opciones": [
+        "Los segundos",
+        "El volumen",
+        "Qué nota suena: cuanto más alto, más aguda",
+        "El número de veces que suena"
+      ],
+      "correcta": 2,
+      "explicacion": "El primer número es la nota, como la tecla de un piano. El segundo son los segundos que dura."
+    },
+    {
+      "pregunta": "Quieres que el cartel acabe con la pantalla limpia. ¿Qué bloque pones el último?",
+      "opciones": [
+        "Esperar 1 segundos",
+        "poner luz del botón central en apagado",
+        "apagar píxeles",
+        "Cuando se inicia el programa"
+      ],
+      "correcta": 2,
+      "explicacion": "«apagar píxeles» apaga las 25 luces. El color del botón es otra cosa y no toca la pantalla."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "El cartel de la clase",
+      "enunciado": "Programa el Hub para que escriba «ROBOTICA», enseñe un dibujo 2 segundos, toque una nota de medio segundo y acabe con la pantalla apagada y el botón en verde.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "ROBOTICA"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.5"
+          ]
+        },
+        {
+          "texto": "apagar píxeles",
+          "nivel": 0
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "verde"
+          ]
+        }
+      ],
+      "notas": "El orden es lo que se corrige. El dibujo y la nota pueden ser otros."
+    },
+    {
+      "titulo": "Cuenta atrás",
+      "enunciado": "Haz una cuenta atrás de tres: el botón en rojo un segundo, en amarillo otro segundo, en verde otro, y al acabar una nota larga de un segundo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
         },
         {
           "texto": "poner luz del botón central en rojo",
@@ -219,198 +486,23 @@
         {
           "texto": "Esperar X segundos",
           "nivel": 0,
-          "valor": "2"
-        }
-      ],
-      "notas": "Sin los «Esperar» en medio, los dos colores se pondrían tan rápido que solo verías el último.",
-      "pasos": [
-        {
-          "texto": "Pon la luz del botón central en verde"
-        },
-        {
-          "texto": "Espera 2 segundos"
-        },
-        {
-          "texto": "Cámbiala a rojo"
-        },
-        {
-          "texto": "Espera otros 2"
-        }
-      ]
-    },
-    {
-      "practica": 4,
-      "titulo": "Rótulo de bienvenida",
-      "enunciado": "Monta un saludo completo: una nota, tu mensaje escrito, un dibujo 2 segundos y la matriz apagada al final.",
-      "pista": "Ordena los bloques como quieres que ocurran: de arriba abajo.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "nivel": 0,
-          "valor": "60 · 0.5"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
           "valores": [
-            "¡HOLA!"
+            "1"
           ]
         },
         {
-          "texto": "encender dibujo durante 2 segundos",
+          "texto": "poner luz del botón central en rojo",
           "nivel": 0,
           "valores": [
-            "corazón",
-            "2"
+            "amarillo"
           ]
         },
         {
-          "texto": "apagar píxeles",
+          "texto": "Esperar X segundos",
           "nivel": 0,
-          "valores": []
-        }
-      ],
-      "notas": "Un ejemplo entre muchos: vale cualquier nota, cualquier mensaje y cualquier dibujo. Lo importante es que la matriz acabe apagada."
-    }
-  ],
-  "construccion": {
-    "piezas": "El Hub, vigas largas y cortas, y pasadores. No hace falta ningún motor ni sensor.",
-    "pasos": [
-      {
-        "titulo": "La base",
-        "texto": "Une dos vigas largas en paralelo con dos vigas cortas cruzadas hasta formar un rectángulo que no cojee."
-      },
-      {
-        "titulo": "El respaldo inclinado",
-        "texto": "Fija dos vigas en ángulo en la parte trasera de la base. Serán el respaldo donde se apoya el Hub."
-      },
-      {
-        "titulo": "El tope delantero",
-        "texto": "Coloca una viga corta atravesada en la parte delantera para que el Hub no resbale."
-      },
-      {
-        "titulo": "Coloca el Hub",
-        "texto": "Apoya el Hub en el atril con la matriz de luces mirando hacia ti y sujétalo con pasadores por sus orificios laterales."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Empuja el Hub con un dedo: no debe moverse ni volcar. El puerto de carga tiene que quedar accesible."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "hub"
-      },
-      {
-        "pieza": "viga"
-      },
-      {
-        "pieza": "pasador"
-      }
-    ]
-  },
-  "test": [
-    {
-      "pregunta": "¿Con qué bloque empieza el programa del rótulo?",
-      "opciones": [
-        "Esperar 1 segundos",
-        "Cuando se inicia el programa",
-        "apagar píxeles",
-        "Tocar nota"
-      ],
-      "correcta": 1,
-      "explicacion": "El bloque amarillo «Cuando se inicia el programa» es el que arranca la pila."
-    },
-    {
-      "pregunta": "¿Cuántas luces tiene la matriz del Hub?",
-      "opciones": [
-        "9",
-        "16",
-        "36",
-        "25"
-      ],
-      "correcta": 3,
-      "explicacion": "Son 5 filas por 5 columnas: 25 luces."
-    },
-    {
-      "pregunta": "¿En qué orden se ejecutan los bloques de una pila?",
-      "opciones": [
-        "De arriba abajo, uno detrás de otro",
-        "De abajo arriba",
-        "Todos a la vez",
-        "Al azar"
-      ],
-      "correcta": 0,
-      "explicacion": "El Hub ejecuta la pila de arriba abajo y no pasa al siguiente bloque hasta terminar el anterior."
-    },
-    {
-      "pregunta": "Quieres que un dibujo se vea exactamente 2 segundos y después desaparezca. ¿Qué bloque usas?",
-      "opciones": [
-        "escribir …",
-        "poner luz del botón central",
-        "encender … 2 segundos",
-        "apagar píxeles"
-      ],
-      "correcta": 2,
-      "explicacion": "«encender … durante … segundos» enciende el dibujo el tiempo indicado y lo apaga solo."
-    },
-    {
-      "pregunta": "¿Qué hace el bloque «Esperar 1 segundos»?",
-      "opciones": [
-        "Apaga el Hub durante 1 segundo",
-        "Detiene el programa 1 segundo antes de seguir",
-        "Repite el programa cada segundo",
-        "Toca un sonido de 1 segundo"
-      ],
-      "correcta": 1,
-      "explicacion": "«Esperar» es una pausa: el programa se queda quieto ese tiempo y luego continúa."
-    },
-    {
-      "pregunta": "En «Tocar nota 60 durante 0.5 segundos», ¿qué indica el 0.5?",
-      "opciones": [
-        "El volumen",
-        "El número de repeticiones",
-        "La nota que suena",
-        "Cuánto dura la nota"
-      ],
-      "correcta": 3,
-      "explicacion": "El primer número (60) es la nota; el segundo (0.5) es su duración en segundos."
-    },
-    {
-      "pregunta": "¿Qué bloque cambia el color del botón central?",
-      "opciones": [
-        "poner luz del botón central",
-        "encender …",
-        "escribir …",
-        "Tocar nota"
-      ],
-      "correcta": 0,
-      "explicacion": "La luz del botón central se controla con su propio bloque, distinto de los de la matriz."
-    },
-    {
-      "pregunta": "Pones «Apagar la matriz» y, debajo, «Escribir HOLA». ¿Qué verás al iniciar el programa?",
-      "opciones": [
-        "Nada: la matriz queda apagada",
-        "HOLA escrito al revés",
-        "La palabra HOLA pasando por la matriz",
-        "Un mensaje de error"
-      ],
-      "correcta": 2,
-      "explicacion": "Primero se ejecuta «Apagar» (ya estaba apagada) y después «Escribir»: la palabra se ve con normalidad."
-    }
-  ],
-  "practicas": [
-    {
-      "titulo": "Saludo luminoso",
-      "enunciado": "Programa el Hub para que, al iniciar el programa, ponga en verde la luz del botón central, escriba tu nombre en la matriz de luces y la apague al terminar.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
+          "valores": [
+            "1"
+          ]
         },
         {
           "texto": "poner luz del botón central en rojo",
@@ -420,74 +512,21 @@
           ]
         },
         {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "tu nombre"
-          ]
-        },
-        {
-          "texto": "apagar píxeles",
-          "nivel": 0,
-          "valores": []
-        }
-      ],
-      "notas": "Vale cualquier color del botón. Lo importante es el orden: primero el botón, después el texto y al final apagar."
-    },
-    {
-      "titulo": "Rótulo con melodía",
-      "enunciado": "Convierte el Hub en un rótulo de sobremesa: muestra un dibujo durante 2 segundos, toca una melodía de tres notas, espera 1 segundo y apaga la matriz.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "encender dibujo durante 2 segundos",
-          "nivel": 0,
-          "valores": [
-            "dibujo",
-            "2"
-          ]
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "60 · 0.5",
-          "nivel": 0
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "64 · 0.5",
-          "nivel": 0
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "67 · 0.5",
-          "nivel": 0
-        },
-        {
           "texto": "Esperar X segundos",
-          "valor": "1",
-          "nivel": 0
+          "nivel": 0,
+          "valores": [
+            "1"
+          ]
         },
         {
-          "texto": "apagar píxeles",
+          "texto": "Tocar nota X segundos",
           "nivel": 0,
-          "valores": []
-        }
-      ],
-      "notas": "Las tres notas pueden ser otras. Comprueba que el bloque «Esperar» está entre la melodía y el apagado.",
-      "pasos": [
-        {
-          "texto": "Convierte el Hub en un rótulo de sobremesa",
-          "hijos": [
-            "Muestra un dibujo durante 2 segundos",
-            "Toca una melodía de tres notas",
-            "Espera 1 segundo",
-            "Apaga la matriz"
+          "valores": [
+            "72 · 1"
           ]
         }
-      ]
+      ],
+      "notas": "Lo que se mira es que haya una espera entre cada color: son tres colores y tres esperas."
     }
   ]
 }

@@ -1,532 +1,698 @@
 {
   "curso": "1ESO",
   "unidad": 8,
-  "reto": "Construye una puerta de garaje que solo se abra con la tarjeta del color correcto.",
+  "reto": "Consigue que el robot gire 90 grados exactos siempre, mida lo que ha girado y cierre un cuadrado de verdad.",
   "video": {
-    "titulo": "La primera decisión",
+    "titulo": "Girar a ojo y girar midiendo",
     "duracion": "5 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Training Camp 3 — Reacting to Lines» (sensor de color)",
-      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
     "escenas": [
       {
-        "plano": "Una puerta de garaje de LEGO: con una tarjeta azul no pasa nada; con una verde, se abre.",
-        "locucion": "Una puerta de garaje no se abre para cualquiera. Hoy tu máquina va a tomar su primera decisión: abrir o no abrir."
+        "plano": "Dos robots iguales giran «media rotación». Uno se queda corto y el otro se pasa.",
+        "locucion": "En la unidad 5 girabas contando rotaciones de rueda. Funciona, pero depende del suelo: en la mesa patina menos que en el suelo de clase, y el mismo programa da giros distintos."
       },
       {
-        "plano": "Primer plano del sensor de color leyendo una tarjeta a dos centímetros.",
-        "locucion": "El sensor de color reconoce el color de lo que tiene delante, a uno o dos centímetros. Lo conectamos al puerto D."
+        "plano": "El Hub en la mano, girando despacio. Un número en pantalla sube: 0, 30, 60, 90.",
+        "locucion": "El giroscopio no cuenta ruedas: cuenta grados de verdad. Le da igual si la rueda patina, porque mide cómo está puesto el robot."
       },
       {
-        "plano": "Captura de la app: «Si… entonces» con «¿Es de color verde?» en su hueco hexagonal.",
-        "locucion": "El bloque naranja «Si… entonces» tiene un hueco hexagonal para una pregunta. Lo que metas dentro solo se ejecuta si la respuesta es sí."
+        "plano": "El bloque del ángulo de guiñada metido dentro de una comparación «mayor que 90».",
+        "locucion": "El bloque del ángulo da un número, así que se mete dentro de una comparación. «Ángulo mayor que 90» es una pregunta, y las preguntas van en los bucles y en los «Si»."
       },
       {
-        "plano": "El mismo programa sin bucle (no reacciona a la tarjeta) y dentro de un «Bucle infinito» (sí reacciona).",
-        "locucion": "Una decisión suelta se toma una sola vez, justo al empezar. Para que la puerta esté siempre atenta, metemos la decisión dentro de un «Bucle infinito»."
+        "plano": "Un «Repetir hasta» con esa comparación dentro, y el robot girando y parando justo a 90 grados.",
+        "locucion": "Y ahí está el truco de la unidad: empieza a girar, repite hasta que el ángulo pase de 90, y para. El robot gira lo que tenga que girar, no lo que tú hayas calculado."
       },
       {
-        "plano": "Captura del bloque amarillo «Cuando el color es» encabezando una pila.",
-        "locucion": "Otra forma de hacerlo: el bloque amarillo «Cuando el color es» inicia su pila en el momento en que el sensor ve ese color."
+        "plano": "El robot girando y parando en seco, frente a otro que se desliza un poco al parar.",
+        "locucion": "Hay un bloque que hace que los motores frenen al parar en vez de dejarse llevar. Con giros precisos se nota: sin él, el robot se pasa unos grados cada vez."
       },
       {
-        "plano": "La puerta se abre con la tarjeta verde y avisa con luz roja ante la tarjeta equivocada.",
-        "locucion": "Tu reto: una puerta que abre con la tarjeta correcta y avisa cuando la tarjeta no vale."
+        "plano": "El robot recorriendo un cuadrado y volviendo exactamente al punto de salida marcado con cinta.",
+        "locucion": "Con el giroscopio el cuadrado cierra. Y si no cierra, ya sabes que el problema está en los lados, no en las esquinas."
       }
-    ]
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=fe5792d1b14dd60f8950eab97f9da507&source=embed&photo_id=56312975&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «New Moves with Motors» (posición absoluta)",
+      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/new-moves-with-motors/"
+    }
   },
   "bloques": [
     {
-      "texto": "Si... entonces...",
-      "explicacion": "Ejecuta lo que tiene dentro solo si la pregunta de su hueco es verdadera. Si es falsa, lo salta."
+      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
+      "explicacion": "Da un número: los grados que el Hub ha girado desde la última puesta a cero. La guiñada es el giro en plano, el que hace el robot al torcer."
     },
     {
-      "texto": "¿Es de color...?",
-      "explicacion": "Pregunta al sensor de color si ve el color elegido. Responde verdadero o falso."
+      "texto": "empezar a mover derecha: 30",
+      "explicacion": "Pone el robot a girar y deja seguir el programa, para poder vigilar el ángulo mientras gira."
     },
     {
-      "texto": "Cuando el color es",
-      "explicacion": "Bloque de inicio: arranca su pila cuando el sensor ve el color elegido."
+      "texto": "Fijar motores de movimiento para que frenen al parar",
+      "explicacion": "Hace que los motores sujeten al parar en vez de dejarse llevar. En giros precisos evita que el robot se pase unos grados."
     },
     {
-      "texto": "Bucle infinito",
-      "explicacion": "Repite sin parar lo que tiene dentro. Así la decisión se revisa continuamente."
-    },
-    {
-      "texto": "A ir por la ruta más corta a la posición 0",
-      "explicacion": "Sube la puerta a la posición de abierta y la baja a la de cerrada.",
-      "valores": [
-        "A",
-        "por la ruta más corta",
-        "0"
-      ]
+      "texto": "Operadores de comparación (>, <, =)",
+      "explicacion": "Compara dos números y da verdad o mentira. Es lo que convierte un número, como el ángulo, en una pregunta que se puede meter en un bucle."
     }
   ],
   "programa": {
-    "titulo": "Solo con la tarjeta verde",
-    "explicacion": "El «Si… entonces…» mira el color una vez y decide. Metido dentro de un bucle infinito, el garaje se queda comprobando tarjetas todo el rato.",
+    "titulo": "El giro de 90 grados exactos",
+    "explicacion": "El robot empieza a girar y no para hasta que el giroscopio dice que ha pasado de 90 grados. Si el suelo cambia, el giro sigue saliendo igual.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
         "nivel": 0
       },
       {
-        "texto": "Bucle infinito",
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "Fijar motores de movimiento para que frenen al parar",
+        "nivel": 0,
+        "valores": [
+          "frenar"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "30"
+        ]
+      },
+      {
+        "texto": "Fijar el ángulo de guiñada del Hub a 0",
         "nivel": 0
       },
       {
-        "texto": "Si... entonces...",
-        "nivel": 1,
-        "valor": "¿Es de color verde? D"
+        "texto": "empezar a mover derecha: 30",
+        "nivel": 0,
+        "valores": [
+          "derecha: 100"
+        ]
       },
       {
-        "texto": "A ir por la ruta más corta a la posición 0",
-        "nivel": 2,
+        "texto": "Repetir bucle hasta",
+        "nivel": 0,
         "valores": [
-          "A",
-          "por la ruta más corta",
-          "90"
+          "ángulo de guiñada > 90"
         ]
       },
       {
         "texto": "Esperar X segundos",
-        "nivel": 2,
-        "valor": "3"
+        "nivel": 1,
+        "valores": [
+          "0.01"
+        ]
       },
       {
-        "texto": "A ir por la ruta más corta a la posición 0",
-        "nivel": 2,
-        "valores": [
-          "A",
-          "por la ruta más corta",
-          "0"
-        ]
+        "texto": "parar movimiento",
+        "nivel": 0
       }
     ]
   },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "¿De qué color es?",
-      "enunciado": "Escribe en la matriz un mensaje distinto según veas la tarjeta verde o no.",
-      "pista": "«Si… entonces…» mira la pregunta una sola vez y decide.",
+      "titulo": "Pon el contador a cero",
+      "enunciado": "Pon el ángulo de guiñada a cero, espera dos segundos para girar el robot con la mano y después escribe en la pantalla lo que marca el ángulo.",
+      "pista": "El bloque del ángulo es redondo: se mete dentro del hueco del bloque de escribir.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces...",
-          "nivel": 0,
-          "valor": "¿Es de color verde? D"
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
         },
         {
-          "texto": "escribir Hello",
-          "nivel": 1,
+          "texto": "Esperar X segundos",
+          "nivel": 0,
           "valores": [
-            "PASA"
+            "2"
           ]
         },
         {
-          "texto": "Si... entonces...",
-          "nivel": 0,
-          "valor": "¿Es de color rojo? D"
-        },
-        {
           "texto": "escribir Hello",
-          "nivel": 1,
+          "nivel": 0,
           "valores": [
-            "ALTO"
+            "ángulo de guiñada"
           ]
         }
       ],
-      "notas": "Con «Si… entonces…» hacen falta dos bloques, uno por caso. Son dos preguntas distintas al sensor."
+      "notas": "Girando el robot a mano durante la espera se ve que el número cambia. Es la forma más rápida de entender el giroscopio.",
+      "pasos": [
+        {
+          "texto": "Pon el ángulo de guiñada a cero"
+        },
+        {
+          "texto": "Espera dos segundos para girar el robot con la mano"
+        },
+        {
+          "texto": "Después escribe en la pantalla lo que marca el ángulo"
+        }
+      ]
     },
     {
       "practica": 2,
-      "titulo": "Abre con el verde",
-      "enunciado": "Si el sensor ve verde, la barrera sube a 90 grados.",
-      "pista": "La pregunta del color va en el hueco del «Si».",
+      "titulo": "El giro medido",
+      "enunciado": "Pon el ángulo a cero, empieza a girar a la derecha y repite hasta que el ángulo pase de 90 grados, y entonces para el movimiento.",
+      "pista": "El bucle no lleva nada dentro que haga trabajo: solo está ahí vigilando el ángulo.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces...",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
-          "valor": "¿Es de color verde? D"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "A+B"
           ]
-        }
-      ],
-      "notas": "La pregunta va en el hueco hexagonal del «Si» y el movimiento, dentro, con la sangría."
-    },
-    {
-      "practica": 3,
-      "titulo": "Siempre vigilando",
-      "enunciado": "Mete la comprobación dentro de un bucle infinito para que el garaje no deje de mirar.",
-      "pista": "Sin el bucle, el programa comprueba una vez y se acaba.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Si... entonces...",
-          "nivel": 1,
-          "valor": "¿Es de color verde? D"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "30"
           ]
-        }
-      ],
-      "notas": "Sin el bucle, el programa mira el color una sola vez, en el instante de arrancar, y se acaba."
-    },
-    {
-      "practica": 4,
-      "titulo": "Abrir y cerrar",
-      "enunciado": "Con la tarjeta correcta: sube la barrera, espera 3 segundos y vuelve a bajarla, todo dentro del bucle.",
-      "pista": "Tres bloques dentro del «Si», y el «Si» dentro del bucle.",
-      "solucion": [
+        },
         {
-          "texto": "Cuando se inicia el programa",
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Si... entonces...",
-          "nivel": 1,
-          "valor": "¿Es de color verde? D"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "ángulo de guiñada > 90"
           ]
         },
         {
           "texto": "Esperar X segundos",
-          "nivel": 2,
-          "valor": "3"
+          "nivel": 1,
+          "valores": [
+            "0.01"
+          ]
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "texto": "parar movimiento",
+          "nivel": 0
+        }
+      ],
+      "notas": "La espera minúscula de dentro del bucle es para que no se quede comprobando a ciegas. Conviene explicarlo."
+    },
+    {
+      "practica": 3,
+      "titulo": "Frenar en seco",
+      "enunciado": "Repite el giro medido añadiendo al principio el bloque que hace que los motores frenen al parar, y compara con el ejercicio anterior.",
+      "pista": "El bloque de frenar va al principio, junto al de fijar los motores.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "nivel": 0,
+          "valores": [
+            "frenar"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "ángulo de guiñada > 90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.01"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        }
+      ],
+      "notas": "El mismo programa con una línea más. Midiendo con un transportador se ve la diferencia de dos o tres grados."
+    },
+    {
+      "practica": 4,
+      "titulo": "Media vuelta exacta",
+      "enunciado": "Haz el mismo giro medido pero hasta 180 grados, y al terminar toca una nota y enciende un dibujo un segundo.",
+      "pista": "Solo cambia el número de la comparación. Lo demás es igual.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "nivel": 0,
+          "valores": [
+            "frenar"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "ángulo de guiñada > 180"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.01"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.4"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "cara contenta",
+            "1"
           ]
         }
       ],
-      "notas": "Tres bloques dentro del «Si», y el «Si» dentro del bucle: fíjate en los dos niveles de sangría.",
-      "pasos": [
-        {
-          "texto": "Con la tarjeta correcta",
-          "hijos": [
-            "Sube la barrera",
-            "Espera 3 segundos y vuelve a bajarla, todo dentro del bucle"
-          ]
-        }
-      ]
+      "notas": "Cambiar un número y que el robot haga otra cosa distinta es justo lo que buscamos que entiendan."
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor grande, el sensor de color, vigas para el marco y la hoja, y tarjetas o piezas de varios colores.",
+    "piezas": "La base de conducción de la unidad 5, el sensor de distancia, dos vigas de 7, cuatro pasadores y dos bujes.",
     "pasos": [
       {
-        "titulo": "El marco",
-        "texto": "Monta una base con dos postes y un travesaño: la entrada del garaje."
+        "titulo": "Centrar el Hub",
+        "texto": "Quita el Hub y vuelve a ponerlo justo en el centro del chasis, a la misma distancia de las dos ruedas. El giroscopio está dentro del Hub: si va torcido, mide torcido."
       },
       {
-        "titulo": "El motor",
-        "texto": "Fija el motor grande en lo alto de un poste, con el eje en horizontal a lo largo del travesaño."
+        "titulo": "Nivelar",
+        "texto": "Pon el robot en la mesa y mira si cojea. Si se apoya en tres puntos y baila, ajusta la rueda de atrás hasta que quede firme."
       },
       {
-        "titulo": "La posición 0",
-        "texto": "Gira el motor con la mano hasta que sus marcas coincidan antes de montar la hoja."
+        "titulo": "El sensor de distancia",
+        "texto": "Monta las dos vigas de 7 delante y encaja el sensor entre ellas, mirando al frente y bien recto."
       },
       {
-        "titulo": "La hoja",
-        "texto": "Con el motor en 0, monta la hoja colgando en vertical: esa es la puerta cerrada."
+        "titulo": "Apretar los ejes",
+        "texto": "Pon un buje en cada eje, pegado a la rueda, para que no se salga ni baile. Una rueda floja estropea cualquier medida."
       },
       {
-        "titulo": "El lector de tarjetas",
-        "texto": "Fija el sensor de color en el otro poste, mirando hacia fuera, a la altura a la que vas a acercar la tarjeta."
-      },
-      {
-        "titulo": "Los cables y la prueba",
-        "texto": "Motor grande al puerto A y sensor de color al puerto D. Sube la hoja con la mano: debe quedar horizontal sin chocar."
+        "titulo": "La marca de salida",
+        "texto": "Pega un trozo de cinta en la mesa y marca por dónde empieza el robot. Sin marca no se puede ver si el cuadrado cierra."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
+        "pieza": "distancia"
       },
       {
-        "pieza": "motor-grande",
-        "cantidad": 1
+        "pieza": "viga",
+        "cantidad": 2
       },
       {
-        "pieza": "color"
+        "pieza": "pasador",
+        "cantidad": 4
       },
       {
-        "pieza": "viga"
-      },
-      {
-        "pieza": "marco"
+        "pieza": "buje",
+        "cantidad": 2
       }
     ]
   },
   "test": [
     {
-      "pregunta": "En «Si… entonces», ¿qué ocurre cuando la pregunta es falsa?",
+      "pregunta": "¿Por qué un giro contando rotaciones de rueda no siempre sale igual?",
       "opciones": [
-        "Se detiene el programa",
-        "Se ejecuta lo de dentro igualmente",
-        "Se salta lo de dentro y el programa sigue",
-        "Se repite la pregunta para siempre"
-      ],
-      "correcta": 2,
-      "explicacion": "Sin «Si no», cuando la condición es falsa simplemente no se hace nada."
-    },
-    {
-      "pregunta": "¿Para qué metemos la decisión dentro de un «Bucle infinito»?",
-      "opciones": [
-        "Para comprobar el color continuamente",
-        "Para que el motor tenga más fuerza",
-        "Para que el programa termine antes",
-        "Para apagar el sensor"
-      ],
-      "correcta": 0,
-      "explicacion": "Sin bucle, la puerta solo miraría la tarjeta en el instante de arrancar."
-    },
-    {
-      "pregunta": "¿A qué distancia reconoce bien un color el sensor?",
-      "opciones": [
-        "A un metro",
-        "A medio metro",
-        "Tocando la tarjeta con fuerza",
-        "A uno o dos centímetros"
-      ],
-      "correcta": 3,
-      "explicacion": "Más lejos, la lectura deja de ser fiable."
-    },
-    {
-      "pregunta": "¿En qué puerto va el sensor de color?",
-      "opciones": [
-        "En el F",
-        "En el D",
-        "En el A",
-        "En el E"
+        "Porque los motores se cansan",
+        "Porque la rueda patina más o menos según el suelo",
+        "Porque el bucle va más rápido unas veces que otras",
+        "Porque el Hub pierde batería"
       ],
       "correcta": 1,
-      "explicacion": "Color en D, distancia en E y fuerza en F."
+      "explicacion": "La rueda puede dar la vuelta y el robot girar menos de lo previsto. El giroscopio mide el robot, no la rueda."
     },
     {
-      "pregunta": "Dentro del bucle: «Si ¿Es de color verde? entonces» abrir, esperar y cerrar. Enseñas una tarjeta roja. ¿Qué pasa?",
+      "pregunta": "¿Qué es la guiñada?",
       "opciones": [
-        "La puerta se abre",
-        "La puerta se abre a medias",
-        "El programa se detiene",
-        "Nada: la puerta sigue cerrada"
-      ],
-      "correcta": 3,
-      "explicacion": "La condición es falsa, así que el bloque se salta lo que tiene dentro."
-    },
-    {
-      "pregunta": "¿Qué tipo de bloque es «Cuando el color es»?",
-      "opciones": [
-        "Un bloque de inicio",
-        "Una pregunta",
-        "Un dato",
-        "Un bucle"
-      ],
-      "correcta": 0,
-      "explicacion": "Arranca su propia pila cuando el sensor ve ese color."
-    },
-    {
-      "pregunta": "Quieres que la puerta también se abra con la tarjeta azul. ¿Qué añades?",
-      "opciones": [
-        "Un segundo sensor de color",
-        "Otro «Si… entonces» con «¿Es de color azul?» dentro del bucle",
-        "Un «Esperar 10 segundos»",
-        "Otro motor"
-      ],
-      "correcta": 1,
-      "explicacion": "Dos decisiones seguidas dentro del mismo bucle: una para cada color."
-    },
-    {
-      "pregunta": "¿En qué se diferencia «Bucle infinito» de «Repetir 4»?",
-      "opciones": [
-        "En nada",
-        "«Repetir 4» es más rápido",
-        "El bucle infinito no termina nunca; «Repetir 4» acaba tras cuatro vueltas",
-        "El bucle infinito solo admite un bloque"
+        "Lo que se inclina el robot hacia delante",
+        "Lo que se tumba el robot de lado",
+        "Lo que gira el robot en plano, como una veleta",
+        "La velocidad de giro"
       ],
       "correcta": 2,
-      "explicacion": "Debajo de un bucle infinito no se puede encajar nada: nunca se llegaría."
+      "explicacion": "Cabeceo es inclinarse hacia delante, alabeo es tumbarse de lado y guiñada es el giro en plano, el que hace al torcer."
+    },
+    {
+      "pregunta": "El bloque del ángulo, ¿qué forma tiene y dónde encaja?",
+      "opciones": [
+        "De rombo, y va en los huecos de pregunta",
+        "Redondeado, y va en los huecos de número, por ejemplo dentro de una comparación",
+        "De sombrero, y va arriba del programa",
+        "Rectangular, y va en la pila"
+      ],
+      "correcta": 1,
+      "explicacion": "Da un número, así que es redondo. Para usarlo como pregunta hay que compararlo con algo."
+    },
+    {
+      "pregunta": "¿Qué hace «Fijar el ángulo de guiñada a 0»?",
+      "opciones": [
+        "Gira el robot hasta que el ángulo sea cero",
+        "Pone el contador a cero donde esté el robot",
+        "Apaga el giroscopio",
+        "Endereza las ruedas"
+      ],
+      "correcta": 1,
+      "explicacion": "No mueve nada. Marca el punto desde el que se empieza a contar, y por eso va justo antes de girar."
+    },
+    {
+      "pregunta": "¿Para qué sirve «Fijar motores de movimiento para que frenen al parar»?",
+      "opciones": [
+        "Para que el robot vaya más despacio",
+        "Para que al parar sujete en vez de dejarse llevar unos grados más",
+        "Para que los motores no se calienten",
+        "Para parar el programa"
+      ],
+      "correcta": 1,
+      "explicacion": "Sin frenado el robot se desliza un poco al parar, y en un giro medido eso son grados de error en cada esquina."
+    },
+    {
+      "pregunta": "«Repetir hasta que el ángulo sea mayor que 90», con el robot girando. ¿Cuándo sale del bucle?",
+      "opciones": [
+        "A las 90 vueltas del bucle",
+        "Cuando el giroscopio marque más de 90 grados",
+        "A los 90 segundos",
+        "Nunca"
+      ],
+      "correcta": 1,
+      "explicacion": "La condición mira el ángulo, no las vueltas ni el tiempo. En cuanto pasa de 90, sale y el programa sigue."
+    },
+    {
+      "pregunta": "El cuadrado del robot no cierra, pero los giros son exactos. ¿Dónde está el fallo?",
+      "opciones": [
+        "En los giros, aunque midan bien",
+        "En los lados: no todos recorren lo mismo",
+        "En el giroscopio",
+        "En el sensor de distancia"
+      ],
+      "correcta": 1,
+      "explicacion": "Si las esquinas son buenas y no cierra, el problema está en la longitud de los lados o en que el robot no va recto."
+    },
+    {
+      "pregunta": "¿Por qué conviene girar despacio cuando se mide con el giroscopio?",
+      "opciones": [
+        "Porque el giroscopio no funciona deprisa",
+        "Porque deprisa el robot se pasa de los 90 antes de que el bucle lo compruebe",
+        "Porque los motores pierden fuerza",
+        "No conviene: cuanto más rápido, más exacto"
+      ],
+      "correcta": 1,
+      "explicacion": "Entre comprobación y comprobación pasa un instante. Cuanto más rápido gire, más grados avanza en ese instante."
     }
   ],
   "practicas": [
     {
-      "titulo": "Solo con verde",
-      "enunciado": "La puerta se abre únicamente cuando el sensor ve la tarjeta verde: sube a 90°, espera 3 segundos y baja. Con cualquier otra tarjeta sigue cerrada.",
+      "titulo": "El cuadrado que cierra",
+      "enunciado": "Prepara la base con frenado y velocidad 30 y repite cuatro veces: avanza dos rotaciones, pon el ángulo a cero, empieza a girar a la derecha, repite hasta que el ángulo pase de 90 y para el movimiento.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
         },
         {
-          "texto": "Si... entonces...",
-          "valor": "¿Es de color verde? D",
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "nivel": 0,
+          "valores": [
+            "frenar"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "4"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "2",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
           "nivel": 1
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valores": [
+            "ángulo de guiñada > 90"
           ]
         },
         {
           "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 2
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
           "nivel": 2,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
-          ]
-        }
-      ],
-      "notas": "También vale una pila que empiece con «Cuando el color es verde», sin bucle.",
-      "pasos": [
-        {
-          "texto": "La puerta se abre únicamente cuando el sensor ve la tarjeta verde",
-          "hijos": [
-            "Sube a 90°",
-            "Espera 3 segundos",
-            "Baja"
+            "0.01"
           ]
         },
         {
-          "texto": "Con cualquier otra tarjeta sigue cerrada"
+          "texto": "parar movimiento",
+          "nivel": 1
+        }
+      ],
+      "notas": "La puesta a cero tiene que ir DENTRO del bucle, antes de cada giro. Fuera, el ángulo se acumula y solo gira bien la primera esquina.",
+      "pasos": [
+        {
+          "texto": "Prepara la base con frenado y velocidad 30 y repite cuatro veces",
+          "hijos": [
+            "Avanza dos rotaciones",
+            "Pon el ángulo a cero",
+            "Empieza a girar a la derecha",
+            "Repite hasta que el ángulo pase de 90",
+            "Para el movimiento"
+          ]
         }
       ]
     },
     {
-      "titulo": "Verde abre, rojo avisa",
-      "enunciado": "Con la tarjeta verde, el botón central se pone verde y la puerta se abre y se cierra. Con la roja, la puerta no se mueve: el botón se pone rojo y suena un pitido grave de 1 segundo.",
+      "titulo": "El robot que esquiva",
+      "enunciado": "Arranca hacia delante y repite hasta que haya algo a menos de 20 centímetros. Entonces para el movimiento, pon el ángulo a cero, gira midiendo hasta pasar de 90 grados, para otra vez y vuelve a avanzar dos rotaciones.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Si... entonces...",
-          "valor": "¿Es de color verde? D",
-          "nivel": 1
-        },
-        {
-          "texto": "poner luz del botón central en rojo",
-          "nivel": 2,
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
           "valores": [
-            "verde"
+            "A+B"
           ]
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "frenar"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "¿Está más próximo a? E 20 cm"
           ]
         },
         {
           "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 2
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "nivel": 1,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "0.01"
           ]
         },
         {
-          "texto": "Si... entonces...",
-          "valor": "¿Es de color rojo? D",
-          "nivel": 1
+          "texto": "parar movimiento",
+          "nivel": 0
         },
         {
-          "texto": "poner luz del botón central en rojo",
-          "nivel": 2,
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 0,
           "valores": [
-            "rojo"
+            "derecha: 100"
           ]
         },
         {
-          "texto": "Tocar nota X segundos",
-          "valor": "48 · 1",
-          "nivel": 2
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "ángulo de guiñada > 90"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.01"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "2",
+            "rotaciones"
+          ]
         }
       ],
-      "notas": "Son dos decisiones seguidas dentro del mismo bucle. El «Si… entonces… Si no» se estudia en 2º.",
+      "notas": "Junta el sensor de distancia con el giro medido: ve el obstáculo, se para, gira exacto y sigue. Es el programa más largo del curso.",
       "pasos": [
         {
-          "texto": "Con la tarjeta verde, el botón central se pone verde y la puerta se abre y se cierra"
+          "texto": "Arranca hacia delante"
         },
         {
-          "texto": "Con la roja, la puerta no se mueve",
-          "hijos": [
-            "El botón se pone rojo",
-            "Suena un pitido grave de 1 segundo"
-          ]
+          "texto": "Repite hasta que haya algo a menos de 20 centímetros"
+        },
+        {
+          "texto": "Entonces para el movimiento"
+        },
+        {
+          "texto": "Pon el ángulo a cero"
+        },
+        {
+          "texto": "Gira midiendo hasta pasar de 90 grados"
+        },
+        {
+          "texto": "Para otra vez"
+        },
+        {
+          "texto": "Vuelve a avanzar dos rotaciones"
         }
       ]
     }

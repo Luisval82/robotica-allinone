@@ -1204,6 +1204,15 @@ SOLUCIONES["3ESO-9"] = [
 # ── Inyección en los archivos de contenido ───────────────────────────────
 
 
+
+# ⚠ 1º de ESO ya NO se genera aquí. Su temario entero —las 9 unidades en 3
+# evaluaciones— lo escribe scripts/temario-1eso.py, que además comprueba que
+# ninguna solución use un bloque fuera de la paleta de su unidad. Si este
+# script volviera a tocar 1ESO, revertiría ese temario sin avisar.
+def _salta_1eso(clave):
+    return str(clave).startswith("1ESO") or str(clave).startswith("1eso")
+
+
 def main() -> None:
     bloques_validos = {
         b["texto"] for b in json.load(open("src/data/bloques.json", encoding="utf-8"))["bloques"]
@@ -1215,6 +1224,8 @@ def main() -> None:
     total = 0
     problemas = []
     for clave, soluciones in SOLUCIONES.items():
+        if _salta_1eso(clave):
+            continue
         ruta = f"src/data/contenido/{clave}.json"
         datos = json.load(open(ruta, encoding="utf-8"))
         intermedias = datos.get("intermedias") or []

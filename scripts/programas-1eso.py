@@ -163,6 +163,12 @@ PROGRAMAS = {
 
 
 def main() -> None:
+    # ⚠ Este script ya no se usa: el temario completo de 1º de ESO, programas
+    # de ejemplo incluidos, lo escribe scripts/temario-1eso.py. Se deja el
+    # archivo como registro de los programas antiguos, pero no escribe nada:
+    # si lo hiciera, revertiría el temario nuevo sin avisar.
+    print("Este script está jubilado. Usa scripts/temario-1eso.py")
+    return
     for numero, programa in PROGRAMAS.items():
         ruta = f"src/data/contenido/1ESO-{numero}.json"
         datos = json.load(open(ruta, encoding="utf-8"))

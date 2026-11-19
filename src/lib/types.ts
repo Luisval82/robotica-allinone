@@ -84,6 +84,14 @@ export interface Unidad {
   curso: Course;
   numero: number;
   titulo: string;
+  /**
+   * En qué evaluación cae la unidad (1, 2 o 3). Donde el temario todavía no
+   * está repartido por evaluaciones, no viene, y las unidades se listan
+   * seguidas como siempre.
+   */
+  evaluacion?: number;
+  /** 1 básico, 2 intermedio, 3 el más alto del curso. Sube con la evaluación. */
+  nivel?: number;
   hardware: string;
   /** Nombres de los bloques de palabras de la unidad, tal como figuran en el temario. */
   bloques: string[];

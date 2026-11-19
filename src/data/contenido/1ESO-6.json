@@ -1,86 +1,67 @@
 {
   "curso": "1ESO",
   "unidad": 6,
-  "reto": "Monta un robot repartidor con dos motores y haz que recorra un circuito cuadrado.",
+  "reto": "Haz un vehículo que patrulle y reaccione: que frene ante un obstáculo, avise al ver una línea y arranque cuando lo aprietes.",
   "video": {
-    "titulo": "Avanzar y girar",
+    "titulo": "Preguntar en vez de esperar",
     "duracion": "5 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Training Camp 1 — Driving Around»",
-      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-1-driving-around/"
-    },
     "escenas": [
       {
-        "plano": "Un robot de dos ruedas avanza en línea recta por una mesa.",
-        "locucion": "Con dos motores y dos ruedas tenemos una base de conducción: el robot que vas a usar el resto del curso."
+        "plano": "Un programa con «Esperar hasta que» y el robot quieto mucho rato.",
+        "locucion": "Hasta ahora, para usar un sensor esperabas. El programa se quedaba parado hasta que pasaba algo. Eso sirve para empezar, pero un robot que patrulla no puede estar parado esperando."
       },
       {
-        "plano": "Captura de la app: «fijar como motores en movimiento» con A y B.",
-        "locucion": "Lo primero es decirle al Hub qué dos motores mueven el robot. Con «fijar como motores en movimiento» elegimos A para la rueda izquierda y B para la derecha."
+        "plano": "El bloque «Si... entonces...» con la boca abierta y bloques cayendo dentro.",
+        "locucion": "«Si... entonces» es distinto. Mira la pregunta una sola vez, al pasar por ahí. Si es verdad, hace lo de dentro; si no, se lo salta y sigue. No espera a nadie."
       },
       {
-        "plano": "Se mide con una cinta métrica lo que avanza el robot con una vuelta de rueda.",
-        "locucion": "Para avanzar en centímetros, el Hub necesita saber cuánto recorre el robot con una vuelta de rueda. Lo medimos y lo guardamos con «fijar 1 rotación del motor en … cm recorridos»."
+        "plano": "Un «Si... entonces» dentro de un bucle infinito. El robot avanza y mira a cada vuelta.",
+        "locucion": "Por eso casi siempre va dentro de un bucle: así la pregunta se repasa una y otra vez mientras el robot hace su trabajo."
       },
       {
-        "plano": "El robot avanza 20 centímetros despacio y después rápido.",
-        "locucion": "«mover durante» avanza recto una distancia exacta. «fijar velocidad de movimiento» decide lo rápido que va."
+        "plano": "Los bloques «empezar a mover» y «parar movimiento», uno frente al otro.",
+        "locucion": "Y para que el robot pueda vigilar mientras anda, los bloques de movimiento cambian: «empezar a mover» lo pone en marcha y deja seguir el programa. El robot anda y tú vigilas."
       },
       {
-        "plano": "El robot traza una curva y luego gira sobre sí mismo.",
-        "locucion": "«mover con dirección durante» avanza girando. Con dirección 100, una rueda avanza y la otra retrocede: el robot gira sobre sí mismo."
+        "plano": "El número de la distancia bajando mientras una mano se acerca.",
+        "locucion": "También hay bloques que no preguntan: dan el número. «Distancia» vale los centímetros que hay delante, y «luz reflejada», lo clara que es la superficie, de 0 a 100."
       },
       {
-        "plano": "El robot recorre un cuadrado marcado con cinta en el suelo.",
-        "locucion": "Tu reto: un circuito cuadrado. Cuatro lados y cuatro giros. Ya sabes cómo hacerlo sin copiar bloques."
+        "plano": "El robot avanzando; al llegar a 20 cm de una caja, se para y pita.",
+        "locucion": "Con esas tres piezas ya tienes un robot que vigila: arranca, repite la comprobación y, si se cumple, actúa."
       }
-    ]
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Cart Control» (sensor de distancia)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l3/"
+    }
   },
   "bloques": [
     {
-      "texto": "fijar A+B como motores en movimiento",
-      "explicacion": "Indica qué dos motores mueven el robot: el izquierdo y el derecho. Se pone una vez, al principio.",
-      "valores": [
-        "A+B"
-      ]
+      "texto": "Si... entonces...",
+      "explicacion": "Mira la pregunta una vez. Si es verdad, ejecuta lo que lleva dentro; si no, se lo salta. No espera: comprueba y sigue."
     },
     {
-      "texto": "fijar velocidad de movimiento al 50 %",
-      "explicacion": "Guarda la velocidad del robot para los bloques de movimiento que vienen después.",
-      "valores": [
-        "50"
-      ]
+      "texto": "empezar a mover a ↑",
+      "explicacion": "Pone la base en marcha y deja seguir el programa. El robot se queda andando mientras el programa hace otras cosas, como vigilar un sensor."
     },
     {
-      "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-      "explicacion": "Le dice al Hub cuántos centímetros avanza el robot con una vuelta de rueda. Así puedes mover en centímetros.",
-      "valores": [
-        "17.5",
-        "cm"
-      ]
+      "texto": "parar movimiento",
+      "explicacion": "Para la base de conducción. Es la pareja de «empezar a mover»: sin él, el robot no se detiene."
     },
     {
-      "texto": "mover ↑ durante 10 rotaciones",
-      "explicacion": "Avanza o retrocede en línea recta una cantidad exacta.",
-      "valores": [
-        "↑",
-        "10",
-        "rotaciones"
-      ]
+      "texto": "Distancia",
+      "explicacion": "No es una pregunta, es un número: los centímetros que el sensor tiene delante. Se mete en huecos redondos, por ejemplo dentro de una comparación."
     },
     {
-      "texto": "mover derecha: 30 durante 10 rotaciones",
-      "explicacion": "Avanza girando una cantidad exacta. Dirección 0 es recto; 100 o −100, girar sobre sí mismo.",
-      "valores": [
-        "derecha: 30",
-        "10",
-        "rotaciones"
-      ]
+      "texto": "Luz reflejada",
+      "explicacion": "Otro número, de 0 a 100: cuánta luz le devuelve la superficie. El negro refleja poco y el blanco mucho, así que sirve para ver líneas."
     }
   ],
   "programa": {
-    "titulo": "Media vuelta al cuadrado",
-    "explicacion": "Los tres primeros bloques se ponen una sola vez, al principio: dicen qué motores llevan el robot, a qué velocidad y cuánto avanza en una vuelta de rueda. A partir de ahí ya puedes pedirle centímetros.",
+    "titulo": "El vehículo que frena solo",
+    "explicacion": "El robot arranca y se queda andando. Dentro del bucle, la pregunta se repasa continuamente: en cuanto hay algo a menos de 20 centímetros, para y avisa.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
@@ -94,45 +75,39 @@
         ]
       },
       {
-        "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-        "nivel": 0,
-        "valores": [
-          "17.5",
-          "cm"
-        ]
-      },
-      {
         "texto": "fijar velocidad de movimiento al 50 %",
         "nivel": 0,
         "valores": [
-          "30"
+          "35"
         ]
       },
       {
-        "texto": "mover ↑ durante 10 rotaciones",
+        "texto": "empezar a mover a ↑",
         "nivel": 0,
         "valores": [
-          "↑",
-          "30",
-          "cm"
+          "↑"
         ]
       },
       {
-        "texto": "mover derecha: 30 durante 10 rotaciones",
-        "nivel": 0,
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces...",
+        "nivel": 1,
         "valores": [
-          "derecha: 100",
-          "90",
-          "grados"
+          "¿Está más próximo a? E 20 cm"
         ]
       },
       {
-        "texto": "mover ↑ durante 10 rotaciones",
-        "nivel": 0,
+        "texto": "parar movimiento",
+        "nivel": 2
+      },
+      {
+        "texto": "Tocar nota X segundos",
+        "nivel": 2,
         "valores": [
-          "↑",
-          "30",
-          "cm"
+          "60 · 0.5"
         ]
       }
     ]
@@ -140,9 +115,9 @@
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Un metro recto",
-      "enunciado": "Prepara los motores de movimiento y haz que el robot avance 100 cm.",
-      "pista": "Los tres bloques de preparación van una sola vez, al principio.",
+      "titulo": "Frena ante el obstáculo",
+      "enunciado": "Arranca la base hacia delante y, dentro de un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento.",
+      "pista": "El «Si... entonces» va dentro del bucle, y el «parar movimiento», dentro del «Si».",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -156,45 +131,44 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "texto": "empezar a mover a ↑",
           "nivel": 0,
           "valores": [
-            "17.5",
-            "cm"
+            "↑"
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
           "valores": [
-            "40"
+            "¿Está más próximo a? E 20 cm"
           ]
         },
         {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "↑",
-            "100",
-            "cm"
-          ]
+          "texto": "parar movimiento",
+          "nivel": 2
         }
       ],
-      "notas": "Los tres bloques de preparación van una sola vez, al principio. Sin el de los centímetros, «100 cm» no significaría nada.",
+      "notas": "Tres niveles de sangría. Es la primera vez que ven un bloque dentro de otro dentro de otro.",
       "pasos": [
         {
-          "texto": "Prepara los motores de movimiento"
-        },
-        {
-          "texto": "Haz que el robot avance 100 cm"
+          "texto": "Arranca la base hacia delante y, dentro de un bucle infinito, comprueba si hay algo a menos de 20 centímetros",
+          "hijos": [
+            "Si lo hay",
+            "Para el movimiento"
+          ]
         }
       ]
     },
     {
       "practica": 2,
-      "titulo": "Adelante y atrás",
-      "enunciado": "El robot avanza 30 cm y vuelve hacia atrás otros 30 cm.",
-      "pista": "Para ir hacia atrás, cambia la flecha del desplegable.",
+      "titulo": "El arranque con botón",
+      "enunciado": "Espera a que se apriete el sensor de fuerza y entonces arranca la base hacia delante durante tres rotaciones.",
+      "pista": "Aquí sí vale esperar: el robot no tiene nada que hacer hasta que lo aprieten.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -208,18 +182,10 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "texto": "Esperar hasta que",
           "nivel": 0,
           "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "40"
+            "¿Está presionado? F"
           ]
         },
         {
@@ -227,96 +193,67 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "30",
-            "cm"
-          ]
-        },
-        {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "↓",
-            "30",
-            "cm"
+            "3",
+            "rotaciones"
           ]
         }
       ],
-      "notas": "Para volver no hace falta otro bloque: basta con cambiar la flecha del desplegable a ↓.",
-      "pasos": [
-        {
-          "texto": "El robot avanza 30 cm"
-        },
-        {
-          "texto": "Vuelve hacia atrás otros 30 cm"
-        }
-      ]
+      "notas": "Sirve para distinguir cuándo toca esperar y cuándo toca preguntar. Aquí no hay nada que vigilar mientras tanto."
     },
     {
       "practica": 3,
-      "titulo": "Un giro de 90°",
-      "enunciado": "Haz que el robot avance 20 cm y después gire 90 grados a la derecha.",
-      "pista": "El giro se hace con «mover derecha» y grados, no con centímetros.",
+      "titulo": "La línea del suelo",
+      "enunciado": "Dentro de un bucle infinito, comprueba si el sensor de color ve negro: si lo ve, toca una nota y enciende un dibujo 1 segundo.",
+      "pista": "La pregunta del color va dentro del «Si... entonces», y los dos bloques de aviso, dentro también.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
           "valores": [
-            "A+B"
+            "¿Es de color negro? D"
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
+          "texto": "Tocar nota X segundos",
+          "nivel": 2,
           "valores": [
-            "17.5",
-            "cm"
+            "72 · 0.3"
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 2,
           "valores": [
-            "40"
-          ]
-        },
-        {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "↑",
-            "20",
-            "cm"
-          ]
-        },
-        {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "derecha: 100",
-            "90",
-            "grados"
+            "corazón",
+            "1"
           ]
         }
       ],
-      "notas": "El giro va en grados y con dirección 100: con 100 el robot gira sobre sí mismo, como un compás.",
+      "notas": "Pasando una cinta aislante negra por debajo se ve al momento. Si no salta, el sensor está demasiado alto.",
       "pasos": [
         {
-          "texto": "Haz que el robot avance 20 cm"
-        },
-        {
-          "texto": "Después gire 90 grados a la derecha"
+          "texto": "Dentro de un bucle infinito, comprueba si el sensor de color ve negro",
+          "hijos": [
+            "Si lo ve",
+            "Toca una nota",
+            "Enciende un dibujo 1 segundo"
+          ]
         }
       ]
     },
     {
       "practica": 4,
-      "titulo": "El cuadrado",
-      "enunciado": "Recorre un cuadrado de 30 cm de lado usando un «Repetir» para no escribir cuatro veces lo mismo.",
-      "pista": "Un lado y un giro, repetido cuatro veces.",
+      "titulo": "Las dos vigilancias",
+      "enunciado": "En un mismo bucle infinito, pon dos comprobaciones seguidas: si algo está a menos de 15 centímetros, para el movimiento, y si se aprieta el sensor de fuerza, arranca hacia delante.",
+      "pista": "Son dos «Si... entonces» seguidos, los dos dentro del mismo bucle y al mismo nivel.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -330,189 +267,186 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "40"
-          ]
-        },
-        {
-          "texto": "Repetir bucle",
-          "nivel": 0,
-          "valor": "4"
-        },
-        {
-          "texto": "mover ↑ durante 10 rotaciones",
+          "texto": "Si... entonces...",
           "nivel": 1,
           "valores": [
-            "↑",
-            "30",
-            "cm"
+            "¿Está más próximo a? E 15 cm"
           ]
         },
         {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Si... entonces...",
           "nivel": 1,
           "valores": [
-            "derecha: 100",
-            "90",
-            "grados"
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
           ]
         }
       ],
-      "notas": "Un lado y un giro, repetidos 4 veces. Si el cuadrado no cierra, ajusta los grados: depende de las ruedas."
+      "notas": "Dos preguntas en el mismo bucle: el robot vigila dos cosas a la vez. Es la idea que hace falta para el proyecto de la unidad 9.",
+      "pasos": [
+        {
+          "texto": "En un mismo bucle infinito, pon dos comprobaciones seguidas",
+          "hijos": [
+            "Si algo está a menos de 15 centímetros",
+            "Para el movimiento, y si se aprieta el sensor de fuerza",
+            "Arranca hacia delante"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, dos motores medianos, dos ruedas iguales, una pieza de apoyo trasero, vigas y pasadores.",
+    "piezas": "La base de conducción de la unidad 5, el sensor de distancia, el sensor de color, el sensor de fuerza, dos vigas de 7, una viga angular y seis pasadores.",
     "pasos": [
       {
-        "titulo": "El chasis",
-        "texto": "Monta un bastidor rectangular de vigas, algo más ancho que el Hub."
+        "titulo": "El soporte de delante",
+        "texto": "Monta las dos vigas de 7 en la parte delantera del chasis, hacia fuera, como dos brazos."
       },
       {
-        "titulo": "Los motores",
-        "texto": "Fija un motor mediano a cada lado, a la misma altura y con los ejes hacia fuera."
+        "titulo": "El sensor de distancia",
+        "texto": "Encaja el sensor de distancia entre los dos brazos, mirando al frente y a la altura de una caja de zapatos."
       },
       {
-        "titulo": "Las ruedas",
-        "texto": "Monta una rueda en cada motor. Tienen que ser iguales."
+        "titulo": "El sensor de color",
+        "texto": "Pon la viga angular bajo el chasis y fija en ella el sensor de color mirando al suelo, a un dedo de altura."
       },
       {
-        "titulo": "El apoyo trasero",
-        "texto": "Añade detrás un tercer punto de apoyo que deslice o ruede libre."
+        "titulo": "El sensor de fuerza",
+        "texto": "Coloca el sensor de fuerza arriba del todo, donde se pueda apretar sin tocar las ruedas."
       },
       {
-        "titulo": "El Hub y los cables",
-        "texto": "Fija el Hub centrado sobre el chasis. Motor izquierdo al puerto A y motor derecho al puerto B."
-      },
-      {
-        "titulo": "Comprueba y mide",
-        "texto": "Empuja el robot: debe rodar recto. Mide con una cinta cuánto avanza con una vuelta de rueda y apúntalo."
+        "titulo": "Los cables",
+        "texto": "Color al D, distancia al E, fuerza al F y los motores al A y al B. Recoge el cable sobrante hacia arriba para que no roce las ruedas."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
+        "pieza": "distancia"
       },
       {
-        "pieza": "motor",
-        "cantidad": 2
+        "pieza": "color"
       },
       {
-        "pieza": "rueda",
-        "cantidad": 2
+        "pieza": "fuerza"
       },
       {
-        "pieza": "viga"
+        "pieza": "viga",
+        "cantidad": 3
       },
       {
-        "pieza": "pasador"
+        "pieza": "pasador",
+        "cantidad": 6
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Para qué sirve «fijar como motores en movimiento»?",
+      "pregunta": "¿En qué se diferencian «Esperar hasta que» y «Si... entonces»?",
       "opciones": [
-        "Para arrancar los motores",
-        "Para frenar el robot",
-        "Para indicar qué motores son el izquierdo y el derecho",
-        "Para medir la distancia"
-      ],
-      "correcta": 2,
-      "explicacion": "El Hub necesita saber qué par de motores mueve el robot antes de usar los bloques de movimiento."
-    },
-    {
-      "pregunta": "¿Qué necesita saber el Hub para moverse en centímetros?",
-      "opciones": [
-        "Cuántos centímetros avanza con una vuelta de rueda",
-        "El peso del robot",
-        "El color de las ruedas",
-        "La carga de la batería"
-      ],
-      "correcta": 0,
-      "explicacion": "Con ese dato convierte centímetros en giro de los motores."
-    },
-    {
-      "pregunta": "¿Qué hace el robot con dirección 0?",
-      "opciones": [
-        "Gira a la izquierda",
-        "Se para",
-        "Retrocede",
-        "Avanza recto"
-      ],
-      "correcta": 3,
-      "explicacion": "Dirección 0 reparte la misma velocidad a las dos ruedas."
-    },
-    {
-      "pregunta": "¿Qué hace el robot con dirección 100?",
-      "opciones": [
-        "Avanza recto muy rápido",
-        "Gira sobre sí mismo",
-        "Traza una curva amplia",
-        "Retrocede recto"
+        "En nada",
+        "«Esperar» para el programa hasta que se cumpla; «Si» mira una vez y sigue",
+        "«Si» solo funciona con el sensor de color",
+        "«Esperar» se puede meter dentro de un bucle y «Si» no"
       ],
       "correcta": 1,
-      "explicacion": "Una rueda avanza y la otra retrocede a la misma velocidad."
+      "explicacion": "Uno detiene el programa; el otro lo comprueba de pasada. Por eso «Si» suele ir dentro de un bucle."
     },
     {
-      "pregunta": "Para recorrer un cuadrado, ¿cuántas veces repites «avanzar y girar 90°»?",
+      "pregunta": "¿Por qué un «Si... entonces» suele ir dentro de un bucle?",
       "opciones": [
-        "2",
-        "3",
-        "8",
-        "4"
-      ],
-      "correcta": 3,
-      "explicacion": "Un cuadrado tiene cuatro lados y cuatro esquinas."
-    },
-    {
-      "pregunta": "Le pides avanzar y el robot va hacia atrás. ¿Cuál es la causa más probable?",
-      "opciones": [
-        "Los motores izquierdo y derecho están intercambiados",
-        "La velocidad es demasiado alta",
-        "Falta el apoyo trasero",
-        "La batería está baja"
-      ],
-      "correcta": 0,
-      "explicacion": "Si A y B están cambiados, el robot entiende al revés cuál es delante."
-    },
-    {
-      "pregunta": "Le pides 20 cm y recorre 25. ¿Qué bloque corriges?",
-      "opciones": [
-        "fijar velocidad de movimiento",
-        "fijar como motores en movimiento",
-        "fijar 1 rotación del motor en … cm recorridos",
-        "mover derecha: 30 durante 10 rotaciones"
-      ],
-      "correcta": 2,
-      "explicacion": "El valor guardado no coincide con lo que avanza realmente una vuelta de rueda."
-    },
-    {
-      "pregunta": "¿Qué hace «fijar velocidad de movimiento»?",
-      "opciones": [
-        "Mueve el robot 1 segundo",
-        "Guarda la velocidad para los siguientes bloques de movimiento",
-        "Detiene el robot",
-        "Gira el robot 90°"
+        "Porque si no, da error",
+        "Porque solo se mira una vez y el robot necesita vigilar todo el rato",
+        "Porque los bucles van más rápido",
+        "Porque es la única forma de usar un sensor"
       ],
       "correcta": 1,
-      "explicacion": "Como «fijar velocidad al … %» de los motores: guarda un valor, no mueve nada."
+      "explicacion": "Fuera del bucle, la pregunta se mira una vez y ya está. Dentro, se repasa en cada vuelta."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre «mover hacia delante 3 rotaciones» y «empezar a mover»?",
+      "opciones": [
+        "El primero recorre una cantidad y para; el segundo arranca y deja seguir el programa",
+        "El segundo es más rápido",
+        "El primero solo vale con un motor",
+        "Ninguna"
+      ],
+      "correcta": 0,
+      "explicacion": "Mientras «mover durante» está en marcha, el programa está parado ahí. Con «empezar a mover», el programa sigue y puede vigilar."
+    },
+    {
+      "pregunta": "¿Qué devuelve el bloque «Luz reflejada»?",
+      "opciones": [
+        "Verdad o mentira",
+        "Un número de 0 a 100: cuánta luz devuelve la superficie",
+        "El nombre del color",
+        "Los centímetros hasta el suelo"
+      ],
+      "correcta": 1,
+      "explicacion": "Es un número, no una pregunta. Por eso es redondo y va en huecos redondos."
+    },
+    {
+      "pregunta": "El negro y el blanco, en luz reflejada:",
+      "opciones": [
+        "El negro da un número alto y el blanco bajo",
+        "El negro da un número bajo y el blanco alto",
+        "Los dos dan lo mismo",
+        "Depende del motor"
+      ],
+      "correcta": 1,
+      "explicacion": "El negro absorbe la luz y devuelve poco; el blanco la devuelve casi toda."
+    },
+    {
+      "pregunta": "Arrancas la base con «empezar a mover» y el programa acaba. ¿Qué hace el robot?",
+      "opciones": [
+        "Se para solo",
+        "Sigue andando",
+        "Da marcha atrás",
+        "Da error"
+      ],
+      "correcta": 1,
+      "explicacion": "Igual que el motor suelto: si no pones «parar movimiento», no para."
+    },
+    {
+      "pregunta": "Quieres que el robot vigile dos cosas distintas mientras anda. ¿Cómo lo haces?",
+      "opciones": [
+        "Con dos bucles, uno detrás del otro",
+        "Con dos «Si... entonces» seguidos dentro del mismo bucle",
+        "No se puede",
+        "Con un «Esperar hasta que» para cada uno"
+      ],
+      "correcta": 1,
+      "explicacion": "En cada vuelta del bucle se repasan las dos preguntas, una detrás de otra."
+    },
+    {
+      "pregunta": "¿Qué forma tiene el bloque «Distancia»?",
+      "opciones": [
+        "De rombo, como las preguntas",
+        "Redondeado, como los números",
+        "De sombrero",
+        "Rectangular, como las acciones"
+      ],
+      "correcta": 1,
+      "explicacion": "Devuelve un número, así que es redondeado y encaja en huecos redondos."
     }
   ],
   "practicas": [
     {
-      "titulo": "Ida y vuelta",
-      "enunciado": "El robot avanza 30 cm, gira media vuelta sobre sí mismo y vuelve al punto de partida.",
+      "titulo": "El vehículo vigilante",
+      "enunciado": "Prepara la base, ponla al 35 %, arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento y toca una nota.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -526,64 +460,57 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "distancia medida",
-            "cm"
-          ]
-        },
-        {
           "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "30"
+            "35"
           ]
         },
         {
-          "texto": "mover ↑ durante 10 rotaciones",
+          "texto": "empezar a mover a ↑",
           "nivel": 0,
           "valores": [
-            "↑",
-            "30",
-            "cm"
+            "↑"
           ]
         },
         {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
-          "nivel": 0,
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
           "valores": [
-            "derecha: 100",
-            "180",
-            "grados"
+            "¿Está más próximo a? E 20 cm"
           ]
         },
         {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 0,
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 2,
           "valores": [
-            "↑",
-            "30",
-            "cm"
+            "60 · 0.5"
           ]
         }
       ],
-      "notas": "La cantidad que produce un giro de 180° se ajusta probando: depende de la separación entre ruedas.",
+      "notas": "Lo que se corrige es la sangría: el «Si» dentro del bucle y las dos acciones dentro del «Si».",
       "pasos": [
         {
-          "texto": "El robot avanza 30 cm"
-        },
-        {
-          "texto": "Gira media vuelta sobre sí mismo"
-        },
-        {
-          "texto": "Vuelve al punto de partida"
+          "texto": "Prepara la base, ponla al 35 %, arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros",
+          "hijos": [
+            "Si lo hay",
+            "Para el movimiento",
+            "Toca una nota"
+          ]
         }
       ]
     },
     {
-      "titulo": "Circuito cuadrado",
-      "enunciado": "El robot recorre un cuadrado de 40 cm de lado y termina donde empezó. Usa un bucle.",
+      "titulo": "El patrullero de tres sentidos",
+      "enunciado": "En un bucle infinito pon tres comprobaciones: si se aprieta el sensor de fuerza, arranca hacia delante; si hay algo a menos de 15 centímetros, para el movimiento; y si el sensor de color ve rojo, pon el botón central en rojo.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -597,51 +524,58 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "distancia medida",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Repetir bucle",
-          "valor": "4",
+          "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "mover ↑ durante 10 rotaciones",
+          "texto": "Si... entonces...",
           "nivel": 1,
           "valores": [
-            "↑",
-            "40",
-            "cm"
+            "¿Está presionado? F"
           ]
         },
         {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Si... entonces...",
           "nivel": 1,
           "valores": [
-            "derecha: 100",
-            "90",
-            "grados"
+            "¿Está más próximo a? E 15 cm"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "¿Es de color rojo? D"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "rojo"
           ]
         }
       ],
-      "notas": "Valora el uso de «Repetir» y que el robot termine cerca de donde empezó. El giro de 90° no saldrá perfecto a la primera.",
+      "notas": "Los tres sensores en un solo programa, cada uno con su respuesta. Las tres preguntas van al mismo nivel dentro del bucle.",
       "pasos": [
         {
-          "texto": "El robot recorre un cuadrado de 40 cm de lado y termina donde empezó"
-        },
-        {
-          "texto": "Usa un bucle"
+          "texto": "En un bucle infinito pon tres comprobaciones",
+          "hijos": [
+            "Si se aprieta el sensor de fuerza, arranca hacia delante",
+            "Si hay algo a menos de 15 centímetros, para el movimiento",
+            "Y si el sensor de color ve rojo, pon el botón central en rojo"
+          ]
         }
       ]
     }

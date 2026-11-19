@@ -11,6 +11,13 @@ Cada unidad sigue la misma progresión:
   4 · un reto abierto que ya se parece al modelo final.
 """
 
+# ⚠ CUIDADO: este script REESCRIBE las prácticas intermedias y al hacerlo
+# BORRA sus «solucion», «notas» y «pasos». Está pensado para ejecutarse ANTES
+# de scripts/soluciones-intermedias.py, que es quien vuelve a poner las
+# soluciones. Ejecutado después, deja las prácticas sin solución y sin aviso
+# ninguno. Si lo ejecutas por error:  git checkout -- src/data/contenido/
+
+
 import json
 
 P = {
@@ -182,9 +189,20 @@ P = {
 }
 
 
+
+# ⚠ 1º de ESO ya NO se genera aquí. Su temario entero —las 9 unidades en 3
+# evaluaciones— lo escribe scripts/temario-1eso.py, que además comprueba que
+# ninguna solución use un bloque fuera de la paleta de su unidad. Si este
+# script volviera a tocar 1ESO, revertiría ese temario sin avisar.
+def _salta_1eso(clave):
+    return str(clave).startswith("1ESO") or str(clave).startswith("1eso")
+
+
 def main() -> None:
     total = 0
     for clave, practicas in P.items():
+        if _salta_1eso(clave):
+            continue
         ruta = f"src/data/contenido/{clave}.json"
         datos = json.load(open(ruta, encoding="utf-8"))
         intermedias = [

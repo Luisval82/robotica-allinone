@@ -1,5 +1,7 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CabeceraEvaluacion } from "@/components/unidad/Evaluacion";
 import { ArrowRightIcon, LockIcon, LockOpenIcon } from "@/components/ui/icons";
 import { requireRole } from "@/lib/auth";
 import { getProgress, getStudentAccess, testScore } from "@/lib/db";
@@ -56,7 +58,12 @@ export default async function AlumnoDashboardPage() {
       <h2 className="mt-10 font-display text-2xl font-semibold text-ink-900">Tus unidades</h2>
 
       <ol className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {unidades.map((unidad) => {
+        {unidades.map((unidad, indice) => {
+          // Donde el temario va por evaluaciones, se parte la lista con una
+          // cabecera antes de la primera unidad de cada una.
+          const abreEvaluacion =
+            unidad.evaluacion !== undefined &&
+            unidad.evaluacion !== unidades[indice - 1]?.evaluacion;
           const estado = acceso.find((item) => item.unidad === unidad.numero);
           const avance = progreso.find((item) => item.unidad === unidad.numero);
           const abierta = estado?.abierta ?? false;
@@ -135,7 +142,13 @@ export default async function AlumnoDashboardPage() {
           );
 
           return (
-            <li key={unidad.numero} className="flex">
+            <Fragment key={unidad.numero}>
+              {abreEvaluacion && unidad.evaluacion !== undefined ? (
+                <li className="col-span-full mt-2 list-none first:mt-0">
+                  <CabeceraEvaluacion evaluacion={unidad.evaluacion} nivel={unidad.nivel} />
+                </li>
+              ) : null}
+            <li className="flex">
               {abierta ? (
                 <Link
                   href={`/dashboard/alumno/unidad/${unidad.numero}`}
@@ -149,6 +162,7 @@ export default async function AlumnoDashboardPage() {
                 </div>
               )}
             </li>
+            </Fragment>
           );
         })}
       </ol>

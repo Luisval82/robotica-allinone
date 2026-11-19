@@ -1,308 +1,273 @@
 {
   "curso": "1ESO",
   "unidad": 3,
-  "reto": "Construye una barrera de aparcamiento que suba a 90°, espere y vuelva a bajar.",
+  "reto": "Monta los tres sensores en una misma mesa y haz que cada uno dispare una señal distinta.",
   "video": {
-    "titulo": "El motor como servo",
+    "titulo": "Los tres sensores de la caja",
     "duracion": "4 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «New Moves with Motors» (posición absoluta)",
-      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/new-moves-with-motors/"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=fe5792d1b14dd60f8950eab97f9da507&source=embed&photo_id=56312975&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
     "escenas": [
       {
-        "plano": "Primer plano del motor mediano: se ven las dos marcas que indican la posición 0.",
-        "locucion": "El motor de SPIKE sabe en qué posición está: lleva dentro un sensor que mide su ángulo, de 0 a 359 grados. Cuando las dos marcas del motor coinciden, está en la posición 0."
+        "plano": "Los tres sensores alineados sobre la mesa: color, distancia y fuerza, con sus cables.",
+        "locucion": "La caja trae tres sensores. Cada uno mira una cosa distinta, y cada uno va a su puerto: el de color al D, el de distancia al E y el de fuerza al F."
       },
       {
-        "plano": "Captura de la app: bloque «ir a la posición» con el valor 90 y el desplegable del sentido.",
-        "locucion": "El bloque «Ir a la posición» lleva el motor a un ángulo exacto y lo deja ahí. Puedes elegir el camino: el más corto, en sentido horario o antihorario."
+        "plano": "Un dedo aprieta el sensor de fuerza. En la pantalla del Hub aparece un tic.",
+        "locucion": "El de fuerza es el más fácil de entender: es un botón. Sabe si lo estás apretando y además con cuánta fuerza, aunque eso lo dejamos para más adelante."
       },
       {
-        "plano": "Dos motores en paralelo: uno repite «Accionar durante 90 grados» y el otro «Ir a la posición 90».",
-        "locucion": "No es lo mismo girar 90 grados que ir a la posición 90. Girar suma 90 a donde estés; ir a la posición te lleva siempre al mismo sitio."
+        "plano": "Una mano se acerca y se aleja del sensor de distancia. Se ve un número que baja y sube.",
+        "locucion": "El de distancia manda un sonido que no oyes, espera a que rebote y cuenta lo que ha tardado. Con eso sabe a cuántos centímetros está lo que tiene delante."
       },
       {
-        "plano": "Captura del bloque redondeado «A posición» dentro de «Escribir en la matriz»; el Hub muestra un número.",
-        "locucion": "El bloque redondeado «A posición» no mueve nada: es un dato. Te dice el ángulo actual y se coloca dentro de otros bloques."
+        "plano": "Tarjetas de colores pasando por debajo del sensor de color.",
+        "locucion": "El de color mira lo que tiene justo debajo y dice de qué color es. Tiene que estar cerca, a un centímetro o dos, y no le gusta la luz del sol dándole de lado."
       },
       {
-        "plano": "La barrera pita, sube, espera a que pase un coche de juguete y baja.",
-        "locucion": "Tu reto: una barrera de aparcamiento que avisa con un pitido, sube a 90 grados, espera a que pase el coche y vuelve a bajar a 0."
+        "plano": "El bloque «Esperar hasta que» con una pregunta encajada dentro.",
+        "locucion": "Para usarlos hoy solo necesitas un bloque: «Esperar hasta que». El programa se queda quieto en esa línea hasta que la pregunta que le metas dentro sea verdad. Y entonces sigue."
       }
-    ]
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Start Sensing» (sensor de fuerza)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l1-start-sensing/"
+    }
   },
   "bloques": [
     {
-      "texto": "A ir por la ruta más corta a la posición 0",
-      "explicacion": "Lleva el motor a un ángulo exacto, de 0 a 359, por el camino que elijas, y lo detiene ahí.",
-      "valores": [
-        "A",
-        "por la ruta más corta",
-        "0"
-      ]
+      "texto": "Esperar hasta que",
+      "explicacion": "Detiene el programa en esa línea hasta que la pregunta de dentro sea verdad. Es la forma más sencilla de usar un sensor: esperar a que pase algo."
     },
     {
-      "texto": "A posición",
-      "explicacion": "Bloque de dato: devuelve el ángulo actual del motor. Se coloca dentro de otros bloques.",
-      "valores": [
-        "A"
-      ]
+      "texto": "¿Está presionado?",
+      "explicacion": "Pregunta de sensor: vale verdad cuando el sensor de fuerza está apretado. Se mete dentro del hueco con forma de rombo."
     },
     {
-      "texto": "A fijar velocidad al 75 %",
-      "explicacion": "Guarda la velocidad a la que se moverá el motor. Una barrera lenta es más segura.",
-      "valores": [
-        "A",
-        "75"
-      ]
+      "texto": "¿Está más próximo a?",
+      "explicacion": "Pregunta de sensor: vale verdad cuando lo que hay delante está más cerca de los centímetros que le digas."
     },
     {
-      "texto": "Tocar nota X segundos",
-      "explicacion": "Sirve de pitido de aviso antes de mover la barrera."
-    },
-    {
-      "texto": "Esperar X segundos",
-      "explicacion": "Mantiene la barrera arriba el tiempo que tarda en pasar el coche."
+      "texto": "¿Es de color...?",
+      "explicacion": "Pregunta de sensor: vale verdad cuando el sensor de color ve justo el color que le has elegido."
     }
   ],
   "programa": {
-    "titulo": "La barrera sube y baja",
-    "explicacion": "Ir «a la posición» lleva el motor a un ángulo exacto, da igual dónde estuviera. Con una velocidad baja la barrera no da tirones.",
+    "titulo": "La mesa de pruebas",
+    "explicacion": "Tres esperas seguidas, una por sensor. El programa no avanza hasta que cada sensor nota lo suyo, y después de cada una hay una señal distinta para saber cuál ha sido.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
         "nivel": 0
       },
       {
-        "texto": "A fijar velocidad al 75 %",
+        "texto": "escribir Hello",
         "nivel": 0,
         "valores": [
-          "A",
-          "20"
+          "APRIETA"
         ]
       },
       {
-        "texto": "A ir por la ruta más corta a la posición 0",
+        "texto": "Esperar hasta que",
         "nivel": 0,
         "valores": [
-          "A",
-          "por la ruta más corta",
-          "90"
+          "¿Está presionado? F"
         ]
-      },
-      {
-        "texto": "Esperar X segundos",
-        "nivel": 0,
-        "valor": "3"
       },
       {
         "texto": "Tocar nota X segundos",
         "nivel": 0,
-        "valor": "60 · 0.5"
+        "valores": [
+          "60 · 0.5"
+        ]
       },
       {
-        "texto": "A ir por la ruta más corta a la posición 0",
+        "texto": "escribir Hello",
         "nivel": 0,
         "valores": [
-          "A",
-          "por la ruta más corta",
-          "0"
+          "ACERCA"
         ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 0,
+        "valores": [
+          "¿Está más próximo a? E 15 cm"
+        ]
+      },
+      {
+        "texto": "encender dibujo durante 2 segundos",
+        "nivel": 0,
+        "valores": [
+          "cara contenta",
+          "2"
+        ]
+      },
+      {
+        "texto": "apagar píxeles",
+        "nivel": 0
       }
     ]
   },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Sube la barrera",
-      "enunciado": "Lleva el motor A a la posición 90 y déjalo ahí.",
-      "pista": "«ir a la posición» va a un ángulo exacto, da igual dónde estuviera.",
+      "titulo": "Espera a que te aprieten",
+      "enunciado": "Espera a que se apriete el sensor de fuerza y entonces enciende un dibujo 2 segundos.",
+      "pista": "La pregunta del sensor se mete dentro del hueco en forma de rombo del bloque de esperar.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Esperar hasta que",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "cara contenta",
+            "2"
           ]
         }
       ],
-      "notas": "«ir a la posición» va a un ángulo exacto, da igual dónde estuviera la barrera al empezar."
+      "notas": "El programa se queda parado en la espera. Eso al principio parece que se ha colgado: conviene decirlo."
     },
     {
       "practica": 2,
-      "titulo": "Sube y baja",
-      "enunciado": "La barrera sube a 90, espera 3 segundos y vuelve a la posición 0.",
-      "pista": "Son dos bloques de posición con un «Esperar» en medio.",
+      "titulo": "Que no se acerque nadie",
+      "enunciado": "Espera a que algo se ponga a menos de 15 centímetros del sensor de distancia y toca una nota.",
+      "pista": "El número de centímetros se escribe dentro de la pregunta del sensor.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Esperar hasta que",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "3"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
-          ]
-        }
-      ],
-      "notas": "Bajar es volver a la posición 0: el mismo bloque con otro número.",
-      "pasos": [
-        {
-          "texto": "La barrera sube a 90"
-        },
-        {
-          "texto": "Espera 3 segundos"
-        },
-        {
-          "texto": "Vuelve a la posición 0"
-        }
-      ]
-    },
-    {
-      "practica": 3,
-      "titulo": "Sin tirones",
-      "enunciado": "Repite la subida y la bajada, pero fijando antes la velocidad al 20 %.",
-      "pista": "A menos velocidad, el movimiento es más suave y no da tirones.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "20"
-          ]
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "3"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
-          ]
-        }
-      ],
-      "notas": "La velocidad se fija una sola vez al principio: vale para los dos movimientos que vienen después."
-    },
-    {
-      "practica": 4,
-      "titulo": "Barrera con aviso",
-      "enunciado": "Antes de subir, el Hub da una nota de aviso; después sube, espera y baja.",
-      "pista": "Primero el sonido, luego el movimiento.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "20"
+            "¿Está más próximo a? E 15 cm"
           ]
         },
         {
           "texto": "Tocar nota X segundos",
           "nivel": 0,
-          "valor": "60 · 0.5"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "3"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "72 · 0.5"
           ]
         }
       ],
-      "notas": "Primero el aviso y luego el movimiento: así al coche le da tiempo a verlo."
+      "notas": "Con la mano se prueba en un segundo. Si no salta, casi siempre es que el sensor está mirando al techo.",
+      "pasos": [
+        {
+          "texto": "Espera a que algo se ponga a menos de 15 centímetros del sensor de distancia"
+        },
+        {
+          "texto": "Toca una nota"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "La tarjeta verde",
+      "enunciado": "Espera a que el sensor de color vea el color verde y pon el botón central en verde.",
+      "pista": "La tarjeta tiene que estar muy cerca del sensor, a un dedo de distancia.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valores": [
+            "¿Es de color verde? D"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "verde"
+          ]
+        }
+      ],
+      "notas": "Que el botón se ponga del mismo color que la tarjeta ayuda a ver que el sensor ha acertado.",
+      "pasos": [
+        {
+          "texto": "Espera a que el sensor de color vea el color verde"
+        },
+        {
+          "texto": "Pon el botón central en verde"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "La banderita",
+      "enunciado": "Espera a que se apriete el sensor de fuerza y haz que el motor A suba la banderita 90 grados.",
+      "pista": "Noventa grados es un cuarto de vuelta: se elige «grados» en el desplegable del bloque de mover.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valores": [
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "90",
+            "grados"
+          ]
+        }
+      ],
+      "notas": "Primera vez que un sensor manda sobre un motor. Es la idea que sostiene todo el resto del curso.",
+      "pasos": [
+        {
+          "texto": "Espera a que se apriete el sensor de fuerza"
+        },
+        {
+          "texto": "Haz que el motor A suba la banderita 90 grados"
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor mediano con su cable, una viga larga para el brazo, vigas y pasadores para la base y el poste.",
+    "piezas": "El Hub, un motor mediano, los tres sensores con sus cables, una viga de 15, dos vigas de 7, ocho pasadores y un eje de 3.",
     "pasos": [
       {
-        "titulo": "La base y el poste",
-        "texto": "Monta una base rectangular y levanta sobre ella un poste de dos vigas verticales."
+        "titulo": "La barra",
+        "texto": "Coge la viga de 15 y ponla en horizontal delante del Hub. Es la barra donde van a ir los tres sensores."
       },
       {
-        "titulo": "El motor",
-        "texto": "Fija el motor mediano en lo alto del poste, con el eje mirando al frente."
+        "titulo": "Los pies",
+        "texto": "Fija las dos vigas de 7 en los extremos de la barra, hacia abajo, con dos pasadores cada una. Son las patas."
       },
       {
-        "titulo": "La posición 0",
-        "texto": "Antes de montar el brazo, gira el motor con la mano hasta que sus dos marcas coincidan: esa es la posición 0."
+        "titulo": "Los sensores",
+        "texto": "Monta el sensor de fuerza en el agujero de la izquierda, el de distancia en el centro mirando hacia fuera y el de color en la derecha mirando hacia abajo."
       },
       {
-        "titulo": "El brazo",
-        "texto": "Con el motor en 0, monta la viga larga en horizontal sobre el eje. Así la posición 0 será la barrera bajada."
+        "titulo": "La banderita",
+        "texto": "Coloca el motor detrás de la barra con el eje de 3 hacia arriba. Esa es la banderita que se levantará cuando un sensor note algo."
       },
       {
-        "titulo": "El cable",
-        "texto": "Conecta el motor al puerto A y sujeta el cable al poste."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Sube el brazo con la mano hasta dejarlo vertical: no debe chocar con el poste ni con el Hub."
+        "titulo": "Los cables",
+        "texto": "Conecta el color al D, el de distancia al E, el de fuerza al F y el motor al A. Repasa que cada cable esté en su letra antes de programar."
       }
     ],
     "materiales": [
@@ -315,216 +280,213 @@
       },
       {
         "pieza": "viga",
-        "cantidad": 1
+        "cantidad": 3
       },
       {
-        "pieza": "pasador"
+        "pieza": "pasador",
+        "cantidad": 8
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 1
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué mide el sensor que lleva dentro el motor?",
+      "pregunta": "¿A qué puerto va el sensor de color en esta plataforma?",
       "opciones": [
-        "La temperatura",
-        "Su ángulo de giro",
-        "La distancia a un objeto",
-        "La fuerza con la que se aprieta"
+        "Al A",
+        "Al D",
+        "Al E",
+        "Al F"
       ],
       "correcta": 1,
-      "explicacion": "El motor mide su propia posición en grados; por eso puede ir a un ángulo exacto."
+      "explicacion": "Color al D, distancia al E y fuerza al F. Los motores se quedan con el A, el B y el C."
     },
     {
-      "pregunta": "El motor está en la posición 0 y ejecutas dos veces seguidas «Ir a la posición 90». ¿Dónde acaba?",
+      "pregunta": "¿Qué hace el bloque «Esperar hasta que»?",
       "opciones": [
-        "En 180",
-        "En 0",
-        "En 90",
-        "En 45"
-      ],
-      "correcta": 2,
-      "explicacion": "La primera vez va a 90; la segunda ya está en 90 y no se mueve."
-    },
-    {
-      "pregunta": "El motor está en la posición 0 y ejecutas dos veces «ir durante 90 grados». ¿Dónde acaba?",
-      "opciones": [
-        "En 180",
-        "En 90",
-        "En 0",
-        "En 360"
-      ],
-      "correcta": 0,
-      "explicacion": "Cada bloque suma 90 grados a la posición que tenía: 90 más 90 son 180."
-    },
-    {
-      "pregunta": "¿Qué tipo de bloque es «A posición»?",
-      "opciones": [
-        "Una orden que mueve el motor",
-        "Un evento que inicia el programa",
-        "Un bucle",
-        "Un dato que se coloca dentro de otros bloques"
-      ],
-      "correcta": 3,
-      "explicacion": "Es un bloque redondeado: no hace nada por sí solo, devuelve un número."
-    },
-    {
-      "pregunta": "¿Para qué alineamos las marcas del motor antes de montar el brazo?",
-      "opciones": [
-        "Para que el motor gire más rápido",
-        "Para que la posición 0 coincida con la barrera bajada",
-        "Para gastar menos batería",
-        "No sirve para nada"
+        "Espera los segundos que le digas",
+        "Se queda parado hasta que la pregunta de dentro es verdad",
+        "Repite lo de dentro hasta que sea verdad",
+        "Pregunta al alumno y espera su respuesta"
       ],
       "correcta": 1,
-      "explicacion": "Si el brazo se monta con el motor en otra posición, «Ir a la posición 0» no dejará la barrera horizontal."
+      "explicacion": "No cuenta tiempo: vigila una pregunta. Puede estar un segundo o diez minutos."
     },
     {
-      "pregunta": "¿Cuál es el orden correcto para la barrera?",
+      "pregunta": "¿Cómo mide la distancia el sensor de distancia?",
       "opciones": [
-        "Ir a la posición 0, Esperar, Tocar nota, Ir a la posición 90",
-        "Esperar, Ir a la posición 90, Ir a la posición 0, Tocar nota",
-        "Tocar nota, Ir a la posición 90, Esperar, Ir a la posición 0",
-        "Ir a la posición 90, Ir a la posición 0, Esperar, Tocar nota"
+        "Con una cinta métrica muy pequeña",
+        "Mandando un sonido que no oímos y contando lo que tarda en volver",
+        "Con una cámara",
+        "Pesando el aire que tiene delante"
       ],
-      "correcta": 2,
-      "explicacion": "Primero avisa, después sube, espera a que pase el coche y por último baja."
+      "correcta": 1,
+      "explicacion": "Es un eco: manda un ultrasonido, rebota y vuelve. El tiempo del viaje dice la distancia."
     },
     {
-      "pregunta": "La barrera sube demasiado bruscamente. ¿Qué cambias?",
+      "pregunta": "El sensor de color no acierta con una tarjeta. ¿Qué es lo primero que hay que mirar?",
       "opciones": [
-        "Pongo un valor más bajo en «fijar velocidad al … %»",
-        "Alargo el «Esperar»",
-        "Alargo el pitido",
-        "Uso la posición 180"
+        "Que la tarjeta esté muy cerca del sensor",
+        "Que el Hub tenga batería",
+        "Que el motor esté parado",
+        "Que el programa empiece por el sombrero amarillo"
       ],
       "correcta": 0,
-      "explicacion": "La brusquedad depende de la velocidad del motor, no de las pausas."
+      "explicacion": "Tiene que estar a un centímetro o dos. De lejos se confunde, y con sol de lado, también."
     },
     {
-      "pregunta": "¿Entre qué valores va la posición del motor?",
+      "pregunta": "Pones «Esperar hasta que ¿Está presionado?» y nunca aprietas el sensor. ¿Qué pasa?",
       "opciones": [
-        "De 0 a 100",
-        "De 1 a 10",
-        "De −90 a 90",
-        "De 0 a 359"
+        "El programa salta ese bloque a los 5 segundos",
+        "El programa se queda ahí parado para siempre",
+        "El Hub da error",
+        "El programa vuelve al principio"
       ],
-      "correcta": 3,
-      "explicacion": "Es un ángulo dentro de una vuelta: de 0 a 359 grados."
+      "correcta": 1,
+      "explicacion": "Espera lo que haga falta. Si parece colgado, casi siempre es una espera que no se cumple."
+    },
+    {
+      "pregunta": "¿Qué forma tiene el hueco donde se mete una pregunta de sensor?",
+      "opciones": [
+        "Redonda",
+        "Cuadrada",
+        "De rombo, con las puntas en pico",
+        "No tiene hueco: va encima"
+      ],
+      "correcta": 2,
+      "explicacion": "Las preguntas son bloques de rombo y solo encajan en huecos de rombo. La forma te dice dónde va cada cosa."
+    },
+    {
+      "pregunta": "¿Qué sensor usarías para una puerta que se abre cuando alguien llega?",
+      "opciones": [
+        "El de color",
+        "El de fuerza",
+        "El de distancia",
+        "Ninguno, haría falta una cámara"
+      ],
+      "correcta": 2,
+      "explicacion": "El de distancia nota que alguien se acerca sin tener que tocarlo."
+    },
+    {
+      "pregunta": "¿Y para un timbre?",
+      "opciones": [
+        "El de fuerza",
+        "El de distancia",
+        "El de color",
+        "El giroscopio del Hub"
+      ],
+      "correcta": 0,
+      "explicacion": "Un timbre se aprieta. El sensor de fuerza es exactamente eso: un botón que el programa puede leer."
     }
   ],
   "practicas": [
     {
-      "titulo": "Sube y baja",
-      "enunciado": "Al iniciar el programa, la barrera sube despacio a 90°, espera 3 segundos y vuelve a bajar a 0°.",
+      "titulo": "El timbre de la puerta",
+      "enunciado": "Espera a que se apriete el sensor de fuerza, toca una nota, escribe «PASA» en la pantalla y sube la banderita 90 grados con el motor A.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A fijar velocidad al 75 %",
+          "texto": "Esperar hasta que",
           "nivel": 0,
           "valores": [
-            "A",
-            "30"
-          ]
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
-          ]
-        }
-      ],
-      "notas": "Si la barrera baja en lugar de subir, el brazo está montado hacia el otro lado: vale usar 270 en lugar de 90."
-    },
-    {
-      "titulo": "Barrera con avisos",
-      "enunciado": "Mejora la barrera: suena un pitido de medio segundo antes de subir y otro antes de bajar. El botón central está en rojo con la barrera bajada y en verde mientras está arriba.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "poner luz del botón central en rojo",
-          "nivel": 0,
-          "valores": [
-            "rojo"
+            "¿Está presionado? F"
           ]
         },
         {
           "texto": "Tocar nota X segundos",
-          "valor": "72 · 0.5",
-          "nivel": 0
+          "nivel": 0,
+          "valores": [
+            "67 · 0.5"
+          ]
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "PASA"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
           "nivel": 0,
           "valores": [
             "A",
-            "por la ruta más corta",
-            "90"
-          ]
-        },
-        {
-          "texto": "poner luz del botón central en rojo",
-          "nivel": 0,
-          "valores": [
-            "verde"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "72 · 0.5",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
-          ]
-        },
-        {
-          "texto": "poner luz del botón central en rojo",
-          "nivel": 0,
-          "valores": [
-            "rojo"
+            "↻",
+            "90",
+            "grados"
           ]
         }
       ],
-      "notas": "Usa «poner luz del botón central», que es de la unidad 1. El color debe cambiar después de mover la barrera, no antes.",
+      "notas": "Cuatro cosas seguidas después de una espera. El orden es lo que se corrige.",
       "pasos": [
         {
-          "texto": "Mejora la barrera: suena un pitido de medio segundo antes de subir y otro antes de bajar"
+          "texto": "Espera a que se apriete el sensor de fuerza"
         },
         {
-          "texto": "El botón central está en rojo con la barrera bajada y en verde mientras está arriba"
+          "texto": "Toca una nota"
+        },
+        {
+          "texto": "Escribe «PASA» en la pantalla"
+        },
+        {
+          "texto": "Sube la banderita 90 grados con el motor A"
+        }
+      ]
+    },
+    {
+      "titulo": "El control de acceso",
+      "enunciado": "Espera a que el sensor de color vea la tarjeta roja, pon el botón central en rojo y después espera a que algo se acerque a menos de 10 centímetros para encender un dibujo 2 segundos.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valores": [
+            "¿Es de color rojo? D"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valores": [
+            "¿Está más próximo a? E 10 cm"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 0,
+          "valores": [
+            "corazón",
+            "2"
+          ]
+        }
+      ],
+      "notas": "Dos esperas encadenadas con dos sensores distintos. Hasta que no se cumple la primera, la segunda ni se mira.",
+      "pasos": [
+        {
+          "texto": "Espera a que el sensor de color vea la tarjeta roja"
+        },
+        {
+          "texto": "Pon el botón central en rojo"
+        },
+        {
+          "texto": "Después espera a que algo se acerque a menos de 10 centímetros para encender un dibujo 2 segundos"
         }
       ]
     }

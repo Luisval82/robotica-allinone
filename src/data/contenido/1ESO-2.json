@@ -1,80 +1,63 @@
 {
   "curso": "1ESO",
   "unidad": 2,
-  "reto": "Monta un ventilador de sobremesa y prográmalo con tres velocidades.",
+  "reto": "Monta un ventilador y prográmale tres velocidades seguidas: suave, media y fuerte.",
   "video": {
-    "titulo": "Mi primer motor",
+    "titulo": "El motor mediano, por dentro",
     "duracion": "4 min",
+    "escenas": [
+      {
+        "plano": "Un motor mediano en la mano, con el cable colgando. Se enchufa al puerto A del Hub.",
+        "locucion": "Este es el motor mediano. La caja trae dos. Se enchufa a cualquier puerto, pero en esta plataforma el primer motor va siempre al A: así todos los programas de clase se parecen."
+      },
+      {
+        "plano": "Primer plano del eje del motor girando despacio. Una pegatina en el eje da una vuelta entera.",
+        "locucion": "Una rotación es una vuelta entera del eje. Si le pides dos rotaciones, da dos vueltas y para. No importa lo deprisa que vaya: dos vueltas son dos vueltas."
+      },
+      {
+        "plano": "El mismo eje girando un cuarto de vuelta. Un transportador marca 90 grados.",
+        "locucion": "También se le pueden pedir grados. Una vuelta entera son 360 grados, media vuelta 180 y un cuarto 90. Los grados sirven cuando quieres precisión."
+      },
+      {
+        "plano": "Dos programas uno al lado del otro: «ir durante 2 rotaciones» y «arrancar motor».",
+        "locucion": "Hay dos maneras de mover un motor. «Ir durante» le da una tarea con final: gira y para. «Arrancar» lo pone en marcha y lo deja girando hasta que tú lo pares."
+      },
+      {
+        "plano": "El motor gira al 20 % y después al 100 %. El ventilador acelera.",
+        "locucion": "La velocidad va de 0 a 100 y se fija antes de arrancar. Si no dices nada, va al 75 %."
+      }
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=fe5792d1b14dd60f8950eab97f9da507&source=embed&photo_id=56312975&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
     "enlaceOficial": {
       "titulo": "LEGO Education: «Making Moves with Motors»",
       "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/making-moves-with-motors/"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=fe5792d1b14dd60f8950eab97f9da507&source=embed&photo_id=56312975&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
-    "escenas": [
-      {
-        "plano": "Un motor mediano en la mano; se conecta su cable al puerto A del Hub.",
-        "locucion": "El motor mediano se conecta a cualquiera de los seis puertos del Hub. En esta plataforma el primer motor va siempre en el puerto A."
-      },
-      {
-        "plano": "Captura de la app: el bloque azul «ir durante» con el desplegable de rotaciones, grados y segundos.",
-        "locucion": "Los bloques azules mueven motores. «ir durante» lo gira una cantidad exacta, en rotaciones, en grados o en segundos. Una rotación son 360 grados."
-      },
-      {
-        "plano": "El motor gira primero despacio y luego rápido, con una marca de cinta para ver el giro.",
-        "locucion": "Con «fijar velocidad al … %» eliges lo rápido que gira, de 0 a 100 %. Este bloque no mueve nada: solo guarda la velocidad para los bloques de motor que vienen después."
-      },
-      {
-        "plano": "Captura de la pila «arrancar motor», «Esperar 3 segundos», «parar motor» y el motor girando.",
-        "locucion": "«arrancar motor» lo pone a girar sin límite y el programa sigue adelante. El motor no se detiene hasta llegar a «parar motor». Entre los dos, un «Esperar» decide cuánto tiempo gira."
-      },
-      {
-        "plano": "El ventilador terminado gira a tres velocidades, una detrás de otra.",
-        "locucion": "Tu reto: un ventilador que funcione unos segundos a velocidad baja, después a media y después a alta, y que se pare al final."
-      }
-    ]
+    }
   },
   "bloques": [
     {
       "texto": "A ir durante 1 rotaciones",
-      "explicacion": "Gira el motor una cantidad exacta —rotaciones, grados o segundos— y se detiene solo. El programa espera a que termine.",
-      "valores": [
-        "A",
-        "↻",
-        "1",
-        "rotaciones"
-      ]
+      "explicacion": "Mueve el motor del puerto que elijas una cantidad concreta y para solo. El desplegable cambia entre rotaciones, grados y segundos."
     },
     {
       "texto": "A fijar velocidad al 75 %",
-      "explicacion": "Guarda la velocidad del motor, de 0 a 100 %, para los bloques de motor que vienen después. No lo mueve.",
-      "valores": [
-        "A",
-        "75"
-      ]
+      "explicacion": "Decide a qué velocidad irá el motor a partir de ese momento. Va de 0 a 100 y hay que ponerlo ANTES de mover."
     },
     {
       "texto": "A arrancar motor",
-      "explicacion": "Pone el motor a girar y pasa enseguida al bloque siguiente. El motor sigue girando hasta que algo lo pare.",
-      "valores": [
-        "A",
-        "↻"
-      ]
+      "explicacion": "Pone el motor en marcha y el programa sigue. El motor se queda girando hasta que otro bloque lo pare."
     },
     {
       "texto": "A parar motor",
-      "explicacion": "Detiene el motor.",
-      "valores": [
-        "A"
-      ]
+      "explicacion": "Para el motor que esté girando. Es la pareja de «arrancar»: si arrancas y no paras, no para nunca."
     },
     {
-      "texto": "Esperar X segundos",
-      "explicacion": "Mantiene el programa en pausa. Si el motor estaba arrancado, sigue girando mientras tanto."
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "explicacion": "Lleva el eje a una posición concreta, como la aguja de un reloj. La posición 0 es la marca de fábrica del motor."
     }
   ],
   "programa": {
-    "titulo": "Un motor que arranca y para",
-    "explicacion": "«fijar velocidad» no mueve nada: guarda el valor para los bloques de motor que vengan después. Entre arrancar y parar, un «Esperar» decide cuánto tiempo gira.",
+    "titulo": "Ventilador de tres velocidades",
+    "explicacion": "La velocidad se fija antes de arrancar, nunca después. Este programa arranca suave, sube a media, sube a fuerte y acaba parando el motor.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
@@ -85,7 +68,7 @@
         "nivel": 0,
         "valores": [
           "A",
-          "40"
+          "30"
         ]
       },
       {
@@ -99,7 +82,39 @@
       {
         "texto": "Esperar X segundos",
         "nivel": 0,
-        "valor": "3"
+        "valores": [
+          "3"
+        ]
+      },
+      {
+        "texto": "A fijar velocidad al 75 %",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "60"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 0,
+        "valores": [
+          "3"
+        ]
+      },
+      {
+        "texto": "A fijar velocidad al 75 %",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "100"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 0,
+        "valores": [
+          "3"
+        ]
       },
       {
         "texto": "A parar motor",
@@ -113,9 +128,9 @@
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Un giro corto",
-      "enunciado": "Haz que el motor del puerto A gire 2 rotaciones y pare.",
-      "pista": "«ir durante» ya para solo al terminar; no hace falta «parar motor».",
+      "titulo": "Una vuelta y para",
+      "enunciado": "Haz que el motor A dé exactamente dos rotaciones y se pare.",
+      "pista": "Con «ir durante» el motor para solo al terminar: no hace falta un bloque de parar.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -132,13 +147,21 @@
           ]
         }
       ],
-      "notas": "«ir durante» para solo al terminar las 2 rotaciones: no hace falta añadir «parar motor»."
+      "notas": "La trampa es añadir «parar motor» al final. No hace falta y no estorba, pero conviene que entiendan la diferencia.",
+      "pasos": [
+        {
+          "texto": "Haz que el motor A dé exactamente dos rotaciones"
+        },
+        {
+          "texto": "Se pare"
+        }
+      ]
     },
     {
       "practica": 2,
       "titulo": "Despacio y deprisa",
-      "enunciado": "El motor gira 3 segundos al 20 % y después 3 segundos al 100 %.",
-      "pista": "«fijar velocidad» no mueve nada: hay que ponerlo antes de cada giro.",
+      "enunciado": "Pon el motor al 20 %, hazlo girar una rotación, súbelo al 100 % y hazlo girar otra rotación.",
+      "pista": "La velocidad se fija antes de cada movimiento, no después.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -158,8 +181,8 @@
           "valores": [
             "A",
             "↻",
-            "3",
-            "segundos"
+            "1",
+            "rotaciones"
           ]
         },
         {
@@ -176,26 +199,18 @@
           "valores": [
             "A",
             "↻",
-            "3",
-            "segundos"
+            "1",
+            "rotaciones"
           ]
         }
       ],
-      "notas": "«fijar velocidad» no mueve nada por sí solo: hay que ponerlo ANTES de cada giro para que ese giro lo use.",
-      "pasos": [
-        {
-          "texto": "El motor gira 3 segundos al 20 %"
-        },
-        {
-          "texto": "Después 3 segundos al 100 %"
-        }
-      ]
+      "notas": "Se ve muy bien la diferencia de velocidad porque las dos vueltas son iguales."
     },
     {
       "practica": 3,
-      "titulo": "Arranca y para",
-      "enunciado": "Usa «arrancar motor», espera 4 segundos y para el motor.",
-      "pista": "Esta pareja sirve cuando no sabes de antemano cuánto tiene que girar.",
+      "titulo": "Arranca y para tú",
+      "enunciado": "Arranca el motor A, déjalo girando 4 segundos y páralo.",
+      "pista": "«Arrancar» no para solo. Necesita una espera y después el bloque de parar.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -212,7 +227,9 @@
         {
           "texto": "Esperar X segundos",
           "nivel": 0,
-          "valor": "4"
+          "valores": [
+            "4"
+          ]
         },
         {
           "texto": "A parar motor",
@@ -222,24 +239,200 @@
           ]
         }
       ],
-      "notas": "«arrancar motor» no espera: el programa sigue y es el «Esperar» el que decide cuánto gira antes de pararlo.",
-      "pasos": [
-        {
-          "texto": "Usa «arrancar motor»"
-        },
-        {
-          "texto": "Espera 4 segundos"
-        },
-        {
-          "texto": "Para el motor"
-        }
-      ]
+      "notas": "Es el programa que más se olvida terminar. Sin el bloque de parar, el motor sigue hasta que se apaga el Hub."
     },
     {
       "practica": 4,
-      "titulo": "Ventilador de dos marchas",
-      "enunciado": "El ventilador arranca al 30 %, a los 3 segundos sube al 70 % sin pararse, y a los 3 segundos se detiene.",
-      "pista": "Cambia la velocidad mientras el motor está en marcha: no hace falta pararlo.",
+      "titulo": "Media vuelta exacta",
+      "enunciado": "Lleva el motor A a la posición 0, espera un segundo y hazlo girar 180 grados.",
+      "pista": "Los grados se eligen en el mismo desplegable que las rotaciones.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "1"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "180",
+            "grados"
+          ]
+        }
+      ],
+      "notas": "Ir primero a la posición 0 hace que el giro salga siempre igual, empiece el eje donde empiece.",
+      "pasos": [
+        {
+          "texto": "Lleva el motor A a la posición 0"
+        },
+        {
+          "texto": "Espera un segundo y hazlo girar 180 grados"
+        }
+      ]
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, un motor mediano con su cable, dos vigas de 11, una viga de 7, cuatro pasadores, un eje de 5 y una rueda con neumático.",
+    "pasos": [
+      {
+        "titulo": "El pie",
+        "texto": "Une las dos vigas de 11 en cruz con dos pasadores. Esta cruz es la base y es la que evita que el ventilador se caiga cuando vibre."
+      },
+      {
+        "titulo": "La torre",
+        "texto": "Levanta la viga de 7 en vertical sobre el centro de la cruz y fíjala con dos pasadores."
+      },
+      {
+        "titulo": "El motor",
+        "texto": "Encaja el motor mediano arriba de la torre, con el eje mirando hacia delante."
+      },
+      {
+        "titulo": "Las aspas",
+        "texto": "Mete el eje de 5 en el motor y pon la rueda en la punta. La rueda hace de aspa: al girar mueve aire."
+      },
+      {
+        "titulo": "El cable",
+        "texto": "Conecta el motor al puerto A del Hub y recoge el cable sobrante alrededor de la torre para que no toque las aspas."
+      }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 3
+      },
+      {
+        "pieza": "pasador",
+        "cantidad": 4
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 1
+      },
+      {
+        "pieza": "rueda",
+        "cantidad": 1
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Cuántos grados tiene una rotación entera?",
+      "opciones": [
+        "90",
+        "180",
+        "360",
+        "100"
+      ],
+      "correcta": 2,
+      "explicacion": "Una vuelta entera son 360 grados. Media vuelta, 180, y un cuarto, 90."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre «ir durante 2 rotaciones» y «arrancar motor»?",
+      "opciones": [
+        "Ninguna, hacen lo mismo",
+        "«Ir durante» para solo al acabar; «arrancar» sigue hasta que lo pares",
+        "«Arrancar» es más rápido",
+        "«Ir durante» solo funciona con el motor grande"
+      ],
+      "correcta": 1,
+      "explicacion": "Uno tiene final y el otro no. Por eso «arrancar» necesita siempre un «parar» más abajo."
+    },
+    {
+      "pregunta": "¿Dónde hay que poner el bloque de fijar velocidad?",
+      "opciones": [
+        "Antes de mover el motor",
+        "Después de mover el motor",
+        "Da igual",
+        "Solo al final del programa"
+      ],
+      "correcta": 0,
+      "explicacion": "La velocidad se fija para lo que venga después. Puesta detrás, el movimiento ya ha pasado."
+    },
+    {
+      "pregunta": "Tu programa arranca el motor y acaba sin pararlo. ¿Qué pasa?",
+      "opciones": [
+        "El motor se para solo al terminar el programa",
+        "El motor sigue girando",
+        "El Hub da error",
+        "El motor da una vuelta y para"
+      ],
+      "correcta": 1,
+      "explicacion": "El motor se queda girando. Hay que pararlo a mano o apagar el Hub."
+    },
+    {
+      "pregunta": "¿A qué puerto se enchufa el primer motor en esta plataforma?",
+      "opciones": [
+        "Al A",
+        "Al D",
+        "Al F",
+        "A cualquiera, pero hay que decírselo al programa"
+      ],
+      "correcta": 0,
+      "explicacion": "Por convenio de clase, los motores van al A, B y C por orden, y los sensores al D, E y F."
+    },
+    {
+      "pregunta": "¿Entre qué números va la velocidad de un motor?",
+      "opciones": [
+        "0 y 10",
+        "0 y 100",
+        "1 y 360",
+        "−100 y 100, pero solo en el motor grande"
+      ],
+      "correcta": 1,
+      "explicacion": "Es un porcentaje: 0 es parado y 100 es todo lo que da."
+    },
+    {
+      "pregunta": "Quieres que el eje acabe siempre mirando al mismo sitio. ¿Qué bloque usas?",
+      "opciones": [
+        "«ir durante 1 rotaciones»",
+        "«ir a la posición 0»",
+        "«arrancar motor»",
+        "«fijar velocidad al 100 %»"
+      ],
+      "correcta": 1,
+      "explicacion": "La posición es absoluta: la 0 es siempre el mismo punto del eje, da igual dónde estuviera antes."
+    },
+    {
+      "pregunta": "Si pones el motor al 20 % y le pides dos rotaciones, ¿cuántas vueltas da?",
+      "opciones": [
+        "Media vuelta",
+        "Dos vueltas, pero más despacio",
+        "Veinte vueltas",
+        "Depende del peso que mueva"
+      ],
+      "correcta": 1,
+      "explicacion": "La velocidad cambia lo que tarda, no lo que recorre. Dos rotaciones son dos vueltas siempre."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "El ventilador de la mesa",
+      "enunciado": "Programa el ventilador para que arranque al 30 %, suba al 70 % a los 3 segundos, suba al 100 % a los 3 segundos siguientes y pare.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -264,7 +457,9 @@
         {
           "texto": "Esperar X segundos",
           "nivel": 0,
-          "valor": "3"
+          "valores": [
+            "3"
+          ]
         },
         {
           "texto": "A fijar velocidad al 75 %",
@@ -277,244 +472,9 @@
         {
           "texto": "Esperar X segundos",
           "nivel": 0,
-          "valor": "3"
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
           "valores": [
-            "A"
+            "3"
           ]
-        }
-      ],
-      "notas": "Fíjate en que la velocidad cambia con el motor en marcha: no hay que pararlo para subirla."
-    }
-  ],
-  "construccion": {
-    "piezas": "El Hub, un motor mediano con su cable, un eje, vigas largas y cortas, y pasadores.",
-    "pasos": [
-      {
-        "titulo": "La base",
-        "texto": "Monta un rectángulo de vigas ancho y pesado: el ventilador vibra y una base pequeña lo haría caminar por la mesa."
-      },
-      {
-        "titulo": "La columna",
-        "texto": "Levanta una columna con dos vigas verticales bien sujetas a la base."
-      },
-      {
-        "titulo": "El motor",
-        "texto": "Fija el motor mediano en lo alto de la columna, con el eje mirando al frente."
-      },
-      {
-        "titulo": "Las aspas",
-        "texto": "Mete un eje en el motor y monta en él tres o cuatro vigas cortas repartidas en círculo."
-      },
-      {
-        "titulo": "El cable",
-        "texto": "Conecta el motor al puerto A del Hub y recoge el cable para que no roce las aspas."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Gira las aspas con la mano una vuelta completa: no deben tocar la base, la columna ni el cable."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "hub"
-      },
-      {
-        "pieza": "motor",
-        "cantidad": 1
-      },
-      {
-        "pieza": "eje",
-        "cantidad": 1
-      },
-      {
-        "pieza": "viga"
-      },
-      {
-        "pieza": "pasador"
-      }
-    ]
-  },
-  "test": [
-    {
-      "pregunta": "¿Cuántos grados tiene una rotación completa?",
-      "opciones": [
-        "90",
-        "180",
-        "360",
-        "100"
-      ],
-      "correcta": 2,
-      "explicacion": "Una vuelta entera son 360 grados; media vuelta, 180."
-    },
-    {
-      "pregunta": "El programa ejecuta «A ir durante 2 rotaciones». ¿Qué ocurre al terminar las dos vueltas?",
-      "opciones": [
-        "El motor se detiene solo y el programa continúa",
-        "El motor sigue girando",
-        "El programa se borra",
-        "El motor gira al revés"
-      ],
-      "correcta": 0,
-      "explicacion": "«ir durante» tiene un final: cumple la cantidad pedida, se para y deja paso al siguiente bloque."
-    },
-    {
-      "pregunta": "¿Qué hace «fijar velocidad al 50 %»?",
-      "opciones": [
-        "Gira el motor media vuelta",
-        "Para el motor",
-        "Mueve el motor a mitad de potencia durante 1 segundo",
-        "Guarda la velocidad para los siguientes bloques de motor, sin moverlo"
-      ],
-      "correcta": 3,
-      "explicacion": "«fijar velocidad al … %» solo guarda un valor. El motor no se mueve hasta que llega un bloque que lo accione o lo arranque."
-    },
-    {
-      "pregunta": "Programa: «A arrancar motor», «Esperar 3 segundos», «A parar motor». ¿Cuánto tiempo gira el motor?",
-      "opciones": [
-        "No llega a girar",
-        "3 segundos",
-        "1 rotación",
-        "Para siempre"
-      ],
-      "correcta": 1,
-      "explicacion": "Arranca, el programa espera 3 segundos con el motor en marcha y después lo para."
-    },
-    {
-      "pregunta": "¿En qué se diferencian «arrancar motor» y «ir durante»?",
-      "opciones": [
-        "«Arrancar» gira sin límite hasta que se para; «Accionar durante» gira una cantidad exacta",
-        "No hay ninguna diferencia",
-        "«Arrancar» solo sirve para el motor grande",
-        "«Accionar durante» no deja elegir la velocidad"
-      ],
-      "correcta": 0,
-      "explicacion": "Uno no tiene final y el programa sigue adelante; el otro termina solo cuando cumple la cantidad."
-    },
-    {
-      "pregunta": "Quieres que el motor gire exactamente media vuelta. ¿Qué pones?",
-      "opciones": [
-        "fijar velocidad al 50 %",
-        "Esperar 0.5 segundos",
-        "ir durante 180 grados",
-        "ir durante 50 segundos"
-      ],
-      "correcta": 2,
-      "explicacion": "Media vuelta son 180 grados. La velocidad no cambia cuánto gira, solo lo deprisa que lo hace."
-    },
-    {
-      "pregunta": "¿En qué puerto conectamos el motor del ventilador?",
-      "opciones": [
-        "En el puerto de carga USB",
-        "En el puerto F",
-        "En ninguno: va por Bluetooth",
-        "En el puerto A"
-      ],
-      "correcta": 3,
-      "explicacion": "En esta plataforma los motores ocupan los primeros puertos: el primero, el A."
-    },
-    {
-      "pregunta": "Para pasar de velocidad baja a media y a alta, ¿qué bloque cambias cada vez?",
-      "opciones": [
-        "Esperar X segundos",
-        "fijar velocidad al … %",
-        "parar motor",
-        "apagar píxeles"
-      ],
-      "correcta": 1,
-      "explicacion": "Cada velocidad del ventilador es un valor distinto de «fijar velocidad al … %»."
-    }
-  ],
-  "practicas": [
-    {
-      "titulo": "Ventilador de una velocidad",
-      "enunciado": "Programa el ventilador para que gire durante 5 segundos al 30 % de velocidad y después se pare.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "30"
-          ]
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻",
-            "5",
-            "segundos"
-          ]
-        }
-      ],
-      "notas": "También es correcto «arrancar motor», «Esperar 5 segundos» y «parar motor». Comprueba que la velocidad se fija antes de mover el motor.",
-      "pasos": [
-        {
-          "texto": "Programa el ventilador para que gire durante 5 segundos al 30 % de velocidad"
-        },
-        {
-          "texto": "Después se pare"
-        }
-      ]
-    },
-    {
-      "titulo": "Tres velocidades",
-      "enunciado": "El ventilador gira 3 segundos al 30 %, 3 segundos al 60 % y 3 segundos al 100 %, sin pararse entre una velocidad y la siguiente. Al final se detiene.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "30"
-          ]
-        },
-        {
-          "texto": "A arrancar motor",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "60"
-          ]
-        },
-        {
-          "texto": "A arrancar motor",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
         },
         {
           "texto": "A fijar velocidad al 75 %",
@@ -525,17 +485,11 @@
           ]
         },
         {
-          "texto": "A arrancar motor",
+          "texto": "Esperar X segundos",
           "nivel": 0,
           "valores": [
-            "A",
-            "↻"
+            "3"
           ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
         },
         {
           "texto": "A parar motor",
@@ -545,15 +499,72 @@
           ]
         }
       ],
-      "notas": "La velocidad nueva se aplica al volver a arrancar el motor: por eso se repite «arrancar motor» tras cada cambio. Compruébalo en la app antes de corregir.",
+      "notas": "Lo que se corrige: que la velocidad cambie mientras el motor sigue girando, sin pararlo entre tramo y tramo.",
       "pasos": [
         {
-          "texto": "El ventilador gira 3 segundos al 30 %, 3 segundos al 60 % y 3 segundos al 100 %, sin pararse entre una velocidad y la siguiente"
+          "texto": "Programa el ventilador para que arranque al 30 %"
         },
         {
-          "texto": "Al final se detiene"
+          "texto": "Suba al 70 % a los 3 segundos"
+        },
+        {
+          "texto": "Suba al 100 % a los 3 segundos siguientes y pare"
         }
       ]
+    },
+    {
+      "titulo": "El cuentavueltas",
+      "enunciado": "Haz que el motor A dé una rotación, toque una nota, dé otra rotación, toque la nota otra vez y acabe volviendo a la posición 0.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.3"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "1",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.3"
+          ]
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "por la ruta más corta",
+            "0"
+          ]
+        }
+      ],
+      "notas": "Mezcla motor y sonido. La vuelta a la posición 0 al final es lo que más se olvida."
     }
   ]
 }

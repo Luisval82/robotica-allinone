@@ -1,114 +1,112 @@
 {
   "curso": "1ESO",
   "unidad": 5,
-  "reto": "Construye una puerta automática con timbre: se abre al pulsar y se cierra sola.",
+  "reto": "Monta una base de conducción y hazle recorrer un cuadrado volviendo al punto de partida.",
   "video": {
-    "titulo": "La máquina espera mi orden",
-    "duracion": "4 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Start Sensing» (sensor de fuerza)",
-      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l1-start-sensing/"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "titulo": "Dos motores que trabajan juntos",
+    "duracion": "5 min",
     "escenas": [
       {
-        "plano": "Una puerta cerrada; un dedo pulsa un botón, suena un timbre y la puerta se abre.",
-        "locucion": "Hasta ahora tus programas arrancaban y hacían su trabajo sin mirar a nadie. Hoy la máquina va a esperar tu orden."
+        "plano": "La base de conducción montada, vista desde arriba: dos ruedas grandes delante y una pequeña detrás.",
+        "locucion": "Esta es la base de conducción: dos motores, uno por rueda, y una rueda loca detrás que solo sirve para que no se caiga."
       },
       {
-        "plano": "Primer plano del sensor de fuerza y de su conexión al puerto F.",
-        "locucion": "El sensor de fuerza es un pulsador: nota cuándo lo aprietas y también con cuánta fuerza. Lo conectamos al puerto F."
+        "plano": "Las dos ruedas giran hacia delante a la vez. El robot avanza recto.",
+        "locucion": "Si los dos motores giran igual, el robot va recto. Pero manejarlos por separado es un lío, así que SPIKE tiene bloques que mandan sobre los dos a la vez."
       },
       {
-        "plano": "Captura de la app: el bloque hexagonal «¿Está presionado?» encajado en «Esperar hasta que».",
-        "locucion": "El bloque hexagonal «¿Está presionado?» es una pregunta: responde sí o no. Lo encajamos en «Esperar hasta que», que detiene el programa hasta que la respuesta sea sí."
+        "plano": "El bloque «fijar A+B como motores en movimiento» resaltado al principio del programa.",
+        "locucion": "Lo primero del programa, siempre, es decirle qué dos motores forman la base. Si se te olvida, los bloques de mover no saben a quién mandar."
       },
       {
-        "plano": "Dos programas en paralelo: uno con «Esperar 3 segundos» y otro con «Esperar hasta que».",
-        "locucion": "«Esperar X segundos» espera un tiempo fijo. «Esperar hasta que» espera a que ocurra algo, tarde lo que tarde."
+        "plano": "Una rueda gira y la otra está parada. El robot gira sobre sí mismo.",
+        "locucion": "Para girar, los motores hacen cosas distintas. El bloque de giro lleva un número de dirección: 0 es recto, 100 es girar del todo a la derecha y −100, a la izquierda."
       },
       {
-        "plano": "La puerta suena, se abre a 90 grados, espera y se cierra.",
-        "locucion": "Al pulsar suena el timbre, el motor lleva la puerta a la posición de abierta, espera a que pases y vuelve a la posición 0."
+        "plano": "El Hub se inclina y gira en la mano. Un número en la pantalla cambia con el giro.",
+        "locucion": "Y dentro del Hub hay un giroscopio, que sabe cuánto has girado desde que empezaste. El ángulo de guiñada es el del giro en plano, como el de una veleta."
       },
       {
-        "plano": "Varias personas llaman una detrás de otra y la puerta responde a todas.",
-        "locucion": "Tu reto: una puerta con timbre que atienda a varias visitas seguidas."
+        "plano": "El bloque de poner el ángulo a cero, y después el robot girando 90 grados exactos.",
+        "locucion": "Antes de usarlo se pone a cero, que es como decir «desde aquí empiezo a contar». A partir de ahí el robot sabe hacia dónde mira. En la unidad 8 lo usarás para girar exacto."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 1 — Driving Around»",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-1-driving-around/"
+    }
   },
   "bloques": [
     {
-      "texto": "Esperar hasta que",
-      "explicacion": "Detiene el programa hasta que la pregunta de su hueco se cumple. Después sigue con el bloque siguiente."
+      "texto": "fijar A+B como motores en movimiento",
+      "explicacion": "Dice qué dos motores forman la base de conducción. Va al principio del programa: sin él, los demás bloques de movimiento no saben a qué motores mandar."
     },
     {
-      "texto": "¿Está presionado?",
-      "explicacion": "Pregunta al sensor de fuerza si alguien lo está apretando. Responde verdadero o falso."
+      "texto": "fijar velocidad de movimiento al 50 %",
+      "explicacion": "La velocidad de la base entera, de 0 a 100. Para girar con precisión conviene bajarla: cuanto más despacio, menos se pasa."
     },
     {
-      "texto": "A ir por la ruta más corta a la posición 0",
-      "explicacion": "Lleva la puerta a un ángulo exacto: abierta o cerrada.",
-      "valores": [
-        "A",
-        "por la ruta más corta",
-        "0"
-      ]
+      "texto": "mover ↑ durante 10 rotaciones",
+      "explicacion": "Mueve la base hacia delante o hacia atrás la cantidad que le digas, y para sola. El desplegable cambia entre rotaciones, grados, segundos y centímetros."
     },
     {
-      "texto": "A ir durante 1 rotaciones",
-      "explicacion": "Gira el motor una cantidad exacta. Sirve para abrir la puerta un poco más o un poco menos.",
-      "valores": [
-        "A",
-        "↻",
-        "1",
-        "rotaciones"
-      ]
+      "texto": "mover derecha: 30 durante 10 rotaciones",
+      "explicacion": "Lo mismo, pero torciendo. El número de dirección va de −100 a 100: 0 es recto, 100 gira del todo a la derecha y −100 a la izquierda."
     },
     {
-      "texto": "Tocar sonido hasta acabar",
-      "explicacion": "Hace de timbre: suena entero antes de que la puerta empiece a moverse."
+      "texto": "Fijar el ángulo de guiñada del Hub a 0",
+      "explicacion": "Pone a cero el contador de giro del giroscopio. Es decirle al robot «desde aquí, estás mirando al frente»."
     }
   ],
   "programa": {
-    "titulo": "La puerta se abre al pulsar",
-    "explicacion": "«Esperar hasta que» detiene el programa hasta que la respuesta del sensor es «sí». Hasta que alguien no pulsa, no pasa nada.",
+    "titulo": "El cuadrado",
+    "explicacion": "Un cuadrado son cuatro veces lo mismo: avanzar un tramo y girar un cuarto de vuelta. Con un bucle se escribe una sola vez.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
         "nivel": 0
       },
       {
-        "texto": "Esperar hasta que",
-        "nivel": 0,
-        "valor": "¿Está presionado? F"
-      },
-      {
-        "texto": "Tocar sonido hasta acabar",
-        "nivel": 0,
-        "valor": "timbre"
-      },
-      {
-        "texto": "A ir por la ruta más corta a la posición 0",
+        "texto": "fijar A+B como motores en movimiento",
         "nivel": 0,
         "valores": [
-          "A",
-          "por la ruta más corta",
-          "90"
+          "A+B"
         ]
       },
       {
-        "texto": "Esperar X segundos",
-        "nivel": 0,
-        "valor": "3"
-      },
-      {
-        "texto": "A ir por la ruta más corta a la posición 0",
+        "texto": "fijar velocidad de movimiento al 50 %",
         "nivel": 0,
         "valores": [
-          "A",
-          "por la ruta más corta",
-          "0"
+          "40"
+        ]
+      },
+      {
+        "texto": "Fijar el ángulo de guiñada del Hub a 0",
+        "nivel": 0
+      },
+      {
+        "texto": "Repetir bucle",
+        "nivel": 0,
+        "valores": [
+          "4"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "↑",
+          "2",
+          "rotaciones"
+        ]
+      },
+      {
+        "texto": "mover derecha: 30 durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "derecha: 100",
+          "0.5",
+          "rotaciones"
         ]
       }
     ]
@@ -116,196 +114,215 @@
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Espera al botón",
-      "enunciado": "El programa no hace nada hasta que alguien pulsa el sensor de fuerza; entonces suena una nota.",
-      "pista": "«Esperar hasta que» detiene el programa hasta que la respuesta es «sí».",
+      "titulo": "Recto y para",
+      "enunciado": "Prepara la base con los motores A y B y hazla avanzar dos rotaciones hacia delante.",
+      "pista": "El bloque de fijar los motores va el primero, antes que cualquier bloque de mover.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "nivel": 0,
-          "valor": "60 · 0.5"
-        }
-      ],
-      "notas": "«Esperar hasta que» deja el programa quieto, sin gastar nada, hasta que la respuesta del sensor es «sí»."
-    },
-    {
-      "practica": 2,
-      "titulo": "Puerta que se abre",
-      "enunciado": "Al pulsar, la puerta se abre llevando el motor a la posición 90.",
-      "pista": "Primero la espera, después el movimiento.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "A+B"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "2",
+            "rotaciones"
           ]
         }
       ],
-      "notas": "Primero la espera y después el movimiento: si los cambias de orden, la puerta se abre sola al arrancar."
+      "notas": "Tres bloques. Si se olvidan el de fijar motores, el robot no se mueve y no da ningún error: ese es el aprendizaje."
     },
     {
-      "practica": 3,
-      "titulo": "Y se cierra sola",
-      "enunciado": "Después de abrirse, la puerta espera 3 segundos y se cierra.",
-      "pista": "Cerrar es volver a la posición 0.",
+      "practica": 2,
+      "titulo": "Ida y vuelta",
+      "enunciado": "Avanza tres rotaciones, espera un segundo y vuelve hacia atrás otras tres rotaciones.",
+      "pista": "Para ir hacia atrás se cambia la flecha del desplegable, no el número.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "A+B"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "3",
+            "rotaciones"
           ]
         },
         {
           "texto": "Esperar X segundos",
           "nivel": 0,
-          "valor": "3"
+          "valores": [
+            "1"
+          ]
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "↓",
+            "3",
+            "rotaciones"
           ]
         }
       ],
-      "notas": "Cerrar es volver a la posición 0, igual que la barrera de la unidad 3.",
+      "notas": "Debería volver casi al mismo sitio. Si se desvía, es que una rueda patina o los motores están a distinta altura.",
       "pasos": [
         {
-          "texto": "Después de abrirse, la puerta espera 3 segundos"
+          "texto": "Avanza tres rotaciones"
         },
         {
-          "texto": "Se cierra"
+          "texto": "Espera un segundo"
+        },
+        {
+          "texto": "Vuelve hacia atrás otras tres rotaciones"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "Media vuelta",
+      "enunciado": "Baja la velocidad al 30 % y haz que el robot gire sobre sí mismo hasta quedar mirando hacia atrás.",
+      "pista": "Para girar sobre el sitio, la dirección se pone al 100. Prueba cuántas rotaciones hacen falta.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100",
+            "1",
+            "rotaciones"
+          ]
+        }
+      ],
+      "notas": "El número de rotaciones depende de las ruedas, así que se ajusta probando. Eso también es programar.",
+      "pasos": [
+        {
+          "texto": "Baja la velocidad al 30 %"
+        },
+        {
+          "texto": "Haz que el robot gire sobre sí mismo hasta quedar mirando hacia atrás"
         }
       ]
     },
     {
       "practica": 4,
-      "titulo": "Puerta con timbre",
-      "enunciado": "Monta la puerta completa: espera la pulsación, suena el timbre, se abre, espera y se cierra.",
-      "pista": "Comprueba el orden antes de probarlo en el Hub.",
+      "titulo": "El cuadrado",
+      "enunciado": "Con un bucle de cuatro vueltas, haz que el robot avance dos rotaciones y gire un cuarto de vuelta, y acaba poniendo el botón central en verde.",
+      "pista": "Dentro del bucle van dos bloques: avanzar y girar. El color del botón va fuera, al final.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A fijar velocidad al 75 %",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "30"
+            "A+B"
           ]
         },
         {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "Tocar sonido hasta acabar",
-          "nivel": 0,
-          "valor": "timbre"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "40"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "3"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Repetir bucle",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "4"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "2",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "0.5",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "verde"
           ]
         }
       ],
-      "notas": "El timbre suena entero antes de que la puerta se mueva, porque «Tocar sonido hasta acabar» no deja pasar al siguiente bloque.",
-      "pasos": [
-        {
-          "texto": "Monta la puerta completa",
-          "hijos": [
-            "Espera la pulsación",
-            "Suena el timbre",
-            "Se abre",
-            "Espera",
-            "Se cierra"
-          ]
-        }
-      ]
+      "notas": "El cuadrado nunca sale perfecto a la primera: se ajusta el giro hasta que cierra. Es el ejercicio clásico de conducción."
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor mediano, el sensor de fuerza, y vigas para el marco y la hoja de la puerta.",
+    "piezas": "El Hub, dos motores medianos con sus cables, dos ruedas con neumático, dos ejes de 5, dos marcos Technic, cuatro vigas de 11, una rueda pequeña para detrás y doce pasadores.",
     "pasos": [
       {
-        "titulo": "El marco",
-        "texto": "Monta una base con dos postes y un travesaño arriba: el hueco de la puerta."
+        "titulo": "El chasis",
+        "texto": "Une los dos marcos Technic en paralelo con dos vigas de 11 cruzadas. Esta es la plataforma donde va todo lo demás."
       },
       {
-        "titulo": "El motor",
-        "texto": "Fija el motor mediano junto a uno de los postes, con el eje hacia arriba: hará de bisagra."
+        "titulo": "Los motores",
+        "texto": "Encaja un motor a cada lado del chasis, con los ejes hacia fuera y los dos a la misma altura. Si uno queda más bajo, el robot irá torcido."
       },
       {
-        "titulo": "La posición 0",
-        "texto": "Antes de montar la hoja, gira el motor con la mano hasta que sus dos marcas coincidan."
+        "titulo": "Las ruedas",
+        "texto": "Mete un eje de 5 en cada motor y pon una rueda en cada punta. Empuja hasta el fondo para que no bailen."
       },
       {
-        "titulo": "La hoja",
-        "texto": "Con el motor en 0, monta la hoja sobre el eje de modo que cierre el hueco."
+        "titulo": "El apoyo de atrás",
+        "texto": "Monta la rueda pequeña en la parte de atrás del chasis con las dos vigas de 11 que quedan. Tiene que tocar el suelo sin levantar las ruedas grandes."
       },
       {
-        "titulo": "El timbre",
-        "texto": "Fija el sensor de fuerza en el otro poste, a mano, con el pulsador hacia fuera."
-      },
-      {
-        "titulo": "Los cables y la prueba",
-        "texto": "Motor al puerto A y sensor de fuerza al puerto F. Abre la puerta con la mano: no debe rozar el marco."
+        "titulo": "El Hub y los cables",
+        "texto": "Pon el Hub encima del chasis, con el botón mirando hacia arriba. Conecta el motor izquierdo al A y el derecho al B, en ese orden."
       }
     ],
     "materiales": [
@@ -314,219 +331,258 @@
       },
       {
         "pieza": "motor",
-        "cantidad": 1
+        "cantidad": 2
       },
       {
-        "pieza": "fuerza"
+        "pieza": "rueda",
+        "cantidad": 2
       },
       {
-        "pieza": "viga"
+        "pieza": "eje",
+        "cantidad": 2
       },
       {
-        "pieza": "marco"
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 4
+      },
+      {
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué hace «Esperar hasta que»?",
+      "pregunta": "¿Qué bloque tiene que ir el primero en un programa de conducción?",
       "opciones": [
-        "Espera siempre 1 segundo",
-        "Detiene el programa hasta que se cumple la condición",
-        "Repite el programa",
-        "Apaga el Hub"
+        "«fijar velocidad de movimiento»",
+        "«fijar A+B como motores en movimiento»",
+        "«mover hacia delante»",
+        "«Fijar el ángulo de guiñada a 0»"
       ],
       "correcta": 1,
-      "explicacion": "El programa se queda en ese bloque hasta que la pregunta de su hueco es verdadera."
+      "explicacion": "Hasta que no dices qué dos motores son la base, los bloques de mover no saben a quién mandar."
     },
     {
-      "pregunta": "¿Qué responde el bloque «¿Está presionado?»?",
+      "pregunta": "En el bloque de girar, ¿qué significa la dirección 0?",
       "opciones": [
-        "Un número del 0 al 10",
-        "El color del botón",
-        "La distancia en centímetros",
-        "Verdadero o falso"
-      ],
-      "correcta": 3,
-      "explicacion": "Es un bloque hexagonal: una pregunta de sí o no."
-    },
-    {
-      "pregunta": "¿En qué se diferencian «Esperar 3 segundos» y «Esperar hasta que»?",
-      "opciones": [
-        "Uno espera un tiempo fijo y el otro, a que ocurra algo",
-        "No hay diferencia",
-        "Uno es para motores y el otro para luces",
-        "«Esperar hasta que» siempre tarda más"
-      ],
-      "correcta": 0,
-      "explicacion": "El primero mira el reloj; el segundo, una condición."
-    },
-    {
-      "pregunta": "¿En qué puerto conectamos el sensor de fuerza?",
-      "opciones": [
-        "En el A",
-        "En el D",
-        "En el F",
-        "En el B"
-      ],
-      "correcta": 2,
-      "explicacion": "Los sensores tienen puerto fijo: color en D, distancia en E y fuerza en F."
-    },
-    {
-      "pregunta": "Programa: «Esperar hasta que ¿Está presionado?» y, debajo, «Ir a la posición 90». Lo inicias y nadie pulsa. ¿Qué hace la puerta?",
-      "opciones": [
-        "Se abre a los 3 segundos",
-        "Se abre y se cierra sin parar",
-        "Da un error",
-        "Nada: sigue cerrada, esperando"
-      ],
-      "correcta": 3,
-      "explicacion": "Mientras nadie pulse, el programa no pasa del bloque de espera."
-    },
-    {
-      "pregunta": "¿Cuál es el orden correcto para la puerta con timbre?",
-      "opciones": [
-        "Abrir, tocar el timbre, esperar a que pulsen, cerrar",
-        "Esperar a que pulsen, tocar el timbre, abrir, esperar, cerrar",
-        "Tocar el timbre, cerrar, esperar a que pulsen, abrir",
-        "Cerrar, abrir, tocar el timbre, esperar a que pulsen"
+        "Parado",
+        "Recto",
+        "Giro a la izquierda del todo",
+        "Media vuelta"
       ],
       "correcta": 1,
-      "explicacion": "Primero la orden, después el aviso y por último el movimiento."
+      "explicacion": "La dirección va de −100 a 100: 0 es recto, los positivos tuercen a la derecha y los negativos a la izquierda."
     },
     {
-      "pregunta": "El programa atiende a una persona y termina. ¿Cómo haces que sirva para varias?",
+      "pregunta": "¿Para qué sirve el giroscopio del Hub?",
       "opciones": [
-        "Meto todos los bloques dentro de un «Repetir»",
-        "Pulso más fuerte",
-        "Subo la velocidad del motor",
-        "Quito el «Esperar hasta que»"
+        "Para medir la distancia a los obstáculos",
+        "Para saber cuánto ha girado el robot",
+        "Para medir la velocidad de los motores",
+        "Para ver de qué color es el suelo"
+      ],
+      "correcta": 1,
+      "explicacion": "Es el sentido del equilibrio del Hub: sabe cómo está orientado y cuánto ha girado desde que lo pusiste a cero."
+    },
+    {
+      "pregunta": "¿Qué hace «Fijar el ángulo de guiñada del Hub a 0»?",
+      "opciones": [
+        "Gira el robot hasta que mire al norte",
+        "Pone el contador de giro a cero donde esté el robot en ese momento",
+        "Para los motores",
+        "Endereza las ruedas"
+      ],
+      "correcta": 1,
+      "explicacion": "No mueve nada: solo marca desde dónde empieza a contar. Es como poner a cero un cronómetro."
+    },
+    {
+      "pregunta": "El robot se va torciendo cuando debería ir recto. ¿Qué miras primero?",
+      "opciones": [
+        "Que los dos motores estén a la misma altura y las ruedas bien metidas",
+        "Que la batería esté llena",
+        "Que el programa empiece por el sombrero amarillo",
+        "Que el sensor de color esté conectado"
       ],
       "correcta": 0,
-      "explicacion": "El bucle vuelve a dejar la puerta esperando la siguiente pulsación."
+      "explicacion": "Casi siempre es mecánica, no programación: un motor más bajo, una rueda suelta o un cable rozando."
     },
     {
-      "pregunta": "¿Por qué «¿Está presionado?» tiene forma hexagonal?",
+      "pregunta": "¿Por qué conviene bajar la velocidad para girar?",
       "opciones": [
-        "Porque es de sensores",
-        "Porque es un bloque de inicio",
-        "Porque es una pregunta que responde verdadero o falso",
-        "Porque mueve un motor"
+        "Porque los motores se rompen a toda velocidad",
+        "Porque deprisa el robot se pasa de giro y patina",
+        "Porque el bloque de girar no funciona al 100 %",
+        "No conviene: se gira mejor deprisa"
+      ],
+      "correcta": 1,
+      "explicacion": "A tope las ruedas resbalan y el robot se pasa. Despacio el giro sale repetible, que es lo que se busca."
+    },
+    {
+      "pregunta": "¿Cuántas veces se repite el cuerpo de un cuadrado hecho con bucle?",
+      "opciones": [
+        "2",
+        "3",
+        "4",
+        "8"
       ],
       "correcta": 2,
-      "explicacion": "Los bloques hexagonales encajan en los huecos de condición."
+      "explicacion": "Un cuadrado tiene cuatro lados y cuatro esquinas: cuatro veces avanzar y girar."
+    },
+    {
+      "pregunta": "¿A qué puertos van los dos motores de la base en esta plataforma?",
+      "opciones": [
+        "A y B",
+        "D y E",
+        "A y F",
+        "B y C"
+      ],
+      "correcta": 0,
+      "explicacion": "Los motores ocupan A, B y C por orden. En una base de dos ruedas, el izquierdo al A y el derecho al B."
     }
   ],
   "practicas": [
     {
-      "titulo": "Abrir al pulsar",
-      "enunciado": "La puerta permanece cerrada hasta que alguien pulsa el sensor de fuerza. Entonces se abre a 90°, espera 3 segundos y se cierra.",
+      "titulo": "El circuito cuadrado",
+      "enunciado": "Prepara la base, pon la velocidad al 40 %, pon el ángulo de guiñada a cero y, con un bucle de cuatro vueltas, avanza dos rotaciones y gira un cuarto de vuelta.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está presionado? F",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "A+B"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "40"
           ]
-        }
-      ],
-      "notas": "Si la puerta abre hacia el otro lado, vale 270 en lugar de 90.",
-      "pasos": [
-        {
-          "texto": "La puerta permanece cerrada hasta que alguien pulsa el sensor de fuerza"
         },
         {
-          "texto": "Entonces se abre a 90°"
-        },
-        {
-          "texto": "Espera 3 segundos"
-        },
-        {
-          "texto": "Se cierra"
-        }
-      ]
-    },
-    {
-      "titulo": "Puerta con timbre para cinco visitas",
-      "enunciado": "Mejora la puerta: al pulsar suena un timbre antes de abrir, la puerta se mueve despacio y el programa atiende a cinco visitas seguidas.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
           "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "30"
-          ]
         },
         {
           "texto": "Repetir bucle",
-          "valor": "5",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está presionado? F",
-          "nivel": 1
-        },
-        {
-          "texto": "Tocar sonido hasta acabar",
-          "valor": "timbre",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "4"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "↑",
+            "2",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100",
+            "0.5",
+            "rotaciones"
           ]
         }
       ],
-      "notas": "El timbre tiene que sonar antes de que la puerta se mueva. «fijar velocidad al … %» puede ir dentro o fuera del bucle."
+      "notas": "El bloque del giroscopio todavía no cambia nada aquí: se pone para coger la costumbre antes de la unidad 8."
+    },
+    {
+      "titulo": "La entrega a domicilio",
+      "enunciado": "Avanza cuatro rotaciones, gira un cuarto de vuelta a la derecha, avanza dos rotaciones más, toca una nota y vuelve hacia atrás dos rotaciones.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "4",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100",
+            "0.5",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "2",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "67 · 0.5"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↓",
+            "2",
+            "rotaciones"
+          ]
+        }
+      ],
+      "notas": "Un recorrido con forma de L. Mezcla movimiento y sonido, y el orden es lo que se corrige.",
+      "pasos": [
+        {
+          "texto": "Avanza cuatro rotaciones"
+        },
+        {
+          "texto": "Gira un cuarto de vuelta a la derecha"
+        },
+        {
+          "texto": "Avanza dos rotaciones más"
+        },
+        {
+          "texto": "Toca una nota"
+        },
+        {
+          "texto": "Vuelve hacia atrás dos rotaciones"
+        }
+      ]
     }
   ]
 }

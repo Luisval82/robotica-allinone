@@ -4,7 +4,9 @@
     {
       "curso": "1ESO",
       "numero": 1,
-      "titulo": "Hola, Hub: luces y sonidos",
+      "titulo": "El Hub se enciende: pantalla, botón y sonido",
+      "evaluacion": 1,
+      "nivel": 1,
       "hardware": "Hub (Matriz de luces 5x5, altavoz y botón central)",
       "bloques": [
         "Cuando se inicia el programa",
@@ -15,123 +17,132 @@
         "Tocar nota X segundos",
         "Esperar X segundos"
       ],
-      "modelo": "Rótulo luminoso de sobremesa: el Hub sobre un atril muestra un mensaje animado con melodía"
+      "modelo": "Atril de sobremesa: un soporte inclinado que deja la pantalla del Hub a la altura de los ojos"
     },
     {
       "curso": "1ESO",
       "numero": 2,
-      "titulo": "Mi primer motor: segundos, grados y rotaciones",
-      "hardware": "Hub + 1 Motor mediano",
+      "titulo": "El primer motor: segundos, grados y rotaciones",
+      "evaluacion": 1,
+      "nivel": 1,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 1 Motor mediano",
       "bloques": [
         "A ir durante 1 rotaciones",
         "A fijar velocidad al 75 %",
         "A arrancar motor",
         "A parar motor",
-        "Esperar X segundos"
+        "A ir por la ruta más corta a la posición 0"
       ],
       "modelo": "Ventilador de sobremesa con tres velocidades programadas"
     },
     {
       "curso": "1ESO",
       "numero": 3,
-      "titulo": "Posición exacta: el motor como servo",
-      "hardware": "Hub + 1 Motor mediano",
+      "titulo": "Los tres sentidos: fuerza, distancia y color",
+      "evaluacion": 1,
+      "nivel": 1,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 1 Motor mediano + Sensor de color + Sensor de distancia + Sensor de fuerza",
       "bloques": [
-        "A ir por la ruta más corta a la posición 0",
-        "A posición",
-        "A fijar velocidad al 75 %",
-        "Tocar nota X segundos",
-        "Esperar X segundos"
+        "Esperar hasta que",
+        "¿Está presionado?",
+        "¿Está más próximo a?",
+        "¿Es de color...?"
       ],
-      "modelo": "Barrera de aparcamiento: sube a 90°, espera y baja"
+      "modelo": "Mesa de pruebas: una viga con los tres sensores montados y un motor que levanta una banderita"
     },
     {
       "curso": "1ESO",
       "numero": 4,
-      "titulo": "Bucles: repetir sin copiar",
-      "hardware": "Hub + Motor grande",
+      "titulo": "Repetir sin copiar: bucles de luz y sonido",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Matriz de luces 5x5, altavoz y botón central) + 1 Motor mediano",
       "bloques": [
         "Repetir bucle",
-        "A ir durante 1 rotaciones",
-        "Esperar X segundos",
-        "Tocar sonido hasta acabar",
-        "encender dibujo"
+        "Bucle infinito",
+        "encender dibujo",
+        "fijar brillo de píxeles al 75 %",
+        "Tocar sonido hasta acabar"
       ],
-      "modelo": "Noria que gira por tramos y se detiene en cada cabina"
+      "modelo": "Faro giratorio: el motor da vueltas a una pantalla delante del Hub mientras la luz parpadea"
     },
     {
       "curso": "1ESO",
       "numero": 5,
-      "titulo": "Sensor de fuerza: la máquina espera mi orden",
-      "hardware": "Hub + Sensor de fuerza + 1 Motor mediano",
+      "titulo": "Conducir: dos motores y el girosensor",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano",
       "bloques": [
-        "Esperar hasta que",
-        "¿Está presionado?",
-        "A ir por la ruta más corta a la posición 0",
-        "A ir durante 1 rotaciones",
-        "Tocar sonido hasta acabar"
+        "fijar A+B como motores en movimiento",
+        "fijar velocidad de movimiento al 50 %",
+        "mover ↑ durante 10 rotaciones",
+        "mover derecha: 30 durante 10 rotaciones",
+        "Fijar el ángulo de guiñada del Hub a 0"
       ],
-      "modelo": "Puerta automática con timbre: el pulsador la abre y se cierra sola"
+      "modelo": "Base de conducción de dos ruedas con rueda loca detrás"
     },
     {
       "curso": "1ESO",
       "numero": 6,
-      "titulo": "Base de conducción: avanzar y girar",
-      "hardware": "Hub + 2 Motores medianos",
+      "titulo": "Si... entonces: el sensor decide",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de color + Sensor de distancia + Sensor de fuerza",
       "bloques": [
-        "fijar A+B como motores en movimiento",
-        "fijar velocidad de movimiento al 50 %",
-        "fijar 1 rotación del motor en 17.5 cm recorridos",
-        "mover ↑ durante 10 rotaciones",
-        "mover derecha: 30 durante 10 rotaciones"
+        "Si... entonces...",
+        "empezar a mover a ↑",
+        "parar movimiento",
+        "Distancia",
+        "Luz reflejada"
       ],
-      "modelo": "Robot repartidor (base de conducción) que recorre un circuito cuadrado"
+      "modelo": "Vehículo vigilante: una base de conducción con el sensor de distancia delante y el de color mirando al suelo"
     },
     {
       "curso": "1ESO",
       "numero": 7,
-      "titulo": "Sensor de distancia: frenar a tiempo",
-      "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "titulo": "Dos caminos: si no se cumple, haz otra cosa",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de color",
       "bloques": [
-        "empezar a mover a ↑",
-        "parar movimiento",
-        "Esperar hasta que",
-        "¿Está más próximo a?",
-        "Cuando está más próximo a",
-        "Tocar nota X segundos"
+        "Si... entonces... Si no...",
+        "Repetir bucle hasta",
+        "fijar píxel en 1 , 1 al 100 %",
+        "¿Es la luz reflejada...?"
       ],
-      "modelo": "Vehículo con frenada automática de emergencia ante un obstáculo"
+      "modelo": "Clasificador de tarjetas: una rampa con el sensor de color y una compuerta que las manda a un lado o a otro"
     },
     {
       "curso": "1ESO",
       "numero": 8,
-      "titulo": "Sensor de color: la primera decisión",
-      "hardware": "Hub + Sensor de color + Motor grande",
+      "titulo": "Giros precisos: el girosensor manda",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de distancia",
       "bloques": [
-        "Si... entonces...",
-        "¿Es de color...?",
-        "Cuando el color es",
-        "Bucle infinito",
-        "A ir por la ruta más corta a la posición 0"
+        "Ángulo de cabeceo, alabeo o guiñada del Hub",
+        "empezar a mover derecha: 30",
+        "Fijar motores de movimiento para que frenen al parar",
+        "Operadores de comparación (>, <, =)"
       ],
-      "modelo": "Puerta de garaje basculante que solo sube con la tarjeta del color correcto"
+      "modelo": "Base de conducción con el Hub bien centrado y el sensor de distancia delante, para medir giros sin que se desequilibre"
     },
     {
       "curso": "1ESO",
       "numero": 9,
       "titulo": "Proyecto final: la feria automática",
-      "hardware": "Hub + Motor grande + 1 Motor mediano + Sensor de fuerza + Sensor de distancia",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Matriz de luces 5x5, altavoz y botón central) + 1 Motor grande + 1 Motor mediano + Sensor de color + Sensor de distancia + Sensor de fuerza",
       "bloques": [
-        "Esperar hasta que",
-        "Repetir bucle",
-        "Si... entonces...",
-        "¿Está presionado?",
-        "¿Está más próximo a?",
-        "A arrancar motor",
-        "A parar motor",
-        "Tocar sonido hasta acabar"
+        "Cuando se presiona el botón del Hub",
+        "Cuando el color es",
+        "Cuando está más próximo a",
+        "Enviar mensaje",
+        "Cuando se reciba el mensaje"
       ],
-      "modelo": "Tiovivo con taquilla: el pulsador inicia el viaje, una barrera da acceso y se detiene si alguien se acerca"
+      "modelo": "Tiovivo con taquilla: el motor grande hace girar la plataforma y el mediano levanta la barrera de entrada"
     },
     {
       "curso": "2ESO",
