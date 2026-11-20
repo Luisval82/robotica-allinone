@@ -12,7 +12,7 @@ const TABS = [
   { href: BASE, label: "Progreso y notas alumnado" },
   { href: `${BASE}/alumnos`, label: "Alumnado" },
   { href: `${BASE}/unidades`, label: "Unidades y pruebas" },
-  { href: `${BASE}/soluciones`, label: "Soluciones" },
+  { href: `${BASE}/preparar`, label: "Preparar clases" },
 ];
 
 /**

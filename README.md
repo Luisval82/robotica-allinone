@@ -111,7 +111,7 @@ servidor con la Secret key.
 | Progreso y notas alumnado | **La matriz**: una fila por alumno y, por cada unidad, 5 cuadrados (la teoría y las 4 prácticas de programación) más la nota de la PRUEBA. Pulsar la nota abre la corrección de ese examen; pulsar un cuadrado, esa práctica concreta. |
 | Unidades y pruebas | Interruptores de cada unidad (UD 1–9) y de su PRUEBA UD-X, para toda la clase o alumno por alumno. |
 | Alumnado | El correo con el que entró cada alumno, su nombre (corregible) y su curso (cambiable). |
-| Soluciones | Enunciado y solución oficial, en bloques de palabras, de las 2 prácticas de cada unidad. |
+| Preparar clases | **Todas las unidades de todos los cursos, en abierto.** La teoría (vídeo con su guion, puertos, bloques nuevos con su explicación y programa de ejemplo), el montaje con las piezas, las 4 prácticas con su solución, el test con las respuestas marcadas y las 2 programaciones de la PRUEBA. Solo consulta: no abre ni cierra nada para el alumnado. |
 
 Pulsando un cuadrado de la matriz se abre esa unidad del alumno: sus **4 prácticas de
 programación** con su estado (sin empezar, borrador o comprobada), el programa con el que cerró
@@ -284,6 +284,20 @@ nuevo**.
 ./scripts/tipos.sh          # comprueba
 ./scripts/tipos.sh --fijar  # vuelve a tomar la foto (solo si Vercel va bien)
 ```
+
+### «Preparar clases» y lo que ve el alumno son dos sitios distintos
+
+Un profesor necesita leer la unidad 9 de 3º en septiembre sin desbloquearle nada a nadie. Por eso
+la consulta vive en `/dashboard/profesor/preparar` y el alumno entra por
+`/dashboard/alumno/unidad/[numero]`: **rutas distintas y lógica distinta**. La del alumno comprueba
+si la unidad está abierta para él; la del profesor no comprueba nada porque no abre nada, solo lee
+el contenido del repositorio. No comparten ni una línea, así que no hay forma de que una toque a la
+otra. Quién puede abrirla lo decide `requireRole(["profesor", "superadmin"])`, igual que el resto
+del panel.
+
+La pestaña **«Soluciones oficiales» se ha integrado aquí**: enseñaba el enunciado y la solución de
+las 2 programaciones de la PRUEBA, y eso es un trozo de esta página. `/soluciones` redirige
+conservando el curso y la unidad.
 
 ### El temario de 1º de ESO (`scripts/temario-1eso.py`)
 
