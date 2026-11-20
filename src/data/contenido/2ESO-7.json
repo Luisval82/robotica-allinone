@@ -1,283 +1,409 @@
 {
   "curso": "2ESO",
   "unidad": 7,
-  "reto": "Construye una grúa que se maneja con los botones del Hub: uno la hace girar y el otro sube y baja el brazo.",
+  "reto": "Monta un lector que se aprenda una secuencia de tarjetas de colores y después la repita.",
   "video": {
-    "titulo": "Varias pilas a la vez",
+    "titulo": "Cuando una caja no basta",
     "duracion": "5 min",
     "escenas": [
       {
-        "plano": "Una grúa de LEGO gira y sube el brazo mientras alguien pulsa los botones del Hub.",
-        "locucion": "Hasta ahora tus programas tenían una sola pila que empezaba al pulsar play. Una grúa necesita responder a varios mandos."
+        "plano": "Tres variables sueltas: color1, color2, color3, cada una con su valor.",
+        "locucion": "Para guardar tres colores puedes hacer tres variables. Para guardar diez, diez. Y para guardar los que vengan, no puedes: no sabes cuántos van a ser."
       },
       {
-        "plano": "Captura de la app: dos pilas, cada una encabezada por «Cuando se presiona el botón del Hub», izquierdo y derecho.",
-        "locucion": "Los bloques amarillos de inicio arrancan una pila cuando ocurre algo. «Cuando se presiona el botón del Hub» puede vigilar el botón izquierdo o el derecho, cada uno con su propia pila."
+        "plano": "Una fila de casillas numeradas, con un color escrito en cada una.",
+        "locucion": "Una lista es una fila de casillas con un solo nombre. Las casillas se numeran desde el 1, y en cada una cabe un valor."
       },
       {
-        "plano": "Las dos pilas se iluminan a la vez en la app mientras la grúa gira y sube el brazo.",
-        "locucion": "Las pilas son independientes y pueden funcionar a la vez: mientras una gira la grúa, otra puede mover el brazo."
+        "plano": "El bloque de añadir, metiendo un color al final de la fila, que se alarga sola.",
+        "locucion": "«Añadir» mete un valor al final y la lista crece. No hay que decir cuántas casillas quieres: se alarga según hace falta."
       },
       {
-        "plano": "Captura de «Enviar mensaje» en una pila y «Cuando se reciba el mensaje» encabezando otra.",
-        "locucion": "Las pilas se hablan con mensajes. Una envía un mensaje con un nombre, y todas las pilas que empiezan con «Cuando se reciba el mensaje» y ese nombre se ponen en marcha."
+        "plano": "El bloque «elemento 2 de la lista» sacando el valor de la segunda casilla.",
+        "locucion": "Para sacar uno, le pides el número de casilla. El elemento 1 es el primero que metiste, no el último."
       },
       {
-        "plano": "Al pulsar un botón, el brazo sube y a la vez se enciende una flecha en la matriz.",
-        "locucion": "Un mismo mensaje puede poner en marcha varias cosas a la vez: subir el brazo y encender una señal."
+        "plano": "El bloque de longitud, marcando 4 sobre una lista de cuatro casillas.",
+        "locucion": "Y la longitud te dice cuántas hay. Con eso puedes recorrerla entera con un bucle sin saber de antemano cuántas tiene."
       },
       {
-        "plano": "La grúa gira, se detiene sobre una carga y hace la maniobra completa.",
-        "locucion": "Tu reto: una grúa que gira con un botón y, con el otro, se detiene y hace la maniobra de carga."
+        "plano": "El robot leyendo cuatro tarjetas y luego repitiendo la secuencia con sonidos.",
+        "locucion": "Guardar primero y actuar después. Eso es lo que una variable sola no puede hacer."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Listing Letters» (listas)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u10-lists/spike-u10l1-listing-letters/"
+    }
   },
   "bloques": [
     {
-      "texto": "Cuando se presiona el botón del Hub",
-      "explicacion": "Bloque de inicio: arranca su pila al pulsar el botón izquierdo o el derecho del Hub."
+      "texto": "Lista",
+      "explicacion": "Una fila de casillas con un solo nombre. Cada casilla guarda un valor y se numeran desde el 1."
     },
     {
-      "texto": "Enviar mensaje",
-      "explicacion": "Emite un mensaje con nombre y sigue adelante sin esperar."
+      "texto": "Añadir elemento a lista",
+      "explicacion": "Mete un valor al final de la lista, que crece sola. No hay que decir cuántas casillas hacen falta."
     },
     {
-      "texto": "Cuando se reciba el mensaje",
-      "explicacion": "Bloque de inicio: arranca su pila cada vez que otra pila envía ese mensaje."
+      "texto": "Elemento de lista",
+      "explicacion": "Saca el valor de la casilla que le pidas. El 1 es el primero que se metió."
     },
     {
-      "texto": "A arrancar motor",
-      "explicacion": "Pone a girar la grúa.",
-      "valores": [
-        "A",
-        "↻"
-      ]
+      "texto": "Longitud de lista",
+      "explicacion": "Cuántas casillas tiene ahora mismo. Sirve para recorrer la lista entera sin saber su tamaño."
     },
     {
-      "texto": "A parar motor",
-      "explicacion": "Detiene el giro de la grúa.",
-      "valores": [
-        "A"
-      ]
-    },
-    {
-      "texto": "A ir por la ruta más corta a la posición 0",
-      "explicacion": "Sube o baja el brazo a un ángulo exacto.",
-      "valores": [
-        "A",
-        "por la ruta más corta",
-        "0"
-      ]
+      "texto": "¿La lista contiene...?",
+      "explicacion": "Pregunta de rombo: vale verdad si el valor que buscas está en alguna casilla."
     }
   ],
+  "programa": {
+    "titulo": "El lector de secuencias",
+    "explicacion": "Primero se guardan cuatro colores en una lista, uno por tarjeta. Después se recorre la lista con un bucle y se repite la secuencia.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Repetir bucle",
+        "nivel": 0,
+        "valores": [
+          "4"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "¿Está más próximo a? E 5 cm"
+        ]
+      },
+      {
+        "texto": "Añadir elemento a lista",
+        "nivel": 1,
+        "valores": [
+          "colores · Luz reflejada D"
+        ]
+      },
+      {
+        "texto": "Tocar nota X segundos",
+        "nivel": 1,
+        "valores": [
+          "60 · 0.2"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "no ¿Está más próximo a? E 5 cm"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "paso · 1"
+        ]
+      },
+      {
+        "texto": "Repetir bucle hasta",
+        "nivel": 0,
+        "valores": [
+          "paso > Longitud de lista colores"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 1,
+        "valores": [
+          "Elemento paso de colores"
+        ]
+      },
+      {
+        "texto": "Cambiar variable por",
+        "nivel": 1,
+        "valores": [
+          "paso · 1"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Botón izquierdo",
-      "enunciado": "Cuando se presione el botón izquierdo del Hub, enciende un dibujo.",
-      "pista": "Este bloque es un sombrero: empieza su propia pila.",
+      "titulo": "Tres en la lista",
+      "enunciado": "Añade tres números a una lista llamada datos y escribe cuántos hay.",
+      "pista": "La longitud es un número redondeado y se mete en el hueco del bloque de escribir.",
       "solucion": [
         {
-          "texto": "Cuando se presiona el botón del Hub",
-          "nivel": 0,
-          "valor": "izquierdo"
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
         },
         {
-          "texto": "encender dibujo durante 2 segundos",
+          "texto": "Añadir elemento a lista",
           "nivel": 0,
           "valores": [
-            "corazón",
-            "2"
+            "datos · 10"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "datos · 20"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "datos · 30"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Longitud de lista datos"
           ]
         }
       ],
-      "notas": "Este bloque es un sombrero: empieza su propia pila y no se encaja debajo de nada.",
+      "notas": "Tres añadidos y una longitud: lo mínimo para ver que la lista crece sola.",
       "pasos": [
         {
-          "texto": "Cuando se presione el botón izquierdo del Hub"
+          "texto": "Añade tres números a una lista llamada datos"
         },
         {
-          "texto": "Enciende un dibujo"
+          "texto": "Escribe cuántos hay"
         }
       ]
     },
     {
       "practica": 2,
-      "titulo": "Dos botones",
-      "enunciado": "Un botón arranca el motor y el otro lo para.",
-      "pista": "Dos pilas distintas, cada una con su sombrero.",
+      "titulo": "Sacar uno",
+      "enunciado": "Escribe en la pantalla el elemento 2 de la lista anterior. Escribe después el elemento 3.",
+      "pista": "Las casillas se cuentan desde el 1, no desde el 0.",
       "solucion": [
         {
-          "texto": "Cuando se presiona el botón del Hub",
-          "nivel": 0,
-          "valor": "izquierdo"
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
         },
         {
-          "texto": "A arrancar motor",
+          "texto": "Añadir elemento a lista",
           "nivel": 0,
           "valores": [
-            "A",
-            "↻"
+            "datos · 10"
           ]
         },
         {
-          "texto": "Cuando se presiona el botón del Hub",
-          "nivel": 0,
-          "valor": "derecho"
-        },
-        {
-          "texto": "A parar motor",
+          "texto": "Añadir elemento a lista",
           "nivel": 0,
           "valores": [
-            "A"
+            "datos · 20"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "datos · 30"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Elemento 2 de datos"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Elemento 3 de datos"
           ]
         }
       ],
-      "notas": "Dos pilas separadas, cada una con su sombrero. No hay un «programa principal»: conviven las dos."
+      "notas": "Empezar en 1 y no en 0 hay que decirlo: en otros lenguajes es al revés y lo van a ver más adelante.",
+      "pasos": [
+        {
+          "texto": "Escribe en la pantalla el elemento 2 de la lista anterior"
+        },
+        {
+          "texto": "Escribe después el elemento 3"
+        }
+      ]
     },
     {
       "practica": 3,
-      "titulo": "Avisa por mensaje",
-      "enunciado": "Al pulsar un botón, envía un mensaje; otra pila lo recibe y mueve el motor.",
-      "pista": "Los mensajes sirven para que una parte del programa avise a otra.",
+      "titulo": "Recorrer la lista",
+      "enunciado": "Con la lista de tres números, recórrela con una variable: pon la variable paso a 1; repite hasta que paso pase de la longitud de la lista; escribe en cada vuelta el elemento que toca; sube paso en uno.",
+      "pista": "La variable paso es el número de casilla que se está leyendo.",
       "solucion": [
         {
-          "texto": "Cuando se presiona el botón del Hub",
-          "nivel": 0,
-          "valor": "izquierdo"
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
         },
         {
-          "texto": "Enviar mensaje",
-          "nivel": 0,
-          "valor": "girar"
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "nivel": 0,
-          "valor": "girar"
-        },
-        {
-          "texto": "A arrancar motor",
+          "texto": "Añadir elemento a lista",
           "nivel": 0,
           "valores": [
-            "A",
-            "↻"
+            "datos · 10"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "datos · 20"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "datos · 30"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "paso > Longitud de lista datos"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Elemento paso de datos"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
           ]
         },
         {
           "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "2"
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
+          "nivel": 1,
           "valores": [
-            "A"
+            "0.5"
           ]
         }
       ],
-      "notas": "El mensaje es el aviso: una pila lo lanza y otra, en cuanto lo recibe, hace su trabajo."
+      "notas": "El recorrido con variable contador es el patrón que se repite en todas las listas. Si olvidan subir paso, el bucle no acaba.",
+      "pasos": [
+        {
+          "texto": "Con la lista de tres números, recórrela con una variable",
+          "hijos": [
+            "Pon la variable paso a 1",
+            "Repite hasta que paso pase de la longitud de la lista",
+            "Escribe en cada vuelta el elemento que toca",
+            "Sube paso en uno"
+          ]
+        }
+      ]
     },
     {
       "practica": 4,
-      "titulo": "Grúa con dos mandos",
-      "enunciado": "Un botón gira la grúa y el otro sube y baja el brazo, cada uno con su mensaje.",
-      "pista": "Da nombres claros a los mensajes: «girar» y «subir».",
+      "titulo": "¿Está en la lista?",
+      "enunciado": "Con la lista de tres números, comprueba si contiene el 20: si lo contiene, pon el botón en verde; si no, ponlo en rojo.",
+      "pista": "El bloque de contiene es una pregunta de rombo y va en el hueco del «Si».",
       "solucion": [
         {
-          "texto": "Cuando se presiona el botón del Hub",
-          "nivel": 0,
-          "valor": "izquierdo"
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
         },
         {
-          "texto": "Enviar mensaje",
-          "nivel": 0,
-          "valor": "girar"
-        },
-        {
-          "texto": "Cuando se presiona el botón del Hub",
-          "nivel": 0,
-          "valor": "derecho"
-        },
-        {
-          "texto": "Enviar mensaje",
-          "nivel": 0,
-          "valor": "subir"
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "nivel": 0,
-          "valor": "girar"
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
+          "texto": "Añadir elemento a lista",
           "nivel": 0,
           "valores": [
-            "A",
-            "↻",
-            "90",
-            "grados"
+            "datos · 10"
           ]
         },
         {
-          "texto": "Cuando se reciba el mensaje",
-          "nivel": 0,
-          "valor": "subir"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Añadir elemento a lista",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "60"
+            "datos · 20"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "2"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Añadir elemento a lista",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "0"
+            "datos · 30"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valores": [
+            "¿datos contiene 20?"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 1,
+          "valores": [
+            "verde"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 1,
+          "valores": [
+            "rojo"
           ]
         }
       ],
-      "notas": "Nombres claros en los mensajes: con «girar» y «subir» se entiende el programa de un vistazo."
+      "notas": "Buscar sin recorrer a mano. Cambiando el 20 por un 25 se ve que la respuesta cambia.",
+      "pasos": [
+        {
+          "texto": "Con la lista de tres números, comprueba si contiene el 20",
+          "hijos": [
+            "Si lo contiene, pon el botón en verde",
+            "Si no, ponlo en rojo"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor grande, un motor mediano, vigas largas para el brazo, una pieza que haga de gancho y vigas para una base pesada.",
+    "piezas": "El Hub, dos motores medianos, el sensor de color, el sensor de distancia, dos vigas de 15, cuatro vigas de 11, dos vigas angulares, un eje de 5, un panel y doce pasadores.",
     "pasos": [
       {
-        "titulo": "La base",
-        "texto": "Monta una base ancha y pesada con el Hub a mano: vas a pulsar sus botones."
+        "titulo": "La rampa",
+        "texto": "Monta las dos vigas de 15 en paralelo e inclinadas, apoyadas en dos vigas de 11. Las tarjetas se deslizan por ahí."
       },
       {
-        "titulo": "La torre giratoria",
-        "texto": "Fija el motor grande a la base con el eje hacia arriba y monta la torre sobre él."
+        "titulo": "El punto de lectura",
+        "texto": "A mitad de la rampa, coloca el sensor de color mirando a la superficie y el de distancia apuntando al carril, para saber cuándo pasa una tarjeta."
       },
       {
-        "titulo": "El brazo",
-        "texto": "Coloca el motor mediano en lo alto de la torre. Con el motor en la posición 0, monta el brazo en horizontal."
+        "titulo": "La compuerta",
+        "texto": "Al final de la rampa, pon el primer motor con el eje de 5 y el panel: retiene las tarjetas entre lectura y lectura."
       },
       {
-        "titulo": "El gancho",
-        "texto": "Cuelga una pieza en la punta del brazo."
+        "titulo": "El bandejín",
+        "texto": "Con las vigas angulares y las dos vigas de 11 que quedan, haz una bandeja debajo de la compuerta para que las tarjetas leídas no se caigan al suelo."
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor grande al puerto A y motor mediano al puerto B, con holgura para que la torre pueda girar."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Gira la torre con la mano un cuarto de vuelta a cada lado: los cables no deben tensarse."
+        "titulo": "Las tarjetas",
+        "texto": "Prepara cuatro tarjetas de colores distintos. Pásalas una a una por el punto de lectura y apunta qué número de luz reflejada da cada una."
       }
     ],
     "materiales": [
@@ -285,264 +411,295 @@
         "pieza": "hub"
       },
       {
-        "pieza": "motor-grande",
-        "cantidad": 1
-      },
-      {
         "pieza": "motor",
+        "cantidad": 2
+      },
+      {
+        "pieza": "color"
+      },
+      {
+        "pieza": "distancia"
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 8
+      },
+      {
+        "pieza": "eje",
         "cantidad": 1
       },
       {
-        "pieza": "viga"
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué hace un bloque de inicio, como los amarillos?",
+      "pregunta": "¿Qué es una lista?",
       "opciones": [
-        "Detiene el programa",
-        "Repite los bloques de debajo",
-        "Arranca su pila cuando ocurre algo",
-        "Mide un sensor"
-      ],
-      "correcta": 2,
-      "explicacion": "Cada bloque de inicio espera un suceso: el play, un botón, un mensaje…"
-    },
-    {
-      "pregunta": "¿Pueden funcionar dos pilas a la vez?",
-      "opciones": [
-        "Sí",
-        "No, nunca",
-        "Solo si usan el mismo motor",
-        "Solo en el primer segundo"
+        "Una fila de casillas con un solo nombre, numeradas desde el 1",
+        "Un bucle especial",
+        "Un sensor del Hub",
+        "Una variable que guarda texto"
       ],
       "correcta": 0,
-      "explicacion": "Cada pila es independiente de las demás."
+      "explicacion": "Una sola etiqueta y muchas casillas. Por eso sirve para guardar series."
     },
     {
-      "pregunta": "Una pila ejecuta «Enviar mensaje subir». ¿Qué ocurre?",
+      "pregunta": "¿Desde qué número se cuentan las casillas de una lista en SPIKE?",
       "opciones": [
-        "Se detienen todas las pilas",
-        "El Hub escribe «subir» en la matriz",
-        "El brazo sube siempre, haya o no otra pila",
-        "Arrancan las pilas que empiezan con «Cuando se reciba el mensaje subir»"
-      ],
-      "correcta": 3,
-      "explicacion": "El mensaje por sí solo no hace nada: lo que cuenta es quién lo recibe."
-    },
-    {
-      "pregunta": "Se envía un mensaje que ninguna pila espera recibir. ¿Qué pasa?",
-      "opciones": [
-        "El programa da error",
-        "Nada",
-        "Se reinicia el Hub",
-        "Se paran los motores"
+        "Desde el 0",
+        "Desde el 1",
+        "Desde el −1",
+        "Desde el número que tú elijas"
       ],
       "correcta": 1,
-      "explicacion": "Un mensaje sin receptor se pierde sin consecuencias."
+      "explicacion": "El elemento 1 es el primero que metiste. En otros lenguajes se empieza en 0, pero aquí no."
     },
     {
-      "pregunta": "¿Cuántas pilas pueden recibir el mismo mensaje?",
+      "pregunta": "¿Qué hace «Añadir elemento a lista»?",
       "opciones": [
-        "Las que quieras",
-        "Solo una",
-        "Dos como máximo",
-        "Ninguna"
-      ],
-      "correcta": 0,
-      "explicacion": "Todas las pilas con ese «Cuando se reciba el mensaje» arrancan a la vez."
-    },
-    {
-      "pregunta": "El botón izquierdo arranca el giro de la grúa. ¿Cómo la detienes con el derecho?",
-      "opciones": [
-        "No se puede",
-        "Poniendo «parar motor» debajo de «arrancar motor»",
-        "Con una pila que empiece en «Cuando se presiona el botón derecho» y contenga «parar motor»",
-        "Pulsando dos veces el izquierdo"
+        "Suma el valor a todas las casillas",
+        "Sustituye la casilla 1",
+        "Mete el valor al final y la lista crece",
+        "Borra la lista y mete ese valor"
       ],
       "correcta": 2,
-      "explicacion": "Cada botón tiene su pila: una arranca y la otra para."
+      "explicacion": "Se pone detrás del último. No hay que reservar sitio de antemano."
     },
     {
-      "pregunta": "¿Por qué dejamos holgura en los cables de la grúa?",
+      "pregunta": "¿Para qué sirve «Longitud de lista»?",
       "opciones": [
-        "Para que pesen menos",
-        "Porque así el motor tiene más fuerza",
-        "Para que quepan más cables",
-        "Porque la torre gira y un cable tenso la frena o se desconecta"
+        "Para medir cuánto ocupa en memoria",
+        "Para borrar la lista",
+        "Para ordenarla",
+        "Para saber cuántas casillas tiene"
       ],
       "correcta": 3,
-      "explicacion": "Al girar, la torre arrastra los cables del motor del brazo."
+      "explicacion": "Con eso puedes recorrerla entera sin saber de antemano cuántos elementos tendrá."
     },
     {
-      "pregunta": "¿En qué se diferencian «Cuando se inicia el programa» y «Cuando se presiona el botón del Hub»?",
+      "pregunta": "En un recorrido con la variable paso, ¿qué pasa si olvidas subirla?",
       "opciones": [
-        "En nada",
-        "El primero arranca al pulsar play; el segundo, cada vez que se pulsa ese botón",
-        "El primero es para motores y el segundo para luces",
-        "El segundo solo funciona una vez"
+        "El bucle no termina nunca y lee siempre la misma casilla",
+        "Da error",
+        "Salta a la última casilla",
+        "El bucle da una vuelta y sale"
+      ],
+      "correcta": 0,
+      "explicacion": "La condición de salida nunca se cumple, porque paso se queda clavado."
+    },
+    {
+      "pregunta": "¿Por qué no basta con tres variables para guardar una secuencia de tarjetas?",
+      "opciones": [
+        "Porque las variables no guardan colores",
+        "Porque no sabes cuántas tarjetas van a pasar",
+        "Porque tres variables ocupan mucho",
+        "Sí basta: es lo mismo"
       ],
       "correcta": 1,
-      "explicacion": "Son dos sucesos distintos, y cada uno puede tener su pila."
+      "explicacion": "Si pueden ser tres o quince, con variables sueltas tendrías que escribirlas todas por si acaso."
+    },
+    {
+      "pregunta": "«¿La lista contiene 20?», ¿qué tipo de bloque es?",
+      "opciones": [
+        "Un sombrero",
+        "Un número redondeado",
+        "Una pregunta de rombo",
+        "Un bloque de pila"
+      ],
+      "correcta": 2,
+      "explicacion": "Vale verdad o mentira, así que es de rombo y va en los huecos de pregunta."
+    },
+    {
+      "pregunta": "Quieres leer cuatro tarjetas y luego repetir la secuencia. ¿Qué orden sigues?",
+      "opciones": [
+        "Guardar solo la última",
+        "No se puede hacer",
+        "Leer y actuar a la vez, tarjeta a tarjeta",
+        "Guardar las cuatro en una lista y después recorrerla"
+      ],
+      "correcta": 3,
+      "explicacion": "Guardar primero y actuar después es justo lo que permite una lista y no permite una variable sola."
     }
   ],
   "practicas": [
     {
-      "titulo": "Dos mandos",
-      "enunciado": "Con el botón izquierdo, la grúa gira un cuarto de vuelta. Con el derecho, el brazo sube a 60°, espera 2 segundos y baja.",
+      "titulo": "El lector de secuencias",
+      "enunciado": "Repite cuatro veces: espera a que pase una tarjeta a menos de 5 centímetros; añade su luz reflejada a la lista colores, toca una nota y espera a que la tarjeta salga. Después recorre la lista escribiendo cada elemento.",
       "solucion": [
         {
-          "texto": "Cuando se presiona el botón del Hub",
-          "valor": "izquierdo",
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A ir durante 1 rotaciones",
+          "texto": "Repetir bucle",
           "nivel": 0,
+          "valores": [
+            "4"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "¿Está más próximo a? E 5 cm"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valores": [
+            "colores · Luz reflejada D"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 1,
+          "valores": [
+            "60 · 0.2"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "no ¿Está más próximo a? E 5 cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "paso > Longitud de lista colores"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Elemento paso de colores"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        }
+      ],
+      "notas": "Dos bucles seguidos: uno que llena y otro que recorre. Es el programa más largo de la evaluación y el que mejor enseña para qué sirve una lista.",
+      "pasos": [
+        {
+          "texto": "Repite cuatro veces",
+          "hijos": [
+            "Espera a que pase una tarjeta a menos de 5 centímetros",
+            "Añade su luz reflejada a la lista colores, toca una nota y espera a que la tarjeta salga"
+          ]
+        },
+        {
+          "texto": "Después recorre la lista escribiendo cada elemento"
+        }
+      ]
+    },
+    {
+      "titulo": "La clave de acceso",
+      "enunciado": "Lee tres tarjetas guardando su luz reflejada en una lista y después comprueba si la lista contiene un valor oscuro, menor que 20: si lo contiene, escribe ERROR y pon el botón en rojo; si no, escribe PASA, ponlo en verde y abre la compuerta con el motor A 90 grados.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "3"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "¿Está más próximo a? E 5 cm"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valores": [
+            "clave · Luz reflejada D"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "no ¿Está más próximo a? E 5 cm"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valores": [
+            "¿clave contiene un valor < 20?"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "ERROR"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 1,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "PASA"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 1,
+          "valores": [
+            "verde"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 1,
           "valores": [
             "A",
             "↻",
             "90",
             "grados"
           ]
-        },
-        {
-          "texto": "Cuando se presiona el botón del Hub",
-          "valor": "derecho",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "60"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "2",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "0"
-          ]
         }
       ],
-      "notas": "Son dos pilas independientes. No hace falta «Cuando se inicia el programa».",
+      "notas": "La rama del «si no» lleva tres bloques y la del «si», dos. Es donde más se equivocan al encajar.",
       "pasos": [
         {
-          "texto": "Con el botón izquierdo, la grúa gira un cuarto de vuelta"
-        },
-        {
-          "texto": "Con el derecho, el brazo sube a 60°, espera 2 segundos y baja"
-        }
-      ]
-    },
-    {
-      "titulo": "Maniobra de carga con mensajes",
-      "enunciado": "El botón izquierdo pone la grúa a girar despacio. El derecho la detiene y envía el mensaje «carga». Al recibirlo, el brazo sube, espera y baja, y a la vez la matriz muestra una flecha durante 3 segundos.",
-      "solucion": [
-        {
-          "texto": "Cuando se presiona el botón del Hub",
-          "valor": "izquierdo",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "20"
+          "texto": "Lee tres tarjetas guardando su luz reflejada en una lista y después comprueba si la lista contiene un valor oscuro, menor que 20",
+          "hijos": [
+            "Si lo contiene, escribe ERROR y pon el botón en rojo",
+            "Si no, escribe PASA, ponlo en verde y abre la compuerta con el motor A 90 grados"
           ]
-        },
-        {
-          "texto": "A arrancar motor",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻"
-          ]
-        },
-        {
-          "texto": "Cuando se presiona el botón del Hub",
-          "valor": "derecho",
-          "nivel": 0
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
-          "valores": [
-            "A"
-          ]
-        },
-        {
-          "texto": "Enviar mensaje",
-          "valor": "carga",
-          "nivel": 0
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "valor": "carga",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "60"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "2",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "0"
-          ]
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "valor": "carga",
-          "nivel": 0
-        },
-        {
-          "texto": "encender dibujo durante 2 segundos",
-          "nivel": 0,
-          "valores": [
-            "flecha",
-            "3"
-          ]
-        }
-      ],
-      "notas": "Son cuatro pilas. Lo importante es que un único mensaje ponga en marcha dos pilas a la vez.",
-      "pasos": [
-        {
-          "texto": "El botón izquierdo pone la grúa a girar despacio"
-        },
-        {
-          "texto": "El derecho la detiene"
-        },
-        {
-          "texto": "Envía el mensaje «carga»"
-        },
-        {
-          "texto": "Al recibirlo, el brazo sube, espera y baja, y a la vez la matriz muestra una flecha durante 3 segundos"
         }
       ]
     }

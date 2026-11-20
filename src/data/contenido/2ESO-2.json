@@ -1,199 +1,292 @@
 {
   "curso": "2ESO",
   "unidad": 2,
-  "reto": "Construye un robot rastreador de almacén que siga una línea negra en zigzag.",
+  "reto": "Consigue que el robot recorra 50 centímetros de verdad y que te diga cuánto ha tardado.",
   "video": {
-    "titulo": "Seguir una línea",
+    "titulo": "De rotaciones a centímetros",
     "duracion": "5 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Training Camp 3 — Reacting to Lines» (seguir línea)",
-      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
-    },
     "escenas": [
       {
-        "plano": "El sensor de color mira al suelo; el robot pasa de una zona blanca a una negra y la matriz muestra un número que baja.",
-        "locucion": "El sensor de color también mide cuánta luz rebota en el suelo, de 0 a 100. El blanco refleja mucha luz; el negro, casi ninguna."
+        "plano": "Dos robots con ruedas de distinto tamaño hacen «2 rotaciones». Uno llega mucho más lejos.",
+        "locucion": "El año pasado medías en rotaciones. El problema es que una rotación no es una distancia: depende de lo grande que sea la rueda. Dos robots con el mismo programa llegan a sitios distintos."
       },
       {
-        "plano": "Captura de la app: el bloque redondeado «Luz reflejada» y el hexagonal «¿Es la luz reflejada…?».",
-        "locucion": "«Luz reflejada» es un dato. «¿Es la luz reflejada menor que…?» es una pregunta hecha con ese dato. El número que separa el blanco del negro se llama umbral."
+        "plano": "Una cinta métrica rodeando una rueda. Marca 17,5 centímetros.",
+        "locucion": "Lo que sí es fijo es cuánto avanza TU rueda en una vuelta: la vuelta de la rueda, su perímetro. Lo mides con una cinta, o la haces rodar una vuelta y mides la marca."
       },
       {
-        "plano": "Vista desde arriba: el robot avanza en zigzag sobre el borde de la línea.",
-        "locucion": "El truco no es seguir la línea, sino su borde. Si veo negro, giro hacia el blanco; si veo blanco, giro hacia el negro. El robot avanza haciendo eses."
+        "plano": "El bloque de fijar la rotación en 17,5 cm, al principio del programa.",
+        "locucion": "Le dices eso al Hub una sola vez, al empezar, y a partir de ahí puedes pedirle centímetros. «Avanza 50 centímetros» y avanza 50."
       },
       {
-        "plano": "Captura del bloque «empezar a mover con dirección» con valores −30, 0 y 30.",
-        "locucion": "«empezar a mover con dirección» avanza girando. El 0 es recto; los valores negativos giran a la izquierda y los positivos, a la derecha."
+        "plano": "Un cronómetro de pantalla poniéndose a cero y empezando a correr.",
+        "locucion": "Y el Hub tiene un cronómetro. Siempre está corriendo; lo que haces es ponerlo a cero cuando quieres empezar a medir, igual que con el giroscopio."
       },
       {
-        "plano": "Un alumno coloca el robot sobre blanco, apunta el valor, lo coloca sobre negro y apunta el otro.",
-        "locucion": "Mide el valor de tu pista sobre blanco y sobre negro. El umbral es el punto medio entre los dos."
+        "plano": "El bloque redondeado del cronómetro metido dentro de «fijar tiempo a».",
+        "locucion": "El cronómetro es un número redondeado, así que se guarda en una variable, se compara o se escribe. Con eso ya puedes medir cuánto tarda el robot en algo."
       },
       {
-        "plano": "El robot completa un circuito de cinta negra con curvas.",
-        "locucion": "Tu reto: un rastreador que complete el circuito del almacén sin salirse de la línea."
+        "plano": "El robot recorre 50 cm, para y escribe en la pantalla el tiempo que ha tardado.",
+        "locucion": "Distancia de verdad y tiempo de verdad. A partir de aquí el robot no hace cosas: hace medidas."
       }
-    ]
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Training Camp 1 — Driving Around»",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-1-driving-around/"
+    }
   },
   "bloques": [
     {
-      "texto": "Luz reflejada",
-      "explicacion": "Bloque de dato: el porcentaje de luz, de 0 a 100, que rebota en la superficie que hay bajo el sensor."
+      "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+      "explicacion": "Le dice al Hub cuánto avanza tu robot en una vuelta de rueda. Puesto al principio, los bloques de mover ya aceptan centímetros."
     },
     {
-      "texto": "¿Es la luz reflejada...?",
-      "explicacion": "Pregunta que compara la luz reflejada con un número, el umbral. Responde verdadero o falso."
+      "texto": "Reiniciar cronómetro",
+      "explicacion": "Pone el cronómetro a cero. No lo arranca —siempre está corriendo—: marca desde dónde empiezas a contar."
     },
     {
-      "texto": "Si... entonces... Si no...",
-      "explicacion": "Decide hacia qué lado girar según lo que ve el sensor."
-    },
-    {
-      "texto": "empezar a mover derecha: 30",
-      "explicacion": "Avanza girando: 0 es recto, los valores negativos giran a la izquierda y los positivos, a la derecha.",
-      "valores": [
-        "derecha: 30"
-      ]
-    },
-    {
-      "texto": "Bucle infinito",
-      "explicacion": "Repite la decisión continuamente para corregir el rumbo sin parar."
+      "texto": "Cronómetro",
+      "explicacion": "Un número: los segundos que han pasado desde la última puesta a cero. Se guarda, se compara o se escribe."
     }
   ],
+  "programa": {
+    "titulo": "Cincuenta centímetros cronometrados",
+    "explicacion": "Primero se le dice al Hub cuánto mide la vuelta de rueda, y después ya se puede hablar en centímetros. El cronómetro se pone a cero justo antes de salir.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+        "nivel": 0,
+        "valores": [
+          "17.5",
+          "cm"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "40"
+        ]
+      },
+      {
+        "texto": "Reiniciar cronómetro",
+        "nivel": 0
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "↑",
+          "50",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "tiempo · Cronómetro"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "tiempo"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Mide la luz",
-      "enunciado": "Escribe en la matriz el valor de luz reflejada que está leyendo el sensor.",
-      "pista": "Pásalo por el suelo blanco y por la línea negra y apunta los dos valores.",
+      "titulo": "Treinta centímetros",
+      "enunciado": "Dile al Hub cuánto mide la vuelta de tu rueda y haz que el robot avance 30 centímetros.",
+      "pista": "El bloque de la vuelta de rueda va antes que cualquier movimiento, igual que el de fijar los motores.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "30",
+            "cm"
+          ]
+        }
+      ],
+      "notas": "Se mide con la regla. Si falla por poco, casi siempre es que la vuelta de rueda está mal medida.",
+      "pasos": [
+        {
+          "texto": "Dile al Hub cuánto mide la vuelta de tu rueda"
+        },
+        {
+          "texto": "Haz que el robot avance 30 centímetros"
+        }
+      ]
+    },
+    {
+      "practica": 2,
+      "titulo": "Cuánto he tardado",
+      "enunciado": "Pon el cronómetro a cero, avanza 40 centímetros, guarda el cronómetro en una variable llamada tiempo y escríbela.",
+      "pista": "El cronómetro se guarda justo al terminar el movimiento, no antes.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "escribir Hello",
-          "nivel": 1,
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
           "valores": [
-            "Luz reflejada"
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "40",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "tiempo · Cronómetro"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "tiempo"
+          ]
+        }
+      ],
+      "notas": "Primera medida de verdad del curso. Bajando la velocidad se ve que el número sube.",
+      "pasos": [
+        {
+          "texto": "Pon el cronómetro a cero"
+        },
+        {
+          "texto": "Avanza 40 centímetros"
+        },
+        {
+          "texto": "Guarda el cronómetro en una variable llamada tiempo y escríbela"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "Diez segundos de patrulla",
+      "enunciado": "Haz una patrulla con límite de tiempo: pon el cronómetro a cero; arranca hacia delante; repite hasta que el cronómetro pase de 10 segundos; para el movimiento.",
+      "pista": "El cronómetro va dentro de la condición del bucle, comparado con 10.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "Cronómetro > 10"
           ]
         },
         {
           "texto": "Esperar X segundos",
           "nivel": 1,
-          "valor": "0.5"
+          "valores": [
+            "0.05"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
         }
       ],
-      "notas": "Apunta los dos números: el del suelo blanco y el de la línea negra. De ahí sale el umbral de las prácticas siguientes."
-    },
-    {
-      "practica": 2,
-      "titulo": "Blanco o negro",
-      "enunciado": "Decide con un «Si… entonces… Si no…» si lo que ve el sensor es claro u oscuro, y escríbelo.",
-      "pista": "El punto de corte suele estar a medio camino entre los dos valores que apuntaste.",
-      "solucion": [
+      "notas": "Se podría hacer con «esperar 10 segundos», y conviene decirlo: lo que se practica es usar el cronómetro como condición.",
+      "pasos": [
         {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 1,
-          "valor": "¿Es la luz reflejada < 50? D"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 2,
-          "valores": [
-            "OSCURO"
-          ]
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 2,
-          "valores": [
-            "CLARO"
+          "texto": "Haz una patrulla con límite de tiempo",
+          "hijos": [
+            "Pon el cronómetro a cero",
+            "Arranca hacia delante",
+            "Repite hasta que el cronómetro pase de 10 segundos",
+            "Para el movimiento"
           ]
         }
-      ],
-      "notas": "El 50 es el punto de corte: cámbialo por el valor que esté a medio camino entre tu blanco y tu negro."
-    },
-    {
-      "practica": 3,
-      "titulo": "Gira a un lado",
-      "enunciado": "Cuando el sensor vea negro, el robot empieza a moverse girando a la derecha; cuando vea blanco, a la izquierda.",
-      "pista": "Son dos «empezar a mover con dirección», uno en cada rama.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 0,
-          "valor": "¿Es la luz reflejada < 50? D"
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 1,
-          "valores": [
-            "derecha: 50"
-          ]
-        },
-        {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 1,
-          "valores": [
-            "derecha: -50"
-          ]
-        }
-      ],
-      "notas": "Son dos «empezar a mover» con dirección, uno en cada rama: positivo gira a la derecha y negativo, a la izquierda."
+      ]
     },
     {
       "practica": 4,
-      "titulo": "Sigue la línea",
-      "enunciado": "Mete todo en un bucle infinito: ese zigzag continuo es el seguimiento de línea.",
-      "pista": "Con la velocidad alta zigzaguea más; pruébalo despacio primero.",
+      "titulo": "La carrera hasta la pared",
+      "enunciado": "Pon el cronómetro a cero, arranca hacia delante, repite hasta que haya algo a menos de 15 centímetros, para y escribe el tiempo que has tardado.",
+      "pista": "Aquí no sabes cuánto va a durar: por eso se mide con el cronómetro en vez de contar segundos.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -207,274 +300,373 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
           "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "25"
+            "50"
           ]
         },
         {
-          "texto": "Bucle infinito",
+          "texto": "Reiniciar cronómetro",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 1,
-          "valor": "¿Es la luz reflejada < 50? D"
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
           "valores": [
-            "derecha: 50"
+            "↑"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "¿Está más próximo a? E 15 cm"
+          ]
         },
         {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "Esperar X segundos",
+          "nivel": 1,
           "valores": [
-            "derecha: -50"
+            "0.05"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "tiempo · Cronómetro"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "tiempo"
           ]
         }
       ],
-      "notas": "Ese zigzag continuo ES el seguimiento de línea. Si zigzaguea demasiado, baja la velocidad y la dirección."
+      "notas": "Cambiando la velocidad y repitiendo sale una pequeña tabla de tiempos. Es el primer experimento del curso.",
+      "pasos": [
+        {
+          "texto": "Pon el cronómetro a cero"
+        },
+        {
+          "texto": "Arranca hacia delante"
+        },
+        {
+          "texto": "Repite hasta que haya algo a menos de 15 centímetros"
+        },
+        {
+          "texto": "Para"
+        },
+        {
+          "texto": "Escribe el tiempo que has tardado"
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de color y una pista de cinta negra sobre fondo blanco.",
+    "piezas": "La base de conducción de 1º, el sensor de distancia, dos bujes, dos vigas de 7 y cuatro pasadores.",
     "pasos": [
       {
-        "titulo": "La base de conducción",
-        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero, como en la unidad anterior."
+        "titulo": "Apretar las ruedas",
+        "texto": "Pon un buje pegado a cada rueda para que no bailen en el eje. Una rueda floja avanza menos de lo que dice el programa."
       },
       {
-        "titulo": "El soporte del sensor",
-        "texto": "Añade delante un soporte que baje hasta casi tocar el suelo, centrado entre las dos ruedas."
+        "titulo": "Medir la vuelta de rueda",
+        "texto": "Marca un punto de la rueda con cinta, hazla rodar una vuelta entera sobre la mesa y mide con una regla lo que ha avanzado. Ese número es el que va en el bloque."
       },
       {
-        "titulo": "El sensor de color",
-        "texto": "Fija el sensor mirando hacia abajo, a un centímetro del suelo aproximadamente."
-      },
-      {
-        "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de color al puerto D."
+        "titulo": "El sensor de distancia",
+        "texto": "Monta las dos vigas de 7 delante y encaja el sensor entre ellas, mirando al frente."
       },
       {
         "titulo": "La pista",
-        "texto": "Pega una línea de cinta negra de unos dos centímetros de ancho sobre una superficie blanca, con curvas suaves."
+        "texto": "Pega dos marcas de cinta en la mesa separadas 50 centímetros medidos con la regla. Es contra eso contra lo que vas a comprobar el robot."
       },
       {
-        "titulo": "Comprueba",
-        "texto": "Pasa el robot con la mano del blanco al negro: el sensor no debe rozar el suelo ni quedar a más de dos centímetros."
+        "titulo": "La comprobación",
+        "texto": "Lanza el robot desde la primera marca. Si se queda corto o se pasa, la vuelta de rueda que has puesto no es la buena: vuelve a medirla."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
+        "pieza": "distancia"
       },
       {
-        "pieza": "motor",
+        "pieza": "buje",
         "cantidad": 2
       },
       {
-        "pieza": "rueda"
+        "pieza": "viga",
+        "cantidad": 2
       },
       {
-        "pieza": "color"
+        "pieza": "pasador",
+        "cantidad": 4
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué valor da «Luz reflejada» sobre una superficie negra?",
+      "pregunta": "¿Por qué dos robots con el mismo programa en rotaciones llegan a sitios distintos?",
       "opciones": [
-        "Uno bajo, cercano a 0",
-        "Exactamente 50",
-        "Uno alto, cercano a 100",
-        "Un valor negativo"
+        "Porque una rotación avanza más o menos según el tamaño de la rueda",
+        "Porque uno tiene más batería",
+        "Porque el programa se ejecuta a distinta velocidad",
+        "Porque los motores no son iguales"
       ],
       "correcta": 0,
-      "explicacion": "El negro apenas refleja luz, así que el valor es bajo."
+      "explicacion": "La rotación mide vueltas de rueda, no distancia. Con ruedas distintas, la misma vuelta recorre distinto."
     },
     {
-      "pregunta": "¿Qué es el umbral?",
+      "pregunta": "¿Qué es la vuelta de rueda que hay que medir?",
       "opciones": [
-        "La velocidad máxima del robot",
-        "El ancho de la línea",
-        "El número que separa lo que consideramos blanco de lo que consideramos negro",
-        "El puerto del sensor"
-      ],
-      "correcta": 2,
-      "explicacion": "Por encima del umbral decimos que ve blanco; por debajo, negro."
-    },
-    {
-      "pregunta": "En tu pista el blanco da 90 y el negro da 10. ¿Qué umbral eliges?",
-      "opciones": [
-        "10",
-        "50",
-        "90",
-        "100"
+        "El diámetro de la rueda",
+        "Lo que avanza el robot cuando la rueda da una vuelta entera",
+        "Las vueltas que da el motor en un segundo",
+        "El ancho del neumático"
       ],
       "correcta": 1,
-      "explicacion": "El punto medio entre 90 y 10 es 50."
+      "explicacion": "Es el perímetro: lo que recorre en una vuelta. Se mide haciéndola rodar una vuelta y midiendo con la regla."
     },
     {
-      "pregunta": "¿Qué sigue realmente el robot?",
+      "pregunta": "¿Dónde va el bloque que fija la vuelta de rueda?",
       "opciones": [
-        "El centro de la línea",
-        "El fondo blanco",
-        "La pared del aula",
-        "El borde de la línea"
-      ],
-      "correcta": 3,
-      "explicacion": "Con un solo sensor el robot va saltando entre el negro y el blanco: recorre el borde."
-    },
-    {
-      "pregunta": "¿Qué hace «empezar a mover derecha: 0»?",
-      "opciones": [
-        "Girar sobre sí mismo",
-        "Parar",
-        "Avanzar recto",
-        "Retroceder"
+        "Dentro del bucle",
+        "Al final del programa",
+        "Al principio, antes de cualquier movimiento",
+        "Justo antes de parar"
       ],
       "correcta": 2,
-      "explicacion": "La dirección 0 reparte la misma velocidad a las dos ruedas."
+      "explicacion": "Afecta a los movimientos que vengan después. Puesto al final, no sirve de nada."
     },
     {
-      "pregunta": "El robot ve negro y gira hacia el blanco. ¿Qué debe hacer cuando ve blanco?",
+      "pregunta": "¿Qué hace «Reiniciar cronómetro»?",
       "opciones": [
-        "Girar hacia el negro",
-        "Seguir girando hacia el blanco",
-        "Pararse",
-        "Retroceder"
+        "Para el cronómetro",
+        "Borra el tiempo guardado en la variable",
+        "Arranca el cronómetro, que estaba parado",
+        "Lo pone a cero: el cronómetro siempre está corriendo"
+      ],
+      "correcta": 3,
+      "explicacion": "Igual que el giroscopio: no arranca nada, marca desde dónde cuentas."
+    },
+    {
+      "pregunta": "El bloque «Cronómetro», ¿qué forma tiene?",
+      "opciones": [
+        "Redondeado, de número",
+        "De sombrero",
+        "Rectangular",
+        "De rombo"
       ],
       "correcta": 0,
-      "explicacion": "Cada vez que cruza el borde cambia el sentido del giro: eso produce el zigzag."
+      "explicacion": "Da los segundos que han pasado, así que es un número y va en huecos de número."
     },
     {
-      "pregunta": "¿Hacia dónde debe mirar el sensor de color en este robot?",
+      "pregunta": "Quieres saber cuánto tarda el robot en llegar a una pared. ¿Por qué no vale «esperar 5 segundos»?",
       "opciones": [
-        "Al frente",
-        "Hacia arriba",
-        "Hacia atrás",
-        "Hacia el suelo, a un centímetro aproximadamente"
-      ],
-      "correcta": 3,
-      "explicacion": "Para medir la luz que refleja la pista, el sensor tiene que estar cerca del suelo y mirándolo."
-    },
-    {
-      "pregunta": "El robot se sale de la línea en las curvas. ¿Qué pruebas primero?",
-      "opciones": [
-        "Subir la velocidad",
-        "Bajar la velocidad o aumentar el giro",
-        "Quitar el bucle infinito",
-        "Desconectar el sensor"
+        "Sí vale, es lo mismo",
+        "Porque no sabes de antemano cuánto va a tardar",
+        "Porque el bloque de esperar no funciona con sensores",
+        "Porque 5 segundos es poco"
       ],
       "correcta": 1,
-      "explicacion": "Más despacio o con giros más cerrados, el robot tiene tiempo de volver al borde."
+      "explicacion": "La espera fija un tiempo que tú decides. El cronómetro mide el que sale, que es lo que quieres saber."
+    },
+    {
+      "pregunta": "Pides 50 centímetros y el robot recorre 60. ¿Qué pasa?",
+      "opciones": [
+        "El giroscopio está descalibrado",
+        "Hay que bajar la velocidad",
+        "La vuelta de rueda que has puesto es menor que la de verdad",
+        "La batería está baja"
+      ],
+      "correcta": 2,
+      "explicacion": "Si le dices que cada vuelta avanza poco, el Hub manda más vueltas de la cuenta y se pasa."
+    },
+    {
+      "pregunta": "¿Se puede guardar el cronómetro en una variable?",
+      "opciones": [
+        "Solo si antes lo paras",
+        "Solo dentro de un bucle",
+        "No, el cronómetro no se puede leer",
+        "Sí: es un número, y se guarda con «fijar variable a»"
+      ],
+      "correcta": 3,
+      "explicacion": "Guardarlo es justo lo que hace falta para comparar medidas, porque el cronómetro sigue corriendo."
     }
   ],
   "practicas": [
     {
-      "titulo": "Zigzag sobre el borde",
-      "enunciado": "El robot sigue el borde de una línea negra recta de un metro, girando hacia un lado cuando ve negro y hacia el otro cuando ve blanco.",
+      "titulo": "Los cincuenta centímetros cronometrados",
+      "enunciado": "Fija los motores y la vuelta de rueda, pon la velocidad al 40 %, pon el cronómetro a cero, avanza 50 centímetros, guarda el cronómetro en la variable tiempo y escríbela.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Es la luz reflejada < 50 %?",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
           "valores": [
-            "derecha: 30"
+            "A+B"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
           "valores": [
-            "izquierda: 30"
+            "17.5",
+            "cm"
           ]
-        }
-      ],
-      "notas": "El sentido de los giros depende del borde que se siga: es igual de válido con los dos valores intercambiados."
-    },
-    {
-      "titulo": "Circuito con umbral medido",
-      "enunciado": "Mide la luz reflejada sobre el blanco y sobre el negro de tu pista, calcula el umbral y ajusta la velocidad y el giro para completar el circuito con curvas sin salirte.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
         },
         {
           "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "30"
+            "40"
           ]
         },
         {
-          "texto": "Bucle infinito",
+          "texto": "Reiniciar cronómetro",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Es la luz reflejada < umbral medido?",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
           "valores": [
-            "giro hacia el blanco"
+            "↑",
+            "50",
+            "cm"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "tiempo · Cronómetro"
+          ]
         },
         {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "escribir Hello",
+          "nivel": 0,
           "valores": [
-            "giro hacia el negro"
+            "tiempo"
           ]
         }
       ],
-      "notas": "Pide que anoten los dos valores medidos y el umbral. «fijar velocidad de movimiento» es de 1º (unidad 6). Valora que el circuito se complete, no los números concretos.",
+      "notas": "Se comprueba con la regla contra la marca de la mesa. El orden de los tres bloques de preparación es lo que más falla.",
       "pasos": [
         {
-          "texto": "Mide la luz reflejada sobre el blanco y sobre el negro de tu pista"
+          "texto": "Fija los motores y la vuelta de rueda"
         },
         {
-          "texto": "Calcula el umbral y ajusta la velocidad y el giro para completar el circuito con curvas sin salirte"
+          "texto": "Pon la velocidad al 40 %"
+        },
+        {
+          "texto": "Pon el cronómetro a cero"
+        },
+        {
+          "texto": "Avanza 50 centímetros"
+        },
+        {
+          "texto": "Guarda el cronómetro en la variable tiempo y escríbela"
+        }
+      ]
+    },
+    {
+      "titulo": "La ida y la vuelta medidas",
+      "enunciado": "Mide el tiempo de una ida y vuelta: pon el cronómetro a cero; avanza 40 centímetros; da media vuelta girando sobre el sitio; vuelve otros 40 centímetros; escribe el tiempo total.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "40",
+            "cm"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "derecha: 100",
+            "1",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "40",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "tiempo · Cronómetro"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "tiempo"
+          ]
+        }
+      ],
+      "notas": "El giro sigue en rotaciones a propósito: girar sobre el sitio no recorre distancia hacia delante.",
+      "pasos": [
+        {
+          "texto": "Mide el tiempo de una ida y vuelta",
+          "hijos": [
+            "Pon el cronómetro a cero",
+            "Avanza 40 centímetros",
+            "Da media vuelta girando sobre el sitio",
+            "Vuelve otros 40 centímetros",
+            "Escribe el tiempo total"
+          ]
         }
       ]
     }

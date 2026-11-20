@@ -299,7 +299,7 @@ La pestaña **«Soluciones oficiales» se ha integrado aquí**: enseñaba el enu
 las 2 programaciones de la PRUEBA, y eso es un trozo de esta página. `/soluciones` redirige
 conservando el curso y la unidad.
 
-### El temario de 1º de ESO (`scripts/temario-1eso.py`)
+### El temario de 1º y 2º de ESO (`scripts/temario-1eso.py`, `scripts/temario-2eso.py`)
 
 Las 9 unidades de 1º están repartidas en **3 evaluaciones de 3 unidades**. En cada evaluación se
 tocan **todos los ámbitos** —pantalla, botón y sonido, motores y giros, y los tres sensores—, y lo
@@ -327,12 +327,46 @@ viñetas y la lista de `materiales` no los escribe este script: los generan `enu
 `materiales.py`, que ya existían.
 
 ```bash
-python3 scripts/temario-1eso.py && python3 scripts/materiales.py && python3 scripts/enunciados.py
+PYTHONPATH=scripts python3 scripts/temario-1eso.py
+PYTHONPATH=scripts python3 scripts/temario-2eso.py
+python3 scripts/materiales.py && python3 scripts/enunciados.py
 ```
 
-**2º y 3º no se tocan.** Los tres scripts antiguos que generaban contenido de 1º
-(`soluciones-intermedias.py`, `practicas-intermedias.py`, `programas-1eso.py`) ahora lo saltan o
-están jubilados: si volvieran a escribir sobre 1º, revertirían este temario sin avisar.
+**Los tres scripts antiguos** que generaban contenido de 1º (`soluciones-intermedias.py`,
+`practicas-intermedias.py`, `programas-1eso.py`) ahora lo saltan o están jubilados: si volvieran a
+escribir sobre 1º, revertirían este temario sin avisar.
+
+#### 2º de ESO
+
+2º da por sabidos la matriz de luces, los botones y los sonidos: siguen apareciendo, pero como
+apoyo, no como tema. El curso va de **motores y giros más finos**, **sensores leídos como número**
+y, sobre todo, **variables**: el robot deja de reaccionar al momento y empieza a acordarse de lo
+que ha pasado.
+
+| | Unidades | Qué se añade |
+| --- | --- | --- |
+| **1.ª evaluación** | 1 · Variables: el robot se acuerda<br>2 · Medir de verdad: centímetros y cronómetro<br>3 · Sensores con número: presión, umbrales y cuentas | La primera variable, contar sucesos, la vuelta de rueda en centímetros, el cronómetro y los umbrales elegidos a mano. |
+| **2.ª evaluación** | 4 · La posición del motor<br>5 · Dos condiciones a la vez: y, o, no<br>6 · Arrancar suave: aceleración, velocidad y azar | Posición absoluta y relativa del motor, condiciones compuestas, el seguidor de línea, la aceleración y el número al azar. |
+| **3.ª evaluación** | 7 · Listas: guardar una serie entera<br>8 · Mis bloques: ponerle nombre a una maniobra<br>9 · Proyecto final: la estación que toma datos | Listas y recorridos con índice, bloques propios con entradas, el gráfico de líneas y un proyecto que mide, guarda y busca el mínimo. |
+
+Las 28 familias de bloques que 1º no usa están repartidas entre estas 9 unidades, de 2 a 5 por
+unidad, sin repetir ninguna y sin solaparse con 1º.
+
+Dos detalles del generador que conviene conocer:
+
+- **La paleta hereda los cursos anteriores.** La paleta de una unidad de 2º son sus bloques, los de
+  las unidades anteriores de 2º y **todos los de 1º**, igual que hace `getPaleta` en la aplicación.
+- **La respuesta correcta se reparte entre las cuatro letras** (`reparte_respuestas`). Escribiendo
+  preguntas sale casi siempre la B, y un alumno que conteste siempre B aprobaría sin leer: en 2º
+  las 72 respuestas quedan 18 en cada letra. **Ojo:** las entregas guardan el índice elegido, así
+  que reordenar las opciones invalida los test ya entregados de ese curso; solo se puede hacer al
+  regenerar el curso entero. **1º sigue con el reparto antiguo** (50 de 72 en la B): se puede
+  arreglar regenerándolo, a cambio de invalidar los test de 1º ya entregados.
+- **El enlace a la lección oficial se elige por tema**, no por el vídeo del que se copia el guion:
+  cada unidad nombra en `"enlace"` una URL del catálogo de lecciones que ya hay en el repositorio.
+  El generador se para si una unidad nombra una URL que no está, para que no se inventen enlaces.
+
+**3º de ESO no se toca** hasta que se defina.
 
 ### Contenido de las unidades
 

@@ -1,526 +1,747 @@
 {
   "curso": "2ESO",
   "unidad": 8,
-  "reto": "Construye una máquina de reflejos: una bandera se levanta por sorpresa y mide cuánto tardas en pulsar.",
+  "reto": "Fabrica tu propio bloque «girar tantos grados» y úsalo para recorrer un circuito sin repetir una sola línea.",
   "video": {
-    "titulo": "Juego de reflejos",
+    "titulo": "Un bloque hecho por ti",
     "duracion": "5 min",
     "escenas": [
       {
-        "plano": "Dos jugadores frente a una máquina; una bandera sube de golpe, uno pulsa y aparece un número.",
-        "locucion": "¿Quién tiene mejores reflejos? Una bandera se levanta cuando menos te lo esperas y la máquina mide cuánto tardas en pulsar."
+        "plano": "Un programa de un circuito con el mismo grupo de cinco bloques repetido cuatro veces.",
+        "locucion": "Mira el programa del cuadrado del año pasado. Los cinco bloques del giro están repetidos en cada esquina. Si cambias uno, tienes que cambiarlo cuatro veces, y se te olvidará una."
       },
       {
-        "plano": "Captura de la app: «Elegir un número aleatorio entre 2 y 6» dentro de un bloque «Esperar».",
-        "locucion": "Si la bandera subiera siempre a los tres segundos, harías trampa. «Elegir un número aleatorio» da cada vez un número distinto entre dos límites: lo usamos como tiempo de espera."
+        "plano": "El menú de Mis bloques y un bloque nuevo, vacío, con su nombre.",
+        "locucion": "SPIKE te deja fabricar bloques tuyos. Le pones nombre, metes dentro los cinco bloques del giro, y a partir de ahí tienes un bloque «girar» que puedes usar como cualquier otro."
       },
       {
-        "plano": "Captura de «Reiniciar cronómetro» justo debajo del bloque que sube la bandera.",
-        "locucion": "El Hub tiene un cronómetro que cuenta segundos. Con «Reiniciar cronómetro» lo ponemos a cero en el instante en que sube la bandera."
+        "plano": "El bloque nuevo con un hueco de número: «girar ( ) grados».",
+        "locucion": "Y puede llevar huecos. «Girar noventa grados» y «girar cuarenta y cinco» con el mismo bloque: el número se lo pasas al usarlo."
       },
       {
-        "plano": "Captura de «Esperar hasta que ¿Está presionado?» y «Fijar tiempo a Cronómetro».",
-        "locucion": "Esperamos a que pulses y, en ese instante, guardamos en una variable lo que marca el cronómetro: ese es tu tiempo de reacción."
+        "plano": "El programa del circuito, ahora con cuatro bloques en total.",
+        "locucion": "El programa queda en cuatro líneas y se lee de un vistazo. Y si quieres mejorar el giro, lo tocas en un sitio y mejora en los cuatro."
       },
       {
-        "plano": "Captura del bloque amarillo «Cuando el cronómetro» encabezando una pila.",
-        "locucion": "El bloque amarillo «Cuando el cronómetro» inicia una pila cuando el tiempo pasa de un valor. Sirve para reaccionar si alguien tarda demasiado."
+        "plano": "Un sombrero «Cuando el cronómetro» arrancando su pila a los 30 segundos.",
+        "locucion": "De paso, dos bloques más. Uno arranca un programa cuando el cronómetro llega a un tiempo: sirve para límites y para avisos."
       },
       {
-        "plano": "La máquina juega varias rondas y muestra el tiempo de cada una.",
-        "locucion": "Tu reto: una máquina de reflejos con varias rondas, que baja la bandera si el jugador se duerme."
+        "plano": "«Enviar mensaje y esperar» deteniendo un programa hasta que el otro acaba.",
+        "locucion": "Y el otro manda un aviso y ESPERA a que el que lo recibe termine. El de 1º no esperaba. Este sí, y por eso sirve para encadenar maniobras."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «My Code, Our Program» (Mis bloques)",
+      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/my-code-our-program/"
+    }
   },
   "bloques": [
     {
-      "texto": "Reiniciar cronómetro",
-      "explicacion": "Pone el cronómetro del Hub a cero."
-    },
-    {
-      "texto": "Cronómetro",
-      "explicacion": "Bloque de dato: los segundos transcurridos desde el último reinicio."
+      "texto": "Mis bloques: Crear un bloque con entradas",
+      "explicacion": "Fabrica un bloque tuyo con el nombre que le pongas y los huecos que quieras. Dentro va la maniobra; fuera, una sola línea."
     },
     {
       "texto": "Cuando el cronómetro",
-      "explicacion": "Bloque de inicio: arranca su pila cuando el cronómetro supera el valor elegido."
+      "explicacion": "Un sombrero que arranca su pila cuando el cronómetro llega al tiempo que le digas. Sirve para límites de tiempo y avisos."
     },
     {
-      "texto": "Elegir un número aleatorio",
-      "explicacion": "Bloque de dato: un número al azar entre los dos límites que le indiques."
-    },
-    {
-      "texto": "Esperar hasta que",
-      "explicacion": "Espera a que el jugador pulse."
-    },
-    {
-      "texto": "¿Está presionado?",
-      "explicacion": "Pregunta si el jugador ha pulsado el sensor de fuerza."
-    },
-    {
-      "texto": "escribir Hello",
-      "explicacion": "Muestra el tiempo de reacción.",
-      "valores": [
-        "Hello"
-      ]
+      "texto": "Enviar mensaje y esperar",
+      "explicacion": "Manda un aviso y se queda parado hasta que el programa que lo recibe termina. El de 1º mandaba y seguía; este espera."
     }
   ],
+  "programa": {
+    "titulo": "El circuito con bloque propio",
+    "explicacion": "El giro medido con giroscopio se guarda dentro de un bloque propio llamado «girar». El programa principal solo dice qué hacer, no cómo.",
+    "bloques": [
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "girar (grados)"
+        ]
+      },
+      {
+        "texto": "Fijar el ángulo de guiñada del Hub a 0",
+        "nivel": 1
+      },
+      {
+        "texto": "empezar a mover derecha: 30",
+        "nivel": 1,
+        "valores": [
+          "derecha: 100"
+        ]
+      },
+      {
+        "texto": "Repetir bucle hasta",
+        "nivel": 1,
+        "valores": [
+          "ángulo de guiñada > grados"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 2,
+        "valores": [
+          "0.01"
+        ]
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 1
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "Fijar motores de movimiento para que frenen al parar",
+        "nivel": 0,
+        "valores": [
+          "frenar"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "30"
+        ]
+      },
+      {
+        "texto": "Repetir bucle",
+        "nivel": 0,
+        "valores": [
+          "4"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "↑",
+          "30",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "girar (90)"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Pon el cronómetro a cero",
-      "enunciado": "Reinicia el cronómetro y escribe su valor en la matriz.",
-      "pista": "Verás cómo el número va subiendo solo.",
+      "titulo": "Tu primer bloque",
+      "enunciado": "Crea un bloque propio llamado avisar que toque una nota y encienda un dibujo un segundo. Úsalo dos veces seguidas.",
+      "pista": "Lo que va dentro del bloque propio se escribe una vez; luego se llama por su nombre.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avisar"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 1,
+          "valores": [
+            "72 · 0.3"
+          ]
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 1,
+          "valores": [
+            "cara contenta",
+            "1"
+          ]
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Reiniciar cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 1,
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
           "valores": [
-            "Cronómetro"
+            "avisar"
           ]
         },
         {
           "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "0.2"
-        }
-      ],
-      "notas": "El cronómetro corre solo: no hay que hacer nada para que suba, solo leerlo.",
-      "pasos": [
-        {
-          "texto": "Reinicia el cronómetro"
+          "nivel": 0,
+          "valores": [
+            "1"
+          ]
         },
         {
-          "texto": "Escribe su valor en la matriz"
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avisar"
+          ]
+        }
+      ],
+      "notas": "La definición es una pila aparte, igual que los sombreros. Verlo así les cuesta al principio.",
+      "pasos": [
+        {
+          "texto": "Crea un bloque propio llamado avisar que toque una nota y encienda un dibujo un segundo"
+        },
+        {
+          "texto": "Úsalo dos veces seguidas"
         }
       ]
     },
     {
       "practica": 2,
-      "titulo": "Mide tu reacción",
-      "enunciado": "Reinicia el cronómetro, espera a que pulses el botón y escribe el tiempo que tardaste.",
-      "pista": "El valor que escribes es tu tiempo de reacción.",
+      "titulo": "Un bloque con hueco",
+      "enunciado": "Crea un bloque llamado pitar con un hueco de número que toque esa nota medio segundo. Úsalo con tres notas distintas.",
+      "pista": "El hueco se rellena al usar el bloque, no al crearlo.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "pitar (nota)"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 1,
+          "valores": [
+            "nota · 0.5"
+          ]
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Reiniciar cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "escribir Hello",
+          "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "Cronómetro"
+            "pitar (60)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "pitar (64)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "pitar (67)"
           ]
         }
       ],
-      "notas": "Entre el reinicio y la pulsación pasa tu tiempo de reacción: eso es justo lo que lee el cronómetro.",
+      "notas": "Tres usos y una sola definición. Si quieren cambiar la duración, la cambian en un sitio.",
       "pasos": [
         {
-          "texto": "Reinicia el cronómetro"
+          "texto": "Crea un bloque llamado pitar con un hueco de número que toque esa nota medio segundo"
         },
         {
-          "texto": "Espera a que pulses el botón"
-        },
-        {
-          "texto": "Escribe el tiempo que tardaste"
+          "texto": "Úsalo con tres notas distintas"
         }
       ]
     },
     {
       "practica": 3,
-      "titulo": "Espera sorpresa",
-      "enunciado": "Antes de levantar la bandera, espera un número aleatorio de segundos entre 2 y 5.",
-      "pista": "El bloque de número aleatorio va dentro del hueco de «Esperar».",
+      "titulo": "El giro con nombre",
+      "enunciado": "Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo a cero; empieza a girar; repite hasta pasar de esos grados; para el movimiento. Úsalo para girar 90.",
+      "pista": "Dentro del bloque, el hueco se usa como si fuera una variable.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "girar (grados)"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valores": [
+            "ángulo de guiñada > grados"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valores": [
+            "0.01"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "Elegir un número aleatorio entre 2 y 5"
-        },
-        {
-          "texto": "encender dibujo",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "corazón"
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "girar (90)"
           ]
         }
       ],
-      "notas": "El bloque del número al azar va dentro del hueco de «Esperar»: así nunca sabes cuándo va a salir."
-    },
-    {
-      "practica": 4,
-      "titulo": "Máquina de reflejos",
-      "enunciado": "Junta todo: espera sorpresa, levanta la bandera, mide el tiempo y enséñalo.",
-      "pista": "Pruébalo con un compañero y comparad los tiempos.",
-      "solucion": [
+      "notas": "Es el giro de 1º metido en una caja con nombre. A partir de aquí, girar es una línea.",
+      "pasos": [
         {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "apagar píxeles",
-          "nivel": 0,
-          "valores": []
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "Elegir un número aleatorio entre 2 y 5"
-        },
-        {
-          "texto": "encender dibujo",
-          "nivel": 0,
-          "valores": [
-            "corazón"
+          "texto": "Crea un bloque llamado girar con un hueco de grados que haga esto",
+          "hijos": [
+            "Pon el ángulo a cero",
+            "Empieza a girar",
+            "Repite hasta pasar de esos grados",
+            "Para el movimiento"
           ]
         },
         {
-          "texto": "Reiniciar cronómetro",
+          "texto": "Úsalo para girar 90"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "El límite de tiempo",
+      "enunciado": "Con el sombrero del cronómetro, haz esto a los 20 segundos: para el movimiento; escribe FIN; pon el botón en rojo.",
+      "pista": "Este programa va en su propia pila, con su sombrero, y vigila por su cuenta.",
+      "solucion": [
+        {
+          "texto": "Cuando el cronómetro",
+          "nivel": 0,
+          "valores": [
+            "> 20"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
           "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "apagar píxeles",
-          "nivel": 0,
-          "valores": []
         },
         {
           "texto": "escribir Hello",
           "nivel": 0,
           "valores": [
-            "Cronómetro"
+            "FIN"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
           ]
         }
       ],
-      "notas": "El reinicio del cronómetro va justo después de levantar la bandera: si lo pones antes, estarías midiendo también la espera.",
+      "notas": "Un cronómetro que corta la prueba. Combinado con cualquier programa de los anteriores, le pone límite sin tocarlo.",
       "pasos": [
         {
-          "texto": "Junta todo",
+          "texto": "Con el sombrero del cronómetro, haz esto a los 20 segundos",
           "hijos": [
-            "Espera sorpresa",
-            "Levanta la bandera",
-            "Mide el tiempo y enséñalo"
+            "Para el movimiento",
+            "Escribe FIN",
+            "Pon el botón en rojo"
           ]
         }
       ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor mediano, el sensor de fuerza, una viga con una pieza de color que haga de bandera y vigas para la base.",
+    "piezas": "La base de conducción, el sensor de distancia, dos vigas de 7, dos bujes y cuatro pasadores.",
     "pasos": [
       {
-        "titulo": "La base",
-        "texto": "Monta una base estable con el Hub a la vista: en su matriz se leerá el resultado."
+        "titulo": "Centrar el Hub",
+        "texto": "Coloca el Hub justo en el centro del chasis, a la misma distancia de las dos ruedas. El giroscopio va dentro, y si el Hub va torcido, mide torcido."
       },
       {
-        "titulo": "El motor",
-        "texto": "Fija el motor mediano a un lado, con el eje en horizontal."
+        "titulo": "Apretar los ejes",
+        "texto": "Pon un buje pegado a cada rueda. Una rueda que baila estropea cualquier giro medido."
       },
       {
-        "titulo": "La posición 0",
-        "texto": "Gira el motor con la mano hasta que sus marcas coincidan."
+        "titulo": "El sensor",
+        "texto": "Monta las dos vigas de 7 delante y encaja el sensor de distancia entre ellas, recto y mirando al frente."
       },
       {
-        "titulo": "La bandera",
-        "texto": "Con el motor en 0, monta la bandera tumbada. En la posición 90 quedará levantada."
+        "titulo": "El circuito",
+        "texto": "Marca con cinta un cuadrado de 30 centímetros de lado en el suelo y señala la esquina de salida."
       },
       {
-        "titulo": "El pulsador",
-        "texto": "Fija el sensor de fuerza delante, bien sujeto y cómodo de pulsar."
-      },
-      {
-        "titulo": "Los cables y la prueba",
-        "texto": "Motor al puerto A y sensor de fuerza al puerto F. Levanta la bandera con la mano: no debe chocar con nada."
+        "titulo": "La comprobación",
+        "texto": "Empuja el robot a mano por el circuito. Si alguna rueda roza o salta, arréglalo antes de programar: no hay bloque que corrija eso."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
-      },
-      {
-        "pieza": "motor",
-        "cantidad": 1
-      },
-      {
-        "pieza": "fuerza"
+        "pieza": "distancia"
       },
       {
         "pieza": "viga",
-        "cantidad": 1
+        "cantidad": 2
       },
       {
-        "pieza": "color"
+        "pieza": "buje",
+        "cantidad": 2
+      },
+      {
+        "pieza": "pasador",
+        "cantidad": 4
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Para qué sirve el número aleatorio en este juego?",
+      "pregunta": "¿Para qué sirve crear un bloque propio?",
       "opciones": [
-        "Para que no se pueda adivinar cuándo sube la bandera",
-        "Para medir el tiempo de reacción",
-        "Para mover el motor más rápido",
-        "Para contar las rondas"
+        "Para escribir una vez una maniobra que se repite y usarla por su nombre",
+        "Para usar más sensores",
+        "Para guardar números",
+        "Para que el programa vaya más rápido"
       ],
       "correcta": 0,
-      "explicacion": "Si la espera fuera siempre la misma, el jugador aprendería a anticiparse."
+      "explicacion": "Se escribe una vez y se usa muchas. Y si hay que mejorarla, se mejora en un sitio."
     },
     {
-      "pregunta": "«Elegir un número aleatorio entre 2 y 6»: ¿cuál de estos valores no puede salir?",
+      "pregunta": "¿Qué es un hueco en un bloque propio?",
       "opciones": [
-        "2",
-        "4",
-        "7",
-        "6"
-      ],
-      "correcta": 2,
-      "explicacion": "El resultado siempre está entre los dos límites, incluidos."
-    },
-    {
-      "pregunta": "¿En qué momento reiniciamos el cronómetro?",
-      "opciones": [
-        "Al iniciar el programa y nunca más",
-        "Cuando el jugador pulsa",
-        "Al escribir el resultado",
-        "Justo cuando sube la bandera"
-      ],
-      "correcta": 3,
-      "explicacion": "El tiempo de reacción se cuenta desde que aparece la señal."
-    },
-    {
-      "pregunta": "¿Qué marca el cronómetro en el instante en que el jugador pulsa?",
-      "opciones": [
-        "El número de rondas",
-        "El tiempo de reacción",
-        "La hora",
-        "El número aleatorio"
+        "Un error de montaje",
+        "Un valor que le pasas cada vez que lo usas",
+        "Una variable global",
+        "Un sensor"
       ],
       "correcta": 1,
-      "explicacion": "Son los segundos transcurridos desde que subió la bandera."
+      "explicacion": "Como los grados en «girar (90)»: el mismo bloque sirve para 90, para 45 o para 180."
     },
     {
-      "pregunta": "¿Por qué guardamos el cronómetro en una variable al pulsar?",
+      "pregunta": "Mejoras el giro dentro del bloque propio. ¿Qué pasa en las cuatro esquinas del circuito?",
       "opciones": [
-        "Porque el cronómetro sigue corriendo y así conservamos el valor de ese instante",
-        "Porque el cronómetro se borra al leerlo",
-        "Para que el motor vaya más despacio",
-        "Porque la matriz no puede mostrar números"
+        "El programa deja de funcionar",
+        "Solo mejora la primera",
+        "Mejoran las cuatro",
+        "Hay que copiar el cambio cuatro veces"
+      ],
+      "correcta": 2,
+      "explicacion": "Todas usan el mismo bloque, así que el cambio llega a todas. Ese es el motivo de hacerlo."
+    },
+    {
+      "pregunta": "¿Dónde va la definición de un bloque propio?",
+      "opciones": [
+        "Al final del programa",
+        "En otro archivo",
+        "Dentro del programa principal",
+        "En su propia pila, aparte, como los sombreros"
+      ],
+      "correcta": 3,
+      "explicacion": "Es una pila suelta en el lienzo. El programa principal solo lo llama."
+    },
+    {
+      "pregunta": "«Cuando el cronómetro > 20», ¿qué hace?",
+      "opciones": [
+        "Arranca su propia pila cuando el cronómetro pasa de 20",
+        "Pone el cronómetro a 20",
+        "Repite cada 20 segundos",
+        "Espera 20 segundos y sigue"
       ],
       "correcta": 0,
-      "explicacion": "Si lo leyéramos más tarde, incluiría el tiempo gastado en los bloques siguientes."
+      "explicacion": "Es un sombrero: arranca su programa solo, sin que nadie lo llame."
     },
     {
-      "pregunta": "¿Qué tipo de bloque es «Cronómetro»?",
+      "pregunta": "Diferencia entre «enviar mensaje» y «enviar mensaje y esperar»:",
       "opciones": [
-        "Un bloque de inicio",
-        "Una pregunta",
-        "Una orden para el motor",
-        "Un dato: un número de segundos"
-      ],
-      "correcta": 3,
-      "explicacion": "Es redondeado y se coloca dentro de otros bloques."
-    },
-    {
-      "pregunta": "¿Qué hace una pila que empieza con «Cuando el cronómetro > 5»?",
-      "opciones": [
-        "Se ejecuta cada 5 segundos exactos",
-        "Reinicia el cronómetro",
-        "Arranca cuando han pasado más de 5 segundos desde el último reinicio",
-        "Detiene el programa a los 5 segundos"
-      ],
-      "correcta": 2,
-      "explicacion": "Es un bloque de inicio que vigila el valor del cronómetro."
-    },
-    {
-      "pregunta": "Un jugador mantiene el sensor pulsado desde antes de que suba la bandera. ¿Qué tiempo marcará?",
-      "opciones": [
-        "El tiempo real de reacción",
-        "Casi cero, porque al subir la bandera el sensor ya está pulsado",
-        "Ninguno: el programa se detiene",
-        "El número aleatorio"
+        "Ninguna",
+        "El segundo se queda parado hasta que el que recibe termina",
+        "El segundo manda el mensaje dos veces",
+        "El primero no funciona en 2º"
       ],
       "correcta": 1,
-      "explicacion": "«Esperar hasta que» se cumple al instante. Es una trampa que conviene impedir."
+      "explicacion": "Esperar es lo que permite encadenar: haz esto, y cuando acabes, sigo yo."
+    },
+    {
+      "pregunta": "¿Cuántas veces hay que escribir los bloques de una maniobra que se usa cuatro veces?",
+      "opciones": [
+        "Depende del sensor",
+        "Cuatro",
+        "Una, dentro del bloque propio",
+        "Dos"
+      ],
+      "correcta": 2,
+      "explicacion": "Esa es toda la idea: una definición, muchos usos."
+    },
+    {
+      "pregunta": "El programa del circuito pasa de veinte bloques a cuatro. ¿Hace algo distinto?",
+      "opciones": [
+        "Sí, va más rápido",
+        "Sí, gasta menos batería",
+        "Sí, hace menos cosas",
+        "No: hace lo mismo, pero se lee mucho mejor"
+      ],
+      "correcta": 3,
+      "explicacion": "Mismo comportamiento, mejor organización. Programar bien es sobre todo eso."
     }
   ],
   "practicas": [
     {
-      "titulo": "Mide tus reflejos",
-      "enunciado": "La bandera empieza bajada. Tras una espera al azar de entre 2 y 6 segundos, se levanta. El programa mide cuánto tardas en pulsar y lo escribe en la matriz.",
+      "titulo": "El circuito con bloque propio",
+      "enunciado": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio. En el programa principal, prepara la base y repite cuatro veces avanzar 30 centímetros y llamar a girar con 90.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "girar (grados)"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valores": [
+            "ángulo de guiñada > grados"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valores": [
+            "0.01"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "A+B"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "valor": "número aleatorio entre 2 y 6",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Fijar motores de movimiento para que frenen al parar",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "frenar"
           ]
         },
         {
-          "texto": "Reiniciar cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está presionado? F",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "tiempo · Cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "escribir Hello",
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
           "nivel": 0,
           "valores": [
-            "tiempo"
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "4"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "30",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "girar (90)"
           ]
         }
       ],
-      "notas": "El cronómetro se reinicia después de subir la bandera, no antes. El tiempo debe guardarse en la variable antes de escribirlo.",
+      "notas": "Dos pilas: la definición y el programa. El cuadrado tiene que cerrar, y si no cierra, se toca el bloque girar una sola vez.",
       "pasos": [
         {
-          "texto": "La bandera empieza bajada"
+          "texto": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio"
         },
         {
-          "texto": "Tras una espera al azar de entre 2 y 6 segundos"
-        },
-        {
-          "texto": "Se levanta"
-        },
-        {
-          "texto": "El programa mide cuánto tardas en pulsar y lo escribe en la matriz"
+          "texto": "En el programa principal, prepara la base y repite cuatro veces avanzar 30 centímetros y llamar a girar con 90"
         }
       ]
     },
     {
-      "titulo": "Cinco rondas con bandera que se rinde",
-      "enunciado": "El juego se repite cinco rondas. Además, en una pila aparte, si pasan más de 5 segundos desde que subió la bandera, esta se baja sola.",
+      "titulo": "El recorrido con límite",
+      "enunciado": "Haz con el mismo bloque girar un recorrido de tres tramos de 25 centímetros con giros de 120 grados. Añade un programa aparte que a los 20 segundos pare el movimiento y escriba FIN.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "girar (grados)"
+          ]
+        },
+        {
+          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "nivel": 1
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 1,
+          "valores": [
+            "derecha: 100"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 1,
+          "valores": [
+            "ángulo de guiñada > grados"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 2,
+          "valores": [
+            "0.01"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Repetir bucle",
-          "valor": "5",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "A+B"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "valor": "número aleatorio entre 2 y 6",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "90"
+            "17.5",
+            "cm"
           ]
         },
         {
           "texto": "Reiniciar cronómetro",
-          "nivel": 1
+          "nivel": 0
         },
         {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está presionado? F",
-          "nivel": 1
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "3"
+          ]
         },
         {
-          "texto": "Fijar variable a",
-          "valor": "tiempo · Cronómetro",
-          "nivel": 1
-        },
-        {
-          "texto": "escribir Hello",
+          "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
-            "tiempo"
+            "↑",
+            "25",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "girar (120)"
           ]
         },
         {
           "texto": "Cuando el cronómetro",
-          "valor": "> 5",
+          "nivel": 0,
+          "valores": [
+            "> 20"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
           "nivel": 0
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "escribir Hello",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "FIN"
           ]
         }
       ],
-      "notas": "La pila del cronómetro también puede dispararse entre rondas, con la bandera ya bajada: no tiene efecto. Compruébalo en la app antes de corregir.",
+      "notas": "Tres pilas en el lienzo: la definición, el recorrido y el vigilante del tiempo. Un triángulo, que con 120 grados cierra.",
       "pasos": [
         {
-          "texto": "El juego se repite cinco rondas"
+          "texto": "Haz con el mismo bloque girar un recorrido de tres tramos de 25 centímetros con giros de 120 grados"
         },
         {
-          "texto": "Además, en una pila aparte, si pasan más de 5 segundos desde que subió la bandera, esta se baja sola"
+          "texto": "Añade un programa aparte que a los 20 segundos pare el movimiento y escriba FIN"
         }
       ]
     }

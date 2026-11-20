@@ -562,7 +562,11 @@
       "notas": "Incluye las definiciones de la práctica 1. Dos giros más a la derecha dejan al robot mirando a la izquierda del pasillo por el que venía. Se hacen de 90 en 90 porque la guiñada cambia de signo al llegar a 180°. La estrategia resuelve laberintos sencillos, no cualquiera.",
       "pasos": [
         {
-          "texto": "Con los bloques de la práctica anterior, programa la estrategia completa: avanzar hasta una pared, retroceder un poco y girar a la derecha; si sigue habiendo pared, dar media vuelta"
+          "texto": "Con los bloques de la práctica anterior, programa la estrategia completa",
+          "hijos": [
+            "Avanzar hasta una pared, retroceder un poco y girar a la derecha",
+            "Si sigue habiendo pared, dar media vuelta"
+          ]
         },
         {
           "texto": "Repite sin parar"

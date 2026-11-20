@@ -1,77 +1,296 @@
 {
   "curso": "2ESO",
   "unidad": 6,
-  "reto": "Haz que tu robot gire exactamente 90° usando el giroscopio del Hub.",
+  "reto": "Haz un repartidor que salga y frene sin tirar la carga, y que decida al azar a qué destino va.",
   "video": {
-    "titulo": "Girar con precisión",
-    "duracion": "5 min",
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "titulo": "Lo que pasa al arrancar",
+    "duracion": "4 min",
     "escenas": [
       {
-        "plano": "Un robot gira «90 grados» sobre una mesa lisa y después sobre una alfombra, donde se queda corto.",
-        "locucion": "En 1º girabas 90 grados probando cuántas vueltas de rueda hacían falta. Pero si cambia el suelo o resbala una rueda, el giro ya no sale."
+        "plano": "Un robot con una torre de piezas encima arranca de golpe y la torre se cae hacia atrás.",
+        "locucion": "Un robot que arranca de golpe tira lo que lleva encima. No es un fallo del programa: es que pasa de 0 a 50 en un instante."
       },
       {
-        "plano": "Animación del Hub con sus tres ejes de giro: cabeceo, alabeo y guiñada.",
-        "locucion": "El Hub lleva dentro un giroscopio: un sensor que nota cuánto ha girado. Mide tres ángulos. El que nos interesa es la guiñada: girar a izquierda o derecha sobre el suelo."
+        "plano": "El bloque de fijar la aceleración, con el mismo robot arrancando poco a poco sin tirar nada.",
+        "locucion": "La aceleración es cuánto tarda en coger la velocidad que le pides. Subida, arranca despacio y frena despacio, y la carga no se mueve."
       },
       {
-        "plano": "Captura de la app: «Fijar el ángulo de guiñada del Hub a 0».",
-        "locucion": "Antes de girar ponemos el contador a cero. A partir de ahí, la guiñada nos dice cuántos grados llevamos girados."
+        "plano": "Dos ruedas girando a velocidades distintas; el robot describe una curva suave.",
+        "locucion": "Y hay otra forma de mover la base: darle una velocidad a cada rueda. Si las dos van igual, va recto; si una va más deprisa, describe una curva."
       },
       {
-        "plano": "Captura de «Repetir hasta» con la condición «guiñada > 90» y «empezar a mover derecha: 100» dentro.",
-        "locucion": "«Repetir bucle hasta» repite lo que tiene dentro hasta que la condición se cumple. Giramos hasta que la guiñada pasa de 90 y entonces paramos."
+        "plano": "El bloque de número aleatorio sacando 1, 3, 2, 1...",
+        "locucion": "Por último, el azar. El bloque de número aleatorio saca un número cualquiera entre dos que tú le digas. Sirve para que el robot no haga siempre lo mismo."
       },
       {
-        "plano": "El robot gira rápido y se pasa del ángulo; después gira despacio y clava los 90.",
-        "locucion": "El robot no frena en seco: si gira rápido, se pasa unos grados. Gira despacio, o detente un poco antes de llegar."
-      },
-      {
-        "plano": "El robot traza un cuadrado sobre un plano con ángulos marcados.",
-        "locucion": "Tu reto: un robot explorador que trace un cuadrado con cuatro giros exactos."
+        "plano": "El repartidor eligiendo destino al azar y saliendo suave hacia él.",
+        "locucion": "Un reparto distinto en cada tirada, y una salida que no tira la carga. Eso es esta unidad."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Making Moves with Motors»",
+      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/making-moves-with-motors/"
+    }
   },
   "bloques": [
     {
-      "texto": "Fijar el ángulo de guiñada del Hub a 0",
-      "explicacion": "Pone a cero el contador de giro. Se usa justo antes de empezar cada giro."
+      "texto": "Fijar aceleración del motor",
+      "explicacion": "Cuánto tarda el motor en coger la velocidad que le pides. Más alta, arranque y frenada suaves; más baja, de golpe."
     },
     {
-      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
-      "explicacion": "Bloque de dato: cuántos grados se ha inclinado o girado el Hub. La guiñada es el giro a izquierda o derecha."
+      "texto": "Empezar a mover a velocidad...",
+      "explicacion": "Arranca la base dándole una velocidad a cada rueda. Iguales va recto; distintas, en curva. Y deja seguir el programa."
     },
     {
-      "texto": "empezar a mover derecha: 30",
-      "explicacion": "Con dirección 100 el robot gira sobre sí mismo hasta que algo lo pare.",
-      "valores": [
-        "derecha: 30"
-      ]
-    },
-    {
-      "texto": "Repetir bucle hasta",
-      "explicacion": "Repite lo que tiene dentro hasta que la condición de su hueco se cumple."
-    },
-    {
-      "texto": "parar movimiento",
-      "explicacion": "Detiene el giro al llegar al ángulo.",
-      "valores": []
+      "texto": "Elegir un número aleatorio",
+      "explicacion": "Saca un número al azar entre los dos que le digas, los dos incluidos. Cada vez sale uno distinto."
     }
   ],
+  "programa": {
+    "titulo": "El repartidor",
+    "explicacion": "Se elige el destino al azar, se arranca suave para no tirar la carga y se avanza una distancia distinta según el número que haya salido.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+        "nivel": 0,
+        "valores": [
+          "17.5",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Fijar aceleración del motor",
+        "nivel": 0,
+        "valores": [
+          "A+B · suave"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "destino · Elegir un número aleatorio 1 a 3"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "destino"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "camino · destino × 20"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "↑",
+          "camino",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Tocar nota X segundos",
+        "nivel": 0,
+        "valores": [
+          "67 · 0.4"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Pon el ángulo a cero",
-      "enunciado": "Fija el ángulo de guiñada a 0 y escribe el valor del giroscopio en la matriz.",
-      "pista": "Mueve el Hub con la mano y mira cómo cambia el número.",
+      "titulo": "Arranque de golpe",
+      "enunciado": "Pon la aceleración en el valor más bajo. Avanza 40 centímetros y para, con la torre de piezas puesta en la caja.",
+      "pista": "Este ejercicio está hecho para que la carga se caiga: es la comparación del siguiente.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "A+B · de golpe"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "70"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "40",
+            "cm"
+          ]
+        }
+      ],
+      "notas": "Que se caiga es el resultado esperado. Conviene avisar o lo vivirán como un fallo suyo.",
+      "pasos": [
+        {
+          "texto": "Pon la aceleración en el valor más bajo"
+        },
+        {
+          "texto": "Avanza 40 centímetros y para, con la torre de piezas puesta en la caja"
+        }
+      ]
+    },
+    {
+      "practica": 2,
+      "titulo": "Arranque suave",
+      "enunciado": "Repite el recorrido de 40 centímetros con la aceleración suave. Compara si la carga aguanta mejor que antes.",
+      "pista": "Solo cambia un bloque respecto al ejercicio anterior.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "A+B · suave"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "70"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "40",
+            "cm"
+          ]
+        }
+      ],
+      "notas": "Un bloque de diferencia y un resultado distinto. Es el mejor ejercicio de la unidad para enseñar que programar es decidir detalles.",
+      "pasos": [
+        {
+          "texto": "Repite el recorrido de 40 centímetros con la aceleración suave"
+        },
+        {
+          "texto": "Compara si la carga aguanta mejor que antes"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "La curva",
+      "enunciado": "Arranca la base dando 40 a una rueda y 20 a la otra. Déjalo tres segundos y para.",
+      "pista": "Con velocidades distintas en cada rueda el robot describe una curva en lugar de girar sobre el sitio.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Empezar a mover a velocidad...",
+          "nivel": 0,
+          "valores": [
+            "A 40 · B 20"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "3"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        }
+      ],
+      "notas": "Cambiando los dos números sale una curva más o menos cerrada. Vale la pena dejarles probar.",
+      "pasos": [
+        {
+          "texto": "Arranca la base dando 40 a una rueda y 20 a la otra"
+        },
+        {
+          "texto": "Déjalo tres segundos"
+        },
+        {
+          "texto": "Para"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "El dado",
+      "enunciado": "En un bucle infinito, haz un dado: espera a que se apriete el sensor de fuerza; saca un número al azar del 1 al 6; escríbelo; espera a que se suelte.",
+      "pista": "El bloque de azar se guarda en una variable para poder escribirlo y usarlo después.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
@@ -79,442 +298,367 @@
           "nivel": 0
         },
         {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valores": [
+            "dado · Elegir un número aleatorio 1 a 6"
+          ]
+        },
+        {
           "texto": "escribir Hello",
           "nivel": 1,
           "valores": [
-            "Ángulo de guiñada"
+            "dado"
           ]
         },
         {
-          "texto": "Esperar X segundos",
+          "texto": "Esperar hasta que",
           "nivel": 1,
-          "valor": "0.2"
+          "valores": [
+            "no ¿Está presionado? F"
+          ]
         }
       ],
-      "notas": "Mueve el Hub con la mano: el número es el giro acumulado desde que lo pusiste a cero.",
+      "notas": "Si no se guarda en una variable y se pide el azar dos veces, salen dos números distintos. Es un fallo muy típico.",
       "pasos": [
         {
-          "texto": "Fija el ángulo de guiñada a 0"
-        },
-        {
-          "texto": "Escribe el valor del giroscopio en la matriz"
+          "texto": "En un bucle infinito, haz un dado",
+          "hijos": [
+            "Espera a que se apriete el sensor de fuerza",
+            "Saca un número al azar del 1 al 6",
+            "Escríbelo",
+            "Espera a que se suelte"
+          ]
         }
       ]
-    },
-    {
-      "practica": 2,
-      "titulo": "Gira y mira",
-      "enunciado": "El robot empieza a girar sobre sí mismo y tú observas cómo sube el ángulo.",
-      "pista": "Con «empezar a mover con dirección» a tope gira sobre sí mismo.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 0
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 0,
-          "valores": [
-            "derecha: 100"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "2"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
-        }
-      ],
-      "notas": "Con dirección 100 el robot gira sobre sí mismo: una rueda hacia delante y la otra hacia atrás."
-    },
-    {
-      "practica": 3,
-      "titulo": "Para a los 90°",
-      "enunciado": "Usa «Repetir hasta» para que el giro se pare cuando el ángulo llegue a 90.",
-      "pista": "La condición es «ángulo mayor que 89».",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 0
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 0,
-          "valores": [
-            "derecha: 100"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 0,
-          "valor": "Ángulo de guiñada > 89"
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "0.05"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
-        }
-      ],
-      "notas": "El bucle no hace nada por dentro: solo da vueltas mirando el ángulo. También valdría «Esperar hasta que»."
-    },
-    {
-      "practica": 4,
-      "titulo": "Cuatro giros exactos",
-      "enunciado": "Repite cuatro veces el giro de 90 grados poniendo el ángulo a cero antes de cada uno.",
-      "pista": "Si no reinicias el ángulo, el segundo giro se queda corto.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Repetir bucle",
-          "nivel": 0,
-          "valor": "4"
-        },
-        {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 1,
-          "valores": [
-            "derecha: 100"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 1,
-          "valor": "Ángulo de guiñada > 89"
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 2,
-          "valor": "0.05"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 1,
-          "valores": []
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "1"
-        }
-      ],
-      "notas": "Si no pones el ángulo a cero antes de cada giro, el segundo se queda corto: ya partiría de 90."
     }
   ],
   "construccion": {
-    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero y un papel grande con una cruz dibujada para comprobar los ángulos.",
+    "piezas": "La base de conducción, el sensor de color, el sensor de fuerza, dos marcos Technic, cuatro vigas de 11, dos vigas de 15, un panel y catorce pasadores.",
     "pasos": [
       {
-        "titulo": "La base de conducción",
-        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero que deslice sin frenar."
+        "titulo": "La caja de carga",
+        "texto": "Monta un rectángulo con las dos vigas de 15 y dos de 11, y ponlo encima del chasis por detrás del Hub."
       },
       {
-        "titulo": "El Hub",
-        "texto": "Fija el Hub en horizontal, centrado y bien sujeto. Si se mueve respecto al robot, el giroscopio medirá mal."
+        "titulo": "El suelo de la caja",
+        "texto": "Fija el panel dentro del rectángulo. Ahí es donde va la carga que no se tiene que caer."
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A y motor derecho al puerto B."
+        "titulo": "El refuerzo",
+        "texto": "Une la caja al chasis con los dos marcos Technic y cuatro pasadores por cada lado. Si la caja baila, la carga se cae aunque arranque suave."
       },
       {
-        "titulo": "El plano",
-        "texto": "Dibuja en un papel grande dos líneas perpendiculares: te servirán para comprobar si el giro es de 90°."
+        "titulo": "El sensor de color",
+        "texto": "Deja el sensor de color mirando al suelo por delante, en el puerto D, para reconocer las marcas de los destinos."
       },
       {
-        "titulo": "Comprueba",
-        "texto": "Deja el robot quieto sobre la mesa al iniciar el programa: el giroscopio necesita un instante de reposo para medir bien."
+        "titulo": "El botón de tirar el dado",
+        "texto": "Pon el sensor de fuerza en el puerto F, al alcance de la mano y bien sujeto. Es el botón con el que se tira el dado, y si se mueve al apretarlo, cuenta pulsaciones de más."
+      },
+      {
+        "titulo": "La carga de prueba",
+        "texto": "Haz una torre de cuatro o cinco piezas sueltas dentro de la caja. Si aguanta de pie el arranque y la frenada, la aceleración está bien puesta."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
+        "pieza": "color"
       },
       {
-        "pieza": "motor",
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "marco",
         "cantidad": 2
       },
       {
-        "pieza": "rueda"
+        "pieza": "viga",
+        "cantidad": 6
+      },
+      {
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué mide el giroscopio del Hub?",
+      "pregunta": "¿Qué es la aceleración de un motor?",
       "opciones": [
-        "La distancia recorrida",
-        "Cuánto se ha inclinado o girado el Hub",
-        "La velocidad de las ruedas",
-        "El peso del robot"
-      ],
-      "correcta": 1,
-      "explicacion": "Mide tres ángulos: cabeceo, alabeo y guiñada."
-    },
-    {
-      "pregunta": "¿Cuál de los tres ángulos mide el giro a izquierda o derecha sobre el suelo?",
-      "opciones": [
-        "El cabeceo",
-        "El alabeo",
-        "Ninguno",
-        "La guiñada"
-      ],
-      "correcta": 3,
-      "explicacion": "El cabeceo es inclinarse adelante o atrás; el alabeo, hacia los lados."
-    },
-    {
-      "pregunta": "¿Para qué ponemos la guiñada a 0 antes de girar?",
-      "opciones": [
-        "Para empezar a contar los grados desde cero",
-        "Para apagar el giroscopio",
-        "Para que el robot vaya recto",
-        "Para ahorrar batería"
+        "Cuánto tarda en coger la velocidad que le pides",
+        "Las vueltas que da por segundo",
+        "La fuerza que hace",
+        "La velocidad máxima que alcanza"
       ],
       "correcta": 0,
-      "explicacion": "Así el valor de la guiñada coincide con los grados girados desde ese momento."
+      "explicacion": "No cambia a dónde llega, cambia cómo llega: de golpe o poco a poco."
     },
     {
-      "pregunta": "¿Qué hace «Repetir bucle hasta»?",
+      "pregunta": "La carga se cae al arrancar. ¿Qué cambias?",
       "opciones": [
-        "Repite un número fijo de veces",
-        "Repite para siempre",
-        "Repite hasta que la condición se cumple",
-        "Ejecuta una sola vez"
-      ],
-      "correcta": 2,
-      "explicacion": "Cuando la condición pasa a ser verdadera, el programa sale del bucle."
-    },
-    {
-      "pregunta": "El robot gira hasta que la guiñada es mayor que 90, pero acaba en 97. ¿Por qué?",
-      "opciones": [
-        "El giroscopio está roto",
-        "Por la inercia: el robot no frena en seco",
-        "Porque el suelo está inclinado",
-        "Porque el programa tiene un error de sintaxis"
+        "La velocidad a 100",
+        "La aceleración, para que arranque más suave",
+        "El sensor de color",
+        "La vuelta de rueda"
       ],
       "correcta": 1,
-      "explicacion": "Entre que se cumple la condición y los motores se detienen, el robot sigue girando un poco."
+      "explicacion": "El problema no es ir rápido, es llegar a rápido de golpe."
     },
     {
-      "pregunta": "¿Cómo corriges ese exceso?",
+      "pregunta": "Con «Empezar a mover a velocidad», ¿qué hace el robot si le das 40 y 20?",
       "opciones": [
-        "Girando más rápido",
-        "Quitando el bloque «parar movimiento»",
-        "Poniendo la guiñada a 90 al empezar",
-        "Girando más despacio o parando un poco antes"
-      ],
-      "correcta": 3,
-      "explicacion": "A menos velocidad, menos inercia; o se compensa deteniéndose en 85–88."
-    },
-    {
-      "pregunta": "¿Qué ventaja tiene girar con giroscopio frente a girar contando vueltas de rueda?",
-      "opciones": [
-        "No depende del suelo ni de que una rueda resbale",
-        "Es más rápido",
-        "No necesita motores",
-        "Gasta menos batería"
-      ],
-      "correcta": 0,
-      "explicacion": "El giroscopio mide el giro real del robot, no el de las ruedas."
-    },
-    {
-      "pregunta": "Para trazar un cuadrado con cuatro giros, ¿qué haces antes de cada giro?",
-      "opciones": [
-        "Reiniciar el programa",
-        "Cambiar de puerto los motores",
-        "Poner otra vez la guiñada a 0",
-        "Apagar la matriz"
+        "Va recto a 30",
+        "Gira sobre sí mismo",
+        "Describe una curva",
+        "Se para"
       ],
       "correcta": 2,
-      "explicacion": "Cada giro se mide desde cero; si no, habría que girar hasta 90, 180, 270…"
+      "explicacion": "Una rueda corre más que la otra, así que traza una curva hacia el lado lento."
+    },
+    {
+      "pregunta": "¿Y si le das 40 y −40?",
+      "opciones": [
+        "Describe una curva muy abierta",
+        "Va hacia atrás",
+        "Va recto",
+        "Gira sobre el sitio"
+      ],
+      "correcta": 3,
+      "explicacion": "Una rueda hacia delante y la otra hacia atrás: el robot pivota sin desplazarse."
+    },
+    {
+      "pregunta": "«Elegir un número aleatorio entre 1 y 6», ¿puede dar 6?",
+      "opciones": [
+        "Sí: los dos extremos entran",
+        "Solo si lo pides dos veces",
+        "Solo da números pares",
+        "No, llega hasta 5"
+      ],
+      "correcta": 0,
+      "explicacion": "Los dos números que le das están incluidos."
+    },
+    {
+      "pregunta": "Pides el número aleatorio dos veces en el mismo programa. ¿Sale el mismo?",
+      "opciones": [
+        "Sí, el azar se queda fijo",
+        "No: cada vez que lo pides saca uno nuevo",
+        "Solo si está dentro de un bucle",
+        "Depende del sensor"
+      ],
+      "correcta": 1,
+      "explicacion": "Por eso se guarda en una variable: para usar el mismo número varias veces."
+    },
+    {
+      "pregunta": "¿Para qué sirve guardar el azar en una variable?",
+      "opciones": [
+        "No sirve de nada",
+        "Para que el programa vaya más rápido",
+        "Para usar el mismo número en varios sitios sin que cambie",
+        "Para que el Hub lo recuerde al apagarse"
+      ],
+      "correcta": 2,
+      "explicacion": "Escribirlo en pantalla y luego decidir con él solo funciona si es el mismo número en los dos sitios."
+    },
+    {
+      "pregunta": "Quieres que el robot avance 20, 40 o 60 centímetros según un número del 1 al 3. ¿Cómo lo haces sin tres «Si»?",
+      "opciones": [
+        "No se puede sin tres «Si»",
+        "Con tres bucles",
+        "Con el cronómetro",
+        "Multiplicando el número por 20 y usando el resultado como distancia"
+      ],
+      "correcta": 3,
+      "explicacion": "Una cuenta en lugar de tres ramas. Es más corto y más fácil de cambiar."
     }
   ],
   "practicas": [
     {
-      "titulo": "Giro de 90° exacto",
-      "enunciado": "El robot gira sobre sí mismo hacia la derecha hasta completar 90°, medidos con el giroscopio, y se detiene.",
+      "titulo": "El repartidor al azar",
+      "enunciado": "Prepara la base con la vuelta de rueda y la aceleración suave. Después reparte al azar: saca un destino al azar del 1 al 3; escríbelo; calcula el camino multiplicando el destino por 20; avanza esos centímetros; toca una nota al llegar.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "20"
+            "A+B"
           ]
         },
         {
-          "texto": "Repetir bucle hasta",
-          "valor": "guiñada > 88",
-          "nivel": 0
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 1,
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
           "valores": [
-            "derecha: 100"
+            "17.5",
+            "cm"
           ]
         },
         {
-          "texto": "parar movimiento",
+          "texto": "Fijar aceleración del motor",
           "nivel": 0,
-          "valores": []
+          "valores": [
+            "A+B · suave"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "destino · Elegir un número aleatorio 1 a 3"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "destino"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "camino · destino × 20"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "camino",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "67 · 0.4"
+          ]
         }
       ],
-      "notas": "El valor de parada (85–90) depende de la velocidad. Comprueba en tu Hub el signo de la guiñada: si al girar a la derecha sale negativa, la condición es «guiñada < −88»."
+      "notas": "Lo que se corrige es que el azar se guarde una sola vez y que la distancia salga de la cuenta, no de tres ramas.",
+      "pasos": [
+        {
+          "texto": "Prepara la base con la vuelta de rueda y la aceleración suave"
+        },
+        {
+          "texto": "Después reparte al azar",
+          "hijos": [
+            "Saca un destino al azar del 1 al 3",
+            "Escríbelo",
+            "Calcula el camino multiplicando el destino por 20",
+            "Avanza esos centímetros",
+            "Toca una nota al llegar"
+          ]
+        }
+      ]
     },
     {
-      "titulo": "Cuadrado con giroscopio",
-      "enunciado": "El robot recorre un cuadrado de 30 cm de lado. Cada esquina es un giro de 90° medido con el giroscopio.",
+      "titulo": "La ruta de tres paradas",
+      "enunciado": "Con la aceleración suave, repite tres veces: avanza 25 centímetros; espera un segundo; toca una nota; sube en uno la variable paradas. Escribe al final las paradas hechas.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "20"
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "A+B · suave"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paradas · 0"
           ]
         },
         {
           "texto": "Repetir bucle",
-          "valor": "4",
-          "nivel": 0
+          "nivel": 0,
+          "valores": [
+            "3"
+          ]
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
             "↑",
-            "30",
+            "25",
             "cm"
           ]
         },
         {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 1
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "valor": "guiñada > 88",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "Esperar X segundos",
+          "nivel": 1,
           "valores": [
-            "derecha: 100"
+            "1"
           ]
         },
         {
-          "texto": "parar movimiento",
+          "texto": "Tocar nota X segundos",
           "nivel": 1,
-          "valores": []
-        }
-      ],
-      "notas": "La guiñada se pone a 0 dentro del bucle, antes de cada giro. Valora que el robot termine cerca del punto de partida.",
-      "pasos": [
-        {
-          "texto": "El robot recorre un cuadrado de 30 cm de lado"
+          "valores": [
+            "60 · 0.3"
+          ]
         },
         {
-          "texto": "Cada esquina es un giro de 90° medido con el giroscopio"
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paradas · 1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "paradas"
+          ]
+        }
+      ],
+      "notas": "El contador dentro del bucle y la escritura fuera. Si la escritura entra en el bucle, no está mal, pero cuenta en voz alta tres veces.",
+      "pasos": [
+        {
+          "texto": "Con la aceleración suave, repite tres veces",
+          "hijos": [
+            "Avanza 25 centímetros",
+            "Espera un segundo",
+            "Toca una nota",
+            "Sube en uno la variable paradas"
+          ]
+        },
+        {
+          "texto": "Escribe al final las paradas hechas"
         }
       ]
     }

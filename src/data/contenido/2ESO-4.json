@@ -1,69 +1,139 @@
 {
   "curso": "2ESO",
   "unidad": 4,
-  "reto": "Programa un sensor de aparcamiento: el coche pita más rápido cuanto más cerca está del muro.",
+  "reto": "Monta una torreta que apunte a un objeto, guarde el ángulo y sepa volver sola a su posición de reposo.",
   "video": {
-    "titulo": "Comparar y calcular",
+    "titulo": "Dónde está el eje",
     "duracion": "5 min",
     "escenas": [
       {
-        "plano": "Un coche se acerca despacio a un muro; los pitidos son cada vez más seguidos.",
-        "locucion": "El sensor de aparcamiento de un coche pita despacio cuando el muro está lejos y cada vez más rápido al acercarse. Para eso hay que hacer cuentas con lo que mide el sensor."
+        "plano": "Un brazo que sube 90 grados y baja 90 grados, y después de diez repeticiones ha quedado torcido.",
+        "locucion": "Mover un motor 90 grados y luego otros 90 hacia atrás parece que lo deja donde estaba. Pero cada movimiento se queda un poco corto, y a las diez repeticiones el brazo está torcido."
       },
       {
-        "plano": "Captura de la app: el bloque redondeado «Distancia» dentro de «Escribir en la matriz»; el Hub muestra un número que cambia.",
-        "locucion": "El bloque redondeado «Distancia» es un dato: los centímetros que hay hasta el objeto. Hasta ahora solo preguntábamos si algo estaba cerca; ahora tenemos el número."
+        "plano": "El eje del motor con una escala de grados alrededor, como un transportador.",
+        "locucion": "El motor no solo gira: sabe en qué posición está su eje, como la aguja de un reloj. Eso es la posición, y no se pierde aunque muevas el brazo con la mano."
       },
       {
-        "plano": "Captura de los operadores verdes de comparación con «Distancia < 30».",
-        "locucion": "Los operadores verdes comparan dos valores: mayor que, menor que o igual. El resultado es verdadero o falso, así que encajan en los huecos hexagonales."
+        "plano": "El bloque redondeado de la posición con un número que cambia al girar el eje a mano.",
+        "locucion": "Es un número que puedes leer, guardar en una variable o comparar. Gira el eje con la mano y el número cambia solo."
       },
       {
-        "plano": "Captura de los operadores «y», «o» y «no» combinando dos comparaciones.",
-        "locucion": "Los operadores lógicos unen preguntas. Con «y» tienen que cumplirse las dos; con «o» basta una; «no» da la vuelta a la respuesta."
+        "plano": "El bloque de fijar la posición relativa, poniendo el contador a cero con el brazo abajo.",
+        "locucion": "Y puedes decidir dónde está el cero. Pones el brazo en reposo, fijas la posición relativa a cero, y a partir de ahí los grados cuentan desde ahí."
       },
       {
-        "plano": "Fórmula en pantalla: pausa = distancia ÷ 50, con dos ejemplos.",
-        "locucion": "Los operadores aritméticos calculan. Si la pausa entre pitidos es la distancia dividida entre 50, a 50 centímetros esperamos un segundo y a 10, solo dos décimas."
-      },
-      {
-        "plano": "El coche se acerca al muro pitando cada vez más rápido y se detiene a pocos centímetros.",
-        "locucion": "Tu reto: un coche que avisa con pitidos cada vez más rápidos y se detiene antes de tocar el muro."
+        "plano": "El brazo volviendo solo a la posición 0 después de varios movimientos sueltos.",
+        "locucion": "Con eso, «vuelve a tu sitio» deja de ser contar hacia atrás y pasa a ser una orden: vete a la posición cero. Dé las vueltas que haya dado."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «New Moves with Motors» (posición absoluta)",
+      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/new-moves-with-motors/"
+    }
   },
   "bloques": [
     {
-      "texto": "Distancia",
-      "explicacion": "Bloque de dato: los centímetros que mide el sensor de distancia en ese momento."
+      "texto": "A posición",
+      "explicacion": "Un número: en qué posición está el eje de ese motor, en grados. Se lee, se guarda y se compara como cualquier otro número."
     },
     {
-      "texto": "Operadores de comparación (>, <, =)",
-      "explicacion": "Comparan dos valores y responden verdadero o falso. Se encajan en huecos hexagonales."
+      "texto": "Fijar la posición relativa en…",
+      "explicacion": "Decide dónde está el cero de ese motor. Con el brazo en reposo, fijarlo a 0 es decir «esta es tu posición de partida»."
     },
     {
-      "texto": "Operadores lógicos (y, o, no)",
-      "explicacion": "Combinan preguntas: «y» exige las dos, «o» se conforma con una y «no» invierte la respuesta."
-    },
-    {
-      "texto": "Operadores aritméticos (+, −, ×, ÷)",
-      "explicacion": "Hacen cuentas con números y datos. El resultado es un número que se coloca en un hueco redondeado."
-    },
-    {
-      "texto": "Si... entonces... Si no...",
-      "explicacion": "Elige entre pitar o quedarse en silencio según la distancia."
-    },
-    {
-      "texto": "Tocar nota X segundos",
-      "explicacion": "El pitido del sensor de aparcamiento."
+      "texto": "Ir a la posición relativa del motor a velocidad",
+      "explicacion": "Lleva el eje a una posición concreta, vaya donde vaya y venga de donde venga. Es lo que hace que un brazo vuelva siempre al mismo sitio."
     }
   ],
+  "programa": {
+    "titulo": "La torreta que apunta y vuelve",
+    "explicacion": "Primero se marca el cero con la torreta en reposo. Después gira buscando, guarda la posición donde encontró algo y al final vuelve al cero de una orden.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Fijar la posición relativa en…",
+        "nivel": 0,
+        "valores": [
+          "A · 0"
+        ]
+      },
+      {
+        "texto": "A fijar velocidad al 75 %",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "25"
+        ]
+      },
+      {
+        "texto": "A arrancar motor",
+        "nivel": 0,
+        "valores": [
+          "A",
+          "↻"
+        ]
+      },
+      {
+        "texto": "Repetir bucle hasta",
+        "nivel": 0,
+        "valores": [
+          "¿Está más próximo a? E 30 cm"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 1,
+        "valores": [
+          "0.05"
+        ]
+      },
+      {
+        "texto": "A parar motor",
+        "nivel": 0,
+        "valores": [
+          "A"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "angulo · A posición"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "angulo"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 0,
+        "valores": [
+          "2"
+        ]
+      },
+      {
+        "texto": "Ir a la posición relativa del motor a velocidad",
+        "nivel": 0,
+        "valores": [
+          "A · 0 · 25"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "¿Está cerca?",
-      "enunciado": "Escribe «CERCA» si la distancia es menor que 20, y si no, «LEJOS».",
-      "pista": "El operador «menor que» va dentro del hueco del «Si».",
+      "titulo": "Dónde está el eje",
+      "enunciado": "Pon un bucle infinito que escriba en la pantalla la posición del motor A. Gíralo con la mano para ver cómo cambia el número.",
+      "pista": "La posición es un número redondeado, igual que la presión o el cronómetro.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -74,176 +144,229 @@
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
+          "texto": "escribir Hello",
           "nivel": 1,
-          "valor": "Distancia < 20"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 2,
           "valores": [
-            "CERCA"
-          ]
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 2,
-          "valores": [
-            "LEJOS"
+            "A posición"
           ]
         }
       ],
-      "notas": "El operador «menor que» es el que va en el hueco hexagonal, con el bloque redondo de la distancia dentro."
+      "notas": "Girar el eje con la mano y ver el número es lo que hace entender que la posición no depende del programa.",
+      "pasos": [
+        {
+          "texto": "Pon un bucle infinito que escriba en la pantalla la posición del motor A"
+        },
+        {
+          "texto": "Gíralo con la mano para ver cómo cambia el número"
+        }
+      ]
     },
     {
       "practica": 2,
-      "titulo": "Pitido simple",
-      "enunciado": "Si está a menos de 20 cm, suena una nota corta.",
-      "pista": "Una nota de medio segundo basta para el aviso.",
+      "titulo": "Marcar el cero",
+      "enunciado": "Fija la posición relativa del motor A a 0, espera tres segundos para moverlo con la mano y escribe entonces su posición.",
+      "pista": "El bloque de fijar la posición no mueve nada: solo decide desde dónde se cuenta.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "A · 0"
+          ]
         },
         {
-          "texto": "Si... entonces...",
-          "nivel": 1,
-          "valor": "Distancia < 20"
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "3"
+          ]
         },
         {
-          "texto": "Tocar nota X segundos",
-          "nivel": 2,
-          "valor": "72 · 0.5"
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "A posición"
+          ]
         }
       ],
-      "notas": "Media décima de segundo basta para el aviso: si la nota dura más, los pitidos se juntan.",
+      "notas": "Mismo truco que el giroscopio y el cronómetro: marcar el punto de partida antes de medir.",
       "pasos": [
         {
-          "texto": "Si está a menos de 20 cm"
+          "texto": "Fija la posición relativa del motor A a 0"
         },
         {
-          "texto": "Suena una nota corta"
+          "texto": "Espera tres segundos para moverlo con la mano"
+        },
+        {
+          "texto": "Escribe entonces su posición"
         }
       ]
     },
     {
       "practica": 3,
-      "titulo": "Dos avisos",
-      "enunciado": "Pita rápido si está a menos de 10 cm y despacio si está entre 10 y 30.",
-      "pista": "Para «entre 10 y 30» necesitas el operador «y» con dos comparaciones.",
+      "titulo": "Vuelve a tu sitio",
+      "enunciado": "Fija la posición relativa a 0, mueve el motor A 120 grados, espera un segundo y mándalo de vuelta a la posición 0.",
+      "pista": "Para volver no hay que contar hacia atrás: se le dice la posición a la que tiene que ir.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "A · 0"
+          ]
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 1,
-          "valor": "Distancia < 10"
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "nivel": 2,
-          "valor": "72 · 0.1"
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 2,
-          "valor": "0.1"
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "Si... entonces...",
-          "nivel": 2,
-          "valor": "Distancia > 10 y Distancia < 30"
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "nivel": 3,
-          "valor": "72 · 0.1"
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻",
+            "120",
+            "grados"
+          ]
         },
         {
           "texto": "Esperar X segundos",
-          "nivel": 3,
-          "valor": "0.6"
+          "nivel": 0,
+          "valores": [
+            "1"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "A · 0 · 30"
+          ]
         }
       ],
-      "notas": "«Entre 10 y 30» son dos comparaciones unidas con el operador «y»: las dos tienen que cumplirse."
+      "notas": "Lo interesante es moverlo también con la mano entre medias: vuelve igual, porque la posición no se pierde.",
+      "pasos": [
+        {
+          "texto": "Fija la posición relativa a 0"
+        },
+        {
+          "texto": "Mueve el motor A 120 grados"
+        },
+        {
+          "texto": "Espera un segundo y mándalo de vuelta a la posición 0"
+        }
+      ]
     },
     {
       "practica": 4,
-      "titulo": "Cuanto más cerca, más rápido",
-      "enunciado": "Calcula la espera entre pitidos a partir de la distancia, con una operación aritmética.",
-      "pista": "Por ejemplo, esperar la distancia dividida entre 100: a menos distancia, menos espera.",
+      "titulo": "El barrido",
+      "enunciado": "Fija la posición a 0 y haz el barrido: arranca el motor A despacio; repite hasta que haya algo a menos de 30 centímetros; para el motor; guarda la posición en una variable; escríbela.",
+      "pista": "El bucle no lleva trabajo dentro: solo vigila el sensor mientras la torreta gira.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "A · 0"
+          ]
         },
         {
-          "texto": "Si... entonces...",
-          "nivel": 1,
-          "valor": "Distancia < 50"
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "25"
+          ]
         },
         {
-          "texto": "Tocar nota X segundos",
-          "nivel": 2,
-          "valor": "72 · 0.1"
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "¿Está más próximo a? E 30 cm"
+          ]
         },
         {
           "texto": "Esperar X segundos",
-          "nivel": 2,
-          "valor": "Distancia ÷ 50"
+          "nivel": 1,
+          "valores": [
+            "0.05"
+          ]
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "angulo · A posición"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "angulo"
+          ]
         }
       ],
-      "notas": "Al dividir la distancia, la espera se encoge sola al acercarte: eso es lo que hace el sensor de un coche."
+      "notas": "El robot acaba sabiendo en qué dirección está el objeto. Eso es un radar, aunque sea de juguete.",
+      "pasos": [
+        {
+          "texto": "Fija la posición a 0 y haz el barrido",
+          "hijos": [
+            "Arranca el motor A despacio",
+            "Repite hasta que haya algo a menos de 30 centímetros",
+            "Para el motor",
+            "Guarda la posición en una variable",
+            "Escríbela"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia y una caja o un libro que haga de muro.",
+    "piezas": "El Hub, dos motores medianos, el sensor de distancia, dos marcos Technic, cuatro vigas de 11, dos vigas de 7, dos ejes de 5, un eje de 7, dos bujes y doce pasadores.",
     "pasos": [
       {
-        "titulo": "La base de conducción",
-        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero."
+        "titulo": "La peana",
+        "texto": "Une los dos marcos Technic en cruz sobre la mesa y fija el Hub encima. Tiene que quedar bien apoyado: la torreta va a girar sobre él."
       },
       {
-        "titulo": "El soporte",
-        "texto": "Añade delante un soporte firme a la altura del muro."
+        "titulo": "El motor de giro",
+        "texto": "Pon el primer motor en el centro de la peana con el eje de 7 hacia arriba. Este es el que gira toda la torreta."
       },
       {
-        "titulo": "El sensor de distancia",
-        "texto": "Fija el sensor mirando hacia donde avanza el coche, sin piezas delante."
+        "titulo": "El brazo",
+        "texto": "Cruza dos vigas de 11 sobre el eje vertical y monta el segundo motor en la punta, con el eje horizontal. Ese sube y baja el brazo."
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de distancia al puerto E."
+        "titulo": "El sensor",
+        "texto": "Fija el sensor de distancia al extremo del brazo con las dos vigas de 7, mirando hacia fuera."
       },
       {
-        "titulo": "El muro",
-        "texto": "Coloca una caja o un libro de pie, de frente al coche, a un metro."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Con un programa de dos bloques que escriba la distancia en la matriz, acerca la mano: el número debe bajar."
+        "titulo": "El tope de reposo",
+        "texto": "Pega una marca en la peana y deja la torreta apuntando a ella. Esa es la posición cero, y es donde tiene que volver siempre."
       }
     ],
     "materiales": [
@@ -255,221 +378,288 @@
         "cantidad": 2
       },
       {
-        "pieza": "rueda"
+        "pieza": "distancia"
       },
       {
-        "pieza": "distancia"
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 6
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 3
+      },
+      {
+        "pieza": "buje",
+        "cantidad": 2
+      },
+      {
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué devuelve el bloque «Distancia»?",
+      "pregunta": "¿Qué es la posición de un motor?",
       "opciones": [
-        "Verdadero o falso",
-        "Un número: los centímetros hasta el objeto",
-        "El color del objeto",
-        "Nada: mueve el coche"
-      ],
-      "correcta": 1,
-      "explicacion": "Es un bloque de dato redondeado, no una pregunta."
-    },
-    {
-      "pregunta": "¿Qué devuelve «Distancia < 20»?",
-      "opciones": [
-        "Un número menor que 20",
-        "La distancia menos 20",
-        "El número 20",
-        "Verdadero o falso"
-      ],
-      "correcta": 3,
-      "explicacion": "Una comparación siempre da verdadero o falso."
-    },
-    {
-      "pregunta": "La distancia es 30. ¿Qué vale «Distancia < 20 o Distancia > 25»?",
-      "opciones": [
-        "Verdadero",
-        "Falso",
-        "30",
-        "No se puede saber"
+        "En qué punto está su eje, en grados",
+        "Cuántas vueltas ha dado en total",
+        "El puerto al que está conectado",
+        "La velocidad a la que gira"
       ],
       "correcta": 0,
-      "explicacion": "Con «o» basta que se cumpla una: 30 es mayor que 25."
+      "explicacion": "Es como la aguja de un reloj: dice dónde está, no cuánto ha girado ni a qué velocidad."
     },
     {
-      "pregunta": "La distancia es 30. ¿Qué vale «Distancia > 20 y Distancia < 25»?",
+      "pregunta": "Si mueves el eje con la mano, ¿cambia la posición?",
       "opciones": [
-        "Verdadero",
-        "30",
-        "Falso",
-        "25"
-      ],
-      "correcta": 2,
-      "explicacion": "Con «y» deben cumplirse las dos, y 30 no es menor que 25."
-    },
-    {
-      "pregunta": "La pausa entre pitidos es «Distancia ÷ 50». A 25 cm del muro, ¿cuánto dura la pausa?",
-      "opciones": [
-        "2 segundos",
-        "25 segundos",
-        "0,5 segundos",
-        "50 segundos"
-      ],
-      "correcta": 2,
-      "explicacion": "25 entre 50 es 0,5."
-    },
-    {
-      "pregunta": "¿Qué hace el operador «no»?",
-      "opciones": [
-        "Detiene el programa",
-        "Invierte la respuesta: verdadero pasa a falso y al revés",
-        "Resta dos números",
-        "Borra una variable"
+        "No",
+        "Sí: el motor sabe dónde está su eje aunque no lo muevas tú",
+        "Solo si el Hub está apagado",
+        "Solo con el motor grande"
       ],
       "correcta": 1,
-      "explicacion": "Sirve para preguntar por lo contrario."
+      "explicacion": "El sensor de posición está dentro del motor y no depende de quién lo mueva."
     },
     {
-      "pregunta": "Con la fórmula «Distancia ÷ 50», ¿qué pasa con los pitidos cuando el coche se acerca al muro?",
+      "pregunta": "¿Qué hace «Fijar la posición relativa en 0»?",
       "opciones": [
-        "Se hacen más seguidos, porque la pausa disminuye",
-        "Se hacen más lentos",
-        "Dejan de sonar",
-        "No cambian"
+        "Pone la velocidad a 0",
+        "Mueve el motor hasta la posición 0",
+        "Decide que el punto donde está ahora se llame 0",
+        "Para el motor"
       ],
-      "correcta": 0,
-      "explicacion": "Menos distancia da una pausa más corta entre pitido y pitido."
+      "correcta": 2,
+      "explicacion": "No mueve nada: marca el origen, igual que poner el giroscopio o el cronómetro a cero."
     },
     {
-      "pregunta": "¿Dónde se encaja un operador de comparación?",
+      "pregunta": "Un brazo sube 90 y baja 90 muchas veces y acaba torcido. ¿Cómo se arregla?",
       "opciones": [
-        "Debajo de «Cuando se inicia el programa»",
-        "En un hueco redondeado para números",
-        "No se puede encajar",
-        "En un hueco hexagonal de condición"
+        "Poniendo esperas entre los movimientos",
+        "Cambiando de motor",
+        "Subiendo la velocidad",
+        "Mandándolo a una posición concreta en vez de contar hacia atrás"
       ],
       "correcta": 3,
-      "explicacion": "Su forma hexagonal indica que es una pregunta de sí o no."
+      "explicacion": "Cada movimiento arrastra un error pequeño que se acumula. Ir a una posición absoluta no acumula nada."
+    },
+    {
+      "pregunta": "¿Se puede guardar la posición en una variable?",
+      "opciones": [
+        "Sí: es un número",
+        "Solo si el motor está parado",
+        "Solo dentro de un bucle",
+        "No"
+      ],
+      "correcta": 0,
+      "explicacion": "Como la presión o el cronómetro, es un bloque redondeado que vale un número."
+    },
+    {
+      "pregunta": "¿Para qué sirve guardar la posición donde el sensor detectó algo?",
+      "opciones": [
+        "Para no perder la batería",
+        "Para saber en qué dirección estaba y poder volver a apuntar ahí",
+        "Para que el motor vaya más rápido",
+        "Para reiniciar el cronómetro"
+      ],
+      "correcta": 1,
+      "explicacion": "El ángulo guardado es la dirección del objeto. Con eso el robot puede volver a apuntar cuando quiera."
+    },
+    {
+      "pregunta": "En el barrido, ¿por qué el motor va al 25 % y no al 100 %?",
+      "opciones": [
+        "Para gastar menos batería",
+        "Da igual la velocidad",
+        "Para que el sensor tenga tiempo de ver el objeto antes de pasarlo",
+        "Porque el motor no puede ir más rápido"
+      ],
+      "correcta": 2,
+      "explicacion": "El bucle comprueba el sensor cada poco. Si la torreta gira muy deprisa, pasa de largo entre dos comprobaciones."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre «ir durante 90 grados» e «ir a la posición 90»?",
+      "opciones": [
+        "El segundo es más rápido",
+        "El primero solo vale para el motor A",
+        "Ninguna",
+        "El primero gira 90 desde donde esté; el segundo va al punto 90, esté donde esté"
+      ],
+      "correcta": 3,
+      "explicacion": "Uno es relativo a donde estás y el otro es un destino fijo. De ahí que el segundo no acumule error."
     }
   ],
   "practicas": [
     {
-      "titulo": "Aviso de proximidad",
-      "enunciado": "El coche avanza despacio hacia el muro. Mientras la distancia sea menor de 30 cm, pita; si no, se queda en silencio.",
+      "titulo": "La torreta que apunta y vuelve",
+      "enunciado": "Fija la posición del motor A a 0 y haz que apunte y vuelva: arráncalo al 25 %; repite hasta que haya algo a menos de 30 centímetros; para el motor; guarda la posición en la variable angulo; escríbela; espera dos segundos; vuelve a la posición 0.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "Fijar la posición relativa en…",
           "nivel": 0,
           "valores": [
-            "15"
+            "A · 0"
           ]
         },
         {
-          "texto": "empezar a mover a ↑",
+          "texto": "A fijar velocidad al 75 %",
           "nivel": 0,
           "valores": [
-            "↑"
+            "A",
+            "25"
           ]
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
+          "texto": "A arrancar motor",
+          "nivel": 0,
+          "valores": [
+            "A",
+            "↻"
+          ]
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "valor": "Distancia < 30",
-          "nivel": 1
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "72 · 0.2",
-          "nivel": 2
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "¿Está más próximo a? E 30 cm"
+          ]
         },
         {
           "texto": "Esperar X segundos",
-          "valor": "0.1",
-          "nivel": 2
-        }
-      ],
-      "notas": "El coche no se detiene en esta práctica: páralo a mano. La espera del «Si no» evita que el bucle vaya demasiado rápido.",
-      "pasos": [
-        {
-          "texto": "El coche avanza despacio hacia el muro"
+          "nivel": 1,
+          "valores": [
+            "0.05"
+          ]
         },
         {
-          "texto": "Mientras la distancia sea menor de 30 cm, pita; si no, se queda en silencio"
+          "texto": "A parar motor",
+          "nivel": 0,
+          "valores": [
+            "A"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "angulo · A posición"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "angulo"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "2"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "A · 0 · 25"
+          ]
+        }
+      ],
+      "notas": "La vuelta al cero es lo que se corrige: tiene que ser el bloque de ir a la posición, no un giro hacia atrás.",
+      "pasos": [
+        {
+          "texto": "Fija la posición del motor A a 0 y haz que apunte y vuelva",
+          "hijos": [
+            "Arráncalo al 25 %",
+            "Repite hasta que haya algo a menos de 30 centímetros",
+            "Para el motor",
+            "Guarda la posición en la variable angulo",
+            "Escríbela",
+            "Espera dos segundos",
+            "Vuelve a la posición 0"
+          ]
         }
       ]
     },
     {
-      "titulo": "Pitido proporcional y parada",
-      "enunciado": "El coche pita con una pausa entre pitidos igual a la distancia dividida entre 50, de modo que pita más rápido cuanto más cerca está. Cuando la distancia es menor de 8 cm, se detiene.",
+      "titulo": "El brazo de dos ejes",
+      "enunciado": "Fija a 0 la posición de los dos motores, sube el brazo con el motor B a la posición 45, gira la base con el motor A a la posición 90, espera un segundo y devuelve los dos a la posición 0.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "Fijar la posición relativa en…",
           "nivel": 0,
           "valores": [
-            "15"
+            "A · 0"
           ]
         },
         {
-          "texto": "empezar a mover a ↑",
+          "texto": "Fijar la posición relativa en…",
           "nivel": 0,
           "valores": [
-            "↑"
+            "B · 0"
           ]
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "B · 45 · 30"
+          ]
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "valor": "Distancia < 8",
-          "nivel": 1
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 2,
-          "valores": []
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "72 · 0.1",
-          "nivel": 2
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "A · 90 · 30"
+          ]
         },
         {
           "texto": "Esperar X segundos",
-          "valor": "Distancia ÷ 50",
-          "nivel": 2
+          "nivel": 0,
+          "valores": [
+            "1"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "B · 0 · 30"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "A · 0 · 30"
+          ]
         }
       ],
-      "notas": "Con el coche ya parado el bucle sigue comprobando: es correcto. Valora que la pausa se calcule con el operador y no con valores fijos.",
+      "notas": "Dos motores con su propio cero cada uno. Repetido diez veces seguidas, el brazo acaba exactamente donde empezó.",
       "pasos": [
         {
-          "texto": "El coche pita con una pausa entre pitidos igual a la distancia dividida entre 50, de modo que pita más rápido cuanto más cerca está"
+          "texto": "Fija a 0 la posición de los dos motores"
         },
         {
-          "texto": "Cuando la distancia es menor de 8 cm"
+          "texto": "Sube el brazo con el motor B a la posición 45"
         },
         {
-          "texto": "Se detiene"
+          "texto": "Gira la base con el motor A a la posición 90"
+        },
+        {
+          "texto": "Espera un segundo y devuelve los dos a la posición 0"
         }
       ]
     }

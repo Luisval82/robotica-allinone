@@ -1,504 +1,180 @@
 {
   "curso": "2ESO",
   "unidad": 9,
-  "reto": "Proyecto final: una máquina que separa piezas por colores y cuenta cuántas hay de cada uno.",
+  "reto": "Monta una estación que recorra su entorno, guarde las medidas y las pinte en un gráfico.",
   "video": {
-    "titulo": "Clasificadora de colores",
+    "titulo": "Del número al gráfico",
     "duracion": "6 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Training Camp 2 — Playing with Objects» (clasificadora)",
-      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-2-playing-with-objects/"
-    },
     "escenas": [
       {
-        "plano": "Una máquina de LEGO deja caer piezas rojas a un cajón y el resto a otro.",
-        "locucion": "En una planta de reciclaje, las máquinas separan los envases por materiales. La tuya va a separar piezas por colores y, además, las va a contar."
+        "plano": "Una pantalla del Hub escribiendo números de uno en uno, muy despacio.",
+        "locucion": "La pantalla del Hub sirve para un número. Para veinte, no: cuando sale el último ya no te acuerdas del primero, y comparar es imposible."
       },
       {
-        "plano": "Esquema con las tres partes señaladas: lector, rampa y empujador.",
-        "locucion": "Tiene tres partes: el sensor de color lee la pieza, el motor grande orienta la rampa hacia un cajón o hacia el otro, y el motor mediano empuja la pieza para que caiga."
+        "plano": "La extensión del gráfico de líneas, con puntos que se van dibujando en el iPad.",
+        "locucion": "La app trae una extensión de gráficos. El robot le manda valores y la app los dibuja en el iPad, uno detrás de otro. Ahí sí se ve la forma de lo que estás midiendo."
       },
       {
-        "plano": "Captura de la app: «Si ¿Es de color rojo? entonces… Si no…» con una posición de rampa en cada hueco.",
-        "locucion": "La decisión es un «Si… entonces… Si no»: si la pieza es roja, la rampa va a un lado; si no, al otro."
+        "plano": "Una torreta barriendo y el gráfico dibujando una curva con un valle donde hay un objeto.",
+        "locucion": "Un barrido de distancias no es una lista de números: es un perfil. Donde hay un objeto, el gráfico baja. Se ve a simple vista."
       },
       {
-        "plano": "Captura de dos variables, «rojas» y «otras», aumentando.",
-        "locucion": "Cada cajón tiene su contador: una variable que aumenta en uno con «Cambiar variable por» cada vez que cae una pieza."
+        "plano": "La pantalla del Hub girando su contenido 90 grados al poner el Hub de lado.",
+        "locucion": "Y dos detalles de pantalla, para cuando el Hub no va plano: se puede girar lo que se dibuja y decirle cuál es el lado de arriba."
       },
       {
-        "plano": "Captura de «Repetir hasta rojas + otras = 6» y, debajo, «Escribir en la matriz».",
-        "locucion": "La máquina repite el ciclo hasta que ha clasificado todas las piezas. Entonces se detiene y escribe cuántas hay en cada cajón."
+        "plano": "Los ojos del motor encendiéndose en azul y en rojo.",
+        "locucion": "Los motores grandes también llevan luces. Sirven para avisar sin ocupar la pantalla, que en el proyecto está ocupada."
       },
       {
-        "plano": "La clasificadora completa procesa seis piezas y muestra el recuento.",
-        "locucion": "Tu reto: unir lectura, decisión, movimiento y recuento en una sola máquina."
+        "plano": "La estación completa: barre, guarda en una lista, dibuja el gráfico y mueve la cinta.",
+        "locucion": "Todo lo del curso junto: variables para contar, listas para guardar, sensores para medir, motores para moverse y un gráfico para enseñarlo."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Get Moving to Get Data» (datos y gráficas)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u9-data-and-math-functions/spike-python-u9l1-get-moving-to-get-data"
+    }
   },
   "bloques": [
     {
-      "texto": "Si... entonces... Si no...",
-      "explicacion": "Decide a qué cajón va la pieza según su color."
+      "texto": "Extensión Gráfico de líneas",
+      "explicacion": "Manda un valor a la app, que lo dibuja en un gráfico de líneas. Es la forma de ver una serie de medidas de un vistazo."
     },
     {
-      "texto": "¿Es de color...?",
-      "explicacion": "Pregunta al sensor de color por el color de la pieza."
+      "texto": "girar ↻",
+      "explicacion": "Gira lo que se dibuja en la pantalla del Hub. Útil cuando el Hub va montado de lado."
     },
     {
-      "texto": "A ir por la ruta más corta a la posición 0",
-      "explicacion": "Orienta la rampa hacia un cajón o hacia el otro.",
-      "valores": [
-        "A",
-        "por la ruta más corta",
-        "0"
-      ]
+      "texto": "establecer orientación como erguida",
+      "explicacion": "Le dice al Hub cuál es su lado de arriba, para que los dibujos y las letras salgan derechos."
     },
     {
-      "texto": "A ir durante 1 rotaciones",
-      "explicacion": "Da una vuelta al empujador para que la pieza caiga por la rampa.",
-      "valores": [
-        "A",
-        "↻",
-        "1",
-        "rotaciones"
-      ]
-    },
-    {
-      "texto": "Cambiar variable por",
-      "explicacion": "Suma una pieza al contador de su cajón."
-    },
-    {
-      "texto": "Repetir bucle hasta",
-      "explicacion": "Repite el ciclo de clasificar hasta que se han contado todas las piezas."
-    },
-    {
-      "texto": "escribir Hello",
-      "explicacion": "Muestra el recuento final.",
-      "valores": [
-        "Hello"
-      ]
+      "texto": "A encender ojos",
+      "explicacion": "Enciende las luces del motor del puerto que elijas. Avisa sin gastar la pantalla."
     }
   ],
-  "intermedias": [
-    {
-      "practica": 1,
-      "titulo": "Clasifica un color",
-      "enunciado": "Si la pieza es roja, el motor la empuja a un lado; si no, al otro.",
-      "pista": "Un ángulo distinto del motor para cada lado.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 0,
-          "valor": "¿Es de color rojo? D"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "45"
-          ]
-        },
-        {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "135"
-          ]
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻",
-            "1",
-            "rotaciones"
-          ]
-        }
-      ],
-      "notas": "Un ángulo distinto de la rampa para cada cajón, y el empujador después, cuando la rampa ya está puesta."
-    },
-    {
-      "practica": 2,
-      "titulo": "Lleva la cuenta",
-      "enunciado": "Crea una variable por color y súmale uno cada vez que clasifiques una pieza.",
-      "pista": "Pon las dos variables a 0 al empezar.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "rojas · 0"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "otras · 0"
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 0,
-          "valor": "¿Es de color rojo? D"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "45"
-          ]
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 1,
-          "valor": "rojas · 1"
-        },
-        {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 1,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "135"
-          ]
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 1,
-          "valor": "otras · 1"
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻",
-            "1",
-            "rotaciones"
-          ]
-        }
-      ],
-      "notas": "Las dos variables se ponen a 0 al empezar y cada una sube en su rama del «Si»."
-    },
-    {
-      "practica": 3,
-      "titulo": "Enseña el recuento",
-      "enunciado": "Al terminar, escribe en la matriz cuántas piezas hay de cada color, una detrás de otra.",
-      "pista": "Dos bloques de «escribir», uno por variable.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "rojas · 0"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "otras · 0"
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 0,
-          "valor": "¿Es de color rojo? D"
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 1,
-          "valor": "rojas · 1"
-        },
-        {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 1,
-          "valor": "otras · 1"
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻",
-            "1",
-            "rotaciones"
-          ]
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "rojas"
-          ]
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "otras"
-          ]
-        }
-      ],
-      "notas": "Dos «escribir», uno por variable: pasan uno detrás de otro por la matriz."
-    },
-    {
-      "practica": 4,
-      "titulo": "Diez piezas",
-      "enunciado": "Usa «Repetir hasta» para clasificar hasta llegar a diez piezas en total.",
-      "pista": "La condición puede comparar la suma de las dos variables con 10.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "rojas · 0"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "otras · 0"
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 0,
-          "valor": "rojas + otras = 10"
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 1,
-          "valor": "¿Es de color rojo? D"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "45"
-          ]
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 2,
-          "valor": "rojas · 1"
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
-          "valores": [
-            "B",
-            "por la ruta más corta",
-            "135"
-          ]
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 2,
-          "valor": "otras · 1"
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
-          "nivel": 1,
-          "valores": [
-            "A",
-            "↻",
-            "1",
-            "rotaciones"
-          ]
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "rojas"
-          ]
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "otras"
-          ]
-        }
-      ],
-      "notas": "La condición compara la SUMA de las dos variables con 10: da igual de qué color sean las piezas."
-    }
-  ],
-  "construccion": {
-    "piezas": "El Hub, un motor grande, un motor mediano, el sensor de color, vigas para la bandeja y la rampa, dos recipientes y seis piezas de dos colores.",
-    "pasos": [
+  "programa": {
+    "titulo": "La estación de medida",
+    "explicacion": "La torreta barre guardando distancias en una lista y mandándolas al gráfico. Al acabar recorre la lista buscando la medida más pequeña, que es donde estaba el objeto más cercano.",
+    "bloques": [
       {
-        "titulo": "La bandeja de lectura",
-        "texto": "Monta una plataforma pequeña donde se deja cada pieza, con el sensor de color mirándola a uno o dos centímetros."
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
       },
       {
-        "titulo": "El empujador",
-        "texto": "Fija el motor mediano junto a la bandeja con una pala en su eje: en cada vuelta barre la bandeja."
+        "texto": "establecer orientación como erguida",
+        "nivel": 0,
+        "valores": [
+          "erguida"
+        ]
       },
       {
-        "titulo": "La rampa selectora",
-        "texto": "Coloca el motor grande bajo la salida de la bandeja y monta una rampa en su eje. En la posición 0 debe quedar centrada."
+        "texto": "Fijar la posición relativa en…",
+        "nivel": 0,
+        "valores": [
+          "B · 0"
+        ]
       },
       {
-        "titulo": "Los cajones",
-        "texto": "Pon un recipiente a cada lado, donde termina la rampa en cada posición."
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "paso · 0"
+        ]
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor grande al puerto A, motor mediano al puerto B y sensor de color al puerto D."
+        "texto": "Repetir bucle",
+        "nivel": 0,
+        "valores": [
+          "18"
+        ]
       },
       {
-        "titulo": "Comprueba",
-        "texto": "Haz con la mano el recorrido de una pieza: lectura, empujón y caída a cada cajón."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "hub"
+        "texto": "Ir a la posición relativa del motor a velocidad",
+        "nivel": 1,
+        "valores": [
+          "B · paso × 10 · 30"
+        ]
       },
       {
-        "pieza": "motor-grande",
-        "cantidad": 1
+        "texto": "Añadir elemento a lista",
+        "nivel": 1,
+        "valores": [
+          "medidas · Distancia E"
+        ]
       },
       {
-        "pieza": "motor",
-        "cantidad": 1
+        "texto": "Extensión Gráfico de líneas",
+        "nivel": 1,
+        "valores": [
+          "Distancia E"
+        ]
       },
       {
-        "pieza": "color"
+        "texto": "Cambiar variable por",
+        "nivel": 1,
+        "valores": [
+          "paso · 1"
+        ]
       },
       {
-        "pieza": "viga"
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "minimo · Elemento 1 de medidas"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "paso · 1"
+        ]
+      },
+      {
+        "texto": "Repetir bucle hasta",
+        "nivel": 0,
+        "valores": [
+          "paso > Longitud de lista medidas"
+        ]
+      },
+      {
+        "texto": "Si... entonces...",
+        "nivel": 1,
+        "valores": [
+          "Elemento paso de medidas < minimo"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 2,
+        "valores": [
+          "minimo · Elemento paso de medidas"
+        ]
+      },
+      {
+        "texto": "Cambiar variable por",
+        "nivel": 1,
+        "valores": [
+          "paso · 1"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "minimo"
+        ]
       }
     ]
   },
-  "test": [
+  "intermedias": [
     {
-      "pregunta": "¿Qué hace el motor grande en la clasificadora?",
-      "opciones": [
-        "Empuja la pieza",
-        "Lee el color",
-        "Cuenta las piezas",
-        "Orienta la rampa hacia un cajón o hacia el otro"
-      ],
-      "correcta": 3,
-      "explicacion": "El motor mediano empuja; el grande decide el destino."
-    },
-    {
-      "pregunta": "¿Cuál es el orden correcto del ciclo?",
-      "opciones": [
-        "Empujar, leer el color, orientar la rampa",
-        "Leer el color, orientar la rampa, empujar la pieza",
-        "Orientar la rampa, empujar, leer el color",
-        "Contar, empujar, leer el color"
-      ],
-      "correcta": 1,
-      "explicacion": "Hay que saber el color antes de mover la rampa, y mover la rampa antes de soltar la pieza."
-    },
-    {
-      "pregunta": "La variable rojas vale 2 y pasa una pieza roja. Tras «Cambiar rojas por 1», ¿cuánto vale?",
-      "opciones": [
-        "3",
-        "1",
-        "2",
-        "21"
-      ],
-      "correcta": 0,
-      "explicacion": "«Cambiar por» suma al valor que ya había."
-    },
-    {
-      "pregunta": "¿Cuándo termina «Repetir hasta rojas + otras = 6»?",
-      "opciones": [
-        "A los 6 segundos",
-        "Cuando pasa la primera pieza roja",
-        "Cuando la suma de los dos contadores llega a 6",
-        "Nunca"
-      ],
-      "correcta": 2,
-      "explicacion": "El bucle sale cuando la condición pasa a ser verdadera."
-    },
-    {
-      "pregunta": "¿Por qué se orienta la rampa antes de empujar la pieza?",
-      "opciones": [
-        "Porque el motor grande es más lento",
-        "Porque si no, la pieza cae al cajón de la pieza anterior",
-        "Para gastar menos batería",
-        "No importa el orden"
-      ],
-      "correcta": 1,
-      "explicacion": "La pieza cae por donde esté la rampa en ese momento."
-    },
-    {
-      "pregunta": "El programa usa «Si ¿Es de color rojo?… Si no…» y pasa una pieza verde. ¿A dónde va?",
-      "opciones": [
-        "Al cajón de las rojas",
-        "Se queda en la bandeja",
-        "A ninguno: el programa se detiene",
-        "Al cajón del «Si no»"
-      ],
-      "correcta": 3,
-      "explicacion": "Todo lo que no es rojo sigue el camino del «Si no»."
-    },
-    {
-      "pregunta": "Quieres separar tres colores en lugar de dos. ¿Qué necesitas?",
-      "opciones": [
-        "Otra decisión dentro del «Si no», otra posición de la rampa y otro contador",
-        "Un segundo Hub",
-        "Quitar el «Si no»",
-        "Duplicar la velocidad"
-      ],
-      "correcta": 0,
-      "explicacion": "Cada color nuevo es una pregunta más, un destino más y una variable más."
-    },
-    {
-      "pregunta": "La máquina cuenta bien, pero todas las piezas caen al mismo cajón. ¿Qué revisas?",
-      "opciones": [
-        "El sensor de color",
-        "Los contadores",
-        "El bloque «Ir a la posición» de la rampa y el puerto del motor grande",
-        "El texto de la matriz"
-      ],
-      "correcta": 2,
-      "explicacion": "Si los contadores aciertan, la lectura funciona: lo que falla es el movimiento de la rampa."
-    }
-  ],
-  "practicas": [
-    {
-      "titulo": "Separar dos colores",
-      "enunciado": "La máquina clasifica seis piezas, una cada vez: las rojas caen a un cajón y las demás al otro. Deja 2 segundos para colocar cada pieza.",
+      "practica": 1,
+      "titulo": "El primer gráfico",
+      "enunciado": "Pon un bucle de veinte vueltas que mande la distancia al gráfico de líneas y espere dos décimas. Mueve la mano delante del sensor para ver la curva.",
+      "pista": "El gráfico se ve en el iPad, no en la pantalla del Hub.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -506,65 +182,181 @@
         },
         {
           "texto": "Repetir bucle",
-          "valor": "6",
-          "nivel": 0
+          "nivel": 0,
+          "valores": [
+            "20"
+          ]
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valores": [
+            "Distancia E"
+          ]
         },
         {
           "texto": "Esperar X segundos",
-          "valor": "2",
-          "nivel": 1
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Es de color rojo? D",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "45"
-          ]
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
-          "valores": [
-            "A",
-            "por la ruta más corta",
-            "315"
-          ]
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
           "nivel": 1,
           "valores": [
-            "B",
-            "↻",
-            "1",
-            "rotaciones"
+            "0.2"
           ]
         }
       ],
-      "notas": "Las posiciones de la rampa (45 y 315) dependen del montaje. El empujador va después de la decisión, fuera del «Si… Si no».",
+      "notas": "Moviendo la mano sale una curva. Es lo que convierte una medida en algo que se puede mirar.",
       "pasos": [
         {
-          "texto": "La máquina clasifica seis piezas, una cada vez: las rojas caen a un cajón y las demás al otro"
+          "texto": "Pon un bucle de veinte vueltas que mande la distancia al gráfico de líneas y espere dos décimas"
         },
         {
-          "texto": "Deja 2 segundos para colocar cada pieza"
+          "texto": "Mueve la mano delante del sensor para ver la curva"
         }
       ]
     },
     {
-      "titulo": "Clasificar y contar",
-      "enunciado": "Añade dos contadores, uno por cajón. La máquina trabaja hasta que ha clasificado seis piezas en total y, al terminar, escribe en la matriz cuántas hay en cada cajón.",
+      "practica": 2,
+      "titulo": "El barrido",
+      "enunciado": "Fija a 0 la posición del motor B. En un bucle de dieciocho vueltas, llévalo a la posición que toca de diez en diez grados y manda la distancia al gráfico.",
+      "pista": "La posición sale de multiplicar el número de paso por 10.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "B · 0"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 0"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "18"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 1,
+          "valores": [
+            "B · paso × 10 · 30"
+          ]
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valores": [
+            "Distancia E"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        }
+      ],
+      "notas": "Dieciocho pasos de diez grados son 180: media vuelta. El gráfico sale con un valle donde haya algo.",
+      "pasos": [
+        {
+          "texto": "Fija a 0 la posición del motor B"
+        },
+        {
+          "texto": "En un bucle de dieciocho vueltas, llévalo a la posición que toca de diez en diez grados y manda la distancia al gráfico"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "Guardar el barrido",
+      "enunciado": "Repite el barrido guardando además cada distancia en una lista llamada medidas. Escribe al final cuántas medidas has tomado.",
+      "pista": "Se añade a la lista en la misma vuelta en la que se manda al gráfico.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "B · 0"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 0"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "18"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 1,
+          "valores": [
+            "B · paso × 10 · 30"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valores": [
+            "medidas · Distancia E"
+          ]
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valores": [
+            "Distancia E"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Longitud de lista medidas"
+          ]
+        }
+      ],
+      "notas": "El gráfico se ve y se va; la lista se queda. Por eso hacen falta las dos cosas.",
+      "pasos": [
+        {
+          "texto": "Repite el barrido guardando además cada distancia en una lista llamada medidas"
+        },
+        {
+          "texto": "Escribe al final cuántas medidas has tomado"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "Buscar el mínimo",
+      "enunciado": "Con una lista de medidas ya guardada, busca el valor más pequeño: pon la variable minimo al primer elemento; recorre la lista; cambia minimo cada vez que encuentres un elemento más pequeño; escríbelo al final.",
+      "pista": "El mínimo empieza siendo el primer elemento, no cero: si empieza en cero, no lo supera ninguno.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -572,99 +364,435 @@
         },
         {
           "texto": "Fijar variable a",
-          "valor": "rojas · 0",
+          "nivel": 0,
+          "valores": [
+            "minimo · Elemento 1 de medidas"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "paso > Longitud de lista medidas"
+          ]
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "Elemento paso de medidas < minimo"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "minimo · Elemento paso de medidas"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "minimo"
+          ]
+        }
+      ],
+      "notas": "Buscar el mínimo es el algoritmo más clásico que hay. Empezar en cero es el error de siempre y conviene dejar que lo descubran.",
+      "pasos": [
+        {
+          "texto": "Con una lista de medidas ya guardada, busca el valor más pequeño",
+          "hijos": [
+            "Pon la variable minimo al primer elemento",
+            "Recorre la lista",
+            "Cambia minimo cada vez que encuentres un elemento más pequeño",
+            "Escríbelo al final"
+          ]
+        }
+      ]
+    }
+  ],
+  "construccion": {
+    "piezas": "El Hub, el motor grande, un motor mediano, los tres sensores, dos marcos Technic, cuatro vigas de 15, cuatro vigas de 11, dos ejes de 7, un eje de 5, dos ruedas, un panel y dieciséis pasadores.",
+    "pasos": [
+      {
+        "titulo": "La base de la estación",
+        "texto": "Monta un rectángulo con las cuatro vigas de 15 y refuérzalo por debajo con los dos marcos Technic cruzados. Tiene que quedar firme: encima va todo."
+      },
+      {
+        "titulo": "La cinta transportadora",
+        "texto": "Pon el motor grande en un extremo con el eje de 7 y las dos ruedas, y tiende el panel entre ellas haciendo de cinta."
+      },
+      {
+        "titulo": "La torreta",
+        "texto": "En el otro extremo, monta el motor mediano en vertical con el eje de 5 y, encima, dos vigas de 11 cruzadas con el sensor de distancia en la punta."
+      },
+      {
+        "titulo": "Los otros sensores",
+        "texto": "Coloca el sensor de color mirando a la cinta, para reconocer lo que pasa, y el de fuerza al alcance de la mano como botón de arranque."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Motor grande al A, motor mediano al B, color al D, distancia al E y fuerza al F. Pasa todos los cables por debajo de la base para que la torreta pueda dar la vuelta entera."
+      },
+      {
+        "titulo": "El barrido limpio",
+        "texto": "Gira la torreta con la mano una vuelta completa. Si tropieza con un cable o con la cinta, súbela un agujero antes de programar."
+      }
+    ],
+    "materiales": [
+      {
+        "pieza": "hub"
+      },
+      {
+        "pieza": "motor-grande"
+      },
+      {
+        "pieza": "motor",
+        "cantidad": 1
+      },
+      {
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 8
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 3
+      },
+      {
+        "pieza": "rueda",
+        "cantidad": 2
+      },
+      {
+        "pieza": "pasador"
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Para qué sirve el gráfico de líneas?",
+      "opciones": [
+        "Para ver una serie de medidas en el iPad y comparar su forma",
+        "Para guardar los datos al apagar",
+        "Para medir distancias",
+        "Para dibujar en la pantalla del Hub"
+      ],
+      "correcta": 0,
+      "explicacion": "Veinte números escritos uno a uno no se pueden comparar. Dibujados, la forma se ve de golpe."
+    },
+    {
+      "pregunta": "En un barrido de distancias, ¿qué significa un valle en el gráfico?",
+      "opciones": [
+        "Que el sensor falla",
+        "Que en esa dirección hay algo cerca",
+        "Que el motor va despacio",
+        "Que se ha acabado el barrido"
+      ],
+      "correcta": 1,
+      "explicacion": "Menos distancia es más cerca. El valle marca la dirección del objeto."
+    },
+    {
+      "pregunta": "¿Por qué guardar las medidas en una lista si ya salen en el gráfico?",
+      "opciones": [
+        "No hace falta guardarlas",
+        "Para que el gráfico se vea mejor",
+        "Porque el gráfico se ve y se va; la lista se queda y el programa puede usarla",
+        "Porque la extensión lo exige"
+      ],
+      "correcta": 2,
+      "explicacion": "El gráfico es para ti. La lista es para el robot, que es quien tiene que buscar el mínimo."
+    },
+    {
+      "pregunta": "Para buscar el mínimo de una lista, ¿a qué se iguala la variable al empezar?",
+      "opciones": [
+        "A 100",
+        "A la longitud de la lista",
+        "A 0",
+        "Al primer elemento de la lista"
+      ],
+      "correcta": 3,
+      "explicacion": "Si empieza en 0, ningún elemento es menor y el mínimo se queda en 0. El primer elemento es un valor real."
+    },
+    {
+      "pregunta": "En el barrido, ¿cómo se calcula la posición de cada paso?",
+      "opciones": [
+        "Multiplicando el número de paso por los grados que avanza cada vez",
+        "Sumando 1 a la posición",
+        "Con el cronómetro",
+        "Con un número aleatorio"
+      ],
+      "correcta": 0,
+      "explicacion": "Paso por 10 da 0, 10, 20, 30… Una cuenta en lugar de dieciocho bloques."
+    },
+    {
+      "pregunta": "¿Para qué sirve «establecer orientación como erguida»?",
+      "opciones": [
+        "Para enderezar el robot",
+        "Para decirle al Hub cuál es su lado de arriba y que los dibujos salgan derechos",
+        "Para poner el giroscopio a cero",
+        "Para subir el brillo"
+      ],
+      "correcta": 1,
+      "explicacion": "Solo afecta a la pantalla. Es útil cuando el Hub va montado de lado o boca abajo."
+    },
+    {
+      "pregunta": "¿Qué herramientas del curso aparecen todas juntas en este proyecto?",
+      "opciones": [
+        "Solo el gráfico",
+        "Solo variables y sensores",
+        "Variables, listas, sensores, posiciones de motor y gráficos",
+        "Solo motores"
+      ],
+      "correcta": 2,
+      "explicacion": "Es un proyecto de integración: cada pieza del curso hace falta para que la estación funcione."
+    },
+    {
+      "pregunta": "¿Por qué pasar los cables por debajo de la base?",
+      "opciones": [
+        "Para que el Hub no se caliente",
+        "Para gastar menos batería",
+        "Para que no se vean",
+        "Para que la torreta pueda girar sin engancharse"
+      ],
+      "correcta": 3,
+      "explicacion": "Un cable enganchado para el barrido a mitad y falsea todas las medidas que quedan."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "La estación de medida",
+      "enunciado": "Fija a 0 la posición del motor B y haz un barrido de dieciocho pasos de diez grados, guardando cada distancia en la lista medidas y mandándola al gráfico. Después recorre la lista buscando el valor más pequeño y escríbelo.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "establecer orientación como erguida",
+          "nivel": 0,
+          "valores": [
+            "erguida"
+          ]
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "B · 0"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 0"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "18"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 1,
+          "valores": [
+            "B · paso × 10 · 30"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valores": [
+            "medidas · Distancia E"
+          ]
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valores": [
+            "Distancia E"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "minimo · Elemento 1 de medidas"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "paso > Longitud de lista medidas"
+          ]
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "Elemento paso de medidas < minimo"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "minimo · Elemento paso de medidas"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "minimo"
+          ]
+        }
+      ],
+      "notas": "El programa más largo del curso: dos bucles, una lista, cuatro variables y tres niveles de sangría. Se corrige por partes.",
+      "pasos": [
+        {
+          "texto": "Fija a 0 la posición del motor B y haz un barrido de dieciocho pasos de diez grados, guardando cada distancia en la lista medidas y mandándola al gráfico"
+        },
+        {
+          "texto": "Después recorre la lista buscando el valor más pequeño y escríbelo"
+        }
+      ]
+    },
+    {
+      "titulo": "La cinta que clasifica",
+      "enunciado": "Pon los contados a 0 y, dentro de un bucle infinito, haz esto: arranca el motor grande; espera a que el sensor de color vea algo claro con la luz reflejada por encima de 60; para la cinta; sube los contados uno; enciende los ojos del motor A; escribe los contados; espera a que la pieza salga.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
           "texto": "Fijar variable a",
-          "valor": "otras · 0",
-          "nivel": 0
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "valor": "rojas + otras = 6",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "2",
-          "nivel": 1
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Es de color rojo? D",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "45"
+            "contados · 0"
           ]
         },
         {
-          "texto": "Cambiar variable por",
-          "valor": "rojas · 1",
-          "nivel": 2
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 2,
+          "texto": "A fijar velocidad al 75 %",
+          "nivel": 0,
           "valores": [
             "A",
-            "por la ruta más corta",
-            "315"
+            "30"
           ]
         },
         {
-          "texto": "Cambiar variable por",
-          "valor": "otras · 1",
-          "nivel": 2
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
-          "texto": "A ir durante 1 rotaciones",
+          "texto": "A arrancar motor",
           "nivel": 1,
           "valores": [
-            "B",
-            "↻",
-            "1",
-            "rotaciones"
+            "A",
+            "↻"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Luz reflejada D > 60"
+          ]
+        },
+        {
+          "texto": "A parar motor",
+          "nivel": 1,
+          "valores": [
+            "A"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "contados · 1"
+          ]
+        },
+        {
+          "texto": "A encender ojos",
+          "nivel": 1,
+          "valores": [
+            "A",
+            "azul"
           ]
         },
         {
           "texto": "escribir Hello",
-          "nivel": 0,
+          "nivel": 1,
           "valores": [
-            "rojas"
+            "contados"
           ]
         },
         {
-          "texto": "escribir Hello",
-          "nivel": 0,
+          "texto": "Esperar hasta que",
+          "nivel": 1,
           "valores": [
-            "otras"
+            "Luz reflejada D < 40"
           ]
         }
       ],
-      "notas": "Si no hay pieza en la bandeja, la máquina la cuenta como «otras»: es una limitación aceptable en este nivel.",
+      "notas": "Junta el motor grande, el sensor de color con umbral y un contador. Los dos umbrales distintos evitan contar en ráfaga, como en la báscula.",
       "pasos": [
         {
-          "texto": "Añade dos contadores, uno por cajón"
-        },
-        {
-          "texto": "La máquina trabaja hasta que ha clasificado seis piezas en total"
-        },
-        {
-          "texto": "Al terminar"
-        },
-        {
-          "texto": "Escribe en la matriz cuántas hay en cada cajón"
+          "texto": "Pon los contados a 0 y, dentro de un bucle infinito, haz esto",
+          "hijos": [
+            "Arranca el motor grande",
+            "Espera a que el sensor de color vea algo claro con la luz reflejada por encima de 60",
+            "Para la cinta",
+            "Sube los contados uno",
+            "Enciende los ojos del motor A",
+            "Escribe los contados",
+            "Espera a que la pieza salga"
+          ]
         }
       ]
     }

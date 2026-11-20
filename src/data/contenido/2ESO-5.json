@@ -1,78 +1,204 @@
 {
   "curso": "2ESO",
   "unidad": 5,
-  "reto": "Construye un «prueba tu fuerza» de feria: una aguja motorizada marca lo fuerte que aprietas.",
+  "reto": "Haz un robot que siga una línea pero que solo lo haga si tiene el camino libre y nadie ha pulsado el parachoques.",
   "video": {
-    "titulo": "Medir cuánto aprieto",
+    "titulo": "Y, o, no",
     "duracion": "5 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Get Moving to Get Data» (medir con el sensor de fuerza)",
-      "url": "https://education.lego.com/en-us/lessons/spike-python-u9-data-and-math-functions/spike-python-u9l1-get-moving-to-get-data"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
     "escenas": [
       {
-        "plano": "Una atracción de feria con martillo; después, la versión de LEGO con una aguja.",
-        "locucion": "En la feria, el martillo mide tu fuerza y una luz sube más o menos alto. Vamos a construir nuestra versión con una aguja."
+        "plano": "Dos «Si... entonces» metidos uno dentro de otro, con mucha sangría.",
+        "locucion": "Cuando hacen falta dos condiciones a la vez, lo primero que sale es meter un «Si» dentro de otro. Funciona, pero cada condición más es un escalón más de sangría y el programa se va a la derecha."
       },
       {
-        "plano": "Primer plano del sensor de fuerza apretado suave y fuerte; la matriz muestra un número.",
-        "locucion": "En 1º usábamos el sensor de fuerza como un botón: pulsado o no pulsado. Pero también mide cuánto aprietas, de 0 a 100 %."
+        "plano": "El bloque «y» con dos huecos de rombo, uno a cada lado.",
+        "locucion": "El bloque «y» junta dos preguntas en una sola. Solo vale verdad cuando las dos lo son. Camino libre Y parachoques suelto: avanza."
       },
       {
-        "plano": "Captura de la app: el bloque redondeado de presión dentro de «Fijar variable a».",
-        "locucion": "El bloque redondeado de presión es un dato que cambia mientras aprietas. Para trabajar con él, lo guardamos en una variable."
+        "plano": "El bloque «o», con una de las dos preguntas en verdad y el resultado en verde.",
+        "locucion": "El «o» vale verdad con que una cualquiera lo sea. Pared delante O parachoques pulsado: para. Con una basta."
       },
       {
-        "plano": "Esquema de la aguja sobre una escala de medio círculo, con la fórmula posición = fuerza × 1,8.",
-        "locucion": "La aguja recorre medio círculo: de 0 a 180 grados. Como la fuerza va de 0 a 100, la multiplicamos por 1,8 y ya tenemos la posición de la aguja."
+        "plano": "El bloque «no» dándole la vuelta a una pregunta.",
+        "locucion": "Y el «no» le da la vuelta a una pregunta: convierte el sí en no. «No está presionado» es exactamente «está suelto»."
       },
       {
-        "plano": "La aguja sube hasta un punto y el Hub muestra una cara.",
-        "locucion": "El motor grande lleva la aguja a la posición calculada y, según el resultado, la matriz muestra un dibujo distinto."
+        "plano": "Un seguidor de línea avanzando y corrigiendo, con la luz reflejada en la pantalla.",
+        "locucion": "Y la aplicación de siempre: seguir una línea. El robot mira la luz reflejada en el borde entre el negro y el blanco y corrige hacia un lado o hacia el otro."
       },
       {
-        "plano": "Varios jugadores prueban su fuerza por turnos.",
-        "locucion": "Tu reto: una máquina que mide la fuerza de cada jugador, mueve la aguja y da un premio a los más fuertes."
+        "plano": "El robot parándose en seco cuando aparece una pared en mitad de la línea.",
+        "locucion": "Con los operadores, además, el seguidor puede tener cabeza: sigue la línea solo mientras el camino esté libre."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Setting Conditions for Yoga» (estados y condiciones)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l4-setting-conditions-for-yoga/"
+    }
   },
   "bloques": [
     {
-      "texto": "Presión (sensor de fuerza)",
-      "explicacion": "Bloque de dato: lo fuerte que se aprieta el sensor en ese momento."
+      "texto": "Operadores lógicos (y, o, no)",
+      "explicacion": "Juntan preguntas. «Y» pide que las dos sean verdad; «o» se conforma con una; «no» le da la vuelta a la que lleva dentro."
     },
     {
-      "texto": "Fijar variable a",
-      "explicacion": "Guarda la fuerza medida y la posición calculada para la aguja."
-    },
-    {
-      "texto": "Operadores aritméticos (+, −, ×, ÷)",
-      "explicacion": "Convierten la fuerza, de 0 a 100, en grados de la aguja, de 0 a 180."
-    },
-    {
-      "texto": "A ir por la ruta más corta a la posición 0",
-      "explicacion": "Lleva la aguja al ángulo calculado.",
-      "valores": [
-        "A",
-        "por la ruta más corta",
-        "0"
-      ]
-    },
-    {
-      "texto": "encender dibujo",
-      "explicacion": "Muestra un dibujo según el resultado.",
-      "valores": [
-        "dibujo"
-      ]
+      "texto": "A velocidad",
+      "explicacion": "Un número: a qué velocidad va girando ese motor ahora mismo. Sirve para comprobar si el robot se ha quedado atascado."
     }
   ],
+  "programa": {
+    "titulo": "El seguidor con cabeza",
+    "explicacion": "Dentro del bucle hay una sola pregunta, pero compuesta: avanza siguiendo la línea solo mientras el camino esté libre y nadie haya tocado el parachoques.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "30"
+        ]
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 1,
+        "valores": [
+          "no ¿Está más próximo a? E 15 cm y no ¿Está presionado? F"
+        ]
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 2,
+        "valores": [
+          "Luz reflejada D < 40"
+        ]
+      },
+      {
+        "texto": "empezar a mover derecha: 30",
+        "nivel": 3,
+        "valores": [
+          "derecha: 30"
+        ]
+      },
+      {
+        "texto": "empezar a mover derecha: 30",
+        "nivel": 3,
+        "valores": [
+          "derecha: -30"
+        ]
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 2
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Mide la presión",
-      "enunciado": "Escribe en la matriz el valor de presión del sensor de fuerza mientras aprietas.",
-      "pista": "Prueba a apretar flojo y fuerte para ver el rango.",
+      "titulo": "Las dos a la vez",
+      "enunciado": "En un bucle infinito, comprueba las dos cosas a la vez: si no hay nada a menos de 15 centímetros y el sensor de fuerza está suelto, pon el botón en verde; si no, ponlo en rojo.",
+      "pista": "Las dos preguntas se juntan con el bloque «y», y cada una va con un «no» delante.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "no ¿Está más próximo a? E 15 cm y no ¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "verde"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "rojo"
+          ]
+        }
+      ],
+      "notas": "Tapando el sensor o apretando el parachoques se ve que basta cualquiera de los dos para que se ponga rojo.",
+      "pasos": [
+        {
+          "texto": "En un bucle infinito, comprueba las dos cosas a la vez",
+          "hijos": [
+            "Si no hay nada a menos de 15 centímetros y el sensor de fuerza está suelto, pon el botón en verde",
+            "Si no, ponlo en rojo"
+          ]
+        }
+      ]
+    },
+    {
+      "practica": 2,
+      "titulo": "Con una basta",
+      "enunciado": "En un bucle infinito, comprueba dos cosas a la vez: si hay algo a menos de 15 centímetros o el sensor de fuerza está pulsado, toca una nota.",
+      "pista": "Aquí el bloque es «o»: con que una de las dos sea verdad, suena.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "¿Está más próximo a? E 15 cm o ¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 2,
+          "valores": [
+            "72 · 0.3"
+          ]
+        }
+      ],
+      "notas": "Comparado con el ejercicio anterior se ve la diferencia entre «y» y «o» sin explicarla.",
+      "pasos": [
+        {
+          "texto": "En un bucle infinito, comprueba dos cosas a la vez",
+          "hijos": [
+            "Si hay algo a menos de 15 centímetros o el sensor de fuerza está pulsado",
+            "Toca una nota"
+          ]
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "Leer la línea",
+      "enunciado": "Pon un bucle infinito que escriba en la pantalla la luz reflejada del sensor de color. Pasa el robot del negro al blanco y apunta los dos números.",
+      "pista": "Hay que apuntar los dos valores: el umbral de los ejercicios siguientes sale de ahí.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -86,456 +212,353 @@
           "texto": "escribir Hello",
           "nivel": 1,
           "valores": [
-            "Presión"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "0.2"
-        }
-      ],
-      "notas": "Aprieta flojo y fuerte mientras lo miras: así sabes entre qué números se mueve tu sensor."
-    },
-    {
-      "practica": 2,
-      "titulo": "Guarda la fuerza",
-      "enunciado": "Crea la variable «fuerza» y guarda en ella la presión en el momento de soltar.",
-      "pista": "Fija la variable justo después de que deje de estar presionado.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "fuerza · Presión"
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "no ¿Está presionado? F"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "fuerza"
+            "Luz reflejada D"
           ]
         }
       ],
-      "notas": "Ojo: al soltar, la presión vuelve a 0. Si la aguja se queda a cero, fija la variable justo ANTES de soltar.",
+      "notas": "Calibrar antes de programar. Los valores cambian con la luz del aula, así que conviene repetirlo cada día.",
       "pasos": [
         {
-          "texto": "Crea la variable «fuerza»"
+          "texto": "Pon un bucle infinito que escriba en la pantalla la luz reflejada del sensor de color"
         },
         {
-          "texto": "Guarda en ella la presión en el momento de soltar"
+          "texto": "Pasa el robot del negro al blanco y apunta los dos números"
         }
       ]
     },
     {
-      "practica": 3,
-      "titulo": "Convierte a grados",
-      "enunciado": "Multiplica la fuerza por un número para convertirla en el ángulo de la aguja.",
-      "pista": "Si la presión llega a 100 y la aguja gira 180, el factor es 1,8.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "fuerza · Presión"
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "no ¿Está presionado? F"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "grados · fuerza × 1.8"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "grados"
-          ]
-        }
-      ],
-      "notas": "Si la presión llega a 100 y quieres que la aguja gire 180 grados, el factor es 1,8."
-    },
-    {
       "practica": 4,
-      "titulo": "Prueba tu fuerza",
-      "enunciado": "La aguja va al ángulo calculado, espera 3 segundos y vuelve a 0 para el siguiente.",
-      "pista": "Este es el modelo final en pequeño.",
+      "titulo": "El seguidor sencillo",
+      "enunciado": "En un bucle infinito, decide hacia dónde torcer: si la luz reflejada es menor que 40, tuerce hacia un lado; si no, tuerce hacia el otro.",
+      "pista": "El robot no va recto nunca: va haciendo eses sobre el borde de la línea. Eso es normal.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A fijar velocidad al 75 %",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "40"
+            "A+B"
           ]
         },
         {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "fuerza · Presión"
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "no ¿Está presionado? F"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "grados · fuerza × 1.8"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "grados"
+            "30"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "3"
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
           "valores": [
-            "A",
-            "por la ruta más corta",
-            "0"
+            "Luz reflejada D < 40"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: 30"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: -30"
           ]
         }
       ],
-      "notas": "Volver a 0 al final es lo que deja la máquina lista para el siguiente. Es el modelo final en pequeño.",
+      "notas": "El seguidor de dos estados es feo y funciona. Conviene decir que hay formas mejores y que se ven en 3º.",
       "pasos": [
         {
-          "texto": "La aguja va al ángulo calculado"
-        },
-        {
-          "texto": "Espera 3 segundos"
-        },
-        {
-          "texto": "Vuelve a 0 para el siguiente"
+          "texto": "En un bucle infinito, decide hacia dónde torcer",
+          "hijos": [
+            "Si la luz reflejada es menor que 40, tuerce hacia un lado",
+            "Si no, tuerce hacia el otro"
+          ]
         }
       ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor grande, el sensor de fuerza, una viga larga para la aguja y vigas para la base y el panel.",
+    "piezas": "La base de conducción, el sensor de color, el sensor de distancia, el sensor de fuerza, una viga angular, dos vigas de 7, una viga de 11 y ocho pasadores.",
     "pasos": [
       {
-        "titulo": "La base y el panel",
-        "texto": "Monta una base pesada y, sobre ella, un panel vertical donde irá la escala."
+        "titulo": "El sensor de color abajo",
+        "texto": "Monta la viga angular bajo el chasis, por delante de las ruedas, y fija el sensor de color mirando al suelo a un dedo de altura. Más alto no distingue el negro del blanco."
       },
       {
-        "titulo": "El motor",
-        "texto": "Fija el motor grande detrás del panel, con el eje asomando hacia delante por el centro de la escala."
+        "titulo": "El sensor de distancia delante",
+        "texto": "Con las dos vigas de 7, sujeta el sensor de distancia al frente, a la altura de un obstáculo normal."
       },
       {
-        "titulo": "La posición 0",
-        "texto": "Gira el motor con la mano hasta que sus marcas coincidan antes de montar la aguja."
+        "titulo": "El parachoques",
+        "texto": "Pon la viga de 11 cruzada delante del todo, suelta por un extremo, apoyada contra el sensor de fuerza. Al chocar, lo aprieta."
       },
       {
-        "titulo": "La aguja",
-        "texto": "Con el motor en 0, monta la aguja apuntando al principio de la escala."
+        "titulo": "La pista",
+        "texto": "Pega una línea de cinta aislante negra sobre una cartulina blanca. Ancha, de dos dedos: las líneas finas se pierden."
       },
       {
-        "titulo": "El pulsador",
-        "texto": "Fija el sensor de fuerza en la base, delante, muy bien sujeto: se va a apretar con ganas."
-      },
-      {
-        "titulo": "Los cables y la prueba",
-        "texto": "Motor grande al puerto A y sensor de fuerza al puerto F. Mueve la aguja con la mano de un extremo a otro: no debe rozar."
+        "titulo": "Calibrar a ojo",
+        "texto": "Con el robot parado, pon el sensor sobre el negro y luego sobre el blanco, y apunta los dos números de luz reflejada. El umbral va a medio camino."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
+        "pieza": "color"
       },
       {
-        "pieza": "motor-grande",
-        "cantidad": 1
+        "pieza": "distancia"
       },
       {
         "pieza": "fuerza"
       },
       {
         "pieza": "viga",
-        "cantidad": 1
+        "cantidad": 4
+      },
+      {
+        "pieza": "pasador",
+        "cantidad": 8
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿En qué se diferencian «¿Está presionado?» y el bloque de presión?",
+      "pregunta": "El bloque «y», ¿cuándo vale verdad?",
       "opciones": [
-        "En nada",
-        "El primero mide en newtons y el segundo en gramos",
-        "El primero responde sí o no; el segundo da un número",
-        "El segundo solo funciona con el motor grande"
-      ],
-      "correcta": 2,
-      "explicacion": "Uno es una pregunta hexagonal y el otro, un dato redondeado."
-    },
-    {
-      "pregunta": "La fuerza medida es 50 y la posición se calcula como fuerza × 1,8. ¿A qué posición va la aguja?",
-      "opciones": [
-        "90",
-        "50",
-        "180",
-        "51,8"
+        "Cuando las dos preguntas son verdad",
+        "Cuando ninguna es verdad",
+        "Siempre",
+        "Cuando una de las dos preguntas es verdad"
       ],
       "correcta": 0,
-      "explicacion": "50 por 1,8 son 90 grados: la mitad de la escala."
+      "explicacion": "Las dos. Si falla una, el conjunto es mentira."
     },
     {
-      "pregunta": "Con esa misma fórmula, ¿qué posición corresponde a la fuerza máxima, 100?",
+      "pregunta": "¿Y el bloque «o»?",
       "opciones": [
-        "100",
-        "360",
-        "90",
-        "180"
-      ],
-      "correcta": 3,
-      "explicacion": "100 por 1,8 son 180 grados: el final de la escala."
-    },
-    {
-      "pregunta": "¿Por qué guardamos la fuerza en una variable?",
-      "opciones": [
-        "Porque el sensor no funciona sin variables",
-        "Porque la lectura cambia a cada instante y queremos usar el mismo valor en varios bloques",
-        "Para que el motor vaya más rápido",
-        "Para ahorrar batería"
+        "Cuando las dos son verdad",
+        "Cuando al menos una es verdad",
+        "Cuando las dos son mentira",
+        "Nunca"
       ],
       "correcta": 1,
-      "explicacion": "Si leyéramos el sensor en cada bloque, cada uno podría recibir un valor distinto."
+      "explicacion": "Con una basta. También vale si las dos lo son."
     },
     {
-      "pregunta": "¿Qué operador convierte la fuerza en grados de la aguja?",
+      "pregunta": "«no ¿Está presionado?» significa:",
       "opciones": [
-        "La multiplicación",
-        "La comparación «mayor que»",
-        "El operador «no»",
-        "El operador «y»"
-      ],
-      "correcta": 0,
-      "explicacion": "Multiplicar por 1,8 estira el intervalo 0–100 hasta 0–180."
-    },
-    {
-      "pregunta": "Quieres que la aguja recorra solo un cuarto de círculo, de 0 a 90 grados. ¿Por cuánto multiplicas la fuerza?",
-      "opciones": [
-        "Por 1,8",
-        "Por 90",
-        "Por 9",
-        "Por 0,9"
-      ],
-      "correcta": 3,
-      "explicacion": "100 por 0,9 son 90: el máximo de la nueva escala."
-    },
-    {
-      "pregunta": "¿En qué puerto va el sensor de fuerza?",
-      "opciones": [
-        "En el A",
-        "En el D",
-        "En el F",
-        "En el E"
+        "Que hay que apretar más",
+        "Que el sensor está roto",
+        "Que el sensor está suelto",
+        "Que el sensor no está conectado"
       ],
       "correcta": 2,
-      "explicacion": "Color en D, distancia en E y fuerza en F."
+      "explicacion": "El «no» da la vuelta a la respuesta: donde había sí, pone no."
     },
     {
-      "pregunta": "Al iniciar el programa, la aguja no apunta al principio de la escala. ¿Qué paso te has saltado?",
+      "pregunta": "¿Qué ventaja tiene «y» frente a meter un «Si» dentro de otro?",
       "opciones": [
-        "Fijar la velocidad del motor",
-        "Alinear las marcas del motor antes de montar la aguja",
-        "Conectar el sensor de fuerza",
-        "Crear la variable"
+        "Permite usar más sensores",
+        "Ninguna, es solo otra forma",
+        "Va más rápido",
+        "Se lee mejor y no añade escalones de sangría"
+      ],
+      "correcta": 3,
+      "explicacion": "Hacen lo mismo, pero con tres o cuatro condiciones anidadas el programa se vuelve ilegible."
+    },
+    {
+      "pregunta": "¿Por qué hay que calibrar el sensor de color antes de seguir una línea?",
+      "opciones": [
+        "Porque los valores de negro y blanco cambian con la luz del aula",
+        "Porque el sensor se estropea si no",
+        "Porque si no, no detecta colores",
+        "No hace falta calibrar"
+      ],
+      "correcta": 0,
+      "explicacion": "Un umbral que funciona por la mañana junto a la ventana puede fallar por la tarde."
+    },
+    {
+      "pregunta": "Un seguidor de línea de dos estados, ¿va recto?",
+      "opciones": [
+        "Sí, perfectamente recto",
+        "No: va haciendo eses sobre el borde de la línea",
+        "Solo si la línea es ancha",
+        "Solo con el giroscopio"
       ],
       "correcta": 1,
-      "explicacion": "La aguja debe montarse con el motor en su posición 0."
+      "explicacion": "Solo puede torcer a un lado o al otro, así que corrige de más y zigzaguea. Es normal y se ve en 3º cómo suavizarlo."
+    },
+    {
+      "pregunta": "¿Dónde pondrías el umbral si el negro da 12 y el blanco 78?",
+      "opciones": [
+        "En 12",
+        "En 78",
+        "Más o menos a medio camino, cerca de 45",
+        "En 100"
+      ],
+      "correcta": 2,
+      "explicacion": "A medio camino es donde mejor separa los dos, y deja margen para las sombras."
+    },
+    {
+      "pregunta": "¿Para qué sirve el bloque «A velocidad»?",
+      "opciones": [
+        "Para acelerar el robot",
+        "Para medir la velocidad del robot en centímetros por segundo",
+        "Para fijar la velocidad del motor",
+        "Para leer a qué velocidad va girando ahora mismo"
+      ],
+      "correcta": 3,
+      "explicacion": "Es una lectura, no una orden. Si vale casi cero con el motor encendido, el robot está atascado."
     }
   ],
   "practicas": [
     {
-      "titulo": "Aguja de fuerza",
-      "enunciado": "El programa espera a que aprietes el sensor, mide la fuerza, la convierte en grados (fuerza × 1,8) y lleva la aguja a esa posición. A los 3 segundos, la aguja vuelve a 0.",
+      "titulo": "El seguidor con cabeza",
+      "enunciado": "En un bucle infinito, comprueba si el camino está libre y el parachoques suelto: si es así, sigue la línea torciendo a un lado o a otro según la luz reflejada; si no, para el movimiento.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está presionado? F",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "0.5",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "fuerza · Presión F en %",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "posicion · fuerza × 1.8",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "en sentido horario",
-            "posicion"
+            "A+B"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "A",
-            "en sentido antihorario",
-            "0"
+            "30"
           ]
-        }
-      ],
-      "notas": "La espera de medio segundo da tiempo a apretar del todo antes de medir. Fijar el sentido de giro evita que la aguja dé la vuelta por el camino corto.",
-      "pasos": [
-        {
-          "texto": "El programa espera a que aprietes el sensor, mide la fuerza, la convierte en grados (fuerza × 1,8) y lleva la aguja a esa posición"
         },
         {
-          "texto": "A los 3 segundos, la aguja vuelve a 0"
-        }
-      ]
-    },
-    {
-      "titulo": "Premio según la fuerza",
-      "enunciado": "Amplía la máquina para cinco jugadores seguidos. Si la fuerza supera 70, la matriz muestra una cara contenta; si no, una cara triste.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
+          "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "Repetir bucle",
-          "valor": "5",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está presionado? F",
-          "nivel": 1
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "0.5",
-          "nivel": 1
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "fuerza · Presión F en %",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Si... entonces... Si no...",
           "nivel": 1,
           "valores": [
-            "A",
-            "en sentido horario",
-            "fuerza × 1.8"
+            "no ¿Está más próximo a? E 15 cm y no ¿Está presionado? F"
           ]
         },
         {
           "texto": "Si... entonces... Si no...",
-          "valor": "fuerza > 70",
-          "nivel": 1
-        },
-        {
-          "texto": "encender dibujo",
           "nivel": 2,
           "valores": [
-            "cara contenta"
+            "Luz reflejada D < 40"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "encender dibujo",
-          "nivel": 2,
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 3,
           "valores": [
-            "cara triste"
+            "derecha: 30"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "valor": "3",
-          "nivel": 1
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 3,
+          "valores": [
+            "derecha: -30"
+          ]
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "parar movimiento",
+          "nivel": 2
+        }
+      ],
+      "notas": "Un «Si» dentro de otro, pero cada uno con su motivo: el de fuera decide si moverse y el de dentro hacia dónde.",
+      "pasos": [
+        {
+          "texto": "En un bucle infinito, comprueba si el camino está libre y el parachoques suelto",
+          "hijos": [
+            "Si es así, sigue la línea torciendo a un lado o a otro según la luz reflejada",
+            "Si no, para el movimiento"
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "La alarma doble",
+      "enunciado": "Pon los avisos a 0 y, dentro de un bucle infinito, haz esto: espera a que haya algo a menos de 15 centímetros o el parachoques esté pulsado; sube los avisos uno; escríbelos; toca una nota; espera a que el camino vuelva a estar libre y el parachoques suelto.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "avisos · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
           "nivel": 1,
           "valores": [
-            "A",
-            "en sentido antihorario",
-            "0"
+            "¿Está más próximo a? E 15 cm o ¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 2,
+          "valores": [
+            "avisos · 1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "avisos"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 2,
+          "valores": [
+            "72 · 0.3"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 2,
+          "valores": [
+            "no ¿Está más próximo a? E 15 cm y no ¿Está presionado? F"
           ]
         }
       ],
-      "notas": "El cálculo puede ir en una variable aparte o directamente dentro del bloque del motor. El umbral de 70 se puede adaptar al grupo.",
+      "notas": "Junta las dos cosas del curso: un contador en una variable y una condición compuesta. La espera del final evita contar en ráfaga.",
       "pasos": [
         {
-          "texto": "Amplía la máquina para cinco jugadores seguidos"
-        },
-        {
-          "texto": "Si la fuerza supera 70, la matriz muestra una cara contenta; si no, una cara triste"
+          "texto": "Pon los avisos a 0 y, dentro de un bucle infinito, haz esto",
+          "hijos": [
+            "Espera a que haya algo a menos de 15 centímetros o el parachoques esté pulsado",
+            "Sube los avisos uno",
+            "Escríbelos",
+            "Toca una nota",
+            "Espera a que el camino vuelva a estar libre y el parachoques suelto"
+          ]
         }
       ]
     }

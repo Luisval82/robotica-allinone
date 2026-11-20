@@ -26,23 +26,14 @@ están probados. Este script escribe el contenido; aquellos lo desglosan.
 
 import json
 import pathlib
-import sys
 
-RAIZ = pathlib.Path(__file__).resolve().parent.parent
-CONTENIDO = RAIZ / "src/data/contenido"
-UNIDADES_JSON = RAIZ / "src/data/unidades.json"
-BLOQUES_JSON = RAIZ / "src/data/bloques.json"
-VIDEOS = json.loads((pathlib.Path("/tmp/videos1eso.json")).read_text()) if pathlib.Path(
-    "/tmp/videos1eso.json"
-).exists() else {}
+from temario_comun import b, main
+
+# Los enlaces oficiales de LEGO que ya teníamos, para no inventar ninguno.
+_VIDEOS = pathlib.Path("/tmp/videos1eso.json")
+VIDEOS = json.loads(_VIDEOS.read_text()) if _VIDEOS.exists() else {}
 
 
-def b(texto, nivel=0, *valores):
-    """Una fila de programa: el bloque, su sangría y lo que va en sus huecos."""
-    fila = {"texto": texto, "nivel": nivel}
-    if valores:
-        fila["valores"] = [str(v) for v in valores]
-    return fila
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -2359,189 +2350,7 @@ UNIDADES.append({
 })
 
 
-# ═══════════════════════════════════════════════════════════════════════════
-#  COMPROBACIONES Y ESCRITURA
-# ═══════════════════════════════════════════════════════════════════════════
-
-datos_bloques = json.loads(BLOQUES_JSON.read_text(encoding="utf-8"))
-CATALOGO = {x["texto"]: x for x in datos_bloques["bloques"]}
-AUXILIARES = {x["texto"]: x for x in datos_bloques["auxiliares"]}
-ACOMPANAN = {}
-for aux in datos_bloques["auxiliares"]:
-    ACOMPANAN.setdefault(aux["acompana"], []).append(aux["texto"])
-
-# Los contenedores: lo que va dentro de ellos sube un nivel de sangría.
-CONTENEDORES = {
-    "Repetir bucle",
-    "Repetir bucle hasta",
-    "Bucle infinito",
-    "Si... entonces...",
-    "Si... entonces... Si no...",
-}
-# Los sombreros empiezan una pila nueva: siempre van a nivel 0.
-SOMBREROS = {t for t, x in CATALOGO.items() if x["forma"] == "inicio"}
-
-fallos = []
-
-
-def huecos_de(texto):
-    """Cuántos valores admite un bloque. Sin «partes», uno solo de texto libre."""
-    partes = CATALOGO.get(texto, {}).get("partes")
-    if not partes:
-        return 1
-    return len([p for p in partes if p["t"] in ("menu", "hueco", "color")])
-
-
-def revisa_programa(donde, filas, permitidos):
-    """Bloques conocidos, permitidos, con los valores que les caben y bien anidados."""
-    nivel_previo = -1
-    contenedor_abierto = []
-    for i, fila in enumerate(filas):
-        texto = fila["texto"]
-        if texto not in CATALOGO and texto not in AUXILIARES:
-            fallos.append(f"{donde}: el bloque «{texto}» no está en el catálogo")
-            continue
-        if texto not in permitidos:
-            fallos.append(f"{donde}: «{texto}» no está en la paleta de la unidad")
-
-        cabe = huecos_de(texto)
-        tiene = len(fila.get("valores", []))
-        if tiene > cabe:
-            fallos.append(f"{donde}: «{texto}» admite {cabe} valores y lleva {tiene}")
-
-        nivel = fila["nivel"]
-        if texto in SOMBREROS and nivel != 0:
-            fallos.append(f"{donde}: el sombrero «{texto}» tiene que ir a nivel 0")
-        if nivel > nivel_previo + 1:
-            fallos.append(f"{donde}: fila {i} salta de nivel {nivel_previo} a {nivel}")
-        elif nivel == nivel_previo + 1 and i > 0:
-            anterior = filas[i - 1]["texto"]
-            if anterior not in CONTENEDORES:
-                fallos.append(f"{donde}: fila {i} se mete dentro de «{anterior}», que no es un contenedor")
-        nivel_previo = nivel
-        contenedor_abierto = contenedor_abierto  # (el anidado real lo valida el nivel)
-
-
-def main():
-    if len(UNIDADES) != 9:
-        sys.exit(f"Tienen que ser 9 unidades y hay {len(UNIDADES)}")
-
-    # La paleta de la unidad N: sus bloques y los de todas las anteriores,
-    # con los auxiliares que arrastra cada uno (la rama «Si no», por ejemplo).
-    acumulada = set()
-    paletas = {}
-    for unidad in UNIDADES:
-        for texto in unidad["bloques"]:
-            acumulada.add(texto)
-            for aux in ACOMPANAN.get(texto, []):
-                acumulada.add(aux)
-        paletas[unidad["numero"]] = set(acumulada)
-
-    for unidad in UNIDADES:
-        n = unidad["numero"]
-        permitidos = paletas[n]
-        etiqueta = f"UD{n}"
-
-        for texto in unidad["bloques"]:
-            if texto not in CATALOGO:
-                fallos.append(f"{etiqueta}: el bloque nuevo «{texto}» no está en el catálogo")
-            if texto not in unidad["explicaciones"]:
-                fallos.append(f"{etiqueta}: el bloque «{texto}» no tiene explicación")
-
-        revisa_programa(f"{etiqueta} programa", unidad["programa"]["bloques"], permitidos)
-
-        if len(unidad["intermedias"]) != 4:
-            fallos.append(f"{etiqueta}: tiene {len(unidad['intermedias'])} prácticas intermedias y deben ser 4")
-        for i, practica in enumerate(unidad["intermedias"], start=1):
-            revisa_programa(f"{etiqueta} práctica {i}", practica["solucion"], permitidos)
-
-        if len(unidad["practicas"]) != 2:
-            fallos.append(f"{etiqueta}: tiene {len(unidad['practicas'])} programaciones de prueba y deben ser 2")
-        for i, practica in enumerate(unidad["practicas"], start=1):
-            revisa_programa(f"{etiqueta} prueba {i}", practica["solucion"], permitidos)
-
-        if len(unidad["test"]) != 8:
-            fallos.append(f"{etiqueta}: el test tiene {len(unidad['test'])} preguntas y deben ser 8")
-        for i, pregunta in enumerate(unidad["test"], start=1):
-            if len(pregunta["opciones"]) != 4:
-                fallos.append(f"{etiqueta} pregunta {i}: tiene {len(pregunta['opciones'])} opciones y deben ser 4")
-            if not 0 <= pregunta["correcta"] < len(pregunta["opciones"]):
-                fallos.append(f"{etiqueta} pregunta {i}: la respuesta correcta está fuera de rango")
-
-    if fallos:
-        print(f"✗ {len(fallos)} problemas. No se escribe nada:\n")
-        for f in fallos:
-            print("  ·", f)
-        sys.exit(1)
-
-    # ── Escribir el contenido ──
-    for unidad in UNIDADES:
-        n = unidad["numero"]
-        video = dict(unidad["video"])
-        guardado = VIDEOS.get(str(unidad.get("video_de", n)), {})
-        if guardado.get("url"):
-            video["url"] = guardado["url"]
-        if guardado.get("enlaceOficial"):
-            video["enlaceOficial"] = guardado["enlaceOficial"]
-
-        contenido = {
-            "curso": "1ESO",
-            "unidad": n,
-            "reto": unidad["reto"],
-            "video": video,
-            "bloques": [
-                {"texto": t, "explicacion": unidad["explicaciones"][t]} for t in unidad["bloques"]
-            ],
-            "programa": unidad["programa"],
-            "intermedias": [
-                {
-                    "practica": i,
-                    "titulo": p["titulo"],
-                    "enunciado": p["enunciado"],
-                    "pista": p["pista"],
-                    "solucion": p["solucion"],
-                    "notas": p["notas"],
-                }
-                for i, p in enumerate(unidad["intermedias"], start=1)
-            ],
-            "construccion": unidad["construccion"],
-            "test": unidad["test"],
-            "practicas": unidad["practicas"],
-        }
-        destino = CONTENIDO / f"1ESO-{n}.json"
-        destino.write_text(
-            json.dumps(contenido, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-        )
-
-    # ── Actualizar el temario (unidades.json), solo 1º de ESO ──
-    datos = json.loads(UNIDADES_JSON.read_text(encoding="utf-8"))
-    otras = [u for u in datos["unidades"] if u["curso"] != "1ESO"]
-    nuevas = [
-        {
-            "curso": "1ESO",
-            "numero": u["numero"],
-            "titulo": u["titulo"],
-            "evaluacion": u["evaluacion"],
-            "nivel": u["nivel"],
-            "hardware": u["hardware"],
-            "bloques": u["bloques"],
-            "modelo": u["modelo"],
-        }
-        for u in UNIDADES
-    ]
-    datos["unidades"] = nuevas + otras
-    UNIDADES_JSON.write_text(
-        json.dumps(datos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
-
-    practicas = sum(len(u["intermedias"]) for u in UNIDADES)
-    pruebas = sum(len(u["practicas"]) for u in UNIDADES)
-    preguntas = sum(len(u["test"]) for u in UNIDADES)
-    print(
-        f"✓ 1º de ESO: 9 unidades en 3 evaluaciones · {practicas} prácticas · "
-        f"{pruebas} programaciones de prueba · {preguntas} preguntas de test"
-    )
 
 
 if __name__ == "__main__":
-    main()
+    main("1ESO", UNIDADES, VIDEOS)

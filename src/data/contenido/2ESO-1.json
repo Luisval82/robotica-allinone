@@ -1,258 +1,262 @@
 {
   "curso": "2ESO",
   "unidad": 1,
-  "reto": "Programa un vehículo que obedece a un semáforo: circula con la tarjeta verde y se detiene con la roja.",
+  "reto": "Monta un contador que lleve la cuenta de las piezas que pasan y la enseñe en la pantalla.",
   "video": {
-    "titulo": "Dos caminos",
-    "duracion": "4 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Setting Conditions for Yoga» (si/entonces/si no)",
-      "url": "https://education.lego.com/en-us/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l4-setting-conditions-for-yoga/"
-    },
+    "titulo": "Qué es una variable",
+    "duracion": "5 min",
     "escenas": [
       {
-        "plano": "Un vehículo delante de dos tarjetas, una verde y otra roja.",
-        "locucion": "Hasta ahora tus programas hacían siempre lo mismo. Hoy la máquina va a decidir: si ve verde, avanza; si no, se para."
+        "plano": "Un programa de 1º: el robot reacciona al sensor y olvida lo que acaba de pasar.",
+        "locucion": "Todo lo que programaste el año pasado era reaccionar al momento. El sensor nota algo, el robot hace algo y ahí se acaba. Si le preguntas cuántas veces ha pasado, no lo sabe: no se acuerda de nada."
       },
       {
-        "plano": "Primer plano del sensor de color apuntando a una tarjeta a dos centímetros.",
-        "locucion": "El sensor de color reconoce el color que tiene delante, a un par de centímetros. El bloque hexagonal «¿Es de color…?» es una pregunta que solo se puede responder con sí o con no."
+        "plano": "Una caja con una etiqueta que pone «cuenta» y un papel dentro con un número.",
+        "locucion": "Una variable es una caja con nombre. Dentro guardas un número, y ese número se queda ahí hasta que tú lo cambies. El nombre es para poder pedirlo luego."
       },
       {
-        "plano": "Captura de la app: «Si… entonces… Si no» con la pregunta encajada en su hueco hexagonal.",
-        "locucion": "El bloque naranja «Si… entonces… Si no» tiene dos huecos. Si la respuesta es sí, se ejecuta el primero; si es no, el segundo. Nunca los dos."
+        "plano": "El bloque «fijar cuenta a 0» y, al lado, el número del papel cambiando a 0.",
+        "locucion": "«Fijar» mete un valor en la caja y tira lo que hubiera. Se usa al empezar, para arrancar desde cero."
       },
       {
-        "plano": "El mismo bloque dentro de un «Bucle infinito»; al lado, el vehículo reaccionando a las tarjetas.",
-        "locucion": "Una decisión suelta se toma una sola vez y el programa acaba. Para que el vehículo mire el semáforo continuamente, metemos la decisión dentro de un «Bucle infinito»."
+        "plano": "El bloque «cambiar cuenta por 1» y el papel pasando de 0 a 1, de 1 a 2.",
+        "locucion": "«Cambiar por» suma a lo que ya había. Cambiar por 1 es contar uno más. Y cambiar por −1 es restar: no hay bloque de restar, se suma un número negativo."
       },
       {
-        "plano": "Captura de los bloques rosas «Empezar a mover» y «parar movimiento».",
-        "locucion": "«Empezar a mover» pone en marcha los dos motores a la vez y no espera. «parar movimiento» los detiene."
+        "plano": "El bloque redondeado de la variable metido dentro de un bloque de escribir.",
+        "locucion": "Y para leerla, el bloque redondeado con su nombre. Lo metes donde vaya un número: en la pantalla, en una comparación, dentro de otra cuenta."
       },
       {
-        "plano": "El vehículo circula; alguien le enseña la tarjeta roja y frena; con la verde arranca de nuevo.",
-        "locucion": "Tu reto: un vehículo que circula con la tarjeta verde y se detiene con la roja."
+        "plano": "El contador montado: una pieza empuja la palanca y el número de la pantalla sube.",
+        "locucion": "Con eso ya tienes un contador. Y un contador es el principio de casi todo: aforos, puntuaciones, vueltas dadas, piezas clasificadas."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Counting Reps with Leo» (variables)",
+      "url": "https://education.lego.com/en-au/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l2-counting-reps-with-leo/"
+    }
   },
   "bloques": [
     {
-      "texto": "Si... entonces... Si no...",
-      "explicacion": "Toma una decisión: si la condición es verdadera ejecuta el primer hueco; si es falsa, el segundo."
+      "texto": "Variable",
+      "explicacion": "El bloque redondeado con el nombre de la caja. Vale el número que haya dentro ahora mismo, y se mete allí donde haga falta un número."
     },
     {
-      "texto": "Bucle infinito",
-      "explicacion": "Repite sin parar todo lo que tiene dentro. Así la decisión se revisa continuamente."
+      "texto": "Fijar variable a",
+      "explicacion": "Mete un valor en la variable y tira lo que hubiera antes. Va al principio, para empezar la cuenta desde donde quieras."
     },
     {
-      "texto": "¿Es de color...?",
-      "explicacion": "Pregunta al sensor de color si ve el color elegido. Responde verdadero o falso y se encaja en un hueco hexagonal."
-    },
-    {
-      "texto": "empezar a mover a ↑",
-      "explicacion": "Pone en marcha los dos motores de movimiento y pasa al bloque siguiente sin esperar.",
-      "valores": [
-        "↑"
-      ]
-    },
-    {
-      "texto": "parar movimiento",
-      "explicacion": "Detiene los dos motores de movimiento.",
-      "valores": []
+      "texto": "Cambiar variable por",
+      "explicacion": "Suma a lo que ya había. Por 1 cuenta hacia arriba; por −1, hacia abajo. No hay bloque de restar."
     }
   ],
+  "programa": {
+    "titulo": "El contador de piezas",
+    "explicacion": "La cuenta se pone a cero una sola vez, antes del bucle. Dentro, cada vez que se pulsa la palanca sube uno y la pantalla lo enseña.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "cuenta · 0"
+        ]
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "¿Está presionado? F"
+        ]
+      },
+      {
+        "texto": "Cambiar variable por",
+        "nivel": 1,
+        "valores": [
+          "cuenta · 1"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 1,
+        "valores": [
+          "cuenta"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "no ¿Está presionado? F"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Verde o no verde",
-      "enunciado": "Con un «Si… entonces… Si no…», escribe «PASA» cuando veas verde y «ALTO» cuando no.",
-      "pista": "La rama «Si no» se hace cuando la respuesta es «no».",
+      "titulo": "La caja con nombre",
+      "enunciado": "Crea una variable llamada cuenta, ponla a 7 y escríbela en la pantalla.",
+      "pista": "El bloque redondeado de la variable se mete dentro del hueco del bloque de escribir.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
+          "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "¿Es de color verde? D"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 1,
           "valores": [
-            "PASA"
+            "cuenta · 7"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
           "texto": "escribir Hello",
-          "nivel": 1,
+          "nivel": 0,
           "valores": [
-            "ALTO"
+            "cuenta"
           ]
         }
       ],
-      "notas": "Con «Si… entonces… Si no…» basta un bloque: la rama de abajo se hace justo cuando la respuesta es «no».",
+      "notas": "El ejercicio más corto del curso, y a propósito: lo único que tiene que quedar claro es que la variable guarda y la pantalla lee.",
       "pasos": [
         {
-          "texto": "Con un «Si… entonces… Si no…»"
+          "texto": "Crea una variable llamada cuenta"
         },
         {
-          "texto": "Escribe «PASA» cuando veas verde y «ALTO» cuando no"
+          "texto": "Ponla a 7 y escríbela en la pantalla"
         }
       ]
     },
     {
       "practica": 2,
-      "titulo": "Circula y para",
-      "enunciado": "Si la tarjeta es verde, el vehículo empieza a moverse; si no, se para.",
-      "pista": "Un bloque de movimiento en cada rama.",
+      "titulo": "Sumar de uno en uno",
+      "enunciado": "Pon la cuenta a 0 y haz cinco vueltas de bucle: sube la cuenta de uno en uno; escríbela en cada vuelta.",
+      "pista": "El bloque de fijar va fuera del bucle; el de cambiar, dentro. Si fijas dentro, la cuenta vuelve a cero cada vuelta.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar A+B como motores en movimiento",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "A+B"
+            "cuenta · 0"
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "texto": "Repetir bucle",
           "nivel": 0,
           "valores": [
-            "17.5",
-            "cm"
+            "5"
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 0,
-          "valor": "¿Es de color verde? D"
-        },
-        {
-          "texto": "empezar a mover a ↑",
+          "texto": "Cambiar variable por",
           "nivel": 1,
           "valores": [
-            "↑"
+            "cuenta · 1"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
-          "texto": "parar movimiento",
+          "texto": "escribir Hello",
           "nivel": 1,
-          "valores": []
+          "valores": [
+            "cuenta"
+          ]
         }
       ],
-      "notas": "Un bloque de movimiento en cada rama. «empezar a mover» no espera, así que la decisión se toma al momento."
+      "notas": "Poner el «fijar» dentro del bucle es el error clásico de toda la unidad: el número no sube nunca de 1.",
+      "pasos": [
+        {
+          "texto": "Pon la cuenta a 0 y haz cinco vueltas de bucle",
+          "hijos": [
+            "Sube la cuenta de uno en uno",
+            "Escríbela en cada vuelta"
+          ]
+        }
+      ]
     },
     {
       "practica": 3,
-      "titulo": "Semáforo continuo",
-      "enunciado": "Mete la decisión en un bucle infinito para que reaccione en cuanto cambie la tarjeta.",
-      "pista": "Sin bucle, decide una vez y se acaba el programa.",
+      "titulo": "La cuenta atrás",
+      "enunciado": "Pon una variable a 5 y haz cinco vueltas de bucle: réstale uno; escríbela.",
+      "pista": "Para restar se cambia por −1: no hay bloque de restar.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar A+B como motores en movimiento",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "A+B"
+            "cuenta · 5"
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "texto": "Repetir bucle",
           "nivel": 0,
           "valores": [
-            "17.5",
-            "cm"
+            "5"
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Si... entonces... Si no...",
+          "texto": "Cambiar variable por",
           "nivel": 1,
-          "valor": "¿Es de color verde? D"
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 2,
           "valores": [
-            "↑"
+            "cuenta · -1"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "cuenta"
+          ]
         },
         {
-          "texto": "parar movimiento",
-          "nivel": 2,
-          "valores": []
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.5"
+          ]
         }
       ],
-      "notas": "Con el bucle, el vehículo reacciona en cuanto cambias la tarjeta. Sin él decidiría una vez y se acabaría el programa."
+      "notas": "Lo único nuevo es el número negativo. Verlo bajar de 5 a 0 lo deja claro sin explicar nada.",
+      "pasos": [
+        {
+          "texto": "Pon una variable a 5 y haz cinco vueltas de bucle",
+          "hijos": [
+            "Réstale uno",
+            "Escríbela"
+          ]
+        }
+      ]
     },
     {
       "practica": 4,
-      "titulo": "Tres colores",
-      "enunciado": "Añade un tercer caso: con la tarjeta roja, además de parar, el Hub enciende un dibujo de aviso.",
-      "pista": "Puedes anidar otro «Si» dentro de la rama «Si no».",
+      "titulo": "El contador del sensor",
+      "enunciado": "Pon la cuenta a 0 y, dentro de un bucle infinito, haz esto: espera a que se apriete el sensor de fuerza; sube la cuenta uno; escríbela; espera a que se suelte.",
+      "pista": "La segunda espera es la importante: sin ella el programa cuenta decenas de veces mientras tengas el dedo puesto.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar A+B como motores en movimiento",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
+            "cuenta · 0"
           ]
         },
         {
@@ -260,68 +264,70 @@
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
+          "texto": "Esperar hasta que",
           "nivel": 1,
-          "valor": "¿Es de color verde? D"
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 2,
           "valores": [
-            "↑"
+            "¿Está presionado? F"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 2,
-          "valores": []
-        },
-        {
-          "texto": "Si... entonces...",
-          "nivel": 2,
-          "valor": "¿Es de color rojo? D"
-        },
-        {
-          "texto": "encender dibujo",
-          "nivel": 3,
+          "texto": "Cambiar variable por",
+          "nivel": 1,
           "valores": [
-            "corazón"
+            "cuenta · 1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "cuenta"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "no ¿Está presionado? F"
           ]
         }
       ],
-      "notas": "El tercer caso es un «Si» metido dentro de la rama «Si no»: si no es verde, se pregunta si es rojo."
+      "notas": "Esperar a que se suelte es el truco de todos los contadores con botón. Sin él, un toque cuenta como veinte.",
+      "pasos": [
+        {
+          "texto": "Pon la cuenta a 0 y, dentro de un bucle infinito, haz esto",
+          "hijos": [
+            "Espera a que se apriete el sensor de fuerza",
+            "Sube la cuenta uno",
+            "Escríbela",
+            "Espera a que se suelte"
+          ]
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, dos motores medianos, dos ruedas, un apoyo trasero, el sensor de color y dos tarjetas (verde y roja).",
+    "piezas": "El Hub, un motor mediano, el sensor de fuerza, dos vigas de 15, cuatro vigas de 7, dos vigas angulares, un eje de 5, un panel y diez pasadores.",
     "pasos": [
       {
-        "titulo": "El chasis",
-        "texto": "Monta un bastidor rectangular de vigas y fija el Hub encima, centrado."
+        "titulo": "La rampa",
+        "texto": "Pon las dos vigas de 15 en paralelo e inclinadas, apoyadas por un extremo en dos vigas de 7. Las piezas bajarán rodando por ahí."
       },
       {
-        "titulo": "Los motores",
-        "texto": "Coloca un motor mediano a cada lado del chasis, con los ejes hacia fuera, y monta una rueda en cada uno."
+        "titulo": "La palanca",
+        "texto": "Monta las dos vigas angulares al final de la rampa, cruzadas, de forma que cualquier pieza que baje empuje una de ellas."
       },
       {
-        "titulo": "El apoyo",
-        "texto": "Añade detrás un tercer punto de apoyo que deslice o ruede libre, para que el vehículo no arrastre."
+        "titulo": "El sensor",
+        "texto": "Coloca el sensor de fuerza justo detrás de la palanca, en el puerto F, tocándola. Al bajar una pieza, la palanca aprieta el sensor."
       },
       {
-        "titulo": "El sensor de color",
-        "texto": "Fija el sensor de color en la parte delantera, mirando al frente, a la altura a la que vas a enseñar las tarjetas."
+        "titulo": "El expulsor",
+        "texto": "Pon el motor al final con el eje de 5 y el panel montado, para que empuje la pieza fuera de la rampa después de contarla."
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de color al puerto D."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Empuja el vehículo con la mano: debe rodar recto. Acerca una tarjeta al sensor: tiene que quedar a unos dos centímetros."
+        "titulo": "La prueba a mano",
+        "texto": "Deja caer una pieza con el Hub encendido y mira que el sensor marque una sola pulsación. Si marca dos, la palanca rebota: ponla más corta."
       }
     ],
     "materiales": [
@@ -330,208 +336,265 @@
       },
       {
         "pieza": "motor",
-        "cantidad": 2
+        "cantidad": 1
       },
       {
-        "pieza": "rueda",
-        "cantidad": 2
+        "pieza": "fuerza"
       },
       {
-        "pieza": "color"
+        "pieza": "viga",
+        "cantidad": 8
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 1
+      },
+      {
+        "pieza": "pasador",
+        "cantidad": 10
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué tipo de respuesta da el bloque «¿Es de color…?»?",
+      "pregunta": "¿Qué es una variable?",
       "opciones": [
-        "Un número del 0 al 100",
-        "Verdadero o falso",
-        "El nombre del color",
-        "Ninguna: mueve el vehículo"
-      ],
-      "correcta": 1,
-      "explicacion": "Los bloques hexagonales son preguntas: solo responden verdadero o falso."
-    },
-    {
-      "pregunta": "En «Si… entonces… Si no», ¿qué se ejecuta cuando la condición es falsa?",
-      "opciones": [
-        "El hueco de «entonces»",
-        "Los dos huecos",
-        "Ninguno de los dos",
-        "El hueco de «Si no»"
-      ],
-      "correcta": 3,
-      "explicacion": "Verdadero ejecuta el primer hueco; falso, el segundo."
-    },
-    {
-      "pregunta": "¿Pueden ejecutarse los dos huecos en la misma pasada?",
-      "opciones": [
-        "No, nunca: o uno o el otro",
-        "Sí, siempre",
-        "Solo si el color es rojo",
-        "Depende de la velocidad"
+        "Una caja con nombre donde se guarda un número hasta que lo cambies",
+        "Un sensor interno del Hub",
+        "Otra forma de llamar a un bucle",
+        "Un bloque que mueve el motor"
       ],
       "correcta": 0,
-      "explicacion": "La condición solo puede ser verdadera o falsa en cada pasada, así que se ejecuta un único hueco."
+      "explicacion": "Guarda un valor y se lo puedes pedir después. Por eso el robot deja de olvidar lo que ha pasado."
     },
     {
-      "pregunta": "¿Para qué metemos la decisión dentro de un «Bucle infinito»?",
+      "pregunta": "Diferencia entre «fijar cuenta a 0» y «cambiar cuenta por 1»:",
       "opciones": [
-        "Para que el vehículo vaya más rápido",
-        "Para gastar menos batería",
-        "Para comprobar el color una y otra vez",
-        "Para detener el programa"
-      ],
-      "correcta": 2,
-      "explicacion": "Sin el bucle, el color se comprobaría una sola vez al empezar."
-    },
-    {
-      "pregunta": "Tu programa no tiene bucle. Al iniciarlo el sensor ve verde y el vehículo arranca. Después le enseñas la tarjeta roja. ¿Qué pasa?",
-      "opciones": [
-        "Se para",
-        "Gira a la derecha",
-        "Se apaga el Hub",
-        "No se para: la decisión ya se tomó una vez"
-      ],
-      "correcta": 3,
-      "explicacion": "El programa comprobó el color al empezar y terminó. Ya no vuelve a mirar el sensor."
-    },
-    {
-      "pregunta": "¿Qué diferencia hay entre «Empezar a mover» y «mover durante»?",
-      "opciones": [
-        "«Empezar a mover» no espera: el vehículo sigue hasta que algo lo pare",
         "Ninguna",
-        "«mover durante» no usa los motores",
-        "«Empezar a mover» solo funciona hacia atrás"
-      ],
-      "correcta": 0,
-      "explicacion": "«mover durante» recorre una cantidad exacta y termina; «Empezar a mover» arranca y deja seguir al programa."
-    },
-    {
-      "pregunta": "¿En qué puerto conectamos el sensor de color?",
-      "opciones": [
-        "En el A",
-        "En el D",
-        "En el B",
-        "En el E"
+        "«Fijar» mete ese valor y tira lo anterior; «cambiar» suma a lo que había",
+        "«Fijar» solo vale para números y «cambiar» para textos",
+        "«Cambiar» borra la variable"
       ],
       "correcta": 1,
-      "explicacion": "Los motores van en A y B; el sensor de color, en el D."
+      "explicacion": "Uno sustituye y el otro suma. Confundirlos deja el contador clavado o lo reinicia sin querer."
     },
     {
-      "pregunta": "El vehículo no reacciona a ninguna tarjeta. ¿Qué compruebas primero?",
+      "pregunta": "Metes «fijar cuenta a 0» DENTRO del bucle. ¿Qué pasa?",
       "opciones": [
-        "La velocidad de los motores",
-        "El dibujo de la matriz",
-        "Que la tarjeta está cerca y frente al sensor, y que el puerto es el correcto",
-        "El volumen del altavoz"
+        "La cuenta sube de dos en dos",
+        "La cuenta sube normalmente",
+        "La cuenta vuelve a 0 en cada vuelta y nunca pasa de 1",
+        "El programa da error"
       ],
       "correcta": 2,
-      "explicacion": "El sensor de color solo reconoce bien un color a un par de centímetros, y el bloque debe apuntar al puerto donde está conectado."
+      "explicacion": "En cada vuelta se borra lo contado. El «fijar» va una sola vez, antes de empezar."
+    },
+    {
+      "pregunta": "¿Cómo se resta 1 a una variable?",
+      "opciones": [
+        "Fijándola a −1",
+        "No se puede restar",
+        "Con el bloque «restar variable por 1»",
+        "Cambiándola por −1"
+      ],
+      "correcta": 3,
+      "explicacion": "No hay bloque de restar: se suma un número negativo."
+    },
+    {
+      "pregunta": "¿Qué forma tiene el bloque que lee una variable?",
+      "opciones": [
+        "Redondeado, como los números",
+        "De rombo",
+        "De sombrero",
+        "Rectangular, de pila"
+      ],
+      "correcta": 0,
+      "explicacion": "Vale un número, así que es redondeado y encaja en los huecos de número."
+    },
+    {
+      "pregunta": "En un contador con botón, ¿para qué sirve esperar a que se suelte?",
+      "opciones": [
+        "Para que el motor descanse",
+        "Para que un solo toque no cuente muchas veces",
+        "Para que la pantalla no parpadee",
+        "No sirve para nada"
+      ],
+      "correcta": 1,
+      "explicacion": "El bucle da muchas vueltas por segundo. Si no esperas a que se suelte, cuenta en todas."
+    },
+    {
+      "pregunta": "Quieres que la pantalla enseñe el valor de la variable. ¿Qué haces?",
+      "opciones": [
+        "No se puede: la pantalla solo enseña texto fijo",
+        "Escribir el nombre de la variable entre comillas",
+        "Meter el bloque redondeado de la variable en el hueco del bloque de escribir",
+        "Fijar la pantalla a la variable"
+      ],
+      "correcta": 2,
+      "explicacion": "El hueco de escribir admite números, y el bloque de la variable es un número."
+    },
+    {
+      "pregunta": "¿Para qué sirve ponerle nombre a una variable?",
+      "opciones": [
+        "Es obligatorio pero da igual el nombre",
+        "Para que el Hub la guarde al apagarse",
+        "Para que el programa vaya más rápido",
+        "Para poder pedirla después y para entender el programa al leerlo"
+      ],
+      "correcta": 3,
+      "explicacion": "«cuenta» o «aforo» se entienden solos; «a» y «b» te obligan a adivinar qué guardaba cada una."
     }
   ],
   "practicas": [
     {
-      "titulo": "Semáforo en verde",
-      "enunciado": "El vehículo avanza solo mientras el sensor de color ve la tarjeta verde. En cualquier otro caso se queda parado.",
+      "titulo": "El contador de piezas",
+      "enunciado": "Pon la cuenta a 0 y, dentro de un bucle infinito, haz esto: espera a que se apriete el sensor de fuerza; sube la cuenta uno; escríbela en la pantalla; espera a que se suelte.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "cuenta · 0"
+          ]
+        },
+        {
           "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Es de color verde?",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 2,
+          "texto": "Esperar hasta que",
+          "nivel": 1,
           "valores": [
-            "↑"
+            "¿Está presionado? F"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "cuenta · 1"
+          ]
         },
         {
-          "texto": "parar movimiento",
-          "nivel": 2,
-          "valores": []
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "cuenta"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "no ¿Está presionado? F"
+          ]
         }
       ],
-      "notas": "Sin el «Bucle infinito» el programa comprueba el color una sola vez y termina.",
+      "notas": "Se corrige que el «fijar» esté fuera del bucle y que haya espera a soltar. Sin eso, el contador no cuenta bien.",
       "pasos": [
         {
-          "texto": "El vehículo avanza solo mientras el sensor de color ve la tarjeta verde"
-        },
-        {
-          "texto": "En cualquier otro caso se queda parado"
+          "texto": "Pon la cuenta a 0 y, dentro de un bucle infinito, haz esto",
+          "hijos": [
+            "Espera a que se apriete el sensor de fuerza",
+            "Sube la cuenta uno",
+            "Escríbela en la pantalla",
+            "Espera a que se suelte"
+          ]
         }
       ]
     },
     {
-      "titulo": "Verde y rojo",
-      "enunciado": "El vehículo arranca con la tarjeta verde y se para con la roja. Si no ve ninguna de las dos, sigue haciendo lo que estaba haciendo.",
+      "titulo": "El aforo con expulsor",
+      "enunciado": "Cuenta las piezas como en la práctica anterior y, cuando la cuenta llegue a 5, haz esto: pon el botón central en rojo; mueve el motor A media vuelta para expulsarlas; vuelve a poner la cuenta a 0.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "cuenta · 0"
+          ]
+        },
+        {
           "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Es de color verde?",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 2,
+          "texto": "Esperar hasta que",
+          "nivel": 1,
           "valores": [
-            "↑"
+            "¿Está presionado? F"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "cuenta · 1"
+          ]
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Es de color rojo?",
-          "nivel": 2
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "cuenta"
+          ]
         },
         {
-          "texto": "parar movimiento",
-          "nivel": 3,
-          "valores": []
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "no ¿Está presionado? F"
+          ]
         },
         {
-          "texto": "Si no",
-          "nivel": 2
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "cuenta = 5"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 2,
+          "valores": [
+            "A",
+            "↻",
+            "180",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "cuenta · 0"
+          ]
         }
       ],
-      "notas": "La segunda decisión va dentro del «Si no» de la primera, con su propio «Si no» vacío: así, sin tarjeta, el vehículo no cambia de estado.",
+      "notas": "Aquí la variable ya no solo cuenta: decide. El «fijar a 0» de dentro del «Si» es el reinicio, no el del principio.",
       "pasos": [
         {
-          "texto": "El vehículo arranca con la tarjeta verde"
-        },
-        {
-          "texto": "Se para con la roja"
-        },
-        {
-          "texto": "Si no ve ninguna de las dos"
-        },
-        {
-          "texto": "Sigue haciendo lo que estaba haciendo"
+          "texto": "Cuenta las piezas como en la práctica anterior y, cuando la cuenta llegue a 5, haz esto",
+          "hijos": [
+            "Pon el botón central en rojo",
+            "Mueve el motor A media vuelta para expulsarlas",
+            "Vuelve a poner la cuenta a 0"
+          ]
         }
       ]
     }

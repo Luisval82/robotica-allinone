@@ -1,143 +1,194 @@
 {
   "curso": "2ESO",
   "unidad": 3,
-  "reto": "Construye un torno de entrada que cuente a las personas que pasan y muestre el aforo en la matriz de luces.",
+  "reto": "Monta una báscula que lea cuánta fuerza recibe, la enseñe y vaya sumando las pesadas.",
   "video": {
-    "titulo": "La máquina que cuenta",
-    "duracion": "5 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Counting Reps with Leo» (variables)",
-      "url": "https://education.lego.com/en-au/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l2-counting-reps-with-leo/"
-    },
+    "titulo": "Preguntas que dan números",
+    "duracion": "4 min",
     "escenas": [
       {
-        "plano": "Un torno de entrada de LEGO; varias figuras pasan una a una y la matriz del Hub va sumando.",
-        "locucion": "Un torno de entrada no solo deja pasar: cuenta cuánta gente ha entrado. Para contar, la máquina necesita memoria."
+        "plano": "El bloque «¿Está presionado?» en forma de rombo, con dos respuestas: sí o no.",
+        "locucion": "Hasta ahora, al sensor de fuerza solo le preguntabas una cosa: ¿te están apretando? Sí o no. Pero el sensor sabe más: sabe CUÁNTO lo aprietas."
       },
       {
-        "plano": "Captura de la app: categoría Variables, botón para crear una variable y el nombre «aforo».",
-        "locucion": "Una variable es una caja con nombre donde el programa guarda un número. La creamos en la categoría Variables y le damos un nombre claro: aforo."
+        "plano": "El bloque redondeado de la presión y un número que sube de 0 a 100 al apretar más.",
+        "locucion": "La presión es un número de 0 a 100. Apoyar el dedo da veinte y pocos; apretar fuerte, más de ochenta. Eso ya no es un interruptor: es una medida."
       },
       {
-        "plano": "Captura de los bloques «Fijar aforo a 0» y «Cambiar aforo por 1», con el valor de la variable a la vista.",
-        "locucion": "«Fijar variable a» pone un valor concreto: lo usamos al empezar, para dejar el contador a 0. «Cambiar variable por» suma ese número al valor que ya había; si es negativo, resta."
+        "plano": "Tres números juntos en la pantalla: distancia, luz reflejada y presión.",
+        "locucion": "Los tres sensores dan números, no solo respuestas. Distancia en centímetros, luz reflejada de 0 a 100 y ahora presión de 0 a 100."
       },
       {
-        "plano": "Primer plano del sensor de distancia; una mano se acerca y se dispara una pila con el bloque amarillo.",
-        "locucion": "El sensor de distancia mide lo cerca que está un objeto. El bloque amarillo «Cuando está más próximo a» inicia su propia pila cada vez que algo se acerca."
+        "plano": "Los bloques de sumar, restar, multiplicar y dividir, encajados unos dentro de otros.",
+        "locucion": "Y para hacer cuentas con esos números hay bloques de sumar, restar, multiplicar y dividir. Se encajan unos dentro de otros, como las muñecas rusas."
       },
       {
-        "plano": "Captura de «Escribir en la matriz» con el bloque redondeado «aforo» dentro.",
-        "locucion": "Para ver el contador, metemos el bloque redondeado de la variable dentro de «Escribir en la matriz de luces»."
-      },
-      {
-        "plano": "El torno gira un cuarto de vuelta cada vez que se acerca una figura y la matriz muestra el total.",
-        "locucion": "Tu reto: un torno que gira para dejar pasar, suma una persona y muestra el aforo."
+        "plano": "Una variable «total» a la que se le suma la presión cada vez que se pulsa.",
+        "locucion": "Con eso puedes acumular: cada pesada se suma al total. Y dividiendo el total entre el número de pesadas sale la media."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Start Sensing» (sensor de fuerza)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l1-start-sensing/"
+    }
   },
   "bloques": [
     {
-      "texto": "Variable",
-      "explicacion": "Bloque de dato con el valor guardado en la variable. Se coloca dentro de otros bloques."
+      "texto": "Presión (sensor de fuerza)",
+      "explicacion": "Un número de 0 a 100: cuánto está apretado el sensor de fuerza. No es sí o no, es cuánto."
     },
     {
-      "texto": "Fijar variable a",
-      "explicacion": "Guarda en la variable el valor exacto que le digas y borra el anterior."
-    },
-    {
-      "texto": "Cambiar variable por",
-      "explicacion": "Suma el número indicado al valor que ya tenía la variable. Con un número negativo, resta."
-    },
-    {
-      "texto": "Cuando está más próximo a",
-      "explicacion": "Bloque de inicio: arranca su pila cuando el sensor de distancia detecta algo más cerca de la distancia elegida."
-    },
-    {
-      "texto": "escribir Hello",
-      "explicacion": "Muestra el valor de la variable en la matriz.",
-      "valores": [
-        "Hello"
-      ]
-    },
-    {
-      "texto": "A ir durante 1 rotaciones",
-      "explicacion": "Gira el torno un cuarto de vuelta para dejar pasar a una persona.",
-      "valores": [
-        "A",
-        "↻",
-        "1",
-        "rotaciones"
-      ]
+      "texto": "Operadores aritméticos (+, −, ×, ÷)",
+      "explicacion": "Suma, resta, multiplica o divide dos números. Se encajan unos dentro de otros para hacer cuentas más largas."
     }
   ],
+  "programa": {
+    "titulo": "La báscula",
+    "explicacion": "Cada vez que se aprieta, se lee la presión, se guarda, se suma al total y se sube la cuenta de pesadas. Con el total y la cuenta se puede sacar la media.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "total · 0"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "pesadas · 0"
+        ]
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "Presión F > 20"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 1,
+        "valores": [
+          "ultima · Presión F"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 1,
+        "valores": [
+          "total · total + ultima"
+        ]
+      },
+      {
+        "texto": "Cambiar variable por",
+        "nivel": 1,
+        "valores": [
+          "pesadas · 1"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 1,
+        "valores": [
+          "ultima"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "Presión F < 5"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Crea el contador",
-      "enunciado": "Crea una variable «aforo» y ponla a 0 al empezar el programa.",
-      "pista": "Fijar la variable al principio evita arrastrar el valor de la vez anterior.",
+      "titulo": "Cuánto aprietas",
+      "enunciado": "Pon un bucle infinito que escriba en la pantalla la presión del sensor de fuerza.",
+      "pista": "La presión es un número redondeado: se mete en el hueco del bloque de escribir.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "aforo · 0"
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
           "texto": "escribir Hello",
-          "nivel": 0,
+          "nivel": 1,
           "valores": [
-            "aforo"
+            "Presión F"
           ]
         }
       ],
-      "notas": "Fijar la variable a 0 al empezar evita arrastrar el aforo de la vez anterior.",
-      "pasos": [
+      "notas": "Apretando más y menos se ve el número cambiar. Es la forma más rápida de entender que no es sí o no."
+    },
+    {
+      "practica": 2,
+      "titulo": "El umbral",
+      "enunciado": "En un bucle infinito, mira la presión: si pasa de 50, pon el botón central en rojo; si no, ponlo en verde.",
+      "pista": "La presión se compara con 50 dentro de la pregunta del «Si... entonces... Si no...».",
+      "solucion": [
         {
-          "texto": "Crea una variable «aforo»"
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
         },
         {
-          "texto": "Ponla a 0 al empezar el programa"
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "Presión F > 50"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 2,
+          "valores": [
+            "verde"
+          ]
+        }
+      ],
+      "notas": "Un umbral es una raya que tú eliges. Cincuenta no tiene nada de especial: se puede probar con otros.",
+      "pasos": [
+        {
+          "texto": "En un bucle infinito, mira la presión",
+          "hijos": [
+            "Si pasa de 50, pon el botón central en rojo",
+            "Si no, ponlo en verde"
+          ]
         }
       ]
     },
     {
-      "practica": 2,
-      "titulo": "Suma uno",
-      "enunciado": "Cada vez que alguien pasa por delante del sensor, la variable sube de uno en uno.",
-      "pista": "«Cambiar variable por 1» suma; con −1 restaría.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "aforo · 0"
-        },
-        {
-          "texto": "Cuando está más próximo a",
-          "nivel": 0,
-          "valor": "E · 10 cm"
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 0,
-          "valor": "aforo · 1"
-        }
-      ],
-      "notas": "«Cambiar variable por 1» suma al valor que ya había. Con −1 restaría, que es lo que harías en la salida."
-    },
-    {
       "practica": 3,
-      "titulo": "Enséñalo",
-      "enunciado": "Después de cada paso, escribe el valor del aforo en la matriz.",
-      "pista": "La variable se mete dentro del hueco de «escribir».",
+      "titulo": "El total de las pesadas",
+      "enunciado": "Pon el total a 0 y, dentro de un bucle infinito, haz esto: espera a que la presión pase de 20; súmala al total; escribe el total; espera a que la presión baje de 5.",
+      "pista": "Para sumar se usa el bloque de sumar dentro del bloque de fijar: total pasa a ser total más la presión.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -146,40 +197,61 @@
         {
           "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "aforo · 0"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
           "valores": [
-            "aforo"
+            "total · 0"
           ]
         },
         {
-          "texto": "Cuando está más próximo a",
-          "nivel": 0,
-          "valor": "E · 10 cm"
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
-          "texto": "Cambiar variable por",
-          "nivel": 0,
-          "valor": "aforo · 1"
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Presión F > 20"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valores": [
+            "total · total + Presión F"
+          ]
         },
         {
           "texto": "escribir Hello",
-          "nivel": 0,
+          "nivel": 1,
           "valores": [
-            "aforo"
+            "total"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Presión F < 5"
           ]
         }
       ],
-      "notas": "La variable se mete dentro del hueco de «escribir»: no escribe la palabra «aforo», escribe su valor."
+      "notas": "Las dos esperas con umbrales distintos evitan que una sola pesada cuente varias veces mientras sueltas.",
+      "pasos": [
+        {
+          "texto": "Pon el total a 0 y, dentro de un bucle infinito, haz esto",
+          "hijos": [
+            "Espera a que la presión pase de 20",
+            "Súmala al total",
+            "Escribe el total",
+            "Espera a que la presión baje de 5"
+          ]
+        }
+      ]
     },
     {
       "practica": 4,
-      "titulo": "Torno completo",
-      "enunciado": "Junta las tres partes y haz que además el motor dé un cuarto de vuelta por cada persona.",
-      "pista": "90 grados por persona es un cuarto de vuelta del torno.",
+      "titulo": "La media",
+      "enunciado": "Repite la báscula anterior con dos añadidos: lleva también la cuenta de las pesadas; escribe al final de cada vuelta el total dividido entre las pesadas.",
+      "pista": "La división se encaja dentro del bloque de escribir, con el total arriba y las pesadas abajo.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -188,80 +260,91 @@
         {
           "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "aforo · 0"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
           "valores": [
-            "aforo"
+            "total · 0"
           ]
         },
         {
-          "texto": "Cuando está más próximo a",
-          "nivel": 0,
-          "valor": "E · 10 cm"
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "A",
-            "↻",
-            "90",
-            "grados"
+            "pesadas · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Presión F > 20"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valores": [
+            "total · total + Presión F"
           ]
         },
         {
           "texto": "Cambiar variable por",
-          "nivel": 0,
-          "valor": "aforo · 1"
+          "nivel": 1,
+          "valores": [
+            "pesadas · 1"
+          ]
         },
         {
           "texto": "escribir Hello",
-          "nivel": 0,
+          "nivel": 1,
           "valores": [
-            "aforo"
+            "total ÷ pesadas"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Presión F < 5"
           ]
         }
       ],
-      "notas": "90 grados es un cuarto de vuelta del torno: justo el hueco para que pase una persona.",
+      "notas": "La media necesita dos variables: lo acumulado y cuántas veces. Es el primer cálculo de verdad del curso.",
       "pasos": [
         {
-          "texto": "Junta las tres partes"
-        },
-        {
-          "texto": "Haz que además el motor dé un cuarto de vuelta por cada persona"
+          "texto": "Repite la báscula anterior con dos añadidos",
+          "hijos": [
+            "Lleva también la cuenta de las pesadas",
+            "Escribe al final de cada vuelta el total dividido entre las pesadas"
+          ]
         }
       ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor mediano, el sensor de distancia, un eje, cuatro vigas para las aspas, y vigas y pasadores para la base.",
+    "piezas": "El Hub, un motor mediano, el sensor de fuerza, el sensor de color, el sensor de distancia, dos marcos Technic, dos vigas de 11, dos vigas de 7, un eje de 3 y ocho pasadores.",
     "pasos": [
       {
-        "titulo": "La base y el pasillo",
-        "texto": "Monta una base ancha y marca en ella un pasillo de entrada con dos filas de vigas."
+        "titulo": "El cuerpo",
+        "texto": "Monta los dos marcos Technic de pie y en paralelo, unidos por las dos vigas de 11. Es la columna de la báscula."
       },
       {
-        "titulo": "El motor",
-        "texto": "Fija el motor mediano junto al pasillo, con el eje hacia arriba."
+        "titulo": "El plato",
+        "texto": "Pon las dos vigas de 7 cruzadas arriba, formando una plataforma pequeña donde dejar lo que se va a pesar."
       },
       {
-        "titulo": "Las aspas del torno",
-        "texto": "Mete un eje en el motor y monta en él cuatro vigas en cruz que barran el pasillo."
+        "titulo": "El sensor de fuerza",
+        "texto": "Coloca el sensor de fuerza justo debajo del plato, en el puerto F, de forma que todo el peso caiga sobre su botón."
       },
       {
-        "titulo": "El sensor de distancia",
-        "texto": "Coloca el sensor a un lado de la entrada, mirando a través del pasillo, antes de las aspas."
+        "titulo": "La aguja",
+        "texto": "Monta el motor en un lateral con el eje de 3 hacia fuera. La aguja girará más o menos según lo que marque la báscula."
       },
       {
-        "titulo": "El Hub y los cables",
-        "texto": "Sitúa el Hub con la matriz a la vista. Motor al puerto A y sensor de distancia al puerto E."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Gira las aspas con la mano: no deben tocar el sensor. Pasa una figura por la entrada: tiene que cruzar por delante del sensor."
+        "titulo": "Los otros sensores",
+        "texto": "Deja el de color y el de distancia montados en la base, en los puertos D y E: se usan en las prácticas para comparar los tres números."
       }
     ],
     "materiales": [
@@ -273,115 +356,126 @@
         "cantidad": 1
       },
       {
+        "pieza": "fuerza"
+      },
+      {
+        "pieza": "color"
+      },
+      {
         "pieza": "distancia"
       },
       {
-        "pieza": "eje",
-        "cantidad": 1
+        "pieza": "marco",
+        "cantidad": 2
       },
       {
         "pieza": "viga",
         "cantidad": 4
       },
       {
-        "pieza": "pasador"
+        "pieza": "eje",
+        "cantidad": 1
+      },
+      {
+        "pieza": "pasador",
+        "cantidad": 8
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué es una variable?",
+      "pregunta": "¿Entre qué valores va la presión del sensor de fuerza?",
       "opciones": [
-        "Un tipo de motor",
-        "Una caja con nombre donde el programa guarda un valor",
-        "Un sensor del Hub",
-        "Un bloque que repite otros"
-      ],
-      "correcta": 1,
-      "explicacion": "Una variable guarda un dato para usarlo o cambiarlo más adelante."
-    },
-    {
-      "pregunta": "La variable aforo vale 4. Ejecutas «Cambiar aforo por 1». ¿Cuánto vale ahora?",
-      "opciones": [
-        "1",
-        "4",
-        "41",
-        "5"
-      ],
-      "correcta": 3,
-      "explicacion": "«Cambiar por» suma al valor que ya había: 4 más 1."
-    },
-    {
-      "pregunta": "La variable aforo vale 4. Ejecutas «Fijar aforo a 1». ¿Cuánto vale ahora?",
-      "opciones": [
-        "1",
-        "5",
-        "4",
-        "3"
+        "0 y 100",
+        "0 y 360",
+        "−100 y 100",
+        "0 y 10"
       ],
       "correcta": 0,
-      "explicacion": "«Fijar a» sustituye el valor anterior por el nuevo."
+      "explicacion": "Es un porcentaje, como el brillo o la velocidad: 0 sin tocar y 100 apretado a tope."
     },
     {
-      "pregunta": "¿Para qué ponemos «Fijar aforo a 0» al iniciar el programa?",
+      "pregunta": "Diferencia entre «¿Está presionado?» y «Presión»:",
       "opciones": [
-        "Para apagar la matriz",
-        "Para mover el torno",
-        "Para empezar a contar desde cero cada vez",
-        "Para calibrar el sensor"
-      ],
-      "correcta": 2,
-      "explicacion": "Si no, el contador podría empezar con el valor de la vez anterior."
-    },
-    {
-      "pregunta": "¿Qué hace «Cambiar aforo por −1»?",
-      "opciones": [
-        "Pone el aforo a −1",
-        "Resta 1 al aforo",
-        "Borra la variable",
-        "No hace nada"
+        "Ninguna",
+        "La primera da sí o no; la segunda da cuánto, de 0 a 100",
+        "La segunda solo funciona con el motor conectado",
+        "La primera es más exacta"
       ],
       "correcta": 1,
-      "explicacion": "Sumar un número negativo es restar: sirve para contar a quien sale."
+      "explicacion": "Una es un interruptor y la otra una medida. Con la medida puedes poner el umbral donde quieras."
     },
     {
-      "pregunta": "¿Qué tipo de bloque es «Cuando está más próximo a»?",
+      "pregunta": "¿Qué es un umbral?",
       "opciones": [
-        "Un bloque de inicio: arranca su propia pila",
-        "Un dato",
-        "Una pregunta de sí o no",
-        "Un bucle"
-      ],
-      "correcta": 0,
-      "explicacion": "Es amarillo y tiene forma de inicio de pila, como «Cuando se inicia el programa»."
-    },
-    {
-      "pregunta": "Quieres ver el contador en la matriz. ¿Qué pones dentro de «Escribir en la matriz»?",
-      "opciones": [
-        "La palabra aforo escrita con el teclado",
-        "El bloque del sensor de distancia",
-        "Nada",
-        "El bloque redondeado de la variable aforo"
-      ],
-      "correcta": 3,
-      "explicacion": "Si escribes la palabra con el teclado, la matriz mostrará las letras a-f-o-r-o, no el número."
-    },
-    {
-      "pregunta": "El contador muestra siempre 1, pase quien pase. ¿Cuál es el error más probable?",
-      "opciones": [
-        "El motor está al revés",
-        "Falta el bloque de sonido",
-        "Has usado «Fijar aforo a 1» en lugar de «Cambiar aforo por 1»",
-        "El sensor está demasiado lejos"
+        "La velocidad mínima del motor",
+        "Un bloque de SPIKE",
+        "El número que tú eliges como raya para decidir",
+        "El máximo que aguanta el sensor"
       ],
       "correcta": 2,
-      "explicacion": "«Fijar a 1» pone un 1 cada vez; para acumular hay que usar «Cambiar por 1»."
+      "explicacion": "Lo eliges tú según lo que quieras detectar, y conviene probarlo: no hay un valor bueno universal."
+    },
+    {
+      "pregunta": "¿Cómo se suma la presión a una variable total?",
+      "opciones": [
+        "No se puede sumar un sensor a una variable",
+        "Con «cambiar total por Presión»",
+        "Fijando total a total más Presión",
+        "Las dos cosas valen"
+      ],
+      "correcta": 3,
+      "explicacion": "«Cambiar por» suma, y «fijar a total + presión» también. Las dos llegan al mismo sitio."
+    },
+    {
+      "pregunta": "¿Qué hace falta para calcular una media?",
+      "opciones": [
+        "El total y cuántas veces has sumado",
+        "El máximo y el mínimo",
+        "El cronómetro",
+        "Solo el total"
+      ],
+      "correcta": 0,
+      "explicacion": "Media es total dividido entre el número de datos: hacen falta las dos variables."
+    },
+    {
+      "pregunta": "En el bucle de pesadas se espera a que la presión pase de 20 y luego a que baje de 5. ¿Por qué dos números distintos?",
+      "opciones": [
+        "Por error: deberían ser iguales",
+        "Para que una pesada no cuente varias veces mientras sueltas poco a poco",
+        "Porque el sensor no llega a 0",
+        "Para que el programa vaya más rápido"
+      ],
+      "correcta": 1,
+      "explicacion": "Con el mismo número, al rondar el umbral el programa cuenta muchas veces. Separarlos da margen."
+    },
+    {
+      "pregunta": "Los bloques de cuentas (+, −, ×, ÷), ¿se pueden meter uno dentro de otro?",
+      "opciones": [
+        "Solo los de sumar",
+        "No",
+        "Sí, y así se hacen cuentas más largas",
+        "Solo dos como máximo"
+      ],
+      "correcta": 2,
+      "explicacion": "Son bloques redondeados y encajan en los huecos de número de otros bloques redondeados."
+    },
+    {
+      "pregunta": "¿Cuál de estos NO da un número?",
+      "opciones": [
+        "Distancia",
+        "Luz reflejada",
+        "Presión",
+        "¿Es de color rojo?"
+      ],
+      "correcta": 3,
+      "explicacion": "Esa es una pregunta de rombo: vale verdad o mentira. Las otras tres son medidas."
     }
   ],
   "practicas": [
     {
-      "titulo": "Contador de entradas",
-      "enunciado": "Cada vez que alguien se acerca a menos de 10 cm del sensor, el programa suma 1 al aforo y muestra el total en la matriz. Al iniciar, el contador empieza en 0.",
+      "titulo": "La báscula con media",
+      "enunciado": "Pon el total y las pesadas a 0 y, dentro de un bucle infinito, haz esto: espera a que la presión pase de 20; guárdala en una variable; súmala al total; sube las pesadas; escribe la media; espera a que la presión baje de 5.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -389,72 +483,123 @@
         },
         {
           "texto": "Fijar variable a",
-          "valor": "aforo · 0",
-          "nivel": 0
-        },
-        {
-          "texto": "escribir Hello",
           "nivel": 0,
           "valores": [
-            "aforo"
+            "total · 0"
           ]
         },
         {
-          "texto": "Cuando está más próximo a",
-          "valor": "E · 10 cm",
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "pesadas · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
           "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Presión F > 20"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valores": [
+            "ultima · Presión F"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valores": [
+            "total · total + ultima"
+          ]
         },
         {
           "texto": "Cambiar variable por",
-          "valor": "aforo · 1",
-          "nivel": 0
+          "nivel": 1,
+          "valores": [
+            "pesadas · 1"
+          ]
         },
         {
           "texto": "escribir Hello",
-          "nivel": 0,
+          "nivel": 1,
           "valores": [
-            "aforo"
+            "total ÷ pesadas"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Presión F < 5"
           ]
         }
       ],
-      "notas": "Son dos pilas: una pone el contador a 0 y otra cuenta. Comprueba que usan «Cambiar por» y no «Fijar a» para sumar.",
+      "notas": "Tres variables trabajando juntas. Lo que se corrige es que los «fijar a 0» estén fuera del bucle.",
       "pasos": [
         {
-          "texto": "Cada vez que alguien se acerca a menos de 10 cm del sensor, el programa suma 1 al aforo y muestra el total en la matriz"
-        },
-        {
-          "texto": "Al iniciar, el contador empieza en 0"
+          "texto": "Pon el total y las pesadas a 0 y, dentro de un bucle infinito, haz esto",
+          "hijos": [
+            "Espera a que la presión pase de 20",
+            "Guárdala en una variable",
+            "Súmala al total",
+            "Sube las pesadas",
+            "Escribe la media",
+            "Espera a que la presión baje de 5"
+          ]
         }
       ]
     },
     {
-      "titulo": "Torno que gira y cuenta",
-      "enunciado": "Amplía el programa anterior: cuando alguien se acerca, el torno gira un cuarto de vuelta para dejarle pasar y después suma 1 y muestra el aforo.",
+      "titulo": "El control de calidad",
+      "enunciado": "En un bucle infinito, espera a que la presión pase de 20, guárdala y después decide: si pasa de 70, escribe FUERTE y mueve el motor A 90 grados a un lado; si no, escribe FLOJA y muévelo 90 grados al otro.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
-          "valor": "aforo · 0",
+          "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "escribir Hello",
-          "nivel": 0,
+          "texto": "Esperar hasta que",
+          "nivel": 1,
           "valores": [
-            "aforo"
+            "Presión F > 20"
           ]
         },
         {
-          "texto": "Cuando está más próximo a",
-          "valor": "E · 10 cm",
-          "nivel": 0
+          "texto": "Fijar variable a",
+          "nivel": 1,
+          "valores": [
+            "ultima · Presión F"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "ultima > 70"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "FUERTE"
+          ]
         },
         {
           "texto": "A ir durante 1 rotaciones",
-          "nivel": 0,
+          "nivel": 2,
           "valores": [
             "A",
             "↻",
@@ -463,25 +608,37 @@
           ]
         },
         {
-          "texto": "Cambiar variable por",
-          "valor": "aforo · 1",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "FLOJA"
+          ]
         },
         {
-          "texto": "escribir Hello",
-          "nivel": 0,
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 2,
           "valores": [
-            "aforo"
+            "A",
+            "↺",
+            "90",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Presión F < 5"
           ]
         }
       ],
-      "notas": "El orden entre girar y sumar no importa. Un cuarto de vuelta son 90 grados porque el torno tiene cuatro aspas.",
+      "notas": "Guardar la lectura antes de decidir es importante: si comparas el sensor directamente, el valor puede haber cambiado entre una línea y la siguiente.",
       "pasos": [
         {
-          "texto": "Amplía el programa anterior",
+          "texto": "En un bucle infinito, espera a que la presión pase de 20, guárdala y después decide",
           "hijos": [
-            "Cuando alguien se acerca, el torno gira un cuarto de vuelta para dejarle pasar",
-            "Después suma 1 y muestra el aforo"
+            "Si pasa de 70, escribe FUERTE y mueve el motor A 90 grados a un lado",
+            "Si no, escribe FLOJA y muévelo 90 grados al otro"
           ]
         }
       ]

@@ -147,135 +147,129 @@
     {
       "curso": "2ESO",
       "numero": 1,
-      "titulo": "Dos caminos: si… entonces… si no",
-      "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "titulo": "Variables: el robot se acuerda",
+      "evaluacion": 1,
+      "nivel": 1,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 1 Motor mediano + Sensor de fuerza",
       "bloques": [
-        "Si... entonces... Si no...",
-        "Bucle infinito",
-        "¿Es de color...?",
-        "empezar a mover a ↑",
-        "parar movimiento"
+        "Variable",
+        "Fijar variable a",
+        "Cambiar variable por"
       ],
-      "modelo": "Vehículo autónomo que obedece semáforos (tarjetas verde y roja)"
+      "modelo": "Contador de piezas: una palanca con el sensor de fuerza y un expulsor con el motor"
     },
     {
       "curso": "2ESO",
       "numero": 2,
-      "titulo": "Seguir una línea con luz reflejada",
-      "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "titulo": "Medir de verdad: centímetros y cronómetro",
+      "evaluacion": 1,
+      "nivel": 1,
+      "hardware": "Hub (Giroscopio y matriz de luces 5x5) + 2 Motor mediano + Sensor de distancia",
       "bloques": [
-        "Luz reflejada",
-        "¿Es la luz reflejada...?",
-        "Si... entonces... Si no...",
-        "empezar a mover derecha: 30",
-        "Bucle infinito"
+        "fijar 1 rotación del motor en 17.5 cm recorridos",
+        "Reiniciar cronómetro",
+        "Cronómetro"
       ],
-      "modelo": "Robot rastreador de almacén: sigue una línea negra en zigzag"
+      "modelo": "Base de conducción calibrada, con la rueda medida y una marca de salida en la mesa"
     },
     {
       "curso": "2ESO",
       "numero": 3,
-      "titulo": "Variables: la máquina que cuenta",
-      "hardware": "Hub + Sensor de distancia + 1 Motor mediano",
+      "titulo": "Sensores con número: presión, umbrales y cuentas",
+      "evaluacion": 1,
+      "nivel": 1,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 1 Motor mediano + Sensor de color + Sensor de distancia + Sensor de fuerza",
       "bloques": [
-        "Variable",
-        "Fijar variable a",
-        "Cambiar variable por",
-        "Cuando está más próximo a",
-        "escribir Hello",
-        "A ir durante 1 rotaciones"
+        "Presión (sensor de fuerza)",
+        "Operadores aritméticos (+, −, ×, ÷)"
       ],
-      "modelo": "Torno de entrada con contador de aforo en la matriz de luces"
+      "modelo": "Báscula de laboratorio: una plataforma apoyada en el sensor de fuerza con una aguja movida por el motor"
     },
     {
       "curso": "2ESO",
       "numero": 4,
-      "titulo": "Operadores: comparar y calcular",
-      "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
+      "titulo": "La posición del motor: brazos que vuelven a su sitio",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de distancia",
       "bloques": [
-        "Distancia",
-        "Operadores de comparación (>, <, =)",
-        "Operadores lógicos (y, o, no)",
-        "Operadores aritméticos (+, −, ×, ÷)",
-        "Si... entonces... Si no...",
-        "Tocar nota X segundos"
+        "A posición",
+        "Fijar la posición relativa en…",
+        "Ir a la posición relativa del motor a velocidad"
       ],
-      "modelo": "Coche con sensor de aparcamiento: pita más rápido cuanto más cerca está del muro"
+      "modelo": "Torreta orientable: un motor gira la base y otro sube el brazo, con el sensor de distancia en la punta"
     },
     {
       "curso": "2ESO",
       "numero": 5,
-      "titulo": "Sensor de fuerza: medir cuánto aprieto",
-      "hardware": "Hub + Sensor de fuerza + Motor grande",
+      "titulo": "Dos condiciones a la vez: y, o, no",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de color + Sensor de distancia + Sensor de fuerza",
       "bloques": [
-        "Presión (sensor de fuerza)",
-        "Fijar variable a",
-        "Operadores aritméticos (+, −, ×, ÷)",
-        "A ir por la ruta más corta a la posición 0",
-        "encender dibujo"
+        "Operadores lógicos (y, o, no)",
+        "A velocidad"
       ],
-      "modelo": "Martillo de feria «prueba tu fuerza» con aguja indicadora motorizada"
+      "modelo": "Vehículo seguidor de línea con parachoques y sensor de distancia delante"
     },
     {
       "curso": "2ESO",
       "numero": 6,
-      "titulo": "Giroscopio: girar con precisión",
-      "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos",
+      "titulo": "Arrancar suave: aceleración, velocidad y azar",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de color + Sensor de fuerza",
       "bloques": [
-        "Fijar el ángulo de guiñada del Hub a 0",
-        "Ángulo de cabeceo, alabeo o guiñada del Hub",
-        "empezar a mover derecha: 30",
-        "Repetir bucle hasta",
-        "parar movimiento"
+        "Fijar aceleración del motor",
+        "Empezar a mover a velocidad...",
+        "Elegir un número aleatorio"
       ],
-      "modelo": "Robot explorador que traza giros exactos de 90° sobre un plano"
+      "modelo": "Robot repartidor: base de conducción con una caja de carga y el sensor de color mirando al suelo"
     },
     {
       "curso": "2ESO",
       "numero": 7,
-      "titulo": "Eventos y mensajes: varias pilas a la vez",
-      "hardware": "Hub (botones izquierdo y derecho) + Motor grande + 1 Motor mediano",
+      "titulo": "Listas: guardar una serie entera",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de color + Sensor de distancia",
       "bloques": [
-        "Cuando se presiona el botón del Hub",
-        "Enviar mensaje",
-        "Cuando se reciba el mensaje",
-        "A arrancar motor",
-        "A parar motor",
-        "A ir por la ruta más corta a la posición 0"
+        "Lista",
+        "Añadir elemento a lista",
+        "Elemento de lista",
+        "Longitud de lista",
+        "¿La lista contiene...?"
       ],
-      "modelo": "Grúa giratoria con brazo elevador manejada desde los botones del Hub"
+      "modelo": "Lector de secuencias: una rampa con el sensor de color y una compuerta con el motor"
     },
     {
       "curso": "2ESO",
       "numero": 8,
-      "titulo": "Cronómetro y azar: juego de reflejos",
-      "hardware": "Hub + Sensor de fuerza + 1 Motor mediano",
+      "titulo": "Mis bloques: ponerle nombre a una maniobra",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de distancia",
       "bloques": [
-        "Reiniciar cronómetro",
-        "Cronómetro",
+        "Mis bloques: Crear un bloque con entradas",
         "Cuando el cronómetro",
-        "Elegir un número aleatorio",
-        "Esperar hasta que",
-        "¿Está presionado?",
-        "escribir Hello"
+        "Enviar mensaje y esperar"
       ],
-      "modelo": "Máquina de reflejos: una bandera se levanta al azar y mide el tiempo de reacción"
+      "modelo": "Robot de maniobras: base de conducción bien centrada, con el sensor de distancia delante y una marca de salida"
     },
     {
       "curso": "2ESO",
       "numero": 9,
-      "titulo": "Proyecto final: clasificadora de colores",
-      "hardware": "Hub + Sensor de color + Motor grande + 1 Motor mediano",
+      "titulo": "Proyecto final: la estación que toma datos",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 1 Motor grande + 1 Motor mediano + Sensor de color + Sensor de distancia + Sensor de fuerza",
       "bloques": [
-        "Si... entonces... Si no...",
-        "¿Es de color...?",
-        "A ir por la ruta más corta a la posición 0",
-        "A ir durante 1 rotaciones",
-        "Cambiar variable por",
-        "Repetir bucle hasta",
-        "escribir Hello"
+        "Extensión Gráfico de líneas",
+        "girar ↻",
+        "establecer orientación como erguida",
+        "A encender ojos"
       ],
-      "modelo": "Clasificadora de piezas por color con rampa selectora y contador de cada color"
+      "modelo": "Estación de medida: una torreta que barre con el sensor de distancia y una cinta movida por el motor grande"
     },
     {
       "curso": "3ESO",
