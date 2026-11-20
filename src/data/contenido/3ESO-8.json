@@ -1,575 +1,990 @@
 {
   "curso": "3ESO",
   "unidad": 8,
-  "reto": "Programa un robot explorador que encuentre solo la salida de un laberinto.",
+  "reto": "Monta una librería de maniobras y escribe el recorrido completo llamándolas, sin un solo bloque de motor en el programa principal.",
   "video": {
-    "titulo": "Navegación autónoma",
+    "titulo": "Herramientas que usan herramientas",
     "duracion": "6 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Make It Move» (navegación autónoma)",
-      "url": "https://education.lego.com/en-us/lessons/spike-python-u9-data-and-math-functions/spike-python-u9l4-make-it-move/"
-    },
     "escenas": [
       {
-        "plano": "Un robot avanza por un laberinto de paredes de cartón, gira en las esquinas y encuentra la salida.",
-        "locucion": "Un robot aspirador no tiene mapa: avanza, detecta paredes y decide por dónde seguir. Tu robot va a salir así de un laberinto."
+        "plano": "El lienzo de la unidad 3 con los bloques avanzar y girar, y hueco para más.",
+        "locucion": "En la unidad tres hiciste avanzar y girar. Dos herramientas. Hoy las vas a usar para hacer herramientas más grandes, y esas para hacer otras."
       },
       {
-        "plano": "Primer plano del frontal del robot: el sensor de distancia arriba y el parachoques con el sensor de fuerza abajo.",
-        "locucion": "Lleva dos sensores para las paredes: el de distancia las ve antes de llegar, y el de fuerza, montado como parachoques, las nota si llega a tocarlas."
+        "plano": "Un bloque «coger» que llama a avanzar, a bajar la horquilla y a subirla.",
+        "locucion": "Mira este: un bloque «coger». Dentro llama a avanzar, baja la horquilla, la sube y retrocede. Cinco cosas con un nombre de dos sílabas."
       },
       {
-        "plano": "Captura de la app: definición del bloque «girar» con la entrada «grados» y el giroscopio dentro.",
-        "locucion": "Los giros tienen que ser exactos, o el robot acabará torcido. Creamos un bloque propio «girar» con una entrada, los grados, que usa el giroscopio como en 2º."
+        "plano": "La horquilla subiendo de golpe y la carga cayéndose, y luego subiendo suave.",
+        "locucion": "Y aquí entra la aceleración del motor, que en 2º viste para la base. En un elevador importa más: de golpe, la carga se cae. Puesta suave, sube entera."
       },
       {
-        "plano": "Captura de la definición de «avanzar hasta pared» con una condición unida por «o».",
-        "locucion": "Otro bloque propio, «avanzar hasta pared», mueve el robot recto hasta que el sensor de distancia ve una pared cerca o el parachoques la toca."
+        "plano": "El bloque de posición relativa llevando la horquilla a una altura exacta.",
+        "locucion": "Para la altura hay dos formas. La posición relativa la lleva a tantos grados de donde la pusiste a cero, y la ruta más corta la devuelve a su sitio por donde menos tarda."
       },
       {
-        "plano": "Animación vista desde arriba: el robot llega a una pared, gira a la derecha, encuentra otra pared y da media vuelta.",
-        "locucion": "La estrategia: avanzar hasta una pared y girar a la derecha. Si después del giro sigue habiendo pared, dar media vuelta para probar por la izquierda."
+        "plano": "Un bloque «ciclo» que llama a coger, a tramo y a soltar.",
+        "locucion": "Y arriba del todo, un bloque «ciclo» que llama a coger, a moverse y a soltar. Tres líneas que son treinta bloques."
       },
       {
-        "plano": "El robot completa el laberinto de principio a fin.",
-        "locucion": "Tu reto: un programa principal de muy pocos bloques que saque al robot del laberinto."
+        "plano": "El lienzo entero: cinco definiciones a un lado y un programa de cuatro líneas al otro.",
+        "locucion": "El programa principal acaba pareciendo una lista de tareas escrita en tu idioma. Eso es programar bien, y es lo que se evalúa en esta unidad."
       }
-    ]
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=fe5792d1b14dd60f8950eab97f9da507&source=embed&photo_id=56312975&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Hopper Run» (mecanismos con motores)",
+      "url": "https://education.lego.com/en-us/lessons/get-moving-with-motors/hopper-run/"
+    }
   },
   "bloques": [
     {
       "texto": "Mis bloques: Crear un bloque con entradas",
-      "explicacion": "Crea las órdenes «girar» y «avanzar hasta pared» para que el programa principal sea corto y claro."
+      "explicacion": "Aquí los bloques propios se llaman unos a otros: coger usa avanzar y horquilla, y ciclo usa coger. Así se construye una librería."
     },
     {
-      "texto": "Fijar el ángulo de guiñada del Hub a 0",
-      "explicacion": "Pone a cero el contador de giro antes de cada giro."
+      "texto": "Fijar aceleración del motor",
+      "explicacion": "Cuánto tarda el motor en coger velocidad. Suave sirve para elevadores y cargas; de golpe, la carga se cae."
     },
     {
-      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
-      "explicacion": "La guiñada dice cuántos grados ha girado el robot."
+      "texto": "Ir a la posición relativa del motor a velocidad",
+      "explicacion": "Lleva el motor a tantos grados de donde lo pusiste a cero, a la velocidad que le digas. Es el bloque de las alturas exactas."
     },
     {
-      "texto": "¿Está más próximo a?",
-      "explicacion": "Pregunta si hay una pared cerca por delante."
+      "texto": "A ir por la ruta más corta a la posición 0",
+      "explicacion": "Devuelve el motor a su posición de origen por el camino más corto. Sirve para recoger la horquilla sin pensar por dónde."
     },
     {
-      "texto": "¿Está presionado?",
-      "explicacion": "Pregunta si el parachoques ha tocado una pared."
-    },
-    {
-      "texto": "Repetir bucle hasta",
-      "explicacion": "Avanza o gira hasta que se cumple la condición."
-    },
-    {
-      "texto": "Si... entonces... Si no...",
-      "explicacion": "Decide hacia dónde seguir cuando hay una pared delante."
+      "texto": "mover derecha: 30 durante 10 rotaciones",
+      "explicacion": "Mueve la base con una rueda más rápida que la otra durante lo que le digas. Es el bloque de las curvas medidas."
     }
   ],
-  "intermedias": [
-    {
-      "practica": 1,
-      "titulo": "Avanza un tramo",
-      "enunciado": "Crea un bloque «avanzar» que recorra un tramo del laberinto y páralo al llegar a la pared.",
-      "pista": "Usa la pregunta del sensor de distancia para saber cuándo parar.",
-      "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "nivel": 0,
-          "valor": "avanzar"
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 1,
-          "valores": [
-            "↑"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 1,
-          "valor": "¿Está más próximo a 10 cm? E"
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 2,
-          "valor": "0.05"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 1,
-          "valores": []
-        }
-      ],
-      "notas": "El bloque avanza sin saber cuánto: para cuando el sensor dice que hay pared. El bucle solo vigila."
-    },
-    {
-      "practica": 2,
-      "titulo": "Gira exacto",
-      "enunciado": "Crea un bloque «girar» con una entrada en grados que use el giroscopio.",
-      "pista": "Pon el ángulo a cero antes de cada giro.",
-      "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "nivel": 0,
-          "valor": "girar (grados)"
-        },
-        {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 1,
-          "valores": [
-            "derecha: 100"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 1,
-          "valor": "Ángulo de guiñada > grados"
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 2,
-          "valor": "0.05"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 1,
-          "valores": []
-        }
-      ],
-      "notas": "El ángulo a cero antes de girar, y la entrada «grados» en la condición: así el mismo bloque gira 90 o 180."
-    },
-    {
-      "practica": 3,
-      "titulo": "¿Hay pared?",
-      "enunciado": "Decide con un «Si… entonces… Si no…» si hay pared delante y, según eso, avanza o gira.",
-      "pista": "Así se recorre un laberinto: avanzar mientras se pueda, girar si no.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 0,
-          "valor": "¿Está más próximo a 10 cm? E"
-        },
-        {
-          "texto": "Mi bloque",
-          "nivel": 1,
-          "valor": "girar (90)"
-        },
-        {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
-          "texto": "Mi bloque",
-          "nivel": 1,
-          "valor": "avanzar"
-        }
-      ],
-      "notas": "Así se recorre un laberinto: avanzar mientras se pueda y girar cuando no. Dos órdenes y una decisión."
-    },
-    {
-      "practica": 4,
-      "titulo": "Sal del laberinto",
-      "enunciado": "Mete la decisión en un «Repetir hasta» que termine cuando pulses el botón del Hub.",
-      "pista": "Pulsar el botón es tu forma de decir «ya he salido».",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 1,
-          "valor": "¿Está más próximo a 10 cm? E"
-        },
-        {
-          "texto": "Mi bloque",
-          "nivel": 2,
-          "valor": "girar (90)"
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "Mi bloque",
-          "nivel": 2,
-          "valor": "avanzar"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 0,
-          "valores": []
-        },
-        {
-          "texto": "encender dibujo durante 2 segundos",
-          "nivel": 0,
-          "valores": [
-            "corazón",
-            "2"
-          ]
-        }
-      ],
-      "notas": "Pulsar el sensor de fuerza es tu manera de decirle al robot «ya he salido». Fíjate en lo corto que queda el programa."
-    }
-  ],
-  "construccion": {
-    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia, el sensor de fuerza, una viga ancha para el parachoques y cajas o libros para las paredes.",
-    "pasos": [
+  "programa": {
+    "titulo": "El ciclo completo con librería de maniobras",
+    "explicacion": "Cinco definiciones encadenadas. El programa principal solo llama a ciclo tres veces, y dentro de ciclo está todo lo demás.",
+    "bloques": [
       {
-        "titulo": "La base de conducción",
-        "texto": "Monta un chasis compacto, más estrecho que los pasillos, con el Hub en horizontal y centrado."
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "avanzar (centimetros)"
+        ]
       },
       {
-        "titulo": "El sensor de distancia",
-        "texto": "Fíjalo delante, en alto, mirando al frente."
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "↑",
+          "centimetros",
+          "cm"
+        ]
       },
       {
-        "titulo": "El parachoques",
-        "texto": "Monta el sensor de fuerza delante, abajo, con una viga ancha que lo pulse cuando el robot toque una pared."
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "curva (grados)"
+        ]
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A, motor derecho al B, sensor de distancia al E y sensor de fuerza al F."
+        "texto": "mover derecha: 30 durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "derecha: 60",
+          "grados",
+          "grados"
+        ]
       },
       {
-        "titulo": "El laberinto",
-        "texto": "Construye pasillos con cajas o libros, de una anchura de al menos vez y media la del robot."
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "horquilla (altura)"
+        ]
       },
       {
-        "titulo": "Comprueba",
-        "texto": "Empuja el robot contra una pared: el parachoques debe pulsar el sensor antes de que choque ninguna otra pieza."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "hub"
+        "texto": "Ir a la posición relativa del motor a velocidad",
+        "nivel": 1,
+        "valores": [
+          "C · altura · 25"
+        ]
       },
       {
-        "pieza": "motor",
-        "cantidad": 2
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "coger"
+        ]
       },
       {
-        "pieza": "rueda"
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "horquilla (0)"
+        ]
       },
       {
-        "pieza": "distancia"
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "avanzar (15)"
+        ]
       },
       {
-        "pieza": "fuerza"
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "horquilla (120)"
+        ]
       },
       {
-        "pieza": "viga",
-        "cantidad": 1
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "ciclo"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "coger"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "curva (90)"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "avanzar (40)"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "horquilla (0)"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+        "nivel": 0,
+        "valores": [
+          "17.5",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Fijar aceleración del motor",
+        "nivel": 0,
+        "valores": [
+          "C · suave"
+        ]
+      },
+      {
+        "texto": "Fijar la posición relativa en…",
+        "nivel": 0,
+        "valores": [
+          "C · 0"
+        ]
+      },
+      {
+        "texto": "Repetir bucle",
+        "nivel": 0,
+        "valores": [
+          "3"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "ciclo"
+        ]
       }
     ]
   },
-  "test": [
+  "intermedias": [
     {
-      "pregunta": "¿Por qué creamos los bloques «girar» y «avanzar hasta pared»?",
-      "opciones": [
-        "Para que el programa principal sea corto y claro, y poder reutilizarlos",
-        "Porque la app no deja usar motores sin ellos",
-        "Para que el robot vaya más rápido",
-        "Para ahorrar batería"
-      ],
-      "correcta": 0,
-      "explicacion": "El programa principal se lee casi como una frase: avanzar, girar, avanzar."
-    },
-    {
-      "pregunta": "¿Qué entrada tiene el bloque «girar»?",
-      "opciones": [
-        "La velocidad",
-        "La distancia",
-        "El puerto",
-        "Los grados que debe girar"
-      ],
-      "correcta": 3,
-      "explicacion": "Con una sola definición sirve para girar 90, 180 o cualquier otro ángulo."
-    },
-    {
-      "pregunta": "¿Qué sensor usa «girar» para que el giro sea exacto?",
-      "opciones": [
-        "El sensor de color",
-        "El sensor de fuerza",
-        "El giroscopio del Hub",
-        "El sensor de distancia"
-      ],
-      "correcta": 2,
-      "explicacion": "La guiñada mide el giro real del robot."
-    },
-    {
-      "pregunta": "¿Por qué lleva el robot dos sensores para detectar paredes?",
-      "opciones": [
-        "Porque uno es para la izquierda y otro para la derecha",
-        "Porque el de distancia puede fallar y el parachoques hace de respaldo",
-        "Porque así gira mejor",
-        "No hace falta: sobra uno"
-      ],
-      "correcta": 1,
-      "explicacion": "Una pared en ángulo o muy cercana puede escaparse al sensor de distancia."
-    },
-    {
-      "pregunta": "¿Qué condición detiene a «avanzar hasta pared»?",
-      "opciones": [
-        "«¿Está más próximo a 8 cm?» y «¿Está presionado?»",
-        "Solo «¿Está presionado?»",
-        "«¿Está más próximo a 8 cm?» o «¿Está presionado?»",
-        "Que pasen 8 segundos"
-      ],
-      "correcta": 2,
-      "explicacion": "Basta con que uno de los dos sensores detecte la pared: por eso se unen con «o»."
-    },
-    {
-      "pregunta": "El robot gira a la derecha y sigue teniendo una pared delante. ¿Qué hace?",
-      "opciones": [
-        "Se detiene para siempre",
-        "Da media vuelta para probar por la izquierda",
-        "Vuelve a girar a la derecha",
-        "Retrocede hasta el inicio"
-      ],
-      "correcta": 1,
-      "explicacion": "Media vuelta desde la derecha lo deja mirando a la izquierda del pasillo."
-    },
-    {
-      "pregunta": "A lo largo del laberinto, el robot se va torciendo poco a poco. ¿Cuál es la causa más probable?",
-      "opciones": [
-        "Los giros no son exactos y los errores se acumulan",
-        "La batería está baja",
-        "El laberinto es demasiado grande",
-        "El parachoques pesa demasiado"
-      ],
-      "correcta": 0,
-      "explicacion": "Dos grados de error en cada giro son veinte tras diez giros."
-    },
-    {
-      "pregunta": "¿Qué hay que hacer justo antes de cada giro?",
-      "opciones": [
-        "Reiniciar el programa",
-        "Medir la distancia",
-        "Pulsar el parachoques",
-        "Poner la guiñada a 0"
-      ],
-      "correcta": 3,
-      "explicacion": "Cada giro se mide desde cero."
-    }
-  ],
-  "practicas": [
-    {
-      "titulo": "Bloques «girar» y «avanzar hasta pared»",
-      "enunciado": "Define los dos bloques propios. «girar (grados)» usa el giroscopio. «avanzar hasta pared» avanza recto hasta que hay una pared a menos de 8 cm o se pulsa el parachoques. Pruébalos: avanzar hasta pared, girar 90° y avanzar hasta la siguiente pared.",
+      "practica": 1,
+      "titulo": "La horquilla a una altura",
+      "enunciado": "Pon la posición relativa del motor C a 0 y crea un bloque llamado horquilla con un hueco de altura que lo lleve a esa posición a velocidad 25. Llámalo con 120, espera un segundo y llámalo con 0.",
+      "pista": "Poner la posición a cero es lo que convierte los grados en una altura medida desde abajo.",
       "solucion": [
         {
-          "texto": "Definir mi bloque",
-          "valor": "girar (grados)",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 1
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "valor": "guiñada > grados − 3",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
           "valores": [
-            "derecha: 100"
+            "horquilla (altura)"
           ]
         },
         {
-          "texto": "parar movimiento",
+          "texto": "Ir a la posición relativa del motor a velocidad",
           "nivel": 1,
-          "valores": []
-        },
-        {
-          "texto": "Definir mi bloque",
-          "valor": "avanzar hasta pared",
-          "nivel": 0
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "valor": "¿Está más próximo a 8 cm? o ¿Está presionado?",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover a ↑",
-          "nivel": 2,
           "valores": [
-            "↑"
+            "C · altura · 25"
           ]
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 1,
-          "valores": []
         },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "Fijar la posición relativa en…",
           "nivel": 0,
           "valores": [
-            "25"
+            "C · 0"
           ]
         },
         {
-          "texto": "Mi bloque",
-          "valor": "avanzar hasta pared",
-          "nivel": 0
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "horquilla (120)"
+          ]
         },
         {
-          "texto": "Mi bloque",
-          "valor": "girar (90)",
-          "nivel": 0
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "1"
+          ]
         },
         {
-          "texto": "Mi bloque",
-          "valor": "avanzar hasta pared",
-          "nivel": 0
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "horquilla (0)"
+          ]
         }
       ],
-      "notas": "El margen de 3 grados compensa la inercia y depende de la velocidad. Comprueba el signo de la guiñada en tu Hub, como en 2º.",
+      "notas": "Los 120 grados son de ejemplo: cada montaje tiene los suyos y hay que medirlos a mano.",
       "pasos": [
         {
-          "texto": "Define los dos bloques propios. «girar (grados)» usa el giroscopio. «avanzar hasta pared» avanza recto hasta que hay una pared a menos de 8 cm o se pulsa el parachoques"
+          "texto": "Pon la posición relativa del motor C a 0 y crea un bloque llamado horquilla con un hueco de altura que lo lleve a esa posición a velocidad 25"
         },
         {
-          "texto": "Pruébalos: avanzar hasta pared, girar 90° y avanzar hasta la siguiente pared"
+          "texto": "Llámalo con 120"
+        },
+        {
+          "texto": "Espera un segundo y llámalo con 0"
         }
       ]
     },
     {
-      "titulo": "Salir del laberinto",
-      "enunciado": "Con los bloques de la práctica anterior, programa la estrategia completa: avanzar hasta una pared, retroceder un poco y girar a la derecha; si sigue habiendo pared, dar media vuelta. Repite sin parar.",
+      "practica": 2,
+      "titulo": "Subir sin tirar la carga",
+      "enunciado": "Pon una torre de piezas sobre la horquilla y súbela con la aceleración de golpe. Repite la subida con la aceleración suave y compara qué pasa con la carga.",
+      "pista": "La aceleración del motor se fija una vez, antes de mover.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "Fijar la posición relativa en…",
           "nivel": 0,
           "valores": [
-            "25"
+            "C · 0"
           ]
         },
         {
-          "texto": "Bucle infinito",
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "C · de golpe"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "C · 120 · 40"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 0,
+          "valores": [
+            "2"
+          ]
+        },
+        {
+          "texto": "A ir por la ruta más corta a la posición 0",
+          "nivel": 0,
+          "valores": [
+            "C",
+            "por la ruta más corta",
+            "0"
+          ]
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "C · suave"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 0,
+          "valores": [
+            "C · 120 · 40"
+          ]
+        }
+      ],
+      "notas": "Dos subidas idénticas con una línea de diferencia. Es la demostración de para qué sirve la aceleración.",
+      "pasos": [
+        {
+          "texto": "Pon una torre de piezas sobre la horquilla y súbela con la aceleración de golpe"
+        },
+        {
+          "texto": "Repite la subida con la aceleración suave"
+        },
+        {
+          "texto": "Compara qué pasa con la carga"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "La curva medida",
+      "enunciado": "Crea un bloque llamado curva con un hueco de grados que mueva la base con una rueda más rápida que la otra durante esos grados. Llámalo con 90 grados. Llámalo después con 180.",
+      "pista": "El bloque de mover con dirección admite grados como unidad, igual que rotaciones.",
+      "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "curva (grados)"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 60",
+            "grados",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Mi bloque",
-          "valor": "avanzar hasta pared",
-          "nivel": 1
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "30"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "curva (90)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "curva (180)"
+          ]
+        }
+      ],
+      "notas": "La curva no es el giro sobre el sitio: aquí el robot describe un arco y se desplaza.",
+      "pasos": [
+        {
+          "texto": "Crea un bloque llamado curva con un hueco de grados que mueva la base con una rueda más rápida que la otra durante esos grados"
+        },
+        {
+          "texto": "Llámalo con 90 grados"
+        },
+        {
+          "texto": "Llámalo después con 180"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "Un bloque de tres",
+      "enunciado": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120. Llámalo una vez y comprueba que recoge la carga.",
+      "pista": "Dentro de un bloque propio se pueden llamar los bloques propios que ya tengas.",
+      "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avanzar (centimetros)"
+          ]
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
-            "↓",
-            "3",
+            "↑",
+            "centimetros",
             "cm"
           ]
         },
         {
-          "texto": "Mi bloque",
-          "valor": "girar (90)",
-          "nivel": 1
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿Está más próximo a 15 cm?",
-          "nivel": 1
-        },
-        {
-          "texto": "Mi bloque",
-          "valor": "girar (90)",
-          "nivel": 2
-        },
-        {
-          "texto": "Mi bloque",
-          "valor": "girar (90)",
-          "nivel": 2
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        }
-      ],
-      "notas": "Incluye las definiciones de la práctica 1. Dos giros más a la derecha dejan al robot mirando a la izquierda del pasillo por el que venía. Se hacen de 90 en 90 porque la guiñada cambia de signo al llegar a 180°. La estrategia resuelve laberintos sencillos, no cualquiera.",
-      "pasos": [
-        {
-          "texto": "Con los bloques de la práctica anterior, programa la estrategia completa",
-          "hijos": [
-            "Avanzar hasta una pared, retroceder un poco y girar a la derecha",
-            "Si sigue habiendo pared, dar media vuelta"
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "horquilla (altura)"
           ]
         },
         {
-          "texto": "Repite sin parar"
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 1,
+          "valores": [
+            "C · altura · 25"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "coger"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (0)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (15)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (120)"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "C · 0"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "coger"
+          ]
+        }
+      ],
+      "notas": "Tres definiciones y una llamada. Aquí ya se nota el salto: el programa principal tiene una línea.",
+      "pasos": [
+        {
+          "texto": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120"
+        },
+        {
+          "texto": "Llámalo una vez"
+        },
+        {
+          "texto": "Comprueba que recoge la carga"
+        }
+      ]
+    }
+  ],
+  "construccion": {
+    "piezas": "La base de conducción, el motor grande, el sensor de distancia, dos marcos Technic, cuatro vigas de 15, cuatro vigas de 11, dos ejes de 7, un panel y dieciséis pasadores.",
+    "pasos": [
+      {
+        "titulo": "La base reforzada",
+        "texto": "Monta la base de conducción y refuérzala por debajo con los dos marcos Technic cruzados. Va a levantar peso por delante y necesita no cabecear."
+      },
+      {
+        "titulo": "El mástil",
+        "texto": "Levanta dos vigas de 15 en vertical por delante del Hub, unidas arriba por una tercera. Es la guía por la que sube la horquilla."
+      },
+      {
+        "titulo": "La horquilla",
+        "texto": "Pon el motor grande en el puerto C en la base del mástil, con el eje de 7 atravesado, y cuelga de él las dos vigas de 11 con el panel encima haciendo de pala."
+      },
+      {
+        "titulo": "El contrapeso",
+        "texto": "Pon la cuarta viga de 15 por detrás, sobre el eje de las ruedas traseras. Sin contrapeso, el robot se va de morro al subir la carga."
+      },
+      {
+        "titulo": "El sensor",
+        "texto": "Coloca el sensor de distancia en el puerto E entre las dos vigas de 11 del mástil, mirando al frente, para saber cuándo tiene la carga delante."
+      },
+      {
+        "titulo": "La prueba de la altura",
+        "texto": "Pon la horquilla abajo y gira el motor grande a mano hasta arriba contando las vueltas. Eso te da los grados que va a llevar el bloque horquilla; anótalos antes de programar."
+      }
+    ],
+    "materiales": [
+      {
+        "pieza": "motor-grande"
+      },
+      {
+        "pieza": "distancia"
+      },
+      {
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 8
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 2
+      },
+      {
+        "pieza": "pasador"
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Qué quiere decir que un bloque propio llame a otro bloque propio?",
+      "opciones": [
+        "Que dentro de su definición usa herramientas que ya habías hecho",
+        "Que necesita dos huecos",
+        "Que va en otra pila",
+        "Que se repite dos veces"
+      ],
+      "correcta": 0,
+      "explicacion": "Es construir hacia arriba: coger usa avanzar y horquilla, y ciclo usa coger."
+    },
+    {
+      "pregunta": "¿Para qué sirve fijar la aceleración del motor en suave?",
+      "opciones": [
+        "Para que el motor dure más",
+        "Para que la carga no se caiga al arrancar o al subir",
+        "Para gastar menos batería",
+        "Para que el giro sea exacto"
+      ],
+      "correcta": 1,
+      "explicacion": "El tirón del arranque es lo que tira la carga, y la aceleración suave lo quita."
+    },
+    {
+      "pregunta": "«Ir a la posición relativa» lleva el motor a:",
+      "opciones": [
+        "Su posición de fábrica",
+        "Una vuelta entera",
+        "Tantos grados de donde lo pusiste a cero",
+        "El punto más cercano"
+      ],
+      "correcta": 2,
+      "explicacion": "Por eso hay que poner la posición a cero con la horquilla abajo antes de empezar."
+    },
+    {
+      "pregunta": "¿Qué hace «ir por la ruta más corta a la posición 0»?",
+      "opciones": [
+        "Pone la posición a cero",
+        "Gira una vuelta",
+        "Para el motor",
+        "Devuelve el motor a su origen por el camino que menos tarda"
+      ],
+      "correcta": 3,
+      "explicacion": "Elige el sentido más corto; no hay que calcular por dónde volver."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre curva y girar sobre el sitio?",
+      "opciones": [
+        "En la curva el robot describe un arco y se desplaza; girando se queda en el sitio",
+        "La curva es más rápida",
+        "Girar necesita el giroscopio y la curva también",
+        "Ninguna"
+      ],
+      "correcta": 0,
+      "explicacion": "Son dos maniobras distintas y cada una tiene su sitio en un recorrido."
+    },
+    {
+      "pregunta": "Un programa principal de 4 líneas que llama a bloques propios, ¿es más corto de verdad?",
+      "opciones": [
+        "Sí, hace menos cosas",
+        "No hace menos: lo mismo, pero repartido en herramientas con nombre",
+        "Sí, usa menos motores",
+        "No, es igual de ilegible"
+      ],
+      "correcta": 1,
+      "explicacion": "El trabajo está todo ahí, pero organizado y con cada parte en un sitio."
+    },
+    {
+      "pregunta": "¿Por qué lleva contrapeso el robot elevador?",
+      "opciones": [
+        "Para que el motor no se caliente",
+        "Para que pese más y agarre",
+        "Para que no se vaya de morro al levantar la carga por delante",
+        "Para proteger el Hub"
+      ],
+      "correcta": 2,
+      "explicacion": "Toda la carga va por delante del eje: sin contrapeso, el robot vuelca."
+    },
+    {
+      "pregunta": "¿De dónde salen los grados que lleva el bloque horquilla?",
+      "opciones": [
+        "Los da el sensor de distancia",
+        "Los calcula el bloque",
+        "Son siempre 120",
+        "De medirlos a mano en tu montaje girando el motor de abajo arriba"
+      ],
+      "correcta": 3,
+      "explicacion": "Dependen del mecanismo. Cada grupo tiene los suyos y hay que anotarlos."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "La librería de maniobras",
+      "enunciado": "Crea cuatro bloques propios: avanzar con hueco de centímetros, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120. En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger.",
+      "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avanzar (centimetros)"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "centimetros",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "curva (grados)"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 60",
+            "grados",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "horquilla (altura)"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 1,
+          "valores": [
+            "C · altura · 25"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "coger"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (0)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (15)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (120)"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "C · suave"
+          ]
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "C · 0"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "coger"
+          ]
+        }
+      ],
+      "notas": "Cinco pilas: cuatro definiciones y el programa. En el principal no puede quedar ni un bloque de motor suelto.",
+      "pasos": [
+        {
+          "texto": "Crea cuatro bloques propios: avanzar con hueco de centímetros, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120"
+        },
+        {
+          "texto": "En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger"
+        }
+      ]
+    },
+    {
+      "titulo": "El ciclo repetido tres veces",
+      "enunciado": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar con 40 y a horquilla con 0. Repite en el programa principal tres veces llamar a ciclo y escribe FIN al terminar.",
+      "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avanzar (centimetros)"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "centimetros",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "curva (grados)"
+          ]
+        },
+        {
+          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "derecha: 60",
+            "grados",
+            "grados"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "horquilla (altura)"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 1,
+          "valores": [
+            "C · altura · 25"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "coger"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (0)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (15)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (120)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "ciclo"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "coger"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "curva (90)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (40)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (0)"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "C · suave"
+          ]
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "C · 0"
+          ]
+        },
+        {
+          "texto": "Repetir bucle",
+          "nivel": 0,
+          "valores": [
+            "3"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "ciclo"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "FIN"
+          ]
+        }
+      ],
+      "notas": "Seis pilas y tres niveles de llamadas: ciclo usa coger, que usa avanzar y horquilla. Es el programa mejor organizado del curso.",
+      "pasos": [
+        {
+          "texto": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar con 40 y a horquilla con 0"
+        },
+        {
+          "texto": "Repite en el programa principal tres veces llamar a ciclo"
+        },
+        {
+          "texto": "Escribe FIN al terminar"
         }
       ]
     }

@@ -274,136 +274,140 @@
     {
       "curso": "3ESO",
       "numero": 1,
-      "titulo": "Mis bloques: crear mis propias órdenes",
-      "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos",
+      "titulo": "Varias cosas a la vez: el Hub no hace una sola",
+      "evaluacion": 1,
+      "nivel": 1,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de distancia",
       "bloques": [
-        "Mis bloques: Crear un bloque con entradas",
-        "mover ↑ durante 10 rotaciones",
-        "mover derecha: 30 durante 10 rotaciones",
-        "Repetir bucle",
+        "Cuando se presiona el botón del Hub",
+        "Cuando el cronómetro",
+        "Bucle infinito",
         "Variable"
       ],
-      "modelo": "Robot dibujante que traza polígonos con un rotulador"
+      "modelo": "Robot patrullero: base de conducción con el sensor de distancia delante y la pantalla libre para el marcador"
     },
     {
       "curso": "3ESO",
       "numero": 2,
-      "titulo": "Seguidor de línea proporcional",
-      "hardware": "Hub + 2 Motores medianos + Sensor de color",
+      "titulo": "Mensajes: programas que se avisan entre ellos",
+      "evaluacion": 1,
+      "nivel": 1,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + 1 Motor grande + Sensor de fuerza + Sensor de distancia",
       "bloques": [
-        "Luz reflejada",
-        "Fijar variable a",
-        "Operadores aritméticos (+, −, ×, ÷)",
-        "empezar a mover derecha: 30",
-        "Bucle infinito"
+        "Enviar mensaje",
+        "Cuando se reciba el mensaje",
+        "Enviar mensaje y esperar",
+        "Esperar hasta que"
       ],
-      "modelo": "Vehículo de reparto autoguiado que sigue una línea curva sin zigzag"
+      "modelo": "Robot de recogida: base de conducción, una pinza movida por el motor grande y el sensor de fuerza como pulsador de mando"
     },
     {
       "curso": "3ESO",
       "numero": 3,
-      "titulo": "Motores de precisión: la pinza",
-      "hardware": "Hub + 2 Motores medianos + Motor grande",
-      "bloques": [
-        "Ir a la posición relativa del motor a velocidad",
-        "Fijar la posición relativa en…",
-        "Fijar aceleración del motor",
-        "Fijar motores de movimiento para que frenen al parar",
-        "mover ↑ durante 10 rotaciones"
-      ],
-      "modelo": "Robot recogedor con pinza frontal que traslada objetos"
-    },
-    {
-      "curso": "3ESO",
-      "numero": 4,
-      "titulo": "Listas: memoria para la máquina",
-      "hardware": "Hub + Motor grande (dial) + 1 Motor mediano (cerrojo)",
-      "bloques": [
-        "Lista",
-        "Añadir elemento a lista",
-        "Elemento de lista",
-        "Longitud de lista",
-        "¿La lista contiene...?",
-        "A posición",
-        "Repetir bucle hasta"
-      ],
-      "modelo": "Caja fuerte con dial giratorio y combinación guardada en una lista"
-    },
-    {
-      "curso": "3ESO",
-      "numero": 5,
-      "titulo": "Control con realimentación",
-      "hardware": "Hub + 2 Motores medianos + Sensor de distancia",
-      "bloques": [
-        "Distancia",
-        "Fijar variable a",
-        "Operadores aritméticos (+, −, ×, ÷)",
-        "Empezar a mover a velocidad...",
-        "Bucle infinito"
-      ],
-      "modelo": "Vehículo con control de crucero adaptativo: mantiene 15 cm con el de delante"
-    },
-    {
-      "curso": "3ESO",
-      "numero": 6,
-      "titulo": "Máquinas de estados: procesos por fases",
-      "hardware": "Hub + Motor grande + 1 Motor mediano + Sensor de distancia + Sensor de color",
-      "bloques": [
-        "Enviar mensaje y esperar",
-        "Cuando se reciba el mensaje",
-        "Fijar variable a",
-        "Si... entonces... Si no...",
-        "Esperar hasta que",
-        "Cuando el color es"
-      ],
-      "modelo": "Túnel de lavado automático: puerta, rodillo y programa elegido con tarjeta de color"
-    },
-    {
-      "curso": "3ESO",
-      "numero": 7,
-      "titulo": "Datos y gráficas: medir para decidir",
-      "hardware": "Hub (Sensor giroscópico) + Motor grande",
-      "bloques": [
-        "Extensión Gráfico de líneas",
-        "Ángulo de cabeceo, alabeo o guiñada del Hub",
-        "Reiniciar cronómetro",
-        "Cronómetro",
-        "Añadir elemento a lista",
-        "A arrancar motor"
-      ],
-      "modelo": "Mesa sísmica con sismógrafo para ensayar torres antisísmicas"
-    },
-    {
-      "curso": "3ESO",
-      "numero": 8,
-      "titulo": "Navegación autónoma",
-      "hardware": "Hub (Sensor giroscópico) + 2 Motores medianos + Sensor de distancia + Sensor de fuerza (parachoques)",
+      "titulo": "Bloques propios: una librería de maniobras",
+      "evaluacion": 1,
+      "nivel": 2,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de distancia",
       "bloques": [
         "Mis bloques: Crear un bloque con entradas",
         "Fijar el ángulo de guiñada del Hub a 0",
         "Ángulo de cabeceo, alabeo o guiñada del Hub",
-        "¿Está más próximo a?",
-        "¿Está presionado?",
-        "Repetir bucle hasta",
-        "Si... entonces... Si no..."
+        "Operadores aritméticos (+, −, ×, ÷)"
       ],
-      "modelo": "Robot explorador que resuelve un laberinto"
+      "modelo": "Robot de recorrido: base de conducción bien centrada sobre el eje de las ruedas, con el sensor de distancia delante"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 4,
+      "titulo": "Sensores de guardia mientras el robot trabaja",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de distancia + Sensor de color + Sensor de fuerza",
+      "bloques": [
+        "Cuando está más próximo a",
+        "Cuando el color es",
+        "¿Está presionado?",
+        "empezar a mover a ↑"
+      ],
+      "modelo": "Robot vigilado: base de conducción con el sensor de distancia delante, el de color mirando al suelo y el de fuerza como parachoques"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 5,
+      "titulo": "Bloques que miran y deciden",
+      "evaluacion": 2,
+      "nivel": 2,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de color + Sensor de distancia",
+      "bloques": [
+        "Mis bloques: Crear un bloque con entradas",
+        "Si... entonces... Si no...",
+        "Operadores lógicos (y, o, no)",
+        "Luz reflejada"
+      ],
+      "modelo": "Robot seguidor: base de conducción con el sensor de color muy bajo y adelantado, y el sensor de distancia por encima"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 6,
+      "titulo": "Estados: una variable que manda sobre todas las pilas",
+      "evaluacion": 2,
+      "nivel": 3,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + 1 Motor grande + Sensor de distancia + Sensor de fuerza",
+      "bloques": [
+        "Fijar variable a",
+        "Repetir bucle hasta",
+        "Si... entonces... Si no...",
+        "encender dibujo"
+      ],
+      "modelo": "Robot por fases: base de conducción con una barrera movida por el motor grande, el sensor de distancia delante y el de fuerza como mando"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 7,
+      "titulo": "Listas en marcha: registrar mientras se trabaja",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + Sensor de distancia + Sensor de color",
+      "bloques": [
+        "Añadir elemento a lista",
+        "Elemento de lista",
+        "Longitud de lista",
+        "¿La lista contiene...?",
+        "Extensión Gráfico de líneas"
+      ],
+      "modelo": "Robot explorador: base de conducción con el sensor de distancia a un costado y el de color mirando al suelo"
+    },
+    {
+      "curso": "3ESO",
+      "numero": 8,
+      "titulo": "Maniobras compuestas: bloques dentro de bloques",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + 1 Motor grande + Sensor de distancia",
+      "bloques": [
+        "Mis bloques: Crear un bloque con entradas",
+        "Fijar aceleración del motor",
+        "Ir a la posición relativa del motor a velocidad",
+        "A ir por la ruta más corta a la posición 0",
+        "mover derecha: 30 durante 10 rotaciones"
+      ],
+      "modelo": "Robot de maniobras: base de conducción con una horquilla elevadora en el motor grande y el sensor de distancia delante"
     },
     {
       "curso": "3ESO",
       "numero": 9,
-      "titulo": "Proyecto final: almacén robotizado",
-      "hardware": "Hub + 2 Motores medianos + Motor grande + Sensor de color + Sensor de distancia + Sensor de fuerza",
+      "titulo": "Proyecto final: el almacén robotizado",
+      "evaluacion": 3,
+      "nivel": 3,
+      "hardware": "Hub (Giroscopio, matriz de luces 5x5 y altavoz) + 2 Motor mediano + 1 Motor grande + Sensor de distancia + Sensor de color + Sensor de fuerza",
       "bloques": [
-        "Mis bloques: Crear un bloque con entradas",
-        "Luz reflejada",
-        "¿Es de color...?",
-        "Ir a la posición relativa del motor a velocidad",
-        "Añadir elemento a lista",
         "Cuando se reciba el mensaje",
-        "Variable"
+        "Mis bloques: Crear un bloque con entradas",
+        "Lista",
+        "¿Está más próximo a?",
+        "Fijar motores de movimiento para que frenen al parar"
       ],
-      "modelo": "Carretilla elevadora autónoma: sigue la línea, reconoce la estación por color, recoge el palé y registra las entregas"
+      "modelo": "Almacén: base elevadora con horquilla en el motor grande, los tres sensores puestos y tres bahías marcadas en el suelo"
     }
   ]
 }

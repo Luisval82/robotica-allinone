@@ -299,7 +299,7 @@ La pestaña **«Soluciones oficiales» se ha integrado aquí**: enseñaba el enu
 las 2 programaciones de la PRUEBA, y eso es un trozo de esta página. `/soluciones` redirige
 conservando el curso y la unidad.
 
-### El temario de 1º y 2º de ESO (`scripts/temario-1eso.py`, `scripts/temario-2eso.py`)
+### El temario de los tres cursos (`scripts/temario-1eso.py`, `-2eso.py`, `-3eso.py`)
 
 Las 9 unidades de 1º están repartidas en **3 evaluaciones de 3 unidades**. En cada evaluación se
 tocan **todos los ámbitos** —pantalla, botón y sonido, motores y giros, y los tres sensores—, y lo
@@ -329,6 +329,7 @@ viñetas y la lista de `materiales` no los escribe este script: los generan `enu
 ```bash
 PYTHONPATH=scripts python3 scripts/temario-1eso.py
 PYTHONPATH=scripts python3 scripts/temario-2eso.py
+PYTHONPATH=scripts python3 scripts/temario-3eso.py
 python3 scripts/materiales.py && python3 scripts/enunciados.py
 ```
 
@@ -366,7 +367,30 @@ Dos detalles del generador que conviene conocer:
   cada unidad nombra en `"enlace"` una URL del catálogo de lecciones que ya hay en el repositorio.
   El generador se para si una unidad nombra una URL que no está, para que no se inventen enlaces.
 
-**3º de ESO no se toca** hasta que se defina.
+#### 3º de ESO
+
+3º cierra el ciclo y **no añade ni un bloque nuevo**: el catálogo de 72 familias se agota entre 1º
+(44) y 2º (28). Lo que añade es otra cosa, y es la difícil: **organizar**. Varias pilas corriendo a
+la vez, bloques propios que llaman a bloques propios, y todo lo anterior exigido junto.
+
+| | Unidades | Qué se añade |
+| --- | --- | --- |
+| **1.ª evaluación** | 1 · Varias cosas a la vez<br>2 · Mensajes entre programas<br>3 · Bloques propios: una librería | Varios sombreros en el mismo lienzo, la variable como tablón común, mensajes con y sin espera, y los primeros bloques propios con entradas y cuentas. |
+| **2.ª evaluación** | 4 · Sensores de guardia<br>5 · Bloques que miran y deciden<br>6 · Estados | Un sombrero por sensor, bloques propios que encierran una lectura y dejan la respuesta en una variable, y una variable de fase que manda sobre todas las pilas. |
+| **3.ª evaluación** | 7 · Listas en marcha<br>8 · Maniobras compuestas<br>9 · Proyecto final: el almacén | Registrar mientras se conduce, bloques dentro de bloques hasta tener una librería, y un proyecto de siete pilas con tres sensores, dos listas y estados. |
+
+Como en 3º los `bloques` de cada unidad no son nuevos sino **los que se trabajan**, el texto de la
+pantalla del alumno y de «Preparar clases» dice eso y no «los bloques nuevos». La paleta del lienzo
+sigue separando los de la unidad (`propios`) de los heredados (`anteriores`), así que el alumno ve
+primero los cuatro o cinco de la unidad y debajo todo lo que ya sabe.
+
+Las respuestas de los 72 test de 3º también quedan repartidas 18 por letra
+(ver `reparte_respuestas`). **1º sigue con el reparto antiguo** (50 de 72 en la B): arreglarlo pasa
+por regenerarlo, a cambio de invalidar los test de 1º ya entregados.
+
+Las unidades 1 y 2 de 3º **se quedan sin enlace a lección oficial**: LEGO no tiene ninguna sobre
+ejecución simultánea ni sobre mensajes entre programas, y se prefiere dejarlo vacío antes que
+poner uno que no venga a cuento.
 
 ### Contenido de las unidades
 

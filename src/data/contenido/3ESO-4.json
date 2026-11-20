@@ -1,108 +1,316 @@
 {
   "curso": "3ESO",
   "unidad": 4,
-  "reto": "Construye una caja fuerte con dial: solo se abre si giras el dial a los números de la combinación, en orden.",
+  "reto": "Pon tres sensores de guardia, cada uno en su pila, mientras el robot recorre la pista sin saber nada de ellos.",
   "video": {
-    "titulo": "Memoria para la máquina",
+    "titulo": "Tres guardias y un conductor",
     "duracion": "6 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Listing Letters» (listas)",
-      "url": "https://education.lego.com/en-us/lessons/spike-python-u10-lists/spike-u10l1-listing-letters/"
-    },
     "escenas": [
       {
-        "plano": "Una caja fuerte de LEGO; una mano gira el dial a tres posiciones y el cerrojo se abre.",
-        "locucion": "Una caja fuerte guarda una combinación: varios números en un orden concreto. Una variable guarda un solo valor. Para guardar varios, necesitamos una lista."
+        "plano": "Un bucle con tres condiciones encadenadas, muy largo, bajando por la pantalla.",
+        "locucion": "Hasta ahora, vigilar tres sensores era un bucle con tres condiciones dentro. Funciona, pero cada vuelta del bucle tarda, y si el robot está moviéndose no se entera de nada hasta que termina."
       },
       {
-        "plano": "Captura de la app: se crea la lista «combinacion» y se le añaden 90, 180 y 270.",
-        "locucion": "Una lista es una fila de cajas numeradas. La creamos en Variables y añadimos valores con «Añadir elemento a lista». El primero ocupa la posición 1."
+        "plano": "Los sombreros de sensor en la paleta de eventos, iluminados.",
+        "locucion": "Los sensores tienen sombrero propio. «Cuando está más próximo a», «Cuando el color es». No hay que preguntarles: avisan ellos."
       },
       {
-        "plano": "Captura de los bloques redondeados «Elemento 2 de combinacion» y «Longitud de combinacion» con sus valores.",
-        "locucion": "«Elemento de lista» devuelve el valor guardado en una posición. «Longitud de lista» dice cuántos elementos hay."
+        "plano": "Una pila por sensor, cada una con su sombrero, y aparte la pila que conduce.",
+        "locucion": "Así que cada sensor se lleva su pila. Una vigila la distancia. Otra, el color del suelo. Y el conductor ni se entera de que existen: él solo conduce."
       },
       {
-        "plano": "Una mano gira el motor grande y la matriz muestra el ángulo.",
-        "locucion": "El motor grande hace de dial: el programa no lo mueve, lo giras tú con la mano. El bloque «A posición» lee en qué ángulo lo has dejado."
+        "plano": "El robot avanzando y una pila de guardia saltando en medio del recorrido.",
+        "locucion": "Eso es lo que cambia. El aviso salta mientras el robot anda, no al terminar la orden. La reacción es inmediata."
       },
       {
-        "plano": "Captura de un bucle con una variable «paso» que avanza por la lista.",
-        "locucion": "El programa recorre la lista: espera a que el dial esté en el primer número, después en el segundo… Una variable «paso» recuerda por cuál vamos. Cuando «paso» supera la longitud de la lista, la combinación está completa."
+        "plano": "El bloque de pregunta «¿Está presionado?» usado dentro de una condición.",
+        "locucion": "No todos los sensores tienen sombrero. El de fuerza se pregunta, y para eso sigue valiendo un bucle de guardia con la pregunta dentro."
       },
       {
-        "plano": "La caja se abre tras marcar la combinación; con un número equivocado, el botón central se pone rojo.",
-        "locucion": "Tu reto: una caja fuerte que se abre con la combinación correcta y da pistas con la luz del botón."
+        "plano": "Las cuatro pilas del proyecto ordenadas en el lienzo con sus rótulos.",
+        "locucion": "Cuatro pilas: un conductor y tres guardias. Cuando algo falle sabrás dónde mirar, porque cada trabajo está en su sitio."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Cart Control» (sensor de distancia)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l3/"
+    }
   },
   "bloques": [
     {
-      "texto": "Lista",
-      "explicacion": "Bloque de dato: una fila de valores guardados en orden, cada uno con su número de posición."
+      "texto": "Cuando está más próximo a",
+      "explicacion": "Un sombrero que arranca su pila cuando el sensor de distancia ve algo más cerca de lo que le digas. Avisa él; no hay que preguntarle."
     },
     {
-      "texto": "Añadir elemento a lista",
-      "explicacion": "Añade un valor al final de la lista."
+      "texto": "Cuando el color es",
+      "explicacion": "Arranca su pila cuando el sensor de color ve el color que le digas. Sirve para marcas en el suelo sin ocupar el programa principal."
     },
     {
-      "texto": "Elemento de lista",
-      "explicacion": "Bloque de dato: el valor guardado en la posición que indiques. La primera es la 1."
+      "texto": "¿Está presionado?",
+      "explicacion": "La pregunta del sensor de fuerza. No tiene sombrero propio, así que se usa dentro de una condición o de un bucle de guardia."
     },
     {
-      "texto": "Longitud de lista",
-      "explicacion": "Bloque de dato: cuántos elementos tiene la lista."
-    },
-    {
-      "texto": "¿La lista contiene...?",
-      "explicacion": "Pregunta si un valor está guardado en la lista, en cualquier posición."
-    },
-    {
-      "texto": "A posición",
-      "explicacion": "Lee el ángulo en el que has dejado el dial.",
-      "valores": [
-        "A"
-      ]
-    },
-    {
-      "texto": "Repetir bucle hasta",
-      "explicacion": "Recorre la combinación hasta completar todos sus números."
+      "texto": "empezar a mover a ↑",
+      "explicacion": "Arranca el movimiento y sigue adelante sin esperar. Es el bloque del conductor cuando quieres que otras pilas puedan interrumpirlo."
     }
   ],
+  "programa": {
+    "titulo": "El conductor y sus tres guardias",
+    "explicacion": "Cuatro pilas. La de conducción solo avanza. Las tres de guardia reaccionan por su cuenta: la distancia frena, el color avisa y el parachoques corta.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "35"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "avisos · 0"
+        ]
+      },
+      {
+        "texto": "empezar a mover a ↑",
+        "nivel": 0,
+        "valores": [
+          "↑"
+        ]
+      },
+      {
+        "texto": "Cuando está más próximo a",
+        "nivel": 0,
+        "valores": [
+          "15 cm"
+        ]
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 0
+      },
+      {
+        "texto": "Cambiar variable por",
+        "nivel": 0,
+        "valores": [
+          "avisos · 1"
+        ]
+      },
+      {
+        "texto": "Tocar nota X segundos",
+        "nivel": 0,
+        "valores": [
+          "60 · 0.3"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "↓",
+          "20",
+          "cm"
+        ]
+      },
+      {
+        "texto": "empezar a mover a ↑",
+        "nivel": 0,
+        "valores": [
+          "↑"
+        ]
+      },
+      {
+        "texto": "Cuando el color es",
+        "nivel": 0,
+        "valores": [
+          "rojo"
+        ]
+      },
+      {
+        "texto": "poner luz del botón central en rojo",
+        "nivel": 0,
+        "valores": [
+          "rojo"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "avisos"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces...",
+        "nivel": 1,
+        "valores": [
+          "¿Está presionado? F"
+        ]
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 2
+      },
+      {
+        "texto": "encender dibujo durante 2 segundos",
+        "nivel": 2,
+        "valores": [
+          "cruz",
+          "1"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Crea la combinación",
-      "enunciado": "Crea una lista y añádele tres números: esa es la combinación.",
-      "pista": "Añade los elementos al empezar el programa.",
+      "titulo": "El guardia de la distancia",
+      "enunciado": "Pon una pila que arranque el robot hacia delante. Pon otra con el sombrero de proximidad que, al ver algo a menos de 15 centímetros, pare el movimiento y toque una nota.",
+      "pista": "El conductor usa el bloque de empezar a mover, que no espera, para que el guardia pueda cortarlo.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Añadir elemento a lista",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
-          "valor": "combinación · 90"
+          "valores": [
+            "A+B"
+          ]
         },
         {
-          "texto": "Añadir elemento a lista",
+          "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
-          "valor": "combinación · 180"
+          "valores": [
+            "35"
+          ]
         },
         {
-          "texto": "Añadir elemento a lista",
+          "texto": "empezar a mover a ↑",
           "nivel": 0,
-          "valor": "combinación · 45"
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valores": [
+            "15 cm"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.3"
+          ]
         }
       ],
-      "notas": "Los elementos se añaden al empezar el programa y en orden: el primero que añades es el número 1."
+      "notas": "Dos pilas muy cortas. Con «mover durante» en vez de «empezar a mover» el corte llegaría tarde, y conviene que lo prueben.",
+      "pasos": [
+        {
+          "texto": "Pon una pila que arranque el robot hacia delante"
+        },
+        {
+          "texto": "Pon otra con el sombrero de proximidad que, al ver algo a menos de 15 centímetros, pare el movimiento y toque una nota"
+        }
+      ]
     },
     {
       "practica": 2,
-      "titulo": "Lee el dial",
-      "enunciado": "Escribe en la matriz la posición del motor del dial mientras lo giras con la mano.",
-      "pista": "Esa posición es el número que marca el dial.",
+      "titulo": "El guardia del color",
+      "enunciado": "Añade una pila con el sombrero del color que, al ver rojo, haga esto: pon el botón central en rojo; sube en uno la variable marcas.",
+      "pista": "Pon la variable marcas a 0 en la pila de arranque.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "marcas · 0"
+          ]
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando el color es",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 0,
+          "valores": [
+            "marcas · 1"
+          ]
+        }
+      ],
+      "notas": "El sombrero del color salta cada vez que entra en el rojo, no mientras está encima. Verlo con una tira ancha lo deja claro.",
+      "pasos": [
+        {
+          "texto": "Añade una pila con el sombrero del color que, al ver rojo, haga esto",
+          "hijos": [
+            "Pon el botón central en rojo",
+            "Sube en uno la variable marcas"
+          ]
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "El parachoques, que se pregunta",
+      "enunciado": "Pon una pila de guardia que repita sin parar comprobar si el sensor de fuerza está presionado y, si lo está, haga esto: para el movimiento; enciende una cruz un segundo.",
+      "pista": "El sensor de fuerza no tiene sombrero: hay que preguntarle dentro de un bucle.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -113,405 +321,467 @@
           "nivel": 0
         },
         {
-          "texto": "escribir Hello",
+          "texto": "Si... entonces...",
           "nivel": 1,
           "valores": [
-            "posición de A"
+            "¿Está presionado? F"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "0.2"
-        }
-      ],
-      "notas": "La posición del motor del dial es el número que marcas al girarlo con la mano."
-    },
-    {
-      "practica": 3,
-      "titulo": "Compara el primero",
-      "enunciado": "Comprueba si el número marcado coincide con el primer elemento de la lista.",
-      "pista": "«Elemento 1 de la lista» te da el primer número.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "nivel": 0,
-          "valor": "combinación · 90"
-        },
-        {
-          "texto": "Esperar hasta que",
-          "nivel": 0,
-          "valor": "¿Está presionado? F"
-        },
-        {
-          "texto": "Si... entonces...",
-          "nivel": 0,
-          "valor": "posición de A = Elemento 1 de combinación"
+          "texto": "parar movimiento",
+          "nivel": 2
         },
         {
           "texto": "encender dibujo durante 2 segundos",
-          "nivel": 1,
+          "nivel": 2,
           "valores": [
-            "corazón",
+            "cruz",
             "1"
           ]
         }
       ],
-      "notas": "«Elemento 1 de combinación» es el primer número que guardaste: el que hay que acertar primero."
+      "notas": "Es la diferencia entre avisar y ser preguntado, y se ve mejor teniendo las dos clases de guardia en el mismo lienzo.",
+      "pasos": [
+        {
+          "texto": "Pon una pila de guardia que repita sin parar comprobar si el sensor de fuerza está presionado y, si lo está, haga esto",
+          "hijos": [
+            "Para el movimiento",
+            "Enciende una cruz un segundo"
+          ]
+        }
+      ]
     },
     {
       "practica": 4,
-      "titulo": "Caja fuerte",
-      "enunciado": "Con un «Repetir hasta», ve comprobando los tres números en orden y abre solo si están todos.",
-      "pista": "Lleva la cuenta de por cuál vas con una variable.",
+      "titulo": "Los tres a la vez",
+      "enunciado": "Junta las tres guardias anteriores en un mismo proyecto con el conductor y recorre la pista entera comprobando que las tres saltan.",
+      "pista": "Son cuatro pilas sueltas en el lienzo; ninguna llama a las otras.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Añadir elemento a lista",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
-          "valor": "combinación · 90"
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "nivel": 0,
-          "valor": "combinación · 180"
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "nivel": 0,
-          "valor": "combinación · 45"
+          "valores": [
+            "A+B"
+          ]
         },
         {
           "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "paso · 1"
+          "valores": [
+            "marcas · 0"
+          ]
         },
         {
-          "texto": "Repetir bucle hasta",
+          "texto": "empezar a mover a ↑",
           "nivel": 0,
-          "valor": "paso > Longitud de combinación"
+          "valores": [
+            "↑"
+          ]
         },
         {
-          "texto": "Esperar hasta que",
-          "nivel": 1,
-          "valor": "¿Está presionado? F"
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valores": [
+            "15 cm"
+          ]
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 1,
-          "valor": "posición de A = Elemento paso de combinación"
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.3"
+          ]
+        },
+        {
+          "texto": "Cuando el color es",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
         },
         {
           "texto": "Cambiar variable por",
-          "nivel": 2,
-          "valor": "paso · 1"
-        },
-        {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 2,
-          "valor": "paso · 1"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "90"
+            "marcas · 1"
           ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2
         }
       ],
-      "notas": "La variable «paso» dice por qué número vas. Si fallas, vuelve a 1 y hay que empezar la combinación otra vez."
+      "notas": "Cuatro pilas. Es un proyecto pequeño pero con la estructura de los grandes: un trabajo por pila.",
+      "pasos": [
+        {
+          "texto": "Junta las tres guardias anteriores en un mismo proyecto con el conductor"
+        },
+        {
+          "texto": "Recorre la pista entera comprobando que las tres saltan"
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor grande para el dial, un motor mediano para el cerrojo, una rueda o un disco, y vigas y paneles para la caja y su puerta.",
+    "piezas": "La base de conducción, los tres sensores, dos marcos Technic, cuatro vigas de 11, dos vigas de 7, un eje de 3 y catorce pasadores.",
     "pasos": [
       {
-        "titulo": "La caja",
-        "texto": "Monta una caja con una puerta que abra hacia fuera."
+        "titulo": "La base",
+        "texto": "Monta la base de conducción de dos motores medianos en A y B, con el Hub centrado sobre el eje de las ruedas."
       },
       {
-        "titulo": "El cerrojo",
-        "texto": "Fija el motor mediano dentro, junto al borde de la puerta, con un pestillo en su eje: en la posición 0 traba la puerta y en la 90 la libera."
+        "titulo": "El ojo de delante",
+        "texto": "Une las dos vigas de 11 por delante y encaja el sensor de distancia en el puerto E, recto y a la altura de los obstáculos de la pista."
       },
       {
-        "titulo": "El dial",
-        "texto": "Fija el motor grande en el frontal, con el eje hacia fuera, y monta en él una rueda con una flecha."
+        "titulo": "El ojo del suelo",
+        "texto": "Cuelga el sensor de color del puerto D mirando hacia abajo, a un centímetro escaso del suelo. Más alto no distingue el rojo de la marca."
       },
       {
-        "titulo": "La escala",
-        "texto": "Con el motor del dial en su posición 0, marca en el frontal dónde quedan el 0, el 90, el 180 y el 270."
+        "titulo": "El parachoques",
+        "texto": "Monta el sensor de fuerza en el puerto F por delante del todo, con las dos vigas de 7 haciendo de paragolpes y el eje de 3 empujando el botón. Lo que toque el robot aprieta el sensor."
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor grande del dial al puerto A y motor mediano del cerrojo al puerto B."
+        "titulo": "El refuerzo",
+        "texto": "Cruza los dos marcos Technic por debajo. Con tres sensores colgando por delante, un chasis flojo se cabecea en cada frenazo y el sensor de color pierde el suelo de vista."
       },
       {
-        "titulo": "Comprueba",
-        "texto": "Gira el dial con la mano: debe moverse suave. Cierra la puerta y comprueba que el pestillo la traba."
+        "titulo": "La pista",
+        "texto": "Prepara un pasillo con una caja al fondo y una tira de cinta roja cruzando el suelo a mitad de camino. Así se disparan los tres guardias en el mismo recorrido."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
+        "pieza": "marco",
+        "cantidad": 2
       },
       {
-        "pieza": "motor-grande",
+        "pieza": "viga",
+        "cantidad": 6
+      },
+      {
+        "pieza": "eje",
         "cantidad": 1
       },
       {
-        "pieza": "motor",
-        "cantidad": 1
-      },
-      {
-        "pieza": "rueda",
-        "cantidad": 1
-      },
-      {
-        "pieza": "viga"
-      },
-      {
-        "pieza": "panel"
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿En qué se diferencia una lista de una variable?",
+      "pregunta": "¿Qué ventaja tiene el sombrero «Cuando está más próximo a» frente a preguntar la distancia en un bucle?",
       "opciones": [
-        "La lista solo guarda texto",
-        "La lista guarda varios valores en orden; la variable, uno solo",
-        "La variable es más rápida",
-        "No hay diferencia"
-      ],
-      "correcta": 1,
-      "explicacion": "Cada valor de la lista tiene su número de posición."
-    },
-    {
-      "pregunta": "La lista combinacion contiene 90, 180 y 270. ¿Qué devuelve «Elemento 2 de combinacion»?",
-      "opciones": [
-        "90",
-        "2",
-        "270",
-        "180"
-      ],
-      "correcta": 3,
-      "explicacion": "Las posiciones empiezan en 1: el segundo elemento es 180."
-    },
-    {
-      "pregunta": "Con esa misma lista, ¿qué devuelve «Longitud de combinacion»?",
-      "opciones": [
-        "3",
-        "270",
-        "540",
-        "2"
+        "Avisa él solo y salta mientras el robot está moviéndose",
+        "Gasta menos batería",
+        "Funciona sin cable",
+        "Mide más lejos"
       ],
       "correcta": 0,
-      "explicacion": "La lista tiene tres elementos."
+      "explicacion": "No hay que estar preguntando: la pila se enciende sola en cuanto se cumple."
     },
     {
-      "pregunta": "Ejecutas «Añadir 45 a combinacion». ¿Dónde queda el 45?",
+      "pregunta": "¿Por qué el conductor usa «empezar a mover» y no «mover durante»?",
       "opciones": [
-        "En la posición 1",
-        "Sustituye al 90",
-        "Al final, en la posición 4",
-        "No se guarda"
-      ],
-      "correcta": 2,
-      "explicacion": "«Añadir» coloca siempre el valor nuevo al final."
-    },
-    {
-      "pregunta": "Con la lista 90, 180 y 270, ¿qué responde «¿combinacion contiene 270?»?",
-      "opciones": [
-        "Falso",
-        "Verdadero",
-        "3",
-        "270"
+        "Porque es más rápido",
+        "Porque no espera, y así otra pila puede pararlo en cualquier momento",
+        "Porque gasta menos",
+        "Porque lo exige el sombrero"
       ],
       "correcta": 1,
-      "explicacion": "El 270 está en la lista, da igual en qué posición."
+      "explicacion": "Con «mover durante», el robot está ocupado hasta terminar y el corte llega tarde."
     },
     {
-      "pregunta": "¿Cómo sabe el programa por qué número de la combinación va?",
+      "pregunta": "El sensor de fuerza, ¿tiene sombrero propio?",
       "opciones": [
-        "Lo recuerda el motor",
-        "Con el sensor de color",
-        "No lo sabe",
-        "Con una variable que cuenta los pasos"
-      ],
-      "correcta": 3,
-      "explicacion": "La variable «paso» empieza en 1 y aumenta cada vez que se acierta un número."
-    },
-    {
-      "pregunta": "¿Por qué el programa no mueve el motor del dial?",
-      "opciones": [
-        "Porque aquí el motor es una entrada: lo gira la persona y el programa lee su posición",
-        "Porque está estropeado",
-        "Porque el motor grande no puede girar solo",
-        "Porque va en el puerto A"
-      ],
-      "correcta": 0,
-      "explicacion": "Los motores de SPIKE también sirven como sensores de giro."
-    },
-    {
-      "pregunta": "Quieres una combinación de cuatro números en lugar de tres. ¿Qué cambias?",
-      "opciones": [
-        "El bucle entero",
-        "El puerto del dial",
-        "Solo los elementos de la lista: el bucle usa su longitud",
-        "Hay que crear otra lista"
+        "No tiene ni sombrero ni pregunta",
+        "Sí, igual que la distancia",
+        "No: se pregunta dentro de una condición o un bucle de guardia",
+        "Sí, pero solo en 3º"
       ],
       "correcta": 2,
-      "explicacion": "Como el bucle termina cuando «paso» supera la longitud, se adapta solo."
+      "explicacion": "Por eso su guardia es un bucle con «¿Está presionado?» dentro."
+    },
+    {
+      "pregunta": "¿Cuántas pilas tiene el proyecto del conductor con tres guardias?",
+      "opciones": [
+        "Dos",
+        "Tres",
+        "Una",
+        "Cuatro"
+      ],
+      "correcta": 3,
+      "explicacion": "Un conductor y tres guardias, cada uno en la suya."
+    },
+    {
+      "pregunta": "El guardia de la distancia para el robot, pero vuelve a arrancar solo. ¿Por qué?",
+      "opciones": [
+        "Porque alguna pila vuelve a dar la orden de avanzar",
+        "Porque el motor tiene inercia",
+        "Porque el sombrero se repite",
+        "Porque el sensor se estropea"
+      ],
+      "correcta": 0,
+      "explicacion": "Parar no apaga a quien manda avanzar. Esto se resuelve del todo con los estados."
+    },
+    {
+      "pregunta": "¿Cuándo salta el sombrero «Cuando el color es rojo»?",
+      "opciones": [
+        "Todo el rato mientras ve rojo",
+        "Al entrar en el rojo, una vez por cada entrada",
+        "Solo al empezar el programa",
+        "Cuando deja de ver rojo"
+      ],
+      "correcta": 1,
+      "explicacion": "Es un aviso de cambio, no un estado continuo."
+    },
+    {
+      "pregunta": "¿Por qué conviene que el conductor no sepa nada de los sensores?",
+      "opciones": [
+        "Para gastar menos batería",
+        "Para que vaya más rápido",
+        "Porque así cada pila hace un trabajo y los fallos se buscan en un sitio",
+        "Porque los sensores fallan"
+      ],
+      "correcta": 2,
+      "explicacion": "Repartir el trabajo es lo que hace que un programa grande siga siendo manejable."
+    },
+    {
+      "pregunta": "¿A qué altura va el sensor de color para leer la marca del suelo?",
+      "opciones": [
+        "Pegado al suelo, rozando",
+        "Da igual la altura",
+        "A cinco centímetros",
+        "A un centímetro escaso"
+      ],
+      "correcta": 3,
+      "explicacion": "Demasiado alto no distingue colores; rozando se engancha y frena el robot."
     }
   ],
   "practicas": [
     {
-      "titulo": "Combinación de tres números",
-      "enunciado": "Guarda la combinación 90, 180, 270 en una lista. El programa espera a que el dial esté en cada número, en orden, pitando en cada acierto. Al completar la combinación, abre el cerrojo.",
+      "titulo": "El conductor y sus guardias",
+      "enunciado": "Prepara la base, pon los avisos a 0 y arranca el robot hacia delante en una pila. En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede 20 centímetros y vuelve a arrancar. En otra, al ver rojo, pon el botón central en rojo y escribe los avisos.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Añadir elemento a lista",
-          "valor": "90 · combinacion",
-          "nivel": 0
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
         },
         {
-          "texto": "Añadir elemento a lista",
-          "valor": "180 · combinacion",
-          "nivel": 0
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "valor": "270 · combinacion",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "35"
+          ]
         },
         {
           "texto": "Fijar variable a",
-          "valor": "paso · 1",
+          "nivel": 0,
+          "valores": [
+            "avisos · 0"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valores": [
+            "15 cm"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
           "nivel": 0
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "valor": "paso > Longitud de combinacion",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "A posición cerca de Elemento paso de combinacion",
-          "nivel": 1
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "72 · 0.2",
-          "nivel": 1
         },
         {
           "texto": "Cambiar variable por",
-          "valor": "paso · 1",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "90"
+            "avisos · 1"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.3"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↓",
+            "20",
+            "cm"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando el color es",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "avisos"
           ]
         }
       ],
-      "notas": "«Cerca de» significa un margen de unos 10 grados, hecho con dos comparaciones unidas por «y». En la app las listas conservan su contenido: hay que vaciarla al empezar o añadir los valores una sola vez, o la combinación crecerá en cada ejecución.",
+      "notas": "Tres pilas. El guardia de distancia tiene que volver a arrancar al final, o el robot se queda parado para siempre.",
       "pasos": [
         {
-          "texto": "Guarda la combinación 90, 180, 270 en una lista"
+          "texto": "Prepara la base"
         },
         {
-          "texto": "El programa espera a que el dial esté en cada número, en orden, pitando en cada acierto"
+          "texto": "Pon los avisos a 0"
         },
         {
-          "texto": "Al completar la combinación"
+          "texto": "Arranca el robot hacia delante en una pila"
         },
         {
-          "texto": "Abre el cerrojo"
+          "texto": "En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede 20 centímetros y vuelve a arrancar"
+        },
+        {
+          "texto": "En otra, al ver rojo, pon el botón central en rojo y escribe los avisos"
         }
       ]
     },
     {
-      "titulo": "Cuatro números y pistas",
-      "enunciado": "Amplía la combinación a cuatro números. En una segunda pila, el botón central se pone verde cuando el dial está en un número que forma parte de la combinación y rojo cuando no.",
+      "titulo": "El parachoques que corta",
+      "enunciado": "Añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto: para el movimiento; enciende una cruz un segundo; escribe CHOQUE.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Añadir elemento a lista",
-          "valor": "90 · combinacion",
-          "nivel": 0
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
         },
         {
-          "texto": "Añadir elemento a lista",
-          "valor": "180 · combinacion",
-          "nivel": 0
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "valor": "270 · combinacion",
-          "nivel": 0
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "valor": "0 · combinacion",
-          "nivel": 0
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "35"
+          ]
         },
         {
           "texto": "Fijar variable a",
-          "valor": "paso · 1",
+          "nivel": 0,
+          "valores": [
+            "avisos · 0"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valores": [
+            "15 cm"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
           "nivel": 0
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "valor": "paso > Longitud de combinacion",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "A posición cerca de Elemento paso de combinacion",
-          "nivel": 1
-        },
-        {
-          "texto": "Tocar nota X segundos",
-          "valor": "72 · 0.2",
-          "nivel": 1
         },
         {
           "texto": "Cambiar variable por",
-          "valor": "paso · 1",
-          "nivel": 1
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "90"
+            "avisos · 1"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↓",
+            "20",
+            "cm"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 0,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando el color es",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
           ]
         },
         {
@@ -523,36 +793,41 @@
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
-          "valor": "¿combinacion contiene A posición?",
-          "nivel": 1
-        },
-        {
-          "texto": "poner luz del botón central en rojo",
-          "nivel": 2,
+          "texto": "Si... entonces...",
+          "nivel": 1,
           "valores": [
-            "verde"
+            "¿Está presionado? F"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "parar movimiento",
+          "nivel": 2
         },
         {
-          "texto": "poner luz del botón central en rojo",
+          "texto": "encender dibujo durante 2 segundos",
           "nivel": 2,
           "valores": [
-            "rojo"
+            "cruz",
+            "1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 2,
+          "valores": [
+            "CHOQUE"
           ]
         }
       ],
-      "notas": "El bucle principal no cambia al añadir un número: valora que use la longitud de la lista. La pista exige que el dial esté exactamente en el valor; da por bueno que redondeen la posición.",
+      "notas": "Cuatro pilas y dos clases de guardia: dos que avisan y una que pregunta. Es la práctica que mejor resume la unidad.",
       "pasos": [
         {
-          "texto": "Amplía la combinación a cuatro números"
-        },
-        {
-          "texto": "En una segunda pila, el botón central se pone verde cuando el dial está en un número que forma parte de la combinación y rojo cuando no"
+          "texto": "Añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto",
+          "hijos": [
+            "Para el movimiento",
+            "Enciende una cruz un segundo",
+            "Escribe CHOQUE"
+          ]
         }
       ]
     }

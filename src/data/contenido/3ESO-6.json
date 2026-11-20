@@ -1,122 +1,313 @@
 {
   "curso": "3ESO",
   "unidad": 6,
-  "reto": "Construye un túnel de lavado: detecta el coche, abre la puerta, lava según el programa elegido con una tarjeta y avisa al terminar.",
+  "reto": "Haz que el robot trabaje por fases y que una sola variable decida en todo momento qué pila manda.",
   "video": {
-    "titulo": "Procesos por fases",
+    "titulo": "Quién manda ahora",
     "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "El robot de la unidad 4 parándose por el guardia y arrancando otra vez solo, en bucle.",
+        "locucion": "En la unidad de los guardias quedó un problema sin resolver. El guardia para el robot y el conductor lo vuelve a arrancar, porque sigue vivo. Parar no es lo mismo que apagar."
+      },
+      {
+        "plano": "Una variable llamada «fase» en el centro, con los valores 0, 1 y 2 pasando por ella.",
+        "locucion": "La solución tiene nombre: estados. Una variable, una sola, que dice en qué fase está el robot. Esperando, trabajando, o terminado."
+      },
+      {
+        "plano": "El conductor comprobando la fase antes de mover.",
+        "locucion": "Y entonces el conductor deja de mandar a ciegas. Antes de mover mira la fase, y si no es la suya, no hace nada. Ya no hay peleas entre pilas."
+      },
+      {
+        "plano": "El guardia cambiando la fase a 2 en lugar de parar los motores.",
+        "locucion": "El guardia tampoco para los motores. Cambia la fase. Y el conductor, en cuanto la ve cambiada, se para él solo. Cada uno toca lo suyo."
+      },
+      {
+        "plano": "«Repetir bucle hasta» con la condición de que la fase cambie.",
+        "locucion": "Y un bucle que dure mientras la fase sea la suya. Cuando cambia, el bucle termina y la pila pasa a lo siguiente. Ordenado y sin sorpresas."
+      },
+      {
+        "plano": "La pantalla del Hub enseñando un dibujo distinto en cada fase.",
+        "locucion": "Un truco de clase: un dibujo por fase en la pantalla. Así ves desde fuera en qué estado está el robot, y depurar deja de ser adivinar."
+      }
+    ],
     "enlaceOficial": {
       "titulo": "LEGO Education: «Setting Conditions for Yoga» (estados y condiciones)",
       "url": "https://education.lego.com/en-us/lessons/spike-python-u4-doing-reps-with-loops/spike-python-u4l4-setting-conditions-for-yoga/"
-    },
-    "escenas": [
-      {
-        "plano": "Un túnel de lavado de LEGO: llega un coche, se abre la puerta, gira el rodillo y suena un aviso.",
-        "locucion": "Un túnel de lavado trabaja por fases: esperar al coche, abrir la puerta, lavar y despedir. Cada fase empieza cuando termina la anterior."
-      },
-      {
-        "plano": "Diagrama con cuatro cajas unidas por flechas: esperando, abriendo, lavando, despidiendo.",
-        "locucion": "A cada fase la llamamos estado. La máquina está siempre en un estado, y solo en uno. Guardamos su nombre en una variable para saber en todo momento qué está haciendo."
-      },
-      {
-        "plano": "Captura de la app: un programa principal con tres «Enviar mensaje y esperar» seguidos, y tres pilas que los reciben.",
-        "locucion": "«Enviar mensaje y esperar» pone en marcha otra pila y se queda esperando hasta que termina. Así cada fase es una pila con su nombre, y el programa principal las llama en orden."
-      },
-      {
-        "plano": "Alguien acerca una tarjeta roja al sensor de color; cambia el valor de la variable «programa».",
-        "locucion": "Antes de entrar, el conductor elige programa con una tarjeta. El bloque «Cuando el color es» guarda la elección en una variable."
-      },
-      {
-        "plano": "Captura de la fase de lavado con un «Si… entonces… Si no» que mira la variable «programa».",
-        "locucion": "Dentro de la fase de lavado, un «Si… entonces… Si no» mira la variable y lava más o menos tiempo."
-      },
-      {
-        "plano": "El túnel atiende a dos coches seguidos con programas distintos.",
-        "locucion": "Tu reto: un túnel de lavado completo, con fases, programas y aviso final."
-      }
-    ]
+    }
   },
   "bloques": [
     {
-      "texto": "Enviar mensaje y esperar",
-      "explicacion": "Pone en marcha las pilas que reciben ese mensaje y espera a que terminen antes de seguir."
-    },
-    {
-      "texto": "Cuando se reciba el mensaje",
-      "explicacion": "Bloque de inicio de cada fase: abrir, lavar y despedir."
-    },
-    {
       "texto": "Fijar variable a",
-      "explicacion": "Guarda el estado actual y el programa de lavado elegido."
+      "explicacion": "Aquí es el bloque que cambia de fase. Una sola variable manda, y cambiarla es la forma de que todas las pilas se enteren a la vez."
+    },
+    {
+      "texto": "Repetir bucle hasta",
+      "explicacion": "Repite mientras no se cumpla lo que le digas. Con la fase dentro de la condición, el bucle dura exactamente lo que dura el estado."
     },
     {
       "texto": "Si... entonces... Si no...",
-      "explicacion": "Elige la duración del lavado según el programa."
+      "explicacion": "En una pila de estados, lo primero que hace cada pila es mirar la fase y decidir si le toca."
     },
     {
-      "texto": "Esperar hasta que",
-      "explicacion": "Mantiene la máquina en espera hasta que llega un coche."
-    },
-    {
-      "texto": "Cuando el color es",
-      "explicacion": "Bloque de inicio: guarda el programa elegido al mostrar una tarjeta de color."
+      "texto": "encender dibujo",
+      "explicacion": "Deja el dibujo encendido sin esperar. Un dibujo por fase es la forma más rápida de ver en qué estado anda el robot."
     }
   ],
+  "programa": {
+    "titulo": "El robot por fases",
+    "explicacion": "La fase 0 espera el mando, la 1 trabaja y la 2 termina. El conductor solo se mueve en la fase 1, el guardia cambia a la 2 y la pantalla enseña en cuál está.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "35"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "fase · 0"
+        ]
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 1,
+        "valores": [
+          "fase = 1"
+        ]
+      },
+      {
+        "texto": "empezar a mover a ↑",
+        "nivel": 2,
+        "valores": [
+          "↑"
+        ]
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 2
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces...",
+        "nivel": 1,
+        "valores": [
+          "¿Está presionado? F"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 2,
+        "valores": [
+          "fase · 1"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 2,
+        "valores": [
+          "Presión F < 10"
+        ]
+      },
+      {
+        "texto": "Cuando está más próximo a",
+        "nivel": 0,
+        "valores": [
+          "15 cm"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "fase · 2"
+        ]
+      },
+      {
+        "texto": "A ir durante 1 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "C",
+          "↻",
+          "0.3",
+          "rotaciones"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 1,
+        "valores": [
+          "fase = 1"
+        ]
+      },
+      {
+        "texto": "encender dibujo",
+        "nivel": 2,
+        "valores": [
+          "flecha arriba"
+        ]
+      },
+      {
+        "texto": "encender dibujo",
+        "nivel": 2,
+        "valores": [
+          "cuadrado"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Avisa y espera",
-      "enunciado": "Envía un mensaje y espera a que termine antes de seguir con el programa.",
-      "pista": "«Enviar mensaje y esperar» no sigue hasta que la otra pila acaba.",
+      "titulo": "La fase en la pantalla",
+      "enunciado": "Pon la fase a 0 y haz dos pilas: en una, repite sin parar enseñar la flecha si la fase es 1 y el cuadrado si no; en la otra, espera a que se apriete el sensor de fuerza y pon la fase a 1.",
+      "pista": "La pantalla no decide nada: solo enseña lo que vale la variable.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Enviar mensaje y esperar",
-          "nivel": 0,
-          "valor": "abrir puerta"
-        },
-        {
-          "texto": "encender dibujo durante 2 segundos",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "corazón",
-            "1"
+            "fase · 0"
           ]
         },
         {
-          "texto": "Cuando se reciba el mensaje",
-          "nivel": 0,
-          "valor": "abrir puerta"
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "fase = 1"
+          ]
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 2,
+          "valores": [
+            "flecha arriba"
+          ]
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 2,
+          "valores": [
+            "cuadrado"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "90"
+            "Presión F > 30"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 1"
           ]
         }
       ],
-      "notas": "«Enviar mensaje y esperar» no sigue hasta que la otra pila termina: por eso el dibujo aparece con la puerta ya abierta.",
+      "notas": "El dibujo cambia al pulsar. Es la demostración más clara de que una variable la ven todas las pilas.",
       "pasos": [
         {
-          "texto": "Envía un mensaje"
-        },
-        {
-          "texto": "Espera a que termine antes de seguir con el programa"
+          "texto": "Pon la fase a 0 y haz dos pilas",
+          "hijos": [
+            "En una, repite sin parar enseñar la flecha si la fase es 1 y el cuadrado si no",
+            "En la otra, espera a que se apriete el sensor de fuerza y pon la fase a 1"
+          ]
         }
       ]
     },
     {
       "practica": 2,
-      "titulo": "Detecta el coche",
-      "enunciado": "Cuando el sensor vea el coche, envía el mensaje «abrir puerta».",
-      "pista": "La otra pila se encarga de mover el motor.",
+      "titulo": "El conductor que obedece a la fase",
+      "enunciado": "Añade una pila que repita sin parar comprobar la fase: si vale 1, arranca el movimiento; si no, para el movimiento.",
+      "pista": "El conductor no decide: mira la fase y obedece.",
       "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "fase = 1"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
@@ -124,549 +315,611 @@
         {
           "texto": "Esperar hasta que",
           "nivel": 0,
-          "valor": "¿Está más próximo a 10 cm? E"
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "nivel": 0,
-          "valor": "abrir puerta"
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "nivel": 0,
-          "valor": "abrir puerta"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "90"
+            "Presión F > 30"
           ]
         },
         {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "3"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "0"
+            "fase · 1"
           ]
         }
       ],
-      "notas": "La pila de arriba vigila y avisa; la de abajo solo sabe mover el motor. Cada una hace una cosa.",
+      "notas": "Ahora sí se queda parado: nadie manda avanzar mientras la fase no sea la suya.",
       "pasos": [
         {
-          "texto": "Cuando el sensor vea el coche"
-        },
-        {
-          "texto": "Envía el mensaje «abrir puerta»"
+          "texto": "Añade una pila que repita sin parar comprobar la fase",
+          "hijos": [
+            "Si vale 1, arranca el movimiento",
+            "Si no, para el movimiento"
+          ]
         }
       ]
     },
     {
       "practica": 3,
-      "titulo": "Elige el programa",
-      "enunciado": "Guarda en una variable el programa de lavado elegido y escríbelo en la matriz.",
-      "pista": "Puedes elegirlo con el color de una tarjeta.",
-      "solucion": [
-        {
-          "texto": "Cuando el color es",
-          "nivel": 0,
-          "valor": "azul · D"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "programa · 1"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "programa"
-          ]
-        },
-        {
-          "texto": "Cuando el color es",
-          "nivel": 0,
-          "valor": "rojo · D"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "programa · 2"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 0,
-          "valores": [
-            "programa"
-          ]
-        }
-      ],
-      "notas": "El color de la tarjeta elige el programa y la variable lo recuerda durante todo el lavado."
-    },
-    {
-      "practica": 4,
-      "titulo": "Túnel de lavado",
-      "enunciado": "Encadena las fases con mensajes: detectar, abrir, lavar según el programa y cerrar.",
-      "pista": "Cada fase, su propia pila: así se lee mucho mejor.",
+      "titulo": "El guardia que cambia de fase",
+      "enunciado": "Añade una pila con el sombrero de proximidad. Haz que, al ver algo a menos de 15 centímetros, ponga la fase a 2 en lugar de parar los motores.",
+      "pista": "El guardia no toca los motores: cambia la fase y el conductor se para solo.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
           "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "programa · 1"
+          "valores": [
+            "fase · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "fase = 1"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
         },
         {
           "texto": "Esperar hasta que",
           "nivel": 0,
-          "valor": "¿Está más próximo a 10 cm? E"
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "nivel": 0,
-          "valor": "abrir"
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "nivel": 0,
-          "valor": "lavar"
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "nivel": 0,
-          "valor": "cerrar"
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "nivel": 0,
-          "valor": "abrir"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
-          "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "90"
+            "Presión F > 30"
           ]
         },
         {
-          "texto": "Cuando se reciba el mensaje",
+          "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "lavar"
-        },
-        {
-          "texto": "Si... entonces... Si no...",
-          "nivel": 0,
-          "valor": "programa = 1"
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
-          "nivel": 1,
           "valores": [
-            "A",
-            "↻",
-            "5",
-            "segundos"
+            "fase · 1"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
-          "nivel": 1,
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
           "valores": [
-            "A",
-            "↻",
-            "10",
-            "segundos"
+            "15 cm"
           ]
         },
         {
-          "texto": "Cuando se reciba el mensaje",
-          "nivel": 0,
-          "valor": "cerrar"
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "0"
+            "fase · 2"
           ]
         }
       ],
-      "notas": "Cada fase, su propia pila. El programa principal solo encadena mensajes: se lee como una lista de pasos."
+      "notas": "Aquí se cierra el problema que quedó abierto en la unidad 4. Vale la pena decirlo en voz alta.",
+      "pasos": [
+        {
+          "texto": "Añade una pila con el sombrero de proximidad"
+        },
+        {
+          "texto": "Haz que, al ver algo a menos de 15 centímetros, ponga la fase a 2 en lugar de parar los motores"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "Un bucle que dura una fase",
+      "enunciado": "Haz una pila que, mientras la fase valga 1, repita dos cosas: toca una nota; espera un segundo. Escribe FIN al terminar.",
+      "pista": "Con repetir hasta, el bucle acaba justo cuando la fase deja de ser 1.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 0,
+          "valores": [
+            "fase = 1"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "no fase = 1"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 1,
+          "valores": [
+            "60 · 0.2"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "FIN"
+          ]
+        }
+      ],
+      "notas": "Un bucle que dura exactamente lo que dura el estado. Es la forma limpia de encadenar fases.",
+      "pasos": [
+        {
+          "texto": "Haz una pila que, mientras la fase valga 1, repita dos cosas",
+          "hijos": [
+            "Toca una nota",
+            "Espera un segundo"
+          ]
+        },
+        {
+          "texto": "Escribe FIN al terminar"
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor grande, un motor mediano, el sensor de distancia, el sensor de color, vigas para el pórtico y un coche de juguete.",
+    "piezas": "La base de conducción, el motor grande, el sensor de distancia, el sensor de fuerza, dos marcos Technic, cuatro vigas de 11, dos vigas de 7, un eje de 7 y catorce pasadores.",
     "pasos": [
       {
-        "titulo": "El túnel",
-        "texto": "Monta un pórtico por el que quepa el coche con holgura."
+        "titulo": "La base",
+        "texto": "Base de conducción de dos motores medianos en A y B, con el Hub centrado y la pantalla despejada: va a enseñar la fase todo el rato."
       },
       {
-        "titulo": "La puerta",
-        "texto": "Fija el motor mediano en la entrada con una barrera en su eje. En la posición 0 debe quedar cerrada."
+        "titulo": "La barrera",
+        "texto": "Monta el motor grande en el puerto C sobre los dos marcos Technic, con el eje de 7 atravesado y las dos vigas de 11 haciendo de barrera que sube y baja."
       },
       {
-        "titulo": "El rodillo",
-        "texto": "Coloca el motor grande sobre el pórtico, con un rodillo o unas tiras que giren por encima del coche."
+        "titulo": "El tope de la barrera",
+        "texto": "Pon un tope con las dos vigas de 7 para que la barrera no pase de la horizontal. Un motor grande empujando contra nada se calienta y descoloca la fase."
       },
       {
-        "titulo": "El detector de coches",
-        "texto": "Fija el sensor de distancia en la entrada, mirando a través del paso."
+        "titulo": "El sensor de distancia",
+        "texto": "Coloca el sensor de distancia en el puerto E por delante, a la altura del obstáculo que marque el final del recorrido."
       },
       {
-        "titulo": "El lector de tarjetas",
-        "texto": "Coloca el sensor de color junto a la entrada, a la altura a la que se acerca la tarjeta."
+        "titulo": "El mando",
+        "texto": "Fija el sensor de fuerza en el puerto F encima del Hub, bien sujeto. Es el que saca al robot de la fase de espera."
       },
       {
-        "titulo": "Los cables y la prueba",
-        "texto": "Motor grande al puerto A, motor mediano al B, sensor de color al D y sensor de distancia al E. Pasa el coche con la mano: nada debe rozarlo."
+        "titulo": "La comprobación de fases",
+        "texto": "Antes de montar la pista, enciende el programa y pulsa el mando con el robot en la mano: la pantalla tiene que cambiar de dibujo. Si no cambia, la fase no se está escribiendo."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
-      },
-      {
-        "pieza": "motor-grande",
-        "cantidad": 1
-      },
-      {
-        "pieza": "motor",
-        "cantidad": 1
+        "pieza": "motor-grande"
       },
       {
         "pieza": "distancia"
       },
       {
-        "pieza": "color"
+        "pieza": "fuerza"
       },
       {
-        "pieza": "viga"
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 6
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 1
+      },
+      {
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué es un estado en una máquina de estados?",
+      "pregunta": "¿Qué problema resuelven los estados?",
       "opciones": [
-        "Un tipo de motor",
-        "Cada una de las fases en las que puede estar la máquina",
-        "El nivel de batería",
-        "Un mensaje de error"
-      ],
-      "correcta": 1,
-      "explicacion": "Esperando, abriendo, lavando y despidiendo son los estados del túnel."
-    },
-    {
-      "pregunta": "¿En cuántos estados puede estar la máquina a la vez?",
-      "opciones": [
-        "En todos",
-        "En dos",
-        "En ninguno",
-        "En uno solo"
-      ],
-      "correcta": 3,
-      "explicacion": "Esa es la idea central: en cada momento, un único estado."
-    },
-    {
-      "pregunta": "¿En qué se diferencia «Enviar mensaje y esperar» de «Enviar mensaje»?",
-      "opciones": [
-        "Espera a que terminen las pilas que reciben el mensaje antes de seguir",
-        "Envía el mensaje dos veces",
-        "Solo funciona con sensores",
-        "No hay diferencia"
+        "Que una pila pare el robot y otra lo vuelva a arrancar sin enterarse",
+        "Que el motor se caliente",
+        "Que falten variables",
+        "Que el sensor mida mal"
       ],
       "correcta": 0,
-      "explicacion": "Con «Enviar mensaje» a secas, el programa sigue adelante sin esperar."
+      "explicacion": "Parar los motores no apaga a quien manda moverse. Cambiar la fase sí lo frena."
     },
     {
-      "pregunta": "¿Por qué usamos aquí la versión «y esperar»?",
+      "pregunta": "En un programa por estados, ¿qué hace el guardia al detectar el obstáculo?",
       "opciones": [
-        "Porque es más corta",
-        "Porque gasta menos batería",
-        "Para que una fase no empiece hasta que acabe la anterior",
-        "Porque la otra no existe"
-      ],
-      "correcta": 2,
-      "explicacion": "Sin esperar, las tres fases arrancarían casi a la vez."
-    },
-    {
-      "pregunta": "¿Para qué guardamos el estado en una variable?",
-      "opciones": [
-        "Para que el motor gire más rápido",
-        "No sirve para nada",
-        "Para borrar la lista",
-        "Para saber qué está haciendo la máquina y poder mostrarlo o decidir con ello"
-      ],
-      "correcta": 3,
-      "explicacion": "Es la memoria de la máquina: en qué fase se encuentra."
-    },
-    {
-      "pregunta": "El lavado dura 10 segundos si programa es «intenso» y 5 si no. Nadie ha mostrado tarjeta y programa vale «normal». ¿Cuánto dura?",
-      "opciones": [
-        "5 segundos",
-        "10 segundos",
-        "15 segundos",
-        "No lava"
-      ],
-      "correcta": 0,
-      "explicacion": "La condición es falsa, así que se ejecuta el «Si no»."
-    },
-    {
-      "pregunta": "¿Qué bloque inicia la pila que guarda el programa cuando se muestra una tarjeta roja?",
-      "opciones": [
-        "Esperar hasta que",
-        "Cuando el color es",
-        "Enviar mensaje y esperar",
-        "Si... entonces... Si no..."
+        "Para los motores",
+        "Cambia la variable de fase",
+        "Manda un mensaje al motor",
+        "Reinicia el programa"
       ],
       "correcta": 1,
-      "explicacion": "Es un bloque de inicio que reacciona al sensor de color."
+      "explicacion": "Cada pila toca lo suyo: el guardia la fase, el conductor los motores."
     },
     {
-      "pregunta": "¿Qué ventaja tiene que cada fase sea una pila aparte?",
+      "pregunta": "¿Cuántas variables de fase lleva un programa por estados?",
       "opciones": [
-        "El programa ocupa menos memoria",
-        "Los motores tienen más fuerza",
-        "Se puede probar y cambiar cada fase por separado",
-        "No tiene ninguna"
+        "Ninguna",
+        "Una por pila",
+        "Una sola para todo el programa",
+        "Una por sensor"
       ],
       "correcta": 2,
-      "explicacion": "Si falla el lavado, se revisa solo la pila del lavado."
+      "explicacion": "Si hubiera varias, volverían las peleas. La gracia es que mande una."
+    },
+    {
+      "pregunta": "¿Para qué sirve enseñar un dibujo distinto en cada fase?",
+      "opciones": [
+        "Para avisar al profesor",
+        "Para gastar batería",
+        "Para que quede bonito",
+        "Para ver desde fuera en qué estado está el robot y poder depurarlo"
+      ],
+      "correcta": 3,
+      "explicacion": "Sin eso, depurar un programa de cuatro pilas es adivinar."
+    },
+    {
+      "pregunta": "«Repetir bucle hasta que la fase deje de ser 1» sirve para:",
+      "opciones": [
+        "Que el bucle dure exactamente lo que dura ese estado",
+        "Cambiar de fase",
+        "Parar los motores",
+        "Repetir siempre"
+      ],
+      "correcta": 0,
+      "explicacion": "Al cambiar la fase, el bucle termina solo y la pila sigue con lo siguiente."
+    },
+    {
+      "pregunta": "El conductor comprueba la fase antes de mover. Si no es la suya, ¿qué hace?",
+      "opciones": [
+        "Se apaga",
+        "Para el movimiento y vuelve a comprobar",
+        "Cambia la fase",
+        "Manda un mensaje"
+      ],
+      "correcta": 1,
+      "explicacion": "Sigue vivo y vigilando, pero sin mover nada hasta que vuelva a tocarle."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre un estado y un mensaje?",
+      "opciones": [
+        "El mensaje necesita sensores",
+        "Ninguna",
+        "El mensaje avisa una vez; el estado se queda puesto y se puede consultar",
+        "El estado es más rápido"
+      ],
+      "correcta": 2,
+      "explicacion": "Por eso se usan juntos: el mensaje da el aviso y el estado guarda en qué punto está todo."
+    },
+    {
+      "pregunta": "¿Por qué se espera a que el sensor de fuerza se suelte después de cambiar de fase?",
+      "opciones": [
+        "Para reiniciar el cronómetro",
+        "Para bajar la barrera",
+        "Para que el motor arranque",
+        "Para no cambiar de fase muchas veces mientras se sigue apretando"
+      ],
+      "correcta": 3,
+      "explicacion": "Es el mismo cuidado de los contadores: una pulsación, un cambio."
     }
   ],
   "practicas": [
     {
-      "titulo": "Tres fases en orden",
-      "enunciado": "El túnel espera a que llegue un coche (a menos de 10 cm). Entonces ejecuta tres fases, cada una en su pila: abrir la puerta, lavar 5 segundos y despedir (cerrar la puerta y sonar un aviso). Guarda el estado en una variable.",
+      "titulo": "El robot por fases",
+      "enunciado": "Pon la fase a 0 y haz tres pilas. La primera repite sin parar arrancar el movimiento si la fase es 1 y pararlo si no. La segunda repite sin parar comprobar el sensor de fuerza, poner la fase a 1 y esperar a que se suelte. La tercera, al ver algo a menos de 15 centímetros, pone la fase a 2 y baja la barrera con el motor C.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
-          "valor": "estado · esperando",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está más próximo a 10 cm? E",
-          "nivel": 0
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "valor": "abrir",
-          "nivel": 0
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "valor": "lavar",
-          "nivel": 0
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "valor": "despedir",
-          "nivel": 0
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "valor": "abrir",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "estado · abriendo",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "90"
+            "A+B"
           ]
         },
         {
-          "texto": "Cuando se reciba el mensaje",
-          "valor": "lavar",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "estado · lavando",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
+          "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "A",
-            "↻",
-            "5",
-            "segundos"
+            "35"
           ]
         },
         {
-          "texto": "Cuando se reciba el mensaje",
-          "valor": "despedir",
-          "nivel": 0
-        },
-        {
           "texto": "Fijar variable a",
-          "valor": "estado · despidiendo",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir por la ruta más corta a la posición 0",
           "nivel": 0,
           "valores": [
-            "B",
-            "por la ruta más corta",
-            "0"
+            "fase · 0"
           ]
         },
         {
-          "texto": "Tocar sonido hasta acabar",
-          "valor": "sonido de fin",
-          "nivel": 0
-        }
-      ],
-      "notas": "Son cuatro pilas. Si usan «Enviar mensaje» sin esperar, las fases se pisan: es el error que hay que detectar.",
-      "pasos": [
-        {
-          "texto": "El túnel espera a que llegue un coche (a menos de 10 cm)"
-        },
-        {
-          "texto": "Entonces ejecuta tres fases, cada una en su pila: abrir la puerta, lavar 5 segundos y despedir (cerrar la puerta y sonar un aviso)"
-        },
-        {
-          "texto": "Guarda el estado en una variable"
-        }
-      ]
-    },
-    {
-      "titulo": "Programa elegido con tarjeta",
-      "enunciado": "Añade dos programas de lavado. Por defecto es «normal» (5 segundos). Si se muestra una tarjeta roja, pasa a «intenso» (10 segundos). Cambia solo la pila de lavado y añade la pila que lee la tarjeta.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "programa · normal",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "estado · esperando",
-          "nivel": 0
-        },
-        {
-          "texto": "Esperar hasta que",
-          "valor": "¿Está más próximo a 10 cm? E",
-          "nivel": 0
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "valor": "abrir",
-          "nivel": 0
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "valor": "lavar",
-          "nivel": 0
-        },
-        {
-          "texto": "Enviar mensaje y esperar",
-          "valor": "despedir",
-          "nivel": 0
-        },
-        {
-          "texto": "Cuando el color es",
-          "valor": "rojo · D",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "programa · intenso",
-          "nivel": 0
-        },
-        {
-          "texto": "Cuando se reciba el mensaje",
-          "valor": "lavar",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "estado · lavando",
+          "texto": "Bucle infinito",
           "nivel": 0
         },
         {
           "texto": "Si... entonces... Si no...",
-          "valor": "programa = intenso",
-          "nivel": 0
-        },
-        {
-          "texto": "A ir durante 1 rotaciones",
           "nivel": 1,
           "valores": [
-            "A",
-            "↻",
-            "10",
-            "segundos"
+            "fase = 1"
           ]
         },
         {
-          "texto": "Si no",
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "A ir durante 1 rotaciones",
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
           "nivel": 1,
           "valores": [
-            "A",
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "fase · 1"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 2,
+          "valores": [
+            "Presión F < 10"
+          ]
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valores": [
+            "15 cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 2"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "C",
             "↻",
-            "5",
-            "segundos"
+            "0.3",
+            "rotaciones"
           ]
         }
       ],
-      "notas": "Las pilas «abrir» y «despedir» son las de la práctica 1 y no cambian. Valora que la decisión esté dentro de la fase de lavado y no en el programa principal.",
+      "notas": "Tres pilas y una sola variable mandando. Ninguna pila toca los motores de otra: esa es la corrección de fondo.",
       "pasos": [
         {
-          "texto": "Añade dos programas de lavado"
+          "texto": "Pon la fase a 0"
         },
         {
-          "texto": "Por defecto es «normal» (5 segundos)"
+          "texto": "Haz tres pilas"
         },
         {
-          "texto": "Si se muestra una tarjeta roja, pasa a «intenso» (10 segundos)"
+          "texto": "La primera repite sin parar arrancar el movimiento si la fase es 1 y pararlo si no"
         },
         {
-          "texto": "Cambia solo la pila de lavado y añade la pila que lee la tarjeta"
+          "texto": "La segunda repite sin parar comprobar el sensor de fuerza, poner la fase a 1 y esperar a que se suelte"
+        },
+        {
+          "texto": "La tercera, al ver algo a menos de 15 centímetros, pone la fase a 2 y baja la barrera con el motor C"
+        }
+      ]
+    },
+    {
+      "titulo": "El panel de fases",
+      "enunciado": "Añade una cuarta pila que repita sin parar enseñar un dibujo según la fase: la flecha arriba si vale 1, la cruz si vale 2 y el cuadrado si no. Añade además que al entrar en la fase 2 se toque una nota y aparezca el texto FIN.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "fase = 1"
+          ]
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 2,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "fase · 1"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 2,
+          "valores": [
+            "Presión F < 10"
+          ]
+        },
+        {
+          "texto": "Cuando está más próximo a",
+          "nivel": 0,
+          "valores": [
+            "15 cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 2"
+          ]
+        },
+        {
+          "texto": "A ir durante 1 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "C",
+            "↻",
+            "0.3",
+            "rotaciones"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "48 · 0.4"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "FIN"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "fase = 1"
+          ]
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 2,
+          "valores": [
+            "flecha arriba"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 2,
+          "valores": [
+            "fase = 2"
+          ]
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 3,
+          "valores": [
+            "cruz"
+          ]
+        },
+        {
+          "texto": "encender dibujo",
+          "nivel": 3,
+          "valores": [
+            "cuadrado"
+          ]
+        }
+      ],
+      "notas": "Cuatro pilas. El panel es puro apoyo visual, pero es lo que les permite depurar solos el resto del curso.",
+      "pasos": [
+        {
+          "texto": "Añade una cuarta pila que repita sin parar enseñar un dibujo según la fase: la flecha arriba si vale 1, la cruz si vale 2 y el cuadrado si no"
+        },
+        {
+          "texto": "Añade además que al entrar en la fase 2 se toque una nota y aparezca el texto FIN"
         }
       ]
     }

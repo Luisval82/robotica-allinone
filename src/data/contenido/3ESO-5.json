@@ -1,70 +1,164 @@
 {
   "curso": "3ESO",
   "unidad": 5,
-  "reto": "Programa un control de crucero adaptativo: tu vehículo mantiene 15 cm con el de delante, acelere o frene.",
+  "reto": "Fabrica un bloque que lea la línea y deje escrito en una variable qué hay que hacer, y otro que lo haga.",
   "video": {
-    "titulo": "Control con realimentación",
-    "duracion": "5 min",
+    "titulo": "Un bloque que contesta",
+    "duracion": "6 min",
+    "escenas": [
+      {
+        "plano": "Un bucle de seguidor de línea con tres condiciones anidadas, difícil de seguir.",
+        "locucion": "Un seguidor de línea decente tiene dentro varias comprobaciones. Metidas todas en el bucle, el programa se convierte en una escalera de condiciones donde no se distingue qué es mirar y qué es moverse."
+      },
+      {
+        "plano": "Dos bloques propios nuevos: «mirar la línea» y «mover según», uno encima del otro.",
+        "locucion": "Vamos a separar las dos cosas. Un bloque que mira y decide. Otro que mueve. Y el bucle principal queda en dos líneas: mira, y haz lo que diga."
+      },
+      {
+        "plano": "La variable «decision» recibiendo el valor dentro del bloque que mira.",
+        "locucion": "Aquí aparece un detalle importante. En bloques de palabras, un bloque propio no devuelve nada. Así que lo que decide lo deja escrito en una variable, y el que viene detrás la lee."
+      },
+      {
+        "plano": "Los operadores lógicos combinando dos lecturas en una condición.",
+        "locucion": "Y dentro del bloque que mira se puede exigir más de una cosa a la vez: que esté sobre la línea Y que no haya nada delante. Dos condiciones unidas con la y."
+      },
+      {
+        "plano": "El mismo bloque «mirar la línea» usándose en tres programas distintos.",
+        "locucion": "Una vez hecho, ese bloque vale para el seguidor, para el contador de cruces y para lo que venga. Es una herramienta, no un trozo de un programa."
+      },
+      {
+        "plano": "El bucle principal, de dos líneas, al lado de la escalera de condiciones del principio.",
+        "locucion": "Compara los dos. El robot hace lo mismo. Tú entiendes uno de un vistazo y el otro no."
+      }
+    ],
+    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
     "enlaceOficial": {
       "titulo": "LEGO Education: «Safe Delivery» (control con realimentación)",
       "url": "https://education.lego.com/en-us/lessons/spike-python-u3-sensor-control/spike-python-u3l4-safe-delivery/"
-    },
-    "url": "https://legoeducation.23video.com/v.ihtml/player.html?token=eda2ad810323412603b8cce60fac56bb&source=embed&photo_id=59327963&autoPlay=0&autoMute=0&hideBigPlay=1&showDescriptions=0",
-    "escenas": [
-      {
-        "plano": "Dos vehículos en fila; el de detrás acelera y frena para mantener la distancia con el primero.",
-        "locucion": "El control de crucero adaptativo de un coche mantiene la distancia con el de delante: si se aleja, acelera; si se acerca, frena; y si está demasiado cerca, retrocede."
-      },
-      {
-        "plano": "Diagrama circular: medir, comparar, actuar y vuelta a medir.",
-        "locucion": "Esto es un control con realimentación: medir, comparar con lo que queremos, actuar y volver a medir. Sin parar."
-      },
-      {
-        "plano": "Recta numérica con el objetivo en 15 cm y dos ejemplos de lectura.",
-        "locucion": "El error es la distancia medida menos la distancia deseada. A 25 centímetros el error es 10: estamos lejos. A 10 centímetros el error es −5: demasiado cerca."
-      },
-      {
-        "plano": "Captura de la app: «Empezar a mover a velocidad» con una variable dentro.",
-        "locucion": "La velocidad es el error multiplicado por una ganancia. Con error positivo avanza, con error negativo retrocede y con error cero se queda quieto. «Empezar a mover a velocidad» acepta ese número directamente."
-      },
-      {
-        "plano": "El vehículo con ganancia baja reacciona tarde; con ganancia alta va y viene sin parar.",
-        "locucion": "Como en el seguidor de línea: con poca ganancia el vehículo reacciona tarde; con demasiada, va y viene sin llegar a detenerse."
-      },
-      {
-        "plano": "El vehículo sigue a una caja que alguien mueve con la mano, siempre a la misma distancia.",
-        "locucion": "Tu reto: un vehículo que mantiene 15 centímetros con lo que tenga delante, se mueva como se mueva."
-      }
-    ]
+    }
   },
   "bloques": [
     {
-      "texto": "Distancia",
-      "explicacion": "Bloque de dato: los centímetros hasta el vehículo de delante."
+      "texto": "Mis bloques: Crear un bloque con entradas",
+      "explicacion": "Aquí se usa para encerrar una LECTURA, no una maniobra. El bloque mira, decide y deja la respuesta en una variable."
     },
     {
-      "texto": "Fijar variable a",
-      "explicacion": "Guarda el error y la velocidad en cada vuelta del bucle."
+      "texto": "Si... entonces... Si no...",
+      "explicacion": "Dos caminos según se cumpla algo o no. Dentro de un bloque que decide es el cuerpo del asunto."
     },
     {
-      "texto": "Operadores aritméticos (+, −, ×, ÷)",
-      "explicacion": "La resta calcula el error; la multiplicación, la velocidad."
+      "texto": "Operadores lógicos (y, o, no)",
+      "explicacion": "Unen dos condiciones en una. Con «y» tienen que cumplirse las dos; con «o», basta una; «no» le da la vuelta."
     },
     {
-      "texto": "Empezar a mover a velocidad...",
-      "explicacion": "Pone el vehículo en marcha a la velocidad indicada. Con un valor negativo, retrocede."
-    },
-    {
-      "texto": "Bucle infinito",
-      "explicacion": "Repite medir, calcular y actuar sin parar."
+      "texto": "Luz reflejada",
+      "explicacion": "Cuánta luz devuelve el suelo, de 0 a 100. El negro devuelve poco y el blanco mucho, y el número de en medio es el que marca el borde de la línea."
     }
   ],
+  "programa": {
+    "titulo": "El seguidor con bloques que deciden",
+    "explicacion": "Un bloque mira la línea y escribe la decisión en una variable. Otro mueve según esa variable. El bucle principal solo los llama.",
+    "bloques": [
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "mirar (umbral)"
+        ]
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 1,
+        "valores": [
+          "Luz reflejada D < umbral"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 2,
+        "valores": [
+          "decision · 1"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 2,
+        "valores": [
+          "decision · 2"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "mover segun"
+        ]
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 1,
+        "valores": [
+          "decision = 1"
+        ]
+      },
+      {
+        "texto": "empezar a mover derecha: 30",
+        "nivel": 2,
+        "valores": [
+          "derecha: 30"
+        ]
+      },
+      {
+        "texto": "empezar a mover derecha: 30",
+        "nivel": 2,
+        "valores": [
+          "izquierda: 30"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "25"
+        ]
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "mirar (45)"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "mover segun"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Distancia al de delante",
-      "enunciado": "Escribe en la matriz la distancia al coche de delante mientras lo acercas y lo alejas.",
-      "pista": "Apunta a qué distancia quieres que se mantenga.",
+      "titulo": "Leer los dos extremos",
+      "enunciado": "Pon un bucle infinito que escriba en la pantalla la luz reflejada del sensor de color. Pasa el robot del negro al blanco y anota los dos números.",
+      "pista": "El umbral que usarás después es el punto medio entre los dos números que anotes.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -78,23 +172,57 @@
           "texto": "escribir Hello",
           "nivel": 1,
           "valores": [
-            "Distancia"
+            "Luz reflejada D"
           ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "0.2"
         }
       ],
-      "notas": "Acerca y aleja el coche de delante con la mano y decide a qué distancia quieres que se mantenga el tuyo."
+      "notas": "Sin estos dos números, el umbral es una suposición. Merece la pena que lo anoten en el cuaderno.",
+      "pasos": [
+        {
+          "texto": "Pon un bucle infinito que escriba en la pantalla la luz reflejada del sensor de color"
+        },
+        {
+          "texto": "Pasa el robot del negro al blanco"
+        },
+        {
+          "texto": "Anota los dos números"
+        }
+      ]
     },
     {
       "practica": 2,
-      "titulo": "El error de distancia",
-      "enunciado": "Guarda en una variable la diferencia entre la distancia medida y los 15 cm deseados.",
-      "pista": "Error positivo: está lejos. Negativo: demasiado cerca.",
+      "titulo": "El bloque que decide",
+      "enunciado": "Crea un bloque llamado mirar con un hueco de umbral que ponga la variable decision a 1 si la luz reflejada es menor que el umbral, y a 2 si no. Llámalo con 45 y escribe la decision en la pantalla.",
+      "pista": "El bloque no devuelve nada: deja la respuesta escrita en la variable.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "mirar (umbral)"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "Luz reflejada D < umbral"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "decision · 1"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "decision · 2"
+          ]
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
@@ -104,76 +232,149 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
+          "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
-          "valor": "error · Distancia − 15"
+          "valores": [
+            "mirar (45)"
+          ]
         },
         {
           "texto": "escribir Hello",
           "nivel": 1,
           "valores": [
-            "error"
+            "decision"
           ]
         }
       ],
-      "notas": "Error positivo: está lejos, hay que acelerar. Negativo: demasiado cerca, hay que frenar o retroceder."
+      "notas": "La idea de dejar la respuesta en una variable cuesta al principio. Verla cambiar en la pantalla al mover el robot a mano la aclara.",
+      "pasos": [
+        {
+          "texto": "Crea un bloque llamado mirar con un hueco de umbral que ponga la variable decision a 1 si la luz reflejada es menor que el umbral, y a 2 si no"
+        },
+        {
+          "texto": "Llámalo con 45"
+        },
+        {
+          "texto": "Escribe la decision en la pantalla"
+        }
+      ]
     },
     {
       "practica": 3,
-      "titulo": "Velocidad calculada",
-      "enunciado": "Convierte ese error en una velocidad multiplicándolo por un número.",
-      "pista": "Si está lejos acelera; si está cerca, la velocidad sale negativa y retrocede.",
+      "titulo": "Dos condiciones en el bloque",
+      "enunciado": "Cambia el bloque mirar para que decida en dos pasos: pon decision a 0 cuando haya algo a menos de 15 centímetros; mira la línea solo si el camino está libre.",
+      "pista": "Son dos condiciones unidas: que esté sobre la línea y que no haya nada delante.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "mirar (umbral)"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "Distancia E < 15"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "decision · 0"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 2,
+          "valores": [
+            "Luz reflejada D < umbral"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 3,
+          "valores": [
+            "decision · 1"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 3,
+          "valores": [
+            "decision · 2"
+          ]
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
           "valores": [
-            "A+B"
+            "mirar (45)"
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
+          "texto": "escribir Hello",
+          "nivel": 1,
           "valores": [
-            "17.5",
-            "cm"
+            "decision"
           ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "30"
-          ]
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "error · Distancia − 15"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 0,
-          "valor": "velocidad · error × 3"
-        },
-        {
-          "texto": "Empezar a mover a velocidad...",
-          "nivel": 0,
-          "valor": "velocidad"
         }
       ],
-      "notas": "Al multiplicar el error, la velocidad sale negativa cuando está demasiado cerca: el robot retrocede solo."
+      "notas": "Tres respuestas posibles: parar, torcer a un lado o al otro. El bloque sigue teniendo una sola salida, la variable.",
+      "pasos": [
+        {
+          "texto": "Cambia el bloque mirar para que decida en dos pasos",
+          "hijos": [
+            "Pon decision a 0 cuando haya algo a menos de 15 centímetros",
+            "Mira la línea solo si el camino está libre"
+          ]
+        }
+      ]
     },
     {
       "practica": 4,
-      "titulo": "Control de crucero",
-      "enunciado": "Mete el cálculo en un bucle infinito y comprueba que mantiene la distancia al moverse el de delante.",
-      "pista": "Ajusta el multiplicador hasta que no dé tirones.",
+      "titulo": "El bloque que mueve",
+      "enunciado": "Crea un bloque llamado mover segun que, si decision vale 1, tuerza hacia un lado, y si no, hacia el otro. Úsalo detrás de mirar dentro de un bucle infinito.",
+      "pista": "Este bloque no mira nada: solo obedece a la variable.",
       "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "mover segun"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "decision = 1"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: 30"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "izquierda: 30"
+          ]
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
@@ -186,18 +387,10 @@
           ]
         },
         {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
           "texto": "fijar velocidad de movimiento al 50 %",
           "nivel": 0,
           "valores": [
-            "30"
+            "25"
           ]
         },
         {
@@ -205,251 +398,431 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
+          "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
-          "valor": "error · Distancia − 15"
+          "valores": [
+            "mirar (45)"
+          ]
         },
         {
-          "texto": "Fijar variable a",
+          "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
-          "valor": "velocidad · error × 3"
-        },
-        {
-          "texto": "Empezar a mover a velocidad...",
-          "nivel": 1,
-          "valor": "velocidad"
+          "valores": [
+            "mover segun"
+          ]
         }
       ],
-      "notas": "Si da tirones, baja el multiplicador. Esto es un control proporcional, lo mismo que el seguidor de línea.",
+      "notas": "El bucle principal queda en dos líneas. Ese es el resultado que hay que enseñarles.",
       "pasos": [
         {
-          "texto": "Mete el cálculo en un bucle infinito"
+          "texto": "Crea un bloque llamado mover segun que, si decision vale 1, tuerza hacia un lado, y si no, hacia el otro"
         },
         {
-          "texto": "Comprueba que mantiene la distancia al moverse el de delante"
+          "texto": "Úsalo detrás de mirar dentro de un bucle infinito"
         }
       ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, el sensor de distancia y una caja que haga de vehículo de delante.",
+    "piezas": "La base de conducción, el sensor de color, el sensor de distancia, dos marcos Technic, cuatro vigas de 7, dos vigas de 11 y doce pasadores.",
     "pasos": [
       {
-        "titulo": "La base de conducción",
-        "texto": "Monta el chasis con un motor mediano a cada lado y un apoyo trasero."
+        "titulo": "La base corta",
+        "texto": "Monta la base de conducción lo más corta que puedas. Un robot largo se pasa de la línea en cada corrección y da bandazos."
+      },
+      {
+        "titulo": "El sensor adelantado",
+        "texto": "Saca el sensor de color por delante de las ruedas con las dos vigas de 7, en el puerto D. Cuanto más adelantado, antes ve el borde y más suave corrige."
+      },
+      {
+        "titulo": "La altura del sensor",
+        "texto": "Déjalo a un centímetro escaso del suelo y bien horizontal. Si se inclina, el número de luz reflejada cambia solo con el balanceo del robot."
       },
       {
         "titulo": "El sensor de distancia",
-        "texto": "Fija el sensor delante, mirando al frente, a la altura de la caja que vas a seguir."
+        "texto": "Monta el sensor de distancia en el puerto E por encima del de color, con las vigas de 11, mirando al frente. Avisa de lo que haya parado sobre la línea."
       },
       {
-        "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A, motor derecho al puerto B y sensor de distancia al puerto E."
+        "titulo": "El refuerzo",
+        "texto": "Cruza los dos marcos Technic bajo el chasis. Con el sensor por delante, cualquier flexión del chasis se nota en las lecturas."
       },
       {
-        "titulo": "El vehículo guía",
-        "texto": "Prepara una caja lisa y lo bastante alta para que el sensor la vea bien."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Con un programa que escriba la distancia en la matriz, acerca y aleja la caja: el valor debe cambiar sin saltos."
+        "titulo": "La línea y los números",
+        "texto": "Pega una línea negra ancha sobre fondo blanco. Antes de programar, escribe en la pantalla la luz reflejada y anota el número sobre negro y sobre blanco: el umbral es el punto medio de los dos."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
-      },
-      {
-        "pieza": "motor",
-        "cantidad": 2
-      },
-      {
-        "pieza": "rueda"
+        "pieza": "color"
       },
       {
         "pieza": "distancia"
+      },
+      {
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 6
+      },
+      {
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Qué es la realimentación?",
+      "pregunta": "En bloques de palabras, ¿puede un bloque propio devolver un valor?",
       "opciones": [
-        "Repetir un programa dos veces",
-        "Cargar la batería mientras el robot funciona",
-        "Medir el resultado y usarlo para corregir la acción",
-        "Usar dos sensores a la vez"
-      ],
-      "correcta": 2,
-      "explicacion": "El sistema se corrige continuamente con lo que mide."
-    },
-    {
-      "pregunta": "La distancia deseada es 15 cm y el sensor mide 25. ¿Cuánto vale el error?",
-      "opciones": [
-        "10",
-        "40",
-        "−10",
-        "15"
+        "No: deja la respuesta escrita en una variable",
+        "Sí, si tiene huecos",
+        "Solo si es de tipo pregunta",
+        "Sí, como en Python"
       ],
       "correcta": 0,
-      "explicacion": "Error es medida menos deseada: 25 menos 15."
+      "explicacion": "Por eso el bloque que decide escribe en una variable y el siguiente la lee."
     },
     {
-      "pregunta": "La distancia deseada es 15 cm y el sensor mide 10. ¿Cuánto vale el error?",
+      "pregunta": "¿Para qué sirve separar el bloque que mira del bloque que mueve?",
       "opciones": [
-        "5",
-        "25",
-        "10",
-        "−5"
-      ],
-      "correcta": 3,
-      "explicacion": "10 menos 15 es −5: el vehículo está demasiado cerca."
-    },
-    {
-      "pregunta": "Con error −5 y ganancia 4, ¿qué hace el vehículo?",
-      "opciones": [
-        "Avanza al 20 %",
-        "Retrocede al 20 %",
-        "Se queda quieto",
-        "Avanza al 100 %"
+        "Para que el robot vaya más rápido",
+        "Para que cada uno haga una cosa y el bucle principal se lea de un vistazo",
+        "Para usar menos variables",
+        "Para gastar menos batería"
       ],
       "correcta": 1,
-      "explicacion": "−5 por 4 es −20: velocidad negativa, marcha atrás."
+      "explicacion": "Mirar y moverse son dos trabajos distintos, y mezclados hacen una escalera ilegible."
     },
     {
-      "pregunta": "¿Qué hace el vehículo cuando el error es 0?",
+      "pregunta": "¿Cómo se elige el umbral del seguidor de línea?",
       "opciones": [
-        "Se queda quieto",
-        "Acelera",
-        "Retrocede",
-        "Gira"
-      ],
-      "correcta": 0,
-      "explicacion": "Cero por cualquier ganancia es velocidad cero."
-    },
-    {
-      "pregunta": "¿Qué ocurre con una ganancia demasiado alta?",
-      "opciones": [
-        "El vehículo reacciona tarde",
-        "El sensor deja de medir",
-        "El vehículo va y viene sin estabilizarse",
-        "No cambia nada"
+        "Es el que trae el bloque por defecto",
+        "Siempre 50",
+        "Midiendo la luz reflejada sobre negro y sobre blanco y cogiendo el punto medio",
+        "Con el sensor de distancia"
       ],
       "correcta": 2,
-      "explicacion": "Corrige de más, se pasa y vuelve a corregir en sentido contrario."
+      "explicacion": "Depende del papel, de la tinta y de la luz de la clase. Hay que medirlo cada vez."
     },
     {
-      "pregunta": "El vehículo de delante acelera y se aleja. ¿Qué pasa con el error y con la velocidad?",
+      "pregunta": "¿Qué hace el operador «y» en una condición?",
       "opciones": [
-        "Los dos disminuyen",
-        "El error aumenta y la velocidad disminuye",
-        "No cambian",
-        "Los dos aumentan"
+        "Le da la vuelta a la condición",
+        "Suma los dos números",
+        "Basta con que se cumpla una de las dos",
+        "Tienen que cumplirse las dos"
       ],
       "correcta": 3,
-      "explicacion": "Más distancia es más error, y más error es más velocidad."
+      "explicacion": "Con «o» bastaría una; «no» es el que da la vuelta."
     },
     {
-      "pregunta": "Con error 40 y ganancia 4 la velocidad calculada es 160. ¿Qué ocurre?",
+      "pregunta": "¿Por qué se adelanta el sensor de color por delante de las ruedas?",
       "opciones": [
-        "El vehículo va al 160 %",
-        "El motor no pasa del 100 %: va a su velocidad máxima",
-        "El programa se detiene",
-        "El vehículo retrocede"
+        "Para ver el borde antes y corregir más suave",
+        "Para que pese menos",
+        "Porque el cable no llega de otra forma",
+        "Para que no se raye"
+      ],
+      "correcta": 0,
+      "explicacion": "Cuanto antes ve el borde, menos brusca es la corrección."
+    },
+    {
+      "pregunta": "El bloque mirar da tres valores de decision: 0, 1 y 2. ¿Cuántas salidas tiene el bloque?",
+      "opciones": [
+        "Tres",
+        "Una: la variable, que puede valer tres cosas",
+        "Ninguna",
+        "Dos"
       ],
       "correcta": 1,
-      "explicacion": "Los motores tienen un límite; por encima de él, el control deja de ser proporcional."
+      "explicacion": "La salida es la variable. Lo que cambia es el valor que se le deja dentro."
+    },
+    {
+      "pregunta": "El robot da bandazos sobre la línea. ¿Qué es lo primero que revisas?",
+      "opciones": [
+        "El nombre del bloque propio",
+        "La batería",
+        "El umbral y lo adelantado que va el sensor",
+        "El sensor de distancia"
+      ],
+      "correcta": 2,
+      "explicacion": "Un umbral mal puesto o un sensor pegado a las ruedas son las dos causas de siempre."
+    },
+    {
+      "pregunta": "¿Qué ventaja tiene que mirar sea un bloque propio y no parte del bucle?",
+      "opciones": [
+        "Que gasta menos memoria",
+        "Que no hace falta la variable",
+        "Que corre más rápido",
+        "Que se puede reutilizar en otros programas tal cual"
+      ],
+      "correcta": 3,
+      "explicacion": "Es una herramienta terminada: sirve para el seguidor y para lo que venga después."
     }
   ],
   "practicas": [
     {
-      "titulo": "Mantener 15 cm",
-      "enunciado": "Programa el control de crucero: calcula el error respecto a 15 cm, multiplícalo por una ganancia de 4 y usa el resultado como velocidad, sin parar.",
+      "titulo": "El seguidor de línea con dos bloques",
+      "enunciado": "Crea el bloque mirar con hueco de umbral que ponga decision a 1 o a 2 según la luz reflejada. Crea el bloque mover segun que tuerza a un lado o a otro según decision. En el programa principal, prepara la base y repite sin parar llamar a mirar con 45 y a mover segun.",
       "solucion": [
         {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "error · Distancia − 15",
-          "nivel": 1
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "velocidad · error × 4",
-          "nivel": 1
-        },
-        {
-          "texto": "Empezar a mover a velocidad...",
-          "valor": "velocidad %",
-          "nivel": 1
-        }
-      ],
-      "notas": "Si el vehículo huye de la caja en lugar de seguirla, los motores están intercambiados o hay que cambiar el signo de la ganancia."
-    },
-    {
-      "titulo": "Crucero ajustado con indicador",
-      "enunciado": "Prueba al menos tres ganancias y quédate con la mejor. Añade un indicador: el botón central en verde cuando el error está entre −2 y 2, y en rojo en caso contrario.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Bucle infinito",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "error · Distancia − 15",
-          "nivel": 1
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "velocidad · error × ganancia elegida",
-          "nivel": 1
-        },
-        {
-          "texto": "Empezar a mover a velocidad...",
-          "valor": "velocidad %",
-          "nivel": 1
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "mirar (umbral)"
+          ]
         },
         {
           "texto": "Si... entonces... Si no...",
-          "valor": "error > −2 y error < 2",
-          "nivel": 1
-        },
-        {
-          "texto": "poner luz del botón central en rojo",
-          "nivel": 2,
+          "nivel": 1,
           "valores": [
-            "verde"
+            "Luz reflejada D < umbral"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
-        },
-        {
-          "texto": "poner luz del botón central en rojo",
+          "texto": "Fijar variable a",
           "nivel": 2,
           "valores": [
-            "rojo"
+            "decision · 1"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "decision · 2"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "mover segun"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "decision = 1"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "derecha: 30"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 2,
+          "valores": [
+            "izquierda: 30"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "25"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "mirar (45)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "mover segun"
           ]
         }
       ],
-      "notas": "No hay una ganancia única correcta. Valora la explicación de las pruebas y que la condición use el operador «y».",
+      "notas": "Tres pilas y un bucle de dos líneas. El umbral de 45 hay que ajustarlo a los números medidos en su pista.",
       "pasos": [
         {
-          "texto": "Prueba al menos tres ganancias y quédate con la mejor"
+          "texto": "Crea el bloque mirar con hueco de umbral que ponga decision a 1 o a 2 según la luz reflejada"
         },
         {
-          "texto": "Añade un indicador: el botón central en verde cuando el error está entre −2 y 2, y en rojo en caso contrario"
+          "texto": "Crea el bloque mover segun que tuerza a un lado o a otro según decision"
+        },
+        {
+          "texto": "En el programa principal, prepara la base y repite sin parar llamar a mirar con 45 y a mover segun"
+        }
+      ]
+    },
+    {
+      "titulo": "El seguidor que también frena",
+      "enunciado": "Amplía el bloque mirar para que ponga decision a 0 si hay algo a menos de 15 centímetros. Amplía mover segun para que, con decision a 0, pare el movimiento y encienda una cruz, y añade una pila aparte que a los 40 segundos pare el robot y escriba FIN.",
+      "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "mirar (umbral)"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "Distancia E < 15"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "decision · 0"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 2,
+          "valores": [
+            "Luz reflejada D < umbral"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 3,
+          "valores": [
+            "decision · 1"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 3,
+          "valores": [
+            "decision · 2"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "mover segun"
+          ]
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "decision = 0"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 2
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 2,
+          "valores": [
+            "decision = 1"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 3,
+          "valores": [
+            "derecha: 30"
+          ]
+        },
+        {
+          "texto": "empezar a mover derecha: 30",
+          "nivel": 3,
+          "valores": [
+            "izquierda: 30"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "25"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "mirar (45)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "mover segun"
+          ]
+        },
+        {
+          "texto": "Cuando el cronómetro",
+          "nivel": 0,
+          "valores": [
+            "> 40"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "FIN"
+          ]
+        }
+      ],
+      "notas": "Cuatro pilas: dos bloques propios, el programa y el vigilante del tiempo. Los dos sensores entran por el mismo bloque mirar, que es la gracia.",
+      "pasos": [
+        {
+          "texto": "Amplía el bloque mirar para que ponga decision a 0 si hay algo a menos de 15 centímetros"
+        },
+        {
+          "texto": "Amplía mover segun para que, con decision a 0, pare el movimiento y encienda una cruz, y añade una pila aparte que a los 40 segundos pare el robot y escriba FIN"
         }
       ]
     }

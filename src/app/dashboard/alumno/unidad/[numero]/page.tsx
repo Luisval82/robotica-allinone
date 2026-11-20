@@ -281,7 +281,7 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
           paso={3}
         >
           <p className="font-semibold text-ink-700">
-            Estos son los bloques nuevos de la unidad. En la app SPIKE cada categoría tiene su color.
+            Estos son los bloques que se trabajan en la unidad. En la app SPIKE cada categoría tiene su color.
           </p>
           <ul className="mt-3 flex flex-wrap gap-2">
             {categorias.map((categoria) => (

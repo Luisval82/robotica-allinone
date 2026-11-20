@@ -1,84 +1,198 @@
 {
   "curso": "3ESO",
   "unidad": 1,
-  "reto": "Crea tus propios bloques para que un robot dibujante trace polígonos con un rotulador.",
+  "reto": "Haz que el robot patrulle solo mientras otro programa lleva la cuenta y un tercero corta la prueba a los 30 segundos.",
   "video": {
-    "titulo": "Mis bloques",
-    "duracion": "5 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «My Code, Our Program» (Mis bloques)",
-      "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/my-code-our-program/"
-    },
+    "titulo": "Tres pilas corriendo a la vez",
+    "duracion": "6 min",
     "escenas": [
       {
-        "plano": "Un robot con rotulador dibuja un cuadrado sobre un papel grande.",
-        "locucion": "Para dibujar un cuadrado repetimos cuatro veces lo mismo: avanzar y girar. ¿Y para un triángulo? ¿Y para un hexágono? Copiar y pegar bloques no es programar bien."
+        "plano": "Un programa largo de 2º, de un solo sombrero, bajando por la pantalla.",
+        "locucion": "Hasta ahora tus programas eran una columna. Un sombrero arriba y una orden detrás de otra. Se lee de arriba abajo y en cada momento el robot está haciendo exactamente una cosa."
       },
       {
-        "plano": "Captura de la app: categoría Mis bloques, ventana para crear un bloque llamado «lado» con una entrada numérica «longitud».",
-        "locucion": "En Mis bloques creas tus propias órdenes. Les das un nombre y, si quieres, entradas: huecos para números que decidirás cada vez que uses el bloque."
+        "plano": "El robot avanzando mientras la pantalla se queda congelada en un número viejo.",
+        "locucion": "Y eso se queda corto en cuanto el robot tiene dos trabajos. Mientras avanza, no puede estar actualizando la pantalla: está dentro del bloque de mover, esperando a terminar."
       },
       {
-        "plano": "Captura de la definición del bloque: «Definir lado», debajo «mover durante» con la entrada longitud y un giro.",
-        "locucion": "Debajo del bloque «Definir» encajas lo que hace tu orden. La entrada longitud se arrastra a los huecos donde haga falta."
+        "plano": "El lienzo con tres pilas separadas, cada una con su sombrero, y las tres con un brillo alrededor.",
+        "locucion": "La solución es tener tres programas en el mismo lienzo. Cada pila con su sombrero. Cuando el Hub arranca, no corre una: corren las tres a la vez, cada una por su cuenta."
       },
       {
-        "plano": "Captura del programa principal: «Repetir 4» con el bloque «lado 10» dentro; el robot dibuja.",
-        "locucion": "En el programa principal usas tu bloque como cualquier otro. Con «Repetir bucle», cuatro lados forman un cuadrado."
+        "plano": "La pila de conducción, la del marcador y la del cronómetro, señaladas una a una.",
+        "locucion": "Una conduce. Otra lleva el marcador en la pantalla. La tercera vigila el reloj. Ninguna espera a las otras, y eso es justo lo que queremos."
       },
       {
-        "plano": "Esquema con un triángulo, un cuadrado y un hexágono y sus ángulos de giro: 120, 90 y 60.",
-        "locucion": "En cada esquina el robot gira 360 dividido entre el número de lados: 120 grados en el triángulo, 90 en el cuadrado y 60 en el hexágono."
+        "plano": "Una variable en el centro con flechas desde las tres pilas.",
+        "locucion": "Lo que las une es una variable. La pila que conduce la sube, la del marcador la lee, y las dos ven el mismo número porque la variable es una sola para todo el proyecto."
       },
       {
-        "plano": "El robot dibuja tres polígonos distintos cambiando solo un número.",
-        "locucion": "Tu reto: un robot dibujante que trace cualquier polígono regular cambiando un único valor."
+        "plano": "El sombrero del cronómetro arrancando su pila y parando el movimiento.",
+        "locucion": "Y hay sombreros que no esperan al botón de arranque: el del cronómetro salta solo cuando llega la hora. Con eso le pones un límite a la prueba sin tocar el programa que conduce."
       }
     ]
   },
   "bloques": [
     {
-      "texto": "Mis bloques: Crear un bloque con entradas",
-      "explicacion": "Crea una orden nueva con nombre y huecos para datos. Se define una vez y se usa las veces que quieras."
+      "texto": "Cuando se presiona el botón del Hub",
+      "explicacion": "Un sombrero que arranca su propia pila al pulsar el botón que elijas. Sirve para encender un trabajo aparte sin tocar el programa principal."
     },
     {
-      "texto": "mover ↑ durante 10 rotaciones",
-      "explicacion": "Avanza en línea recta una distancia exacta.",
-      "valores": [
-        "↑",
-        "10",
-        "rotaciones"
-      ]
+      "texto": "Cuando el cronómetro",
+      "explicacion": "Arranca su pila cuando el cronómetro llega al tiempo que le digas. Es el vigilante del tiempo: corta, avisa o cambia de fase sin que nadie lo llame."
     },
     {
-      "texto": "mover derecha: 30 durante 10 rotaciones",
-      "explicacion": "Avanza girando una cantidad exacta. Con dirección 100 o −100 el robot gira sobre sí mismo.",
-      "valores": [
-        "derecha: 30",
-        "10",
-        "rotaciones"
-      ]
-    },
-    {
-      "texto": "Repetir bucle",
-      "explicacion": "Repite lo que tiene dentro el número de veces indicado."
+      "texto": "Bucle infinito",
+      "explicacion": "Repite para siempre lo que lleva dentro. En una pila de vigilancia es lo normal: mira, actúa y vuelve a mirar."
     },
     {
       "texto": "Variable",
-      "explicacion": "Guarda el número de lados para usarlo en el bucle y en el cálculo del giro."
+      "explicacion": "El sitio donde se guarda un número. En 3º es además lo que comunica a unas pilas con otras: todas leen y escriben la misma."
     }
   ],
+  "programa": {
+    "titulo": "La patrulla con marcador y límite",
+    "explicacion": "Tres pilas a la vez. La primera conduce y cuenta rebotes; la segunda enseña la cuenta en la pantalla sin parar; la tercera corta a los 30 segundos.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "40"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "rebotes · 0"
+        ]
+      },
+      {
+        "texto": "Reiniciar cronómetro",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "empezar a mover a ↑",
+        "nivel": 1,
+        "valores": [
+          "↑"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "Distancia E < 20"
+        ]
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 1
+      },
+      {
+        "texto": "Cambiar variable por",
+        "nivel": 1,
+        "valores": [
+          "rebotes · 1"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "↓",
+          "15",
+          "cm"
+        ]
+      },
+      {
+        "texto": "mover derecha: 30 durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "derecha: 100",
+          "0.5",
+          "rotaciones"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 1,
+        "valores": [
+          "rebotes"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 1,
+        "valores": [
+          "0.5"
+        ]
+      },
+      {
+        "texto": "Cuando el cronómetro",
+        "nivel": 0,
+        "valores": [
+          "> 30"
+        ]
+      },
+      {
+        "texto": "parar movimiento",
+        "nivel": 0
+      },
+      {
+        "texto": "poner luz del botón central en rojo",
+        "nivel": 0,
+        "valores": [
+          "rojo"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Tu primer bloque",
-      "enunciado": "Crea un bloque llamado «lado» que haga avanzar 20 cm y girar 90 grados.",
-      "pista": "Al crearlo aparece en «Mis bloques», abajo del todo de la paleta.",
+      "titulo": "Dos pilas que no se estorban",
+      "enunciado": "Pon dos programas con el mismo sombrero de inicio: haz que el primero avance y retroceda sin parar; haz que el segundo encienda y apague un dibujo cada medio segundo.",
+      "pista": "Son dos pilas sueltas en el lienzo, cada una con su «Cuando se inicia el programa».",
       "solucion": [
         {
-          "texto": "Definir mi bloque",
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
-          "valor": "lado"
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
@@ -90,377 +204,444 @@
           ]
         },
         {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
+          "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
-            "derecha: 100",
-            "90",
-            "grados"
+            "↓",
+            "20",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "encender dibujo durante 2 segundos",
+          "nivel": 1,
+          "valores": [
+            "cara contenta",
+            "0.5"
+          ]
+        },
+        {
+          "texto": "apagar píxeles",
+          "nivel": 1
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.5"
           ]
         }
       ],
-      "notas": "Un bloque propio se define aparte, en su propia pila, y aparece abajo del todo de la paleta, en «Mis bloques»."
+      "notas": "La primera vez sorprende ver las dos pilas funcionando. Conviene que lo prueben antes de explicar nada.",
+      "pasos": [
+        {
+          "texto": "Pon dos programas con el mismo sombrero de inicio",
+          "hijos": [
+            "Haz que el primero avance y retroceda sin parar",
+            "Haz que el segundo encienda y apague un dibujo cada medio segundo"
+          ]
+        }
+      ]
     },
     {
       "practica": 2,
-      "titulo": "El cuadrado con tu bloque",
-      "enunciado": "Usa un «Repetir» cuatro veces con tu bloque «lado» dentro.",
-      "pista": "Fíjate en lo corto que queda el programa.",
+      "titulo": "El marcador en marcha",
+      "enunciado": "Pon la variable vueltas a 0 y haz dos pilas: en una, repite sin parar avanzar 20 centímetros y subir vueltas en uno; en la otra, escribe vueltas en la pantalla sin parar.",
+      "pista": "La variable es la misma para las dos pilas, por eso la de la pantalla ve lo que sube la otra.",
       "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "nivel": 0,
-          "valor": "lado"
-        },
-        {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 1,
-          "valores": [
-            "↑",
-            "20",
-            "cm"
-          ]
-        },
-        {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
-          "nivel": 1,
-          "valores": [
-            "derecha: 100",
-            "90",
-            "grados"
-          ]
-        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "40"
-          ]
-        },
-        {
-          "texto": "Repetir bucle",
-          "nivel": 0,
-          "valor": "4"
-        },
-        {
-          "texto": "Mi bloque",
-          "nivel": 1,
-          "valor": "lado"
-        }
-      ],
-      "notas": "Fíjate en lo corto que queda el programa principal: cuatro veces una orden que tú has inventado."
-    },
-    {
-      "practica": 3,
-      "titulo": "Un bloque con entrada",
-      "enunciado": "Cambia tu bloque para que reciba la longitud del lado como número.",
-      "pista": "La entrada se usa dentro del bloque igual que una variable.",
-      "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "nivel": 0,
-          "valor": "lado (longitud)"
-        },
-        {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 1,
-          "valores": [
-            "↑",
-            "longitud",
-            "cm"
-          ]
-        },
-        {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
-          "nivel": 1,
-          "valores": [
-            "derecha: 100",
-            "90",
-            "grados"
-          ]
-        },
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "40"
-          ]
-        },
-        {
-          "texto": "Repetir bucle",
-          "nivel": 0,
-          "valor": "4"
-        },
-        {
-          "texto": "Mi bloque",
-          "nivel": 1,
-          "valor": "lado (25)"
-        }
-      ],
-      "notas": "La entrada se usa dentro del bloque igual que una variable: donde iba el 20 ahora va «longitud»."
-    },
-    {
-      "practica": 4,
-      "titulo": "Polígonos a la carta",
-      "enunciado": "Haz un triángulo y un pentágono cambiando solo el número de repeticiones y los grados del giro.",
-      "pista": "Los grados de cada giro son 360 entre el número de lados.",
-      "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "nivel": 0,
-          "valor": "lado (longitud, giro)"
-        },
-        {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 1,
-          "valores": [
-            "↑",
-            "longitud",
-            "cm"
-          ]
-        },
-        {
-          "texto": "mover derecha: 30 durante 10 rotaciones",
-          "nivel": 1,
-          "valores": [
-            "derecha: 100",
-            "giro",
-            "grados"
-          ]
-        },
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "fijar A+B como motores en movimiento",
-          "nivel": 0,
-          "valores": [
-            "A+B"
-          ]
-        },
-        {
-          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
-          "nivel": 0,
-          "valores": [
-            "17.5",
-            "cm"
-          ]
-        },
-        {
-          "texto": "fijar velocidad de movimiento al 50 %",
-          "nivel": 0,
-          "valores": [
-            "40"
-          ]
         },
         {
           "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "lados · 5"
+          "valores": [
+            "vueltas · 0"
+          ]
         },
         {
-          "texto": "Repetir bucle",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
-          "valor": "lados"
+          "valores": [
+            "A+B"
+          ]
         },
         {
-          "texto": "Mi bloque",
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
-          "valor": "lado (20, 360 ÷ lados)"
+          "valores": [
+            "↑",
+            "20",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "vueltas · 1"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "vueltas"
+          ]
         }
       ],
-      "notas": "360 entre el número de lados da el giro de cada esquina: 120 grados en el triángulo y 72 en el pentágono."
+      "notas": "Aquí se ve para qué sirve: con una sola pila, la pantalla solo se actualizaría al acabar de moverse.",
+      "pasos": [
+        {
+          "texto": "Pon la variable vueltas a 0 y haz dos pilas",
+          "hijos": [
+            "En una, repite sin parar avanzar 20 centímetros y subir vueltas en uno",
+            "En la otra, escribe vueltas en la pantalla sin parar"
+          ]
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "El botón que interrumpe",
+      "enunciado": "Pon una pila que haga avanzar el robot sin parar. Pon otra con el sombrero del botón del Hub que pare el movimiento y toque una nota.",
+      "pista": "El sombrero del botón no necesita que nadie lo llame: salta cuando se pulsa.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 1,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando se presiona el botón del Hub",
+          "nivel": 0,
+          "valores": [
+            "izquierdo"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "60 · 0.5"
+          ]
+        }
+      ],
+      "notas": "El robot vuelve a arrancar enseguida, porque la otra pila sigue viva. Eso da pie a la unidad de estados.",
+      "pasos": [
+        {
+          "texto": "Pon una pila que haga avanzar el robot sin parar"
+        },
+        {
+          "texto": "Pon otra con el sombrero del botón del Hub que pare el movimiento y toque una nota"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "El límite de la prueba",
+      "enunciado": "Reinicia el cronómetro al empezar. Añade una pila con el sombrero del cronómetro que a los 15 segundos pare el movimiento y ponga el botón central en rojo.",
+      "pista": "Hay que reiniciar el cronómetro en la pila de arranque, o contará desde que se encendió el Hub.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 1,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Cuando el cronómetro",
+          "nivel": 0,
+          "valores": [
+            "> 15"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 0
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        }
+      ],
+      "notas": "El olvido de reiniciar el cronómetro es el fallo típico y se nota: el corte llega antes de tiempo.",
+      "pasos": [
+        {
+          "texto": "Reinicia el cronómetro al empezar"
+        },
+        {
+          "texto": "Añade una pila con el sombrero del cronómetro que a los 15 segundos pare el movimiento y ponga el botón central en rojo"
+        }
+      ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, dos motores medianos con ruedas, un apoyo trasero, un rotulador, gomas elásticas y un papel grande.",
+    "piezas": "La base de conducción de dos motores, el sensor de distancia, dos vigas de 11, dos vigas de 7 y ocho pasadores.",
     "pasos": [
       {
-        "titulo": "La base de conducción",
-        "texto": "Monta un chasis con un motor mediano a cada lado y un apoyo trasero que deslice sin frenar."
+        "titulo": "La base",
+        "texto": "Monta la base de conducción de siempre: los dos motores medianos enfrentados, las ruedas puestas y un buje apretado contra cada una."
       },
       {
-        "titulo": "El portarrotulador",
-        "texto": "Construye un soporte vertical justo en el centro, entre las dos ruedas. Si la punta queda fuera de ese punto, las esquinas saldrán redondeadas."
+        "titulo": "El Hub centrado",
+        "texto": "Pon el Hub en el centro del chasis, a la misma distancia de las dos ruedas y con la pantalla mirando hacia arriba. La pantalla es el marcador y se va a estar leyendo mientras el robot anda."
       },
       {
-        "titulo": "El rotulador",
-        "texto": "Sujeta el rotulador al soporte con gomas, con la punta apoyada en el papel sin levantar las ruedas."
+        "titulo": "El parachoques del sensor",
+        "texto": "Une las dos vigas de 11 por delante formando una horquilla y encaja el sensor de distancia entre ellas, recto y a la altura del obstáculo que vayas a usar."
+      },
+      {
+        "titulo": "El refuerzo",
+        "texto": "Cruza las dos vigas de 7 por debajo del chasis. La patrulla da muchos frenazos y una base que se abre deja de ir recta a la tercera vuelta."
       },
       {
         "titulo": "Los cables",
-        "texto": "Motor izquierdo al puerto A y motor derecho al puerto B."
+        "texto": "Motores a los puertos A y B, sensor de distancia al E. Pasa los dos cables de motor por debajo para que no tapen la pantalla."
       },
       {
-        "titulo": "El papel",
-        "texto": "Fija un papel grande a la mesa con cinta para que no se mueva al girar el robot."
-      },
-      {
-        "titulo": "Comprueba",
-        "texto": "Gira el robot sobre sí mismo con la mano: el rotulador debe dibujar un punto, no un círculo."
+        "titulo": "La pista",
+        "texto": "Marca un pasillo de metro y medio con dos cajas en los extremos. Es donde va a rebotar el robot durante los 30 segundos de la prueba."
       }
     ],
     "materiales": [
-      {
-        "pieza": "hub"
-      },
       {
         "pieza": "motor",
         "cantidad": 2
       },
       {
-        "pieza": "rueda"
+        "pieza": "distancia"
       },
       {
-        "pieza": "goma"
+        "pieza": "viga",
+        "cantidad": 4
+      },
+      {
+        "pieza": "pasador",
+        "cantidad": 8
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Para qué sirve la categoría Mis bloques?",
+      "pregunta": "¿Qué pasa si pones dos pilas con el sombrero «Cuando se inicia el programa»?",
       "opciones": [
-        "Para crear órdenes propias que se pueden reutilizar",
-        "Para guardar el proyecto",
-        "Para conectar el Hub",
-        "Para cambiar el color de los bloques"
+        "Corren las dos a la vez",
+        "Da error",
+        "Corre una y luego la otra",
+        "Solo corre la de arriba"
       ],
       "correcta": 0,
-      "explicacion": "Un bloque propio agrupa varios bloques bajo un nombre y se usa como una orden más."
+      "explicacion": "El Hub arranca todas las pilas que tengan ese sombrero, y van cada una por su cuenta."
     },
     {
-      "pregunta": "¿Qué es una entrada de un bloque propio?",
+      "pregunta": "¿Por qué una sola pila no puede conducir y actualizar la pantalla a la vez?",
       "opciones": [
-        "El puerto donde va el motor",
-        "El primer bloque de la pila",
-        "Un hueco para un dato que se decide cada vez que se usa el bloque",
-        "El nombre del bloque"
-      ],
-      "correcta": 2,
-      "explicacion": "Gracias a la entrada, el mismo bloque sirve para lados de 5, de 10 o de 20 centímetros."
-    },
-    {
-      "pregunta": "¿Cuántas veces hay que definir un bloque propio?",
-      "opciones": [
-        "Una por cada vez que se usa",
-        "Una sola vez",
-        "Cuatro veces",
-        "Depende del polígono"
+        "Porque la pantalla va lenta",
+        "Porque mientras está dentro del bloque de mover no llega a la línea de la pantalla",
+        "Porque la variable se borra",
+        "Porque el Hub no tiene memoria"
       ],
       "correcta": 1,
-      "explicacion": "Se define una vez y se llama tantas veces como haga falta."
+      "explicacion": "Una pila se lee de arriba abajo: hasta que no termina una orden no empieza la siguiente."
     },
     {
-      "pregunta": "¿Cuánto gira el robot en cada esquina de un triángulo equilátero?",
+      "pregunta": "Dos pilas usan la variable vueltas. Una la sube y la otra la escribe. ¿Ven el mismo número?",
       "opciones": [
-        "60 grados",
-        "90 grados",
-        "180 grados",
-        "120 grados"
+        "Solo si están en el mismo sombrero",
+        "No, cada pila tiene la suya",
+        "Sí: la variable es una sola para todo el proyecto",
+        "Solo si se llaman igual en las dos"
+      ],
+      "correcta": 2,
+      "explicacion": "Por eso sirve para comunicarlas: es el tablón de anuncios común."
+    },
+    {
+      "pregunta": "¿Qué hace el sombrero «Cuando el cronómetro > 30»?",
+      "opciones": [
+        "Pone el cronómetro a 30",
+        "Repite cada 30 segundos",
+        "Espera 30 segundos dentro de la pila",
+        "Arranca su pila cuando el cronómetro pasa de 30"
       ],
       "correcta": 3,
-      "explicacion": "360 dividido entre 3 lados da 120 grados."
+      "explicacion": "Es un sombrero: enciende su propia pila sin que nadie lo llame."
     },
     {
-      "pregunta": "Para dibujar un hexágono regular, ¿cuántas veces se repite el lado y cuánto se gira?",
+      "pregunta": "¿Por qué hay que reiniciar el cronómetro al empezar?",
       "opciones": [
-        "6 veces, girando 60 grados",
-        "6 veces, girando 120 grados",
-        "3 veces, girando 60 grados",
-        "8 veces, girando 45 grados"
+        "Porque si no, cuenta desde que se encendió el Hub y el límite llega antes",
+        "Porque el cronómetro no funciona sin reiniciarlo",
+        "Para que la variable valga 0",
+        "Para que la pantalla se vea mejor"
       ],
       "correcta": 0,
-      "explicacion": "Un hexágono tiene 6 lados y 360 entre 6 son 60 grados."
+      "explicacion": "El cronómetro corre desde el encendido. Si no se pone a cero, el tiempo de la prueba sale falseado."
     },
     {
-      "pregunta": "¿Qué ventaja tiene usar el bloque «lado» frente a copiar los mismos bloques cuatro veces?",
+      "pregunta": "El robot avanza en una pila y otra pila lo para al pulsar el botón. Se para y vuelve a arrancar. ¿Por qué?",
       "opciones": [
-        "El robot va más rápido",
-        "Gasta menos batería",
-        "Los bloques tienen otro color",
-        "Si hay que corregir algo, se cambia en un solo sitio"
-      ],
-      "correcta": 3,
-      "explicacion": "La definición está en un único lugar: cualquier ajuste afecta a todos los lados."
-    },
-    {
-      "pregunta": "¿Dónde debe quedar la punta del rotulador?",
-      "opciones": [
-        "Delante del robot",
-        "En el centro, entre las dos ruedas",
-        "Detrás del apoyo trasero",
-        "Junto a una de las ruedas"
+        "Porque el botón se ha quedado pulsado",
+        "Porque la pila que conduce sigue viva y vuelve a dar la orden de avanzar",
+        "Porque el sensor falla",
+        "Porque el motor tiene inercia"
       ],
       "correcta": 1,
-      "explicacion": "Al girar sobre sí mismo, ese punto no se desplaza: las esquinas salen limpias."
+      "explicacion": "Parar el movimiento no apaga la pila que lo manda. Para eso hacen falta los estados."
     },
     {
-      "pregunta": "El cuadrado no llega a cerrarse porque los giros se quedan cortos. ¿Qué ajustas?",
+      "pregunta": "¿Cuántos sombreros puede haber en un mismo proyecto?",
       "opciones": [
-        "La longitud del lado",
-        "El número de repeticiones",
-        "El valor del giro dentro de la definición del bloque",
-        "El color del rotulador"
+        "Uno por sensor",
+        "Uno",
+        "Los que hagan falta",
+        "Dos como mucho"
       ],
       "correcta": 2,
-      "explicacion": "El giro está en la definición de «lado»: se corrige una vez y vale para las cuatro esquinas."
+      "explicacion": "Cada pila lleva el suyo, y en 3º lo normal es tener tres o cuatro."
+    },
+    {
+      "pregunta": "En la patrulla, ¿cuál es el trabajo de la tercera pila?",
+      "opciones": [
+        "Leer el sensor de distancia",
+        "Subir la cuenta de rebotes",
+        "Conducir",
+        "Vigilar el tiempo y cortar la prueba"
+      ],
+      "correcta": 3,
+      "explicacion": "Vigilar es un trabajo en sí mismo y merece su pila: así no estorba a la que conduce."
     }
   ],
   "practicas": [
     {
-      "titulo": "Cuadrado con bloque propio",
-      "enunciado": "Crea un bloque «lado» con una entrada «longitud» que avance esa distancia y gire 90°. Úsalo para dibujar un cuadrado de 10 cm de lado.",
+      "titulo": "La patrulla con marcador",
+      "enunciado": "Prepara la base y pon los rebotes a 0. En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder 15 centímetros y dar media vuelta. Escribe en otra pila los rebotes en la pantalla sin parar.",
       "solucion": [
         {
-          "texto": "Definir mi bloque",
-          "valor": "lado (longitud)",
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "rebotes · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 1,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Distancia E < 20"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "rebotes · 1"
+          ]
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
-            "↑",
-            "longitud",
+            "↓",
+            "15",
             "cm"
           ]
         },
@@ -469,8 +650,8 @@
           "nivel": 1,
           "valores": [
             "derecha: 100",
-            "90",
-            "grados"
+            "0.5",
+            "rotaciones"
           ]
         },
         {
@@ -478,41 +659,108 @@
           "nivel": 0
         },
         {
-          "texto": "Repetir bucle",
-          "valor": "4",
+          "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "Mi bloque",
-          "valor": "lado (10)",
-          "nivel": 1
-        }
-      ],
-      "notas": "El giro de 90° hay que calibrarlo en cada robot: depende de la separación entre ruedas. Valora que el giro esté dentro de la definición y no repetido fuera.",
-      "pasos": [
-        {
-          "texto": "Crea un bloque «lado» con una entrada «longitud» que avance esa distancia y gire 90°"
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "rebotes"
+          ]
         },
         {
-          "texto": "Úsalo para dibujar un cuadrado de 10 cm de lado"
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.5"
+          ]
+        }
+      ],
+      "notas": "Dos pilas. El marcador tiene que ir subiendo mientras el robot anda; si solo cambia al final, es que lo han metido todo en una.",
+      "pasos": [
+        {
+          "texto": "Prepara la base"
+        },
+        {
+          "texto": "Pon los rebotes a 0"
+        },
+        {
+          "texto": "En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder 15 centímetros y dar media vuelta"
+        },
+        {
+          "texto": "Escribe en otra pila los rebotes en la pantalla sin parar"
         }
       ]
     },
     {
-      "titulo": "Polígono de N lados",
-      "enunciado": "Añade al bloque una segunda entrada para el giro. Guarda el número de lados en una variable y haz que el robot dibuje el polígono regular que corresponda, calculando el giro como 360 entre el número de lados.",
+      "titulo": "El límite de treinta segundos",
+      "enunciado": "Añade al programa anterior el reinicio del cronómetro al empezar. Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto: para el movimiento; pon el botón central en rojo; escribe los rebotes conseguidos.",
       "solucion": [
         {
-          "texto": "Definir mi bloque",
-          "valor": "lado (longitud, giro)",
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "40"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "rebotes · 0"
+          ]
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "empezar a mover a ↑",
+          "nivel": 1,
+          "valores": [
+            "↑"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "Distancia E < 20"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
+          "nivel": 1
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "rebotes · 1"
+          ]
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
-            "↑",
-            "longitud",
+            "↓",
+            "15",
             "cm"
           ]
         },
@@ -521,8 +769,8 @@
           "nivel": 1,
           "valores": [
             "derecha: 100",
-            "giro",
-            "grados"
+            "0.5",
+            "rotaciones"
           ]
         },
         {
@@ -530,28 +778,61 @@
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
-          "valor": "lados · 6",
+          "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "Repetir bucle",
-          "valor": "lados",
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "rebotes"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.5"
+          ]
+        },
+        {
+          "texto": "Cuando el cronómetro",
+          "nivel": 0,
+          "valores": [
+            "> 30"
+          ]
+        },
+        {
+          "texto": "parar movimiento",
           "nivel": 0
         },
         {
-          "texto": "Mi bloque",
-          "valor": "lado (10, 360 ÷ lados)",
-          "nivel": 1
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 0,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "rebotes"
+          ]
         }
       ],
-      "notas": "Usa «Fijar variable a» y la división, que son de 2º. Si escriben el ángulo a mano (60) en lugar de calcularlo, funciona pero es menos general.",
+      "notas": "Tres pilas. Es la primera vez que un programa suyo tiene tres sombreros, y conviene hacerles señalar cuál hace qué antes de entregar.",
       "pasos": [
         {
-          "texto": "Añade al bloque una segunda entrada para el giro"
+          "texto": "Añade al programa anterior el reinicio del cronómetro al empezar"
         },
         {
-          "texto": "Guarda el número de lados en una variable y haz que el robot dibuje el polígono regular que corresponda, calculando el giro como 360 entre el número de lados"
+          "texto": "Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto",
+          "hijos": [
+            "Para el movimiento",
+            "Pon el botón central en rojo",
+            "Escribe los rebotes conseguidos"
+          ]
         }
       ]
     }

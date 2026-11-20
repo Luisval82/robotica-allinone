@@ -215,10 +215,10 @@ export default async function PrepararClasesPage({
             </Seccion>
           ) : null}
 
-          {/* 3 · Los bloques nuevos */}
+          {/* 3 · Los bloques de la unidad */}
           <Seccion
             numero={3}
-            titulo="Teoría · los bloques nuevos"
+            titulo="Teoría · los bloques de la unidad"
             pie={`${unidad?.bloques.length ?? 0} bloques que entran en esta unidad`}
           >
             <ul className="grid gap-3">

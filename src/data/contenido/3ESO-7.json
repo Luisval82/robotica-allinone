@@ -1,576 +1,866 @@
 {
   "curso": "3ESO",
   "unidad": 7,
-  "reto": "Construye una mesa sísmica, registra el movimiento con el Hub y decide con datos qué torre aguanta mejor.",
+  "reto": "Recorre un pasillo apuntando las distancias en una lista mientras otra pila conduce, y saca después el hueco más ancho.",
   "video": {
-    "titulo": "Medir para decidir",
+    "titulo": "Apuntar sin dejar de andar",
     "duracion": "6 min",
-    "enlaceOficial": {
-      "titulo": "LEGO Education: «Get Moving to Get Data» (datos y gráficas)",
-      "url": "https://education.lego.com/en-us/lessons/spike-python-u9-data-and-math-functions/spike-python-u9l1-get-moving-to-get-data"
-    },
     "escenas": [
       {
-        "plano": "Una mesa sísmica de LEGO agita una torre que se tambalea.",
-        "locucion": "Los ingenieros prueban sus edificios en mesas sísmicas: plataformas que tiemblan como en un terremoto. Y no se fían de la vista: miden."
+        "plano": "El barrido de 2º: el robot parado, girando la torreta y apuntando medidas.",
+        "locucion": "En 2º tomaste datos con el robot quieto. La torreta giraba, el sensor medía y la lista se iba llenando. Todo con el robot parado en el sitio."
       },
       {
-        "plano": "El Hub colocado en lo alto de la torre; animación de sus ángulos de cabeceo y alabeo.",
-        "locucion": "El Hub hace de sismógrafo. Su giroscopio mide cuánto se inclina: el cabeceo, hacia delante y hacia atrás, y el alabeo, hacia los lados."
+        "plano": "Dos pilas: una conduciendo en línea recta y otra añadiendo elementos a una lista.",
+        "locucion": "Ahora el robot anda. Una pila conduce y otra va apuntando lo que ve el sensor cada medio segundo. Son dos trabajos a la vez, y en 3º eso ya lo sabes hacer."
       },
       {
-        "plano": "Captura de la app: se activa la extensión de gráfico de líneas y aparece una gráfica que se va dibujando.",
-        "locucion": "En la app activamos la extensión de gráfico de líneas. Sus bloques dibujan en la pantalla, punto a punto, el valor que les demos: aquí, el ángulo de inclinación."
+        "plano": "La lista llenándose de números mientras el robot recorre el pasillo.",
+        "locucion": "Lo que queda al final no es una foto: es el perfil del pasillo entero, medido sobre la marcha. Donde el pasillo se ensancha, los números suben."
       },
       {
-        "plano": "Captura de «Reiniciar cronómetro», «arrancar motor» y un «Repetir hasta Cronómetro > 10».",
-        "locucion": "Reiniciamos el cronómetro, arrancamos el motor y repetimos la medida hasta que pasan diez segundos. Así todos los ensayos duran lo mismo."
+        "plano": "El bloque de longitud de lista y un bucle recorriéndola con una variable.",
+        "locucion": "Y después hay que mirar lo apuntado. La longitud de la lista dice cuántas medidas hay, y un bucle con un índice las va sacando una por una."
       },
       {
-        "plano": "Captura de una lista llenándose de valores y de una variable «maximo».",
-        "locucion": "Además guardamos cada medida en una lista. Al terminar tenemos todos los datos para compararlos: ¿cuál fue la inclinación máxima?"
+        "plano": "El bloque «¿La lista contiene...?» con una condición al lado.",
+        "locucion": "A veces basta con preguntar si está. ¿Hay algún cero en la lista? ¿Aparece el color rojo entre los que ha visto? Una pregunta y listo."
       },
       {
-        "plano": "Dos torres distintas ensayadas una tras otra; dos gráficas, una con picos altos y otra casi plana.",
-        "locucion": "Tu reto: ensaya dos torres con el mismo terremoto y decide, con datos, cuál es más segura."
+        "plano": "El gráfico de líneas en el iPad dibujando el perfil del pasillo.",
+        "locucion": "Y como ya sabes, los números se entienden mejor dibujados. El mismo recorrido, en el gráfico, se lee de un golpe de vista."
       }
-    ]
+    ],
+    "enlaceOficial": {
+      "titulo": "LEGO Education: «Listing Letters» (listas)",
+      "url": "https://education.lego.com/en-us/lessons/spike-python-u10-lists/spike-u10l1-listing-letters/"
+    }
   },
   "bloques": [
     {
-      "texto": "Extensión Gráfico de líneas",
-      "explicacion": "Bloques que dibujan en la app una gráfica con los valores que mide el programa. Hay que activar la extensión."
-    },
-    {
-      "texto": "Ángulo de cabeceo, alabeo o guiñada del Hub",
-      "explicacion": "Bloque de dato: la inclinación del Hub. Es lo que mide el sismógrafo."
-    },
-    {
-      "texto": "Reiniciar cronómetro",
-      "explicacion": "Pone el tiempo a cero al empezar el ensayo."
-    },
-    {
-      "texto": "Cronómetro",
-      "explicacion": "Bloque de dato: los segundos de ensayo transcurridos."
-    },
-    {
       "texto": "Añadir elemento a lista",
-      "explicacion": "Guarda cada medida para analizarla después."
+      "explicacion": "Mete un valor al final de la lista. En una pila de registro es el bloque que trabaja, una vez por vuelta."
     },
     {
-      "texto": "A arrancar motor",
-      "explicacion": "Pone en marcha la mesa sísmica.",
-      "valores": [
-        "A",
-        "↻"
-      ]
+      "texto": "Elemento de lista",
+      "explicacion": "Saca el valor que está en la posición que le digas. Con una variable de índice sirve para recorrer la lista entera."
+    },
+    {
+      "texto": "Longitud de lista",
+      "explicacion": "Cuántos elementos hay guardados. Es lo que marca cuándo hay que parar de recorrer."
+    },
+    {
+      "texto": "¿La lista contiene...?",
+      "explicacion": "Pregunta si un valor está en la lista. Para saber si algo apareció, no hace falta recorrerla."
+    },
+    {
+      "texto": "Extensión Gráfico de líneas",
+      "explicacion": "Manda un valor a la app, que lo dibuja. Una serie de medidas dibujada se entiende mucho mejor que leída."
     }
   ],
+  "programa": {
+    "titulo": "El explorador que apunta el pasillo",
+    "explicacion": "Una pila conduce de punta a punta. Otra apunta la distancia al costado cada medio segundo y la manda al gráfico. Al llegar, una tercera recorre la lista y saca la medida más grande.",
+    "bloques": [
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "fijar velocidad de movimiento al 50 %",
+        "nivel": 0,
+        "valores": [
+          "25"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "midiendo · 1"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 0,
+        "valores": [
+          "↑",
+          "120",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "midiendo · 0"
+        ]
+      },
+      {
+        "texto": "Enviar mensaje",
+        "nivel": 0,
+        "valores": [
+          "analizar"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Repetir bucle hasta",
+        "nivel": 0,
+        "valores": [
+          "midiendo = 0"
+        ]
+      },
+      {
+        "texto": "Añadir elemento a lista",
+        "nivel": 1,
+        "valores": [
+          "huecos · Distancia E"
+        ]
+      },
+      {
+        "texto": "Extensión Gráfico de líneas",
+        "nivel": 1,
+        "valores": [
+          "Distancia E"
+        ]
+      },
+      {
+        "texto": "Esperar X segundos",
+        "nivel": 1,
+        "valores": [
+          "0.5"
+        ]
+      },
+      {
+        "texto": "Cuando se reciba el mensaje",
+        "nivel": 0,
+        "valores": [
+          "analizar"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "mayor · Elemento 1 de huecos"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "paso · 1"
+        ]
+      },
+      {
+        "texto": "Repetir bucle hasta",
+        "nivel": 0,
+        "valores": [
+          "paso > Longitud de lista huecos"
+        ]
+      },
+      {
+        "texto": "Si... entonces...",
+        "nivel": 1,
+        "valores": [
+          "Elemento paso de huecos > mayor"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 2,
+        "valores": [
+          "mayor · Elemento paso de huecos"
+        ]
+      },
+      {
+        "texto": "Cambiar variable por",
+        "nivel": 1,
+        "valores": [
+          "paso · 1"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 0,
+        "valores": [
+          "mayor"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Dibuja el movimiento",
-      "enunciado": "Usa la extensión de gráfico de líneas para ir dibujando el ángulo del Hub.",
-      "pista": "Mueve el Hub con la mano y mira la línea del gráfico.",
+      "titulo": "Apuntar en marcha",
+      "enunciado": "Haz dos pilas: en una, avanza 60 centímetros; en la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas. Escribe al final cuántas medidas hay.",
+      "pista": "Las dos pilas arrancan a la vez con el mismo sombrero de inicio.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Bucle infinito",
-          "nivel": 0
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
         },
         {
-          "texto": "Extensión Gráfico de líneas",
-          "nivel": 1,
-          "valor": "trazar Ángulo de guiñada"
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "25"
+          ]
         },
         {
-          "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "0.1"
-        }
-      ],
-      "notas": "Hay que activar la extensión antes: está abajo a la izquierda, en el botón de las extensiones."
-    },
-    {
-      "practica": 2,
-      "titulo": "Pon la mesa a vibrar",
-      "enunciado": "Arranca el motor de la mesa sísmica y detenlo a los 5 segundos.",
-      "pista": "Reinicia el cronómetro antes de empezar.",
-      "solucion": [
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "60",
+            "cm"
+          ]
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Reiniciar cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
+          "texto": "Repetir bucle",
           "nivel": 0,
           "valores": [
-            "A",
-            "60"
+            "20"
           ]
-        },
-        {
-          "texto": "A arrancar motor",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻"
-          ]
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 0,
-          "valor": "5"
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
-          "valores": [
-            "A"
-          ]
-        }
-      ],
-      "notas": "Reinicia el cronómetro antes de arrancar: es lo que después te dirá cuánto ha durado el ensayo."
-    },
-    {
-      "practica": 3,
-      "titulo": "Registra la sacudida",
-      "enunciado": "Mientras la mesa vibra, ve añadiendo a una lista el ángulo del Hub.",
-      "pista": "Cada elemento de la lista es una medida en el tiempo.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Reiniciar cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "60"
-          ]
-        },
-        {
-          "texto": "A arrancar motor",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 0,
-          "valor": "Cronómetro > 5"
         },
         {
           "texto": "Añadir elemento a lista",
           "nivel": 1,
-          "valor": "sacudidas · Ángulo de guiñada"
-        },
-        {
-          "texto": "Extensión Gráfico de líneas",
-          "nivel": 1,
-          "valor": "trazar Ángulo de guiñada"
+          "valores": [
+            "huecos · Distancia E"
+          ]
         },
         {
           "texto": "Esperar X segundos",
           "nivel": 1,
-          "valor": "0.1"
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
           "valores": [
-            "A"
-          ]
-        }
-      ],
-      "notas": "Cada elemento de la lista es una medida: con una espera de 0,1 segundos guardas unas diez por segundo."
-    },
-    {
-      "practica": 4,
-      "titulo": "Compara dos torres",
-      "enunciado": "Repite la prueba con dos torres distintas y compara los gráficos para decidir cuál aguanta mejor.",
-      "pista": "Misma duración y misma velocidad de motor: si no, la comparación no vale.",
-      "solucion": [
-        {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
-        },
-        {
-          "texto": "Reiniciar cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "60"
-          ]
-        },
-        {
-          "texto": "A arrancar motor",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 0,
-          "valor": "Cronómetro > 5"
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "nivel": 1,
-          "valor": "torre 1 · Ángulo de guiñada"
-        },
-        {
-          "texto": "Extensión Gráfico de líneas",
-          "nivel": 1,
-          "valor": "trazar Ángulo de guiñada"
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 1,
-          "valor": "0.1"
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
-          "valores": [
-            "A"
+            "0.2"
           ]
         },
         {
           "texto": "escribir Hello",
           "nivel": 0,
           "valores": [
-            "Longitud de torre 1"
+            "Longitud de lista huecos"
           ]
         }
       ],
-      "notas": "Misma duración y misma velocidad en las dos pruebas: si cambias eso, la comparación no vale de nada.",
+      "notas": "Veinte medidas en cuatro segundos mientras el robot anda. Con una sola pila habría que elegir entre andar o medir.",
       "pasos": [
         {
-          "texto": "Repite la prueba con dos torres distintas"
+          "texto": "Haz dos pilas",
+          "hijos": [
+            "En una, avanza 60 centímetros",
+            "En la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas"
+          ]
         },
         {
-          "texto": "Compara los gráficos para decidir cuál aguanta mejor"
+          "texto": "Escribe al final cuántas medidas hay"
+        }
+      ]
+    },
+    {
+      "practica": 2,
+      "titulo": "Medir justo lo que dura el viaje",
+      "enunciado": "Pon la variable midiendo a 1 antes de arrancar y a 0 al terminar el recorrido. Repite en la otra pila hasta que midiendo valga 0 añadir la distancia a la lista y esperar medio segundo.",
+      "pista": "Así la pila de registro no mide ni antes ni después del viaje.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "midiendo · 1"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "60",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "midiendo · 0"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "midiendo = 0"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valores": [
+            "huecos · Distancia E"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.5"
+          ]
+        }
+      ],
+      "notas": "Una variable de estado controlando cuánto dura el registro. Es la unidad 6 aplicada a los datos.",
+      "pasos": [
+        {
+          "texto": "Pon la variable midiendo a 1 antes de arrancar y a 0 al terminar el recorrido"
+        },
+        {
+          "texto": "Repite en la otra pila hasta que midiendo valga 0 añadir la distancia a la lista y esperar medio segundo"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "Recorrer lo apuntado",
+      "enunciado": "Con la lista huecos ya llena, pon el índice paso a 1 y repite hasta que pase de la longitud de la lista: escribe el elemento que toca; espera tres décimas; sube paso en uno.",
+      "pista": "El índice empieza en 1, no en 0, y el bucle acaba cuando pasa de la longitud.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "paso > Longitud de lista huecos"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Elemento paso de huecos"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.3"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        }
+      ],
+      "notas": "Recorrer con índice es la herramienta de la unidad. Si se pasan de la longitud, el elemento sale vacío.",
+      "pasos": [
+        {
+          "texto": "Con la lista huecos ya llena, pon el índice paso a 1 y repite hasta que pase de la longitud de la lista",
+          "hijos": [
+            "Escribe el elemento que toca",
+            "Espera tres décimas",
+            "Sube paso en uno"
+          ]
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "Preguntar en vez de recorrer",
+      "enunciado": "Comprueba si la lista huecos contiene el valor 0: si lo contiene, escribe PEGADO y pon el botón en rojo; si no, escribe LIBRE y ponlo en verde.",
+      "pista": "Para saber si algo está, no hace falta recorrer la lista entera.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces... Si no...",
+          "nivel": 0,
+          "valores": [
+            "¿La lista huecos contiene 0?"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "PEGADO"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 1,
+          "valores": [
+            "rojo"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "LIBRE"
+          ]
+        },
+        {
+          "texto": "poner luz del botón central en rojo",
+          "nivel": 1,
+          "valores": [
+            "verde"
+          ]
+        }
+      ],
+      "notas": "Un bloque frente a un bucle de seis. Conviene que vean las dos formas de responder a lo mismo.",
+      "pasos": [
+        {
+          "texto": "Comprueba si la lista huecos contiene el valor 0",
+          "hijos": [
+            "Si lo contiene, escribe PEGADO y pon el botón en rojo",
+            "Si no, escribe LIBRE y ponlo en verde"
+          ]
         }
       ]
     }
   ],
   "construccion": {
-    "piezas": "El Hub, un motor grande, vigas para la base y la plataforma, una manivela y una biela, y piezas para construir dos torres de la misma altura.",
+    "piezas": "La base de conducción, el sensor de distancia, el sensor de color, dos marcos Technic, cuatro vigas de 11, dos vigas de 7 y doce pasadores.",
     "pasos": [
       {
-        "titulo": "La base fija",
-        "texto": "Monta una base ancha y pesada que no se desplace durante el ensayo."
+        "titulo": "La base recta",
+        "texto": "Monta la base de conducción y comprueba a mano que va recta tres metros. Si se desvía, las medidas del pasillo no sirven: estarán tomadas desde sitios distintos."
       },
       {
-        "titulo": "La plataforma móvil",
-        "texto": "Coloca encima una plataforma que pueda deslizar adelante y atrás, guiada por los lados."
+        "titulo": "El sensor al costado",
+        "texto": "Saca el sensor de distancia en el puerto E hacia un lado con las dos vigas de 11, perpendicular al avance. Mide la pared, no lo que hay delante."
       },
       {
-        "titulo": "La manivela y la biela",
-        "texto": "Fija el motor grande a la base, pon una manivela en su eje y únela a la plataforma con una biela: al girar el motor, la plataforma va y viene."
+        "titulo": "La altura del costado",
+        "texto": "Déjalo a la altura media de la pared del pasillo y bien horizontal. Inclinado mide la diagonal, que siempre sale más larga."
       },
       {
-        "titulo": "Las torres",
-        "texto": "Construye dos torres de la misma altura: una sencilla y otra reforzada con diagonales."
+        "titulo": "La marca del suelo",
+        "texto": "Pon el sensor de color en el puerto D mirando al suelo, a un centímetro. Detecta la marca de llegada al final del pasillo."
       },
       {
-        "titulo": "El sismógrafo",
-        "texto": "Sujeta el Hub en lo alto de la torre que vas a ensayar. Conecta el motor al puerto A con el cable suelto, para que no tire de la torre."
+        "titulo": "El refuerzo",
+        "texto": "Cruza los dos marcos Technic por debajo y sujeta el brazo del sensor con las dos vigas de 7. Un brazo que vibra da medidas que suben y bajan sin motivo."
       },
       {
-        "titulo": "Comprueba",
-        "texto": "Gira la manivela con la mano: la plataforma debe moverse suave en todo su recorrido."
+        "titulo": "El pasillo",
+        "texto": "Construye un pasillo de metro y medio con libros o cajas, dejando dos huecos de anchuras distintas. Ahí se verá si el programa encuentra el más ancho."
       }
     ],
     "materiales": [
       {
-        "pieza": "hub"
+        "pieza": "distancia"
       },
       {
-        "pieza": "motor-grande",
-        "cantidad": 1
+        "pieza": "color"
       },
       {
-        "pieza": "viga"
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 6
+      },
+      {
+        "pieza": "pasador"
       }
     ]
   },
   "test": [
     {
-      "pregunta": "¿Por qué medimos en lugar de fiarnos de lo que vemos?",
+      "pregunta": "¿Qué permite tomar medidas mientras el robot anda?",
       "opciones": [
-        "Porque medir es más rápido",
-        "Porque el Hub lo exige",
-        "Porque con datos podemos comparar de forma objetiva",
-        "Porque las torres no se ven bien"
-      ],
-      "correcta": 2,
-      "explicacion": "Dos personas pueden ver cosas distintas; los números son los mismos para todos."
-    },
-    {
-      "pregunta": "¿Qué mide el Hub en este proyecto?",
-      "opciones": [
-        "Su inclinación",
-        "La distancia a la torre",
-        "El color de la torre",
-        "La fuerza del motor"
+        "Tener la conducción y el registro en dos pilas distintas",
+        "El gráfico de líneas",
+        "Una lista más larga",
+        "Un bucle más rápido"
       ],
       "correcta": 0,
-      "explicacion": "El giroscopio da los ángulos de cabeceo y alabeo."
+      "explicacion": "Con una sola pila habría que elegir: o se anda o se mide."
     },
     {
-      "pregunta": "¿Qué hace la extensión de gráfico de líneas?",
+      "pregunta": "¿Para qué sirve la variable midiendo?",
       "opciones": [
-        "Mueve la mesa",
-        "Guarda los datos en el Hub",
-        "Calcula la media",
-        "Dibuja en la app los valores a lo largo del tiempo"
-      ],
-      "correcta": 3,
-      "explicacion": "Cada valor trazado añade un punto a la gráfica."
-    },
-    {
-      "pregunta": "¿Para qué usamos el cronómetro?",
-      "opciones": [
-        "Para medir la inclinación",
-        "Para que todos los ensayos duren lo mismo",
-        "Para mover el motor",
-        "Para dibujar la gráfica"
+        "Para contar las medidas",
+        "Para que la pila de registro empiece y acabe con el viaje",
+        "Para guardar la distancia",
+        "Para dibujar el gráfico"
       ],
       "correcta": 1,
-      "explicacion": "Un ensayo de 5 segundos y otro de 20 no se pueden comparar."
+      "explicacion": "Es un estado: mientras vale 1 se registra, y al ponerse a 0 el bucle termina."
     },
     {
-      "pregunta": "¿Para qué guardamos las medidas en una lista?",
+      "pregunta": "¿En qué posición empieza una lista en SPIKE?",
       "opciones": [
-        "Para analizarlas al terminar: el máximo, comparar ensayos…",
-        "Para que el motor gire más rápido",
-        "Porque la gráfica no funciona sin lista",
-        "Para ahorrar batería"
-      ],
-      "correcta": 0,
-      "explicacion": "La gráfica se ve; la lista permite calcular."
-    },
-    {
-      "pregunta": "La torre A alcanza una inclinación máxima de 12° y la torre B, de 5°. ¿Cuál aguanta mejor?",
-      "opciones": [
-        "La A",
-        "Las dos igual",
-        "No se puede saber",
-        "La B"
-      ],
-      "correcta": 3,
-      "explicacion": "Menos inclinación con el mismo terremoto indica una estructura más rígida."
-    },
-    {
-      "pregunta": "¿Qué hace falta para que la comparación entre las dos torres sea justa?",
-      "opciones": [
-        "Usar motores distintos",
-        "Cambiar la duración en cada ensayo",
-        "La misma velocidad del motor y la misma duración",
-        "Ensayar una sola vez"
+        "En la última",
+        "En la 0",
+        "En la 1",
+        "Depende de la lista"
       ],
       "correcta": 2,
-      "explicacion": "Solo debe cambiar lo que se quiere comparar: la torre."
+      "explicacion": "El primer elemento es el 1, y el bucle acaba cuando el índice pasa de la longitud."
     },
     {
-      "pregunta": "En la gráfica aparecen picos muy altos. ¿Qué significa?",
+      "pregunta": "Para saber si la lista tiene un cero, ¿qué es mejor?",
       "opciones": [
-        "Que el cronómetro falla",
-        "Que la torre se inclina mucho en esos instantes",
-        "Que el motor se ha parado",
-        "Que la lista está vacía"
+        "Mirar su longitud",
+        "Dibujarla en el gráfico",
+        "Recorrerla entera con un índice",
+        "Usar el bloque que pregunta si la lista lo contiene"
+      ],
+      "correcta": 3,
+      "explicacion": "Un bloque hace el trabajo de un bucle de seis líneas."
+    },
+    {
+      "pregunta": "Para buscar la medida más grande, ¿a qué se iguala la variable al empezar?",
+      "opciones": [
+        "Al primer elemento de la lista",
+        "A la longitud",
+        "A 100",
+        "A 0"
+      ],
+      "correcta": 0,
+      "explicacion": "Empezando en un valor real de la lista, la comparación funciona siempre."
+    },
+    {
+      "pregunta": "¿Por qué el sensor de distancia va al costado y no delante?",
+      "opciones": [
+        "Porque mide mejor de lado",
+        "Porque lo que se quiere medir es la pared del pasillo, no lo que hay delante",
+        "Porque el cable es corto",
+        "Para que no choque"
       ],
       "correcta": 1,
-      "explicacion": "El eje vertical representa el ángulo: cuanto más alto el pico, mayor la inclinación."
+      "explicacion": "El perfil del pasillo se saca midiendo a los lados mientras se avanza."
+    },
+    {
+      "pregunta": "El gráfico de líneas y la lista, ¿para qué sirve cada uno?",
+      "opciones": [
+        "La lista es para el profesor",
+        "Para lo mismo",
+        "El gráfico es para que lo veas tú; la lista es para que el programa la use",
+        "El gráfico guarda los datos y la lista los dibuja"
+      ],
+      "correcta": 2,
+      "explicacion": "El gráfico se ve y se va. La lista se queda y se puede recorrer."
+    },
+    {
+      "pregunta": "Las medidas suben y bajan sin motivo. ¿Qué revisas en el montaje?",
+      "opciones": [
+        "El sensor de color",
+        "La velocidad del gráfico",
+        "La batería",
+        "Que el brazo del sensor esté bien sujeto y no vibre"
+      ],
+      "correcta": 3,
+      "explicacion": "Un brazo que vibra cambia el ángulo del sensor en cada medida."
     }
   ],
   "practicas": [
     {
-      "titulo": "Ensayo de 10 segundos con gráfica",
-      "enunciado": "La mesa sísmica funciona 10 segundos al 50 % de velocidad. Durante ese tiempo, el programa dibuja en la gráfica el ángulo de cabeceo del Hub diez veces por segundo. Al terminar, el motor se para.",
+      "titulo": "El explorador del pasillo",
+      "enunciado": "Pon midiendo a 1, prepara la base y avanza 120 centímetros, y al terminar pon midiendo a 0. En otra pila, repite hasta que midiendo valga 0: añade la distancia a la lista huecos; mándala al gráfico de líneas; espera medio segundo.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Reiniciar cronómetro",
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "fijar velocidad de movimiento al 50 %",
+          "nivel": 0,
+          "valores": [
+            "25"
+          ]
+        },
+        {
+          "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+          "nivel": 0,
+          "valores": [
+            "17.5",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "midiendo · 1"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "120",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "midiendo · 0"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
           "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "50"
-          ]
-        },
-        {
-          "texto": "A arrancar motor",
-          "nivel": 0,
-          "valores": [
-            "A",
-            "↻"
-          ]
         },
         {
           "texto": "Repetir bucle hasta",
-          "valor": "Cronómetro > 10",
-          "nivel": 0
+          "nivel": 0,
+          "valores": [
+            "midiendo = 0"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valores": [
+            "huecos · Distancia E"
+          ]
         },
         {
           "texto": "Extensión Gráfico de líneas",
-          "valor": "trazar ángulo de cabeceo",
-          "nivel": 1
+          "nivel": 1,
+          "valores": [
+            "Distancia E"
+          ]
         },
         {
           "texto": "Esperar X segundos",
-          "valor": "0.1",
-          "nivel": 1
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
+          "nivel": 1,
           "valores": [
-            "A"
+            "0.5"
           ]
         }
       ],
-      "notas": "Según cómo esté orientado el Hub en la torre, el ángulo que cambia puede ser el alabeo en lugar del cabeceo. Compruébalo antes del ensayo.",
+      "notas": "Dos pilas y un estado que las sincroniza. En el gráfico se tienen que ver los dos huecos del pasillo.",
       "pasos": [
         {
-          "texto": "La mesa sísmica funciona 10 segundos al 50 % de velocidad"
+          "texto": "Pon midiendo a 1, prepara la base y avanza 120 centímetros, y al terminar pon midiendo a 0"
         },
         {
-          "texto": "Durante ese tiempo, el programa dibuja en la gráfica el ángulo de cabeceo del Hub diez veces por segundo"
-        },
-        {
-          "texto": "Al terminar, el motor se para"
+          "texto": "En otra pila, repite hasta que midiendo valga 0",
+          "hijos": [
+            "Añade la distancia a la lista huecos",
+            "Mándala al gráfico de líneas",
+            "Espera medio segundo"
+          ]
         }
       ]
     },
     {
-      "titulo": "Registrar y comparar",
-      "enunciado": "Añade al ensayo el registro de datos: guarda cada medida en una lista y calcula la inclinación máxima. Al terminar, escríbela en la matriz. Ensaya las dos torres y entrega el programa con los dos máximos en la explicación.",
+      "titulo": "El hueco más ancho",
+      "enunciado": "Añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido. En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud: cambia mayor si el elemento que toca es más grande; sube paso en uno. Escribe el resultado al final.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
-          "valor": "maximo · 0",
-          "nivel": 0
-        },
-        {
-          "texto": "Reiniciar cronómetro",
-          "nivel": 0
-        },
-        {
-          "texto": "A fijar velocidad al 75 %",
+          "texto": "fijar A+B como motores en movimiento",
           "nivel": 0,
           "valores": [
-            "A",
-            "50"
+            "A+B"
           ]
         },
         {
-          "texto": "A arrancar motor",
+          "texto": "Fijar variable a",
           "nivel": 0,
           "valores": [
-            "A",
-            "↻"
+            "midiendo · 1"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 0,
+          "valores": [
+            "↑",
+            "120",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "midiendo · 0"
+          ]
+        },
+        {
+          "texto": "Enviar mensaje",
+          "nivel": 0,
+          "valores": [
+            "analizar"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "midiendo = 0"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 1,
+          "valores": [
+            "huecos · Distancia E"
+          ]
+        },
+        {
+          "texto": "Extensión Gráfico de líneas",
+          "nivel": 1,
+          "valores": [
+            "Distancia E"
+          ]
+        },
+        {
+          "texto": "Esperar X segundos",
+          "nivel": 1,
+          "valores": [
+            "0.5"
+          ]
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valores": [
+            "analizar"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "mayor · Elemento 1 de huecos"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 1"
           ]
         },
         {
           "texto": "Repetir bucle hasta",
-          "valor": "Cronómetro > 10",
-          "nivel": 0
-        },
-        {
-          "texto": "Fijar variable a",
-          "valor": "angulo · ángulo de cabeceo",
-          "nivel": 1
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "valor": "angulo · medidas",
-          "nivel": 1
-        },
-        {
-          "texto": "Extensión Gráfico de líneas",
-          "valor": "trazar angulo",
-          "nivel": 1
+          "nivel": 0,
+          "valores": [
+            "paso > Longitud de lista huecos"
+          ]
         },
         {
           "texto": "Si... entonces...",
-          "valor": "angulo > maximo",
-          "nivel": 1
+          "nivel": 1,
+          "valores": [
+            "Elemento paso de huecos > mayor"
+          ]
         },
         {
           "texto": "Fijar variable a",
-          "valor": "maximo · angulo",
-          "nivel": 2
-        },
-        {
-          "texto": "Esperar X segundos",
-          "valor": "0.1",
-          "nivel": 1
-        },
-        {
-          "texto": "A parar motor",
-          "nivel": 0,
+          "nivel": 2,
           "valores": [
-            "A"
+            "mayor · Elemento paso de huecos"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
           ]
         },
         {
           "texto": "escribir Hello",
           "nivel": 0,
           "valores": [
-            "maximo"
+            "mayor"
           ]
         }
       ],
-      "notas": "El ángulo puede ser negativo: para comparar torres basta con el máximo positivo. Hay que vaciar la lista antes de cada ensayo. Valora sobre todo la conclusión escrita.",
+      "notas": "Tres pilas: conducir, registrar y analizar. El mensaje es lo que garantiza que el análisis no empiece antes de tiempo.",
       "pasos": [
         {
-          "texto": "Añade al ensayo el registro de datos",
+          "texto": "Añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido"
+        },
+        {
+          "texto": "En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud",
           "hijos": [
-            "Guarda cada medida en una lista",
-            "Calcula la inclinación máxima"
+            "Cambia mayor si el elemento que toca es más grande",
+            "Sube paso en uno"
           ]
         },
         {
-          "texto": "Al terminar, escríbela en la matriz"
-        },
-        {
-          "texto": "Ensaya las dos torres"
-        },
-        {
-          "texto": "Entrega el programa con los dos máximos en la explicación"
+          "texto": "Escribe el resultado al final"
         }
       ]
     }

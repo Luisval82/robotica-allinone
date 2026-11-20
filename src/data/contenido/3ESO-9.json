@@ -1,225 +1,460 @@
 {
   "curso": "3ESO",
   "unidad": 9,
-  "reto": "Proyecto final: una carretilla elevadora autónoma que sigue una línea, reconoce cada estación por su color, recoge el palé y registra las entregas.",
+  "reto": "Monta un almacén que reciba pedidos, los sirva por su cuenta y lleve el registro de lo que ha movido.",
   "video": {
-    "titulo": "Almacén robotizado",
+    "titulo": "Todo el curso en un proyecto",
     "duracion": "7 min",
+    "escenas": [
+      {
+        "plano": "El almacén montado: tres bahías marcadas, el robot con la horquilla y la carga esperando.",
+        "locucion": "Este es el proyecto de final de etapa. Un almacén con tres bahías. El robot recibe un pedido, va a la bahía que toca, coge la carga, la lleva a la salida y apunta lo que ha hecho."
+      },
+      {
+        "plano": "El lienzo con cinco pilas rotuladas: mando, estados, conducción, horquilla y registro.",
+        "locucion": "Cinco pilas. El mando recibe el pedido. Los estados dicen en qué fase va. La conducción se mueve, la horquilla carga y el registro apunta. Cada una con su trabajo."
+      },
+      {
+        "plano": "La librería de bloques propios al lado: avanzar, girar, horquilla, bahía, servir.",
+        "locucion": "Y la librería de la unidad anterior, crecida: avanzar, girar, horquilla, bahía y servir. El programa principal no mueve un motor; llama a sus herramientas."
+      },
+      {
+        "plano": "La variable de fase cambiando y las pilas reaccionando una tras otra.",
+        "locucion": "Lo que lo mantiene en pie son los estados. Una sola variable dice en qué fase va el almacén, y ninguna pila pisa a otra."
+      },
+      {
+        "plano": "La lista de pedidos servidos llenándose y el gráfico dibujando los tiempos.",
+        "locucion": "Y el registro: una lista con lo servido y otra con los tiempos. Al final del turno, el robot te dice cuántos pedidos hizo y cuál fue el más lento."
+      },
+      {
+        "plano": "Los tres sensores señalados uno a uno mientras el robot trabaja.",
+        "locucion": "Los tres sensores trabajando: el de color reconoce la bahía, el de distancia encuentra la carga y el de fuerza es el pulsador de pedido. Nada sobra y nada está de adorno."
+      }
+    ],
     "enlaceOficial": {
       "titulo": "LEGO Education: «Assembling an Advanced Driving Base» (proyecto final)",
       "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/assembling-an-advanced-driving-base/"
-    },
-    "escenas": [
-      {
-        "plano": "Una maqueta de almacén: una carretilla de LEGO sigue una línea negra y se detiene en una marca roja.",
-        "locucion": "En los almacenes automatizados, las carretillas se mueven solas: siguen líneas en el suelo, reconocen las estaciones y llevan la cuenta de lo que entregan. Es tu proyecto final."
-      },
-      {
-        "plano": "Esquema del programa dividido en tres bloques propios: seguir hasta, recoger y dejar.",
-        "locucion": "Un proyecto así solo se puede hacer por partes. Cada parte será un bloque propio: seguir la línea hasta una estación, recoger y dejar."
-      },
-      {
-        "plano": "Primer plano del sensor de color sobre la línea y, después, sobre una marca de color.",
-        "locucion": "El sensor de color hace dos trabajos: con la luz reflejada sigue la línea, como en la unidad 2, y con «¿Es de color…?» detecta las marcas que señalan cada estación."
-      },
-      {
-        "plano": "La horquilla sube con un palé encima.",
-        "locucion": "La horquilla sube y baja con el motor grande y la posición relativa, como la pinza de la unidad 3: cero abajo y un valor fijo arriba."
-      },
-      {
-        "plano": "Captura de la app: «Enviar mensaje entregado» y una pila que añade un elemento a la lista y suma uno al contador.",
-        "locucion": "Al dejar un palé, el programa envía un mensaje. Otra pila lo recibe, añade la estación a la lista de entregas y aumenta el contador."
-      },
-      {
-        "plano": "La carretilla se detiene cuando una mano se cruza en su camino.",
-        "locucion": "El sensor de distancia detiene la carretilla si alguien se cruza, y el de fuerza confirma que el palé está cargado."
-      },
-      {
-        "plano": "La carretilla hace un reparto completo y el Hub muestra el total de entregas.",
-        "locucion": "Tu reto: un reparto completo, de la estación de carga a la de entrega, con el registro al día."
-      }
-    ]
+    }
   },
   "bloques": [
     {
-      "texto": "Mis bloques: Crear un bloque con entradas",
-      "explicacion": "Divide el proyecto en órdenes: «seguir hasta», «recoger» y «dejar»."
-    },
-    {
-      "texto": "Luz reflejada",
-      "explicacion": "Mantiene la carretilla sobre el borde de la línea."
-    },
-    {
-      "texto": "¿Es de color...?",
-      "explicacion": "Reconoce la marca de color de cada estación."
-    },
-    {
-      "texto": "Ir a la posición relativa del motor a velocidad",
-      "explicacion": "Sube y baja la horquilla a alturas exactas."
-    },
-    {
-      "texto": "Añadir elemento a lista",
-      "explicacion": "Registra cada entrega en la lista."
-    },
-    {
       "texto": "Cuando se reciba el mensaje",
-      "explicacion": "Inicia la pila que registra la entrega."
+      "explicacion": "El sombrero que enciende una pila al llegar un aviso. En un proyecto de cinco pilas es lo que las coordina sin que ninguna vigile a las demás."
     },
     {
-      "texto": "Variable",
-      "explicacion": "Cuenta los palés entregados."
+      "texto": "Mis bloques: Crear un bloque con entradas",
+      "explicacion": "La librería del proyecto: avanzar, horquilla y servir. El programa principal no mueve un motor, llama a sus herramientas."
+    },
+    {
+      "texto": "Lista",
+      "explicacion": "Una fila de valores guardados en orden. Aquí se usan dos: los pedidos servidos y lo que tardó cada uno."
+    },
+    {
+      "texto": "¿Está más próximo a?",
+      "explicacion": "La pregunta del sensor de distancia. Se usa dentro de condiciones cuando no interesa el sombrero sino comprobar en ese momento."
+    },
+    {
+      "texto": "Fijar motores de movimiento para que frenen al parar",
+      "explicacion": "Hace que la base se detenga en seco en lugar de rodar un poco más. En un almacén con bahías marcadas, esos centímetros son la diferencia."
     }
   ],
+  "programa": {
+    "titulo": "El almacén en cinco pilas",
+    "explicacion": "El mando lee el pulsador y manda el pedido. El estado pasa a servir, la conducción llama a la librería para ir a la bahía y volver, y el registro apunta el pedido y el tiempo.",
+    "bloques": [
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "avanzar (centimetros)"
+        ]
+      },
+      {
+        "texto": "mover ↑ durante 10 rotaciones",
+        "nivel": 1,
+        "valores": [
+          "↑",
+          "centimetros",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "horquilla (altura)"
+        ]
+      },
+      {
+        "texto": "Ir a la posición relativa del motor a velocidad",
+        "nivel": 1,
+        "valores": [
+          "C · altura · 25"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "servir (bahia)"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "avanzar (bahia × 30)"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "horquilla (0)"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 1,
+        "valores": [
+          "¿Está más próximo a? E 10 cm"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "horquilla (120)"
+        ]
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 1,
+        "valores": [
+          "avanzar (bahia × -30)"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "fijar A+B como motores en movimiento",
+        "nivel": 0,
+        "valores": [
+          "A+B"
+        ]
+      },
+      {
+        "texto": "Fijar motores de movimiento para que frenen al parar",
+        "nivel": 0,
+        "valores": [
+          "frenar"
+        ]
+      },
+      {
+        "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
+        "nivel": 0,
+        "valores": [
+          "17.5",
+          "cm"
+        ]
+      },
+      {
+        "texto": "Fijar aceleración del motor",
+        "nivel": 0,
+        "valores": [
+          "C · suave"
+        ]
+      },
+      {
+        "texto": "Fijar la posición relativa en…",
+        "nivel": 0,
+        "valores": [
+          "C · 0"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "fase · 0"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "pedido · 1"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces...",
+        "nivel": 1,
+        "valores": [
+          "¿Está presionado? F"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 2,
+        "valores": [
+          "fase · 1"
+        ]
+      },
+      {
+        "texto": "Enviar mensaje",
+        "nivel": 2,
+        "valores": [
+          "servir"
+        ]
+      },
+      {
+        "texto": "Esperar hasta que",
+        "nivel": 2,
+        "valores": [
+          "Presión F < 10"
+        ]
+      },
+      {
+        "texto": "Cuando se reciba el mensaje",
+        "nivel": 0,
+        "valores": [
+          "servir"
+        ]
+      },
+      {
+        "texto": "Reiniciar cronómetro",
+        "nivel": 0
+      },
+      {
+        "texto": "Mis bloques: Crear un bloque con entradas",
+        "nivel": 0,
+        "valores": [
+          "servir (pedido)"
+        ]
+      },
+      {
+        "texto": "Añadir elemento a lista",
+        "nivel": 0,
+        "valores": [
+          "servidos · pedido"
+        ]
+      },
+      {
+        "texto": "Añadir elemento a lista",
+        "nivel": 0,
+        "valores": [
+          "tiempos · Cronómetro"
+        ]
+      },
+      {
+        "texto": "Fijar variable a",
+        "nivel": 0,
+        "valores": [
+          "fase · 0"
+        ]
+      },
+      {
+        "texto": "Cuando se inicia el programa",
+        "nivel": 0
+      },
+      {
+        "texto": "Bucle infinito",
+        "nivel": 0
+      },
+      {
+        "texto": "Si... entonces... Si no...",
+        "nivel": 1,
+        "valores": [
+          "fase = 1"
+        ]
+      },
+      {
+        "texto": "encender dibujo",
+        "nivel": 2,
+        "valores": [
+          "flecha arriba"
+        ]
+      },
+      {
+        "texto": "escribir Hello",
+        "nivel": 2,
+        "valores": [
+          "Longitud de lista servidos"
+        ]
+      }
+    ]
+  },
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Los bloques del almacén",
-      "enunciado": "Crea los bloques «seguir línea» y «girar» que vas a reutilizar en todo el proyecto.",
-      "pista": "Si los haces bien, el programa final cabe en una pantalla.",
-      "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "nivel": 0,
-          "valor": "seguir línea"
-        },
-        {
-          "texto": "Fijar variable a",
-          "nivel": 1,
-          "valor": "error · Luz reflejada − 50"
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 1,
-          "valores": [
-            "derecha: error × 1.5"
-          ]
-        },
-        {
-          "texto": "Definir mi bloque",
-          "nivel": 0,
-          "valor": "girar (grados)"
-        },
-        {
-          "texto": "Fijar el ángulo de guiñada del Hub a 0",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 1,
-          "valores": [
-            "derecha: 100"
-          ]
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "nivel": 1,
-          "valor": "Ángulo de guiñada > grados"
-        },
-        {
-          "texto": "Esperar X segundos",
-          "nivel": 2,
-          "valor": "0.05"
-        },
-        {
-          "texto": "parar movimiento",
-          "nivel": 1,
-          "valores": []
-        }
-      ],
-      "notas": "Con estos dos bloques hechos, el programa final cabe en una pantalla. Es la misma idea del laberinto."
-    },
-    {
-      "practica": 2,
-      "titulo": "Reconoce la estación",
-      "enunciado": "Cuando el sensor vea un color, escribe en la matriz a qué estación corresponde.",
-      "pista": "Un color por estación: apunta la correspondencia antes de programar.",
+      "titulo": "El pedido que llega",
+      "enunciado": "Pon la fase a 0 y haz dos pilas: en una, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar el mensaje servir y esperar a que se suelte; en la otra, al recibir servir, escribe PEDIDO y toca una nota.",
+      "pista": "El mensaje arranca la pila del pedido; la fase deja constancia de que está ocupado.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 0"
+          ]
         },
         {
           "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "Si... entonces... Si no...",
+          "texto": "Si... entonces...",
           "nivel": 1,
-          "valor": "¿Es de color rojo? D"
-        },
-        {
-          "texto": "escribir Hello",
-          "nivel": 2,
           "valores": [
-            "ESTACION A"
+            "¿Está presionado? F"
           ]
         },
         {
-          "texto": "Si no",
-          "nivel": 1
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "fase · 1"
+          ]
         },
         {
-          "texto": "Si... entonces...",
+          "texto": "Enviar mensaje",
           "nivel": 2,
-          "valor": "¿Es de color azul? D"
+          "valores": [
+            "servir"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 2,
+          "valores": [
+            "Presión F < 10"
+          ]
+        },
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valores": [
+            "servir"
+          ]
         },
         {
           "texto": "escribir Hello",
-          "nivel": 3,
+          "nivel": 0,
           "valores": [
-            "ESTACION B"
+            "PEDIDO"
+          ]
+        },
+        {
+          "texto": "Tocar nota X segundos",
+          "nivel": 0,
+          "valores": [
+            "72 · 0.3"
           ]
         }
       ],
-      "notas": "Apunta la correspondencia antes de programar: un color para cada estación y el mismo criterio para todos.",
+      "notas": "Mensaje y estado juntos: el aviso arranca el trabajo y la fase dice que está en marcha.",
       "pasos": [
         {
-          "texto": "Cuando el sensor vea un color"
-        },
-        {
-          "texto": "Escribe en la matriz a qué estación corresponde"
+          "texto": "Pon la fase a 0 y haz dos pilas",
+          "hijos": [
+            "En una, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar el mensaje servir y esperar a que se suelte",
+            "En la otra, al recibir servir, escribe PEDIDO y toca una nota"
+          ]
         }
       ]
     },
     {
-      "practica": 3,
-      "titulo": "Coge la carga",
-      "enunciado": "Con la posición relativa del motor, baja la horquilla, levántala y comprueba que no se cae.",
-      "pista": "Levanta despacio: con la carga alta el robot se vuelca con facilidad.",
+      "practica": 2,
+      "titulo": "El bloque que sirve una bahía",
+      "enunciado": "Crea el bloque avanzar con hueco de centímetros y el bloque horquilla con hueco de altura. Crea después servir con un hueco de bahía que avance la bahía por 30 centímetros, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva.",
+      "pista": "La distancia de cada bahía sale de multiplicar su número por 30.",
       "solucion": [
         {
-          "texto": "Cuando se inicia el programa",
-          "nivel": 0
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avanzar (centimetros)"
+          ]
         },
         {
-          "texto": "Fijar la posición relativa en…",
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "centimetros",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
-          "valor": "C · 0"
+          "valores": [
+            "horquilla (altura)"
+          ]
         },
         {
           "texto": "Ir a la posición relativa del motor a velocidad",
-          "nivel": 0,
-          "valor": "C · -120 · 20 %"
+          "nivel": 1,
+          "valores": [
+            "C · altura · 25"
+          ]
         },
         {
-          "texto": "Esperar X segundos",
+          "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
-          "valor": "1"
+          "valores": [
+            "servir (bahia)"
+          ]
         },
         {
-          "texto": "Ir a la posición relativa del motor a velocidad",
-          "nivel": 0,
-          "valor": "C · 0 · 15 %"
-        }
-      ],
-      "notas": "Levanta despacio: con la carga alta el robot se vuelca con mucha facilidad."
-    },
-    {
-      "practica": 4,
-      "titulo": "Ruta de reparto",
-      "enunciado": "Guarda en una lista el orden de las estaciones y recórrelas una a una con tus bloques.",
-      "pista": "Este es el proyecto final en pequeño: pruébalo antes de montarlo entero.",
-      "solucion": [
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (bahia × 30)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (0)"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "¿Está más próximo a? E 10 cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (120)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (bahia × -30)"
+          ]
+        },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
@@ -232,6 +467,396 @@
           ]
         },
         {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "C · 0"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "servir (2)"
+          ]
+        }
+      ],
+      "notas": "La cuenta de la bahía va dentro del bloque. Llamarlo con 1, 2 o 3 sirve las tres bahías sin tocar nada.",
+      "pasos": [
+        {
+          "texto": "Crea el bloque avanzar con hueco de centímetros y el bloque horquilla con hueco de altura"
+        },
+        {
+          "texto": "Crea después servir con un hueco de bahía que avance la bahía por 30 centímetros, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva"
+        }
+      ]
+    },
+    {
+      "practica": 3,
+      "titulo": "El registro del turno",
+      "enunciado": "Al terminar de servir, añade el número de pedido a la lista servidos y el cronómetro a la lista tiempos. Escribe después cuántos pedidos llevas.",
+      "pista": "Hay que reiniciar el cronómetro al empezar a servir para que el tiempo sea el de ese pedido.",
+      "solucion": [
+        {
+          "texto": "Cuando se reciba el mensaje",
+          "nivel": 0,
+          "valores": [
+            "servir"
+          ]
+        },
+        {
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "servir (pedido)"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "servidos · pedido"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "tiempos · Cronómetro"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "Longitud de lista servidos"
+          ]
+        }
+      ],
+      "notas": "Dos listas en paralelo: la posición 3 de una y de la otra hablan del mismo pedido.",
+      "pasos": [
+        {
+          "texto": "Al terminar de servir, añade el número de pedido a la lista servidos y el cronómetro a la lista tiempos"
+        },
+        {
+          "texto": "Escribe después cuántos pedidos llevas"
+        }
+      ]
+    },
+    {
+      "practica": 4,
+      "titulo": "El pedido más lento",
+      "enunciado": "Busca en la lista tiempos ya llena el valor más grande recorriéndola con un índice. Escribe el resultado al terminar.",
+      "pista": "Empieza la variable en el primer elemento de la lista, no en cero.",
+      "solucion": [
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "mayor · Elemento 1 de tiempos"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "Repetir bucle hasta",
+          "nivel": 0,
+          "valores": [
+            "paso > Longitud de lista tiempos"
+          ]
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "Elemento paso de tiempos > mayor"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "mayor · Elemento paso de tiempos"
+          ]
+        },
+        {
+          "texto": "Cambiar variable por",
+          "nivel": 1,
+          "valores": [
+            "paso · 1"
+          ]
+        },
+        {
+          "texto": "escribir Hello",
+          "nivel": 0,
+          "valores": [
+            "mayor"
+          ]
+        }
+      ],
+      "notas": "El mismo algoritmo de la unidad 7 aplicado a los tiempos. Ya lo tienen aprendido y aquí se ve para qué servía.",
+      "pasos": [
+        {
+          "texto": "Busca en la lista tiempos ya llena el valor más grande recorriéndola con un índice"
+        },
+        {
+          "texto": "Escribe el resultado al terminar"
+        }
+      ]
+    }
+  ],
+  "construccion": {
+    "piezas": "La base de conducción, el motor grande, los tres sensores, dos marcos Technic, cuatro vigas de 15, cuatro vigas de 11, dos vigas de 7, dos ejes de 7, un panel y dieciocho pasadores.",
+    "pasos": [
+      {
+        "titulo": "La base que frena",
+        "texto": "Monta la base de conducción con los dos motores medianos en A y B y refuérzala por debajo con los dos marcos Technic. Tiene que parar en seco en la bahía, así que nada de juego en las ruedas."
+      },
+      {
+        "titulo": "El mástil y la horquilla",
+        "texto": "Levanta el mástil con dos vigas de 15 y pon el motor grande en el puerto C en su base, con el eje de 7 y las dos vigas de 11 colgando con el panel de pala."
+      },
+      {
+        "titulo": "El contrapeso",
+        "texto": "Pon la cuarta viga de 15 por detrás, sobre las ruedas. Con la carga arriba, el robot tiende a irse de morro justo al frenar."
+      },
+      {
+        "titulo": "Los tres sensores",
+        "texto": "Sensor de color en el puerto D mirando al suelo a un centímetro, sensor de distancia en el E dentro del mástil mirando al frente, y sensor de fuerza en el F encima del Hub como pulsador de pedido."
+      },
+      {
+        "titulo": "Los cables",
+        "texto": "Pasa todos los cables por debajo y sujétalos con las dos vigas de 7. Con cinco cables y una horquilla que sube, un cable suelto se engancha en el mástil a la segunda pasada."
+      },
+      {
+        "titulo": "El almacén",
+        "texto": "Marca en el suelo con cinta tres bahías a 30, 60 y 90 centímetros de la salida, cada una con su trozo de color. Pon una pieza grande en cada bahía como carga."
+      },
+      {
+        "titulo": "La prueba en vacío",
+        "texto": "Antes de programar, empuja el robot a mano hasta la bahía tres y vuelve, con la horquilla arriba. Si roza, se engancha o cabecea, arréglalo: el programa no arregla un montaje que no pasa."
+      }
+    ],
+    "materiales": [
+      {
+        "pieza": "motor-grande"
+      },
+      {
+        "pieza": "marco",
+        "cantidad": 2
+      },
+      {
+        "pieza": "viga",
+        "cantidad": 10
+      },
+      {
+        "pieza": "eje",
+        "cantidad": 2
+      },
+      {
+        "pieza": "pasador"
+      }
+    ]
+  },
+  "test": [
+    {
+      "pregunta": "¿Cuántas pilas tiene el almacén y qué hace cada una?",
+      "opciones": [
+        "Cuatro o cinco, cada una con un trabajo: mando, servicio, registro y panel",
+        "Dos: una para motores y otra para sensores",
+        "Una por sensor",
+        "Una, que lo hace todo"
+      ],
+      "correcta": 0,
+      "explicacion": "Repartir por trabajos es lo que permite que un proyecto de este tamaño se pueda depurar."
+    },
+    {
+      "pregunta": "¿Para qué sirve el estado en un proyecto así?",
+      "opciones": [
+        "Para contar pedidos",
+        "Para que ninguna pila mande sobre lo que está haciendo otra",
+        "Para guardar los tiempos",
+        "Para encender la pantalla"
+      ],
+      "correcta": 1,
+      "explicacion": "Sin estados, el mando aceptaría un pedido nuevo con el anterior a medias."
+    },
+    {
+      "pregunta": "¿Por qué se fija que los motores frenen al parar?",
+      "opciones": [
+        "Para que no haga ruido",
+        "Para que el motor dure más",
+        "Para que la base se detenga en seco y no se pase de la bahía",
+        "Para gastar menos batería"
+      ],
+      "correcta": 2,
+      "explicacion": "Rodando un poco más, el robot deja la carga fuera de la bahía marcada."
+    },
+    {
+      "pregunta": "¿Qué ventaja tiene que la distancia de la bahía se calcule dentro del bloque servir?",
+      "opciones": [
+        "Que usa menos variables",
+        "Que no necesita sensores",
+        "Que va más rápido",
+        "Que llamándolo con 1, 2 o 3 sirve las tres bahías sin tocar nada"
+      ],
+      "correcta": 3,
+      "explicacion": "El hueco entra como número y la cuenta se hace dentro: una definición, tres bahías."
+    },
+    {
+      "pregunta": "Dos listas, servidos y tiempos, se llenan a la vez. ¿Qué significa la posición 3 de cada una?",
+      "opciones": [
+        "El tercer pedido y lo que tardó ese mismo pedido",
+        "El total de los tres primeros",
+        "El pedido más lento",
+        "Cosas sin relación"
+      ],
+      "correcta": 0,
+      "explicacion": "Son listas en paralelo: el mismo índice habla del mismo suceso."
+    },
+    {
+      "pregunta": "¿Por qué se reinicia el cronómetro al empezar a servir?",
+      "opciones": [
+        "Para que la pantalla no parpadee",
+        "Para que el tiempo apuntado sea el de ese pedido y no el del turno entero",
+        "Porque el cronómetro se para solo",
+        "Para cambiar de fase"
+      ],
+      "correcta": 1,
+      "explicacion": "Sin reiniciarlo, cada pedido saldría más lento que el anterior aunque tardase lo mismo."
+    },
+    {
+      "pregunta": "¿Qué trabajo hace cada sensor en el almacén?",
+      "opciones": [
+        "El de color mide la carga",
+        "Los tres miden distancia",
+        "El de color reconoce la bahía, el de distancia encuentra la carga y el de fuerza es el pulsador",
+        "Solo se usa el de distancia"
+      ],
+      "correcta": 2,
+      "explicacion": "Cada uno tiene una función distinta y ninguno está de adorno."
+    },
+    {
+      "pregunta": "En el programa principal del proyecto, ¿cuántos bloques de motor debe haber?",
+      "opciones": [
+        "Solo los de la horquilla",
+        "Dos",
+        "Todos los que haga falta",
+        "Ninguno: el principal solo llama a los bloques propios"
+      ],
+      "correcta": 3,
+      "explicacion": "Esa es la medida de que el proyecto está bien organizado, y cuenta para la nota."
+    }
+  ],
+  "practicas": [
+    {
+      "titulo": "El almacén que sirve pedidos",
+      "enunciado": "Crea los bloques avanzar, horquilla y servir con hueco de bahía. En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1. En la pila de mando, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar servir y esperar a que se suelte. En la pila del mensaje servir, reinicia el cronómetro, llama a servir con el pedido y pon la fase a 0.",
+      "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avanzar (centimetros)"
+          ]
+        },
+        {
+          "texto": "mover ↑ durante 10 rotaciones",
+          "nivel": 1,
+          "valores": [
+            "↑",
+            "centimetros",
+            "cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "horquilla (altura)"
+          ]
+        },
+        {
+          "texto": "Ir a la posición relativa del motor a velocidad",
+          "nivel": 1,
+          "valores": [
+            "C · altura · 25"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "servir (bahia)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (bahia × 30)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (0)"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "¿Está más próximo a? E 10 cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (120)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (bahia × -30)"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
+          "valores": [
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "nivel": 0,
+          "valores": [
+            "frenar"
+          ]
+        },
+        {
           "texto": "fijar 1 rotación del motor en 17.5 cm recorridos",
           "nivel": 0,
           "valores": [
@@ -240,391 +865,359 @@
           ]
         },
         {
-          "texto": "fijar velocidad de movimiento al 50 %",
+          "texto": "Fijar aceleración del motor",
           "nivel": 0,
           "valores": [
-            "30"
+            "C · suave"
           ]
         },
         {
-          "texto": "Añadir elemento a lista",
+          "texto": "Fijar la posición relativa en…",
           "nivel": 0,
-          "valor": "ruta · rojo"
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "nivel": 0,
-          "valor": "ruta · azul"
+          "valores": [
+            "C · 0"
+          ]
         },
         {
           "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "entregados · 0"
+          "valores": [
+            "fase · 0"
+          ]
         },
         {
-          "texto": "Repetir bucle hasta",
+          "texto": "Fijar variable a",
           "nivel": 0,
-          "valor": "entregados = Longitud de ruta"
+          "valores": [
+            "pedido · 1"
+          ]
         },
         {
-          "texto": "Mi bloque",
-          "nivel": 1,
-          "valor": "seguir línea"
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
         },
         {
           "texto": "Si... entonces...",
           "nivel": 1,
-          "valor": "¿Es de color rojo? D"
+          "valores": [
+            "¿Está presionado? F"
+          ]
         },
         {
-          "texto": "parar movimiento",
+          "texto": "Fijar variable a",
           "nivel": 2,
-          "valores": []
-        },
-        {
-          "texto": "Cambiar variable por",
-          "nivel": 2,
-          "valor": "entregados · 1"
+          "valores": [
+            "fase · 1"
+          ]
         },
         {
           "texto": "Enviar mensaje",
           "nivel": 2,
-          "valor": "entregado"
+          "valores": [
+            "servir"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 2,
+          "valores": [
+            "Presión F < 10"
+          ]
         },
         {
           "texto": "Cuando se reciba el mensaje",
           "nivel": 0,
-          "valor": "entregado"
-        },
-        {
-          "texto": "Añadir elemento a lista",
-          "nivel": 0,
-          "valor": "registro · entregados"
-        }
-      ],
-      "notas": "La lista guarda la ruta y el bucle la recorre. Este es el proyecto final en pequeño: pruébalo antes de montarlo entero."
-    }
-  ],
-  "construccion": {
-    "piezas": "El Hub, dos motores medianos con ruedas, un motor grande, los sensores de color, distancia y fuerza, vigas para el mástil y la horquilla, y un palé hecho con piezas planas.",
-    "pasos": [
-      {
-        "titulo": "La base de conducción",
-        "texto": "Monta un chasis ancho y estable, con el Hub retrasado para que haga de contrapeso."
-      },
-      {
-        "titulo": "El mástil",
-        "texto": "Fija el motor grande delante, con un mecanismo que suba y baje la horquilla al girar."
-      },
-      {
-        "titulo": "La horquilla",
-        "texto": "Monta dos vigas paralelas que entren por debajo del palé."
-      },
-      {
-        "titulo": "El sensor de color",
-        "texto": "Colócalo delante, mirando al suelo, a un centímetro, sin que la horquilla lo tape."
-      },
-      {
-        "titulo": "Los sensores de seguridad",
-        "texto": "El de distancia, mirando al frente por encima de la horquilla. El de fuerza, al fondo de la horquilla: el palé lo pulsa al quedar cargado."
-      },
-      {
-        "titulo": "Los cables",
-        "texto": "Motores de las ruedas a los puertos A y B, motor grande al C, sensor de color al D, de distancia al E y de fuerza al F: los seis puertos."
-      },
-      {
-        "titulo": "El almacén",
-        "texto": "Prepara una línea negra sobre fondo blanco con dos marcas de color, una para la carga y otra para la entrega."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "hub"
-      },
-      {
-        "pieza": "motor",
-        "cantidad": 2
-      },
-      {
-        "pieza": "rueda"
-      },
-      {
-        "pieza": "motor-grande",
-        "cantidad": 1
-      },
-      {
-        "pieza": "color"
-      },
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "fuerza"
-      },
-      {
-        "pieza": "viga"
-      }
-    ]
-  },
-  "test": [
-    {
-      "pregunta": "¿Por qué dividimos el proyecto en bloques propios?",
-      "opciones": [
-        "Porque la app limita el número de bloques",
-        "Porque así se puede probar cada parte por separado y el programa principal se entiende",
-        "Para que el robot pese menos",
-        "Para usar menos sensores"
-      ],
-      "correcta": 1,
-      "explicacion": "Un programa de una sola pila con todo mezclado sería imposible de depurar."
-    },
-    {
-      "pregunta": "¿Qué dos trabajos hace el sensor de color?",
-      "opciones": [
-        "Medir distancia y fuerza",
-        "Mover la horquilla y contar",
-        "Seguir la línea con la luz reflejada y reconocer las estaciones por su color",
-        "Enviar mensajes y recibirlos"
-      ],
-      "correcta": 2,
-      "explicacion": "El mismo sensor da un dato (luz reflejada) y responde a una pregunta (¿es de color…?)."
-    },
-    {
-      "pregunta": "¿Cuándo termina el bloque «seguir hasta (rojo)»?",
-      "opciones": [
-        "Cuando el sensor ve el color rojo",
-        "A los 10 segundos",
-        "Cuando se acaba la línea",
-        "Nunca"
-      ],
-      "correcta": 0,
-      "explicacion": "Sigue la línea dentro de un «Repetir hasta» cuya condición es ver ese color."
-    },
-    {
-      "pregunta": "¿Por qué usamos la posición relativa para la horquilla?",
-      "opciones": [
-        "Porque es más rápida",
-        "Porque el motor grande no tiene otra",
-        "Porque gasta menos batería",
-        "Porque ponemos el cero abajo al empezar y puede pasar de 360°"
-      ],
-      "correcta": 3,
-      "explicacion": "Subir la horquilla puede necesitar más de una vuelta de motor, y la referencia no depende del montaje."
-    },
-    {
-      "pregunta": "¿Qué ocurre al enviar el mensaje «entregado»?",
-      "opciones": [
-        "La carretilla se detiene",
-        "Se borra la lista",
-        "La pila que lo recibe añade la entrega a la lista y suma uno al contador",
-        "La horquilla sube"
-      ],
-      "correcta": 2,
-      "explicacion": "El registro va en su propia pila, separado del movimiento."
-    },
-    {
-      "pregunta": "Tras tres entregas, ¿cuál es la longitud de la lista de entregas?",
-      "opciones": [
-        "0",
-        "1",
-        "6",
-        "3"
-      ],
-      "correcta": 3,
-      "explicacion": "Cada entrega añade un elemento."
-    },
-    {
-      "pregunta": "¿Para qué sirve el sensor de fuerza al fondo de la horquilla?",
-      "opciones": [
-        "Para confirmar que el palé está cargado",
-        "Para medir el peso exacto",
-        "Para seguir la línea",
-        "Para frenar las ruedas"
-      ],
-      "correcta": 0,
-      "explicacion": "El palé lo pulsa cuando la horquilla ha entrado del todo."
-    },
-    {
-      "pregunta": "¿Cuántos puertos del Hub usa este proyecto?",
-      "opciones": [
-        "Tres",
-        "Los seis",
-        "Cuatro",
-        "Dos"
-      ],
-      "correcta": 1,
-      "explicacion": "Tres motores y tres sensores: todos los puertos ocupados."
-    }
-  ],
-  "practicas": [
-    {
-      "titulo": "Seguir la línea hasta la estación y recoger",
-      "enunciado": "Define el bloque «seguir hasta (color)», que sigue la línea de forma proporcional hasta ver ese color, y el bloque «recoger», que avanza un poco y sube la horquilla. Úsalos para llegar a la estación roja y cargar el palé.",
-      "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "valor": "seguir hasta (color)",
-          "nivel": 0
-        },
-        {
-          "texto": "Repetir bucle hasta",
-          "valor": "¿Es de color (color)?",
-          "nivel": 1
-        },
-        {
-          "texto": "empezar a mover derecha: 30",
-          "nivel": 2,
           "valores": [
-            "(Luz reflejada − 50) × 0.5"
+            "servir"
           ]
         },
         {
-          "texto": "parar movimiento",
-          "nivel": 1,
-          "valores": []
+          "texto": "Reiniciar cronómetro",
+          "nivel": 0
         },
         {
-          "texto": "Definir mi bloque",
-          "valor": "recoger",
-          "nivel": 0
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "servir (pedido)"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 0"
+          ]
+        }
+      ],
+      "notas": "Seis pilas. El programa principal no mueve ni un motor: todo pasa por la librería. Es la mitad de la nota de la prueba.",
+      "pasos": [
+        {
+          "texto": "Crea los bloques avanzar, horquilla y servir con hueco de bahía"
+        },
+        {
+          "texto": "En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1"
+        },
+        {
+          "texto": "En la pila de mando, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar servir y esperar a que se suelte"
+        },
+        {
+          "texto": "En la pila del mensaje servir, reinicia el cronómetro, llama a servir con el pedido y pon la fase a 0"
+        }
+      ]
+    },
+    {
+      "titulo": "El registro del turno completo",
+      "enunciado": "Amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno. Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos.",
+      "solucion": [
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "avanzar (centimetros)"
+          ]
         },
         {
           "texto": "mover ↑ durante 10 rotaciones",
           "nivel": 1,
           "valores": [
             "↑",
-            "5",
+            "centimetros",
             "cm"
           ]
         },
         {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "horquilla (altura)"
+          ]
+        },
+        {
           "texto": "Ir a la posición relativa del motor a velocidad",
-          "valor": "C · 200 · 30 %",
-          "nivel": 1
+          "nivel": 1,
+          "valores": [
+            "C · altura · 25"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "servir (bahia)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (bahia × 30)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (0)"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 1,
+          "valores": [
+            "¿Está más próximo a? E 10 cm"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "horquilla (120)"
+          ]
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 1,
+          "valores": [
+            "avanzar (bahia × -30)"
+          ]
         },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar la posición relativa en…",
-          "valor": "C · 0",
-          "nivel": 0
-        },
-        {
-          "texto": "Mi bloque",
-          "valor": "seguir hasta (rojo)",
-          "nivel": 0
-        },
-        {
-          "texto": "Mi bloque",
-          "valor": "recoger",
-          "nivel": 0
-        }
-      ],
-      "notas": "El umbral (50), la ganancia (0,5) y la altura de la horquilla (200) dependen del montaje. Lo esencial es que el seguimiento esté dentro de un «Repetir hasta» que termine al ver el color.",
-      "pasos": [
-        {
-          "texto": "Define el bloque «seguir hasta (color)», que sigue la línea de forma proporcional hasta ver ese color, y el bloque «recoger», que avanza un poco y sube la horquilla"
-        },
-        {
-          "texto": "Úsalos para llegar a la estación roja y cargar el palé"
-        }
-      ]
-    },
-    {
-      "titulo": "Reparto completo con registro",
-      "enunciado": "Añade el bloque «dejar (estacion)», que baja la horquilla, retrocede y envía el mensaje «entregado». Otra pila recibe el mensaje, añade la estación a la lista de entregas y suma uno al total. Haz un reparto: cargar en la estación roja y entregar en la azul.",
-      "solucion": [
-        {
-          "texto": "Definir mi bloque",
-          "valor": "dejar (estacion)",
-          "nivel": 0
-        },
-        {
-          "texto": "Ir a la posición relativa del motor a velocidad",
-          "valor": "C · 0 · 30 %",
-          "nivel": 1
-        },
-        {
-          "texto": "mover ↑ durante 10 rotaciones",
-          "nivel": 1,
+          "texto": "fijar A+B como motores en movimiento",
+          "nivel": 0,
           "valores": [
-            "↓",
-            "5",
-            "cm"
+            "A+B"
+          ]
+        },
+        {
+          "texto": "Fijar motores de movimiento para que frenen al parar",
+          "nivel": 0,
+          "valores": [
+            "frenar"
+          ]
+        },
+        {
+          "texto": "Fijar aceleración del motor",
+          "nivel": 0,
+          "valores": [
+            "C · suave"
+          ]
+        },
+        {
+          "texto": "Fijar la posición relativa en…",
+          "nivel": 0,
+          "valores": [
+            "C · 0"
           ]
         },
         {
           "texto": "Fijar variable a",
-          "valor": "ultima · estacion",
-          "nivel": 1
+          "nivel": 0,
+          "valores": [
+            "fase · 0"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "pedido · 1"
+          ]
+        },
+        {
+          "texto": "Cuando se inicia el programa",
+          "nivel": 0
+        },
+        {
+          "texto": "Bucle infinito",
+          "nivel": 0
+        },
+        {
+          "texto": "Si... entonces...",
+          "nivel": 1,
+          "valores": [
+            "¿Está presionado? F"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 2,
+          "valores": [
+            "fase · 1"
+          ]
         },
         {
           "texto": "Enviar mensaje",
-          "valor": "entregado",
-          "nivel": 1
+          "nivel": 2,
+          "valores": [
+            "servir"
+          ]
+        },
+        {
+          "texto": "Esperar hasta que",
+          "nivel": 2,
+          "valores": [
+            "Presión F < 10"
+          ]
         },
         {
           "texto": "Cuando se reciba el mensaje",
-          "valor": "entregado",
+          "nivel": 0,
+          "valores": [
+            "servir"
+          ]
+        },
+        {
+          "texto": "Reiniciar cronómetro",
           "nivel": 0
+        },
+        {
+          "texto": "Mis bloques: Crear un bloque con entradas",
+          "nivel": 0,
+          "valores": [
+            "servir (pedido)"
+          ]
         },
         {
           "texto": "Añadir elemento a lista",
-          "valor": "ultima · entregas",
-          "nivel": 0
+          "nivel": 0,
+          "valores": [
+            "servidos · pedido"
+          ]
+        },
+        {
+          "texto": "Añadir elemento a lista",
+          "nivel": 0,
+          "valores": [
+            "tiempos · Cronómetro"
+          ]
         },
         {
           "texto": "Cambiar variable por",
-          "valor": "total · 1",
-          "nivel": 0
+          "nivel": 0,
+          "valores": [
+            "pedido · 1"
+          ]
+        },
+        {
+          "texto": "Fijar variable a",
+          "nivel": 0,
+          "valores": [
+            "fase · 0"
+          ]
         },
         {
           "texto": "Cuando se inicia el programa",
           "nivel": 0
         },
         {
-          "texto": "Fijar la posición relativa en…",
-          "valor": "C · 0",
+          "texto": "Bucle infinito",
           "nivel": 0
         },
         {
-          "texto": "Fijar variable a",
-          "valor": "total · 0",
-          "nivel": 0
+          "texto": "Si... entonces... Si no...",
+          "nivel": 1,
+          "valores": [
+            "fase = 1"
+          ]
         },
         {
-          "texto": "Mi bloque",
-          "valor": "seguir hasta (rojo)",
-          "nivel": 0
+          "texto": "encender dibujo",
+          "nivel": 2,
+          "valores": [
+            "flecha arriba"
+          ]
         },
         {
-          "texto": "Mi bloque",
-          "valor": "recoger",
-          "nivel": 0
+          "texto": "encender dibujo",
+          "nivel": 2,
+          "valores": [
+            "cuadrado"
+          ]
         },
         {
-          "texto": "Mi bloque",
-          "valor": "seguir hasta (azul)",
-          "nivel": 0
-        },
-        {
-          "texto": "Mi bloque",
-          "valor": "dejar (azul)",
-          "nivel": 0
+          "texto": "escribir Hello",
+          "nivel": 1,
+          "valores": [
+            "Longitud de lista servidos"
+          ]
         }
       ],
-      "notas": "Las definiciones de «seguir hasta» y «recoger» son las de la práctica 1. Los sensores de seguridad (distancia y fuerza) son una ampliación: valóralos si están, pero no los exijas.",
+      "notas": "Siete pilas, dos listas, tres sensores y una librería de tres bloques. Es el programa más grande del ciclo y se corrige por partes: librería, estados, registro y panel.",
       "pasos": [
         {
-          "texto": "Añade el bloque «dejar (estacion)», que baja la horquilla, retrocede y envía el mensaje «entregado»"
+          "texto": "Amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno"
         },
         {
-          "texto": "Otra pila recibe el mensaje, añade la estación a la lista de entregas y suma uno al total"
-        },
-        {
-          "texto": "Haz un reparto: cargar en la estación roja y entregar en la azul"
+          "texto": "Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos"
         }
       ]
     }
