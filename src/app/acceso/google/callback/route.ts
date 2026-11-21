@@ -24,6 +24,10 @@ export async function GET(request: NextRequest) {
   if (!cuenta) return alLogin("dominio");
 
   const user = await findOrCreateGoogleUser(cuenta);
+
+  // Cuenta desactivada: tampoco entra por Google. No se le abre sesión.
+  if (!user.activa) return alLogin("inactiva");
+
   await startSession(user);
 
   // El profesor y el superadministrador entran directamente a su panel: la

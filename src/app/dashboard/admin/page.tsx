@@ -1,54 +1,88 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { CursosDocente } from "@/components/admin/CursosDocente";
-import { RoleControl } from "@/components/admin/RoleControl";
-import { RoleBadge } from "@/components/ui/RoleBadge";
+import { PanelCuentas } from "@/components/admin/PanelCuentas";
+import type { CuentaEnLista } from "@/components/admin/FilaCuenta";
 import { requireRole } from "@/lib/auth";
 import { getAnioActivo, getCursosDeDocentes, listUsers } from "@/lib/db";
 import { saludo } from "@/lib/format";
-import { COURSE_LABEL, ROLES, type Role } from "@/lib/types";
+import { ROLES } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Gestión de usuarios" };
 
-const ROLE_PLURAL: Record<Role, string> = {
-  superadmin: "Superadministradores",
-  profesor: "Profesores",
-  alumno: "Alumnos",
-};
-
+/**
+ * Panel de superadministración: las cuentas del centro, su rol, sus cursos y
+ * su estado, en un listado de una línea por cuenta.
+ *
+ * Esta página solo recoge datos y comprueba el rol. Quien filtra y quien
+ * pinta cada fila son PanelCuentas y FilaCuenta, en el navegador, para que
+ * buscar y filtrar se note al instante.
+ */
 export default async function AdminDashboardPage() {
-  // Pestaña exclusiva del superadministrador.
+  // Única puerta: solo superadministrador. Cada acción del panel lo vuelve a
+  // comprobar por su cuenta, porque un formulario se puede enviar a mano.
   const session = await requireRole(["superadmin"]);
 
-  // Orden: superadministrador, profesores y alumnos; dentro de cada rol, por nombre.
-  const users = (await listUsers()).sort(
-    (a, b) =>
-      ROLES.indexOf(a.role) - ROLES.indexOf(b.role) || a.name.localeCompare(b.name, "es"),
-  );
-  const superadmins = users.filter((user) => user.role === "superadmin").length;
-  const [anio, cursosPorDocente] = await Promise.all([getAnioActivo(), getCursosDeDocentes()]);
+  const fecha = new Intl.DateTimeFormat("es-ES", { dateStyle: "short", timeZone: "Europe/Madrid" });
+
+  const [users, anio, cursosPorDocente] = await Promise.all([
+    listUsers(),
+    getAnioActivo(),
+    getCursosDeDocentes(),
+  ]);
+
+  // Cuántos superadministradores ACTIVOS hay: con uno solo, su fila se
+  // bloquea para que nadie se quede fuera de la plataforma.
+  const superadminsActivos = users.filter(
+    (user) => user.role === "superadmin" && user.activa,
+  ).length;
+
+  // Orden: superadministradores, profesores y alumnos; dentro de cada rol, por
+  // nombre. Es el orden en el que se busca a alguien cuando hay muchos.
+  const cuentas: CuentaEnLista[] = users
+    .slice()
+    .sort(
+      (a, b) =>
+        ROLES.indexOf(a.role) - ROLES.indexOf(b.role) || a.name.localeCompare(b.name, "es"),
+    )
+    .map((user) => ({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      course: user.course,
+      activa: user.activa,
+      cursos: cursosPorDocente.get(user.id) ?? [],
+      conGoogle: user.googleSub !== null,
+      perfilCompleto: user.perfilCompleto,
+      // Formateada aquí: hacerlo en el navegador puede dar un texto distinto
+      // al del HTML del servidor y romper la hidratación.
+      creadaEn: fecha.format(new Date(user.createdAt)),
+      esTuCuenta: user.id === session.id,
+      esUnicoSuperadminActivo:
+        user.role === "superadmin" && user.activa && superadminsActivos <= 1,
+    }));
 
   return (
     <>
       <h1 className="font-display text-4xl font-semibold text-ink-900">Gestión de usuarios</h1>
       <p className="mt-2 max-w-3xl text-lg font-semibold text-ink-500">
-        {saludo(session)}. Quien entra con la cuenta del colegio empieza como alumno. Aquí decides el rol de cada
-        cuenta —Alumno, Profesor o Superadministrador—: el cambio se aplica al momento, aunque esa
-        persona tenga la sesión abierta. Si entra un compañero docente con su correo del colegio,
-        aparecerá en la lista como alumno y basta con pasarlo a Profesor.
+        {saludo(session)}. Quien entra con la cuenta del colegio empieza como alumno, así que
+        cuando llega un compañero docente aparece aquí como alumno y basta con pasarlo a Profesor
+        y marcarle sus cursos. El cambio se aplica al momento, aunque tenga la sesión abierta.
       </p>
       <p className="mt-2 max-w-3xl font-semibold text-ink-500">
-        A cada docente le marcas los cursos que imparte este año ({anio}). En su panel verá solo el
-        alumnado y las entregas de esos cursos. Un docente sin ningún curso marcado los ve todos,
-        con un aviso. Tú, como superadministrador, lo ves todo siempre.
+        Las asignaciones de curso son de este año ({anio}). En su panel, cada docente ve solo el
+        alumnado y las entregas de los cursos que tenga marcados; sin ninguno marcado los ve
+        todos, con un aviso. Tú lo ves todo siempre.
       </p>
+
       <div className="mt-4 flex flex-wrap gap-3">
         <Link
           href="/dashboard/profesor/alumnos"
-          className="inline-flex h-11 items-center gap-2 rounded-2xl bg-ink-900 px-5 font-display font-semibold text-white transition hover:bg-ink-700"
+          className="inline-flex h-11 items-center gap-2 rounded-2xl border-2 border-ink-200 bg-white px-5 font-display font-semibold text-ink-900 transition hover:border-ink-900"
         >
-          Fichas del alumnado
+          Alumnado por cursos
           <ArrowRightIcon className="size-4" />
         </Link>
         <Link
@@ -60,81 +94,7 @@ export default async function AdminDashboardPage() {
         </Link>
       </div>
 
-      <dl className="mt-8 grid gap-4 sm:grid-cols-3">
-        {ROLES.map((role) => (
-          <div key={role} className="rounded-card bg-white p-6 shadow-card">
-            <dt className="text-sm font-extrabold uppercase tracking-wide text-ink-500">
-              {ROLE_PLURAL[role]}
-            </dt>
-            <dd className="mt-1 font-display text-5xl font-semibold text-ink-900">
-              {users.filter((user) => user.role === role).length}
-            </dd>
-          </div>
-        ))}
-      </dl>
-
-      <div className="mt-6 overflow-x-auto rounded-card bg-white shadow-card">
-        <table className="w-full min-w-[68rem] text-left">
-          <caption className="sr-only">
-            Usuarios registrados, su rol y los cursos que imparte cada docente
-          </caption>
-          <thead>
-            <tr className="border-b-2 border-ink-100 text-xs font-extrabold uppercase tracking-wide text-ink-500">
-              <th scope="col" className="px-6 py-4">
-                Nombre
-              </th>
-              <th scope="col" className="px-6 py-4">
-                Correo
-              </th>
-              <th scope="col" className="px-6 py-4">
-                Rol
-              </th>
-              <th scope="col" className="px-6 py-4">
-                Curso
-              </th>
-              <th scope="col" className="px-6 py-4">
-                Cambiar rol
-              </th>
-              <th scope="col" className="px-6 py-4">
-                Cursos que imparte
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id} className="border-b border-ink-100 last:border-b-0">
-                <th scope="row" className="px-6 py-4 font-bold text-ink-900">
-                  {user.name}
-                </th>
-                <td className="px-6 py-4 font-mono text-sm text-ink-700">{user.email}</td>
-                <td className="px-6 py-4">
-                  <RoleBadge role={user.role} />
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 font-semibold text-ink-700">
-                  {user.role === "alumno" && user.course ? COURSE_LABEL[user.course] : "—"}
-                </td>
-                <td className="px-6 py-3">
-                  <RoleControl
-                    user={user}
-                    esTuCuenta={user.id === session.id}
-                    esUnicoSuperadmin={user.role === "superadmin" && superadmins <= 1}
-                  />
-                </td>
-                <td className="px-6 py-3">
-                  {user.role === "alumno" ? (
-                    <span className="text-sm font-semibold text-ink-400">—</span>
-                  ) : (
-                    <CursosDocente
-                      docente={user}
-                      asignados={cursosPorDocente.get(user.id) ?? []}
-                    />
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <PanelCuentas cuentas={cuentas} />
     </>
   );
 }

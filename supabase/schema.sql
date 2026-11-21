@@ -16,6 +16,8 @@
 --   8) matriculas          → en qué curso estuvo cada alumno cada año.
 --   9) docente_cursos      → qué cursos imparte cada docente cada año.
 --  10) cerrar_anio_academico() → el cierre de curso, en una sola operación.
+--  11) borrar_cuenta()        → borrado de una cuenta de prueba, con seguros.
+--  12) proteger_ultimo_superadmin() → nunca sin nadie que administre.
 --
 --  TODO dato de trabajo (interruptores, progreso, entregas, prácticas) lleva
 --  el AÑO ACADÉMICO en el que se hizo y forma parte de su clave. Así, al
@@ -42,6 +44,10 @@ create table if not exists public.users (
   google_sub    text,
   -- Falso hasta que dice su nombre y elige curso en la primera entrada.
   perfil_completo boolean not null default true,
+  -- Una cuenta desactivada existe y conserva todo su trabajo, pero no puede
+  -- entrar: ni con contraseña ni con Google. Es lo que se usa cuando alguien
+  -- deja el centro a mitad de curso, en lugar de borrarle las entregas.
+  activa        boolean not null default true,
   role          text not null check (role in ('superadmin', 'profesor', 'alumno')),
   course        text check (course in ('1ESO', '2ESO', '3ESO')),
   created_at    timestamptz not null default now()
@@ -52,6 +58,7 @@ create unique index if not exists users_google_sub_key
 
 create index if not exists users_role_idx on public.users (role);
 create index if not exists users_course_idx on public.users (course);
+create index if not exists users_activa_idx on public.users (activa) where not activa;
 
 -- ── 2) Años académicos ────────────────────────────────────────────────
 -- Uno y solo uno está activo: es el año en el que se trabaja. Los demás son
@@ -132,7 +139,7 @@ create table if not exists public.entregas (
 );
 
 create index if not exists entregas_alumno_idx on public.entregas (alumno_id);
-create index if not exists entregas_pendientes_idx on public.entregas (nota) where nota is null;
+create index if not exists entregas_pendientes_idx on public.entregas (puntos) where puntos is null;
 
 -- ── 7) Prácticas intermedias ──────────────────────────────────────────
 -- Retos cortos de cada unidad, para afianzar lo aprendido antes del modelo
@@ -262,6 +269,116 @@ $$;
 revoke all on function public.cerrar_anio_academico(text, boolean) from public;
 revoke all on function public.cerrar_anio_academico(text, boolean) from anon, authenticated;
 grant execute on function public.cerrar_anio_academico(text, boolean) to service_role;
+
+-- ── 11) Nunca sin superadministrador activo ───────────────────────────
+--
+-- El panel ya lo impide en pantalla y las acciones de servidor lo vuelven a
+-- comprobar, pero esto es la red de debajo: aquí no hay forma de dejar la
+-- plataforma sin nadie que pueda administrarla, ni desde la aplicación, ni
+-- desde el editor SQL, ni por un error en un despliegue futuro.
+--
+-- Solo mira cuando la operación ha tocado a un superadministrador activo:
+-- cambiarle el nombre a un alumno no paga el coste de la comprobación.
+
+create or replace function public.proteger_ultimo_superadmin()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if exists (select 1 from antes where role = 'superadmin' and activa)
+     and not exists (select 1 from public.users where role = 'superadmin' and activa)
+  then
+    raise exception
+      'La plataforma se quedaría sin ningún superadministrador activo.'
+      using errcode = 'check_violation';
+  end if;
+  return null;
+end;
+$$;
+
+drop trigger if exists users_proteger_superadmin_update on public.users;
+create trigger users_proteger_superadmin_update
+  after update on public.users
+  referencing old table as antes
+  for each statement
+  execute function public.proteger_ultimo_superadmin();
+
+drop trigger if exists users_proteger_superadmin_delete on public.users;
+create trigger users_proteger_superadmin_delete
+  after delete on public.users
+  referencing old table as antes
+  for each statement
+  execute function public.proteger_ultimo_superadmin();
+
+revoke all on function public.proteger_ultimo_superadmin() from public;
+revoke all on function public.proteger_ultimo_superadmin() from anon, authenticated;
+
+-- ── 12) Borrar una cuenta de prueba ───────────────────────────────────
+--
+-- El trabajo del alumno (progreso, entregas, prácticas, interruptores,
+-- matrículas) y las asignaciones del docente se van con la cuenta solos,
+-- porque todas esas tablas apuntan a users con «on delete cascade». Aquí se
+-- cuentan ANTES de borrar para poder decirle al superadministrador qué se ha
+-- llevado por delante, y se ponen los dos seguros que no deben depender de
+-- que la aplicación se acuerde de comprobarlos:
+--
+--   · nadie borra su propia cuenta;
+--   · una cuenta de superadministrador no se borra desde el panel.
+
+create or replace function public.borrar_cuenta(p_user_id uuid, p_actor_id uuid)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_role    text;
+  v_email   text;
+  v_name    text;
+  v_resumen jsonb;
+begin
+  if p_user_id = p_actor_id then
+    raise exception 'No puedes borrar tu propia cuenta.'
+      using errcode = 'check_violation';
+  end if;
+
+  select role, email, name into v_role, v_email, v_name
+  from public.users where id = p_user_id;
+
+  if v_role is null then
+    raise exception 'Esa cuenta ya no existe.' using errcode = 'no_data_found';
+  end if;
+
+  if v_role = 'superadmin' then
+    raise exception 'Una cuenta de superadministrador no se borra desde el panel. Pásala antes a Profesor o Alumno.'
+      using errcode = 'check_violation';
+  end if;
+
+  select jsonb_build_object(
+    'nombre',       v_name,
+    'email',        v_email,
+    'rol',          v_role,
+    'progreso',     (select count(*) from public.progreso              where alumno_id  = p_user_id),
+    'entregas',     (select count(*) from public.entregas              where alumno_id  = p_user_id),
+    'practicas',    (select count(*) from public.practicas_intermedias where alumno_id  = p_user_id),
+    'accesos',      (select count(*) from public.student_access        where student_id = p_user_id),
+    'matriculas',   (select count(*) from public.matriculas            where alumno_id  = p_user_id),
+    'asignaciones', (select count(*) from public.docente_cursos        where docente_id = p_user_id)
+  ) into v_resumen;
+
+  delete from public.users where id = p_user_id;
+
+  return v_resumen;
+end;
+$$;
+
+-- Nadie la puede llamar con la Publishable key: solo el servidor, que usa la
+-- Secret key. Mismo trato que cerrar_anio_academico().
+revoke all on function public.borrar_cuenta(uuid, uuid) from public;
+revoke all on function public.borrar_cuenta(uuid, uuid) from anon, authenticated;
+grant execute on function public.borrar_cuenta(uuid, uuid) to service_role;
 
 -- ── Seguridad: RLS activado, sin políticas ────────────────────────────
 --

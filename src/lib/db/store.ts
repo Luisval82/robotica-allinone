@@ -28,6 +28,7 @@ export interface UserRow {
   password_hash: string | null;
   google_sub: string | null;
   perfil_completo: boolean;
+  activa: boolean;
   role: Role;
   course: Course | null;
   created_at: string;
@@ -41,6 +42,8 @@ export function userFromRow(row: UserRow): User {
     passwordHash: row.password_hash,
     googleSub: row.google_sub ?? null,
     perfilCompleto: row.perfil_completo ?? true,
+    // Una base anterior a la columna «activa» no la trae: se da por activa.
+    activa: row.activa ?? true,
     role: row.role,
     course: row.course,
     createdAt: row.created_at,

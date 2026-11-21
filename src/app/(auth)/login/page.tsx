@@ -10,6 +10,8 @@ export const metadata: Metadata = { title: "Iniciar sesión" };
 const AVISOS: Record<string, string> = {
   dominio: `Esa cuenta no es del colegio. Entra con tu correo ${SCHOOL_EMAIL_SUFFIX}.`,
   google: "No se ha podido completar la entrada con Google. Inténtalo otra vez.",
+  inactiva:
+    "Esta cuenta está desactivada. Habla con el administrador de la plataforma para que la vuelva a activar.",
 };
 
 export default async function LoginPage({

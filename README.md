@@ -52,21 +52,56 @@ estén vacías: `marta.ejemplo`, `hugo.ejemplo`, `nora.ejemplo`, `ivan.ejemplo`,
 
 ## Panel del superadministrador (`/dashboard/admin`)
 
-Pestaña exclusiva «Gestión de usuarios»: lista todas las cuentas con un **selector de rol**
-(Alumno, Profesor o Superadministrador) y un botón de Guardar. El cambio se aplica al momento: si
-esa persona tiene la sesión abierta, su siguiente clic ya la lleva al panel que le corresponde.
-Quien pasa a alumno conserva el curso con el que se registró; si no tenía, se le elige ahí mismo.
+Pestaña exclusiva «Gestión de usuarios»: **una cuenta por línea** y un solo botón de Guardar por
+fila, que guarda a la vez el nombre, el correo, el rol y —según el rol— el curso del alumno o los
+cursos que imparte el docente. Un cambio de rol se aplica al momento: si esa persona tiene la
+sesión abierta, su siguiente clic ya la lleva al panel que le corresponde.
 
-Dos cosas que el panel no deja hacer, para no quedarse fuera de la plataforma: **cambiarte el rol
-a ti mismo** y **quitar el último superadministrador**. Ambas se comprueban también en el servidor.
+Por qué una línea y un botón: con sesenta cuentas, una tarjeta por persona son siete pantallas de
+scroll para cambiarle el rol a una, y tres botones por fila (rol, datos, cursos) multiplican por
+tres los clics y los sitios donde mirar si se guardó. Al guardar, la fila dice **qué** ha cambiado
+(«Guardado · rol: Profesor · cursos: 1º ESO, 2º ESO»), no solo que se ha guardado.
 
-Desde aquí hay un botón directo a las **fichas del alumnado** (`/dashboard/profesor/alumnos`), que
-es donde se corrige el nombre y se mueve de curso a cada alumno.
+**Buscador y filtros.** Un cuadro de búsqueda por nombre o correo —sin tildes: «nuñez» encuentra
+«Núñez»— y dos filas de filtros: por rol (Todos, Profesores, Alumnos, Superadmins) y por curso
+(1º, 2º, 3º y *Sin curso*). Filtran en el navegador sobre la lista ya cargada, así que se nota al
+teclear. Con las cuentas de un centro eso sobra; si algún día fueran miles, el filtro tendría que
+bajar a la consulta y paginarse.
+
+**Contadores** encima del listado: cuentas, profesores, alumnos, superadmins, **docentes sin
+cursos asignados** y **cuentas desactivadas**. Los dos últimos se resaltan cuando no son cero,
+porque son los que piden hacer algo. En la fila, además, un distintivo ámbar marca al docente sin
+cursos y al alumno que todavía no ha elegido.
+
+### Control de cuentas y soporte
+
+Cada fila tiene un desplegable **«Cuenta y soporte»**, plegado: lo delicado no se hace de un clic
+despistado. Dentro:
+
+- **La ficha de la cuenta**: si entra con Google o con contraseña, su rol, sus cursos, su estado y
+  la fecha de alta.
+- **Activar / desactivar.** Una cuenta desactivada existe y conserva su trabajo entero, pero no
+  entra: ni con contraseña ni con Google. Y si estaba dentro, se le cierra la sesión en el
+  siguiente clic (lo hace `requireRole`, pasando por `/sesion/actualizar`, que es lo único que
+  puede borrar la cookie). Es lo que se usa cuando alguien deja el centro a mitad de curso, en
+  lugar de borrarle las entregas.
+- **Borrar una cuenta de prueba.** Pide escribir el correo entero, como el cierre de año pide
+  escribir el año, y al terminar dice qué se ha llevado por delante («borrada, con 6 entregas, 11
+  prácticas»).
+- **Desatascar una unidad** (solo alumnado): reabrir una de las 4 prácticas que dio por comprobada
+  sin querer, o **borrar el resultado del test** de una unidad para que lo pueda repetir. Lo
+  segundo no existe en el panel del profesor: el test se entrega una vez y no hay otra forma de
+  arreglarlo. Nada de esto toca los interruptores de la clase, que siguen siendo del profesor.
+
+Tres cosas que el panel no deja hacer, para no quedarse fuera de la plataforma: **cambiarte el rol
+o desactivarte a ti mismo**, **dejar la plataforma sin superadministrador activo** y **borrar una
+cuenta de superadministrador**. Se comprueban en pantalla, otra vez en el servidor y una tercera en
+la propia base de datos (ver más abajo).
 
 ### Cursos que imparte cada docente
 
-En la misma tabla, cada profesor (y el superadministrador, si da clase) tiene unas **casillas 1º /
-2º / 3º ESO**: los cursos que imparte **este año académico**, guardados en `docente_cursos`.
+En la misma fila, cada profesor (y el superadministrador, si da clase) tiene unas **casillas 1 / 2
+/ 3**: los cursos que imparte **este año académico**, guardados en `docente_cursos`.
 
 En su panel, ese profesor ve solo el alumnado, las notas, las entregas y los interruptores de
 unidad de esos cursos; tampoco puede corregir una entrega ni mover a un alumno de un curso ajeno
@@ -80,6 +115,25 @@ propósito:
 - Las **Soluciones** oficiales no se filtran: son material de clase, útil para preparar.
 
 El superadministrador tiene visibilidad global siempre.
+
+### Los seguros que viven en la base de datos
+
+El panel comprueba los permisos en pantalla y las acciones de servidor los vuelven a comprobar
+—que un control no se dibuje no protege nada: un formulario se puede enviar a mano—. Pero dos
+cosas no deben depender de que la aplicación se acuerde, así que están en Postgres:
+
+- **`proteger_ultimo_superadmin`**, un disparador sobre `users` que salta en cualquier `update` o
+  `delete` que toque a un superadministrador activo y aborta si la operación dejaría la plataforma
+  sin ninguno. No hay forma de saltárselo: ni desde la aplicación, ni desde el editor SQL de
+  Supabase, ni por un error en un despliegue futuro.
+- **`borrar_cuenta(p_user_id, p_actor_id)`**, que es quien borra de verdad. Rechaza borrar tu
+  propia cuenta y rechaza borrar un superadministrador, y devuelve el recuento de lo que se ha
+  llevado por delante. Su `execute` está **revocado** de `public`, `anon` y `authenticated`: solo
+  la puede llamar el servidor con la Secret key, igual que `cerrar_anio_academico`.
+
+Por encima de eso, el acceso a datos sigue siendo el de siempre: **RLS activado sin ninguna
+política**, de modo que con la Publishable key no se lee ni se escribe nada, y toda consulta pasa
+por el servidor con la Secret key.
 
 ### Gestión de año escolar (`/dashboard/admin/anio`)
 

@@ -5,7 +5,14 @@ import { matricular } from "@/lib/db/anios";
 import { assertNoError, supabase, userFromRow, type UserRow } from "@/lib/db/store";
 import { SCHOOL_EMAIL_SUFFIX, normalizeEmail } from "@/lib/validation";
 import { hashPassword } from "@/lib/password";
-import type { Course, DemoCredential, PublicUser, Role, User } from "@/lib/types";
+import type {
+  Course,
+  CuentaBorrada,
+  DemoCredential,
+  PublicUser,
+  Role,
+  User,
+} from "@/lib/types";
 
 export function toPublicUser({ passwordHash: _passwordHash, ...user }: User): PublicUser {
   return user;
@@ -88,16 +95,6 @@ export async function createUser(input: {
 
 // ── Roles ────────────────────────────────────────────────────────────────
 
-/** Cuántas cuentas de superadministrador hay ahora mismo. */
-async function contarSuperadmins(): Promise<number> {
-  const { count, error } = await supabase
-    .from("users")
-    .select("id", { count: "exact", head: true })
-    .eq("role", "superadmin");
-  assertNoError(error, "contarSuperadmins");
-  return count ?? 0;
-}
-
 export type CambioDeRol =
   | { ok: true; user: PublicUser }
   | { ok: false; motivo: "no-existe" | "tu-cuenta" | "ultimo-superadmin" };
@@ -124,7 +121,15 @@ export async function setUserRole(
   if (!current) return { ok: false, motivo: "no-existe" };
   if (current.role === role) return { ok: true, user: toPublicUser(current) };
 
-  if (current.role === "superadmin" && (await contarSuperadmins()) <= 1) {
+  // Se cuentan los superadministradores ACTIVOS, que son los que de verdad
+  // pueden entrar: con dos cuentas, una desactivada, quitarle el rol a la que
+  // funciona dejaría la plataforma sin nadie dentro. Un superadministrador ya
+  // desactivado no cuenta, así que degradarlo no quita a nadie de en medio.
+  if (
+    current.role === "superadmin" &&
+    current.activa &&
+    (await contarSuperadminsActivos()) <= 1
+  ) {
     return { ok: false, motivo: "ultimo-superadmin" };
   }
 
@@ -153,6 +158,141 @@ export async function setUserRole(
   return data
     ? { ok: true, user: toPublicUser(userFromRow(data as UserRow)) }
     : { ok: false, motivo: "no-existe" };
+}
+
+// ── Control de cuentas (solo superadministrador) ─────────────────────────
+
+export type CambioDeCuenta =
+  | { ok: true; user: PublicUser }
+  | { ok: false; motivo: "no-existe" | "tu-cuenta" | "ultimo-superadmin" | "correo-repetido" };
+
+/**
+ * Activa o desactiva una cuenta.
+ *
+ * Una cuenta desactivada no entra —ni con contraseña ni con Google— pero
+ * conserva su trabajo entero. Es lo que se usa cuando alguien deja el centro
+ * a mitad de curso, en lugar de borrarle las entregas.
+ *
+ * Dos seguros, los mismos que en el cambio de rol: nadie se desactiva a sí
+ * mismo y la plataforma no se queda sin superadministrador activo. El segundo
+ * lo vuelve a comprobar la propia base de datos (disparador
+ * `users_proteger_superadmin_update`), así que aquí se adelanta solo para dar
+ * un mensaje decente en pantalla.
+ */
+export async function setUserActiva(
+  userId: string,
+  activa: boolean,
+  opciones: { actorId: string },
+): Promise<CambioDeCuenta> {
+  if (userId === opciones.actorId) return { ok: false, motivo: "tu-cuenta" };
+
+  const current = await findUserById(userId);
+  if (!current) return { ok: false, motivo: "no-existe" };
+  if (current.activa === activa) return { ok: true, user: toPublicUser(current) };
+
+  if (!activa && current.role === "superadmin" && (await contarSuperadminsActivos()) <= 1) {
+    return { ok: false, motivo: "ultimo-superadmin" };
+  }
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ activa })
+    .eq("id", userId)
+    .select("*")
+    .maybeSingle();
+  assertNoError(error, "setUserActiva");
+
+  return data
+    ? { ok: true, user: toPublicUser(userFromRow(data as UserRow)) }
+    : { ok: false, motivo: "no-existe" };
+}
+
+/** Cuántos superadministradores ACTIVOS quedan. */
+async function contarSuperadminsActivos(): Promise<number> {
+  const { count, error } = await supabase
+    .from("users")
+    .select("id", { count: "exact", head: true })
+    .eq("role", "superadmin")
+    .eq("activa", true);
+  assertNoError(error, "contarSuperadminsActivos");
+  return count ?? 0;
+}
+
+/**
+ * Corrige los datos de una cuenta: nombre, correo y —si es alumno— curso.
+ *
+ * El correo es la llave con la que se entra, así que cambiarlo es delicado:
+ * si ya lo tiene otra cuenta, Postgres lo rechaza por la restricción de
+ * unicidad y aquí se traduce a un mensaje que se entienda. El identificador
+ * de Google no se toca: si al alumno le cambian el correo en el colegio, su
+ * cuenta se reconoce igual por ese identificador.
+ */
+export async function actualizarCuenta(
+  userId: string,
+  datos: { name?: string; email?: string; course?: Course | null },
+): Promise<CambioDeCuenta> {
+  const current = await findUserById(userId);
+  if (!current) return { ok: false, motivo: "no-existe" };
+
+  const cambios: Record<string, string | null> = {};
+  if (datos.name !== undefined && datos.name !== current.name) cambios.name = datos.name;
+  if (datos.email !== undefined) {
+    const email = normalizeEmail(datos.email);
+    if (email !== current.email) cambios.email = email;
+  }
+  // El curso solo tiene sentido en una cuenta de alumno: a un docente se le
+  // asignan cursos en `docente_cursos`, que es otra cosa.
+  if (datos.course !== undefined && current.role === "alumno" && datos.course !== current.course) {
+    cambios.course = datos.course;
+  }
+  if (Object.keys(cambios).length === 0) return { ok: true, user: toPublicUser(current) };
+
+  const { data, error } = await supabase
+    .from("users")
+    .update(cambios)
+    .eq("id", userId)
+    .select("*")
+    .maybeSingle();
+
+  // 23505 = clave única repetida: el correo ya es de otra cuenta.
+  if (error && (error as { code?: string }).code === "23505") {
+    return { ok: false, motivo: "correo-repetido" };
+  }
+  assertNoError(error, "actualizarCuenta");
+
+  // Si lo han movido de curso, su matrícula de este año cambia con él.
+  if (cambios.course) await matricular(userId, cambios.course as Course);
+
+  return data
+    ? { ok: true, user: toPublicUser(userFromRow(data as UserRow)) }
+    : { ok: false, motivo: "no-existe" };
+}
+
+export type BorradoDeCuenta =
+  | { ok: true; borrada: CuentaBorrada }
+  | { ok: false; error: string };
+
+/**
+ * Borra una cuenta de prueba y todo su rastro.
+ *
+ * No se borra nada desde aquí: lo hace la función `borrar_cuenta` de la base
+ * de datos, que es donde viven los seguros —no borrarse a uno mismo, no
+ * borrar a un superadministrador— para que no dependan de que la aplicación
+ * se acuerde de comprobarlos. El trabajo del alumno y las asignaciones del
+ * docente caen con la cuenta por «on delete cascade», y la función los cuenta
+ * antes de borrar para poder decir qué se ha llevado por delante.
+ */
+export async function borrarCuenta(
+  userId: string,
+  opciones: { actorId: string },
+): Promise<BorradoDeCuenta> {
+  const { data, error } = await supabase.rpc("borrar_cuenta", {
+    p_user_id: userId,
+    p_actor_id: opciones.actorId,
+  });
+
+  if (error) return { ok: false, error: error.message };
+  return { ok: true, borrada: data as CuentaBorrada };
 }
 
 /**

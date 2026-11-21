@@ -43,6 +43,16 @@ export async function loginAction(
     return { error: "El correo o la contraseña no coinciden. Revísalos y vuelve a intentarlo." };
   }
 
+  // La contraseña es correcta pero la cuenta está desactivada: no entra. Se le
+  // dice después de comprobar la contraseña, para no revelar a un desconocido
+  // qué cuentas existen y están desactivadas.
+  if (!user.activa) {
+    return {
+      error:
+        "Esta cuenta está desactivada. Habla con el administrador de la plataforma para que la vuelva a activar.",
+    };
+  }
+
   await startSession(user);
   // Redirección automática al panel de su rol: admin, profesor o alumno.
   redirect(ROLE_HOME[user.role]);

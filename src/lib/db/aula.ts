@@ -328,6 +328,33 @@ export async function saveTestResult(
   return true;
 }
 
+/**
+ * Soporte del superadministrador: borra el resultado del test de una unidad
+ * para que el alumno pueda volver a hacerlo.
+ *
+ * El test se entrega UNA vez (`saveTestResult` no deja repetirlo), así que
+ * cuando alguien lo manda sin querer, o se cae la conexión a mitad, no hay
+ * forma de arreglarlo desde el panel del profesor. Esto es la salida: se
+ * borran los aciertos y las respuestas, y se dejan los pasos de teoría como
+ * estaban, que esos no hay por qué repetirlos.
+ */
+export async function borrarResultadoDeTest(
+  alumnoId: string,
+  unidad: number,
+): Promise<boolean> {
+  const actual = await getUnitProgress(alumnoId, unidad);
+  if (actual.testAciertos === null) return false;
+
+  const { error } = await supabase
+    .from("progreso")
+    .update({ test_aciertos: null, test_respuestas: null })
+    .eq("anio", await getAnioActivo())
+    .eq("alumno_id", alumnoId)
+    .eq("unidad", unidad);
+  assertNoError(error, "borrarResultadoDeTest");
+  return true;
+}
+
 export interface NotaPrueba {
   unidad: number;
   /** Aciertos del test, de 0 a 8. Cada acierto vale 1 punto. null = sin entregar. */

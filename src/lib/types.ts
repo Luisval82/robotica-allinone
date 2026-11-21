@@ -49,6 +49,12 @@ export interface User {
   googleSub: string | null;
   /** Falso hasta que dice su nombre y elige curso en la primera entrada. */
   perfilCompleto: boolean;
+  /**
+   * Una cuenta desactivada existe y conserva todo su trabajo, pero no puede
+   * entrar: ni con contraseña ni con Google. Es lo que se usa cuando alguien
+   * deja el centro a mitad de curso, en lugar de borrarle las entregas.
+   */
+  activa: boolean;
   role: Role;
   /**
    * Curso del alumno. Quien se registra y luego recibe el rol de Profesor
@@ -223,4 +229,33 @@ export interface CierreFormState {
 export interface StudentFormState {
   ok?: boolean;
   error?: string;
+}
+
+// ── Panel de superadministración ──────────────────────────────────────────
+
+/**
+ * Respuesta de los formularios del panel de superadministrador.
+ *
+ * `hecho` es el texto de la confirmación que se enseña en la propia fila
+ * («Rol cambiado a Profesor»), para que se vea qué se ha guardado sin tener
+ * que buscar el cambio en la lista. `aviso` es para lo que se ha guardado
+ * pero conviene saber («sigue sin ningún curso asignado»).
+ */
+export interface CuentaFormState {
+  hecho?: string;
+  aviso?: string;
+  error?: string;
+}
+
+/** Lo que se ha llevado por delante el borrado de una cuenta. */
+export interface CuentaBorrada {
+  nombre: string;
+  email: string;
+  rol: Role;
+  progreso: number;
+  entregas: number;
+  practicas: number;
+  accesos: number;
+  matriculas: number;
+  asignaciones: number;
 }

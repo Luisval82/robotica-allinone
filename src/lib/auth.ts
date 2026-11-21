@@ -43,6 +43,12 @@ export async function requireRole(allowed: readonly Role[]): Promise<SessionPayl
   if (!session) redirect(LOGIN_PATH);
 
   const current = await findUserById(session.id);
+
+  // Cuenta desactivada mientras tenía la sesión abierta: se le cierra en la
+  // siguiente página que pise. Se pasa por la ruta de renovación, que es la
+  // única que puede borrar la cookie (una página no puede tocar cookies).
+  if (current && !current.activa) redirect(REFRESH_SESSION_PATH);
+
   if (current && (current.role !== session.role || current.course !== session.course)) {
     redirect(REFRESH_SESSION_PATH);
   }
