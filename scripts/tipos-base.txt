@@ -40,6 +40,9 @@ src/app/dashboard/admin/anio/page.tsx: error TS7026: JSX element implicitly has 
 src/app/dashboard/admin/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
 src/app/dashboard/admin/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
 src/app/dashboard/admin/page.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/dashboard/admin/page.tsx: error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/app/dashboard/admin/page.tsx: error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/app/dashboard/admin/page.tsx: error TS7006: Parameter 'user' implicitly has an 'any' type.
 src/app/dashboard/admin/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/app/dashboard/alumno/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
 src/app/dashboard/alumno/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
@@ -133,10 +136,15 @@ src/app/sesion/actualizar/route.ts: error TS2307: Cannot find module 'next/serve
 src/components/admin/CierreDeAnio.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
 src/components/admin/CierreDeAnio.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/admin/CierreDeAnio.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
-src/components/admin/CursosDocente.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
-src/components/admin/CursosDocente.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
-src/components/admin/RoleControl.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
-src/components/admin/RoleControl.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/components/admin/FilaCuenta.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/admin/FilaCuenta.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/admin/FilaCuenta.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/components/admin/PanelCuentas.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/admin/PanelCuentas.tsx: error TS2322: Type '{ key: any; cuenta: any; }' is not assignable to type '{ cuenta: CuentaEnLista; }'.
+src/components/admin/PanelCuentas.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/admin/PanelCuentas.tsx: error TS7006: Parameter 'cuenta' implicitly has an 'any' type.
+src/components/admin/PanelCuentas.tsx: error TS7006: Parameter 'evento' implicitly has an 'any' type.
+src/components/admin/PanelCuentas.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/auth/AuthShowcase.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/auth/AuthShowcase.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/auth/AuthTabs.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
