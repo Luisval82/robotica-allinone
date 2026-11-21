@@ -30,7 +30,7 @@ que las pilas estén bien repartidas y los bloques propios bien definidos.
 import json
 import pathlib
 
-from temario_comun import b, main, reparte_respuestas
+from temario_comun import atras, av, b, gira, hasta, main, marca, reparte_respuestas
 
 _VIDEOS = pathlib.Path("/tmp/videos3eso.json")
 VIDEOS = json.loads(_VIDEOS.read_text()) if _VIDEOS.exists() else {}
@@ -2973,8 +2973,109 @@ EN_EL_SUELO = {
 }
 
 
+# Los recorridos que se dibujan sobre la cuadrícula. Mismos pasos que el
+# enunciado; la geometría la calcula el dibujo.
+RECORRIDOS = {
+    (1, "El marcador en marcha"): {
+        "mirando": "arriba",
+        "pasos": [av(0.5, "sube vueltas y la pantalla lo enseña al momento"),
+                  av(0.5, "sube vueltas"), av(0.5, "sube vueltas")],
+    },
+    (1, "La patrulla con marcador"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 4, "texto": "caja"}],
+        "pasos": [hasta(3.5, "para, sube rebotes y toca una nota"),
+                  atras(0.5), gira(180), hasta(3, "y vuelta a empezar")],
+    },
+    (1, "El límite de treinta segundos"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 4, "texto": "caja"}],
+        "pasos": [hasta(3.5, "rebote"), atras(0.5), gira(180),
+                  hasta(3, "a los 30 s: para, botón rojo y escribe los rebotes")],
+    },
+    (3, "Avanzar con nombre"): {
+        "mirando": "arriba",
+        "pasos": [av(0.5, "avanzar baldosas (0,5)"), av(1, "avanzar baldosas (1)"),
+                  av(0.25, "avanzar baldosas (0,25)")],
+    },
+    (3, "Girar con nombre"): {
+        "mirando": "arriba",
+        "pasos": [gira(90, "girar (90)"), gira(180, "girar (180)")],
+    },
+    (3, "Un bloque dentro de otro"): {
+        "mirando": "arriba",
+        "pasos": [av(1), gira(), av(1), gira(), av(1), gira(),
+                  av(1, "cuatro veces «esquina»"), gira()],
+    },
+    (3, "El circuito con bloques propios"): {
+        "mirando": "arriba",
+        "pasos": [av(1), gira(), av(1), gira(), av(1), gira(),
+                  av(1, "cierra en la cruceta de salida"), gira()],
+    },
+    (3, "El triángulo con una esquina propia"): {
+        "mirando": "derecha",
+        "pasos": [av(2), gira(120), av(2), gira(120), av(2, "escribe FIN"), gira(120)],
+    },
+    (4, "El conductor y sus guardias"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 3, "texto": "caja"}],
+        "pasos": [hasta(1.5, "cinta roja: botón rojo y escribe los avisos"),
+                  hasta(1, "a 15 cm: para, sube avisos y nota"),
+                  atras(0.5, "y vuelve a arrancar")],
+    },
+    (4, "El parachoques que corta"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 3, "texto": "caja"}],
+        "pasos": [hasta(1.5, "cinta roja"), hasta(1, "a 15 cm: para"),
+                  marca("si además se pulsa el parachoques: cruz y CHOQUE")],
+    },
+    (7, "Apuntar en marcha"): {
+        "mirando": "derecha",
+        "pasos": [av(2, "mientras anda, otra pila apunta 20 distancias")],
+    },
+    (7, "El explorador del pasillo"): {
+        "mirando": "derecha",
+        "pasos": [marca("midiendo = 1"),
+                  av(3, "midiendo = 0 y manda analizar; el sensor mide al costado")],
+    },
+    (7, "El hueco más ancho"): {
+        "mirando": "derecha",
+        "pasos": [marca("midiendo = 1"), av(3, "al llegar, recorre la lista y saca el mayor")],
+    },
+    (8, "Un bloque de tres"): {
+        "mirando": "arriba",
+        "pasos": [marca("horquilla (0): baja"), av(0.5, "avanzar baldosas (0,5)"),
+                  marca("horquilla (120): sube la carga")],
+    },
+    (8, "La librería de maniobras"): {
+        "mirando": "arriba",
+        "pasos": [marca("horquilla (0)"), av(0.5), marca("horquilla (120): «coger» hecho")],
+    },
+    (8, "El ciclo repetido tres veces"): {
+        "mirando": "arriba",
+        "pasos": [av(0.5, "coger"), gira(90, "curva (90)"),
+                  av(1, "avanzar baldosas (1)"), marca("horquilla (0): suelta")],
+    },
+    (9, "El bloque que sirve una bahía"): {
+        "mirando": "derecha",
+        "pasos": [av(2, "servir (2): baja horquilla, espera la carga y la sube"),
+                  atras(2, "vuelve a la salida")],
+    },
+    (9, "El almacén que sirve pedidos"): {
+        "mirando": "derecha",
+        "pasos": [marca("pulsador: fase = 1 y manda servir"),
+                  av(1, "servir (1)"), atras(1, "fase = 0, listo para el siguiente")],
+    },
+    (9, "El registro del turno completo"): {
+        "mirando": "derecha",
+        "pasos": [av(1, "pedido 1"), atras(1, "apunta en servidos y tiempos"),
+                  av(2, "pedido 2"), atras(2, "apunta y sube el pedido")],
+    },
+}
+
+
 if __name__ == "__main__":
     # Se regenera el curso entero, así que se puede repartir la respuesta
     # correcta entre las cuatro letras (ver reparte_respuestas).
     reparte_respuestas(UNIDADES)
-    main("3ESO", UNIDADES, VIDEOS, EN_EL_SUELO)
+    main("3ESO", UNIDADES, VIDEOS, EN_EL_SUELO, RECORRIDOS)

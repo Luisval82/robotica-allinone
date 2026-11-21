@@ -269,18 +269,16 @@
       ],
       "notas": "Veinte medidas en cuatro segundos mientras el robot anda. Con una sola pila habría que elegir entre andar o medir.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Haz dos pilas",
-          "hijos": [
-            "En una, recorre dos baldosas (80 centímetros)",
-            "En la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas"
-          ]
-        },
-        {
-          "texto": "Escribe al final cuántas medidas hay"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "mientras anda, otra pila apunta 20 distancias"
+          }
+        ]
+      }
     },
     {
       "practica": 2,
@@ -348,15 +346,7 @@
           ]
         }
       ],
-      "notas": "Una variable de estado controlando cuánto dura el registro. Es la unidad 6 aplicada a los datos.",
-      "pasos": [
-        {
-          "texto": "Pon la variable midiendo a 1 antes de arrancar y a 0 al terminar el recorrido"
-        },
-        {
-          "texto": "Repite en la otra pila hasta que midiendo valga 0 añadir la distancia a la lista y esperar medio segundo"
-        }
-      ]
+      "notas": "Una variable de estado controlando cuánto dura el registro. Es la unidad 6 aplicada a los datos."
     },
     {
       "practica": 3,
@@ -404,17 +394,7 @@
           ]
         }
       ],
-      "notas": "Recorrer con índice es la herramienta de la unidad. Si se pasan de la longitud, el elemento sale vacío.",
-      "pasos": [
-        {
-          "texto": "Con la lista huecos ya llena, pon el índice paso a 1 y repite hasta que pase de la longitud de la lista",
-          "hijos": [
-            "Escribe el elemento que toca",
-            "Espera tres décimas",
-            "Sube paso en uno"
-          ]
-        }
-      ]
+      "notas": "Recorrer con índice es la herramienta de la unidad. Si se pasan de la longitud, el elemento sale vacío."
     },
     {
       "practica": 4,
@@ -462,16 +442,7 @@
           ]
         }
       ],
-      "notas": "Un bloque frente a un bucle de seis. Conviene que vean las dos formas de responder a lo mismo.",
-      "pasos": [
-        {
-          "texto": "Comprueba si la lista huecos contiene el valor 0",
-          "hijos": [
-            "Si lo contiene, escribe PEGADO y pon el botón en rojo",
-            "Si no, escribe LIBRE y ponlo en verde"
-          ]
-        }
-      ]
+      "notas": "Un bloque frente a un bucle de seis. Conviene que vean las dos formas de responder a lo mismo."
     }
   ],
   "construccion": {
@@ -500,25 +471,6 @@
       {
         "titulo": "El pasillo",
         "texto": "Construye un pasillo de metro y medio con libros o cajas, dejando dos huecos de anchuras distintas. Ahí se verá si el programa encuentra el más ancho."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "color"
-      },
-      {
-        "pieza": "marco",
-        "cantidad": 2
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 6
-      },
-      {
-        "pieza": "pasador"
       }
     ]
   },
@@ -701,22 +653,20 @@
       ],
       "notas": "Dos pilas y un estado que las sincroniza. En el gráfico se tienen que ver los dos huecos del pasillo.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Monta el pasillo a lo largo de tres baldosas"
-        },
-        {
-          "texto": "Pon midiendo a 1, prepara la base y recorre esas tres baldosas (120 centímetros), y al terminar pon midiendo a 0"
-        },
-        {
-          "texto": "En otra pila, repite hasta que midiendo valga 0",
-          "hijos": [
-            "Añade la distancia a la lista huecos",
-            "Mándala al gráfico de líneas",
-            "Espera medio segundo"
-          ]
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "midiendo = 1"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 3,
+            "marca": "midiendo = 0 y manda analizar; el sensor mide al costado"
+          }
+        ]
+      }
     },
     {
       "titulo": "El hueco más ancho",
@@ -854,21 +804,20 @@
       ],
       "notas": "Tres pilas: conducir, registrar y analizar. El mensaje es lo que garantiza que el análisis no empiece antes de tiempo.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Con el pasillo de tres baldosas del ejercicio anterior, añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido"
-        },
-        {
-          "texto": "En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud",
-          "hijos": [
-            "Cambia mayor si el elemento que toca es más grande",
-            "Sube paso en uno"
-          ]
-        },
-        {
-          "texto": "Escribe el resultado al final"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "midiendo = 1"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 3,
+            "marca": "al llegar, recorre la lista y saca el mayor"
+          }
+        ]
+      }
     }
   ]
 }

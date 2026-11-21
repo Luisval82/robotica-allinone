@@ -27,7 +27,7 @@ están probados. Este script escribe el contenido; aquellos lo desglosan.
 import json
 import pathlib
 
-from temario_comun import b, main
+from temario_comun import atras, av, b, gira, hasta, main, marca
 
 # Los enlaces oficiales de LEGO que ya teníamos, para no inventar ninguno.
 _VIDEOS = pathlib.Path("/tmp/videos1eso.json")
@@ -2381,5 +2381,78 @@ EN_EL_SUELO = {
 }
 
 
+# Los recorridos que se dibujan sobre la cuadrícula. Se escriben con los
+# mismos pasos que el enunciado y el dibujo calcula la geometría, así que si
+# el enunciado cambia, aquí se ve enseguida qué hay que tocar.
+#
+# «hasta» es un avance que termina cuando lo dice un sensor: se dibuja a
+# trazos porque la distancia no la decide el programa.
+RECORRIDOS = {
+    (5, "Cruza una baldosa"): {
+        "mirando": "arriba",
+        "pasos": [av(1, "para en la junta siguiente")],
+    },
+    (5, "Ida y vuelta de dos baldosas"): {
+        "mirando": "arriba",
+        "pasos": [av(2, "espera 1 segundo"), atras(2)],
+    },
+    (5, "Media vuelta"): {
+        "mirando": "arriba",
+        "pasos": [gira(180, "queda mirando al revés, sobre la misma junta")],
+    },
+    (5, "El cuadrado de una baldosa"): {
+        "mirando": "arriba",
+        "pasos": [av(1), gira(), av(1), gira(), av(1), gira(),
+                  av(1, "botón central en verde"), gira()],
+    },
+    (5, "El circuito cuadrado"): {
+        "mirando": "arriba",
+        "pasos": [av(2), gira(), av(2), gira(), av(2), gira(),
+                  av(2, "cierra en la cruceta de salida"), gira()],
+    },
+    (5, "La entrega a domicilio"): {
+        "mirando": "arriba",
+        "pasos": [av(2), gira(), av(1, "toca una nota"), atras(1)],
+    },
+    (6, "Frena ante el obstáculo"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 3, "texto": "caja"}],
+        "pasos": [hasta(2.5, "ve algo a 20 cm: para")],
+    },
+    (6, "El arranque con botón"): {
+        "mirando": "arriba",
+        "pasos": [marca("espera a que aprieten el sensor"), av(1)],
+    },
+    (6, "El vehículo vigilante"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 3, "texto": "caja"}],
+        "pasos": [hasta(2.5, "para y toca una nota")],
+    },
+    (8, "El giro medido"): {
+        "mirando": "arriba",
+        "pasos": [gira(90, "para al pasar de 90°, sobre la junta perpendicular")],
+    },
+    (8, "Frenar en seco"): {
+        "mirando": "arriba",
+        "pasos": [gira(90, "con frenado: se pasa menos de la junta")],
+    },
+    (8, "Media vuelta exacta"): {
+        "mirando": "arriba",
+        "pasos": [gira(180, "nota y dibujo al terminar")],
+    },
+    (8, "El cuadrado que cierra"): {
+        "mirando": "arriba",
+        "pasos": [av(2), gira(), av(2), gira(), av(2), gira(),
+                  av(2, "cierra en la cruceta de salida"), gira()],
+    },
+    (8, "El robot que esquiva"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 2, "texto": "caja"}],
+        "pasos": [hasta(1.5, "ve la caja a 20 cm: para"),
+                  gira(-90, "gira 90° medidos"), av(1)],
+    },
+}
+
+
 if __name__ == "__main__":
-    main("1ESO", UNIDADES, VIDEOS, EN_EL_SUELO)
+    main("1ESO", UNIDADES, VIDEOS, EN_EL_SUELO, RECORRIDOS)

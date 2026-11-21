@@ -141,6 +141,16 @@
       ],
       "notas": "Tres bloques. Si se olvidan el de fijar motores, el robot no se mueve y no da ningún error: ese es el aprendizaje.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "para en la junta siguiente"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon el robot con las ruedas sobre una junta del suelo"
@@ -194,7 +204,21 @@
         }
       ],
       "notas": "Debería volver casi al mismo sitio. Si se desvía, es que una rueda patina o los motores están a distinta altura.",
-      "suelo": true
+      "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "espera 1 segundo"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 2
+          }
+        ]
+      }
     },
     {
       "practica": 3,
@@ -232,6 +256,16 @@
       ],
       "notas": "El número de rotaciones depende de las ruedas, así que se ajusta probando. Eso también es programar.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "girar",
+            "grados": 180,
+            "marca": "queda mirando al revés, sobre la misma junta"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon el robot alineado con una junta del suelo"
@@ -300,6 +334,44 @@
       ],
       "notas": "El cuadrado nunca sale perfecto a la primera: se ajusta el giro hasta que cierra. Es el ejercicio clásico de conducción.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "botón central en verde"
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon el robot en una cruceta del suelo"
@@ -508,6 +580,44 @@
       ],
       "notas": "El bloque del giroscopio todavía no cambia nada aquí: se pone para coger la costumbre antes de la unidad 8.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "cierra en la cruceta de salida"
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon el robot en una cruceta del suelo y prepara la base con la velocidad al 40 %"
@@ -588,6 +698,28 @@
       ],
       "notas": "Un recorrido con forma de L. Mezcla movimiento y sonido, y el orden es lo que se corrige.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "toca una nota"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 1
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Haz un reparto por la cuadrícula del suelo",

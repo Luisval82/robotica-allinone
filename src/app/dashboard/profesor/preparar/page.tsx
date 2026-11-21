@@ -9,6 +9,8 @@ import { PiezasNecesarias } from "@/components/unidad/PiezasNecesarias";
 import { VideoPlayer } from "@/components/unidad/VideoPlayer";
 import { requireRole } from "@/lib/auth";
 import { categoryName, getBlockInfo } from "@/lib/bloques";
+import { RecorridoBaldosas } from "@/components/unidad/RecorridoBaldosas";
+import { SueloBaldosas } from "@/components/unidad/SueloBaldosas";
 import { ejemploDeBloque, getContenido, getPracticasIntermediasDeUnidad } from "@/lib/contenido";
 import { firstParam } from "@/lib/format";
 import { COURSE_LABEL, COURSES, UNIT_NUMBERS, isCourse, type Course } from "@/lib/types";
@@ -325,6 +327,16 @@ export default async function PrepararClasesPage({
                     <div className="mt-2">
                       <Enunciado texto={practica.enunciado} pasos={practica.pasos} />
                     </div>
+                    {practica.suelo ? (
+                      <div className="mt-3">
+                        <SueloBaldosas curso={curso} />
+                      </div>
+                    ) : null}
+                    {practica.recorrido ? (
+                      <div className="mt-3">
+                        <RecorridoBaldosas recorrido={practica.recorrido} curso={curso} />
+                      </div>
+                    ) : null}
                     {practica.pista ? (
                       <p className="mt-3 rounded-xl bg-hub-50 p-3 text-sm font-bold text-ink-800">
                         Pista para el alumno: {practica.pista}

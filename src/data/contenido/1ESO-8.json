@@ -212,6 +212,16 @@
       ],
       "notas": "La espera minúscula de dentro del bucle es para que no se quede comprobando a ciegas. Conviene explicarlo.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "girar",
+            "grados": 90,
+            "marca": "para al pasar de 90°, sobre la junta perpendicular"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Alinea el robot con una junta"
@@ -284,6 +294,16 @@
       ],
       "notas": "El mismo programa con una línea más. Midiendo con un transportador se ve la diferencia de dos o tres grados.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "girar",
+            "grados": 90,
+            "marca": "con frenado: se pasa menos de la junta"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Repite el giro medido añadiendo al principio el bloque que hace que los motores frenen al parar"
@@ -371,6 +391,16 @@
       ],
       "notas": "Cambiar un número y que el robot haga otra cosa distinta es justo lo que buscamos que entiendan.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "girar",
+            "grados": 180,
+            "marca": "nota y dibujo al terminar"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Haz el mismo giro medido pero hasta 180 grados"
@@ -597,6 +627,44 @@
       ],
       "notas": "La puesta a cero tiene que ir DENTRO del bucle, antes de cada giro. Fuera, el ángulo se acumula y solo gira bien la primera esquina.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "cierra en la cruceta de salida"
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon el robot en una cruceta y prepara la base con frenado y velocidad 30"
@@ -711,6 +779,31 @@
       ],
       "notas": "Junta el sensor de distancia con el giro medido: ve el obstáculo, se para, gira exacto y sigue. Es el programa más largo del curso.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 2,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "hasta",
+            "baldosas": 1.5,
+            "marca": "ve la caja a 20 cm: para"
+          },
+          {
+            "tipo": "girar",
+            "grados": -90,
+            "marca": "gira 90° medidos"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon una caja dos baldosas por delante"

@@ -200,6 +200,30 @@ export interface Entrega {
 }
 
 /** Práctica de programación de una unidad, con su solución oficial (solo profesorado). */
+/** Un paso del recorrido dibujado sobre la cuadrícula de baldosas. */
+export interface PasoRecorrido {
+  /** «hasta» es un avance que termina cuando lo dice un sensor: va a trazos. */
+  tipo: "avanzar" | "retroceder" | "girar" | "hasta" | "marca";
+  /** Para avanzar, retroceder y hasta. Admite medias baldosas. */
+  baldosas?: number;
+  /** Para girar: 90 a la derecha, −90 a la izquierda, 180 media vuelta. */
+  grados?: number;
+  /** Lo que pasa en ese punto. Sale numerado en el dibujo y en la leyenda. */
+  marca?: string;
+}
+
+/**
+ * El recorrido de una práctica sobre el suelo del aula, descrito con los
+ * mismos pasos que dice el enunciado. La geometría la calcula el dibujo
+ * (RecorridoBaldosas), así que aquí no hay coordenadas que mantener.
+ */
+export interface Recorrido {
+  mirando?: "arriba" | "derecha" | "abajo" | "izquierda";
+  pasos: PasoRecorrido[];
+  /** Cajas, bahías o marcas del suelo, a tantas baldosas por delante. */
+  obstaculos?: { delante: number; texto?: string }[];
+}
+
 export interface Practica {
   curso: Course;
   unidad: number;
@@ -215,6 +239,8 @@ export interface Practica {
    * el recordatorio de calibración junto a la práctica.
    */
   suelo?: boolean;
+  /** El recorrido que se dibuja sobre la cuadrícula, si lo tiene. */
+  recorrido?: Recorrido;
 }
 
 /** Respuesta del formulario de corrección de una entrega. */

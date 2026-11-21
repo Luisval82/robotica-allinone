@@ -7,7 +7,13 @@
 import "server-only";
 import { CONTENIDOS } from "@/data/contenido";
 import type { Material } from "@/lib/piezas";
-import { isCourse, type Course, type Practica, type ProgramRow } from "@/lib/types";
+import {
+  isCourse,
+  type Course,
+  type Practica,
+  type ProgramRow,
+  type Recorrido,
+} from "@/lib/types";
 
 export interface VideoScene {
   plano: string;
@@ -45,6 +51,8 @@ export interface PracticaIntermedia {
    * el recordatorio de calibración junto a la práctica.
    */
   suelo?: boolean;
+  /** El recorrido que se dibuja sobre la cuadrícula, si lo tiene. */
+  recorrido?: Recorrido;
 }
 
 /** Programa de ejemplo de la unidad: una pila montada, con su explicación. */
@@ -74,6 +82,7 @@ interface RawPractica {
   notas?: string;
   /** Se hace sobre el suelo de baldosas del aula (40 × 40 cm). */
   suelo?: boolean;
+  recorrido?: Recorrido;
 }
 
 export interface UnitContent {
@@ -154,6 +163,7 @@ export interface StudentPractica {
   pasos?: PasoEnunciado[];
   /** Se hace sobre el suelo de baldosas del aula. */
   suelo?: boolean;
+  recorrido?: Recorrido;
 }
 
 /** Enunciados de las prácticas SIN la solución. */
@@ -164,6 +174,7 @@ export function getPracticasForStudent(curso: Course, unidad: number): StudentPr
     enunciado: item.enunciado,
     pasos: item.pasos,
     suelo: item.suelo,
+    recorrido: item.recorrido,
   }));
 }
 

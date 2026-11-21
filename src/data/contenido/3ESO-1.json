@@ -240,16 +240,7 @@
           ]
         }
       ],
-      "notas": "La primera vez sorprende ver las dos pilas funcionando. Conviene que lo prueben antes de explicar nada.",
-      "pasos": [
-        {
-          "texto": "Pon dos programas con el mismo sombrero de inicio",
-          "hijos": [
-            "Haz que el primero avance y retroceda sin parar",
-            "Haz que el segundo encienda y apague un dibujo cada medio segundo"
-          ]
-        }
-      ]
+      "notas": "La primera vez sorprende ver las dos pilas funcionando. Conviene que lo prueben antes de explicar nada."
     },
     {
       "practica": 2,
@@ -313,15 +304,26 @@
       ],
       "notas": "Aquí se ve para qué sirve: con una sola pila, la pantalla solo se actualizaría al acabar de moverse.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Pon la variable vueltas a 0 y haz dos pilas",
-          "hijos": [
-            "En una, repite sin parar avanzar media baldosa (20 centímetros) y subir vueltas en uno",
-            "En la otra, escribe vueltas en la pantalla sin parar"
-          ]
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.5,
+            "marca": "sube vueltas y la pantalla lo enseña al momento"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.5,
+            "marca": "sube vueltas"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.5,
+            "marca": "sube vueltas"
+          }
+        ]
+      }
     },
     {
       "practica": 3,
@@ -370,15 +372,7 @@
           ]
         }
       ],
-      "notas": "El robot vuelve a arrancar enseguida, porque la otra pila sigue viva. Eso da pie a la unidad de estados.",
-      "pasos": [
-        {
-          "texto": "Pon una pila que haga avanzar el robot sin parar"
-        },
-        {
-          "texto": "Pon otra con el sombrero del botón del Hub que pare el movimiento y toque una nota"
-        }
-      ]
+      "notas": "El robot vuelve a arrancar enseguida, porque la otra pila sigue viva. Eso da pie a la unidad de estados."
     },
     {
       "practica": 4,
@@ -431,15 +425,7 @@
           ]
         }
       ],
-      "notas": "El olvido de reiniciar el cronómetro es el fallo típico y se nota: el corte llega antes de tiempo.",
-      "pasos": [
-        {
-          "texto": "Reinicia el cronómetro al empezar"
-        },
-        {
-          "texto": "Añade una pila con el sombrero del cronómetro que a los 15 segundos pare el movimiento y ponga el botón central en rojo"
-        }
-      ]
+      "notas": "El olvido de reiniciar el cronómetro es el fallo típico y se nota: el corte llega antes de tiempo."
     }
   ],
   "construccion": {
@@ -468,23 +454,6 @@
       {
         "titulo": "La pista",
         "texto": "Marca un pasillo de metro y medio con dos cajas en los extremos. Es donde va a rebotar el robot durante los 30 segundos de la prueba."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "motor",
-        "cantidad": 2
-      },
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 4
-      },
-      {
-        "pieza": "pasador",
-        "cantidad": 8
       }
     ]
   },
@@ -680,23 +649,35 @@
       ],
       "notas": "Dos pilas. El marcador tiene que ir subiendo mientras el robot anda; si solo cambia al final, es que lo han metido todo en una.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Marca un pasillo de cuatro baldosas con una caja en cada punta"
-        },
-        {
-          "texto": "Prepara la base"
-        },
-        {
-          "texto": "Pon los rebotes a 0"
-        },
-        {
-          "texto": "En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder media baldosa y dar media vuelta"
-        },
-        {
-          "texto": "Escribe en otra pila los rebotes en la pantalla sin parar"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 4,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "hasta",
+            "baldosas": 3.5,
+            "marca": "para, sube rebotes y toca una nota"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 0.5
+          },
+          {
+            "tipo": "girar",
+            "grados": 180
+          },
+          {
+            "tipo": "hasta",
+            "baldosas": 3,
+            "marca": "y vuelta a empezar"
+          }
+        ]
+      }
     },
     {
       "titulo": "El límite de treinta segundos",
@@ -828,19 +809,35 @@
       ],
       "notas": "Tres pilas. Es la primera vez que un programa suyo tiene tres sombreros, y conviene hacerles señalar cuál hace qué antes de entregar.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Con el mismo pasillo de cuatro baldosas, añade al programa anterior el reinicio del cronómetro al empezar"
-        },
-        {
-          "texto": "Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto",
-          "hijos": [
-            "Para el movimiento",
-            "Pon el botón central en rojo",
-            "Escribe los rebotes conseguidos"
-          ]
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 4,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "hasta",
+            "baldosas": 3.5,
+            "marca": "rebote"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 0.5
+          },
+          {
+            "tipo": "girar",
+            "grados": 180
+          },
+          {
+            "tipo": "hasta",
+            "baldosas": 3,
+            "marca": "a los 30 s: para, botón rojo y escribe los rebotes"
+          }
+        ]
+      }
     }
   ]
 }

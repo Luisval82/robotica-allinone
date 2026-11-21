@@ -328,6 +328,40 @@ La equivalencia vive en un sitio: `BALDOSA_CM` en `SueloBaldosas.tsx`. La vuelta
 (17,5 cm) es la de la rueda de la base de conducción —56 mm de diámetro, π × 5,6 = 17,59—, y por
 eso hay que calibrar: entre el nominal y el real están la goma, el peso y el patinazo.
 
+#### El dibujo de la cuadrícula
+
+Las prácticas que van por el suelo llevan además el **plano del recorrido**
+(`src/components/unidad/RecorridoBaldosas.tsx`): la cuadrícula con sus juntas y sus crucetas, el
+robot en la salida mirando hacia donde sale, el camino paso a paso y una chapa numerada donde pasa
+algo. Aparece en los tres sitios: la unidad del alumno, las prácticas intermedias y la pestaña
+**«Preparar clases»** del profesor.
+
+El recorrido se escribe en el temario con los mismos pasos que dice el enunciado, y la geometría
+la calcula el dibujo:
+
+```python
+(8, "El robot que esquiva"): {
+    "mirando": "derecha",
+    "obstaculos": [{"delante": 2, "texto": "caja"}],
+    "pasos": [hasta(1.5, "ve la caja a 20 cm: para"), gira(-90, "gira 90° medidos"), av(1)],
+},
+```
+
+`av` avanza, `atras` retrocede, `gira` gira sobre el sitio, `hasta` es el avance que termina
+cuando lo dice un sensor —se pinta a trazos, porque esa distancia no la decide el programa— y
+`marca` señala algo que pasa sin moverse. El generador aborta si un recorrido apunta a una
+práctica que no existe o a una que no está marcada como «en el suelo»: un plano sin el aviso de la
+baldosa sería un dibujo sin contexto.
+
+Tres decisiones que se tomaron mirando los 45 dibujos, no pensándolos:
+
+- El rumbo se lleva **en grados**, no en cuatro puntos cardinales, porque si no un giro de 120°
+  —los triángulos de 2.º y 3.º— se redondeaba a 90 y el dibujo contradecía al enunciado.
+- El **arco del giro** solo se pinta cuando el trazado no lo enseña ya. En un cuadrado la esquina
+  del camino *es* el giro, y pintar allí cuatro arcos era ensuciarlo.
+- Un tramo que repite una junta ya pisada se aparta un poco hacia su derecha, para que la ida y la
+  vuelta se vean las dos en vez de quedar una raya que no dice por dónde fue.
+
 ### Informes en PDF (`/dashboard/profesor/informes/…`)
 
 Desde la pestaña **«Alumnado»** salen dos informes:

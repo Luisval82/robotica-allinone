@@ -155,6 +155,22 @@
       ],
       "notas": "Tres niveles de sangría. Es la primera vez que ven un bloque dentro de otro dentro de otro.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 3,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "hasta",
+            "baldosas": 2.5,
+            "marca": "ve algo a 20 cm: para"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon una caja sobre una junta, tres baldosas por delante"
@@ -203,7 +219,20 @@
         }
       ],
       "notas": "Sirve para distinguir cuándo toca esperar y cuándo toca preguntar. Aquí no hay nada que vigilar mientras tanto.",
-      "suelo": true
+      "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "espera a que aprieten el sensor"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          }
+        ]
+      }
     },
     {
       "practica": 3,
@@ -503,6 +532,22 @@
       ],
       "notas": "Lo que se corrige es la sangría: el «Si» dentro del bucle y las dos acciones dentro del «Si».",
       "suelo": true,
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 3,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "hasta",
+            "baldosas": 2.5,
+            "marca": "para y toca una nota"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon una caja tres baldosas por delante y prepara la base al 35 %"

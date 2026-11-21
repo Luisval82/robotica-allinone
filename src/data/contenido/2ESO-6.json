@@ -167,6 +167,16 @@
       ],
       "notas": "Que se caiga es el resultado esperado. Conviene avisar o lo vivirán como un fallo suyo.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "de golpe: la torre se cae"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon la aceleración en el valor más bajo"
@@ -227,6 +237,16 @@
       ],
       "notas": "Un bloque de diferencia y un resultado distinto. Es el mejor ejercicio de la unidad para enseñar que programar es decidir detalles.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "suave: la torre aguanta y para más cerca de la junta"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Repite la baldosa con la aceleración suave"
@@ -554,6 +574,20 @@
       ],
       "notas": "Lo que se corrige es que el azar se guarde una sola vez y que la distancia salga de la cuenta, no de tres ramas.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "saca un destino al azar: 1, 2 o 3 baldosas"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 3,
+            "marca": "toca una nota al llegar"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Prepara la base con la vuelta de rueda y la aceleración suave"
@@ -654,6 +688,26 @@
       ],
       "notas": "El contador dentro del bucle y la escritura fuera. Si la escritura entra en el bucle, no está mal, pero cuenta en voz alta tres veces.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "espera 1 s, nota y sube paradas"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "espera 1 s, nota y sube paradas"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "espera 1 s, nota y sube paradas"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Con la aceleración suave, repite tres veces",

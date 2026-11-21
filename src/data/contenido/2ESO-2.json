@@ -148,6 +148,16 @@
       ],
       "notas": "Se mide con la regla. Si falla por poco, casi siempre es que la vuelta de rueda está mal medida.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "¿para en la junta? Si no, la vuelta de rueda no es 17,5"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon el robot sobre una junta del suelo"
@@ -218,7 +228,21 @@
         }
       ],
       "notas": "Primera medida de verdad del curso. Bajando la velocidad se ve que el número sube.",
-      "suelo": true
+      "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "cronómetro a cero"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "guarda y escribe el tiempo"
+          }
+        ]
+      }
     },
     {
       "practica": 3,
@@ -350,6 +374,26 @@
       ],
       "notas": "Cambiando la velocidad y repitiendo sale una pequeña tabla de tiempos. Es el primer experimento del curso.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 4,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "cronómetro a cero"
+          },
+          {
+            "tipo": "hasta",
+            "baldosas": 3.5,
+            "marca": "para a 15 cm y escribe el tiempo"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Pon una caja en una junta, cuatro baldosas por delante"
@@ -565,6 +609,20 @@
       ],
       "notas": "Se comprueba con la regla contra la marca de la mesa. El orden de los tres bloques de preparación es lo que más falla.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "cronómetro a cero"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 3,
+            "marca": "guarda y escribe el tiempo"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Fija los motores y la vuelta de rueda, pon la velocidad al 40 %, pon el cronómetro a cero, cruza tres baldosas (120 centímetros), guarda el cronómetro en la variable tiempo y escríbela"
@@ -652,6 +710,28 @@
       ],
       "notas": "El giro sigue en rotaciones a propósito: girar sobre el sitio no recorre distancia hacia delante.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "cronómetro a cero"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 180
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "escribe el tiempo total"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Mide el tiempo de una ida y vuelta de dos baldosas",

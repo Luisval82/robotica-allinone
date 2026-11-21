@@ -232,15 +232,7 @@
           ]
         }
       ],
-      "notas": "Dos pilas muy cortas. Con «mover durante» en vez de «empezar a mover» el corte llegaría tarde, y conviene que lo prueben.",
-      "pasos": [
-        {
-          "texto": "Pon una pila que arranque el robot hacia delante"
-        },
-        {
-          "texto": "Pon otra con el sombrero de proximidad que, al ver algo a menos de 15 centímetros, pare el movimiento y toque una nota"
-        }
-      ]
+      "notas": "Dos pilas muy cortas. Con «mover durante» en vez de «empezar a mover» el corte llegaría tarde, y conviene que lo prueben."
     },
     {
       "practica": 2,
@@ -295,16 +287,7 @@
           ]
         }
       ],
-      "notas": "El sombrero del color salta cada vez que entra en el rojo, no mientras está encima. Verlo con una tira ancha lo deja claro.",
-      "pasos": [
-        {
-          "texto": "Añade una pila con el sombrero del color que, al ver rojo, haga esto",
-          "hijos": [
-            "Pon el botón central en rojo",
-            "Sube en uno la variable marcas"
-          ]
-        }
-      ]
+      "notas": "El sombrero del color salta cada vez que entra en el rojo, no mientras está encima. Verlo con una tira ancha lo deja claro."
     },
     {
       "practica": 3,
@@ -340,16 +323,7 @@
           ]
         }
       ],
-      "notas": "Es la diferencia entre avisar y ser preguntado, y se ve mejor teniendo las dos clases de guardia en el mismo lienzo.",
-      "pasos": [
-        {
-          "texto": "Pon una pila de guardia que repita sin parar comprobar si el sensor de fuerza está presionado y, si lo está, haga esto",
-          "hijos": [
-            "Para el movimiento",
-            "Enciende una cruz un segundo"
-          ]
-        }
-      ]
+      "notas": "Es la diferencia entre avisar y ser preguntado, y se ve mejor teniendo las dos clases de guardia en el mismo lienzo."
     },
     {
       "practica": 4,
@@ -434,15 +408,7 @@
           "nivel": 2
         }
       ],
-      "notas": "Cuatro pilas. Es un proyecto pequeño pero con la estructura de los grandes: un trabajo por pila.",
-      "pasos": [
-        {
-          "texto": "Junta las tres guardias anteriores en un mismo proyecto con el conductor"
-        },
-        {
-          "texto": "Recorre la pista entera comprobando que las tres saltan"
-        }
-      ]
+      "notas": "Cuatro pilas. Es un proyecto pequeño pero con la estructura de los grandes: un trabajo por pila."
     }
   ],
   "construccion": {
@@ -471,23 +437,6 @@
       {
         "titulo": "La pista",
         "texto": "Prepara un pasillo con una caja al fondo y una tira de cinta roja cruzando el suelo a mitad de camino. Así se disparan los tres guardias en el mismo recorrido."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "marco",
-        "cantidad": 2
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 6
-      },
-      {
-        "pieza": "eje",
-        "cantidad": 1
-      },
-      {
-        "pieza": "pasador"
       }
     ]
   },
@@ -683,26 +632,32 @@
       ],
       "notas": "Tres pilas. El guardia de distancia tiene que volver a arrancar al final, o el robot se queda parado para siempre.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Pon la caja tres baldosas por delante y la cinta roja en la junta de en medio"
-        },
-        {
-          "texto": "Prepara la base"
-        },
-        {
-          "texto": "Pon los avisos a 0"
-        },
-        {
-          "texto": "Arranca el robot hacia delante en una pila"
-        },
-        {
-          "texto": "En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede media baldosa y vuelve a arrancar"
-        },
-        {
-          "texto": "En otra, al ver rojo, pon el botón central en rojo y escribe los avisos"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 3,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "hasta",
+            "baldosas": 1.5,
+            "marca": "cinta roja: botón rojo y escribe los avisos"
+          },
+          {
+            "tipo": "hasta",
+            "baldosas": 1,
+            "marca": "a 15 cm: para, sube avisos y nota"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 0.5,
+            "marca": "y vuelve a arrancar"
+          }
+        ]
+      }
     },
     {
       "titulo": "El parachoques que corta",
@@ -825,16 +780,31 @@
       ],
       "notas": "Cuatro pilas y dos clases de guardia: dos que avisan y una que pregunta. Es la práctica que mejor resume la unidad.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Con la misma pista de baldosas, añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto",
-          "hijos": [
-            "Para el movimiento",
-            "Enciende una cruz un segundo",
-            "Escribe CHOQUE"
-          ]
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "obstaculos": [
+          {
+            "delante": 3,
+            "texto": "caja"
+          }
+        ],
+        "pasos": [
+          {
+            "tipo": "hasta",
+            "baldosas": 1.5,
+            "marca": "cinta roja"
+          },
+          {
+            "tipo": "hasta",
+            "baldosas": 1,
+            "marca": "a 15 cm: para"
+          },
+          {
+            "tipo": "marca",
+            "marca": "si además se pulsa el parachoques: cruz y CHOQUE"
+          }
+        ]
+      }
     }
   ]
 }

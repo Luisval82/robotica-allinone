@@ -176,18 +176,7 @@
           ]
         }
       ],
-      "notas": "Sin estos dos números, el umbral es una suposición. Merece la pena que lo anoten en el cuaderno.",
-      "pasos": [
-        {
-          "texto": "Pon un bucle infinito que escriba en la pantalla la luz reflejada del sensor de color"
-        },
-        {
-          "texto": "Pasa el robot del negro al blanco"
-        },
-        {
-          "texto": "Anota los dos números"
-        }
-      ]
+      "notas": "Sin estos dos números, el umbral es una suposición. Merece la pena que lo anoten en el cuaderno."
     },
     {
       "practica": 2,
@@ -246,18 +235,7 @@
           ]
         }
       ],
-      "notas": "La idea de dejar la respuesta en una variable cuesta al principio. Verla cambiar en la pantalla al mover el robot a mano la aclara.",
-      "pasos": [
-        {
-          "texto": "Crea un bloque llamado mirar con un hueco de umbral que ponga la variable decision a 1 si la luz reflejada es menor que el umbral, y a 2 si no"
-        },
-        {
-          "texto": "Llámalo con 45"
-        },
-        {
-          "texto": "Escribe la decision en la pantalla"
-        }
-      ]
+      "notas": "La idea de dejar la respuesta en una variable cuesta al principio. Verla cambiar en la pantalla al mover el robot a mano la aclara."
     },
     {
       "practica": 3,
@@ -330,16 +308,7 @@
           ]
         }
       ],
-      "notas": "Tres respuestas posibles: parar, torcer a un lado o al otro. El bloque sigue teniendo una sola salida, la variable.",
-      "pasos": [
-        {
-          "texto": "Cambia el bloque mirar para que decida en dos pasos",
-          "hijos": [
-            "Pon decision a 0 cuando haya algo a menos de 15 centímetros",
-            "Mira la línea solo si el camino está libre"
-          ]
-        }
-      ]
+      "notas": "Tres respuestas posibles: parar, torcer a un lado o al otro. El bloque sigue teniendo una sola salida, la variable."
     },
     {
       "practica": 4,
@@ -412,15 +381,7 @@
           ]
         }
       ],
-      "notas": "El bucle principal queda en dos líneas. Ese es el resultado que hay que enseñarles.",
-      "pasos": [
-        {
-          "texto": "Crea un bloque llamado mover segun que, si decision vale 1, tuerza hacia un lado, y si no, hacia el otro"
-        },
-        {
-          "texto": "Úsalo detrás de mirar dentro de un bucle infinito"
-        }
-      ]
+      "notas": "El bucle principal queda en dos líneas. Ese es el resultado que hay que enseñarles."
     }
   ],
   "construccion": {
@@ -449,25 +410,6 @@
       {
         "titulo": "La línea y los números",
         "texto": "Pega una línea negra ancha sobre fondo blanco. Antes de programar, escribe en la pantalla la luz reflejada y anota el número sobre negro y sobre blanco: el umbral es el punto medio de los dos."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "color"
-      },
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "marco",
-        "cantidad": 2
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 6
-      },
-      {
-        "pieza": "pasador"
       }
     ]
   },
@@ -659,18 +601,7 @@
           ]
         }
       ],
-      "notas": "Tres pilas y un bucle de dos líneas. El umbral de 45 hay que ajustarlo a los números medidos en su pista.",
-      "pasos": [
-        {
-          "texto": "Crea el bloque mirar con hueco de umbral que ponga decision a 1 o a 2 según la luz reflejada"
-        },
-        {
-          "texto": "Crea el bloque mover segun que tuerza a un lado o a otro según decision"
-        },
-        {
-          "texto": "En el programa principal, prepara la base y repite sin parar llamar a mirar con 45 y a mover segun"
-        }
-      ]
+      "notas": "Tres pilas y un bucle de dos líneas. El umbral de 45 hay que ajustarlo a los números medidos en su pista."
     },
     {
       "titulo": "El seguidor que también frena",
@@ -816,15 +747,7 @@
           ]
         }
       ],
-      "notas": "Cuatro pilas: dos bloques propios, el programa y el vigilante del tiempo. Los dos sensores entran por el mismo bloque mirar, que es la gracia.",
-      "pasos": [
-        {
-          "texto": "Amplía el bloque mirar para que ponga decision a 0 si hay algo a menos de 15 centímetros"
-        },
-        {
-          "texto": "Amplía mover segun para que, con decision a 0, pare el movimiento y encienda una cruz, y añade una pila aparte que a los 40 segundos pare el robot y escriba FIN"
-        }
-      ]
+      "notas": "Cuatro pilas: dos bloques propios, el programa y el vigilante del tiempo. Los dos sensores entran por el mismo bloque mirar, que es la gracia."
     }
   ]
 }

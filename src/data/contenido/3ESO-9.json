@@ -366,16 +366,7 @@
           ]
         }
       ],
-      "notas": "Mensaje y estado juntos: el aviso arranca el trabajo y la fase dice que está en marcha.",
-      "pasos": [
-        {
-          "texto": "Pon la fase a 0 y haz dos pilas",
-          "hijos": [
-            "En una, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar el mensaje servir y esperar a que se suelte",
-            "En la otra, al recibir servir, escribe PEDIDO y toca una nota"
-          ]
-        }
-      ]
+      "notas": "Mensaje y estado juntos: el aviso arranca el trabajo y la fase dice que está en marcha."
     },
     {
       "practica": 2,
@@ -483,17 +474,21 @@
       ],
       "notas": "La cuenta de la bahía va dentro del bloque. Llamarlo con 1, 2 o 3 sirve las tres bahías sin tocar nada.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Marca las tres bahías del almacén en tres crucetas seguidas, a una, dos y tres baldosas de la salida"
-        },
-        {
-          "texto": "Crea el bloque avanzar baldosas y el bloque horquilla con hueco de altura"
-        },
-        {
-          "texto": "Crea después servir con un hueco de bahía que avance tantas baldosas como diga la bahía, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "servir (2): baja horquilla, espera la carga y la sube"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 2,
+            "marca": "vuelve a la salida"
+          }
+        ]
+      }
     },
     {
       "practica": 3,
@@ -541,15 +536,7 @@
           ]
         }
       ],
-      "notas": "Dos listas en paralelo: la posición 3 de una y de la otra hablan del mismo pedido.",
-      "pasos": [
-        {
-          "texto": "Al terminar de servir, añade el número de pedido a la lista servidos y el cronómetro a la lista tiempos"
-        },
-        {
-          "texto": "Escribe después cuántos pedidos llevas"
-        }
-      ]
+      "notas": "Dos listas en paralelo: la posición 3 de una y de la otra hablan del mismo pedido."
     },
     {
       "practica": 4,
@@ -611,15 +598,7 @@
           ]
         }
       ],
-      "notas": "El mismo algoritmo de la unidad 7 aplicado a los tiempos. Ya lo tienen aprendido y aquí se ve para qué servía.",
-      "pasos": [
-        {
-          "texto": "Busca en la lista tiempos ya llena el valor más grande recorriéndola con un índice"
-        },
-        {
-          "texto": "Escribe el resultado al terminar"
-        }
-      ]
+      "notas": "El mismo algoritmo de la unidad 7 aplicado a los tiempos. Ya lo tienen aprendido y aquí se ve para qué servía."
     }
   ],
   "construccion": {
@@ -652,26 +631,6 @@
       {
         "titulo": "La prueba en vacío",
         "texto": "Antes de programar, empuja el robot a mano hasta la bahía tres y vuelve, con la horquilla arriba. Si roza, se engancha o cabecea, arréglalo: el programa no arregla un montaje que no pasa."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "motor-grande"
-      },
-      {
-        "pieza": "marco",
-        "cantidad": 2
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 10
-      },
-      {
-        "pieza": "eje",
-        "cantidad": 2
-      },
-      {
-        "pieza": "pasador"
       }
     ]
   },
@@ -960,20 +919,25 @@
       ],
       "notas": "Seis pilas. El programa principal no mueve ni un motor: todo pasa por la librería. Es la mitad de la nota de la prueba.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Crea los bloques avanzar baldosas, horquilla y servir con hueco de bahía, con las bahías en tres crucetas a una, dos y tres baldosas"
-        },
-        {
-          "texto": "En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1"
-        },
-        {
-          "texto": "En la pila de mando, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar servir y esperar a que se suelte"
-        },
-        {
-          "texto": "En la pila del mensaje servir, reinicia el cronómetro, llama a servir con el pedido y pon la fase a 0"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "pulsador: fase = 1 y manda servir"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "servir (1)"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 1,
+            "marca": "fase = 0, listo para el siguiente"
+          }
+        ]
+      }
     },
     {
       "titulo": "El registro del turno completo",
@@ -1218,14 +1182,31 @@
       ],
       "notas": "Siete pilas, dos listas, tres sensores y una librería de tres bloques. Es el programa más grande del ciclo y se corrige por partes: librería, estados, registro y panel.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Con el almacén de tres bahías en sus crucetas, amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno"
-        },
-        {
-          "texto": "Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "pedido 1"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 1,
+            "marca": "apunta en servidos y tiempos"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "pedido 2"
+          },
+          {
+            "tipo": "retroceder",
+            "baldosas": 2,
+            "marca": "apunta y sube el pedido"
+          }
+        ]
+      }
     }
   ]
 }

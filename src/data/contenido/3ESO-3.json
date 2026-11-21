@@ -232,14 +232,26 @@
       ],
       "notas": "Una definición y tres usos. La vuelta de rueda hay que fijarla en el programa principal, no dentro del bloque.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Crea un bloque propio llamado avanzar baldosas con un hueco que mueva el robot ese número de baldosas, multiplicando por 40 dentro del bloque"
-        },
-        {
-          "texto": "Úsalo con media baldosa, con una y con un cuarto"
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.5,
+            "marca": "avanzar baldosas (0,5)"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "avanzar baldosas (1)"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.25,
+            "marca": "avanzar baldosas (0,25)"
+          }
+        ]
+      }
     },
     {
       "practica": 2,
@@ -318,26 +330,21 @@
       ],
       "notas": "Es el giro de 2º encerrado con nombre. A partir de aquí, girar vuelve a ser una línea.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Alinea el robot con una junta del suelo"
-        },
-        {
-          "texto": "Crea un bloque llamado girar con un hueco de grados que haga esto",
-          "hijos": [
-            "Pon el ángulo de guiñada a cero",
-            "Empieza a girar sobre el sitio",
-            "Repite hasta pasar de esos grados",
-            "Para el movimiento"
-          ]
-        },
-        {
-          "texto": "Llámalo con 90 grados y mira si queda sobre la junta perpendicular"
-        },
-        {
-          "texto": "Llámalo después con 180"
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "girar",
+            "grados": 90,
+            "marca": "girar (90)"
+          },
+          {
+            "tipo": "girar",
+            "grados": 180,
+            "marca": "girar (180)"
+          }
+        ]
+      }
     },
     {
       "practica": 3,
@@ -400,15 +407,7 @@
           ]
         }
       ],
-      "notas": "Con 180 gira 90. Es raro al principio y por eso enseña: el hueco es un número con el que se puede operar.",
-      "pasos": [
-        {
-          "texto": "Crea un bloque llamado media vuelta con un hueco de grados que gire la mitad de esos grados, usando la división dentro de la definición"
-        },
-        {
-          "texto": "Pruébalo con 180"
-        }
-      ]
+      "notas": "Con 180 gira 90. Es raro al principio y por eso enseña: el hueco es un número con el que se puede operar."
     },
     {
       "practica": 4,
@@ -479,14 +478,44 @@
       ],
       "notas": "Aquí se ve la idea de construir hacia arriba: herramientas que usan herramientas.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Crea un bloque llamado esquina sin huecos que llame a avanzar baldosas con 1 y a girar con 90"
-        },
-        {
-          "texto": "Ponlo en una cruceta y úsalo cuatro veces seguidas: tiene que recorrer el borde de una baldosa y volver a la cruceta"
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "cuatro veces «esquina»"
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          }
+        ]
+      }
     }
   ],
   "construccion": {
@@ -515,23 +544,6 @@
       {
         "titulo": "El circuito",
         "texto": "Marca con cinta un cuadrado de 40 centímetros de lado en el suelo y señala la esquina de salida con una marca. Ahí se ve si el robot cierra el recorrido o no."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 6
-      },
-      {
-        "pieza": "buje",
-        "cantidad": 2
-      },
-      {
-        "pieza": "pasador",
-        "cantidad": 10
       }
     ]
   },
@@ -739,17 +751,44 @@
       ],
       "notas": "Tres pilas: dos definiciones y el programa. El cuadrado tiene que cerrar sobre la marca de salida.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Crea el bloque girar con hueco de grados y el bloque avanzar baldosas"
-        },
-        {
-          "texto": "Pon el robot en una cruceta del suelo y, en el programa principal, prepara la base con la vuelta de rueda y el frenado, y repite cuatro veces llamar a avanzar baldosas con 1 y a girar con 90"
-        },
-        {
-          "texto": "Tiene que cerrar sobre la cruceta de salida"
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "cierra en la cruceta de salida"
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          }
+        ]
+      }
     },
     {
       "titulo": "El triángulo con una esquina propia",
@@ -878,14 +917,36 @@
       ],
       "notas": "Un bloque que llama a dos bloques propios. Con 120 grados el triángulo cierra; si no cierra, el arreglo va dentro de girar.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Añade un bloque llamado tramo con un hueco de lado que llame a avanzar baldosas con ese lado y a girar con 120"
-        },
-        {
-          "texto": "Repite en el programa principal tres veces llamar a tramo con 2 y escribe FIN al terminar: el triángulo cierra, aunque sus lados ya no sigan las juntas"
-        }
-      ]
+      "recorrido": {
+        "mirando": "derecha",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 120
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 120
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "escribe FIN"
+          },
+          {
+            "tipo": "girar",
+            "grados": 120
+          }
+        ]
+      }
     }
   ]
 }

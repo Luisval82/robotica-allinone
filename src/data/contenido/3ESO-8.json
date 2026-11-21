@@ -275,18 +275,7 @@
           ]
         }
       ],
-      "notas": "Los 120 grados son de ejemplo: cada montaje tiene los suyos y hay que medirlos a mano.",
-      "pasos": [
-        {
-          "texto": "Pon la posición relativa del motor C a 0 y crea un bloque llamado horquilla con un hueco de altura que lo lleve a esa posición a velocidad 25"
-        },
-        {
-          "texto": "Llámalo con 120"
-        },
-        {
-          "texto": "Espera un segundo y llámalo con 0"
-        }
-      ]
+      "notas": "Los 120 grados son de ejemplo: cada montaje tiene los suyos y hay que medirlos a mano."
     },
     {
       "practica": 2,
@@ -350,18 +339,7 @@
           ]
         }
       ],
-      "notas": "Dos subidas idénticas con una línea de diferencia. Es la demostración de para qué sirve la aceleración.",
-      "pasos": [
-        {
-          "texto": "Pon una torre de piezas sobre la horquilla y súbela con la aceleración de golpe"
-        },
-        {
-          "texto": "Repite la subida con la aceleración suave"
-        },
-        {
-          "texto": "Compara qué pasa con la carga"
-        }
-      ]
+      "notas": "Dos subidas idénticas con una línea de diferencia. Es la demostración de para qué sirve la aceleración."
     },
     {
       "practica": 3,
@@ -418,18 +396,7 @@
           ]
         }
       ],
-      "notas": "La curva no es el giro sobre el sitio: aquí el robot describe un arco y se desplaza.",
-      "pasos": [
-        {
-          "texto": "Crea un bloque llamado curva con un hueco de grados que mueva la base con una rueda más rápida que la otra durante esos grados"
-        },
-        {
-          "texto": "Llámalo con 90 grados"
-        },
-        {
-          "texto": "Llámalo después con 180"
-        }
-      ]
+      "notas": "La curva no es el giro sobre el sitio: aquí el robot describe un arco y se desplaza."
     },
     {
       "practica": 4,
@@ -523,17 +490,24 @@
       ],
       "notas": "Tres definiciones y una llamada. Aquí ya se nota el salto: el programa principal tiene una línea.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120"
-        },
-        {
-          "texto": "Llámalo una vez"
-        },
-        {
-          "texto": "Comprueba que recoge la carga"
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "horquilla (0): baja"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.5,
+            "marca": "avanzar baldosas (0,5)"
+          },
+          {
+            "tipo": "marca",
+            "marca": "horquilla (120): sube la carga"
+          }
+        ]
+      }
     }
   ],
   "construccion": {
@@ -562,29 +536,6 @@
       {
         "titulo": "La prueba de la altura",
         "texto": "Pon la horquilla abajo y gira el motor grande a mano hasta arriba contando las vueltas. Eso te da los grados que va a llevar el bloque horquilla; anótalos antes de programar."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "motor-grande"
-      },
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "marco",
-        "cantidad": 2
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 8
-      },
-      {
-        "pieza": "eje",
-        "cantidad": 2
-      },
-      {
-        "pieza": "pasador"
       }
     ]
   },
@@ -800,17 +751,23 @@
       ],
       "notas": "Cinco pilas: cuatro definiciones y el programa. En el principal no puede quedar ni un bloque de motor suelto.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Crea cuatro bloques propios: avanzar baldosas, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120"
-        },
-        {
-          "texto": "Pon la carga media baldosa por delante"
-        },
-        {
-          "texto": "En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger"
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "marca",
+            "marca": "horquilla (0)"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.5
+          },
+          {
+            "tipo": "marca",
+            "marca": "horquilla (120): «coger» hecho"
+          }
+        ]
+      }
     },
     {
       "titulo": "El ciclo repetido tres veces",
@@ -982,17 +939,30 @@
       ],
       "notas": "Seis pilas y tres niveles de llamadas: ciclo usa coger, que usa avanzar y horquilla. Es el programa mejor organizado del curso.",
       "suelo": true,
-      "pasos": [
-        {
-          "texto": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar baldosas con 1 y a horquilla con 0"
-        },
-        {
-          "texto": "Repite en el programa principal tres veces llamar a ciclo"
-        },
-        {
-          "texto": "Escribe FIN al terminar"
-        }
-      ]
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 0.5,
+            "marca": "coger"
+          },
+          {
+            "tipo": "girar",
+            "grados": 90,
+            "marca": "curva (90)"
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "avanzar baldosas (1)"
+          },
+          {
+            "tipo": "marca",
+            "marca": "horquilla (0): suelta"
+          }
+        ]
+      }
     }
   ]
 }

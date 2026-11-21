@@ -9,6 +9,7 @@ import { CarruselMontaje } from "@/components/unidad/CarruselMontaje";
 import { PiezasNecesarias } from "@/components/unidad/PiezasNecesarias";
 import { PracticasIntermedias } from "@/components/unidad/PracticasIntermedias";
 import { StepSection, type StepState } from "@/components/unidad/StepSection";
+import { RecorridoBaldosas } from "@/components/unidad/RecorridoBaldosas";
 import { SueloBaldosas } from "@/components/unidad/SueloBaldosas";
 import { UnitTest, type TestResult } from "@/components/unidad/UnitTest";
 import { VideoPlayer } from "@/components/unidad/VideoPlayer";
@@ -456,7 +457,16 @@ export default async function UnidadPage({ params }: { params: Promise<{ numero:
                   entrega={entregas[index]}
                   bloqueada={entregas[index] !== null}
                   textoCerrada="Entregada"
-                  extra={practica.suelo ? <SueloBaldosas curso={curso} /> : null}
+                  extra={
+                    practica.suelo || practica.recorrido ? (
+                      <>
+                        {practica.suelo ? <SueloBaldosas curso={curso} /> : null}
+                        {practica.recorrido ? (
+                          <RecorridoBaldosas recorrido={practica.recorrido} curso={curso} />
+                        ) : null}
+                      </>
+                    ) : null
+                  }
                 />
               ))
             ) : (

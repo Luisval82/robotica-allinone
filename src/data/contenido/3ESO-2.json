@@ -220,16 +220,7 @@
           ]
         }
       ],
-      "notas": "Dos pilas y un nombre compartido. Si no suena, casi siempre es que el nombre está escrito distinto en los dos sitios.",
-      "pasos": [
-        {
-          "texto": "Haz dos pilas",
-          "hijos": [
-            "En la primera, espera a que se apriete el sensor de fuerza y manda el mensaje sonar",
-            "En la segunda, con el sombrero de ese mensaje, toca una nota y enciende un dibujo un segundo"
-          ]
-        }
-      ]
+      "notas": "Dos pilas y un nombre compartido. Si no suena, casi siempre es que el nombre está escrito distinto en los dos sitios."
     },
     {
       "practica": 2,
@@ -281,15 +272,7 @@
           ]
         }
       ],
-      "notas": "El YA sale enseguida, con el motor aún girando. Es la prueba de que las dos pilas van a la vez.",
-      "pasos": [
-        {
-          "texto": "Manda el mensaje girar y, sin esperar, escribe YA en la pantalla"
-        },
-        {
-          "texto": "Mueve el motor C una vuelta entera despacio en la pila que recibe el mensaje"
-        }
-      ]
+      "notas": "El YA sale enseguida, con el motor aún girando. Es la prueba de que las dos pilas van a la vez."
     },
     {
       "practica": 3,
@@ -341,15 +324,7 @@
           ]
         }
       ],
-      "notas": "Los dos programas anteriores se diferencian en un bloque y se comportan al revés. Vale la pena ponerlos uno al lado del otro.",
-      "pasos": [
-        {
-          "texto": "Repite lo anterior cambiando a enviar mensaje y esperar"
-        },
-        {
-          "texto": "Comprueba que el texto YA no sale hasta que el motor ha terminado de girar"
-        }
-      ]
+      "notas": "Los dos programas anteriores se diferencian en un bloque y se comportan al revés. Vale la pena ponerlos uno al lado del otro."
     },
     {
       "practica": 4,
@@ -412,17 +387,7 @@
           ]
         }
       ],
-      "notas": "Una cadena de relevos. Si usan el enviar normal, el FIN sale el primero y se ve el fallo de golpe.",
-      "pasos": [
-        {
-          "texto": "Haz tres pilas encadenadas",
-          "hijos": [
-            "La primera manda el mensaje uno esperando y luego escribe FIN",
-            "La del mensaje uno toca una nota y manda el mensaje dos esperando",
-            "La del mensaje dos enciende un dibujo un segundo"
-          ]
-        }
-      ]
+      "notas": "Una cadena de relevos. Si usan el enviar normal, el FIN sale el primero y se ve el fallo de golpe."
     }
   ],
   "construccion": {
@@ -451,32 +416,6 @@
       {
         "titulo": "La prueba de la pinza",
         "texto": "Gira el motor grande a mano media vuelta en los dos sentidos. Si las mordazas se atascan o se salen del eje, arréglalo antes de programar: el programa no puede corregir un montaje que roza."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "motor-grande"
-      },
-      {
-        "pieza": "fuerza"
-      },
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "marco",
-        "cantidad": 2
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 6
-      },
-      {
-        "pieza": "eje",
-        "cantidad": 2
-      },
-      {
-        "pieza": "pasador"
       }
     ]
   },
@@ -692,21 +631,7 @@
           ]
         }
       ],
-      "notas": "Tres pilas y dos mensajes. El de agarrar tiene que ser con espera: si no, el robot retrocede con la pinza abierta.",
-      "pasos": [
-        {
-          "texto": "Haz tres pilas"
-        },
-        {
-          "texto": "En la de mando, repite sin parar esperar a que se apriete el sensor de fuerza, mandar el mensaje ir y esperar a que se suelte"
-        },
-        {
-          "texto": "En la de conducción, al recibir ir, avanza hasta tener algo a menos de 10 centímetros, para, manda agarrar esperando y retrocede 30 centímetros"
-        },
-        {
-          "texto": "En la de la pinza, al recibir agarrar, cierra el motor C cuatro décimas de vuelta y toca una nota"
-        }
-      ]
+      "notas": "Tres pilas y dos mensajes. El de agarrar tiene que ser con espera: si no, el robot retrocede con la pinza abierta."
     },
     {
       "titulo": "La descarga de vuelta",
@@ -867,15 +792,7 @@
           ]
         }
       ],
-      "notas": "Cuatro pilas y tres mensajes. El LISTO tiene que salir con la pinza ya abierta: es la comprobación de que la espera está bien puesta.",
-      "pasos": [
-        {
-          "texto": "Amplía el programa para que, después de retroceder, la pila de conducción mande soltar esperando y escriba LISTO"
-        },
-        {
-          "texto": "En la pila de la pinza, al recibir soltar, abre el motor C cuatro décimas de vuelta en el otro sentido y toca una nota más grave"
-        }
-      ]
+      "notas": "Cuatro pilas y tres mensajes. El LISTO tiene que salir con la pinza ya abierta: es la comprobación de que la espera está bien puesta."
     }
   ]
 }

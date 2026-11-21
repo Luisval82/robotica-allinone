@@ -251,16 +251,7 @@
           ]
         }
       ],
-      "notas": "El dibujo cambia al pulsar. Es la demostración más clara de que una variable la ven todas las pilas.",
-      "pasos": [
-        {
-          "texto": "Pon la fase a 0 y haz dos pilas",
-          "hijos": [
-            "En una, repite sin parar enseñar la flecha si la fase es 1 y el cuadrado si no",
-            "En la otra, espera a que se apriete el sensor de fuerza y pon la fase a 1"
-          ]
-        }
-      ]
+      "notas": "El dibujo cambia al pulsar. Es la demostración más clara de que una variable la ven todas las pilas."
     },
     {
       "practica": 2,
@@ -327,16 +318,7 @@
           ]
         }
       ],
-      "notas": "Ahora sí se queda parado: nadie manda avanzar mientras la fase no sea la suya.",
-      "pasos": [
-        {
-          "texto": "Añade una pila que repita sin parar comprobar la fase",
-          "hijos": [
-            "Si vale 1, arranca el movimiento",
-            "Si no, para el movimiento"
-          ]
-        }
-      ]
+      "notas": "Ahora sí se queda parado: nadie manda avanzar mientras la fase no sea la suya."
     },
     {
       "practica": 3,
@@ -417,15 +399,7 @@
           ]
         }
       ],
-      "notas": "Aquí se cierra el problema que quedó abierto en la unidad 4. Vale la pena decirlo en voz alta.",
-      "pasos": [
-        {
-          "texto": "Añade una pila con el sombrero de proximidad"
-        },
-        {
-          "texto": "Haz que, al ver algo a menos de 15 centímetros, ponga la fase a 2 en lugar de parar los motores"
-        }
-      ]
+      "notas": "Aquí se cierra el problema que quedó abierto en la unidad 4. Vale la pena decirlo en voz alta."
     },
     {
       "practica": 4,
@@ -473,19 +447,7 @@
           ]
         }
       ],
-      "notas": "Un bucle que dura exactamente lo que dura el estado. Es la forma limpia de encadenar fases.",
-      "pasos": [
-        {
-          "texto": "Haz una pila que, mientras la fase valga 1, repita dos cosas",
-          "hijos": [
-            "Toca una nota",
-            "Espera un segundo"
-          ]
-        },
-        {
-          "texto": "Escribe FIN al terminar"
-        }
-      ]
+      "notas": "Un bucle que dura exactamente lo que dura el estado. Es la forma limpia de encadenar fases."
     }
   ],
   "construccion": {
@@ -514,32 +476,6 @@
       {
         "titulo": "La comprobación de fases",
         "texto": "Antes de montar la pista, enciende el programa y pulsa el mando con el robot en la mano: la pantalla tiene que cambiar de dibujo. Si no cambia, la fase no se está escribiendo."
-      }
-    ],
-    "materiales": [
-      {
-        "pieza": "motor-grande"
-      },
-      {
-        "pieza": "distancia"
-      },
-      {
-        "pieza": "fuerza"
-      },
-      {
-        "pieza": "marco",
-        "cantidad": 2
-      },
-      {
-        "pieza": "viga",
-        "cantidad": 6
-      },
-      {
-        "pieza": "eje",
-        "cantidad": 1
-      },
-      {
-        "pieza": "pasador"
       }
     ]
   },
@@ -739,24 +675,7 @@
           ]
         }
       ],
-      "notas": "Tres pilas y una sola variable mandando. Ninguna pila toca los motores de otra: esa es la corrección de fondo.",
-      "pasos": [
-        {
-          "texto": "Pon la fase a 0"
-        },
-        {
-          "texto": "Haz tres pilas"
-        },
-        {
-          "texto": "La primera repite sin parar arrancar el movimiento si la fase es 1 y pararlo si no"
-        },
-        {
-          "texto": "La segunda repite sin parar comprobar el sensor de fuerza, poner la fase a 1 y esperar a que se suelte"
-        },
-        {
-          "texto": "La tercera, al ver algo a menos de 15 centímetros, pone la fase a 2 y baja la barrera con el motor C"
-        }
-      ]
+      "notas": "Tres pilas y una sola variable mandando. Ninguna pila toca los motores de otra: esa es la corrección de fondo."
     },
     {
       "titulo": "El panel de fases",
@@ -913,15 +832,7 @@
           ]
         }
       ],
-      "notas": "Cuatro pilas. El panel es puro apoyo visual, pero es lo que les permite depurar solos el resto del curso.",
-      "pasos": [
-        {
-          "texto": "Añade una cuarta pila que repita sin parar enseñar un dibujo según la fase: la flecha arriba si vale 1, la cruz si vale 2 y el cuadrado si no"
-        },
-        {
-          "texto": "Añade además que al entrar en la fase 2 se toque una nota y aparezca el texto FIN"
-        }
-      ]
+      "notas": "Cuatro pilas. El panel es puro apoyo visual, pero es lo que les permite depurar solos el resto del curso."
     }
   ]
 }

@@ -331,6 +331,16 @@
       ],
       "notas": "Es el giro de 1º metido en una caja con nombre. A partir de aquí, girar es una línea.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "girar",
+            "grados": 90,
+            "marca": "girar (90): queda sobre la junta perpendicular"
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Alinea el robot con una junta"
@@ -629,6 +639,44 @@
       ],
       "notas": "Dos pilas: la definición y el programa. El cuadrado tiene que cerrar, y si no cierra, se toca el bloque girar una sola vez.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 1,
+            "marca": "cierra en la cruceta de salida"
+          },
+          {
+            "tipo": "girar",
+            "grados": 90
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio"
@@ -748,6 +796,36 @@
       ],
       "notas": "Tres pilas en el lienzo: la definición, el recorrido y el vigilante del tiempo. Un triángulo, que con 120 grados cierra.",
       "suelo": true,
+      "recorrido": {
+        "mirando": "arriba",
+        "pasos": [
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 120
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2
+          },
+          {
+            "tipo": "girar",
+            "grados": 120
+          },
+          {
+            "tipo": "avanzar",
+            "baldosas": 2,
+            "marca": "y un vigilante corta a los 20 s"
+          },
+          {
+            "tipo": "girar",
+            "grados": 120
+          }
+        ]
+      },
       "pasos": [
         {
           "texto": "Haz con el mismo bloque girar un recorrido de tres tramos de dos baldosas (80 centímetros) con giros de 120 grados"

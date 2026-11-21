@@ -26,7 +26,7 @@ lo de 1º, porque el alumno ya lo tiene aprendido.
 import json
 import pathlib
 
-from temario_comun import b, main, reparte_respuestas
+from temario_comun import atras, av, b, gira, hasta, main, marca, reparte_respuestas
 
 _VIDEOS = pathlib.Path("/tmp/videos2eso.json")
 VIDEOS = json.loads(_VIDEOS.read_text()) if _VIDEOS.exists() else {}
@@ -2490,8 +2490,68 @@ EN_EL_SUELO = {
 }
 
 
+# Los recorridos que se dibujan sobre la cuadrícula. Mismos pasos que el
+# enunciado; la geometría la calcula el dibujo.
+RECORRIDOS = {
+    (2, "Una baldosa justa"): {
+        "mirando": "arriba",
+        "pasos": [av(1, "¿para en la junta? Si no, la vuelta de rueda no es 17,5")],
+    },
+    (2, "Cuánto he tardado"): {
+        "mirando": "arriba",
+        "pasos": [marca("cronómetro a cero"), av(1, "guarda y escribe el tiempo")],
+    },
+    (2, "La carrera hasta la pared"): {
+        "mirando": "derecha",
+        "obstaculos": [{"delante": 4, "texto": "caja"}],
+        "pasos": [marca("cronómetro a cero"), hasta(3.5, "para a 15 cm y escribe el tiempo")],
+    },
+    (2, "Las tres baldosas cronometradas"): {
+        "mirando": "arriba",
+        "pasos": [marca("cronómetro a cero"), av(3, "guarda y escribe el tiempo")],
+    },
+    (2, "La ida y la vuelta medidas"): {
+        "mirando": "arriba",
+        "pasos": [marca("cronómetro a cero"), av(2), gira(180), av(2, "escribe el tiempo total")],
+    },
+    (6, "Arranque de golpe"): {
+        "mirando": "arriba",
+        "pasos": [av(1, "de golpe: la torre se cae")],
+    },
+    (6, "Arranque suave"): {
+        "mirando": "arriba",
+        "pasos": [av(1, "suave: la torre aguanta y para más cerca de la junta")],
+    },
+    (6, "El repartidor al azar"): {
+        "mirando": "arriba",
+        "pasos": [marca("saca un destino al azar: 1, 2 o 3 baldosas"),
+                  av(3, "toca una nota al llegar")],
+    },
+    (6, "La ruta de tres paradas"): {
+        "mirando": "arriba",
+        "pasos": [av(1, "espera 1 s, nota y sube paradas"),
+                  av(1, "espera 1 s, nota y sube paradas"),
+                  av(1, "espera 1 s, nota y sube paradas")],
+    },
+    (8, "El giro con nombre"): {
+        "mirando": "arriba",
+        "pasos": [gira(90, "girar (90): queda sobre la junta perpendicular")],
+    },
+    (8, "El circuito con bloque propio"): {
+        "mirando": "arriba",
+        "pasos": [av(1), gira(), av(1), gira(), av(1), gira(),
+                  av(1, "cierra en la cruceta de salida"), gira()],
+    },
+    (8, "El recorrido con límite"): {
+        "mirando": "arriba",
+        "pasos": [av(2), gira(120), av(2), gira(120),
+                  av(2, "y un vigilante corta a los 20 s"), gira(120)],
+    },
+}
+
+
 if __name__ == "__main__":
     # Se regenera el curso entero, así que se puede repartir la respuesta
     # correcta entre las cuatro letras (ver reparte_respuestas).
     reparte_respuestas(UNIDADES)
-    main("2ESO", UNIDADES, VIDEOS, EN_EL_SUELO)
+    main("2ESO", UNIDADES, VIDEOS, EN_EL_SUELO, RECORRIDOS)

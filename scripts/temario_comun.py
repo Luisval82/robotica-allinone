@@ -116,6 +116,39 @@ def reparte_respuestas(UNIDADES):
             i += 1
 
 
+# ── Atajos para escribir recorridos ───────────────────────────────────
+#
+# Un recorrido se escribe con los mismos pasos que dice el enunciado y el
+# dibujo calcula la geometría (ver RecorridoBaldosas.tsx). «hasta» es un
+# avance que termina cuando lo dice un sensor: se dibuja a trazos, porque
+# la distancia no la decide el programa.
+
+
+def av(n=1, marca=None):
+    """Avanzar n baldosas."""
+    return {"tipo": "avanzar", "baldosas": n, **({"marca": marca} if marca else {})}
+
+
+def atras(n=1, marca=None):
+    """Retroceder n baldosas."""
+    return {"tipo": "retroceder", "baldosas": n, **({"marca": marca} if marca else {})}
+
+
+def gira(grados=90, marca=None):
+    """Girar sobre el sitio: 90 a la derecha, −90 a la izquierda."""
+    return {"tipo": "girar", "grados": grados, **({"marca": marca} if marca else {})}
+
+
+def hasta(n=2, marca=None):
+    """Avanzar hasta que lo diga un sensor. n es solo para dibujarlo."""
+    return {"tipo": "hasta", "baldosas": n, **({"marca": marca} if marca else {})}
+
+
+def marca(texto):
+    """Algo que pasa sin moverse: una espera, una señal, una lectura."""
+    return {"tipo": "marca", "marca": texto}
+
+
 def cargar_enlaces(curso):
     """Las lecciones oficiales que ya hay en el repositorio: {url: título}.
 
@@ -137,7 +170,7 @@ def cargar_enlaces(curso):
     return {**propias, **ajenas}
 
 
-def main(curso, UNIDADES, VIDEOS, en_el_suelo=frozenset()):
+def main(curso, UNIDADES, VIDEOS, en_el_suelo=frozenset(), recorridos=None):
     """Escribe el temario de un curso.
 
     `en_el_suelo` es el conjunto de prácticas que se hacen sobre el suelo de
@@ -146,7 +179,13 @@ def main(curso, UNIDADES, VIDEOS, en_el_suelo=frozenset()):
     baldosa de 40 × 40 cm y su calibración. Se declaran en una lista al
     principio del temario de cada curso, no repartidas por el archivo, para
     poder ver de un vistazo cuáles son.
+
+    `recorridos` es {(unidad, título): recorrido} con el camino que se dibuja
+    sobre la cuadrícula. El recorrido se escribe con los mismos pasos que el
+    enunciado —avanzar, girar, una marca donde pasa algo— y la geometría la
+    calcula el dibujo, así que aquí no hay coordenadas que mantener.
     """
+    recorridos = recorridos or {}
     if len(UNIDADES) != 9:
         sys.exit(f"Tienen que ser 9 unidades y hay {len(UNIDADES)}")
 
@@ -232,10 +271,18 @@ def main(curso, UNIDADES, VIDEOS, en_el_suelo=frozenset()):
         for u in UNIDADES
         for p in u["intermedias"] + u["practicas"]
     }
-    huerfanas = sorted(en_el_suelo - todas)
+    huerfanas = sorted((en_el_suelo | set(recorridos)) - todas)
     if huerfanas:
-        print("✗ prácticas marcadas «en el suelo» que no existen:")
+        print("✗ prácticas con suelo o recorrido que no existen:")
         for unidad, titulo in huerfanas:
+            print(f"  · UD{unidad} «{titulo}»")
+        sys.exit(1)
+
+    # Un recorrido sin su aviso de baldosa sería un dibujo sin contexto.
+    sin_suelo = sorted(set(recorridos) - en_el_suelo)
+    if sin_suelo:
+        print("✗ prácticas con recorrido pero sin marcar «en el suelo»:")
+        for unidad, titulo in sin_suelo:
             print(f"  · UD{unidad} «{titulo}»")
         sys.exit(1)
 
@@ -276,13 +323,26 @@ def main(curso, UNIDADES, VIDEOS, en_el_suelo=frozenset()):
                     "solucion": p["solucion"],
                     "notas": p["notas"],
                     **({"suelo": True} if (n, p["titulo"]) in en_el_suelo else {}),
+                    **(
+                        {"recorrido": recorridos[(n, p["titulo"])]}
+                        if (n, p["titulo"]) in recorridos
+                        else {}
+                    ),
                 }
                 for i, p in enumerate(unidad["intermedias"], start=1)
             ],
             "construccion": unidad["construccion"],
             "test": unidad["test"],
             "practicas": [
-                {**p, **({"suelo": True} if (n, p["titulo"]) in en_el_suelo else {})}
+                {
+                    **p,
+                    **({"suelo": True} if (n, p["titulo"]) in en_el_suelo else {}),
+                    **(
+                        {"recorrido": recorridos[(n, p["titulo"])]}
+                        if (n, p["titulo"]) in recorridos
+                        else {}
+                    ),
+                }
                 for p in unidad["practicas"]
             ],
         }
