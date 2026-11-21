@@ -137,7 +137,16 @@ def cargar_enlaces(curso):
     return {**propias, **ajenas}
 
 
-def main(curso, UNIDADES, VIDEOS):
+def main(curso, UNIDADES, VIDEOS, en_el_suelo=frozenset()):
+    """Escribe el temario de un curso.
+
+    `en_el_suelo` es el conjunto de prácticas que se hacen sobre el suelo de
+    baldosas del aula, como pares (unidad, título). Se marcan con
+    «suelo»: true para que la pantalla ponga al lado el recordatorio de la
+    baldosa de 40 × 40 cm y su calibración. Se declaran en una lista al
+    principio del temario de cada curso, no repartidas por el archivo, para
+    poder ver de un vistazo cuáles son.
+    """
     if len(UNIDADES) != 9:
         sys.exit(f"Tienen que ser 9 unidades y hay {len(UNIDADES)}")
 
@@ -217,6 +226,19 @@ def main(curso, UNIDADES, VIDEOS):
             print("  ·", url)
         sys.exit(1)
 
+    # ── El suelo de baldosas ──
+    todas = {
+        (u["numero"], p["titulo"])
+        for u in UNIDADES
+        for p in u["intermedias"] + u["practicas"]
+    }
+    huerfanas = sorted(en_el_suelo - todas)
+    if huerfanas:
+        print("✗ prácticas marcadas «en el suelo» que no existen:")
+        for unidad, titulo in huerfanas:
+            print(f"  · UD{unidad} «{titulo}»")
+        sys.exit(1)
+
     # ── Escribir el contenido ──
     for unidad in UNIDADES:
         n = unidad["numero"]
@@ -253,12 +275,16 @@ def main(curso, UNIDADES, VIDEOS):
                     "pista": p["pista"],
                     "solucion": p["solucion"],
                     "notas": p["notas"],
+                    **({"suelo": True} if (n, p["titulo"]) in en_el_suelo else {}),
                 }
                 for i, p in enumerate(unidad["intermedias"], start=1)
             ],
             "construccion": unidad["construccion"],
             "test": unidad["test"],
-            "practicas": unidad["practicas"],
+            "practicas": [
+                {**p, **({"suelo": True} if (n, p["titulo"]) in en_el_suelo else {})}
+                for p in unidad["practicas"]
+            ],
         }
         destino = CONTENIDO / f"{curso}-{n}.json"
         destino.write_text(

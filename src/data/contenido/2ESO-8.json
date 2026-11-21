@@ -127,7 +127,7 @@
         "nivel": 1,
         "valores": [
           "↑",
-          "30",
+          "40",
           "cm"
         ]
       },
@@ -264,7 +264,7 @@
     {
       "practica": 3,
       "titulo": "El giro con nombre",
-      "enunciado": "Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo a cero; empieza a girar; repite hasta pasar de esos grados; para el movimiento. Úsalo para girar 90.",
+      "enunciado": "Alinea el robot con una junta. Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo a cero; empieza a girar; repite hasta pasar de esos grados; para el movimiento. Úsalo para girar 90 y comprueba que queda alineado con la junta perpendicular.",
       "pista": "Dentro del bloque, el hueco se usa como si fuera una variable.",
       "solucion": [
         {
@@ -330,7 +330,11 @@
         }
       ],
       "notas": "Es el giro de 1º metido en una caja con nombre. A partir de aquí, girar es una línea.",
+      "suelo": true,
       "pasos": [
+        {
+          "texto": "Alinea el robot con una junta"
+        },
         {
           "texto": "Crea un bloque llamado girar con un hueco de grados que haga esto",
           "hijos": [
@@ -342,6 +346,9 @@
         },
         {
           "texto": "Úsalo para girar 90"
+        },
+        {
+          "texto": "Comprueba que queda alineado con la junta perpendicular"
         }
       ]
     },
@@ -525,7 +532,7 @@
   "practicas": [
     {
       "titulo": "El circuito con bloque propio",
-      "enunciado": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio. En el programa principal, prepara la base y repite cuatro veces avanzar 30 centímetros y llamar a girar con 90.",
+      "enunciado": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio. Pon el robot en una cruceta y, en el programa principal, prepara la base y repite cuatro veces avanzar una baldosa (40 centímetros) y llamar a girar con 90. Tiene que cerrar el cuadrado en la cruceta de salida.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
@@ -608,7 +615,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "30",
+            "40",
             "cm"
           ]
         },
@@ -621,18 +628,22 @@
         }
       ],
       "notas": "Dos pilas: la definición y el programa. El cuadrado tiene que cerrar, y si no cierra, se toca el bloque girar una sola vez.",
+      "suelo": true,
       "pasos": [
         {
           "texto": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio"
         },
         {
-          "texto": "En el programa principal, prepara la base y repite cuatro veces avanzar 30 centímetros y llamar a girar con 90"
+          "texto": "Pon el robot en una cruceta y, en el programa principal, prepara la base y repite cuatro veces avanzar una baldosa (40 centímetros) y llamar a girar con 90"
+        },
+        {
+          "texto": "Tiene que cerrar el cuadrado en la cruceta de salida"
         }
       ]
     },
     {
       "titulo": "El recorrido con límite",
-      "enunciado": "Haz con el mismo bloque girar un recorrido de tres tramos de 25 centímetros con giros de 120 grados. Añade un programa aparte que a los 20 segundos pare el movimiento y escriba FIN.",
+      "enunciado": "Haz con el mismo bloque girar un recorrido de tres tramos de dos baldosas (80 centímetros) con giros de 120 grados. Añade un programa aparte que a los 20 segundos pare el movimiento y escriba FIN. Con 120 grados el triángulo cierra, aunque sus lados no sigan las juntas.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
@@ -705,7 +716,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "25",
+            "80",
             "cm"
           ]
         },
@@ -736,12 +747,16 @@
         }
       ],
       "notas": "Tres pilas en el lienzo: la definición, el recorrido y el vigilante del tiempo. Un triángulo, que con 120 grados cierra.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Haz con el mismo bloque girar un recorrido de tres tramos de 25 centímetros con giros de 120 grados"
+          "texto": "Haz con el mismo bloque girar un recorrido de tres tramos de dos baldosas (80 centímetros) con giros de 120 grados"
         },
         {
           "texto": "Añade un programa aparte que a los 20 segundos pare el movimiento y escriba FIN"
+        },
+        {
+          "texto": "Con 120 grados el triángulo cierra, aunque sus lados no sigan las juntas"
         }
       ]
     }

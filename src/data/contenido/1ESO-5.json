@@ -96,7 +96,7 @@
         "nivel": 1,
         "valores": [
           "↑",
-          "2",
+          "2.3",
           "rotaciones"
         ]
       },
@@ -114,9 +114,9 @@
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Recto y para",
-      "enunciado": "Prepara la base con los motores A y B y hazla avanzar dos rotaciones hacia delante.",
-      "pista": "El bloque de fijar los motores va el primero, antes que cualquier bloque de mover.",
+      "titulo": "Cruza una baldosa",
+      "enunciado": "Pon el robot con las ruedas sobre una junta del suelo. Prepara la base con los motores A y B y hazla avanzar 2,3 rotaciones, que es lo que mide una baldosa.",
+      "pista": "Una baldosa son 40 cm y una vuelta de rueda unos 17,5: de ahí salen las 2,3. Si se queda corto o se pasa, cambia ese número hasta que pare justo en la junta.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -134,17 +134,26 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "2",
+            "2.3",
             "rotaciones"
           ]
         }
       ],
-      "notas": "Tres bloques. Si se olvidan el de fijar motores, el robot no se mueve y no da ningún error: ese es el aprendizaje."
+      "notas": "Tres bloques. Si se olvidan el de fijar motores, el robot no se mueve y no da ningún error: ese es el aprendizaje.",
+      "suelo": true,
+      "pasos": [
+        {
+          "texto": "Pon el robot con las ruedas sobre una junta del suelo"
+        },
+        {
+          "texto": "Prepara la base con los motores A y B y hazla avanzar 2,3 rotaciones, que es lo que mide una baldosa"
+        }
+      ]
     },
     {
       "practica": 2,
-      "titulo": "Ida y vuelta",
-      "enunciado": "Avanza tres rotaciones, espera un segundo y vuelve hacia atrás otras tres rotaciones.",
+      "titulo": "Ida y vuelta de dos baldosas",
+      "enunciado": "Avanza dos baldosas, que son 4,6 rotaciones, espera un segundo y vuelve a la junta de salida con otras 4,6.",
       "pista": "Para ir hacia atrás se cambia la flecha del desplegable, no el número.",
       "solucion": [
         {
@@ -163,7 +172,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "3",
+            "4.6",
             "rotaciones"
           ]
         },
@@ -179,28 +188,18 @@
           "nivel": 0,
           "valores": [
             "↓",
-            "3",
+            "4.6",
             "rotaciones"
           ]
         }
       ],
       "notas": "Debería volver casi al mismo sitio. Si se desvía, es que una rueda patina o los motores están a distinta altura.",
-      "pasos": [
-        {
-          "texto": "Avanza tres rotaciones"
-        },
-        {
-          "texto": "Espera un segundo"
-        },
-        {
-          "texto": "Vuelve hacia atrás otras tres rotaciones"
-        }
-      ]
+      "suelo": true
     },
     {
       "practica": 3,
       "titulo": "Media vuelta",
-      "enunciado": "Baja la velocidad al 30 % y haz que el robot gire sobre sí mismo hasta quedar mirando hacia atrás.",
+      "enunciado": "Pon el robot alineado con una junta del suelo. Baja la velocidad al 30 % y haz que gire sobre sí mismo hasta quedar mirando hacia atrás, otra vez alineado con esa misma junta.",
       "pista": "Para girar sobre el sitio, la dirección se pone al 100. Prueba cuántas rotaciones hacen falta.",
       "solucion": [
         {
@@ -232,19 +231,20 @@
         }
       ],
       "notas": "El número de rotaciones depende de las ruedas, así que se ajusta probando. Eso también es programar.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Baja la velocidad al 30 %"
+          "texto": "Pon el robot alineado con una junta del suelo"
         },
         {
-          "texto": "Haz que el robot gire sobre sí mismo hasta quedar mirando hacia atrás"
+          "texto": "Baja la velocidad al 30 % y haz que gire sobre sí mismo hasta quedar mirando hacia atrás, otra vez alineado con esa misma junta"
         }
       ]
     },
     {
       "practica": 4,
-      "titulo": "El cuadrado",
-      "enunciado": "Con un bucle de cuatro vueltas, haz que el robot avance dos rotaciones y gire un cuarto de vuelta, y acaba poniendo el botón central en verde.",
+      "titulo": "El cuadrado de una baldosa",
+      "enunciado": "Pon el robot en una cruceta del suelo. Con un bucle de cuatro vueltas, haz que avance una baldosa (2,3 rotaciones) y gire un cuarto de vuelta, y acaba poniendo el botón central en verde.",
       "pista": "Dentro del bucle van dos bloques: avanzar y girar. El color del botón va fuera, al final.",
       "solucion": [
         {
@@ -277,7 +277,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "2",
+            "2.3",
             "rotaciones"
           ]
         },
@@ -298,7 +298,16 @@
           ]
         }
       ],
-      "notas": "El cuadrado nunca sale perfecto a la primera: se ajusta el giro hasta que cierra. Es el ejercicio clásico de conducción."
+      "notas": "El cuadrado nunca sale perfecto a la primera: se ajusta el giro hasta que cierra. Es el ejercicio clásico de conducción.",
+      "suelo": true,
+      "pasos": [
+        {
+          "texto": "Pon el robot en una cruceta del suelo"
+        },
+        {
+          "texto": "Con un bucle de cuatro vueltas, haz que avance una baldosa (2,3 rotaciones) y gire un cuarto de vuelta, y acaba poniendo el botón central en verde"
+        }
+      ]
     }
   ],
   "construccion": {
@@ -447,7 +456,7 @@
   "practicas": [
     {
       "titulo": "El circuito cuadrado",
-      "enunciado": "Prepara la base, pon la velocidad al 40 %, pon el ángulo de guiñada a cero y, con un bucle de cuatro vueltas, avanza dos rotaciones y gira un cuarto de vuelta.",
+      "enunciado": "Pon el robot en una cruceta del suelo y prepara la base con la velocidad al 40 %. Pon el ángulo de guiñada a cero y, con un bucle de cuatro vueltas, avanza dos baldosas (4,6 rotaciones) y gira un cuarto de vuelta. Comprueba al acabar si ha vuelto a la cruceta de salida.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -483,7 +492,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "2",
+            "4.6",
             "rotaciones"
           ]
         },
@@ -497,11 +506,23 @@
           ]
         }
       ],
-      "notas": "El bloque del giroscopio todavía no cambia nada aquí: se pone para coger la costumbre antes de la unidad 8."
+      "notas": "El bloque del giroscopio todavía no cambia nada aquí: se pone para coger la costumbre antes de la unidad 8.",
+      "suelo": true,
+      "pasos": [
+        {
+          "texto": "Pon el robot en una cruceta del suelo y prepara la base con la velocidad al 40 %"
+        },
+        {
+          "texto": "Pon el ángulo de guiñada a cero y, con un bucle de cuatro vueltas, avanza dos baldosas (4,6 rotaciones) y gira un cuarto de vuelta"
+        },
+        {
+          "texto": "Comprueba al acabar si ha vuelto a la cruceta de salida"
+        }
+      ]
     },
     {
       "titulo": "La entrega a domicilio",
-      "enunciado": "Avanza cuatro rotaciones, gira un cuarto de vuelta a la derecha, avanza dos rotaciones más, toca una nota y vuelve hacia atrás dos rotaciones.",
+      "enunciado": "Haz un reparto por la cuadrícula del suelo: avanza dos baldosas (4,6 rotaciones); gira un cuarto de vuelta a la derecha; avanza una baldosa más (2,3); toca una nota al llegar; vuelve hacia atrás esa baldosa.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -526,7 +547,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "4",
+            "4.6",
             "rotaciones"
           ]
         },
@@ -544,7 +565,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "2",
+            "2.3",
             "rotaciones"
           ]
         },
@@ -560,27 +581,23 @@
           "nivel": 0,
           "valores": [
             "↓",
-            "2",
+            "2.3",
             "rotaciones"
           ]
         }
       ],
       "notas": "Un recorrido con forma de L. Mezcla movimiento y sonido, y el orden es lo que se corrige.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Avanza cuatro rotaciones"
-        },
-        {
-          "texto": "Gira un cuarto de vuelta a la derecha"
-        },
-        {
-          "texto": "Avanza dos rotaciones más"
-        },
-        {
-          "texto": "Toca una nota"
-        },
-        {
-          "texto": "Vuelve hacia atrás dos rotaciones"
+          "texto": "Haz un reparto por la cuadrícula del suelo",
+          "hijos": [
+            "Avanza dos baldosas (4,6 rotaciones)",
+            "Gira un cuarto de vuelta a la derecha",
+            "Avanza una baldosa más (2,3)",
+            "Toca una nota al llegar",
+            "Vuelve hacia atrás esa baldosa"
+          ]
         }
       ]
     }

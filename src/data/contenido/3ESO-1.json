@@ -117,7 +117,7 @@
         "nivel": 1,
         "valores": [
           "↓",
-          "15",
+          "20",
           "cm"
         ]
       },
@@ -254,7 +254,7 @@
     {
       "practica": 2,
       "titulo": "El marcador en marcha",
-      "enunciado": "Pon la variable vueltas a 0 y haz dos pilas: en una, repite sin parar avanzar 20 centímetros y subir vueltas en uno; en la otra, escribe vueltas en la pantalla sin parar.",
+      "enunciado": "Pon la variable vueltas a 0 y haz dos pilas: en una, repite sin parar avanzar media baldosa (20 centímetros) y subir vueltas en uno; en la otra, escribe vueltas en la pantalla sin parar.",
       "pista": "La variable es la misma para las dos pilas, por eso la de la pantalla ve lo que sube la otra.",
       "solucion": [
         {
@@ -312,11 +312,12 @@
         }
       ],
       "notas": "Aquí se ve para qué sirve: con una sola pila, la pantalla solo se actualizaría al acabar de moverse.",
+      "suelo": true,
       "pasos": [
         {
           "texto": "Pon la variable vueltas a 0 y haz dos pilas",
           "hijos": [
-            "En una, repite sin parar avanzar 20 centímetros y subir vueltas en uno",
+            "En una, repite sin parar avanzar media baldosa (20 centímetros) y subir vueltas en uno",
             "En la otra, escribe vueltas en la pantalla sin parar"
           ]
         }
@@ -580,7 +581,7 @@
   "practicas": [
     {
       "titulo": "La patrulla con marcador",
-      "enunciado": "Prepara la base y pon los rebotes a 0. En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder 15 centímetros y dar media vuelta. Escribe en otra pila los rebotes en la pantalla sin parar.",
+      "enunciado": "Marca un pasillo de cuatro baldosas con una caja en cada punta. Prepara la base y pon los rebotes a 0. En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder media baldosa y dar media vuelta. Escribe en otra pila los rebotes en la pantalla sin parar.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -641,7 +642,7 @@
           "nivel": 1,
           "valores": [
             "↓",
-            "15",
+            "20",
             "cm"
           ]
         },
@@ -678,7 +679,11 @@
         }
       ],
       "notas": "Dos pilas. El marcador tiene que ir subiendo mientras el robot anda; si solo cambia al final, es que lo han metido todo en una.",
+      "suelo": true,
       "pasos": [
+        {
+          "texto": "Marca un pasillo de cuatro baldosas con una caja en cada punta"
+        },
         {
           "texto": "Prepara la base"
         },
@@ -686,7 +691,7 @@
           "texto": "Pon los rebotes a 0"
         },
         {
-          "texto": "En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder 15 centímetros y dar media vuelta"
+          "texto": "En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder media baldosa y dar media vuelta"
         },
         {
           "texto": "Escribe en otra pila los rebotes en la pantalla sin parar"
@@ -695,7 +700,7 @@
     },
     {
       "titulo": "El límite de treinta segundos",
-      "enunciado": "Añade al programa anterior el reinicio del cronómetro al empezar. Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto: para el movimiento; pon el botón central en rojo; escribe los rebotes conseguidos.",
+      "enunciado": "Con el mismo pasillo de cuatro baldosas, añade al programa anterior el reinicio del cronómetro al empezar. Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto: para el movimiento; pon el botón central en rojo; escribe los rebotes conseguidos.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -760,7 +765,7 @@
           "nivel": 1,
           "valores": [
             "↓",
-            "15",
+            "20",
             "cm"
           ]
         },
@@ -822,9 +827,10 @@
         }
       ],
       "notas": "Tres pilas. Es la primera vez que un programa suyo tiene tres sombreros, y conviene hacerles señalar cuál hace qué antes de entregar.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Añade al programa anterior el reinicio del cronómetro al empezar"
+          "texto": "Con el mismo pasillo de cuatro baldosas, añade al programa anterior el reinicio del cronómetro al empezar"
         },
         {
           "texto": "Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto",

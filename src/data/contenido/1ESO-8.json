@@ -119,7 +119,7 @@
     {
       "practica": 1,
       "titulo": "Pon el contador a cero",
-      "enunciado": "Pon el ángulo de guiñada a cero, espera dos segundos para girar el robot con la mano y después escribe en la pantalla lo que marca el ángulo.",
+      "enunciado": "Pon el ángulo de guiñada a cero con el robot alineado con una junta. Espera dos segundos para girarlo a mano hasta la junta perpendicular y después escribe en la pantalla lo que marca el ángulo: tiene que andar por 90.",
       "pista": "El bloque del ángulo es redondo: se mete dentro del hueco del bloque de escribir.",
       "solucion": [
         {
@@ -146,22 +146,20 @@
         }
       ],
       "notas": "Girando el robot a mano durante la espera se ve que el número cambia. Es la forma más rápida de entender el giroscopio.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Pon el ángulo de guiñada a cero"
+          "texto": "Pon el ángulo de guiñada a cero con el robot alineado con una junta"
         },
         {
-          "texto": "Espera dos segundos para girar el robot con la mano"
-        },
-        {
-          "texto": "Después escribe en la pantalla lo que marca el ángulo"
+          "texto": "Espera dos segundos para girarlo a mano hasta la junta perpendicular y después escribe en la pantalla lo que marca el ángulo: tiene que andar por 90"
         }
       ]
     },
     {
       "practica": 2,
       "titulo": "El giro medido",
-      "enunciado": "Pon el ángulo a cero, empieza a girar a la derecha y repite hasta que el ángulo pase de 90 grados, y entonces para el movimiento.",
+      "enunciado": "Alinea el robot con una junta. Pon el ángulo a cero, empieza a girar a la derecha y repite hasta que el ángulo pase de 90 grados, y entonces para: tiene que quedar mirando a lo largo de la junta perpendicular.",
       "pista": "El bucle no lleva nada dentro que haga trabajo: solo está ahí vigilando el ángulo.",
       "solucion": [
         {
@@ -212,12 +210,21 @@
           "nivel": 0
         }
       ],
-      "notas": "La espera minúscula de dentro del bucle es para que no se quede comprobando a ciegas. Conviene explicarlo."
+      "notas": "La espera minúscula de dentro del bucle es para que no se quede comprobando a ciegas. Conviene explicarlo.",
+      "suelo": true,
+      "pasos": [
+        {
+          "texto": "Alinea el robot con una junta"
+        },
+        {
+          "texto": "Pon el ángulo a cero, empieza a girar a la derecha y repite hasta que el ángulo pase de 90 grados, y entonces para: tiene que quedar mirando a lo largo de la junta perpendicular"
+        }
+      ]
     },
     {
       "practica": 3,
       "titulo": "Frenar en seco",
-      "enunciado": "Repite el giro medido añadiendo al principio el bloque que hace que los motores frenen al parar, y compara con el ejercicio anterior.",
+      "enunciado": "Repite el giro medido añadiendo al principio el bloque que hace que los motores frenen al parar. Compara con el ejercicio anterior mirando cuánto se pasa de la junta cada uno.",
       "pista": "El bloque de frenar va al principio, junto al de fijar los motores.",
       "solucion": [
         {
@@ -275,12 +282,21 @@
           "nivel": 0
         }
       ],
-      "notas": "El mismo programa con una línea más. Midiendo con un transportador se ve la diferencia de dos o tres grados."
+      "notas": "El mismo programa con una línea más. Midiendo con un transportador se ve la diferencia de dos o tres grados.",
+      "suelo": true,
+      "pasos": [
+        {
+          "texto": "Repite el giro medido añadiendo al principio el bloque que hace que los motores frenen al parar"
+        },
+        {
+          "texto": "Compara con el ejercicio anterior mirando cuánto se pasa de la junta cada uno"
+        }
+      ]
     },
     {
       "practica": 4,
       "titulo": "Media vuelta exacta",
-      "enunciado": "Haz el mismo giro medido pero hasta 180 grados, y al terminar toca una nota y enciende un dibujo un segundo.",
+      "enunciado": "Haz el mismo giro medido pero hasta 180 grados, hasta quedar alineado con la misma junta y mirando al revés. Al terminar toca una nota y enciende un dibujo un segundo.",
       "pista": "Solo cambia el número de la comparación. Lo demás es igual.",
       "solucion": [
         {
@@ -353,7 +369,22 @@
           ]
         }
       ],
-      "notas": "Cambiar un número y que el robot haga otra cosa distinta es justo lo que buscamos que entiendan."
+      "notas": "Cambiar un número y que el robot haga otra cosa distinta es justo lo que buscamos que entiendan.",
+      "suelo": true,
+      "pasos": [
+        {
+          "texto": "Haz el mismo giro medido pero hasta 180 grados"
+        },
+        {
+          "texto": "Hasta quedar alineado con la misma junta y mirando al revés"
+        },
+        {
+          "texto": "Al terminar toca una nota"
+        },
+        {
+          "texto": "Enciende un dibujo un segundo"
+        }
+      ]
     }
   ],
   "construccion": {
@@ -491,7 +522,7 @@
   "practicas": [
     {
       "titulo": "El cuadrado que cierra",
-      "enunciado": "Prepara la base con frenado y velocidad 30 y repite cuatro veces: avanza dos rotaciones, pon el ángulo a cero, empieza a girar a la derecha, repite hasta que el ángulo pase de 90 y para el movimiento.",
+      "enunciado": "Pon el robot en una cruceta y prepara la base con frenado y velocidad 30. Repite cuatro veces: avanza dos baldosas (4,6 rotaciones); pon el ángulo a cero; empieza a girar a la derecha; repite hasta que el ángulo pase de 90; para el movimiento. Tiene que cerrar en la cruceta de salida.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -530,7 +561,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "2",
+            "4.6",
             "rotaciones"
           ]
         },
@@ -565,22 +596,29 @@
         }
       ],
       "notas": "La puesta a cero tiene que ir DENTRO del bucle, antes de cada giro. Fuera, el ángulo se acumula y solo gira bien la primera esquina.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Prepara la base con frenado y velocidad 30 y repite cuatro veces",
+          "texto": "Pon el robot en una cruceta y prepara la base con frenado y velocidad 30"
+        },
+        {
+          "texto": "Repite cuatro veces",
           "hijos": [
-            "Avanza dos rotaciones",
+            "Avanza dos baldosas (4,6 rotaciones)",
             "Pon el ángulo a cero",
             "Empieza a girar a la derecha",
             "Repite hasta que el ángulo pase de 90",
             "Para el movimiento"
           ]
+        },
+        {
+          "texto": "Tiene que cerrar en la cruceta de salida"
         }
       ]
     },
     {
       "titulo": "El robot que esquiva",
-      "enunciado": "Arranca hacia delante y repite hasta que haya algo a menos de 20 centímetros. Entonces para el movimiento, pon el ángulo a cero, gira midiendo hasta pasar de 90 grados, para otra vez y vuelve a avanzar dos rotaciones.",
+      "enunciado": "Pon una caja dos baldosas por delante. Arranca hacia delante y repite hasta que haya algo a menos de 20 centímetros. Entonces para el movimiento, pon el ángulo a cero, gira midiendo hasta pasar de 90 grados, para otra vez y avanza una baldosa (2,3 rotaciones) por el lado.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -666,13 +704,17 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "2",
+            "2.3",
             "rotaciones"
           ]
         }
       ],
       "notas": "Junta el sensor de distancia con el giro medido: ve el obstáculo, se para, gira exacto y sigue. Es el programa más largo del curso.",
+      "suelo": true,
       "pasos": [
+        {
+          "texto": "Pon una caja dos baldosas por delante"
+        },
         {
           "texto": "Arranca hacia delante"
         },
@@ -680,19 +722,7 @@
           "texto": "Repite hasta que haya algo a menos de 20 centímetros"
         },
         {
-          "texto": "Entonces para el movimiento"
-        },
-        {
-          "texto": "Pon el ángulo a cero"
-        },
-        {
-          "texto": "Gira midiendo hasta pasar de 90 grados"
-        },
-        {
-          "texto": "Para otra vez"
-        },
-        {
-          "texto": "Vuelve a avanzar dos rotaciones"
+          "texto": "Entonces para el movimiento, pon el ángulo a cero, gira midiendo hasta pasar de 90 grados, para otra vez y avanza una baldosa (2,3 rotaciones) por el lado"
         }
       ]
     }

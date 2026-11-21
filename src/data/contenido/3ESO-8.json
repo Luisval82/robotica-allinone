@@ -67,7 +67,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 0,
         "valores": [
-          "avanzar (centimetros)"
+          "avanzar baldosas (baldosas)"
         ]
       },
       {
@@ -75,7 +75,7 @@
         "nivel": 1,
         "valores": [
           "↑",
-          "centimetros",
+          "baldosas × 40",
           "cm"
         ]
       },
@@ -127,7 +127,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 1,
         "valores": [
-          "avanzar (15)"
+          "avanzar baldosas (0.5)"
         ]
       },
       {
@@ -162,7 +162,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 1,
         "valores": [
-          "avanzar (40)"
+          "avanzar baldosas (1)"
         ]
       },
       {
@@ -434,14 +434,14 @@
     {
       "practica": 4,
       "titulo": "Un bloque de tres",
-      "enunciado": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120. Llámalo una vez y comprueba que recoge la carga.",
+      "enunciado": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120. Llámalo una vez y comprueba que recoge la carga.",
       "pista": "Dentro de un bloque propio se pueden llamar los bloques propios que ya tengas.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -449,7 +449,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -485,7 +485,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (15)"
+            "avanzar baldosas (0.5)"
           ]
         },
         {
@@ -522,9 +522,10 @@
         }
       ],
       "notas": "Tres definiciones y una llamada. Aquí ya se nota el salto: el programa principal tiene una línea.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120"
+          "texto": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120"
         },
         {
           "texto": "Llámalo una vez"
@@ -680,13 +681,13 @@
   "practicas": [
     {
       "titulo": "La librería de maniobras",
-      "enunciado": "Crea cuatro bloques propios: avanzar con hueco de centímetros, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120. En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger.",
+      "enunciado": "Crea cuatro bloques propios: avanzar baldosas, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120. Pon la carga media baldosa por delante. En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -694,7 +695,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -746,7 +747,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (15)"
+            "avanzar baldosas (0.5)"
           ]
         },
         {
@@ -798,9 +799,13 @@
         }
       ],
       "notas": "Cinco pilas: cuatro definiciones y el programa. En el principal no puede quedar ni un bloque de motor suelto.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Crea cuatro bloques propios: avanzar con hueco de centímetros, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120"
+          "texto": "Crea cuatro bloques propios: avanzar baldosas, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120"
+        },
+        {
+          "texto": "Pon la carga media baldosa por delante"
         },
         {
           "texto": "En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger"
@@ -809,13 +814,13 @@
     },
     {
       "titulo": "El ciclo repetido tres veces",
-      "enunciado": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar con 40 y a horquilla con 0. Repite en el programa principal tres veces llamar a ciclo y escribe FIN al terminar.",
+      "enunciado": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar baldosas con 1 y a horquilla con 0. Repite en el programa principal tres veces llamar a ciclo y escribe FIN al terminar.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -823,7 +828,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -875,7 +880,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (15)"
+            "avanzar baldosas (0.5)"
           ]
         },
         {
@@ -910,7 +915,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (40)"
+            "avanzar baldosas (1)"
           ]
         },
         {
@@ -976,9 +981,10 @@
         }
       ],
       "notas": "Seis pilas y tres niveles de llamadas: ciclo usa coger, que usa avanzar y horquilla. Es el programa mejor organizado del curso.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar con 40 y a horquilla con 0"
+          "texto": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar baldosas con 1 y a horquilla con 0"
         },
         {
           "texto": "Repite en el programa principal tres veces llamar a ciclo"

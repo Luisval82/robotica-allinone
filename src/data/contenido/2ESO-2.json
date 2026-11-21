@@ -52,8 +52,8 @@
     }
   ],
   "programa": {
-    "titulo": "Cincuenta centímetros cronometrados",
-    "explicacion": "Primero se le dice al Hub cuánto mide la vuelta de rueda, y después ya se puede hablar en centímetros. El cronómetro se pone a cero justo antes de salir.",
+    "titulo": "Tres baldosas cronometradas",
+    "explicacion": "Primero se le dice al Hub cuánto mide la vuelta de rueda, y después ya se puede hablar en centímetros: tres baldosas del aula son 120. El cronómetro se pone a cero justo antes de salir, y al llegar se mira si ha parado en la junta.",
     "bloques": [
       {
         "texto": "Cuando se inicia el programa",
@@ -90,7 +90,7 @@
         "nivel": 0,
         "valores": [
           "↑",
-          "50",
+          "120",
           "cm"
         ]
       },
@@ -113,8 +113,8 @@
   "intermedias": [
     {
       "practica": 1,
-      "titulo": "Treinta centímetros",
-      "enunciado": "Dile al Hub cuánto mide la vuelta de tu rueda y haz que el robot avance 30 centímetros.",
+      "titulo": "Una baldosa justa",
+      "enunciado": "Pon el robot sobre una junta del suelo. Dile al Hub que la vuelta de rueda son 17,5 centímetros y haz que avance 40, que es una baldosa. Mira si para en la junta siguiente: si se queda corto, la vuelta de rueda real es menor de 17,5; si se pasa, es mayor.",
       "pista": "El bloque de la vuelta de rueda va antes que cualquier movimiento, igual que el de fijar los motores.",
       "solucion": [
         {
@@ -141,25 +141,33 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "30",
+            "40",
             "cm"
           ]
         }
       ],
       "notas": "Se mide con la regla. Si falla por poco, casi siempre es que la vuelta de rueda está mal medida.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Dile al Hub cuánto mide la vuelta de tu rueda"
+          "texto": "Pon el robot sobre una junta del suelo"
         },
         {
-          "texto": "Haz que el robot avance 30 centímetros"
+          "texto": "Dile al Hub que la vuelta de rueda son 17,5 centímetros y haz que avance 40, que es una baldosa"
+        },
+        {
+          "texto": "Mira si para en la junta siguiente",
+          "hijos": [
+            "Si se queda corto, la vuelta de rueda real es menor de 17,5",
+            "Si se pasa, es mayor"
+          ]
         }
       ]
     },
     {
       "practica": 2,
       "titulo": "Cuánto he tardado",
-      "enunciado": "Pon el cronómetro a cero, avanza 40 centímetros, guarda el cronómetro en una variable llamada tiempo y escríbela.",
+      "enunciado": "Pon el cronómetro a cero, cruza una baldosa (40 centímetros), guarda el cronómetro en una variable llamada tiempo y escríbela.",
       "pista": "El cronómetro se guarda justo al terminar el movimiento, no antes.",
       "solucion": [
         {
@@ -210,17 +218,7 @@
         }
       ],
       "notas": "Primera medida de verdad del curso. Bajando la velocidad se ve que el número sube.",
-      "pasos": [
-        {
-          "texto": "Pon el cronómetro a cero"
-        },
-        {
-          "texto": "Avanza 40 centímetros"
-        },
-        {
-          "texto": "Guarda el cronómetro en una variable llamada tiempo y escríbela"
-        }
-      ]
+      "suelo": true
     },
     {
       "practica": 3,
@@ -285,7 +283,7 @@
     {
       "practica": 4,
       "titulo": "La carrera hasta la pared",
-      "enunciado": "Pon el cronómetro a cero, arranca hacia delante, repite hasta que haya algo a menos de 15 centímetros, para y escribe el tiempo que has tardado.",
+      "enunciado": "Pon una caja en una junta, cuatro baldosas por delante. Pon el cronómetro a cero, arranca hacia delante, repite hasta que haya algo a menos de 15 centímetros, para y escribe el tiempo que has tardado en cruzar esas cuatro baldosas.",
       "pista": "Aquí no sabes cuánto va a durar: por eso se mide con el cronómetro en vez de contar segundos.",
       "solucion": [
         {
@@ -351,7 +349,11 @@
         }
       ],
       "notas": "Cambiando la velocidad y repitiendo sale una pequeña tabla de tiempos. Es el primer experimento del curso.",
+      "suelo": true,
       "pasos": [
+        {
+          "texto": "Pon una caja en una junta, cuatro baldosas por delante"
+        },
         {
           "texto": "Pon el cronómetro a cero"
         },
@@ -365,7 +367,7 @@
           "texto": "Para"
         },
         {
-          "texto": "Escribe el tiempo que has tardado"
+          "texto": "Escribe el tiempo que has tardado en cruzar esas cuatro baldosas"
         }
       ]
     }
@@ -504,8 +506,8 @@
   ],
   "practicas": [
     {
-      "titulo": "Los cincuenta centímetros cronometrados",
-      "enunciado": "Fija los motores y la vuelta de rueda, pon la velocidad al 40 %, pon el cronómetro a cero, avanza 50 centímetros, guarda el cronómetro en la variable tiempo y escríbela.",
+      "titulo": "Las tres baldosas cronometradas",
+      "enunciado": "Fija los motores y la vuelta de rueda, pon la velocidad al 40 %, pon el cronómetro a cero, cruza tres baldosas (120 centímetros), guarda el cronómetro en la variable tiempo y escríbela. Apunta en qué junta ha parado y cuánto ha tardado.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -542,7 +544,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "50",
+            "120",
             "cm"
           ]
         },
@@ -562,27 +564,19 @@
         }
       ],
       "notas": "Se comprueba con la regla contra la marca de la mesa. El orden de los tres bloques de preparación es lo que más falla.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Fija los motores y la vuelta de rueda"
+          "texto": "Fija los motores y la vuelta de rueda, pon la velocidad al 40 %, pon el cronómetro a cero, cruza tres baldosas (120 centímetros), guarda el cronómetro en la variable tiempo y escríbela"
         },
         {
-          "texto": "Pon la velocidad al 40 %"
-        },
-        {
-          "texto": "Pon el cronómetro a cero"
-        },
-        {
-          "texto": "Avanza 50 centímetros"
-        },
-        {
-          "texto": "Guarda el cronómetro en la variable tiempo y escríbela"
+          "texto": "Apunta en qué junta ha parado y cuánto ha tardado"
         }
       ]
     },
     {
       "titulo": "La ida y la vuelta medidas",
-      "enunciado": "Mide el tiempo de una ida y vuelta: pon el cronómetro a cero; avanza 40 centímetros; da media vuelta girando sobre el sitio; vuelve otros 40 centímetros; escribe el tiempo total.",
+      "enunciado": "Mide el tiempo de una ida y vuelta de dos baldosas: pon el cronómetro a cero; avanza 80 centímetros; da media vuelta girando sobre el sitio; vuelve otros 80; escribe el tiempo total. Tiene que acabar sobre la junta de salida.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -619,7 +613,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "40",
+            "80",
             "cm"
           ]
         },
@@ -637,7 +631,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "40",
+            "80",
             "cm"
           ]
         },
@@ -657,16 +651,20 @@
         }
       ],
       "notas": "El giro sigue en rotaciones a propósito: girar sobre el sitio no recorre distancia hacia delante.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Mide el tiempo de una ida y vuelta",
+          "texto": "Mide el tiempo de una ida y vuelta de dos baldosas",
           "hijos": [
             "Pon el cronómetro a cero",
-            "Avanza 40 centímetros",
+            "Avanza 80 centímetros",
             "Da media vuelta girando sobre el sitio",
-            "Vuelve otros 40 centímetros",
+            "Vuelve otros 80",
             "Escribe el tiempo total"
           ]
+        },
+        {
+          "texto": "Tiene que acabar sobre la junta de salida"
         }
       ]
     }

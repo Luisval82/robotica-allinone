@@ -8,6 +8,7 @@
 
 import { submitPracticaIntermediaAction } from "@/actions/alumno";
 import { AvisoHub } from "@/components/unidad/AvisoHub";
+import { SueloBaldosas } from "@/components/unidad/SueloBaldosas";
 import { EntregaBox, type EntregaView, type SolucionView } from "@/components/unidad/EntregaBox";
 import type { BlockInfo } from "@/lib/bloques";
 import type { PracticaIntermedia } from "@/lib/contenido";
@@ -90,6 +91,7 @@ export function PracticasIntermedias({
                 <p className="mt-2 rounded-xl bg-ink-50 px-4 py-2 text-sm font-bold text-ink-600">
                   Pista: {practica.pista}
                 </p>
+                {practica.suelo ? <SueloBaldosas curso={curso} /> : null}
                 <AvisoHub />
               </>
             }

@@ -119,7 +119,7 @@
     {
       "practica": 1,
       "titulo": "Arranque de golpe",
-      "enunciado": "Pon la aceleración en el valor más bajo. Avanza 40 centímetros y para, con la torre de piezas puesta en la caja.",
+      "enunciado": "Pon la aceleración en el valor más bajo. Cruza una baldosa (40 centímetros) y para, con la torre de piezas puesta en la caja.",
       "pista": "Este ejercicio está hecho para que la carga se caiga: es la comparación del siguiente.",
       "solucion": [
         {
@@ -166,19 +166,20 @@
         }
       ],
       "notas": "Que se caiga es el resultado esperado. Conviene avisar o lo vivirán como un fallo suyo.",
+      "suelo": true,
       "pasos": [
         {
           "texto": "Pon la aceleración en el valor más bajo"
         },
         {
-          "texto": "Avanza 40 centímetros y para, con la torre de piezas puesta en la caja"
+          "texto": "Cruza una baldosa (40 centímetros) y para, con la torre de piezas puesta en la caja"
         }
       ]
     },
     {
       "practica": 2,
       "titulo": "Arranque suave",
-      "enunciado": "Repite el recorrido de 40 centímetros con la aceleración suave. Compara si la carga aguanta mejor que antes.",
+      "enunciado": "Repite la baldosa con la aceleración suave. Compara si la carga aguanta mejor y si para más cerca de la junta.",
       "pista": "Solo cambia un bloque respecto al ejercicio anterior.",
       "solucion": [
         {
@@ -225,12 +226,16 @@
         }
       ],
       "notas": "Un bloque de diferencia y un resultado distinto. Es el mejor ejercicio de la unidad para enseñar que programar es decidir detalles.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Repite el recorrido de 40 centímetros con la aceleración suave"
+          "texto": "Repite la baldosa con la aceleración suave"
         },
         {
-          "texto": "Compara si la carga aguanta mejor que antes"
+          "texto": "Compara si la carga aguanta mejor"
+        },
+        {
+          "texto": "Si para más cerca de la junta"
         }
       ]
     },
@@ -481,7 +486,7 @@
   "practicas": [
     {
       "titulo": "El repartidor al azar",
-      "enunciado": "Prepara la base con la vuelta de rueda y la aceleración suave. Después reparte al azar: saca un destino al azar del 1 al 3; escríbelo; calcula el camino multiplicando el destino por 20; avanza esos centímetros; toca una nota al llegar.",
+      "enunciado": "Prepara la base con la vuelta de rueda y la aceleración suave. Después reparte al azar por la cuadrícula: saca un destino al azar del 1 al 3; escríbelo; calcula el camino multiplicando el destino por 40, que es lo que mide una baldosa; avanza esos centímetros; toca una nota al llegar.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -548,16 +553,17 @@
         }
       ],
       "notas": "Lo que se corrige es que el azar se guarde una sola vez y que la distancia salga de la cuenta, no de tres ramas.",
+      "suelo": true,
       "pasos": [
         {
           "texto": "Prepara la base con la vuelta de rueda y la aceleración suave"
         },
         {
-          "texto": "Después reparte al azar",
+          "texto": "Después reparte al azar por la cuadrícula",
           "hijos": [
             "Saca un destino al azar del 1 al 3",
             "Escríbelo",
-            "Calcula el camino multiplicando el destino por 20",
+            "Calcula el camino multiplicando el destino por 40, que es lo que mide una baldosa",
             "Avanza esos centímetros",
             "Toca una nota al llegar"
           ]
@@ -566,7 +572,7 @@
     },
     {
       "titulo": "La ruta de tres paradas",
-      "enunciado": "Con la aceleración suave, repite tres veces: avanza 25 centímetros; espera un segundo; toca una nota; sube en uno la variable paradas. Escribe al final las paradas hechas.",
+      "enunciado": "Con la aceleración suave, repite tres veces: cruza una baldosa (40 centímetros); espera un segundo; toca una nota; sube en uno la variable paradas. Escribe al final las paradas hechas: tiene que haber parado en tres juntas seguidas.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -613,7 +619,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "25",
+            "40",
             "cm"
           ]
         },
@@ -647,18 +653,19 @@
         }
       ],
       "notas": "El contador dentro del bucle y la escritura fuera. Si la escritura entra en el bucle, no está mal, pero cuenta en voz alta tres veces.",
+      "suelo": true,
       "pasos": [
         {
           "texto": "Con la aceleración suave, repite tres veces",
           "hijos": [
-            "Avanza 25 centímetros",
+            "Cruza una baldosa (40 centímetros)",
             "Espera un segundo",
             "Toca una nota",
             "Sube en uno la variable paradas"
           ]
         },
         {
-          "texto": "Escribe al final las paradas hechas"
+          "texto": "Escribe al final las paradas hechas: tiene que haber parado en tres juntas seguidas"
         }
       ]
     }

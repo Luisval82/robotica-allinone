@@ -1084,7 +1084,7 @@ UNIDADES.append({
             b("fijar velocidad de movimiento al 50 %", 0, "40"),
             b("Fijar el ángulo de guiñada del Hub a 0"),
             b("Repetir bucle", 0, "4"),
-            b("mover ↑ durante 10 rotaciones", 1, "↑", "2", "rotaciones"),
+            b("mover ↑ durante 10 rotaciones", 1, "↑", "2.3", "rotaciones"),
             b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 100", "0.5", "rotaciones"),
         ],
     },
@@ -1115,32 +1115,32 @@ UNIDADES.append({
     },
     "intermedias": [
         {
-            "titulo": "Recto y para",
-            "enunciado": "Prepara la base con los motores A y B y hazla avanzar dos rotaciones hacia delante.",
-            "pista": "El bloque de fijar los motores va el primero, antes que cualquier bloque de mover.",
+            "titulo": "Cruza una baldosa",
+            "enunciado": "Pon el robot con las ruedas sobre una junta del suelo. Prepara la base con los motores A y B y hazla avanzar 2,3 rotaciones, que es lo que mide una baldosa.",
+            "pista": "Una baldosa son 40 cm y una vuelta de rueda unos 17,5: de ahí salen las 2,3. Si se queda corto o se pasa, cambia ese número hasta que pare justo en la junta.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "2", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "2.3", "rotaciones"),
             ],
             "notas": "Tres bloques. Si se olvidan el de fijar motores, el robot no se mueve y no da ningún error: ese es el aprendizaje.",
         },
         {
-            "titulo": "Ida y vuelta",
-            "enunciado": "Avanza tres rotaciones, espera un segundo y vuelve hacia atrás otras tres rotaciones.",
+            "titulo": "Ida y vuelta de dos baldosas",
+            "enunciado": "Avanza dos baldosas, que son 4,6 rotaciones, espera un segundo y vuelve a la junta de salida con otras 4,6.",
             "pista": "Para ir hacia atrás se cambia la flecha del desplegable, no el número.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "3", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "4.6", "rotaciones"),
                 b("Esperar X segundos", 0, "1"),
-                b("mover ↑ durante 10 rotaciones", 0, "↓", "3", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↓", "4.6", "rotaciones"),
             ],
             "notas": "Debería volver casi al mismo sitio. Si se desvía, es que una rueda patina o los motores están a distinta altura.",
         },
         {
             "titulo": "Media vuelta",
-            "enunciado": "Baja la velocidad al 30 % y haz que el robot gire sobre sí mismo hasta quedar mirando hacia atrás.",
+            "enunciado": "Pon el robot alineado con una junta del suelo. Baja la velocidad al 30 % y haz que gire sobre sí mismo hasta quedar mirando hacia atrás, otra vez alineado con esa misma junta.",
             "pista": "Para girar sobre el sitio, la dirección se pone al 100. Prueba cuántas rotaciones hacen falta.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -1151,15 +1151,15 @@ UNIDADES.append({
             "notas": "El número de rotaciones depende de las ruedas, así que se ajusta probando. Eso también es programar.",
         },
         {
-            "titulo": "El cuadrado",
-            "enunciado": "Con un bucle de cuatro vueltas, haz que el robot avance dos rotaciones y gire un cuarto de vuelta, y acaba poniendo el botón central en verde.",
+            "titulo": "El cuadrado de una baldosa",
+            "enunciado": "Pon el robot en una cruceta del suelo. Con un bucle de cuatro vueltas, haz que avance una baldosa (2,3 rotaciones) y gire un cuarto de vuelta, y acaba poniendo el botón central en verde.",
             "pista": "Dentro del bucle van dos bloques: avanzar y girar. El color del botón va fuera, al final.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar velocidad de movimiento al 50 %", 0, "40"),
                 b("Repetir bucle", 0, "4"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "2", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "2.3", "rotaciones"),
                 b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 100", "0.5", "rotaciones"),
                 b("poner luz del botón central en rojo", 0, "verde"),
             ],
@@ -1244,30 +1244,30 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El circuito cuadrado",
-            "enunciado": "Prepara la base, pon la velocidad al 40 %, pon el ángulo de guiñada a cero y, con un bucle de cuatro vueltas, avanza dos rotaciones y gira un cuarto de vuelta.",
+            "enunciado": "Pon el robot en una cruceta del suelo y prepara la base con la velocidad al 40 %. Pon el ángulo de guiñada a cero y, con un bucle de cuatro vueltas, avanza dos baldosas (4,6 rotaciones) y gira un cuarto de vuelta. Comprueba al acabar si ha vuelto a la cruceta de salida.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar velocidad de movimiento al 50 %", 0, "40"),
                 b("Fijar el ángulo de guiñada del Hub a 0"),
                 b("Repetir bucle", 0, "4"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "2", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "4.6", "rotaciones"),
                 b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 100", "0.5", "rotaciones"),
             ],
             "notas": "El bloque del giroscopio todavía no cambia nada aquí: se pone para coger la costumbre antes de la unidad 8.",
         },
         {
             "titulo": "La entrega a domicilio",
-            "enunciado": "Avanza cuatro rotaciones, gira un cuarto de vuelta a la derecha, avanza dos rotaciones más, toca una nota y vuelve hacia atrás dos rotaciones.",
+            "enunciado": "Haz un reparto por la cuadrícula del suelo: avanza dos baldosas (4,6 rotaciones); gira un cuarto de vuelta a la derecha; avanza una baldosa más (2,3); toca una nota al llegar; vuelve hacia atrás esa baldosa.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar velocidad de movimiento al 50 %", 0, "40"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "4", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "4.6", "rotaciones"),
                 b("mover derecha: 30 durante 10 rotaciones", 0, "derecha: 100", "0.5", "rotaciones"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "2", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "2.3", "rotaciones"),
                 b("Tocar nota X segundos", 0, "67 · 0.5"),
-                b("mover ↑ durante 10 rotaciones", 0, "↓", "2", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↓", "2.3", "rotaciones"),
             ],
             "notas": "Un recorrido con forma de L. Mezcla movimiento y sonido, y el orden es lo que se corrige.",
         },
@@ -1370,7 +1370,7 @@ UNIDADES.append({
     "intermedias": [
         {
             "titulo": "Frena ante el obstáculo",
-            "enunciado": "Arranca la base hacia delante y, dentro de un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento.",
+            "enunciado": "Pon una caja sobre una junta, tres baldosas por delante. Arranca la base hacia delante y, dentro de un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento.",
             "pista": "El «Si... entonces» va dentro del bucle, y el «parar movimiento», dentro del «Si».",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -1384,13 +1384,13 @@ UNIDADES.append({
         },
         {
             "titulo": "El arranque con botón",
-            "enunciado": "Espera a que se apriete el sensor de fuerza y entonces arranca la base hacia delante durante tres rotaciones.",
+            "enunciado": "Espera a que se apriete el sensor de fuerza y entonces arranca la base hacia delante una baldosa, que son 2,3 rotaciones.",
             "pista": "Aquí sí vale esperar: el robot no tiene nada que hacer hasta que lo aprieten.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("Esperar hasta que", 0, "¿Está presionado? F"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "3", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "2.3", "rotaciones"),
             ],
             "notas": "Sirve para distinguir cuándo toca esperar y cuándo toca preguntar. Aquí no hay nada que vigilar mientras tanto.",
         },
@@ -1511,7 +1511,7 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El vehículo vigilante",
-            "enunciado": "Prepara la base, ponla al 35 %, arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento y toca una nota.",
+            "enunciado": "Pon una caja tres baldosas por delante y prepara la base al 35 %. Arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento y toca una nota. Mira en qué baldosa se ha quedado y si para siempre en la misma.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -1896,7 +1896,7 @@ UNIDADES.append({
     "intermedias": [
         {
             "titulo": "Pon el contador a cero",
-            "enunciado": "Pon el ángulo de guiñada a cero, espera dos segundos para girar el robot con la mano y después escribe en la pantalla lo que marca el ángulo.",
+            "enunciado": "Pon el ángulo de guiñada a cero con el robot alineado con una junta. Espera dos segundos para girarlo a mano hasta la junta perpendicular y después escribe en la pantalla lo que marca el ángulo: tiene que andar por 90.",
             "pista": "El bloque del ángulo es redondo: se mete dentro del hueco del bloque de escribir.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -1908,7 +1908,7 @@ UNIDADES.append({
         },
         {
             "titulo": "El giro medido",
-            "enunciado": "Pon el ángulo a cero, empieza a girar a la derecha y repite hasta que el ángulo pase de 90 grados, y entonces para el movimiento.",
+            "enunciado": "Alinea el robot con una junta. Pon el ángulo a cero, empieza a girar a la derecha y repite hasta que el ángulo pase de 90 grados, y entonces para: tiene que quedar mirando a lo largo de la junta perpendicular.",
             "pista": "El bucle no lleva nada dentro que haga trabajo: solo está ahí vigilando el ángulo.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -1924,7 +1924,7 @@ UNIDADES.append({
         },
         {
             "titulo": "Frenar en seco",
-            "enunciado": "Repite el giro medido añadiendo al principio el bloque que hace que los motores frenen al parar, y compara con el ejercicio anterior.",
+            "enunciado": "Repite el giro medido añadiendo al principio el bloque que hace que los motores frenen al parar. Compara con el ejercicio anterior mirando cuánto se pasa de la junta cada uno.",
             "pista": "El bloque de frenar va al principio, junto al de fijar los motores.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -1941,7 +1941,7 @@ UNIDADES.append({
         },
         {
             "titulo": "Media vuelta exacta",
-            "enunciado": "Haz el mismo giro medido pero hasta 180 grados, y al terminar toca una nota y enciende un dibujo un segundo.",
+            "enunciado": "Haz el mismo giro medido pero hasta 180 grados, hasta quedar alineado con la misma junta y mirando al revés. Al terminar toca una nota y enciende un dibujo un segundo.",
             "pista": "Solo cambia el número de la comparación. Lo demás es igual.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -2052,14 +2052,14 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El cuadrado que cierra",
-            "enunciado": "Prepara la base con frenado y velocidad 30 y repite cuatro veces: avanza dos rotaciones, pon el ángulo a cero, empieza a girar a la derecha, repite hasta que el ángulo pase de 90 y para el movimiento.",
+            "enunciado": "Pon el robot en una cruceta y prepara la base con frenado y velocidad 30. Repite cuatro veces: avanza dos baldosas (4,6 rotaciones); pon el ángulo a cero; empieza a girar a la derecha; repite hasta que el ángulo pase de 90; para el movimiento. Tiene que cerrar en la cruceta de salida.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("Fijar motores de movimiento para que frenen al parar", 0, "frenar"),
                 b("fijar velocidad de movimiento al 50 %", 0, "30"),
                 b("Repetir bucle", 0, "4"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "2", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "4.6", "rotaciones"),
                 b("Fijar el ángulo de guiñada del Hub a 0", 1),
                 b("empezar a mover derecha: 30", 1, "derecha: 100"),
                 b("Repetir bucle hasta", 1, "ángulo de guiñada > 90"),
@@ -2070,7 +2070,7 @@ UNIDADES.append({
         },
         {
             "titulo": "El robot que esquiva",
-            "enunciado": "Arranca hacia delante y repite hasta que haya algo a menos de 20 centímetros. Entonces para el movimiento, pon el ángulo a cero, gira midiendo hasta pasar de 90 grados, para otra vez y vuelve a avanzar dos rotaciones.",
+            "enunciado": "Pon una caja dos baldosas por delante. Arranca hacia delante y repite hasta que haya algo a menos de 20 centímetros. Entonces para el movimiento, pon el ángulo a cero, gira midiendo hasta pasar de 90 grados, para otra vez y avanza una baldosa (2,3 rotaciones) por el lado.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2085,7 +2085,7 @@ UNIDADES.append({
                 b("Repetir bucle hasta", 0, "ángulo de guiñada > 90"),
                 b("Esperar X segundos", 1, "0.01"),
                 b("parar movimiento", 0),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "2", "rotaciones"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "2.3", "rotaciones"),
             ],
             "notas": "Junta el sensor de distancia con el giro medido: ve el obstáculo, se para, gira exacto y sigue. Es el programa más largo del curso.",
         },
@@ -2352,5 +2352,34 @@ UNIDADES.append({
 
 
 
+# ── El suelo del aula ──────────────────────────────────────────────────
+#
+# Las prácticas que se hacen sobre el terrazo del aula, de baldosas de
+# 40 × 40 cm. En su ficha sale el recordatorio de la baldosa y de cómo
+# calibrarla (ver src/components/unidad/SueloBaldosas.tsx).
+#
+# En 1º todavía no existe el bloque de la vuelta de rueda, así que el robot
+# se mueve en ROTACIONES: una baldosa son unas 2,3 y el número exacto lo
+# saca cada grupo probando sobre su suelo. Es la mejor versión del
+# ejercicio, porque la baldosa es la verdad y el número sale de medir.
+EN_EL_SUELO = {
+    (5, "Cruza una baldosa"),
+    (5, "Ida y vuelta de dos baldosas"),
+    (5, "Media vuelta"),
+    (5, "El cuadrado de una baldosa"),
+    (5, "El circuito cuadrado"),
+    (5, "La entrega a domicilio"),
+    (6, "Frena ante el obstáculo"),
+    (6, "El arranque con botón"),
+    (6, "El vehículo vigilante"),
+    (8, "Pon el contador a cero"),
+    (8, "El giro medido"),
+    (8, "Frenar en seco"),
+    (8, "Media vuelta exacta"),
+    (8, "El cuadrado que cierra"),
+    (8, "El robot que esquiva"),
+}
+
+
 if __name__ == "__main__":
-    main("1ESO", UNIDADES, VIDEOS)
+    main("1ESO", UNIDADES, VIDEOS, EN_EL_SUELO)

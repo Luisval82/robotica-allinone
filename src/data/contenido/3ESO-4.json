@@ -584,7 +584,7 @@
   "practicas": [
     {
       "titulo": "El conductor y sus guardias",
-      "enunciado": "Prepara la base, pon los avisos a 0 y arranca el robot hacia delante en una pila. En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede 20 centímetros y vuelve a arrancar. En otra, al ver rojo, pon el botón central en rojo y escribe los avisos.",
+      "enunciado": "Pon la caja tres baldosas por delante y la cinta roja en la junta de en medio. Prepara la base, pon los avisos a 0 y arranca el robot hacia delante en una pila. En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede media baldosa y vuelve a arrancar. En otra, al ver rojo, pon el botón central en rojo y escribe los avisos.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -682,7 +682,11 @@
         }
       ],
       "notas": "Tres pilas. El guardia de distancia tiene que volver a arrancar al final, o el robot se queda parado para siempre.",
+      "suelo": true,
       "pasos": [
+        {
+          "texto": "Pon la caja tres baldosas por delante y la cinta roja en la junta de en medio"
+        },
         {
           "texto": "Prepara la base"
         },
@@ -693,7 +697,7 @@
           "texto": "Arranca el robot hacia delante en una pila"
         },
         {
-          "texto": "En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede 20 centímetros y vuelve a arrancar"
+          "texto": "En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede media baldosa y vuelve a arrancar"
         },
         {
           "texto": "En otra, al ver rojo, pon el botón central en rojo y escribe los avisos"
@@ -702,7 +706,7 @@
     },
     {
       "titulo": "El parachoques que corta",
-      "enunciado": "Añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto: para el movimiento; enciende una cruz un segundo; escribe CHOQUE.",
+      "enunciado": "Con la misma pista de baldosas, añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto: para el movimiento; enciende una cruz un segundo; escribe CHOQUE.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -820,9 +824,10 @@
         }
       ],
       "notas": "Cuatro pilas y dos clases de guardia: dos que avisan y una que pregunta. Es la práctica que mejor resume la unidad.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto",
+          "texto": "Con la misma pista de baldosas, añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto",
           "hijos": [
             "Para el movimiento",
             "Enciende una cruz un segundo",

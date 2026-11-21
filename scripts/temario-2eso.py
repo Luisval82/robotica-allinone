@@ -350,15 +350,15 @@ UNIDADES.append({
         "Cronómetro": "Un número: los segundos que han pasado desde la última puesta a cero. Se guarda, se compara o se escribe.",
     },
     "programa": {
-        "titulo": "Cincuenta centímetros cronometrados",
-        "explicacion": "Primero se le dice al Hub cuánto mide la vuelta de rueda, y después ya se puede hablar en centímetros. El cronómetro se pone a cero justo antes de salir.",
+        "titulo": "Tres baldosas cronometradas",
+        "explicacion": "Primero se le dice al Hub cuánto mide la vuelta de rueda, y después ya se puede hablar en centímetros: tres baldosas del aula son 120. El cronómetro se pone a cero justo antes de salir, y al llegar se mira si ha parado en la junta.",
         "bloques": [
             b("Cuando se inicia el programa"),
             b("fijar A+B como motores en movimiento", 0, "A+B"),
             b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
             b("fijar velocidad de movimiento al 50 %", 0, "40"),
             b("Reiniciar cronómetro"),
-            b("mover ↑ durante 10 rotaciones", 0, "↑", "50", "cm"),
+            b("mover ↑ durante 10 rotaciones", 0, "↑", "120", "cm"),
             b("Fijar variable a", 0, "tiempo · Cronómetro"),
             b("escribir Hello", 0, "tiempo"),
         ],
@@ -390,20 +390,20 @@ UNIDADES.append({
     },
     "intermedias": [
         {
-            "titulo": "Treinta centímetros",
-            "enunciado": "Dile al Hub cuánto mide la vuelta de tu rueda y haz que el robot avance 30 centímetros.",
+            "titulo": "Una baldosa justa",
+            "enunciado": "Pon el robot sobre una junta del suelo. Dile al Hub que la vuelta de rueda son 17,5 centímetros y haz que avance 40, que es una baldosa. Mira si para en la junta siguiente: si se queda corto, la vuelta de rueda real es menor de 17,5; si se pasa, es mayor.",
             "pista": "El bloque de la vuelta de rueda va antes que cualquier movimiento, igual que el de fijar los motores.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "30", "cm"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "40", "cm"),
             ],
             "notas": "Se mide con la regla. Si falla por poco, casi siempre es que la vuelta de rueda está mal medida.",
         },
         {
             "titulo": "Cuánto he tardado",
-            "enunciado": "Pon el cronómetro a cero, avanza 40 centímetros, guarda el cronómetro en una variable llamada tiempo y escríbela.",
+            "enunciado": "Pon el cronómetro a cero, cruza una baldosa (40 centímetros), guarda el cronómetro en una variable llamada tiempo y escríbela.",
             "pista": "El cronómetro se guarda justo al terminar el movimiento, no antes.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -433,7 +433,7 @@ UNIDADES.append({
         },
         {
             "titulo": "La carrera hasta la pared",
-            "enunciado": "Pon el cronómetro a cero, arranca hacia delante, repite hasta que haya algo a menos de 15 centímetros, para y escribe el tiempo que has tardado.",
+            "enunciado": "Pon una caja en una junta, cuatro baldosas por delante. Pon el cronómetro a cero, arranca hacia delante, repite hasta que haya algo a menos de 15 centímetros, para y escribe el tiempo que has tardado en cruzar esas cuatro baldosas.",
             "pista": "Aquí no sabes cuánto va a durar: por eso se mide con el cronómetro en vez de contar segundos.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -537,15 +537,15 @@ UNIDADES.append({
     ],
     "practicas": [
         {
-            "titulo": "Los cincuenta centímetros cronometrados",
-            "enunciado": "Fija los motores y la vuelta de rueda, pon la velocidad al 40 %, pon el cronómetro a cero, avanza 50 centímetros, guarda el cronómetro en la variable tiempo y escríbela.",
+            "titulo": "Las tres baldosas cronometradas",
+            "enunciado": "Fija los motores y la vuelta de rueda, pon la velocidad al 40 %, pon el cronómetro a cero, cruza tres baldosas (120 centímetros), guarda el cronómetro en la variable tiempo y escríbela. Apunta en qué junta ha parado y cuánto ha tardado.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
                 b("fijar velocidad de movimiento al 50 %", 0, "40"),
                 b("Reiniciar cronómetro"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "50", "cm"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "120", "cm"),
                 b("Fijar variable a", 0, "tiempo · Cronómetro"),
                 b("escribir Hello", 0, "tiempo"),
             ],
@@ -553,16 +553,16 @@ UNIDADES.append({
         },
         {
             "titulo": "La ida y la vuelta medidas",
-            "enunciado": "Mide el tiempo de una ida y vuelta: pon el cronómetro a cero; avanza 40 centímetros; da media vuelta girando sobre el sitio; vuelve otros 40 centímetros; escribe el tiempo total.",
+            "enunciado": "Mide el tiempo de una ida y vuelta de dos baldosas: pon el cronómetro a cero; avanza 80 centímetros; da media vuelta girando sobre el sitio; vuelve otros 80; escribe el tiempo total. Tiene que acabar sobre la junta de salida.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
                 b("fijar velocidad de movimiento al 50 %", 0, "40"),
                 b("Reiniciar cronómetro"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "40", "cm"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "80", "cm"),
                 b("mover derecha: 30 durante 10 rotaciones", 0, "derecha: 100", "1", "rotaciones"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "40", "cm"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "80", "cm"),
                 b("Fijar variable a", 0, "tiempo · Cronómetro"),
                 b("escribir Hello", 0, "tiempo"),
             ],
@@ -1436,7 +1436,7 @@ UNIDADES.append({
     "intermedias": [
         {
             "titulo": "Arranque de golpe",
-            "enunciado": "Pon la aceleración en el valor más bajo. Avanza 40 centímetros y para, con la torre de piezas puesta en la caja.",
+            "enunciado": "Pon la aceleración en el valor más bajo. Cruza una baldosa (40 centímetros) y para, con la torre de piezas puesta en la caja.",
             "pista": "Este ejercicio está hecho para que la carga se caiga: es la comparación del siguiente.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -1450,7 +1450,7 @@ UNIDADES.append({
         },
         {
             "titulo": "Arranque suave",
-            "enunciado": "Repite el recorrido de 40 centímetros con la aceleración suave. Compara si la carga aguanta mejor que antes.",
+            "enunciado": "Repite la baldosa con la aceleración suave. Compara si la carga aguanta mejor y si para más cerca de la junta.",
             "pista": "Solo cambia un bloque respecto al ejercicio anterior.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -1568,7 +1568,7 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El repartidor al azar",
-            "enunciado": "Prepara la base con la vuelta de rueda y la aceleración suave. Después reparte al azar: saca un destino al azar del 1 al 3; escríbelo; calcula el camino multiplicando el destino por 20; avanza esos centímetros; toca una nota al llegar.",
+            "enunciado": "Prepara la base con la vuelta de rueda y la aceleración suave. Después reparte al azar por la cuadrícula: saca un destino al azar del 1 al 3; escríbelo; calcula el camino multiplicando el destino por 40, que es lo que mide una baldosa; avanza esos centímetros; toca una nota al llegar.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -1584,7 +1584,7 @@ UNIDADES.append({
         },
         {
             "titulo": "La ruta de tres paradas",
-            "enunciado": "Con la aceleración suave, repite tres veces: avanza 25 centímetros; espera un segundo; toca una nota; sube en uno la variable paradas. Escribe al final las paradas hechas.",
+            "enunciado": "Con la aceleración suave, repite tres veces: cruza una baldosa (40 centímetros); espera un segundo; toca una nota; sube en uno la variable paradas. Escribe al final las paradas hechas: tiene que haber parado en tres juntas seguidas.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -1592,7 +1592,7 @@ UNIDADES.append({
                 b("Fijar aceleración del motor", 0, "A+B · suave"),
                 b("Fijar variable a", 0, "paradas · 0"),
                 b("Repetir bucle", 0, "3"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "25", "cm"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "40", "cm"),
                 b("Esperar X segundos", 1, "1"),
                 b("Tocar nota X segundos", 1, "60 · 0.3"),
                 b("Cambiar variable por", 1, "paradas · 1"),
@@ -1948,7 +1948,7 @@ UNIDADES.append({
             b("Fijar motores de movimiento para que frenen al parar", 0, "frenar"),
             b("fijar velocidad de movimiento al 50 %", 0, "30"),
             b("Repetir bucle", 0, "4"),
-            b("mover ↑ durante 10 rotaciones", 1, "↑", "30", "cm"),
+            b("mover ↑ durante 10 rotaciones", 1, "↑", "40", "cm"),
             b("Mis bloques: Crear un bloque con entradas", 1, "girar (90)"),
         ],
     },
@@ -2009,7 +2009,7 @@ UNIDADES.append({
         },
         {
             "titulo": "El giro con nombre",
-            "enunciado": "Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo a cero; empieza a girar; repite hasta pasar de esos grados; para el movimiento. Úsalo para girar 90.",
+            "enunciado": "Alinea el robot con una junta. Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo a cero; empieza a girar; repite hasta pasar de esos grados; para el movimiento. Úsalo para girar 90 y comprueba que queda alineado con la junta perpendicular.",
             "pista": "Dentro del bloque, el hueco se usa como si fuera una variable.",
             "solucion": [
                 b("Mis bloques: Crear un bloque con entradas", 0, "girar (grados)"),
@@ -2126,7 +2126,7 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El circuito con bloque propio",
-            "enunciado": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio. En el programa principal, prepara la base y repite cuatro veces avanzar 30 centímetros y llamar a girar con 90.",
+            "enunciado": "Crea un bloque girar con un hueco de grados que haga el giro medido con giroscopio. Pon el robot en una cruceta y, en el programa principal, prepara la base y repite cuatro veces avanzar una baldosa (40 centímetros) y llamar a girar con 90. Tiene que cerrar el cuadrado en la cruceta de salida.",
             "solucion": [
                 b("Mis bloques: Crear un bloque con entradas", 0, "girar (grados)"),
                 b("Fijar el ángulo de guiñada del Hub a 0", 1),
@@ -2140,14 +2140,14 @@ UNIDADES.append({
                 b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
                 b("fijar velocidad de movimiento al 50 %", 0, "30"),
                 b("Repetir bucle", 0, "4"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "30", "cm"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "girar (90)"),
             ],
             "notas": "Dos pilas: la definición y el programa. El cuadrado tiene que cerrar, y si no cierra, se toca el bloque girar una sola vez.",
         },
         {
             "titulo": "El recorrido con límite",
-            "enunciado": "Haz con el mismo bloque girar un recorrido de tres tramos de 25 centímetros con giros de 120 grados. Añade un programa aparte que a los 20 segundos pare el movimiento y escriba FIN.",
+            "enunciado": "Haz con el mismo bloque girar un recorrido de tres tramos de dos baldosas (80 centímetros) con giros de 120 grados. Añade un programa aparte que a los 20 segundos pare el movimiento y escriba FIN. Con 120 grados el triángulo cierra, aunque sus lados no sigan las juntas.",
             "solucion": [
                 b("Mis bloques: Crear un bloque con entradas", 0, "girar (grados)"),
                 b("Fijar el ángulo de guiñada del Hub a 0", 1),
@@ -2160,7 +2160,7 @@ UNIDADES.append({
                 b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
                 b("Reiniciar cronómetro"),
                 b("Repetir bucle", 0, "3"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "25", "cm"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "80", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "girar (120)"),
                 b("Cuando el cronómetro", 0, "> 20"),
                 b("parar movimiento", 0),
@@ -2467,8 +2467,31 @@ UNIDADES.append({
 })
 
 
+# ── El suelo del aula ──────────────────────────────────────────────────
+#
+# Las prácticas que se hacen sobre el terrazo del aula, de baldosas de
+# 40 × 40 cm. Desde 2º el robot entiende centímetros, porque la UD2 fija la
+# vuelta de rueda en 17,5: una baldosa son 40 y punto. Lo que se comprueba
+# entonces ya no es cuántas rotaciones hacen falta, sino si esos 40
+# programados son 40 reales (ver src/components/unidad/SueloBaldosas.tsx).
+EN_EL_SUELO = {
+    (2, "Una baldosa justa"),
+    (2, "Cuánto he tardado"),
+    (2, "La carrera hasta la pared"),
+    (2, "Las tres baldosas cronometradas"),
+    (2, "La ida y la vuelta medidas"),
+    (6, "Arranque de golpe"),
+    (6, "Arranque suave"),
+    (6, "El repartidor al azar"),
+    (6, "La ruta de tres paradas"),
+    (8, "El giro con nombre"),
+    (8, "El circuito con bloque propio"),
+    (8, "El recorrido con límite"),
+}
+
+
 if __name__ == "__main__":
     # Se regenera el curso entero, así que se puede repartir la respuesta
     # correcta entre las cuatro letras (ver reparte_respuestas).
     reparte_respuestas(UNIDADES)
-    main("2ESO", UNIDADES, VIDEOS)
+    main("2ESO", UNIDADES, VIDEOS, EN_EL_SUELO)

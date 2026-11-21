@@ -204,7 +204,7 @@
     {
       "practica": 1,
       "titulo": "Apuntar en marcha",
-      "enunciado": "Haz dos pilas: en una, avanza 60 centímetros; en la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas. Escribe al final cuántas medidas hay.",
+      "enunciado": "Haz dos pilas: en una, recorre dos baldosas (80 centímetros); en la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas. Escribe al final cuántas medidas hay.",
       "pista": "Las dos pilas arrancan a la vez con el mismo sombrero de inicio.",
       "solucion": [
         {
@@ -230,7 +230,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "60",
+            "80",
             "cm"
           ]
         },
@@ -268,11 +268,12 @@
         }
       ],
       "notas": "Veinte medidas en cuatro segundos mientras el robot anda. Con una sola pila habría que elegir entre andar o medir.",
+      "suelo": true,
       "pasos": [
         {
           "texto": "Haz dos pilas",
           "hijos": [
-            "En una, avanza 60 centímetros",
+            "En una, recorre dos baldosas (80 centímetros)",
             "En la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas"
           ]
         },
@@ -310,7 +311,7 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "60",
+            "80",
             "cm"
           ]
         },
@@ -614,7 +615,7 @@
   "practicas": [
     {
       "titulo": "El explorador del pasillo",
-      "enunciado": "Pon midiendo a 1, prepara la base y avanza 120 centímetros, y al terminar pon midiendo a 0. En otra pila, repite hasta que midiendo valga 0: añade la distancia a la lista huecos; mándala al gráfico de líneas; espera medio segundo.",
+      "enunciado": "Monta el pasillo a lo largo de tres baldosas. Pon midiendo a 1, prepara la base y recorre esas tres baldosas (120 centímetros), y al terminar pon midiendo a 0. En otra pila, repite hasta que midiendo valga 0: añade la distancia a la lista huecos; mándala al gráfico de líneas; espera medio segundo.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -699,9 +700,13 @@
         }
       ],
       "notas": "Dos pilas y un estado que las sincroniza. En el gráfico se tienen que ver los dos huecos del pasillo.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Pon midiendo a 1, prepara la base y avanza 120 centímetros, y al terminar pon midiendo a 0"
+          "texto": "Monta el pasillo a lo largo de tres baldosas"
+        },
+        {
+          "texto": "Pon midiendo a 1, prepara la base y recorre esas tres baldosas (120 centímetros), y al terminar pon midiendo a 0"
         },
         {
           "texto": "En otra pila, repite hasta que midiendo valga 0",
@@ -715,7 +720,7 @@
     },
     {
       "titulo": "El hueco más ancho",
-      "enunciado": "Añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido. En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud: cambia mayor si el elemento que toca es más grande; sube paso en uno. Escribe el resultado al final.",
+      "enunciado": "Con el pasillo de tres baldosas del ejercicio anterior, añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido. En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud: cambia mayor si el elemento que toca es más grande; sube paso en uno. Escribe el resultado al final.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -848,9 +853,10 @@
         }
       ],
       "notas": "Tres pilas: conducir, registrar y analizar. El mensaje es lo que garantiza que el análisis no empiece antes de tiempo.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido"
+          "texto": "Con el pasillo de tres baldosas del ejercicio anterior, añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido"
         },
         {
           "texto": "En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud",

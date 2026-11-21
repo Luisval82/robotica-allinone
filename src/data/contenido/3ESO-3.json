@@ -98,7 +98,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 0,
         "valores": [
-          "avanzar (centimetros)"
+          "avanzar baldosas (baldosas)"
         ]
       },
       {
@@ -106,7 +106,7 @@
         "nivel": 1,
         "valores": [
           "↑",
-          "centimetros",
+          "baldosas × 40",
           "cm"
         ]
       },
@@ -154,7 +154,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 1,
         "valores": [
-          "avanzar (40)"
+          "avanzar baldosas (1)"
         ]
       },
       {
@@ -170,14 +170,14 @@
     {
       "practica": 1,
       "titulo": "Avanzar con nombre",
-      "enunciado": "Crea un bloque propio llamado avanzar con un hueco de centímetros que mueva el robot hacia delante esa distancia. Úsalo con 20, con 40 y con 10.",
-      "pista": "El hueco se usa dentro como si fuera una variable, y se rellena al llamar al bloque.",
+      "enunciado": "Crea un bloque propio llamado avanzar baldosas con un hueco que mueva el robot ese número de baldosas, multiplicando por 40 dentro del bloque. Úsalo con media baldosa, con una y con un cuarto.",
+      "pista": "El hueco se usa dentro como si fuera una variable: la cuenta baldosas × 40 va dentro del bloque, y fuera solo se dice cuántas baldosas.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -185,7 +185,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -212,38 +212,39 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (20)"
+            "avanzar baldosas (0.5)"
           ]
         },
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (40)"
+            "avanzar baldosas (1)"
           ]
         },
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (10)"
+            "avanzar baldosas (0.25)"
           ]
         }
       ],
       "notas": "Una definición y tres usos. La vuelta de rueda hay que fijarla en el programa principal, no dentro del bloque.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Crea un bloque propio llamado avanzar con un hueco de centímetros que mueva el robot hacia delante esa distancia"
+          "texto": "Crea un bloque propio llamado avanzar baldosas con un hueco que mueva el robot ese número de baldosas, multiplicando por 40 dentro del bloque"
         },
         {
-          "texto": "Úsalo con 20, con 40 y con 10"
+          "texto": "Úsalo con media baldosa, con una y con un cuarto"
         }
       ]
     },
     {
       "practica": 2,
       "titulo": "Girar con nombre",
-      "enunciado": "Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo de guiñada a cero; empieza a girar sobre el sitio; repite hasta pasar de esos grados; para el movimiento. Llámalo con 90 grados. Llámalo después con 180.",
+      "enunciado": "Alinea el robot con una junta del suelo. Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo de guiñada a cero; empieza a girar sobre el sitio; repite hasta pasar de esos grados; para el movimiento. Llámalo con 90 grados y mira si queda sobre la junta perpendicular. Llámalo después con 180.",
       "pista": "Dentro del bucle conviene dejar una espera muy corta para que el Hub tenga tiempo de leer el ángulo.",
       "solucion": [
         {
@@ -316,7 +317,11 @@
         }
       ],
       "notas": "Es el giro de 2º encerrado con nombre. A partir de aquí, girar vuelve a ser una línea.",
+      "suelo": true,
       "pasos": [
+        {
+          "texto": "Alinea el robot con una junta del suelo"
+        },
         {
           "texto": "Crea un bloque llamado girar con un hueco de grados que haga esto",
           "hijos": [
@@ -327,7 +332,7 @@
           ]
         },
         {
-          "texto": "Llámalo con 90 grados"
+          "texto": "Llámalo con 90 grados y mira si queda sobre la junta perpendicular"
         },
         {
           "texto": "Llámalo después con 180"
@@ -408,7 +413,7 @@
     {
       "practica": 4,
       "titulo": "Un bloque dentro de otro",
-      "enunciado": "Crea un bloque llamado esquina sin huecos que llame a avanzar con 40 y a girar con 90. Úsalo cuatro veces seguidas.",
+      "enunciado": "Crea un bloque llamado esquina sin huecos que llame a avanzar baldosas con 1 y a girar con 90. Ponlo en una cruceta y úsalo cuatro veces seguidas: tiene que recorrer el borde de una baldosa y volver a la cruceta.",
       "pista": "Un bloque propio puede usar los bloques propios que ya tengas hechos.",
       "solucion": [
         {
@@ -422,7 +427,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (40)"
+            "avanzar baldosas (1)"
           ]
         },
         {
@@ -473,12 +478,13 @@
         }
       ],
       "notas": "Aquí se ve la idea de construir hacia arriba: herramientas que usan herramientas.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Crea un bloque llamado esquina sin huecos que llame a avanzar con 40 y a girar con 90"
+          "texto": "Crea un bloque llamado esquina sin huecos que llame a avanzar baldosas con 1 y a girar con 90"
         },
         {
-          "texto": "Úsalo cuatro veces seguidas"
+          "texto": "Ponlo en una cruceta y úsalo cuatro veces seguidas: tiene que recorrer el borde de una baldosa y volver a la cruceta"
         }
       ]
     }
@@ -622,7 +628,7 @@
   "practicas": [
     {
       "titulo": "El circuito con bloques propios",
-      "enunciado": "Crea el bloque girar con hueco de grados y el bloque avanzar con hueco de centímetros. En el programa principal, prepara la base con la vuelta de rueda y el frenado, y repite cuatro veces llamar a avanzar con 40 y a girar con 90.",
+      "enunciado": "Crea el bloque girar con hueco de grados y el bloque avanzar baldosas. Pon el robot en una cruceta del suelo y, en el programa principal, prepara la base con la vuelta de rueda y el frenado, y repite cuatro veces llamar a avanzar baldosas con 1 y a girar con 90. Tiene que cerrar sobre la cruceta de salida.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
@@ -664,7 +670,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -672,7 +678,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -720,7 +726,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (40)"
+            "avanzar baldosas (1)"
           ]
         },
         {
@@ -732,18 +738,22 @@
         }
       ],
       "notas": "Tres pilas: dos definiciones y el programa. El cuadrado tiene que cerrar sobre la marca de salida.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Crea el bloque girar con hueco de grados y el bloque avanzar con hueco de centímetros"
+          "texto": "Crea el bloque girar con hueco de grados y el bloque avanzar baldosas"
         },
         {
-          "texto": "En el programa principal, prepara la base con la vuelta de rueda y el frenado, y repite cuatro veces llamar a avanzar con 40 y a girar con 90"
+          "texto": "Pon el robot en una cruceta del suelo y, en el programa principal, prepara la base con la vuelta de rueda y el frenado, y repite cuatro veces llamar a avanzar baldosas con 1 y a girar con 90"
+        },
+        {
+          "texto": "Tiene que cerrar sobre la cruceta de salida"
         }
       ]
     },
     {
       "titulo": "El triángulo con una esquina propia",
-      "enunciado": "Añade un bloque llamado tramo con un hueco de lado que llame a avanzar con ese lado y a girar con 120. Repite en el programa principal tres veces llamar a tramo con 50 y escribe FIN al terminar.",
+      "enunciado": "Añade un bloque llamado tramo con un hueco de lado que llame a avanzar baldosas con ese lado y a girar con 120. Repite en el programa principal tres veces llamar a tramo con 2 y escribe FIN al terminar: el triángulo cierra, aunque sus lados ya no sigan las juntas.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
@@ -785,7 +795,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -793,7 +803,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -808,7 +818,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (lado)"
+            "avanzar baldosas (lado)"
           ]
         },
         {
@@ -867,15 +877,13 @@
         }
       ],
       "notas": "Un bloque que llama a dos bloques propios. Con 120 grados el triángulo cierra; si no cierra, el arreglo va dentro de girar.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Añade un bloque llamado tramo con un hueco de lado que llame a avanzar con ese lado y a girar con 120"
+          "texto": "Añade un bloque llamado tramo con un hueco de lado que llame a avanzar baldosas con ese lado y a girar con 120"
         },
         {
-          "texto": "Repite en el programa principal tres veces llamar a tramo con 50"
-        },
-        {
-          "texto": "Escribe FIN al terminar"
+          "texto": "Repite en el programa principal tres veces llamar a tramo con 2 y escribe FIN al terminar: el triángulo cierra, aunque sus lados ya no sigan las juntas"
         }
       ]
     }

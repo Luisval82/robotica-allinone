@@ -116,7 +116,7 @@
     {
       "practica": 1,
       "titulo": "Frena ante el obstáculo",
-      "enunciado": "Arranca la base hacia delante y, dentro de un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento.",
+      "enunciado": "Pon una caja sobre una junta, tres baldosas por delante. Arranca la base hacia delante y, dentro de un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento.",
       "pista": "El «Si... entonces» va dentro del bucle, y el «parar movimiento», dentro del «Si».",
       "solucion": [
         {
@@ -154,7 +154,11 @@
         }
       ],
       "notas": "Tres niveles de sangría. Es la primera vez que ven un bloque dentro de otro dentro de otro.",
+      "suelo": true,
       "pasos": [
+        {
+          "texto": "Pon una caja sobre una junta, tres baldosas por delante"
+        },
         {
           "texto": "Arranca la base hacia delante y, dentro de un bucle infinito, comprueba si hay algo a menos de 20 centímetros",
           "hijos": [
@@ -167,7 +171,7 @@
     {
       "practica": 2,
       "titulo": "El arranque con botón",
-      "enunciado": "Espera a que se apriete el sensor de fuerza y entonces arranca la base hacia delante durante tres rotaciones.",
+      "enunciado": "Espera a que se apriete el sensor de fuerza y entonces arranca la base hacia delante una baldosa, que son 2,3 rotaciones.",
       "pista": "Aquí sí vale esperar: el robot no tiene nada que hacer hasta que lo aprieten.",
       "solucion": [
         {
@@ -193,12 +197,13 @@
           "nivel": 0,
           "valores": [
             "↑",
-            "3",
+            "2.3",
             "rotaciones"
           ]
         }
       ],
-      "notas": "Sirve para distinguir cuándo toca esperar y cuándo toca preguntar. Aquí no hay nada que vigilar mientras tanto."
+      "notas": "Sirve para distinguir cuándo toca esperar y cuándo toca preguntar. Aquí no hay nada que vigilar mientras tanto.",
+      "suelo": true
     },
     {
       "practica": 3,
@@ -446,7 +451,7 @@
   "practicas": [
     {
       "titulo": "El vehículo vigilante",
-      "enunciado": "Prepara la base, ponla al 35 %, arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento y toca una nota.",
+      "enunciado": "Pon una caja tres baldosas por delante y prepara la base al 35 %. Arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros: si lo hay, para el movimiento y toca una nota. Mira en qué baldosa se ha quedado y si para siempre en la misma.",
       "solucion": [
         {
           "texto": "Cuando se inicia el programa",
@@ -497,14 +502,24 @@
         }
       ],
       "notas": "Lo que se corrige es la sangría: el «Si» dentro del bucle y las dos acciones dentro del «Si».",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Prepara la base, ponla al 35 %, arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros",
+          "texto": "Pon una caja tres baldosas por delante y prepara la base al 35 %"
+        },
+        {
+          "texto": "Arráncala hacia delante y, en un bucle infinito, comprueba si hay algo a menos de 20 centímetros",
           "hijos": [
             "Si lo hay",
             "Para el movimiento",
             "Toca una nota"
           ]
+        },
+        {
+          "texto": "Mira en qué baldosa se ha quedado"
+        },
+        {
+          "texto": "Si para siempre en la misma"
         }
       ]
     },

@@ -66,7 +66,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 0,
         "valores": [
-          "avanzar (centimetros)"
+          "avanzar baldosas (baldosas)"
         ]
       },
       {
@@ -74,7 +74,7 @@
         "nivel": 1,
         "valores": [
           "↑",
-          "centimetros",
+          "baldosas × 40",
           "cm"
         ]
       },
@@ -103,7 +103,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 1,
         "valores": [
-          "avanzar (bahia × 30)"
+          "avanzar baldosas (bahia)"
         ]
       },
       {
@@ -131,7 +131,7 @@
         "texto": "Mis bloques: Crear un bloque con entradas",
         "nivel": 1,
         "valores": [
-          "avanzar (bahia × -30)"
+          "avanzar baldosas (bahia × -1)"
         ]
       },
       {
@@ -380,14 +380,14 @@
     {
       "practica": 2,
       "titulo": "El bloque que sirve una bahía",
-      "enunciado": "Crea el bloque avanzar con hueco de centímetros y el bloque horquilla con hueco de altura. Crea después servir con un hueco de bahía que avance la bahía por 30 centímetros, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva.",
+      "enunciado": "Marca las tres bahías del almacén en tres crucetas seguidas, a una, dos y tres baldosas de la salida. Crea el bloque avanzar baldosas y el bloque horquilla con hueco de altura. Crea después servir con un hueco de bahía que avance tantas baldosas como diga la bahía, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva.",
       "pista": "La distancia de cada bahía sale de multiplicar su número por 30.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -395,7 +395,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -424,7 +424,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (bahia × 30)"
+            "avanzar baldosas (bahia)"
           ]
         },
         {
@@ -452,7 +452,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (bahia × -30)"
+            "avanzar baldosas (bahia × -1)"
           ]
         },
         {
@@ -482,12 +482,16 @@
         }
       ],
       "notas": "La cuenta de la bahía va dentro del bloque. Llamarlo con 1, 2 o 3 sirve las tres bahías sin tocar nada.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Crea el bloque avanzar con hueco de centímetros y el bloque horquilla con hueco de altura"
+          "texto": "Marca las tres bahías del almacén en tres crucetas seguidas, a una, dos y tres baldosas de la salida"
         },
         {
-          "texto": "Crea después servir con un hueco de bahía que avance la bahía por 30 centímetros, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva"
+          "texto": "Crea el bloque avanzar baldosas y el bloque horquilla con hueco de altura"
+        },
+        {
+          "texto": "Crea después servir con un hueco de bahía que avance tantas baldosas como diga la bahía, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva"
         }
       ]
     },
@@ -764,13 +768,13 @@
   "practicas": [
     {
       "titulo": "El almacén que sirve pedidos",
-      "enunciado": "Crea los bloques avanzar, horquilla y servir con hueco de bahía. En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1. En la pila de mando, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar servir y esperar a que se suelte. En la pila del mensaje servir, reinicia el cronómetro, llama a servir con el pedido y pon la fase a 0.",
+      "enunciado": "Crea los bloques avanzar baldosas, horquilla y servir con hueco de bahía, con las bahías en tres crucetas a una, dos y tres baldosas. En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1. En la pila de mando, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar servir y esperar a que se suelte. En la pila del mensaje servir, reinicia el cronómetro, llama a servir con el pedido y pon la fase a 0.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -778,7 +782,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -807,7 +811,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (bahia × 30)"
+            "avanzar baldosas (bahia)"
           ]
         },
         {
@@ -835,7 +839,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (bahia × -30)"
+            "avanzar baldosas (bahia × -1)"
           ]
         },
         {
@@ -955,9 +959,10 @@
         }
       ],
       "notas": "Seis pilas. El programa principal no mueve ni un motor: todo pasa por la librería. Es la mitad de la nota de la prueba.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Crea los bloques avanzar, horquilla y servir con hueco de bahía"
+          "texto": "Crea los bloques avanzar baldosas, horquilla y servir con hueco de bahía, con las bahías en tres crucetas a una, dos y tres baldosas"
         },
         {
           "texto": "En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1"
@@ -972,13 +977,13 @@
     },
     {
       "titulo": "El registro del turno completo",
-      "enunciado": "Amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno. Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos.",
+      "enunciado": "Con el almacén de tres bahías en sus crucetas, amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno. Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos.",
       "solucion": [
         {
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 0,
           "valores": [
-            "avanzar (centimetros)"
+            "avanzar baldosas (baldosas)"
           ]
         },
         {
@@ -986,7 +991,7 @@
           "nivel": 1,
           "valores": [
             "↑",
-            "centimetros",
+            "baldosas × 40",
             "cm"
           ]
         },
@@ -1015,7 +1020,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (bahia × 30)"
+            "avanzar baldosas (bahia)"
           ]
         },
         {
@@ -1043,7 +1048,7 @@
           "texto": "Mis bloques: Crear un bloque con entradas",
           "nivel": 1,
           "valores": [
-            "avanzar (bahia × -30)"
+            "avanzar baldosas (bahia × -1)"
           ]
         },
         {
@@ -1212,9 +1217,10 @@
         }
       ],
       "notas": "Siete pilas, dos listas, tres sensores y una librería de tres bloques. Es el programa más grande del ciclo y se corrige por partes: librería, estados, registro y panel.",
+      "suelo": true,
       "pasos": [
         {
-          "texto": "Amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno"
+          "texto": "Con el almacén de tres bahías en sus crucetas, amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno"
         },
         {
           "texto": "Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos"

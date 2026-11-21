@@ -298,6 +298,36 @@ cambiado, 0,90; un bloque de menos, 0,84; dos bloques intercambiados, 0,72 (nara
 debe caer un error de lógica); sacar todo fuera del bucle, 0,25. Y el programa de **otra** práctica
 llega a verde claro en 1 de cada 9 casos; con una media ponderada normal eran 1 de cada 4.
 
+### El suelo del aula como unidad de medida
+
+El terrazo del aula son **baldosas de 40 × 40 cm**, y eso es mejor regla que cualquier metro: las
+juntas forman una cuadrícula, las crucetas marcan esquinas exactas y el alumno ve de un vistazo si
+el robot se ha pasado medio palmo. **46 prácticas de movimiento** de los tres cursos están escritas
+sobre esa cuadrícula, y las distancias son múltiplos de baldosa.
+
+Las prácticas que se hacen en el suelo llevan `"suelo": true` y enseñan al lado el recordatorio de
+la baldosa y su calibración (`src/components/unidad/SueloBaldosas.tsx`). Se declaran en una lista
+`EN_EL_SUELO` al final del temario de cada curso, como pares `(unidad, título)`, en vez de
+repartidas por el archivo: así se ven todas juntas. Si un título no casa con ninguna práctica, el
+generador se para antes de escribir.
+
+**La calibración cambia con el curso, porque cambian los bloques disponibles:**
+
+| | Cómo se mueve | Qué se calibra |
+| --- | --- | --- |
+| **1.º** | En **rotaciones**: el bloque de la vuelta de rueda no existe hasta 2.º | Cuántas rotaciones cruzan una baldosa. Se parte de 2,3 (40 ÷ 17,5) y cada grupo ajusta el suyo probando sobre su suelo |
+| **2.º** | En **centímetros**: la UD2 fija la vuelta de rueda en 17,5 cm | Si esos 40 programados son 40 reales. Si se queda corto, la vuelta de rueda real es menor de 17,5 |
+| **3.º** | En **baldosas**: el bloque propio `avanzar baldosas` hace dentro la cuenta `baldosas × 40` | Ya no se calibra una distancia, se calibra la librería: el programa principal habla en baldosas y de los centímetros no se acuerda nadie |
+
+Que en 1.º no haya centímetros no es una carencia, es la mejor versión del ejercicio: la baldosa
+es la verdad y el número sale de medir, no de que te lo den. En 3.º las tres bahías del almacén de
+la UD9 son tres crucetas seguidas, a una, dos y tres baldosas de la salida, así que `servir (2)`
+quiere decir «la bahía de la segunda baldosa».
+
+La equivalencia vive en un sitio: `BALDOSA_CM` en `SueloBaldosas.tsx`. La vuelta de rueda nominal
+(17,5 cm) es la de la rueda de la base de conducción —56 mm de diámetro, π × 5,6 = 17,59—, y por
+eso hay que calibrar: entre el nominal y el real están la goma, el peso y el patinazo.
+
 ### Informes en PDF (`/dashboard/profesor/informes/…`)
 
 Desde la pestaña **«Alumnado»** salen dos informes:

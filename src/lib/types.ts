@@ -210,6 +210,11 @@ export interface Practica {
   pasos?: { texto: string; hijos?: string[] }[];
   solucion: ProgramRow[];
   notas?: string;
+  /**
+   * El reto se hace sobre el suelo de baldosas del aula (40 × 40 cm). Pone
+   * el recordatorio de calibración junto a la práctica.
+   */
+  suelo?: boolean;
 }
 
 /** Respuesta del formulario de corrección de una entrega. */

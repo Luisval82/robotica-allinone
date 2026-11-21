@@ -40,6 +40,11 @@ export interface PracticaIntermedia {
   solucion: ProgramRow[];
   /** Una línea con lo que de verdad importa de este reto. */
   notas: string;
+  /**
+   * El reto se hace sobre el suelo de baldosas del aula (40 × 40 cm). Pone
+   * el recordatorio de calibración junto a la práctica.
+   */
+  suelo?: boolean;
 }
 
 /** Programa de ejemplo de la unidad: una pila montada, con su explicación. */
@@ -67,6 +72,8 @@ interface RawPractica {
   pasos?: PasoEnunciado[];
   solucion: ProgramRow[];
   notas?: string;
+  /** Se hace sobre el suelo de baldosas del aula (40 × 40 cm). */
+  suelo?: boolean;
 }
 
 export interface UnitContent {
@@ -145,6 +152,8 @@ export interface StudentPractica {
   titulo: string;
   enunciado: string;
   pasos?: PasoEnunciado[];
+  /** Se hace sobre el suelo de baldosas del aula. */
+  suelo?: boolean;
 }
 
 /** Enunciados de las prácticas SIN la solución. */
@@ -154,6 +163,7 @@ export function getPracticasForStudent(curso: Course, unidad: number): StudentPr
     titulo: item.titulo,
     enunciado: item.enunciado,
     pasos: item.pasos,
+    suelo: item.suelo,
   }));
 }
 

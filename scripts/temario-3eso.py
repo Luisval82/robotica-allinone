@@ -108,7 +108,7 @@ UNIDADES.append({
             b("Esperar hasta que", 1, "Distancia E < 20"),
             b("parar movimiento", 1),
             b("Cambiar variable por", 1, "rebotes · 1"),
-            b("mover ↑ durante 10 rotaciones", 1, "↓", "15", "cm"),
+            b("mover ↑ durante 10 rotaciones", 1, "↓", "20", "cm"),
             b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 100", "0.5", "rotaciones"),
             b("Cuando se inicia el programa"),
             b("Bucle infinito"),
@@ -169,7 +169,7 @@ UNIDADES.append({
         },
         {
             "titulo": "El marcador en marcha",
-            "enunciado": "Pon la variable vueltas a 0 y haz dos pilas: en una, repite sin parar avanzar 20 centímetros y subir vueltas en uno; en la otra, escribe vueltas en la pantalla sin parar.",
+            "enunciado": "Pon la variable vueltas a 0 y haz dos pilas: en una, repite sin parar avanzar media baldosa (20 centímetros) y subir vueltas en uno; en la otra, escribe vueltas en la pantalla sin parar.",
             "pista": "La variable es la misma para las dos pilas, por eso la de la pantalla ve lo que sube la otra.",
             "solucion": [
                 b("Cuando se inicia el programa"),
@@ -304,7 +304,7 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "La patrulla con marcador",
-            "enunciado": "Prepara la base y pon los rebotes a 0. En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder 15 centímetros y dar media vuelta. Escribe en otra pila los rebotes en la pantalla sin parar.",
+            "enunciado": "Marca un pasillo de cuatro baldosas con una caja en cada punta. Prepara la base y pon los rebotes a 0. En una pila, repite sin parar avanzar hasta tener algo a menos de 20 centímetros, parar, subir los rebotes, retroceder media baldosa y dar media vuelta. Escribe en otra pila los rebotes en la pantalla sin parar.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -315,7 +315,7 @@ UNIDADES.append({
                 b("Esperar hasta que", 1, "Distancia E < 20"),
                 b("parar movimiento", 1),
                 b("Cambiar variable por", 1, "rebotes · 1"),
-                b("mover ↑ durante 10 rotaciones", 1, "↓", "15", "cm"),
+                b("mover ↑ durante 10 rotaciones", 1, "↓", "20", "cm"),
                 b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 100", "0.5", "rotaciones"),
                 b("Cuando se inicia el programa"),
                 b("Bucle infinito"),
@@ -326,7 +326,7 @@ UNIDADES.append({
         },
         {
             "titulo": "El límite de treinta segundos",
-            "enunciado": "Añade al programa anterior el reinicio del cronómetro al empezar. Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto: para el movimiento; pon el botón central en rojo; escribe los rebotes conseguidos.",
+            "enunciado": "Con el mismo pasillo de cuatro baldosas, añade al programa anterior el reinicio del cronómetro al empezar. Añade una tercera pila con el sombrero del cronómetro que a los 30 segundos haga esto: para el movimiento; pon el botón central en rojo; escribe los rebotes conseguidos.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("Reiniciar cronómetro"),
@@ -338,7 +338,7 @@ UNIDADES.append({
                 b("Esperar hasta que", 1, "Distancia E < 20"),
                 b("parar movimiento", 1),
                 b("Cambiar variable por", 1, "rebotes · 1"),
-                b("mover ↑ durante 10 rotaciones", 1, "↓", "15", "cm"),
+                b("mover ↑ durante 10 rotaciones", 1, "↓", "20", "cm"),
                 b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 100", "0.5", "rotaciones"),
                 b("Cuando se inicia el programa"),
                 b("Bucle infinito"),
@@ -729,15 +729,15 @@ UNIDADES.append({
             b("Repetir bucle hasta", 1, "ángulo de guiñada > grados"),
             b("Esperar X segundos", 2, "0.01"),
             b("parar movimiento", 1),
-            b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-            b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+            b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+            b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
             b("Cuando se inicia el programa"),
             b("fijar A+B como motores en movimiento", 0, "A+B"),
             b("Fijar motores de movimiento para que frenen al parar", 0, "frenar"),
             b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
             b("fijar velocidad de movimiento al 50 %", 0, "30"),
             b("Repetir bucle", 0, "4"),
-            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (40)"),
+            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (1)"),
             b("Mis bloques: Crear un bloque con entradas", 1, "girar (90)"),
         ],
     },
@@ -773,23 +773,23 @@ UNIDADES.append({
     "intermedias": [
         {
             "titulo": "Avanzar con nombre",
-            "enunciado": "Crea un bloque propio llamado avanzar con un hueco de centímetros que mueva el robot hacia delante esa distancia. Úsalo con 20, con 40 y con 10.",
-            "pista": "El hueco se usa dentro como si fuera una variable, y se rellena al llamar al bloque.",
+            "enunciado": "Crea un bloque propio llamado avanzar baldosas con un hueco que mueva el robot ese número de baldosas, multiplicando por 40 dentro del bloque. Úsalo con media baldosa, con una y con un cuarto.",
+            "pista": "El hueco se usa dentro como si fuera una variable: la cuenta baldosas × 40 va dentro del bloque, y fuera solo se dice cuántas baldosas.",
             "solucion": [
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (20)"),
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (40)"),
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (10)"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (0.5)"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (1)"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (0.25)"),
             ],
             "notas": "Una definición y tres usos. La vuelta de rueda hay que fijarla en el programa principal, no dentro del bloque.",
         },
         {
             "titulo": "Girar con nombre",
-            "enunciado": "Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo de guiñada a cero; empieza a girar sobre el sitio; repite hasta pasar de esos grados; para el movimiento. Llámalo con 90 grados. Llámalo después con 180.",
+            "enunciado": "Alinea el robot con una junta del suelo. Crea un bloque llamado girar con un hueco de grados que haga esto: pon el ángulo de guiñada a cero; empieza a girar sobre el sitio; repite hasta pasar de esos grados; para el movimiento. Llámalo con 90 grados y mira si queda sobre la junta perpendicular. Llámalo después con 180.",
             "pista": "Dentro del bucle conviene dejar una espera muy corta para que el Hub tenga tiempo de leer el ángulo.",
             "solucion": [
                 b("Mis bloques: Crear un bloque con entradas", 0, "girar (grados)"),
@@ -825,11 +825,11 @@ UNIDADES.append({
         },
         {
             "titulo": "Un bloque dentro de otro",
-            "enunciado": "Crea un bloque llamado esquina sin huecos que llame a avanzar con 40 y a girar con 90. Úsalo cuatro veces seguidas.",
+            "enunciado": "Crea un bloque llamado esquina sin huecos que llame a avanzar baldosas con 1 y a girar con 90. Ponlo en una cruceta y úsalo cuatro veces seguidas: tiene que recorrer el borde de una baldosa y volver a la cruceta.",
             "pista": "Un bloque propio puede usar los bloques propios que ya tengas hechos.",
             "solucion": [
                 b("Mis bloques: Crear un bloque con entradas", 0, "esquina"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (40)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (1)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "girar (90)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -934,7 +934,7 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El circuito con bloques propios",
-            "enunciado": "Crea el bloque girar con hueco de grados y el bloque avanzar con hueco de centímetros. En el programa principal, prepara la base con la vuelta de rueda y el frenado, y repite cuatro veces llamar a avanzar con 40 y a girar con 90.",
+            "enunciado": "Crea el bloque girar con hueco de grados y el bloque avanzar baldosas. Pon el robot en una cruceta del suelo y, en el programa principal, prepara la base con la vuelta de rueda y el frenado, y repite cuatro veces llamar a avanzar baldosas con 1 y a girar con 90. Tiene que cerrar sobre la cruceta de salida.",
             "solucion": [
                 b("Mis bloques: Crear un bloque con entradas", 0, "girar (grados)"),
                 b("Fijar el ángulo de guiñada del Hub a 0", 1),
@@ -942,22 +942,22 @@ UNIDADES.append({
                 b("Repetir bucle hasta", 1, "ángulo de guiñada > grados"),
                 b("Esperar X segundos", 2, "0.01"),
                 b("parar movimiento", 1),
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("Fijar motores de movimiento para que frenen al parar", 0, "frenar"),
                 b("fijar 1 rotación del motor en 17.5 cm recorridos", 0, "17.5", "cm"),
                 b("fijar velocidad de movimiento al 50 %", 0, "30"),
                 b("Repetir bucle", 0, "4"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (40)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (1)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "girar (90)"),
             ],
             "notas": "Tres pilas: dos definiciones y el programa. El cuadrado tiene que cerrar sobre la marca de salida.",
         },
         {
             "titulo": "El triángulo con una esquina propia",
-            "enunciado": "Añade un bloque llamado tramo con un hueco de lado que llame a avanzar con ese lado y a girar con 120. Repite en el programa principal tres veces llamar a tramo con 50 y escribe FIN al terminar.",
+            "enunciado": "Añade un bloque llamado tramo con un hueco de lado que llame a avanzar baldosas con ese lado y a girar con 120. Repite en el programa principal tres veces llamar a tramo con 2 y escribe FIN al terminar: el triángulo cierra, aunque sus lados ya no sigan las juntas.",
             "solucion": [
                 b("Mis bloques: Crear un bloque con entradas", 0, "girar (grados)"),
                 b("Fijar el ángulo de guiñada del Hub a 0", 1),
@@ -965,10 +965,10 @@ UNIDADES.append({
                 b("Repetir bucle hasta", 1, "ángulo de guiñada > grados"),
                 b("Esperar X segundos", 2, "0.01"),
                 b("parar movimiento", 1),
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "tramo (lado)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (lado)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (lado)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "girar (120)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -1248,7 +1248,7 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El conductor y sus guardias",
-            "enunciado": "Prepara la base, pon los avisos a 0 y arranca el robot hacia delante en una pila. En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede 20 centímetros y vuelve a arrancar. En otra, al ver rojo, pon el botón central en rojo y escribe los avisos.",
+            "enunciado": "Pon la caja tres baldosas por delante y la cinta roja en la junta de en medio. Prepara la base, pon los avisos a 0 y arranca el robot hacia delante en una pila. En otra, al ver algo a menos de 15 centímetros, para, sube los avisos, toca una nota, retrocede media baldosa y vuelve a arrancar. En otra, al ver rojo, pon el botón central en rojo y escribe los avisos.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -1269,7 +1269,7 @@ UNIDADES.append({
         },
         {
             "titulo": "El parachoques que corta",
-            "enunciado": "Añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto: para el movimiento; enciende una cruz un segundo; escribe CHOQUE.",
+            "enunciado": "Con la misma pista de baldosas, añade al programa anterior una cuarta pila que repita sin parar comprobar el sensor de fuerza y, si está presionado, haga esto: para el movimiento; enciende una cruz un segundo; escribe CHOQUE.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2051,13 +2051,13 @@ UNIDADES.append({
     "intermedias": [
         {
             "titulo": "Apuntar en marcha",
-            "enunciado": "Haz dos pilas: en una, avanza 60 centímetros; en la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas. Escribe al final cuántas medidas hay.",
+            "enunciado": "Haz dos pilas: en una, recorre dos baldosas (80 centímetros); en la otra, repite veinte veces añadir la distancia a la lista huecos y esperar dos décimas. Escribe al final cuántas medidas hay.",
             "pista": "Las dos pilas arrancan a la vez con el mismo sombrero de inicio.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("fijar velocidad de movimiento al 50 %", 0, "25"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "60", "cm"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "80", "cm"),
                 b("Cuando se inicia el programa"),
                 b("Repetir bucle", 0, "20"),
                 b("Añadir elemento a lista", 1, "huecos · Distancia E"),
@@ -2074,7 +2074,7 @@ UNIDADES.append({
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("Fijar variable a", 0, "midiendo · 1"),
-                b("mover ↑ durante 10 rotaciones", 0, "↑", "60", "cm"),
+                b("mover ↑ durante 10 rotaciones", 0, "↑", "80", "cm"),
                 b("Fijar variable a", 0, "midiendo · 0"),
                 b("Cuando se inicia el programa"),
                 b("Repetir bucle hasta", 0, "midiendo = 0"),
@@ -2195,7 +2195,7 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El explorador del pasillo",
-            "enunciado": "Pon midiendo a 1, prepara la base y avanza 120 centímetros, y al terminar pon midiendo a 0. En otra pila, repite hasta que midiendo valga 0: añade la distancia a la lista huecos; mándala al gráfico de líneas; espera medio segundo.",
+            "enunciado": "Monta el pasillo a lo largo de tres baldosas. Pon midiendo a 1, prepara la base y recorre esas tres baldosas (120 centímetros), y al terminar pon midiendo a 0. En otra pila, repite hasta que midiendo valga 0: añade la distancia a la lista huecos; mándala al gráfico de líneas; espera medio segundo.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2214,7 +2214,7 @@ UNIDADES.append({
         },
         {
             "titulo": "El hueco más ancho",
-            "enunciado": "Añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido. En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud: cambia mayor si el elemento que toca es más grande; sube paso en uno. Escribe el resultado al final.",
+            "enunciado": "Con el pasillo de tres baldosas del ejercicio anterior, añade una tercera pila que arranque con el mensaje analizar, mandado al terminar el recorrido. En ella, pon mayor al primer elemento de la lista y paso a 1, y repite hasta que paso pase de la longitud: cambia mayor si el elemento que toca es más grande; sube paso en uno. Escribe el resultado al final.",
             "solucion": [
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2300,20 +2300,20 @@ UNIDADES.append({
         "titulo": "El ciclo completo con librería de maniobras",
         "explicacion": "Cinco definiciones encadenadas. El programa principal solo llama a ciclo tres veces, y dentro de ciclo está todo lo demás.",
         "bloques": [
-            b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-            b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+            b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+            b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
             b("Mis bloques: Crear un bloque con entradas", 0, "curva (grados)"),
             b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 60", "grados", "grados"),
             b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
             b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
             b("Mis bloques: Crear un bloque con entradas", 0, "coger"),
             b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
-            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (15)"),
+            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (0.5)"),
             b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
             b("Mis bloques: Crear un bloque con entradas", 0, "ciclo"),
             b("Mis bloques: Crear un bloque con entradas", 1, "coger"),
             b("Mis bloques: Crear un bloque con entradas", 1, "curva (90)"),
-            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (40)"),
+            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (1)"),
             b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
             b("Cuando se inicia el programa"),
             b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2402,16 +2402,16 @@ UNIDADES.append({
         },
         {
             "titulo": "Un bloque de tres",
-            "enunciado": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120. Llámalo una vez y comprueba que recoge la carga.",
+            "enunciado": "Crea un bloque llamado coger que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120. Llámalo una vez y comprueba que recoge la carga.",
             "pista": "Dentro de un bloque propio se pueden llamar los bloques propios que ya tengas.",
             "solucion": [
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
                 b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "coger"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (15)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (0.5)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2514,17 +2514,17 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "La librería de maniobras",
-            "enunciado": "Crea cuatro bloques propios: avanzar con hueco de centímetros, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar con 15 y a horquilla con 120. En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger.",
+            "enunciado": "Crea cuatro bloques propios: avanzar baldosas, curva con hueco de grados, horquilla con hueco de altura y coger, que llame a horquilla con 0, a avanzar baldosas con media y a horquilla con 120. Pon la carga media baldosa por delante. En el programa principal, prepara la base, pon la aceleración del motor C en suave, pon su posición a 0 y llama a coger.",
             "solucion": [
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "curva (grados)"),
                 b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 60", "grados", "grados"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
                 b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "coger"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (15)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (0.5)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2537,22 +2537,22 @@ UNIDADES.append({
         },
         {
             "titulo": "El ciclo repetido tres veces",
-            "enunciado": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar con 40 y a horquilla con 0. Repite en el programa principal tres veces llamar a ciclo y escribe FIN al terminar.",
+            "enunciado": "Añade un bloque llamado ciclo que llame a coger, a curva con 90, a avanzar baldosas con 1 y a horquilla con 0. Repite en el programa principal tres veces llamar a ciclo y escribe FIN al terminar.",
             "solucion": [
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "curva (grados)"),
                 b("mover derecha: 30 durante 10 rotaciones", 1, "derecha: 60", "grados", "grados"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
                 b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "coger"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (15)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (0.5)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "ciclo"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "coger"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "curva (90)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (40)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (1)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
@@ -2627,16 +2627,16 @@ UNIDADES.append({
         "titulo": "El almacén en cinco pilas",
         "explicacion": "El mando lee el pulsador y manda el pedido. El estado pasa a servir, la conducción llama a la librería para ir a la bahía y volver, y el registro apunta el pedido y el tiempo.",
         "bloques": [
-            b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-            b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+            b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+            b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
             b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
             b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
             b("Mis bloques: Crear un bloque con entradas", 0, "servir (bahia)"),
-            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × 30)"),
+            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia)"),
             b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
             b("Esperar hasta que", 1, "¿Está más próximo a? E 10 cm"),
             b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
-            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × -30)"),
+            b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia × -1)"),
             b("Cuando se inicia el programa"),
             b("fijar A+B como motores en movimiento", 0, "A+B"),
             b("Fijar motores de movimiento para que frenen al parar", 0, "frenar"),
@@ -2718,19 +2718,19 @@ UNIDADES.append({
         },
         {
             "titulo": "El bloque que sirve una bahía",
-            "enunciado": "Crea el bloque avanzar con hueco de centímetros y el bloque horquilla con hueco de altura. Crea después servir con un hueco de bahía que avance la bahía por 30 centímetros, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva.",
+            "enunciado": "Marca las tres bahías del almacén en tres crucetas seguidas, a una, dos y tres baldosas de la salida. Crea el bloque avanzar baldosas y el bloque horquilla con hueco de altura. Crea después servir con un hueco de bahía que avance tantas baldosas como diga la bahía, baje la horquilla, espere a tener la carga a menos de 10 centímetros, la suba y vuelva.",
             "pista": "La distancia de cada bahía sale de multiplicar su número por 30.",
             "solucion": [
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
                 b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "servir (bahia)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × 30)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
                 b("Esperar hasta que", 1, "¿Está más próximo a? E 10 cm"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × -30)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia × -1)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("Fijar la posición relativa en…", 0, "C · 0"),
@@ -2862,18 +2862,18 @@ UNIDADES.append({
     "practicas": [
         {
             "titulo": "El almacén que sirve pedidos",
-            "enunciado": "Crea los bloques avanzar, horquilla y servir con hueco de bahía. En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1. En la pila de mando, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar servir y esperar a que se suelte. En la pila del mensaje servir, reinicia el cronómetro, llama a servir con el pedido y pon la fase a 0.",
+            "enunciado": "Crea los bloques avanzar baldosas, horquilla y servir con hueco de bahía, con las bahías en tres crucetas a una, dos y tres baldosas. En la pila de arranque, prepara la base con el frenado y la vuelta de rueda, pon la aceleración del motor C en suave, su posición a 0, la fase a 0 y el pedido a 1. En la pila de mando, repite sin parar comprobar el sensor de fuerza, poner la fase a 1, mandar servir y esperar a que se suelte. En la pila del mensaje servir, reinicia el cronómetro, llama a servir con el pedido y pon la fase a 0.",
             "solucion": [
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
                 b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "servir (bahia)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × 30)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
                 b("Esperar hasta que", 1, "¿Está más próximo a? E 10 cm"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × -30)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia × -1)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("Fijar motores de movimiento para que frenen al parar", 0, "frenar"),
@@ -2897,18 +2897,18 @@ UNIDADES.append({
         },
         {
             "titulo": "El registro del turno completo",
-            "enunciado": "Amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno. Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos.",
+            "enunciado": "Con el almacén de tres bahías en sus crucetas, amplía el proyecto para que, al acabar cada pedido, se apunte el número en la lista servidos y el cronómetro en la lista tiempos, y se suba el pedido en uno. Añade una pila de panel que enseñe la flecha si la fase es 1 y el cuadrado si no, y escriba cuántos pedidos van servidos.",
             "solucion": [
-                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar (centimetros)"),
-                b("mover ↑ durante 10 rotaciones", 1, "↑", "centimetros", "cm"),
+                b("Mis bloques: Crear un bloque con entradas", 0, "avanzar baldosas (baldosas)"),
+                b("mover ↑ durante 10 rotaciones", 1, "↑", "baldosas × 40", "cm"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "horquilla (altura)"),
                 b("Ir a la posición relativa del motor a velocidad", 1, "C · altura · 25"),
                 b("Mis bloques: Crear un bloque con entradas", 0, "servir (bahia)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × 30)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia)"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (0)"),
                 b("Esperar hasta que", 1, "¿Está más próximo a? E 10 cm"),
                 b("Mis bloques: Crear un bloque con entradas", 1, "horquilla (120)"),
-                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar (bahia × -30)"),
+                b("Mis bloques: Crear un bloque con entradas", 1, "avanzar baldosas (bahia × -1)"),
                 b("Cuando se inicia el programa"),
                 b("fijar A+B como motores en movimiento", 0, "A+B"),
                 b("Fijar motores de movimiento para que frenen al parar", 0, "frenar"),
@@ -2942,8 +2942,39 @@ UNIDADES.append({
 })
 
 
+# ── El suelo del aula ──────────────────────────────────────────────────
+#
+# Las prácticas que se hacen sobre el terrazo del aula, de baldosas de
+# 40 × 40 cm. En 3º la baldosa deja de ser una medida y pasa a ser una
+# UNIDAD del programa: el bloque propio se llama «avanzar baldosas» y la
+# cuenta baldosas × 40 va dentro, así que el programa principal habla en
+# baldosas y de los centímetros no se acuerda nadie. Las bahías del
+# almacén de la UD9 son tres crucetas seguidas, a una, dos y tres.
+EN_EL_SUELO = {
+    (1, "El marcador en marcha"),
+    (1, "La patrulla con marcador"),
+    (1, "El límite de treinta segundos"),
+    (3, "Avanzar con nombre"),
+    (3, "Girar con nombre"),
+    (3, "Un bloque dentro de otro"),
+    (3, "El circuito con bloques propios"),
+    (3, "El triángulo con una esquina propia"),
+    (4, "El conductor y sus guardias"),
+    (4, "El parachoques que corta"),
+    (7, "Apuntar en marcha"),
+    (7, "El explorador del pasillo"),
+    (7, "El hueco más ancho"),
+    (8, "Un bloque de tres"),
+    (8, "La librería de maniobras"),
+    (8, "El ciclo repetido tres veces"),
+    (9, "El bloque que sirve una bahía"),
+    (9, "El almacén que sirve pedidos"),
+    (9, "El registro del turno completo"),
+}
+
+
 if __name__ == "__main__":
     # Se regenera el curso entero, así que se puede repartir la respuesta
     # correcta entre las cuatro letras (ver reparte_respuestas).
     reparte_respuestas(UNIDADES)
-    main("3ESO", UNIDADES, VIDEOS)
+    main("3ESO", UNIDADES, VIDEOS, EN_EL_SUELO)
