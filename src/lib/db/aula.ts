@@ -19,6 +19,7 @@ import { getPracticasIntermediasDeUnidad } from "@/lib/contenido";
 import { nivelDeParecido, parecidoDeProgramas, type Nivel } from "@/lib/parecido";
 import {
   TEST_QUESTIONS,
+  MILESTONES_PER_UNIT,
   THEORY_STEPS,
   UNIT_NUMBERS,
   type AccessKind,
@@ -30,9 +31,6 @@ import {
   type StudentUnitAccess,
   type UnitProgress,
 } from "@/lib/types";
-
-/** Hitos que cuentan para el progreso de cada unidad: teoría, test y 2 entregas. */
-const MILESTONES_PER_UNIT = 4;
 
 // ── Reglas por defecto ───────────────────────────────────────────────────
 // Por defecto solo la UD 1 está abierta y todas las PRUEBAS están cerradas.

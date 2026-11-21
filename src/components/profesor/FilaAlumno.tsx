@@ -9,6 +9,7 @@
 // Los campos, el desplegable, el botón y la acción son exactamente los de
 // antes: lo único que cambia es el tamaño y el aire.
 
+import Link from "next/link";
 import { actualizarAlumnoAction } from "@/actions/profesor";
 import { PendingButton } from "@/components/ui/PendingButton";
 import { COURSES, COURSE_LABEL, type PublicUser } from "@/lib/types";
@@ -21,7 +22,7 @@ import { COURSES, COURSE_LABEL, type PublicUser } from "@/lib/types";
  * a partir de `sm` entra todo en una.
  */
 const COLUMNAS =
-  "grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-1 sm:grid-cols-[minmax(7rem,1.2fr)_minmax(0,1.4fr)_auto_auto]";
+  "grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-3 gap-y-1 sm:grid-cols-[minmax(7rem,1.2fr)_minmax(0,1.4fr)_auto_auto_auto]";
 
 /** Los rótulos, una vez por bloque de curso en lugar de uno por alumno. */
 export function CabeceraAlumnos() {
@@ -34,6 +35,7 @@ export function CabeceraAlumnos() {
       <span className="hidden sm:block">Correo</span>
       <span>Curso</span>
       <span className="text-right">Acción</span>
+      <span className="text-right">Informe</span>
     </div>
   );
 }
@@ -82,6 +84,19 @@ export function FilaAlumno({ alumno }: { alumno: PublicUser }) {
       <PendingButton size="compacto" pendingLabel="…">
         Guardar
       </PendingButton>
+
+      {/* El informe es un enlace, no un envío: abre su página en otra
+          pestaña y allí el navegador lo guarda como PDF. Con ?imprimir=1
+          el diálogo de impresión se abre solo al llegar. */}
+      <Link
+        href={`/dashboard/profesor/informes/alumno/${alumno.id}?imprimir=1`}
+        target="_blank"
+        rel="noopener"
+        title={`Informe en PDF de ${alumno.name}`}
+        className="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-xl border-2 border-ink-200 bg-white px-3 text-xs font-extrabold text-ink-800 transition-colors hover:border-ink-900"
+      >
+        Informe PDF
+      </Link>
     </form>
   );
 }

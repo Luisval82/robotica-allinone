@@ -298,6 +298,55 @@ cambiado, 0,90; un bloque de menos, 0,84; dos bloques intercambiados, 0,72 (nara
 debe caer un error de lógica); sacar todo fuera del bucle, 0,25. Y el programa de **otra** práctica
 llega a verde claro en 1 de cada 9 casos; con una media ponderada normal eran 1 de cada 4.
 
+### Informes en PDF (`/dashboard/profesor/informes/…`)
+
+Desde la pestaña **«Alumnado»** salen dos informes:
+
+- **«Informe PDF»**, en la fila de cada alumno: sus datos, el avance del curso, la nota media, el
+  **gráfico de evolución**, el resumen por evaluaciones y la tabla unidad por unidad (teoría,
+  prácticas, test, las 2 programaciones y la nota).
+- **«Informe clase PDF»**, en la cabecera de cada curso: los contadores del grupo, el mismo
+  gráfico con la media de la clase y una fila por alumno con su avance, sus prácticas, sus
+  pruebas cerradas, la media de cada evaluación y la media final.
+
+**Cómo se hace el PDF: lo imprime el navegador, no lo genera el servidor.** La página se maqueta
+para papel con la hoja de estilos de impresión (`@media print` al final de `src/app/globals.css`)
+y el navegador la guarda como PDF —«Guardar como PDF» en el escritorio, «Compartir → Imprimir» en
+el iPad—. Con `?imprimir=1` en la dirección, que es como se llega desde los botones, el diálogo se
+abre solo al cargar, después de `document.fonts.ready` (si se llama a `print()` antes, algunos
+navegadores capturan la página con la tipografía de reserva).
+
+Se hizo así a propósito, no por falta de ganas de poner una librería: el informe sale con la
+tipografía, los colores y el diseño **exactos** de la plataforma, no hay una dependencia nueva que
+mantener, y un cambio de estilo en la web se ve en el PDF sin tocar nada. Lo que se paga es un
+clic y que el nombre del archivo lo pone el navegador. Si algún día hace falta un `.pdf` que se
+descargue solo —para adjuntarlo a un correo automático, por ejemplo— ahí sí haría falta generarlo
+en el servidor.
+
+**El gráfico es SVG escrito a mano** (`src/components/informes/GraficoEvolucion.tsx`), sin
+librería de gráficas: se imprime nítido a cualquier tamaño, lo pinta el servidor —así el informe
+sale entero en el primer HTML— y no añade peso. Los dos ejes miden lo mismo por dentro (0–100): el
+avance en % a la izquierda y la nota 0–10 a la derecha, que es el mismo punto × 10; por eso la
+raya discontinua del 50 % es también el 5 de aprobado. La línea **se parte** donde no hay nota, en
+lugar de inventar el tramo. El mismo componente dibuja al alumno y la media del grupo, para poder
+comparar los dos mirando dibujos iguales.
+
+Las cuentas están en `src/lib/informes.ts`, fuera de las páginas, para que el informe individual y
+el de la clase digan lo mismo. El avance por unidad usa `MILESTONES_PER_UNIT` (en `src/lib/types.ts`),
+el mismo que la matriz de seguimiento: si contaran distinto, el porcentaje de la pantalla no
+cuadraría con el del PDF. En las medias solo entran las PRUEBAS **cerradas del todo**; una prueba a
+medias daría una media baja que no dice nada, y en un papel que alguien va a leer sin poder
+preguntar eso es peor que no decir nada.
+
+Quién puede abrirlos: el profesorado de ese curso y el superadministrador, con el mismo alcance
+que el resto del panel. Un profesor que escriba a mano la dirección del informe de un alumno de un
+curso que no imparte recibe un 404.
+
+**Comprobado imprimiendo de verdad**, con Chrome y la misma hoja de estilos: A4 con márgenes, la
+barra de acciones no sale en el papel, el gráfico no se corta, ninguna fila se parte por la mitad
+y **la cabecera de la tabla se repite en cada página** (`thead { display: table-header-group }`),
+probado con un grupo de 26 alumnos que ocupa dos páginas.
+
 ### Cómo se califica una PRUEBA
 
 Una PRUEBA vale **10 puntos de 1**:

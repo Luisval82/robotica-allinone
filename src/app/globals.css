@@ -603,3 +603,65 @@
 .editor-bloques .blocklySvg {
   touch-action: none;
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   Impresión: los informes del profesor (/dashboard/profesor/informes/…).
+   No hay generador de PDF en el servidor; el PDF lo hace el navegador al
+   imprimir esta misma página, así que el informe sale con la tipografía,
+   los colores y el diseño exactos de la plataforma.
+   ════════════════════════════════════════════════════════════════════════ */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 10mm 14mm;
+  }
+
+  /* Lo que es de la pantalla y no del papel: cabecera, botones, avisos. */
+  [data-no-print] {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: white;
+  }
+
+  /* El marco del panel centra y limita el ancho; en papel sobra. */
+  body main {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Nada que se pueda partir por la mitad se parte. */
+  .evitar-corte,
+  tr,
+  figure,
+  svg,
+  img {
+    break-inside: avoid;
+  }
+
+  /* La cabecera de una tabla larga se repite en cada página. */
+  thead {
+    display: table-header-group;
+  }
+
+  /* Un salto de página a propósito, cuando haga falta. */
+  .salto-antes {
+    break-before: page;
+  }
+
+  /* Los colores de fondo de las barras y los distintivos tienen que salir:
+     sin esto, muchos navegadores imprimen los fondos en blanco. */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* La hoja del informe no lleva sombra ni caja en papel. */
+  .hoja {
+    box-shadow: none;
+    border: 0;
+  }
+}

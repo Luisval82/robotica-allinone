@@ -140,6 +140,14 @@ export interface StudentUnitAccess {
 /** Pasos de teoría de cada unidad: vídeo, puertos, bloques y modelo. */
 export const THEORY_STEPS = 4;
 
+/**
+ * Los hitos que cuentan como avance en una unidad: terminar la teoría,
+ * entregar el test y entregar las 2 programaciones de la PRUEBA.
+ * Lo usan la matriz de seguimiento y los informes, y tienen que contar lo
+ * mismo o el porcentaje de la pantalla no cuadraría con el del PDF.
+ */
+export const MILESTONES_PER_UNIT = 4;
+
 /** Avance de un alumno en una unidad. */
 export interface UnitProgress {
   alumnoId: string;

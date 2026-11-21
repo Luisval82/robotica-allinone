@@ -15,7 +15,10 @@ import type { SessionUser } from "@/lib/types";
  */
 export function Header({ user }: { user?: SessionUser | null }) {
   return (
-    <header className="sticky top-0 z-30 border-b-2 border-ink-100 bg-white/95 backdrop-blur">
+    <header
+      data-no-print
+      className="sticky top-0 z-30 border-b-2 border-ink-100 bg-white/95 backdrop-blur"
+    >
       <div className="mx-auto flex min-h-16 max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2 sm:px-6">
         <Link href="/" aria-label="ROBOTICA ALLINONE, inicio" className="rounded-xl">
           <Logo />

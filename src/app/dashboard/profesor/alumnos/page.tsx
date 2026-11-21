@@ -83,13 +83,27 @@ export default async function FichasPage() {
             aria-labelledby={`fichas-${course}`}
             className="mt-8 overflow-hidden rounded-card bg-white shadow-card"
           >
-            <div className={`px-6 py-4 ${COURSE_TONE[course]}`}>
+            <div
+              className={`flex flex-wrap items-center justify-between gap-3 px-6 py-4 ${COURSE_TONE[course]}`}
+            >
               <h2 id={`fichas-${course}`} className="font-display text-2xl font-semibold">
                 {COURSE_LABEL[course]}
                 <span className="ml-3 text-base font-semibold opacity-90">
                   {delCurso.length} {delCurso.length === 1 ? "alumno" : "alumnos"}
                 </span>
               </h2>
+
+              {delCurso.length > 0 ? (
+                <Link
+                  href={`/dashboard/profesor/informes/clase/${course}?imprimir=1`}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex h-9 items-center gap-2 rounded-xl border-2 border-ink-900/20 bg-white/90 px-3 text-sm font-extrabold text-ink-900 transition hover:bg-white"
+                >
+                  Informe clase PDF
+                  <ArrowRightIcon className="size-4" />
+                </Link>
+              ) : null}
             </div>
 
             {delCurso.length === 0 ? (
