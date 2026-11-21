@@ -353,6 +353,66 @@ export async function borrarResultadoDeTest(
   return true;
 }
 
+/**
+ * La actividad de un alumno en la plataforma, para el informe.
+ *
+ * OJO con lo que NO hay aquí, porque no está en ninguna tabla: la
+ * plataforma **no registra los accesos** (no hay historial de inicios de
+ * sesión) ni **el tiempo** que alguien pasa en una pantalla. Lo único con
+ * fecha es lo que se entrega: las prácticas y las programaciones. Así que
+ * «actividad» significa exactamente eso —qué ha entregado y qué días—, y el
+ * informe lo dice en lugar de dar a entender otra cosa.
+ */
+export interface ActividadAlumno {
+  /** Días distintos en los que ha entregado algo. */
+  dias: number;
+  /** Prácticas guardadas pero sin dar por comprobadas. */
+  borradores: number;
+  comprobadas: number;
+  /** Programaciones de PRUEBA entregadas. */
+  entregas: number;
+  /** Fecha de lo último que entregó, en ISO. null si no ha entregado nada. */
+  ultima: string | null;
+}
+
+export async function getActividadDelAlumno(alumnoId: string): Promise<ActividadAlumno> {
+  const anio = await getAnioActivo();
+
+  const [practicas, entregas] = await Promise.all([
+    supabase
+      .from("practicas_intermedias")
+      .select("entregada_en, comprobada_en")
+      .eq("anio", anio)
+      .eq("alumno_id", alumnoId),
+    supabase
+      .from("entregas")
+      .select("entregada_en")
+      .eq("anio", anio)
+      .eq("alumno_id", alumnoId),
+  ]);
+  assertNoError(practicas.error, "getActividadDelAlumno/practicas");
+  assertNoError(entregas.error, "getActividadDelAlumno/entregas");
+
+  const filasPracticas = (practicas.data ?? []) as {
+    entregada_en: string;
+    comprobada_en: string | null;
+  }[];
+  const filasEntregas = (entregas.data ?? []) as { entregada_en: string }[];
+
+  const fechas = [
+    ...filasPracticas.map((f) => f.comprobada_en ?? f.entregada_en),
+    ...filasEntregas.map((f) => f.entregada_en),
+  ].filter((fecha): fecha is string => Boolean(fecha));
+
+  return {
+    dias: new Set(fechas.map((fecha) => fecha.slice(0, 10))).size,
+    borradores: filasPracticas.filter((f) => f.comprobada_en === null).length,
+    comprobadas: filasPracticas.filter((f) => f.comprobada_en !== null).length,
+    entregas: filasEntregas.length,
+    ultima: fechas.length === 0 ? null : fechas.reduce((a, b) => (a > b ? a : b)),
+  };
+}
+
 export interface NotaPrueba {
   unidad: number;
   /** Aciertos del test, de 0 a 8. Cada acierto vale 1 punto. null = sin entregar. */

@@ -647,6 +647,14 @@
     display: table-header-group;
   }
 
+  /* Un título nunca se queda solo al final de una página, con su contenido
+     en la siguiente. */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
   /* Un salto de página a propósito, cuando haga falta. */
   .salto-antes {
     break-before: page;

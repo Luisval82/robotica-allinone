@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AnalisisAlumno } from "@/components/informes/AnalisisAlumno";
 import { GraficoEvolucion } from "@/components/informes/GraficoEvolucion";
 import { HojaInforme } from "@/components/informes/HojaInforme";
+import { analizarAlumno } from "@/lib/analisis";
 import { requireRole } from "@/lib/auth";
 import {
   findUserById,
+  getActividadDelAlumno,
   getCursosVisibles,
   getMatrizSeguimiento,
   puedeVerCurso,
@@ -54,11 +57,17 @@ export default async function InformeAlumnoPage({
   const visibles = await getCursosVisibles(session);
   if (!puedeVerCurso(visibles, alumno.course)) return notFound();
 
-  const matriz = await getMatrizSeguimiento(alumno.course);
+  const [matriz, actividad] = await Promise.all([
+    getMatrizSeguimiento(alumno.course),
+    getActividadDelAlumno(alumnoId),
+  ]);
   const fila = matriz.find((f) => f.alumno.id === alumnoId);
   if (!fila) return notFound();
 
   const informe = informeDeAlumno(fila, alumno.course);
+  // La clase entra en el análisis para poder decir si va por delante o por
+  // detrás de sus compañeros, que es lo que de verdad sitúa a un alumno.
+  const analisis = analizarAlumno(informe, actividad, matriz);
 
   return (
     <HojaInforme
@@ -90,6 +99,8 @@ export default async function InformeAlumnoPage({
           valor={`${informe.practicasComprobadas} de ${informe.practicasTotales}`}
         />
       </dl>
+
+      <AnalisisAlumno analisis={analisis} />
 
       <section className="mt-6">
         <h2 className="font-display text-xl font-semibold text-ink-900">Evolución por unidades</h2>

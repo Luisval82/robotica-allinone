@@ -323,6 +323,49 @@ clic y que el nombre del archivo lo pone el navegador. Si algún día hace falta
 descargue solo —para adjuntarlo a un correo automático, por ejemplo— ahí sí haría falta generarlo
 en el servidor.
 
+#### El análisis y la orientación de nota (`src/lib/analisis.ts`)
+
+El informe individual abre con un bloque de cuatro frases —actividad, progreso, dedicación a las
+prácticas y relación entre notas y trabajo— y un distintivo con la orientación: **la nota se
+corresponde**, **podría ser mayor** o **podría ser menor**.
+
+**Lo que este análisis NO puede saber, y lo dice en el propio informe.** La plataforma no registra
+los accesos (no hay historial de inicios de sesión en ninguna tabla) ni el tiempo que alguien pasa
+en una pantalla; `progreso` ni siquiera lleva fecha. Lo único fechado es lo que se entrega. Así
+que «actividad» significa aquí qué ha entregado y qué días, y «dedicación» son prácticas hechas,
+no horas. Si algún día hace falta de verdad, eso se arregla registrando los accesos, no afinando
+el análisis.
+
+**La regla de fondo es callarse antes que inventar.** Una tendencia sacada de una unidad no es una
+tendencia, y orientar una nota con un solo examen corregido no orienta nada:
+
+| | Mínimo | Si no se llega |
+| --- | --- | --- |
+| Tendencia de progreso | 3 unidades empezadas | «hacen falta 3 para ver si sube o baja» |
+| Etiqueta de dedicación | 3 unidades empezadas | se da el dato sin etiqueta |
+| Orientación de nota | 2 PRUEBAS cerradas | «sin datos suficientes para orientar» |
+| Comparación con la clase | 5 alumnos en el curso | no se compara |
+
+La orientación sale de comparar dos números en la misma escala, **solo en las unidades donde hay
+nota cerrada**: el trabajo previo (la teoría vale 2 y cada una de las 4 prácticas otros 2, hasta
+10) frente a la nota de la PRUEBA. Si el hueco pasa de 2 puntos —un 20 % de la escala, suficiente
+para no saltar por una práctica de más o de menos— se señala en un sentido o en otro.
+
+Dos decisiones que conviene conocer:
+
+- **El parecido con la solución oficial NO entra en la orientación.** La propia plataforma avisa de
+  que no es una nota —un programa distinto y correcto sale en naranja—, y meterlo en una
+  orientación de calificación sería amplificar una señal que ya se sabe imprecisa. Se cuenta lo
+  hecho, no lo bien hecho.
+- **Con una o dos unidades no se etiqueta la dedicación.** Llamar «escasa» a la dedicación de quien
+  acaba de empezar la UD 1 es un juicio sin recorrido, y este papel lo lee su profesor.
+
+Comprobado sobre nueve escenarios, incluidos los alumnos reales de la base: quien curra y saca
+poco sale como «podría ser mayor» (trabajo 10 frente a nota 5,2), quien saca mucho sin practicar
+como «podría ser menor» (2 frente a 9), el equilibrado como «se corresponde» (8 frente a 7,5), y
+los cinco alumnos reales —ninguno pasa de una unidad— como «sin datos suficientes», que es la
+respuesta correcta.
+
 **El gráfico es SVG escrito a mano** (`src/components/informes/GraficoEvolucion.tsx`), sin
 librería de gráficas: se imprime nítido a cualquier tamaño, lo pinta el servidor —así el informe
 sale entero en el primer HTML— y no añade peso. Los dos ejes miden lo mismo por dentro (0–100): el
