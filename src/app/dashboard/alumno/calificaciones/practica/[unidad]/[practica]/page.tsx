@@ -156,22 +156,44 @@ export default async function MiPracticaPage({
         </section>
       </div>
 
-      {/* Saltar a las otras tres sin volver a la tabla. */}
+      {/* Saltar a las otras tres sin volver a la tabla, viendo de un vistazo
+          cuáles quedan por entregar. Verde y amarillo nunca van solos: cada
+          botón dice su estado en el título y para el lector de pantalla. */}
       <nav aria-label="Las otras prácticas de la unidad" className="flex flex-wrap gap-2">
         {practicas.map((otra) => {
           const activa = otra.practica === numero;
+          const suya = guardadas.find((item) => item.practica === otra.practica);
+          const terminada = suya?.comprobadaEn != null;
+          const borrador = suya != null && !terminada;
+          const estado = terminada
+            ? "entregada"
+            : borrador
+              ? "empezada, pendiente de entregar"
+              : "pendiente de entregar";
+
           return (
             <Link
               key={otra.practica}
               href={`/dashboard/alumno/calificaciones/practica/${unidad}/${otra.practica}`}
               aria-current={activa ? "page" : undefined}
-              className={`rounded-full px-4 py-2 text-sm font-extrabold transition-colors ${
-                activa
-                  ? "bg-ink-900 text-white"
-                  : "border-2 border-ink-200 bg-white text-ink-700 hover:border-ink-900"
+              title={`Práctica ${otra.practica}: ${estado}`}
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-extrabold transition-colors ${
+                terminada ? "bg-nivel-bien text-white" : "bg-hub-400 text-ink-900"
+              } ${
+                // La que estás viendo se marca con el aro, no con otro color:
+                // así no pierde el suyo, que es lo que se viene a mirar.
+                activa ? "ring-2 ring-ink-900 ring-offset-2" : "hover:opacity-85"
               }`}
             >
               Práctica {otra.practica}
+              {/* El mismo punto que en la matriz: guardada pero sin cerrar. */}
+              {borrador ? (
+                <span
+                  aria-hidden="true"
+                  className="size-2 rounded-full bg-ink-900/40"
+                />
+              ) : null}
+              <span className="sr-only"> · {estado}</span>
             </Link>
           );
         })}
@@ -182,6 +204,13 @@ export default async function MiPracticaPage({
           Ir a la unidad {unidad}
         </Link>
       </nav>
+
+      <p className="-mt-3 text-sm font-semibold text-ink-600">
+        En <b className="text-ink-900">verde</b> las que ya has entregado con «Guardar y
+        comprobar»; en <b className="text-ink-900">amarillo</b> las que te quedan, con un punto si
+        la tienes guardada a medias. Estas 4 no las puntúa tu profesor: el verde quiere decir
+        entregada, no aprobada.
+      </p>
     </div>
   );
 }
