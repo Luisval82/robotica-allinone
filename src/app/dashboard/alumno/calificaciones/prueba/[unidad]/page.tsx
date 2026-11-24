@@ -33,12 +33,12 @@ export default async function MiCorreccionPage({
   params: Promise<{ unidad: string }>;
 }) {
   const session = await requireRole(["alumno"]);
-  if (!session.course) notFound();
+  if (!session.course) return notFound();
   const curso = session.course;
 
   const { unidad: unidadTexto } = await params;
   const unidad = Number(unidadTexto);
-  if (!UNIT_NUMBERS.some((n) => n === unidad)) notFound();
+  if (!UNIT_NUMBERS.some((n) => n === unidad)) return notFound();
 
   // Siempre con el id de la sesión: no hay forma de pedir la prueba de otro.
   const [progreso, entrega1, entrega2] = await Promise.all([
@@ -167,7 +167,7 @@ export default async function MiCorreccionPage({
             </div>
 
             {([1, 2] as const).map((numero) => {
-              const entrega = entregas[numero - 1];
+              const entrega = entregas[numero - 1] ?? null;
               const practica = getPractica(curso, unidad, numero);
               // La solución oficial, solo con esta programación ya puntuada.
               const puedeVerSolucion = entrega !== null && entrega.puntos !== null;

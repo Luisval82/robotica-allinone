@@ -12,6 +12,14 @@
 # (scripts/tipos-base.txt, tomada de un commit que Vercel compiló bien) y se
 # compara. Si aparece un error que no estaba en la foto, es tuyo.
 #
+# La foto tiene un agujero, y conviene saberlo: compara SIN número de línea,
+# así que un error de verdad en un archivo que ya tenía ruido de la misma
+# familia pasa desapercibido. Pasó: una firma mal puesta y un índice sin
+# comprobar llegaron a Vercel escondidos detrás de TS2345 y TS18048 que ya
+# estaban en la foto. Por eso hay un segundo aviso: en los archivos que acabas
+# de tocar se enseña TODO lo que no sea ruido de módulos ausentes, esté o no en
+# la foto. Es ruidoso a propósito; ahí es donde está lo tuyo.
+#
 #   ./scripts/tipos.sh          comprueba
 #   ./scripts/tipos.sh --fijar  vuelve a tomar la foto (solo si Vercel va bien)
 set -uo pipefail
@@ -31,6 +39,25 @@ fi
 [ -f "$BASE" ] || { echo "Falta $BASE. Haz ./scripts/tipos.sh --fijar"; exit 1; }
 
 nuevos=$(comm -23 <(printf '%s\n' "$actual") <(sort -u "$BASE"))
+
+# Lo que tsc dice de los archivos que has tocado, con línea y todo. Solo se
+# quitan las tres familias que SÍ son puro ruido de no tener node_modules:
+# módulo no encontrado y las dos de JSX sin tipos de React.
+tocados=$(git diff --name-only HEAD -- "src/**/*.ts" "src/**/*.tsx" 2>/dev/null
+          git diff --name-only --cached HEAD -- "src/**/*.ts" "src/**/*.tsx" 2>/dev/null
+          git ls-files --others --exclude-standard -- "src/**/*.ts" "src/**/*.tsx" 2>/dev/null)
+tocados=$(printf '%s\n' "$tocados" | sed '/^$/d' | sort -u)
+
+if [ -n "$tocados" ]; then
+  patron=$(printf '%s\n' "$tocados" | sed 's/[].[^$*\/]/\\&/g' | paste -sd'|' -)
+  propios=$(npx tsc --noEmit 2>&1 | grep -E "^($patron)\(" \
+            | grep -v -E "TS2875|TS7026|TS2307|TS2882")
+  if [ -n "$propios" ]; then
+    echo "· en los archivos que has tocado (revísalos: la foto no los tapa):"
+    printf '%s\n' "$propios"
+    echo
+  fi
+fi
 
 if [ -z "$nuevos" ]; then
   echo "✓ sin errores de tipos nuevos"

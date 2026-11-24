@@ -28,8 +28,15 @@ export default async function CalificacionesPage() {
     );
   }
 
-  // Por la sesión propia: un alumno solo puede pedir su fila.
-  const fila = await getFilaMatrizDeAlumno({ ...session, course: session.course });
+  // Por el id de la sesión: un alumno solo puede pedir su fila.
+  const fila = await getFilaMatrizDeAlumno(session.id);
+  if (fila === null) {
+    return (
+      <p className="rounded-card bg-white p-8 font-semibold text-ink-700 shadow-card">
+        No hemos podido leer tu seguimiento. Vuelve a entrar y, si sigue igual, dilo a tu profesor.
+      </p>
+    );
+  }
 
   return (
     <>

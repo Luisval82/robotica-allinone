@@ -41,17 +41,17 @@ export default async function MiPracticaPage({
   params: Promise<{ unidad: string; practica: string }>;
 }) {
   const session = await requireRole(["alumno"]);
-  if (!session.course) notFound();
+  if (!session.course) return notFound();
   const curso = session.course;
 
   const { unidad: unidadTexto, practica: practicaTexto } = await params;
   const unidad = Number(unidadTexto);
   const numero = Number(practicaTexto);
-  if (!UNIT_NUMBERS.some((n) => n === unidad) || ![1, 2, 3, 4].includes(numero)) notFound();
+  if (!UNIT_NUMBERS.some((n) => n === unidad) || ![1, 2, 3, 4].includes(numero)) return notFound();
 
   const practicas = getPracticasIntermediasDeUnidad(curso, unidad);
   const practica = practicas.find((p) => p.practica === numero);
-  if (!practica) notFound();
+  if (!practica) return notFound();
 
   // Siempre con el id de la sesión: no hay forma de pedir la de otro.
   const guardadas = await getPracticasIntermedias(session.id, unidad);
