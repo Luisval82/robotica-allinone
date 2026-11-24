@@ -7,17 +7,24 @@ import type { Role } from "@/lib/types";
 interface NavLink {
   href: string;
   label: string;
+  /** Marcada solo en esa ruta, no en las que empiezan por ella. */
+  exacto?: boolean;
 }
 
-// Solo el superadministrador tiene dos zonas: su pestaña exclusiva de
-// «Gestión de usuarios» y el panel de profesor.
+// El superadministrador tiene dos zonas: su pestaña exclusiva de «Gestión de
+// usuarios» y el panel de profesor. El alumno, sus unidades y sus notas.
 const NAV_BY_ROLE: Record<Role, NavLink[]> = {
   superadmin: [
     { href: "/dashboard/admin", label: "Gestión de usuarios" },
     { href: "/dashboard/profesor", label: "Panel de profesor" },
   ],
   profesor: [],
-  alumno: [],
+  alumno: [
+    // «exacto» porque /dashboard/alumno es el prefijo de todo lo demás: sin
+    // esto, «Mis unidades» saldría marcada también en las calificaciones.
+    { href: "/dashboard/alumno", label: "Mis unidades", exacto: true },
+    { href: "/dashboard/alumno/calificaciones", label: "Calificaciones" },
+  ],
 };
 
 export function HeaderNav({ role }: { role: Role }) {
@@ -28,7 +35,9 @@ export function HeaderNav({ role }: { role: Role }) {
   return (
     <nav aria-label="Secciones" className="flex items-center gap-1">
       {links.map((link) => {
-        const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+        const active = link.exacto
+          ? pathname === link.href
+          : pathname === link.href || pathname.startsWith(`${link.href}/`);
         return (
           <Link
             key={link.href}

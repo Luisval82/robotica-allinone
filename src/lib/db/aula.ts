@@ -39,10 +39,7 @@ function defaultOpen(kind: AccessKind, unidad: number): boolean {
   return kind === "unidad" ? unidad === 1 : false;
 }
 
-/** Nota del test sobre 10 a partir de los aciertos (8 preguntas). */
-export function testScore(aciertos: number): number {
-  return Math.round((aciertos / TEST_QUESTIONS) * 1000) / 100;
-}
+export { testScore } from "@/lib/types";
 
 // ── Alumnado ─────────────────────────────────────────────────────────────
 
@@ -760,6 +757,113 @@ export async function gradeEntrega(
     .maybeSingle();
   assertNoError(error, "gradeEntrega");
   return data !== null;
+}
+
+// ── Calificaciones de un alumno ──────────────────────────────────────────
+
+/** Una de las 2 programaciones de la PRUEBA, como la ve su autor. */
+export interface ProgramacionCalificada {
+  practica: number;
+  /** Lo que le dio el profesor, de 0 a 1. null = entregada y sin corregir. */
+  puntos: number | null;
+  /** Lo que escribió el profesor al corregirla. Cadena vacía si no escribió. */
+  comentario: string;
+  entregadaEn: string;
+  corregidaEn: string | null;
+}
+
+/** La PRUEBA de una unidad con todo lo que el alumno puede ver de ella. */
+export interface PruebaDelAlumno {
+  unidad: number;
+  nota: NotaPrueba;
+  programaciones: ProgramacionCalificada[];
+  /** Si el profesor le ha abierto la unidad. */
+  abierta: boolean;
+  /** Si tiene la PRUEBA disponible (teoría terminada o abierta a mano). */
+  pruebaAbierta: boolean;
+}
+
+/**
+ * Las notas de las 9 pruebas de un alumno.
+ *
+ * Esto es lo que el alumno ve de sí mismo, así que va por `alumnoId` y nunca
+ * por curso: la pantalla que la llama le pasa el id de su propia sesión. No
+ * hay política de Supabase que lo acote porque no la hay para nadie —las
+ * tablas tienen RLS sin políticas y solo se leen desde el servidor con la
+ * clave secreta—, de modo que el filtro de aquí ES el permiso.
+ *
+ * La nota la construye `construirNotaPrueba`, la misma que usa la matriz del
+ * profesor: si algún día cambia cómo se suma la PRUEBA, cambia en los dos
+ * sitios a la vez o no cambia en ninguno.
+ */
+export async function getCalificacionesDelAlumno(alumno: {
+  id: string;
+  course: Course;
+}): Promise<PruebaDelAlumno[]> {
+  const anio = await getAnioActivo();
+
+  const [progreso, entregas, acceso] = await Promise.all([
+    supabase
+      .from("progreso")
+      .select("unidad, test_aciertos")
+      .eq("anio", anio)
+      .eq("alumno_id", alumno.id),
+    supabase
+      .from("entregas")
+      .select("unidad, practica, puntos, comentario, entregada_en, corregida_en")
+      .eq("anio", anio)
+      .eq("alumno_id", alumno.id),
+    getStudentAccess(alumno),
+  ]);
+  assertNoError(progreso.error, "getCalificacionesDelAlumno/progreso");
+  assertNoError(entregas.error, "getCalificacionesDelAlumno/entregas");
+
+  const filasProgreso = (progreso.data ?? []) as {
+    unidad: number;
+    test_aciertos: number | null;
+  }[];
+  const filasEntregas = (entregas.data ?? []) as {
+    unidad: number;
+    practica: number;
+    puntos: number | null;
+    comentario: string | null;
+    entregada_en: string;
+    corregida_en: string | null;
+  }[];
+
+  return UNIT_NUMBERS.map((unidad) => {
+    const suyas = filasEntregas
+      .filter((fila) => fila.unidad === unidad)
+      .sort((a, b) => a.practica - b.practica);
+    const estado = acceso.find((item: StudentUnitAccess) => item.unidad === unidad);
+
+    const programaciones: ProgramacionCalificada[] = suyas.map((fila) => ({
+      practica: fila.practica,
+      puntos: fila.puntos,
+      comentario: fila.comentario ?? "",
+      entregadaEn: fila.entregada_en,
+      corregidaEn: fila.corregida_en,
+    }));
+
+    // La nota se construye con las DOS casillas de la unidad, no con las
+    // entregadas: una programación sin entregar es un hueco, no un cero.
+    const puntos = [1, 2].map(
+      (practica) => suyas.find((fila) => fila.practica === practica)?.puntos ?? null,
+    );
+
+    return {
+      unidad,
+      nota: construirNotaPrueba(
+        unidad,
+        filasProgreso.find((fila) => fila.unidad === unidad)?.test_aciertos ?? null,
+        puntos,
+        suyas.length,
+      ),
+      programaciones,
+      abierta: estado?.abierta ?? false,
+      pruebaAbierta: estado?.pruebaAbierta ?? false,
+    };
+  });
 }
 
 // ── Prácticas intermedias ────────────────────────────────────────────────

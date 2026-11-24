@@ -64,7 +64,13 @@ function porcentajeDeUnidad(celda: CeldaUnidad): number {
   return Math.round((hitos / MILESTONES_PER_UNIT) * 100);
 }
 
-function media(valores: number[]): number | null {
+/**
+ * La media de unas notas, redondeada a dos decimales. Vive aquí porque la
+ * usan los informes del profesor y la pestaña de calificaciones del alumno,
+ * y las dos tienen que redondear igual o el alumno verá un 7,34 donde su
+ * profesor ve un 7,35.
+ */
+export function mediaDeNotas(valores: number[]): number | null {
   if (valores.length === 0) return null;
   const suma = valores.reduce((total, valor) => total + valor, 0);
   return Math.round((suma / valores.length) * 100) / 100;
@@ -104,7 +110,7 @@ export function informeDeAlumno(fila: FilaMatriz, curso: Course): InformeAlumno 
     return {
       numero,
       unidades: suyas.map((u) => u.unidad),
-      media: media(completas.map((u) => u.nota ?? 0)),
+      media: mediaDeNotas(completas.map((u) => u.nota ?? 0)),
       porcentaje: Math.round(
         suyas.reduce((total, u) => total + u.porcentaje, 0) / Math.max(suyas.length, 1),
       ),
@@ -174,7 +180,7 @@ export function informeDeClase(filas: FilaMatriz[], curso: Course): InformeClase
         deLaUnidad.reduce((total, u) => total + (u?.porcentaje ?? 0), 0) /
           Math.max(deLaUnidad.length, 1),
       ),
-      nota: media(cerradas),
+      nota: mediaDeNotas(cerradas),
     };
   });
 
@@ -188,7 +194,7 @@ export function informeDeClase(filas: FilaMatriz[], curso: Course): InformeClase
     porcentaje: Math.round(
       alumnos.reduce((total, a) => total + a.fila.porcentaje, 0) / Math.max(alumnos.length, 1),
     ),
-    media: media(medias),
+    media: mediaDeNotas(medias),
     porCorregir: alumnos.reduce((total, a) => total + a.fila.porCorregir, 0),
     sinEmpezar: alumnos.filter((a) => a.fila.porcentaje === 0).length,
     evolucion,

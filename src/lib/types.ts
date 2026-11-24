@@ -111,6 +111,15 @@ export const UNIT_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9] as const;
 /** Cada test de «PRUEBA UD-X» tiene 8 preguntas; la nota es sobre 10. */
 export const TEST_QUESTIONS = 8;
 
+/**
+ * Nota del test sobre 10 a partir de los aciertos. Vive aquí, y no en la capa
+ * de datos, porque la usan el panel del profesor y la pestaña de
+ * calificaciones del alumno: con dos copias, un día darían números distintos.
+ */
+export function testScore(aciertos: number): number {
+  return Math.round((aciertos / TEST_QUESTIONS) * 1000) / 100;
+}
+
 /** Qué abre o cierra un interruptor: la unidad entera o su PRUEBA final. */
 export type AccessKind = "unidad" | "prueba";
 

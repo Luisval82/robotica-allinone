@@ -46,13 +46,22 @@ export default async function AlumnoDashboardPage() {
             : `Tienes ${abiertas} unidades abiertas de ${unidades.length}.`}{" "}
           Tu profesor irá abriendo las demás.
         </p>
-        <Link
-          href="/dashboard/alumno/taller"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-extrabold text-spike-700 transition hover:bg-spike-50"
-        >
-          Taller de bloques
-          <ArrowRightIcon className="size-4" />
-        </Link>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            href="/dashboard/alumno/taller"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-extrabold text-spike-700 transition hover:bg-spike-50"
+          >
+            Taller de bloques
+            <ArrowRightIcon className="size-4" />
+          </Link>
+          <Link
+            href="/dashboard/alumno/calificaciones"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-5 py-2.5 font-extrabold text-white transition hover:bg-white/10"
+          >
+            Mis calificaciones
+            <ArrowRightIcon className="size-4" />
+          </Link>
+        </div>
       </section>
 
       <h2 className="mt-10 font-display text-2xl font-semibold text-ink-900">Tus unidades</h2>

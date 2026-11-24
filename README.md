@@ -479,6 +479,49 @@ Las **4 prácticas de programación** de cada unidad no llevan nota ni la van a 
 con los que el alumno aprende, no el examen. Su pestaña solo sigue si están montadas y si el alumno
 las dio por terminadas con «Guardar y comprobar».
 
+### Lo que ve el alumno de sus notas (`/dashboard/alumno/calificaciones`)
+
+La pestaña **«Calificaciones»**, en la navegación del alumno junto a «Mis unidades», enseña sus 9
+pruebas repartidas en las 3 evaluaciones del temario, con un resumen arriba: la media global y la
+de cada evaluación.
+
+Cada prueba está en uno de cuatro estados, que se distinguen por color **y** por texto —quien no
+distinga el verde del rojo tiene que poder leerlo igual:
+
+| Estado | Cuándo | Qué se le enseña |
+| --- | --- | --- |
+| **Corregida** | El profesor ha puntuado las dos programaciones | La nota sobre 10, el desglose (test, programación 1, programación 2) y lo que el profesor escribió |
+| **Pendiente de corrección** | Está entregada entera y espera al profesor | El desglose, **sin nota final**, y el aviso de que falta la corrección |
+| **No entregada** | Está disponible pero falta algo | Qué le falta exactamente («te falta por entregar 1 programación») y el enlace a la unidad |
+| **Bloqueada** | Todavía no la tiene abierta | Que se abre al terminar la teoría, o cuando el profesor la abra |
+
+Dos decisiones que no son el camino corto:
+
+- **Mientras falte una programación por puntuar, no hay nota.** `NotaPrueba.final` suma lo que
+  haya, y en el panel del profesor eso está bien —lleva su punto amarillo y se lee como
+  provisional—, pero al alumno una suma a medias presentada como nota es engañarle. En su pantalla
+  la nota solo aparece cuando la prueba está cerrada del todo. El test sí se enseña siempre que
+  exista, porque se corrige solo al entregarlo y el alumno ya lo vio.
+- **Lo ya hecho va antes del bloqueo.** El orden de los estados no es el obvio: primero
+  *corregida*, luego *pendiente*, y solo después el bloqueo. Un profesor puede cerrar una unidad al
+  acabar la evaluación, y si el bloqueo ganara, la nota que el alumno se ganó desaparecería de su
+  pantalla y de su media. *Bloqueada* es solo para cuando no hay nada que enseñar.
+
+Las cuentas no se repiten en ningún sitio: la nota la construye `construirNotaPrueba`, la misma de
+la matriz del profesor; la media la redondea `mediaDeNotas` (`src/lib/informes.ts`), compartida con
+los informes en PDF, para que el alumno no vea un 7,34 donde su profesor ve un 7,35; y la nota del
+test sale de `testScore`, que por eso vive en `src/lib/types.ts` y no en la capa de datos.
+
+**La corrección aparece sola.** `gradeEntregaAction` ya llamaba a
+`revalidatePath("/dashboard", "layout")`, así que en cuanto el profesor guarda la nota, la pestaña
+del alumno la enseña sin que nadie tenga que hacer nada más.
+
+**Permisos.** No hay política de Supabase que añadir, y conviene saber por qué: las tablas tienen
+RLS activado **sin políticas**, de modo que con la clave publicable no se lee nada y todo pasa por
+el servidor con la clave secreta. El permiso de esta vista son dos cosas: `requireRole(["alumno"])`
+y que `getCalificacionesDelAlumno` reciba el id de la **sesión propia** y filtre por él. No hay
+parámetro de ruta con el que pedir las notas de otro: un alumno solo puede preguntar por las suyas.
+
 ### Comprobar los tipos (`scripts/tipos.sh`)
 
 En este repositorio `npx tsc --noEmit` no sirve a secas si se ejecuta sin `node_modules`: faltan los
