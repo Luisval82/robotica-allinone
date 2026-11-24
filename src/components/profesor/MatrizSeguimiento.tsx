@@ -13,6 +13,11 @@
 // del alumno con la solución oficial. NO es una nota y la leyenda lo dice:
 // un programa distinto y correcto saldrá en naranja. Sirve para decidir a
 // quién mirar primero.
+//
+// La misma tabla la usa el alumno en su pestaña de calificaciones, con su
+// fila sola: por eso los enlaces y las columnas de resumen son parámetros y
+// no están escritos aquí. Lo que ve él y lo que ve su profesor son el mismo
+// componente, no dos que se parecen.
 
 import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
@@ -49,6 +54,26 @@ const TEXTO_NIVEL: Record<Nivel, string> = {
  * `touch-manipulation` quita el retardo del doble toque: sin él, el primer
  * toque puede quedarse esperando a ver si llega un segundo.
  */
+/** A dónde llevan los cuadrados y la nota. Cada panel pone los suyos. */
+export interface EnlacesMatriz {
+  practica: (alumnoId: string, unidad: number, practica: number) => string;
+  prueba: (alumnoId: string, unidad: number) => string;
+}
+
+/** Los del profesor: entra a corregir. */
+export const ENLACES_PROFESOR: EnlacesMatriz = {
+  practica: (alumnoId, unidad, practica) =>
+    `/dashboard/profesor/practicas/${alumnoId}/${unidad}/${practica}`,
+  prueba: (alumnoId, unidad) => `/dashboard/profesor/notas/${alumnoId}/${unidad}`,
+};
+
+/** Los del alumno: entra a ver lo suyo, sin poder cambiar nada. */
+export const ENLACES_ALUMNO: EnlacesMatriz = {
+  practica: (_alumnoId, unidad, practica) =>
+    `/dashboard/alumno/calificaciones/practica/${unidad}/${practica}`,
+  prueba: (_alumnoId, unidad) => `/dashboard/alumno/calificaciones/prueba/${unidad}`,
+};
+
 function Cuadro({
   className,
   titulo,
@@ -86,10 +111,12 @@ function CuadrosDeUnidad({
   celda,
   alumnoId,
   alumnoNombre,
+  enlaces,
 }: {
   celda: CeldaUnidad;
   alumnoId: string;
   alumnoNombre: string;
+  enlaces: EnlacesMatriz;
 }) {
   const teoriaCompleta = celda.teoria >= THEORY_STEPS;
 
@@ -115,7 +142,7 @@ function CuadrosDeUnidad({
         <Cuadro
           key={practica.practica}
           className={`${COLOR_NIVEL[practica.nivel]} hover:opacity-80`}
-          href={`/dashboard/profesor/practicas/${alumnoId}/${celda.unidad}/${practica.practica}`}
+          href={enlaces.practica(alumnoId, celda.unidad, practica.practica)}
           titulo={`${alumnoNombre}, UD ${celda.unidad}, práctica ${practica.practica}: ${
             TEXTO_NIVEL[practica.nivel]
           }${
@@ -144,10 +171,15 @@ function NotaDeLaPrueba({
   celda,
   alumnoId,
   alumnoNombre,
+  enlaces,
+  propia,
 }: {
   celda: CeldaUnidad;
   alumnoId: string;
   alumnoNombre: string;
+  enlaces: EnlacesMatriz;
+  /** La fila es del que mira: se le habla en segunda persona. */
+  propia?: boolean;
 }) {
   const { prueba } = celda;
   const corregidas = prueba.practicas.filter((p) => p !== null).length;
@@ -162,8 +194,19 @@ function NotaDeLaPrueba({
           ? "bg-nivel-bien text-white"
           : "bg-nivel-flojo text-white";
 
-  const explicacion =
-    prueba.final === null
+  // En la fila del propio alumno la casilla no da número hasta que la nota es
+  // firme. El profesor sí ve la suma a medias —lleva su punto amarillo y la
+  // lee como provisional—, pero a quien se la van a poner, una suma a la que
+  // le falta la mitad presentada como nota es engañarle.
+  const muestraNota = propia ? prueba.completa : prueba.final !== null;
+
+  const explicacion = propia
+    ? prueba.completa
+      ? `Prueba de la UD ${celda.unidad}: ${formatNota(prueba.final)} de 10. Pulsa para ver tu corrección.`
+      : pendientes > 0
+        ? `Prueba de la UD ${celda.unidad} entregada, pendiente de corrección. Pulsa para ver lo que entregaste.`
+        : `Todavía no has terminado la prueba de la UD ${celda.unidad}. Pulsa para verla.`
+    : prueba.final === null
       ? `${alumnoNombre} no ha hecho todavía la prueba de la UD ${celda.unidad}. Pulsa para abrirla.`
       : prueba.completa
         ? `Prueba de la UD ${celda.unidad} completa: ${formatNota(prueba.final)} de 10. Pulsa para revisarla.`
@@ -173,12 +216,12 @@ function NotaDeLaPrueba({
 
   return (
     <Link
-      href={`/dashboard/profesor/notas/${alumnoId}/${celda.unidad}`}
+      href={enlaces.prueba(alumnoId, celda.unidad)}
       title={explicacion}
       className={`relative grid h-7 w-11 touch-manipulation place-items-center rounded-lg text-sm font-extrabold tabular-nums transition hover:ring-2 hover:ring-ink-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-900 pointer-coarse:h-11 pointer-coarse:w-16 pointer-coarse:text-base ${tono}`}
     >
       <span className="sr-only">{explicacion}</span>
-      <span aria-hidden="true">{formatNota(prueba.final)}</span>
+      <span aria-hidden="true">{muestraNota ? formatNota(prueba.final) : "—"}</span>
       {/* Amarillo: hay entregas esperando corrección. */}
       {pendientes > 0 ? (
         <span
@@ -190,11 +233,27 @@ function NotaDeLaPrueba({
   );
 }
 
-export function MatrizSeguimiento({ filas, curso }: { filas: FilaMatriz[]; curso: Course }) {
+export function MatrizSeguimiento({
+  filas,
+  curso,
+  enlaces = ENLACES_PROFESOR,
+  resumen = true,
+  propia = false,
+  vacio,
+}: {
+  filas: FilaMatriz[];
+  curso: Course;
+  enlaces?: EnlacesMatriz;
+  /** Las columnas de Avance y Media. El alumno las lleva apagadas. */
+  resumen?: boolean;
+  /** La fila es del que mira: la casilla de nota y los textos cambian. */
+  propia?: boolean;
+  vacio?: string;
+}) {
   if (filas.length === 0) {
     return (
       <p className="mt-8 rounded-card bg-white p-6 font-semibold text-ink-500 shadow-card">
-        Todavía no se ha registrado nadie de {COURSE_LABEL[curso]}.
+        {vacio ?? `Todavía no se ha registrado nadie de ${COURSE_LABEL[curso]}.`}
       </p>
     );
   }
@@ -205,8 +264,9 @@ export function MatrizSeguimiento({ filas, curso }: { filas: FilaMatriz[]; curso
           del alumno fijada con `sticky` pierde los bordes al desplazar. */}
       <table className="w-full border-separate border-spacing-0 text-left">
         <caption className="sr-only">
-          Seguimiento de {COURSE_LABEL[curso]}: por cada alumno y unidad, la teoría, las 4
-          prácticas de programación y la nota de la prueba
+          {propia
+            ? `Tu seguimiento de ${COURSE_LABEL[curso]}: por cada unidad, la teoría, las 4 prácticas de programación y la nota de la prueba`
+            : `Seguimiento de ${COURSE_LABEL[curso]}: por cada alumno y unidad, la teoría, las 4 prácticas de programación y la nota de la prueba`}
         </caption>
         <thead>
           <tr>
@@ -227,20 +287,24 @@ export function MatrizSeguimiento({ filas, curso }: { filas: FilaMatriz[]; curso
                 UD {unidad}
               </th>
             ))}
-            <th
-              scope="col"
-              rowSpan={2}
-              className="border-b-2 border-l-2 border-ink-100 px-4 py-3 text-center text-xs font-extrabold uppercase tracking-wide text-ink-500"
-            >
-              Avance
-            </th>
-            <th
-              scope="col"
-              rowSpan={2}
-              className="border-b-2 border-ink-100 px-4 py-3 text-center text-xs font-extrabold uppercase tracking-wide text-ink-500"
-            >
-              Media
-            </th>
+            {resumen ? (
+              <>
+                <th
+                  scope="col"
+                  rowSpan={2}
+                  className="border-b-2 border-l-2 border-ink-100 px-4 py-3 text-center text-xs font-extrabold uppercase tracking-wide text-ink-500"
+                >
+                  Avance
+                </th>
+                <th
+                  scope="col"
+                  rowSpan={2}
+                  className="border-b-2 border-ink-100 px-4 py-3 text-center text-xs font-extrabold uppercase tracking-wide text-ink-500"
+                >
+                  Media
+                </th>
+              </>
+            ) : null}
           </tr>
           <tr className="text-[0.65rem] font-extrabold uppercase tracking-wide text-ink-400">
             {UNIT_NUMBERS.map((unidad) => (
@@ -272,6 +336,7 @@ export function MatrizSeguimiento({ filas, curso }: { filas: FilaMatriz[]; curso
                       celda={celda}
                       alumnoId={alumno.id}
                       alumnoNombre={alumno.name}
+                      enlaces={enlaces}
                     />
                   </td>
                   <td className="px-2 py-2 text-center">
@@ -279,17 +344,23 @@ export function MatrizSeguimiento({ filas, curso }: { filas: FilaMatriz[]; curso
                       celda={celda}
                       alumnoId={alumno.id}
                       alumnoNombre={alumno.name}
+                      enlaces={enlaces}
+                      propia={propia}
                     />
                   </td>
                 </Fragment>
               ))}
 
-              <td className="border-l-2 border-ink-100 px-4 py-2 text-center text-sm font-bold tabular-nums text-ink-700">
-                {porcentaje} %
-              </td>
-              <td className="px-4 py-2 text-center font-display text-lg font-semibold tabular-nums text-ink-900">
-                {formatNota(media)}
-              </td>
+              {resumen ? (
+                <>
+                  <td className="border-l-2 border-ink-100 px-4 py-2 text-center text-sm font-bold tabular-nums text-ink-700">
+                    {porcentaje} %
+                  </td>
+                  <td className="px-4 py-2 text-center font-display text-lg font-semibold tabular-nums text-ink-900">
+                    {formatNota(media)}
+                  </td>
+                </>
+              ) : null}
             </tr>
           ))}
         </tbody>

@@ -481,46 +481,53 @@ las dio por terminadas con «Guardar y comprobar».
 
 ### Lo que ve el alumno de sus notas (`/dashboard/alumno/calificaciones`)
 
-La pestaña **«Calificaciones»**, en la navegación del alumno junto a «Mis unidades», enseña sus 9
-pruebas repartidas en las 3 evaluaciones del temario, con un resumen arriba: la media global y la
-de cada evaluación.
+La pestaña **«Calificaciones»**, en la navegación del alumno junto a «Mis unidades», enseña **la
+misma tabla de seguimiento que ve el profesor, con su fila sola**: la `T` de la teoría, los 4
+cuadrados de las prácticas con su color, y la nota de la prueba de cada unidad. Sin medias ni
+resúmenes: aquí se viene a ver el seguimiento y a entrar donde haga falta, no a mirar un número.
 
-Cada prueba está en uno de cuatro estados, que se distinguen por color **y** por texto —quien no
-distinga el verde del rojo tiene que poder leerlo igual:
+Es **el mismo componente**, no una copia. `MatrizSeguimiento` recibe por parámetro a dónde llevan
+los enlaces (`ENLACES_PROFESOR` o `ENLACES_ALUMNO`), si pinta las columnas de resumen y si la fila
+es del que mira. La fila también sale del mismo sitio: `getMatrizSeguimiento` (curso entero) y
+`getFilaMatrizDeAlumno` (un alumno) llaman las dos a `construirFila`, de modo que si cambia la
+cuenta de una casilla, cambia para los dos a la vez.
 
-| Estado | Cuándo | Qué se le enseña |
-| --- | --- | --- |
-| **Corregida** | El profesor ha puntuado las dos programaciones | La nota sobre 10, el desglose (test, programación 1, programación 2) y lo que el profesor escribió |
-| **Pendiente de corrección** | Está entregada entera y espera al profesor | El desglose, **sin nota final**, y el aviso de que falta la corrección |
-| **No entregada** | Está disponible pero falta algo | Qué le falta exactamente («te falta por entregar 1 programación») y el enlace a la unidad |
-| **Bloqueada** | Todavía no la tiene abierta | Que se abre al terminar la teoría, o cuando el profesor la abra |
+Tres decisiones que no son el camino corto:
 
-Dos decisiones que no son el camino corto:
+- **En su fila, la casilla de la prueba no da número hasta que la nota es firme.** El profesor sí
+  ve la suma a medias —lleva su punto amarillo y la lee como provisional—, pero a quien se la van a
+  poner, una suma a la que le falta la mitad presentada como nota es engañarle. En su casilla pone
+  `—` con el punto amarillo, que quiere decir «entregada, esperando corrección».
+- **La solución oficial de las 2 programaciones de la PRUEBA solo aparece cuando el profesor ya ha
+  puntuado ESA programación.** Antes de eso, enseñarla sería repartir el examen: las dos llevan
+  nota y todos los alumnos de un curso tienen las mismas. Conviene saber que, aun así, el primer
+  alumno corregido puede pasárselas a quien no la haya hecho todavía; si eso molesta, lo que hay
+  que hacer es corregir el curso entero antes de devolver las notas.
+- **Las 4 prácticas de programación sí enseñan la solución siempre**, y no es una concesión: no
+  llevan nota y el alumno ya la tiene en la unidad en cuanto pulsa «Guardar y comprobar».
 
-- **Mientras falte una programación por puntuar, no hay nota.** `NotaPrueba.final` suma lo que
-  haya, y en el panel del profesor eso está bien —lleva su punto amarillo y se lee como
-  provisional—, pero al alumno una suma a medias presentada como nota es engañarle. En su pantalla
-  la nota solo aparece cuando la prueba está cerrada del todo. El test sí se enseña siempre que
-  exista, porque se corrige solo al entregarlo y el alumno ya lo vio.
-- **Lo ya hecho va antes del bloqueo.** El orden de los estados no es el obvio: primero
-  *corregida*, luego *pendiente*, y solo después el bloqueo. Un profesor puede cerrar una unidad al
-  acabar la evaluación, y si el bloqueo ganara, la nota que el alumno se ganó desaparecería de su
-  pantalla y de su media. *Bloqueada* es solo para cuando no hay nada que enseñar.
+Las dos vistas de detalle (`…/calificaciones/prueba/[unidad]` y
+`…/calificaciones/practica/[unidad]/[practica]`) son **solo lectura**: no hay formulario de puntos,
+ni comentario, ni «reabrir». De hecho la ficha del profesor (`FichaPractica`) no se reutiliza
+precisamente por eso: lleva dentro su botón de reabrir. Una prueba entregada está cerrada y de ahí
+no se cambia nada; para rehacer una práctica se va a la unidad, que es donde está el taller.
 
-Las cuentas no se repiten en ningún sitio: la nota la construye `construirNotaPrueba`, la misma de
-la matriz del profesor; la media la redondea `mediaDeNotas` (`src/lib/informes.ts`), compartida con
-los informes en PDF, para que el alumno no vea un 7,34 donde su profesor ve un 7,35; y la nota del
-test sale de `testScore`, que por eso vive en `src/lib/types.ts` y no en la capa de datos.
+En la prueba el alumno ve el desglose (test y las 2 programaciones), sus respuestas del test con
+aciertos y fallos —lo mismo que ya veía al entregarlo—, sus bloques entregados, lo que escribió el
+profesor y, con la regla de arriba, la solución oficial.
 
 **La corrección aparece sola.** `gradeEntregaAction` ya llamaba a
-`revalidatePath("/dashboard", "layout")`, así que en cuanto el profesor guarda la nota, la pestaña
+`revalidatePath("/dashboard", "layout")`, así que en cuanto el profesor guarda la nota, la tabla
 del alumno la enseña sin que nadie tenga que hacer nada más.
 
 **Permisos.** No hay política de Supabase que añadir, y conviene saber por qué: las tablas tienen
 RLS activado **sin políticas**, de modo que con la clave publicable no se lee nada y todo pasa por
-el servidor con la clave secreta. El permiso de esta vista son dos cosas: `requireRole(["alumno"])`
-y que `getCalificacionesDelAlumno` reciba el id de la **sesión propia** y filtre por él. No hay
-parámetro de ruta con el que pedir las notas de otro: un alumno solo puede preguntar por las suyas.
+el servidor con la clave secreta. Una política no cambiaría nada porque ningún navegador habla con
+Postgres. El permiso de estas vistas son dos cosas: `requireRole(["alumno"])` en las tres páginas y
+que **todas** las consultas reciban el id de la sesión propia —`getFilaMatrizDeAlumno`,
+`getUnitProgress`, `getEntrega` y `getPracticasIntermedias`—. Ninguna ruta lleva el id de un alumno
+en la dirección: lo único que viaja en la URL es la unidad y el número de práctica, así que no hay
+nada que cambiar para pedir lo de otro.
 
 ### Comprobar los tipos (`scripts/tipos.sh`)
 

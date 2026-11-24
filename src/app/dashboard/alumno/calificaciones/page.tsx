@@ -1,168 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ChapaEstado } from "@/components/calificaciones/EstadoPrueba";
-import { ArrowRightIcon } from "@/components/ui/icons";
+import { ENLACES_ALUMNO, MatrizSeguimiento } from "@/components/profesor/MatrizSeguimiento";
+import { Muestra } from "@/components/profesor/MuestraColor";
 import { requireRole } from "@/lib/auth";
-import { calificacionesDeAlumno, type PruebaCalificada } from "@/lib/calificaciones";
-import { getCalificacionesDelAlumno } from "@/lib/db";
-import { formatFecha, formatNota } from "@/lib/format";
-import { COURSE_LABEL, TEST_QUESTIONS } from "@/lib/types";
-import { unitTone } from "@/lib/unitTone";
+import { getFilaMatrizDeAlumno } from "@/lib/db";
+import { COURSE_LABEL, THEORY_STEPS } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Mis calificaciones" };
 
-const ORDINAL = ["", "1.ª", "2.ª", "3.ª"];
-
-/** Un número grande de nota, con su escala al lado. */
-function Nota({ valor, sobre = 10 }: { valor: number | null; sobre?: number }) {
-  return (
-    <span className="font-display text-3xl font-semibold text-ink-900">
-      {formatNota(valor)}
-      <span className="ml-0.5 text-base font-bold text-ink-500">/{sobre}</span>
-    </span>
-  );
-}
-
-/** El desglose de una prueba: el test y las 2 programaciones del profesor. */
-function Desglose({ prueba }: { prueba: PruebaCalificada }) {
-  return (
-    <div className="mt-4 grid gap-3 sm:grid-cols-3">
-      <div className="rounded-xl bg-spike-50 p-4">
-        <p className="text-xs font-extrabold uppercase tracking-widest text-spike-800">Test</p>
-        <p className="mt-1 font-display text-2xl font-semibold text-ink-900">
-          {formatNota(prueba.test)}
-          <span className="ml-0.5 text-sm font-bold text-ink-500">/10</span>
-        </p>
-        <p className="mt-0.5 text-xs font-bold text-ink-600">
-          {prueba.aciertos === null
-            ? "sin entregar"
-            : `${prueba.aciertos} de ${TEST_QUESTIONS} aciertos`}
-        </p>
-      </div>
-
-      {prueba.programaciones.map((programacion) => (
-        <div key={programacion.practica} className="rounded-xl bg-ink-50 p-4">
-          <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-            Programación {programacion.practica}
-          </p>
-          <p className="mt-1 font-display text-2xl font-semibold text-ink-900">
-            {formatNota(programacion.puntos)}
-            <span className="ml-0.5 text-sm font-bold text-ink-500">/1</span>
-          </p>
-          <p className="mt-0.5 text-xs font-bold text-ink-600">
-            {programacion.entregadaEn === null
-              ? "sin entregar"
-              : programacion.corregidaEn === null
-                ? "entregada, sin corregir"
-                : `corregida el ${formatFecha(programacion.corregidaEn)}`}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/** Lo que escribió el profesor al corregir, si escribió algo. */
-function Comentarios({ prueba }: { prueba: PruebaCalificada }) {
-  const conComentario = prueba.programaciones.filter((p) => p.comentario.trim() !== "");
-  if (conComentario.length === 0) return null;
-
-  return (
-    <div className="mt-3 grid gap-2">
-      <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-        Observaciones de tu profesor
-      </p>
-      {conComentario.map((programacion) => (
-        <blockquote
-          key={programacion.practica}
-          className="rounded-xl border-l-4 border-spike-400 bg-spike-50 p-3"
-        >
-          <p className="text-xs font-extrabold uppercase tracking-wide text-spike-800">
-            Programación {programacion.practica}
-          </p>
-          <p className="mt-1 text-sm font-semibold text-ink-800">{programacion.comentario}</p>
-        </blockquote>
-      ))}
-    </div>
-  );
-}
-
-function TarjetaPrueba({ prueba }: { prueba: PruebaCalificada }) {
-  const corregida = prueba.estado === "corregida";
-
-  return (
-    <li className="overflow-hidden rounded-card bg-white shadow-card">
-      <div
-        className={`flex flex-wrap items-center justify-between gap-2 px-6 py-4 ${
-          prueba.estado === "bloqueada" ? "bg-ink-200 text-ink-600" : unitTone(prueba.unidad)
-        }`}
-      >
-        <span className="font-display text-xl font-semibold">PRUEBA UD {prueba.unidad}</span>
-        <ChapaEstado estado={prueba.estado} />
-      </div>
-
-      <div className="p-6">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <h4 className="max-w-md font-display text-lg font-semibold leading-snug text-ink-900">
-            {prueba.titulo}
-          </h4>
-          {corregida ? (
-            <div className="text-right">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-                Nota de la prueba
-              </p>
-              <Nota valor={prueba.nota} />
-            </div>
-          ) : null}
-        </div>
-
-        {/* Mientras falte una programación por puntuar no hay nota que dar: una
-            suma a medias presentada como nota sería engañarle. */}
-        {prueba.estado === "pendiente" ? (
-          <p className="mt-3 rounded-xl bg-hub-50 p-3 text-sm font-bold text-ink-800">
-            Ya la has entregado entera. Tu profesor todavía tiene que corregir las
-            programaciones, así que aquí no hay nota final hasta que lo haga. El test ya está
-            corregido y lo tienes abajo.
-          </p>
-        ) : null}
-
-        {prueba.estado === "sin-entregar" ? (
-          <p className="mt-3 rounded-xl bg-ink-50 p-3 text-sm font-bold text-ink-700">
-            {prueba.falta.length === 0
-              ? "Todavía no la has hecho."
-              : `Te falta por entregar ${prueba.falta.join(" y ")}.`}{" "}
-            {prueba.disponible ? (
-              <Link
-                href={`/dashboard/alumno/unidad/${prueba.unidad}`}
-                className="inline-flex items-center gap-1 text-spike-700 underline decoration-2 underline-offset-2"
-              >
-                Ir a la unidad
-                <ArrowRightIcon className="size-3.5" />
-              </Link>
-            ) : (
-              <span className="text-ink-600">
-                Tu profesor tiene la prueba cerrada ahora mismo.
-              </span>
-            )}
-          </p>
-        ) : null}
-
-        {prueba.estado === "bloqueada" ? (
-          <p className="mt-3 rounded-xl bg-ink-50 p-3 text-sm font-bold text-ink-700">
-            Esta prueba todavía no está disponible. Se abre al terminar la teoría de la unidad, o
-            cuando tu profesor la abra.
-          </p>
-        ) : (
-          <>
-            <Desglose prueba={prueba} />
-            <Comentarios prueba={prueba} />
-          </>
-        )}
-      </div>
-    </li>
-  );
-}
-
+/**
+ * La misma tabla de seguimiento que ve el profesor, con la fila propia sola.
+ *
+ * Es el MISMO componente, no una copia: los enlaces y las columnas de resumen
+ * son parámetros (ver MatrizSeguimiento). Así lo que el alumno ve de sí mismo
+ * y lo que ve su profesor no pueden acabar diciendo cosas distintas.
+ *
+ * Sin medias ni resúmenes: aquí se viene a ver el seguimiento y a entrar en lo
+ * que haga falta, no a mirar un número.
+ */
 export default async function CalificacionesPage() {
   const session = await requireRole(["alumno"]);
 
@@ -174,87 +28,76 @@ export default async function CalificacionesPage() {
     );
   }
 
-  // El filtro es por la sesión propia: un alumno solo puede pedir sus notas.
-  const pruebas = await getCalificacionesDelAlumno({ id: session.id, course: session.course });
-  const calificaciones = calificacionesDeAlumno(pruebas, session.course);
+  // Por la sesión propia: un alumno solo puede pedir su fila.
+  const fila = await getFilaMatrizDeAlumno({ ...session, course: session.course });
 
   return (
     <>
       <section className="rounded-card bg-spike-600 p-7 text-white sm:p-10">
         <p className="text-sm font-extrabold uppercase tracking-widest text-spike-100">
-          {COURSE_LABEL[session.course]} · Tus pruebas
+          {COURSE_LABEL[session.course]} · Tu seguimiento
         </p>
         <h1 className="mt-2 font-display text-4xl font-semibold sm:text-5xl">Calificaciones</h1>
-        <p className="mt-3 max-w-xl text-lg font-semibold text-spike-100">
-          Cada PRUEBA son 10 puntos: 8 del test, que se corrige solo al entregarlo, y 1 por cada
-          una de las 2 programaciones, que corrige tu profesor.
+        <p className="mt-3 max-w-2xl text-lg font-semibold text-spike-100">
+          Pulsa cualquier cuadrado para ver esa práctica con la solución oficial al lado, o la nota
+          de una prueba para ver tu corrección entera.
         </p>
       </section>
 
-      {/* El resumen de arriba: solo cuenta lo que está corregido del todo. */}
-      <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-card bg-white p-6 shadow-card">
-          <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-            Media global
+      <MatrizSeguimiento
+        filas={[fila]}
+        curso={session.course}
+        enlaces={ENLACES_ALUMNO}
+        resumen={false}
+        propia
+      />
+
+      {/* ── Qué significa cada color ───────────────────────────────────── */}
+      <section className="mt-5 grid gap-3 rounded-card bg-white p-5 shadow-card">
+        <h2 className="font-display text-lg font-semibold text-ink-900">Cómo se lee</h2>
+
+        <div className="grid gap-2 text-sm font-semibold text-ink-600 sm:grid-cols-2">
+          <p>
+            <b className="text-ink-900">T</b> es la teoría: verde cuando has leído los{" "}
+            {THEORY_STEPS} pasos, naranja si vas por la mitad.
           </p>
-          <p className="mt-1">
-            <Nota valor={calificaciones.media} />
+          <p>
+            Los <b className="text-ink-900">4 cuadrados</b> siguientes son las 4 prácticas de
+            programación de esa unidad. Pulsa uno para verla.
           </p>
-          <p className="mt-1 text-sm font-bold text-ink-600">
-            {calificaciones.corregidas === 0
-              ? "todavía no hay ninguna prueba corregida"
-              : `de ${calificaciones.corregidas} ${
-                  calificaciones.corregidas === 1 ? "prueba corregida" : "pruebas corregidas"
-                } de ${calificaciones.totales}`}
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1.5 sm:col-span-2">
+            <Muestra clase="bg-nivel-bien">igual que la solución</Muestra>
+            <Muestra clase="bg-nivel-casi">casi igual</Muestra>
+            <Muestra clase="bg-nivel-regular">a medias</Muestra>
+            <Muestra clase="bg-nivel-flojo">se parece poco</Muestra>
+            <Muestra clase="bg-nivel-nada">sin empezar</Muestra>
+          </p>
+          <p className="sm:col-span-2">
+            Un <b className="text-ink-900">punto blanco</b> dentro del cuadrado quiere decir que la
+            tienes guardada pero todavía no has pulsado «Guardar y comprobar».
           </p>
         </div>
 
-        {calificaciones.evaluaciones.map((evaluacion) => (
-          <div key={evaluacion.numero} className="rounded-card bg-white p-6 shadow-card">
-            <p className="text-xs font-extrabold uppercase tracking-widest text-ink-500">
-              {ORDINAL[evaluacion.numero] ?? evaluacion.numero} evaluación
-            </p>
-            <p className="mt-1">
-              <Nota valor={evaluacion.media} />
-            </p>
-            <p className="mt-1 text-sm font-bold text-ink-600">
-              {evaluacion.corregidas === 0
-                ? "sin pruebas corregidas"
-                : `${evaluacion.corregidas} de ${evaluacion.pruebas.length} corregidas`}
-              {evaluacion.pendientes > 0
-                ? `, ${evaluacion.pendientes} por corregir`
-                : ""}
-            </p>
-          </div>
-        ))}
-      </section>
-
-      {calificaciones.pendientes > 0 ? (
-        <p className="mt-5 rounded-card bg-hub-50 p-5 font-bold text-ink-800">
-          Tienes {calificaciones.pendientes}{" "}
-          {calificaciones.pendientes === 1 ? "prueba entregada" : "pruebas entregadas"} esperando
-          la corrección de tu profesor. Las medias de arriba no las cuentan todavía.
+        {/* Lo mismo que se le dice al profesor, porque es igual de importante
+            que lo sepa quien recibe el color: no es su nota. */}
+        <p className="rounded-2xl bg-ink-50 p-4 text-sm font-semibold text-ink-700">
+          <b className="text-ink-900">El color de las prácticas no es una nota.</b> Sale de
+          comparar tu programa con la solución oficial, bloque a bloque. Un programa distinto que
+          funcione —y queremos que los haya— saldrá en naranja, y eso no quiere decir que esté mal.
+          Las prácticas de programación no llevan nota: la nota está en la prueba.
         </p>
-      ) : null}
 
-      {calificaciones.evaluaciones.map((evaluacion) => (
-        <section key={evaluacion.numero} className="mt-10">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b-2 border-ink-100 pb-2">
-            <h2 className="font-display text-2xl font-semibold text-ink-900">
-              {ORDINAL[evaluacion.numero] ?? evaluacion.numero} evaluación
-            </h2>
-            <p className="text-sm font-bold text-ink-500">
-              Unidades {evaluacion.pruebas.map((p) => p.unidad).join(", ")}
-            </p>
-          </div>
-
-          <ol className="mt-5 grid gap-5 lg:grid-cols-2">
-            {evaluacion.pruebas.map((prueba) => (
-              <TarjetaPrueba key={prueba.unidad} prueba={prueba} />
-            ))}
-          </ol>
-        </section>
-      ))}
+        <p className="text-sm font-semibold text-ink-600">
+          En la columna de la prueba verás la nota sobre 10 cuando tu profesor haya corregido las
+          dos programaciones. Mientras falte alguna pone <b className="text-ink-900">—</b> con un{" "}
+          <span className="inline-flex items-center gap-1 align-middle">
+            <span aria-hidden="true" className="inline-block size-2.5 rounded-full bg-hub-400" />
+            punto amarillo
+          </span>
+          : está entregada y esperando corrección. No se enseña una suma a medias como si fuera tu
+          nota.
+        </p>
+      </section>
     </>
   );
 }

@@ -64,13 +64,8 @@ function porcentajeDeUnidad(celda: CeldaUnidad): number {
   return Math.round((hitos / MILESTONES_PER_UNIT) * 100);
 }
 
-/**
- * La media de unas notas, redondeada a dos decimales. Vive aquí porque la
- * usan los informes del profesor y la pestaña de calificaciones del alumno,
- * y las dos tienen que redondear igual o el alumno verá un 7,34 donde su
- * profesor ve un 7,35.
- */
-export function mediaDeNotas(valores: number[]): number | null {
+/** La media de unas notas, redondeada a dos decimales. */
+function mediaDeNotas(valores: number[]): number | null {
   if (valores.length === 0) return null;
   const suma = valores.reduce((total, valor) => total + valor, 0);
   return Math.round((suma / valores.length) * 100) / 100;

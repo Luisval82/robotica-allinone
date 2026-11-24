@@ -479,6 +479,106 @@ export interface FilaMatriz {
   porCorregir: number;
 }
 
+type ProgresoFila = {
+  alumno_id: string;
+  unidad: number;
+  pasos_teoria: number;
+  test_aciertos: number | null;
+};
+type EntregaFila = {
+  alumno_id: string;
+  unidad: number;
+  practica: number;
+  puntos: number | null;
+};
+type IntermediaFila = {
+  alumno_id: string;
+  unidad: number;
+  practica: number;
+  bloques: ProgramRow[] | null;
+  comprobada_en: string | null;
+};
+
+/**
+ * Una fila de la matriz a partir de las filas ya leídas.
+ *
+ * Vive aparte porque la usan dos consultas: la del curso entero, para el
+ * profesor, y la de un solo alumno, para su pestaña de calificaciones. Si la
+ * cuenta de una casilla cambia, cambia para los dos a la vez.
+ */
+function construirFila(
+  alumno: PublicUser,
+  filasProgreso: ProgresoFila[],
+  filasEntregas: EntregaFila[],
+  filasIntermedias: IntermediaFila[],
+  soluciones: Map<number, { practica: number; solucion: ProgramRow[] }[]>,
+): FilaMatriz {
+  const unidades = UNIT_NUMBERS.map((unidad): CeldaUnidad => {
+    const suProgreso = filasProgreso.find(
+      (f) => f.alumno_id === alumno.id && f.unidad === unidad,
+    );
+
+    const puntos = [1, 2].map((numero) => {
+      const fila = filasEntregas.find(
+        (f) => f.alumno_id === alumno.id && f.unidad === unidad && f.practica === numero,
+      );
+      return fila?.puntos === null || fila?.puntos === undefined ? null : Number(fila.puntos);
+    });
+    const entregadas = filasEntregas.filter(
+      (f) => f.alumno_id === alumno.id && f.unidad === unidad,
+    ).length;
+
+    const practicas = [1, 2, 3, 4].map((numero) => {
+      const suya = filasIntermedias.find(
+        (f) => f.alumno_id === alumno.id && f.unidad === unidad && f.practica === numero,
+      );
+      const oficial = soluciones.get(unidad)?.find((p) => p.practica === numero);
+      const parecido =
+        suya && oficial ? parecidoDeProgramas(suya.bloques ?? [], oficial.solucion) : null;
+      return {
+        practica: numero,
+        parecido,
+        nivel: nivelDeParecido(parecido),
+        comprobada: suya?.comprobada_en != null,
+      };
+    });
+
+    return {
+      unidad,
+      teoria: suProgreso?.pasos_teoria ?? 0,
+      practicas,
+      prueba: construirNotaPrueba(unidad, suProgreso?.test_aciertos ?? null, puntos, entregadas),
+    };
+  });
+
+  // El mismo porcentaje de siempre: teoría, test y las 2 entregas por unidad.
+  const hitos = unidades.reduce(
+    (total, celda) =>
+      total +
+      (celda.teoria >= THEORY_STEPS ? 1 : 0) +
+      (celda.prueba.aciertos !== null ? 1 : 0) +
+      celda.prueba.entregadas,
+    0,
+  );
+  const completas = unidades.filter((c) => c.prueba.completa).map((c) => c.prueba.final ?? 0);
+
+  return {
+    alumno,
+    unidades,
+    porcentaje: Math.round((hitos / (UNIT_NUMBERS.length * MILESTONES_PER_UNIT)) * 100),
+    media:
+      completas.length > 0
+        ? Math.round((completas.reduce((t, n) => t + n, 0) / completas.length) * 100) / 100
+        : null,
+    porCorregir: unidades.reduce(
+      (total, celda) =>
+        total +
+        (celda.prueba.entregadas - celda.prueba.practicas.filter((p) => p !== null).length),
+      0,
+    ),
+  };
+}
+
 /**
  * Todo el seguimiento de un curso en una sola consulta por tabla.
  *
@@ -493,26 +593,6 @@ export async function getMatrizSeguimiento(course: Course): Promise<FilaMatriz[]
   if (ids.length === 0) return [];
 
   const anio = await getAnioActivo();
-
-  type ProgresoFila = {
-    alumno_id: string;
-    unidad: number;
-    pasos_teoria: number;
-    test_aciertos: number | null;
-  };
-  type EntregaFila = {
-    alumno_id: string;
-    unidad: number;
-    practica: number;
-    puntos: number | null;
-  };
-  type IntermediaFila = {
-    alumno_id: string;
-    unidad: number;
-    practica: number;
-    bloques: ProgramRow[] | null;
-    comprobada_en: string | null;
-  };
 
   const [progreso, entregas, intermedias] = await Promise.all([
     supabase
@@ -545,74 +625,63 @@ export async function getMatrizSeguimiento(course: Course): Promise<FilaMatriz[]
     UNIT_NUMBERS.map((unidad) => [unidad, getPracticasIntermediasDeUnidad(course, unidad)]),
   );
 
-  return students.map((alumno) => {
-    const unidades = UNIT_NUMBERS.map((unidad): CeldaUnidad => {
-      const suProgreso = filasProgreso.find(
-        (f) => f.alumno_id === alumno.id && f.unidad === unidad,
-      );
-
-      const puntos = [1, 2].map((numero) => {
-        const fila = filasEntregas.find(
-          (f) => f.alumno_id === alumno.id && f.unidad === unidad && f.practica === numero,
-        );
-        return fila?.puntos === null || fila?.puntos === undefined ? null : Number(fila.puntos);
-      });
-      const entregadas = filasEntregas.filter(
-        (f) => f.alumno_id === alumno.id && f.unidad === unidad,
-      ).length;
-
-      const practicas = [1, 2, 3, 4].map((numero) => {
-        const suya = filasIntermedias.find(
-          (f) => f.alumno_id === alumno.id && f.unidad === unidad && f.practica === numero,
-        );
-        const oficial = soluciones.get(unidad)?.find((p) => p.practica === numero);
-        const parecido =
-          suya && oficial ? parecidoDeProgramas(suya.bloques ?? [], oficial.solucion) : null;
-        return {
-          practica: numero,
-          parecido,
-          nivel: nivelDeParecido(parecido),
-          comprobada: suya?.comprobada_en != null,
-        };
-      });
-
-      return {
-        unidad,
-        teoria: suProgreso?.pasos_teoria ?? 0,
-        practicas,
-        prueba: construirNotaPrueba(unidad, suProgreso?.test_aciertos ?? null, puntos, entregadas),
-      };
-    });
-
-    // El mismo porcentaje de siempre: teoría, test y las 2 entregas por unidad.
-    const hitos = unidades.reduce(
-      (total, celda) =>
-        total +
-        (celda.teoria >= THEORY_STEPS ? 1 : 0) +
-        (celda.prueba.aciertos !== null ? 1 : 0) +
-        celda.prueba.entregadas,
-      0,
-    );
-    const completas = unidades.filter((c) => c.prueba.completa).map((c) => c.prueba.final ?? 0);
-
-    return {
-      alumno,
-      unidades,
-      porcentaje: Math.round((hitos / (UNIT_NUMBERS.length * MILESTONES_PER_UNIT)) * 100),
-      media:
-        completas.length > 0
-          ? Math.round((completas.reduce((t, n) => t + n, 0) / completas.length) * 100) / 100
-          : null,
-      porCorregir: unidades.reduce(
-        (total, celda) =>
-          total +
-          (celda.prueba.entregadas - celda.prueba.practicas.filter((p) => p !== null).length),
-        0,
-      ),
-    };
-  });
+  return students.map((alumno) =>
+    construirFila(alumno, filasProgreso, filasEntregas, filasIntermedias, soluciones),
+  );
 }
 
+/**
+ * Las notas de UN alumno, en la misma forma que una fila de la matriz.
+ *
+ * Es lo que ve de sí mismo en su pestaña de calificaciones, así que va por
+ * `alumno` y nunca por curso: la pantalla que la llama le pasa su propia
+ * sesión. No hay política de Supabase que lo acote porque no la hay para
+ * nadie —las tablas tienen RLS sin políticas y solo se leen desde el servidor
+ * con la clave secreta—, de modo que el filtro de aquí ES el permiso.
+ *
+ * La fila la construye `construirFila`, la misma de la matriz del profesor:
+ * lo que el alumno ve de sí mismo y lo que ve su profesor salen del mismo
+ * código, no de dos copias que algún día dirán cosas distintas.
+ */
+export async function getFilaMatrizDeAlumno(alumno: PublicUser & { course: Course }): Promise<FilaMatriz> {
+  const anio = await getAnioActivo();
+
+  const [progreso, entregas, intermedias] = await Promise.all([
+    supabase
+      .from("progreso")
+      .select("alumno_id, unidad, pasos_teoria, test_aciertos")
+      .eq("anio", anio)
+      .eq("alumno_id", alumno.id),
+    supabase
+      .from("entregas")
+      .select("alumno_id, unidad, practica, puntos")
+      .eq("anio", anio)
+      .eq("alumno_id", alumno.id),
+    supabase
+      .from("practicas_intermedias")
+      .select("alumno_id, unidad, practica, bloques, comprobada_en")
+      .eq("anio", anio)
+      .eq("alumno_id", alumno.id),
+  ]);
+  assertNoError(progreso.error, "getFilaMatrizDeAlumno/progreso");
+  assertNoError(entregas.error, "getFilaMatrizDeAlumno/entregas");
+  assertNoError(intermedias.error, "getFilaMatrizDeAlumno/intermedias");
+
+  const soluciones = new Map(
+    UNIT_NUMBERS.map((unidad) => [
+      unidad,
+      getPracticasIntermediasDeUnidad(alumno.course, unidad),
+    ]),
+  );
+
+  return construirFila(
+    alumno,
+    (progreso.data ?? []) as ProgresoFila[],
+    (entregas.data ?? []) as EntregaFila[],
+    (intermedias.data ?? []) as IntermediaFila[],
+    soluciones,
+  );
+}
 
 // ── Entregas de programación ─────────────────────────────────────────────
 

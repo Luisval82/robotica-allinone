@@ -1,9 +1,9 @@
-import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AvisoAlcance } from "@/components/profesor/AvisoAlcance";
 import { CourseTabs } from "@/components/profesor/CourseTabs";
 import { MatrizSeguimiento } from "@/components/profesor/MatrizSeguimiento";
+import { Muestra } from "@/components/profesor/MuestraColor";
 import { requireRole } from "@/lib/auth";
 import { cursoDeLaUrl, getCursosVisibles, getMatrizSeguimiento } from "@/lib/db";
 import { firstParam, saludo } from "@/lib/format";
@@ -12,15 +12,6 @@ import { COURSE_LABEL, THEORY_STEPS } from "@/lib/types";
 export const metadata: Metadata = { title: "Progreso y notas alumnado" };
 
 /** Un cuadradito de la leyenda. */
-function Muestra({ clase, children }: { clase: string; children: ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-1.5">
-      <span aria-hidden="true" className={`inline-block size-3.5 rounded-[0.2rem] ${clase}`} />
-      {children}
-    </span>
-  );
-}
-
 export default async function ProgresoYNotasPage({
   searchParams,
 }: {

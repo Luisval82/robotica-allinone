@@ -45,10 +45,26 @@ src/app/dashboard/admin/page.tsx: error TS7006: Parameter 'b' implicitly has an 
 src/app/dashboard/admin/page.tsx: error TS7006: Parameter 'user' implicitly has an 'any' type.
 src/app/dashboard/admin/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/app/dashboard/alumno/calificaciones/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
-src/app/dashboard/alumno/calificaciones/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
-src/app/dashboard/alumno/calificaciones/page.tsx: error TS2322: Type '{ key: number; prueba: PruebaCalificada; }' is not assignable to type '{ prueba: PruebaCalificada; }'.
+src/app/dashboard/alumno/calificaciones/page.tsx: error TS2345: Argument of type '{ id: string; name: string; email: string; role: Role; exp: number; course: "1ESO" | "2ESO" | "3ESO"; }' is not assignable to parameter of type 'PublicUser & { course: "1ESO" | "2ESO" | "3ESO"; }'.
 src/app/dashboard/alumno/calificaciones/page.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/app/dashboard/alumno/calificaciones/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS18048: 'practica' is possibly 'undefined'.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS2322: Type '"1ESO" | "2ESO" | "3ESO" | null' is not assignable to type '"1ESO" | "2ESO" | "3ESO"'.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS2345: Argument of type '"1ESO" | "2ESO" | "3ESO" | null' is not assignable to parameter of type '"1ESO" | "2ESO" | "3ESO"'.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS2538: Type 'null' cannot be used as an index type.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/dashboard/alumno/calificaciones/practica/[unidad]/[practica]/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS18048: 'entrega' is possibly 'undefined'.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS2345: Argument of type '"1ESO" | "2ESO" | "3ESO" | null' is not assignable to parameter of type '"1ESO" | "2ESO" | "3ESO"'.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS2538: Type 'null' cannot be used as an index type.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/app/dashboard/alumno/calificaciones/prueba/[unidad]/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/app/dashboard/alumno/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
 src/app/dashboard/alumno/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
 src/app/dashboard/alumno/page.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
@@ -108,7 +124,6 @@ src/app/dashboard/profesor/notas/[alumno]/[unidad]/page.tsx: error TS7026: JSX e
 src/app/dashboard/profesor/notas/page.tsx: error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
 src/app/dashboard/profesor/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
 src/app/dashboard/profesor/page.tsx: error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
-src/app/dashboard/profesor/page.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
 src/app/dashboard/profesor/page.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/app/dashboard/profesor/page.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/app/dashboard/profesor/practicas/[alumno]/[unidad]/[practica]/page.tsx: error TS2307: Cannot find module 'next' or its corresponding type declarations.
@@ -213,8 +228,6 @@ src/components/brand/Splash.tsx: error TS7026: JSX element implicitly has type '
 src/components/brand/WordBlock.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
 src/components/brand/WordBlock.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/brand/WordBlock.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
-src/components/calificaciones/EstadoPrueba.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
-src/components/calificaciones/EstadoPrueba.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/informes/AnalisisAlumno.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/informes/AnalisisAlumno.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/informes/BotonImprimir.tsx: error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
@@ -256,6 +269,9 @@ src/components/profesor/MatrizSeguimiento.tsx: error TS2307: Cannot find module 
 src/components/profesor/MatrizSeguimiento.tsx: error TS2322: Type '{ key: number; className: string; href: string; titulo: string; children: any; }' is not assignable to type '{ className: string; titulo: string; href?: string | undefined; children?: any; }'.
 src/components/profesor/MatrizSeguimiento.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/profesor/MatrizSeguimiento.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
+src/components/profesor/MuestraColor.tsx: error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/profesor/MuestraColor.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/profesor/MuestraColor.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
 src/components/profesor/PracticasDelAlumno.tsx: error TS2322: Type '{ key: number; practica: PracticaIntermedia; guardada: PracticaIntermediaEntrega | undefined; alumnoId: string; unidad: number; deCuantas: number; }' is not assignable to type '{ practica: PracticaIntermedia; guardada: PracticaIntermediaEntrega | undefined; alumnoId: string; unidad: number; deCuantas: number; solucionAbierta?: boolean | undefined; children?: any; }'.
 src/components/profesor/PracticasDelAlumno.tsx: error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
 src/components/profesor/PracticasDelAlumno.tsx: error TS7026: JSX element implicitly has type 'any' because no interface 'JSX.IntrinsicElements' exists.
