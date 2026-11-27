@@ -19,6 +19,23 @@
 export const SCHOOL_EMAIL_DOMAIN = "colegiovaldeserra.com";
 
 // ──────────────────────────────────────────────────────────────────────────
+// 👉 CORREOS DE FUERA DEL COLEGIO QUE PUEDEN ENTRAR
+//
+// Excepciones NOMINALES a la regla del dominio: direcciones concretas, nunca
+// un dominio entero. Es para gente de fuera que necesita entrar (soporte,
+// desarrollo) sin tener buzón del centro.
+//
+// Quitar a alguien es borrar su línea de aquí y desplegar: a partir de ese
+// momento no puede iniciar sesión aunque su cuenta siga existiendo. Para
+// quitarle el acceso AL MOMENTO, sin esperar a un despliegue, desactívala o
+// bórrala desde «Gestión de usuarios», que es inmediato.
+//
+// Una dirección aquí no da ningún permiso por sí sola: el rol se pone en
+// «Gestión de usuarios» como con cualquier otra cuenta.
+// ──────────────────────────────────────────────────────────────────────────
+export const CORREOS_INVITADOS: readonly string[] = ["franco@vivirdeia.com"];
+
+// ──────────────────────────────────────────────────────────────────────────
 // 👉 USUARIOS DE PRUEBA VISIBLES EN LA PANTALLA DE LOGIN
 //
 //    true  → se muestra el recuadro con correos y contraseñas de prueba.

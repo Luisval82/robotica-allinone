@@ -1,7 +1,7 @@
 // Validación de formularios. Se usa igual en el navegador (aviso inmediato)
 // y en el servidor (comprobación obligatoria que no se puede saltar).
 
-import { SCHOOL_EMAIL_DOMAIN } from "@/config/site";
+import { CORREOS_INVITADOS, SCHOOL_EMAIL_DOMAIN } from "@/config/site";
 import { isCourse } from "@/lib/types";
 
 /** "@colegiovaldeserra.com" — se calcula a partir de src/config/site.ts. */
@@ -26,9 +26,19 @@ export function normalizeEmail(email: string): string {
   return email.trim().toLowerCase();
 }
 
-/** true solo si el correo pertenece al dominio corporativo del colegio. */
+/** Las excepciones nominales de src/config/site.ts, ya normalizadas. */
+const INVITADOS = new Set(CORREOS_INVITADOS.map((correo) => correo.trim().toLowerCase()));
+
+/**
+ * true si el correo es del dominio del colegio o es uno de los invitados.
+ *
+ * Los invitados son direcciones sueltas, nunca un dominio: alguien de fuera
+ * que necesita entrar sin tener buzón del centro. No dan ningún permiso por
+ * sí mismas; el rol se pone en «Gestión de usuarios».
+ */
 export function isSchoolEmail(email: string): boolean {
   const value = normalizeEmail(email);
+  if (INVITADOS.has(value)) return true;
   if (!value.endsWith(SCHOOL_EMAIL_SUFFIX)) return false;
   const localPart = value.slice(0, -SCHOOL_EMAIL_SUFFIX.length);
   return /^[a-z0-9]+([._+-][a-z0-9]+)*$/.test(localPart);

@@ -29,6 +29,7 @@ Todo está en **`src/config/site.ts`**:
 | Qué | Constante | Valor inicial |
 | --- | --- | --- |
 | Dominio del correo del colegio | `SCHOOL_EMAIL_DOMAIN` | `"colegiovaldeserra.com"` |
+| Correos de fuera admitidos | `CORREOS_INVITADOS` | direcciones sueltas, nunca un dominio |
 | Mostrar usuarios de prueba en el login | `SHOW_DEMO_CREDENTIALS` | `true` |
 
 Los usuarios de prueba adoptan automáticamente el dominio que pongas.
@@ -714,7 +715,16 @@ cero y sirven para probar el recorrido completo. Vacía sus dos listas cuando em
     cuando todavía no hay nadie que le pueda dar el rol.
 - **Registro**: nombre, correo del colegio, contraseña (mínimo 8 caracteres) y curso. Toda cuenta
   nueva entra como **alumno**; el rol de Profesor lo concederá el superadministrador.
-- **Correo corporativo**: se comprueba en el navegador (aviso inmediato) y otra vez en el servidor.
+- **Correo corporativo**: se comprueba en el navegador (aviso inmediato) y otra vez en el servidor,
+  al registrarse **y al iniciar sesión**. Una cuenta cuyo correo no pase la regla no entra, aunque
+  exista en la base de datos y tenga contraseña.
+- **Invitados de fuera** (`CORREOS_INVITADOS`, en `src/config/site.ts`): direcciones **sueltas**,
+  nunca un dominio entero, para gente que necesita entrar sin tener buzón del centro (soporte,
+  desarrollo). Estar en la lista no da ningún permiso: el rol se pone en «Gestión de usuarios»
+  como con cualquier otra cuenta. Para quitarle el acceso **al momento**, desactiva o borra la
+  cuenta en «Gestión de usuarios», que es inmediato; borrar su línea de la lista también le cierra
+  la puerta, pero no surte efecto hasta el siguiente despliegue. Estas direcciones **no** se ponen
+  en `DEMO_CREDENTIALS`: esa lista se enseña en la pantalla de login y publicaría la contraseña.
 - **Sesión**: cookie `httpOnly` firmada (HMAC-SHA256) que caduca a las 8 horas.
 - **Rutas protegidas** (`src/proxy.ts`, el antiguo `middleware.ts` en Next.js 16):
   - sin sesión, `/dashboard/*` lleva a `/login`;
